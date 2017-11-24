@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.busiload.persistent.BusiloadVO" table="CH_CB_BUSILOAD">
+<composite-id>
+<key-property name="loadinfo" column="LOADINFO" type="java.lang.String" length="50"/>
+<key-property name="loadtype" column="LOADTYPE" type="java.lang.String" length="32"/>
+<key-property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+</composite-id>
+</class>
+</hibernate-mapping>

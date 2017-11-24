@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 网站固定常量表 -->
+<CONTENT>
+	<!--社会（网站）渠道 酬金类型-简称-->	
+	<CONSTANT code="SOCIETY_REWARD_TPYPE_SHORTNAME">
+		<VALUE key="-1">酬金调整</VALUE>
+		<VALUE key="0">固定酬金</VALUE>
+		<VALUE key="1">积分酬金</VALUE>
+		<VALUE key="2">专门津贴</VALUE>
+		<VALUE key="3">基本酬金</VALUE> 
+		<VALUE key="4">奖励酬金</VALUE> 
+		<VALUE key="5">基本酬金</VALUE>
+		<VALUE key="6">奖励酬金</VALUE>
+		<VALUE key="7">星级酬金</VALUE>
+		<VALUE key="8">项目启动金</VALUE>
+		<VALUE key="30">合作年限奖</VALUE>
+	<!-- 网站BBC渠道 from DB-->
+		<VALUE key="9">销售类基本酬金</VALUE>
+		<VALUE key="10">销售类奖励酬金</VALUE>
+		<VALUE key="11">新增网站活跃客户基本酬金</VALUE>
+		<VALUE key="12">新增网站活跃客户奖励酬金</VALUE>
+		<VALUE key="13">e100活跃客户基本酬金</VALUE>
+		<VALUE key="14">e100活跃客户奖励酬金</VALUE>
+	</CONSTANT>
+	
+	<!-- 社会酬金类型，失败信息查询用  -->
+	<CONSTANT code="SOCIETY_REWARDVERIFIED_TPYPE">
+		<VALUE key="0">标准卡固定酬金</VALUE>
+		<VALUE key="1">标准卡积分酬金</VALUE>
+		<VALUE key="2">标准卡专门津贴</VALUE>
+		<!-- 先不查数据业务类型
+		<VALUE key="3">数据业务基本酬金</VALUE>
+		<VALUE key="4">数据业务奖励酬金</VALUE>
+		 -->
+		<VALUE key="5">服务业务基本酬金</VALUE>
+		<VALUE key="6">服务业务奖励酬金</VALUE>
+	</CONSTANT>
+	
+	<!-- 网站酬金类型，失败信息查询用  -->
+	<CONSTANT code="BBC_REWARDVERIFIED_TPYPE">
+		<VALUE key="9">销售类基本酬金</VALUE>
+		<VALUE key="10">销售类奖励酬金</VALUE>
+		<VALUE key="11">新增网站活跃客户基本酬金</VALUE>
+		<VALUE key="12">新增网站活跃客户奖励酬金</VALUE>
+		<VALUE key="13">e100活跃客户基本酬金</VALUE>
+		<VALUE key="14">e100活跃客户奖励酬金</VALUE>
+	</CONSTANT>
+	
+	<!-- 21个地市固定参数 -->
+	<CONSTANT code="BRANCH_NAME">
+		<VALUE key="GZ">广州</VALUE>		
+		<VALUE key="SZ">深圳</VALUE>
+		<VALUE key="ZH">珠海</VALUE>
+		<VALUE key="DG">东莞</VALUE>
+		<VALUE key="FS">佛山</VALUE>
+		<VALUE key="ZS">中山</VALUE>
+		<VALUE key="HZ">惠州</VALUE>
+		<VALUE key="ZQ">肇庆</VALUE>
+		<VALUE key="ST">汕头</VALUE>
+		<VALUE key="SW">汕尾</VALUE>			
+		<VALUE key="CZ">潮州</VALUE>			
+		<VALUE key="JM">江门</VALUE>			
+		<VALUE key="MM">茂名</VALUE>			
+		<VALUE key="SG">韶关</VALUE>			
+		<VALUE key="YJ">阳江</VALUE>			
+		<VALUE key="ZJ">湛江</VALUE>			
+		<VALUE key="HY">河源</VALUE>			
+		<VALUE key="MZ">梅州</VALUE>			
+		<VALUE key="QY">清远</VALUE>			
+		<VALUE key="JY">揭阳</VALUE>						
+		<VALUE key="YF">云浮</VALUE>
+	</CONSTANT>
+	<!-- 21个地市编码表 -->
+	<CONSTANT code="BRANCH_NO">
+		<!-- <VALUE key="GD">999</VALUE>  -->
+		<VALUE key="GZ">200</VALUE>
+		<VALUE key="SZ">755</VALUE>
+		<VALUE key="ZH">756</VALUE>
+		<VALUE key="FS">757</VALUE>
+		<VALUE key="ST">754</VALUE>
+		<VALUE key="HZ">752</VALUE>
+		<VALUE key="ZJ">759</VALUE>
+		<VALUE key="JM">750</VALUE>
+		<VALUE key="ZQ">758</VALUE>
+		<VALUE key="SG">751</VALUE>
+		<VALUE key="MZ">753</VALUE>
+		<VALUE key="DG">769</VALUE>
+		<VALUE key="ZS">760</VALUE>
+		<VALUE key="MM">668</VALUE>
+		<VALUE key="SW">660</VALUE>
+		<VALUE key="CZ">768</VALUE>
+		<VALUE key="JY">663</VALUE>
+		<VALUE key="YJ">662</VALUE>
+		<VALUE key="QY">763</VALUE>
+		<VALUE key="HY">762</VALUE>
+		<VALUE key="YF">766</VALUE>
+	</CONSTANT>
+	<!-- 21个地市  商品订购是否需要查询资源明细 
+	1-需要，0-不需要
+	-->
+	<CONSTANT code="ISQUERY">
+		<!-- <VALUE key="GD">999</VALUE>  -->
+		<VALUE key="GZ">1</VALUE>
+		<VALUE key="SZ">0</VALUE>
+		<VALUE key="ZH">1</VALUE>
+		<VALUE key="FS">1</VALUE>
+		<VALUE key="ST">1</VALUE>
+		<VALUE key="HZ">1</VALUE>
+		<VALUE key="ZJ">1</VALUE>
+		<VALUE key="JM">1</VALUE>
+		<VALUE key="ZQ">1</VALUE>
+		<VALUE key="SG">1</VALUE>
+		<VALUE key="MZ">1</VALUE>
+		<VALUE key="DG">1</VALUE>
+		<VALUE key="ZS">1</VALUE>
+		<VALUE key="MM">1</VALUE>
+		<VALUE key="SW">1</VALUE>
+		<VALUE key="CZ">1</VALUE>
+		<VALUE key="JY">1</VALUE>
+		<VALUE key="YJ">1</VALUE>
+		<VALUE key="QY">1</VALUE>
+		<VALUE key="HY">1</VALUE>
+		<VALUE key="YF">1</VALUE>
+	</CONSTANT>
+	
+	<!-- 21个地市 是否开放访问 
+	1-开放，0-关闭
+	-->
+	<CONSTANT code="ISOPEN">
+		<!-- <VALUE key="GD">999</VALUE>  -->
+		<VALUE key="GZ">1</VALUE>
+		<VALUE key="SZ">1</VALUE>
+		<VALUE key="ZH">1</VALUE>
+		<VALUE key="FS">1</VALUE>
+		<VALUE key="ST">1</VALUE>
+		<VALUE key="HZ">1</VALUE>
+		<VALUE key="ZJ">1</VALUE>
+		<VALUE key="JM">1</VALUE>
+		<VALUE key="ZQ">1</VALUE>
+		<VALUE key="SG">1</VALUE>
+		<VALUE key="MZ">1</VALUE>
+		<VALUE key="DG">1</VALUE>
+		<VALUE key="ZS">1</VALUE>
+		<VALUE key="MM">1</VALUE>
+		<VALUE key="SW">1</VALUE>
+		<VALUE key="CZ">1</VALUE>
+		<VALUE key="JY">1</VALUE>
+		<VALUE key="YJ">1</VALUE>
+		<VALUE key="QY">1</VALUE>
+		<VALUE key="HY">1</VALUE>
+		<VALUE key="YF">1</VALUE>
+	</CONSTANT>
+	<!-- 渠道子类别 -->
+	<CONSTANT code="WAY_SUB_TYPE">
+		<!-- 社会渠道（普通代理渠道）子渠道 -->
+		<VALUE key="SAGT">特约代理点</VALUE>
+		<VALUE key="PSAL">指定专营店（授权销售点）</VALUE>	
+		<VALUE key="LOGS">物流商</VALUE>
+		<VALUE key="DIS">连锁经营合作商</VALUE>
+		<VALUE key="FD">FD服务店</VALUE>
+		<VALUE key="FDS">FD连锁店</VALUE>
+		<VALUE key="VWAY">虚拟渠道</VALUE>
+		<VALUE key="STRT">经销商（直供商）</VALUE>
+		<VALUE key="TEMI">终端厂家</VALUE>
+		<VALUE key="ITF">IT厂家</VALUE>
+		<VALUE key="ECF">电子充值券经销商</VALUE>
+		<!-- 自营渠道（实体渠道）子渠道 -->		
+		<VALUE key="GMPT">移动公司部门/科室</VALUE>
+		<VALUE key="G100">沟通100服务厅</VALUE>
+		<VALUE key="D100">动力100信息化体验店</VALUE>
+		<VALUE key="MZ1">动感地带品牌店</VALUE>
+		<VALUE key="MZ2">动感地带校园店</VALUE>
+		<VALUE key="PVIP">易登机贵宾厅</VALUE>
+		<VALUE key="CVIP">易登车贵宾厅</VALUE>
+		<VALUE key="SF24">24小时服务厅</VALUE>
+	</CONSTANT>
+	
+	<!-- 不能做状态修改的配送单状态 -->
+	<CONSTANT code="CANNOT_DISFORMSTATE">
+		<VALUE key="DISOVER">配送完成</VALUE>
+		<VALUE key="CANCEL">作废</VALUE>
+		<VALUE key="WAITOUT">待发货</VALUE>
+	</CONSTANT>
+	
+	<!-- 我的提问状态 -->
+	<CONSTANT code="QUESTION_STATE">
+		<VALUE key="3">未回复</VALUE>
+		<VALUE key="4">已关闭</VALUE>
+		<VALUE key="5">退回</VALUE>
+		<VALUE key="6">已回复</VALUE>
+	</CONSTANT>
+	
+	<!-- 资源类别单位，套卡单位为套，充值卡单位为张 -->
+	<CONSTANT code="COMCATEGORY_UNIT">
+		<VALUE key="COMRESCARD">张</VALUE>
+		<VALUE key="COMRESSMP">套</VALUE>
+	</CONSTANT>
+	
+	<!-- 地市是否支持我的酬金模块
+	1-支持 | 0-不支持 -->
+	<CONSTANT code="CAN_QUERY_REWARD">
+		<VALUE key="GZ">1</VALUE>
+		<VALUE key="SZ">1</VALUE>
+		<VALUE key="ZH">1</VALUE>
+		<VALUE key="FS">1</VALUE>
+		<VALUE key="ST">1</VALUE>
+		<VALUE key="HZ">1</VALUE>
+		<VALUE key="ZJ">1</VALUE>
+		<VALUE key="JM">1</VALUE>
+		<VALUE key="ZQ">1</VALUE>
+		<VALUE key="SG">1</VALUE>
+		<VALUE key="MZ">1</VALUE>
+		<VALUE key="DG">1</VALUE>
+		<VALUE key="ZS">0</VALUE>
+		<VALUE key="MM">1</VALUE>
+		<VALUE key="SW">1</VALUE>
+		<VALUE key="CZ">1</VALUE>
+		<VALUE key="JY">1</VALUE>
+		<VALUE key="YJ">1</VALUE>
+		<VALUE key="QY">1</VALUE>
+		<VALUE key="HY">1</VALUE>
+		<VALUE key="YF">1</VALUE>
+	</CONSTANT>
+	<!-- 创新联盟 业务平台来源 -->
+	<CONSTANT code="CH_UNPB_OSSRC">
+		<VALUE key="3">全员代理短信</VALUE>
+		<VALUE key="4">全员代理OTA</VALUE>
+		<VALUE key="5">全员代理WAP</VALUE>
+	</CONSTANT>	
+</CONTENT>

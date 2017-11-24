@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.disform.PDisformVO" table="P_FX_SW_DISFORM">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_DISFORM_SEQ</param>
+</generator>
+</id>
+<property column="ORDERID" length="18" name="orderid"  type="java.lang.String"/>
+<property column="RECEWAYID" length="18" name="recewayid"  type="java.lang.String"/>
+<property column="RECENAME" length="32" name="recename"  type="java.lang.String"/>
+<property column="RECETEL" length="12" name="recetel"  type="java.lang.String"/>
+<property column="RECEADD" length="256" name="receadd"  type="java.lang.String"/>
+<property column="DISCOMCODE" length="18" name="discomcode"  type="java.lang.String"/>
+<property column="ORDERCREATETIME" length="7" name="ordercreatetime"  type="java.util.Date"/>
+<property column="DISCREATETIME" length="7" name="discreatetime"  type="java.util.Date"/>
+<property column="ARRIVETIME" length="7" name="arrivetime"  type="java.util.Date"/>
+<property column="STORESMAN" length="16" name="storesman" type="java.lang.String"/>
+<property column="OUTTIME" length="7" name="outtime" type="java.util.Date"/>
+<property column="COMCATEGORY" length="16" name="comcategory" type="java.lang.String"/>
+<property column="ORDERAMT" length="16" name="orderamt" type="java.lang.Long"/>
+<property column="TOTALORDERAMT" length="16" name="totalorderamt" type="java.lang.Long"/>
+<property column="RESTYPE" length="16" name="restype" type="java.lang.String"/>
+<property column="TOTALPRICE" length="16" name="totalprice" type="java.lang.Double"/>
+<property column="ALLPRICE" length="16" name="allprice" type="java.lang.Double"/>
+<property column="COMNUM" length="16" name="comnum" type="java.lang.String"/>
+<property column="MEMO" length="16" name="memo" type="java.lang.String"/>
+<property column="ORDERCOMTYPE" length="16" name="ordercomtype" type="java.lang.String"/>
+<property column="NUM" length="16" name="num" type="java.lang.Long"/>
+<property column="BATCHNO" length="30" name="batchno" type="java.lang.String"/>
+<property column="BOXNUM" length="100" name="boxnum" type="java.lang.String"/>
+<property column="INSIDESEQ" length="8" name="insideseq" type="java.lang.Long"/>
+
+
+</class>
+<sql-query name="queryDisformPrintList">
+<return class="com.gmcc.pboss.business.sales.disform.PDisformVO"/>
+select d.recid,
+	   d.orderid,
+       d.discomcode,
+       o.createtime as ORDERCREATETIME,
+       d.createtime as DISCREATETIME,
+       d.arrivetime,
+       d.recewayid,
+       d.recename,
+       d.recetel,
+       d.receadd,
+       d.storesman,
+       d.outtime,
+       (select sum(orderamt) from FX_SW_ORDERCOMCATE where orderid=:orderid) as totalorderamt, 
+       (select sum(totalprice) from FX_SW_ORDERCOMCATE where orderid=:orderid) as allprice,
+       '' as totalprice,
+       '' as orderamt,
+       '' as comnum,
+       '' as memo,
+       '' as comcategory,
+       '' as restype,
+       '' as ordercomtype,
+       '' as num,
+       '' as batchno,
+       '' as boxnum,
+       '' as insideseq
+  from FX_SW_DISFORM d, FX_SW_ORDER o where d.orderid = o.orderid and d.orderid= :orderid
+</sql-query>
+<sql-query name="queryDisformPrintDp">
+<return class="com.gmcc.pboss.business.sales.disform.PDisformVO"/>
+select oc.comcategory as COMCATEGORY,
+       oc.orderamt as ORDERAMT,
+       (select restype
+          from IM_PR_COMCATEGORYRELA
+         where comcategory = oc.comcategory
+           and rownum = 1) as RESTYPE,
+       '' as COMNUM,
+       oc.totalprice as TOTALPRICE,
+       '' as MEMO,
+       '1' as recid,
+       oc.orderid as orderid,
+       oc.ordercomtype,
+       '' as discomcode,
+       '' as ordercreatetime,
+       '' as discreatetime,
+       '' as arrivetime,
+       '' as recewayid,
+       '' as recename,
+       '' as recetel,
+       '' as receadd,
+       '' as storesman,
+       '' as outtime,
+       '' as num,
+       '' as batchno,
+       '' as boxnum,
+       '' as insideseq
+  from FX_SW_ORDERCOMCATE oc
+ where oc.orderid = :orderid 
+</sql-query>
+</hibernate-mapping>

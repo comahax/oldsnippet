@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.mpsaudit.persistent.MpsauditVO" table="CH_PW_MPSAUDIT">
+<id column="ADTDATE" name="adtdate" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="IODNUM" length="10" name="iodnum" type="java.lang.Long"/>
+<property column="MPSNUM" length="10" name="mpsnum" type="java.lang.Long"/>
+<property column="MPSVALID" length="10" name="mpsvalid" type="java.lang.Long"/>
+<property column="PERCENT" length="10" name="percent" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

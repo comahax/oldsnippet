@@ -1,0 +1,108 @@
+ /*=====================================================*/
+/*                base.css 页面整体属性                */
+/*           包含框架属性,以及默认页面属性             */
+/*=====================================================*/
+* {
+	padding:0; margin:0;
+	}
+body {
+	font-size:12px;
+	font-family:'宋体',Microsoft Sans Serif;
+	font-weight:100;
+	color:#000;
+	text-align:left;
+}
+
+
+#top {
+	width:100%; height:67px;
+	background:#ff0000;
+}
+#topdown {
+	width:1004px; height:500px;
+	background:#fff;
+}
+#left {
+	width:159px; height:100%;
+	background:#fff;
+	float:left;
+}
+#right {
+	width:845px; height:100%;
+	background:#fff;
+	float:left;
+}
+/*=====================================================*/
+/*                有关左侧页面大小的修正               */
+/*=====================================================*/
+#left_content {
+	width:154px; height:100%;
+	background:#654321;
+	float:left;
+	display:on;
+}
+#left_line {
+	width:8px; height:100%;
+	float:left;
+}
+#left_content_top {
+	width:100%; height:400px;
+	background:#e3e3e3;
+}
+#left_content_bottom {
+	width:100%; height:100px;
+	background:#e3e3e3;
+}
+#left_content_line {
+	width:100%; height:8px;
+	flow:hidden;
+}
+/*=====================================================*/
+/*                有关右侧页面大小的修正               */
+/*=====================================================*/
+#right_top {
+	width:100%; height:500px;
+	background:#e3e3e3;
+}
+#right_bottom {
+	width:100%; height:100px;
+	background:#e3e3e3;
+	display:on;
+}
+#right_line {
+	width:100%; height:8px;
+	display;on;
+}
+/*=====================================================*/
+/*                    IFRM窗口的修正                   */
+/*=====================================================*/
+#IFRM_TOP {
+	width:100%; height:100%;
+}
+#IFRM_LEFT_TOP {
+	width:100%; height:100%; 
+	border:#ffffff solid 0px;
+	overflow:hidden;
+}
+#IFRM_LEFT_BOTTOM {
+	width:100%; height:100%; 
+	border:#ffffff solid 0px;
+	overflow:hidden;
+}
+.IFRM_MAIN_on {
+	width:100%; height:100%; 
+	border:#ffffff solid 0px;
+	overflow:hidden;
+	display:on;
+}
+.IFRM_MAIN_off {
+	width:100%; height:100%; 
+	border:#ffffff solid 0px;
+	overflow:hidden;
+	display:none;
+}
+#IFRM_BOTTOM {
+	width:100%; height:100%; 
+	border:#ffffff solid 0px;
+	overflow:hidden;
+}

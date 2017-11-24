@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	<!--
+		接口注册工具。用于注册接口的默认实现类。InterfaceUtils.createDefaultObject(接口名)
+		方法可以创建默认的实现类实例。 以分离接口和实现。
+	-->
+	<bean id="com.sunrise.jop.common.utils.lang.InterfaceUtils" class="com.sunrise.jop.common.utils.lang.InterfaceUtils">
+		<property name="interfaceClassMapping">
+			<props>
+				<prop key="com.sunrise.jop.infrastructure.component.Code2Name">com.sunrise.jop.infrastructure.component.impl.DefaultCode2Name</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<!-- 注册自动代理创建，为业务Bean添加拦截器(REQUIRES) -->
+	<bean id="BOAutoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="proxyTargetClass" value="true"></property>
+		<property name="beanNames">
+			<list>
+				<value>*BO</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>businessLogMethodPointcutAdvisor</value>
+				<value>transactionAdvisor</value>
+				<!--
+					注意： 事务拦截器必须包含在业务日志拦截器中，以免事务控制混乱；
+					或者将业务日志的方法recordLog 设置为	PROPAGATION_REQUIRES_NEW 属性
+				-->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionAdvisor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref local="transactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<!-- 注意开发规范：业务bean的业务方法必须为 do* 格式，才能被包含事务！ -->
+				<prop key="do*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- (REQUIRES)END -->
+	
+	
+	<!-- 注册自动代理创建，为业务Bean添加拦截器(REQUIRES_NEW) -->
+	<bean id="BOAutoProxyCreator_REQUIRES_NEW"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="proxyTargetClass" value="true"></property>
+		<property name="beanNames">
+			<list>
+				<value>*BOPROPAGATION_REQUIRES_NEW</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>businessLogMethodPointcutAdvisor</value>
+				<value>transactionAdvisor_REQUIRES_NEW</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionAdvisor_REQUIRES_NEW"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor" parent="transactionAdvisor">
+		<property name="transactionAttributes">
+			<props>
+				<prop key="do*">PROPAGATION_REQUIRES_NEW</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- (REQUIRES_NEW)END -->
+
+
+
+
+	<bean id="businessLogAdvisor" class="com.sunrise.jop.common.businesslog.BusinessLogAdvisor" />
+
+	<bean id="businessLogMethodPointcutAdvisor"
+		class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedNames">
+			<list>
+				<value>doCreate*</value>
+				<value>doUpdate*</value>
+				<value>doRemove*</value>
+			</list>
+		</property>
+		<property name="advice">
+			<ref local="businessLogAdvisor" />
+		</property>
+	</bean>
+	
+
+</beans>

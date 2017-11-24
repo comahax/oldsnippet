@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtyrewardcoeflog.persistent.ZjtyRewardcoeflogVO" table="CH_ZJTY_REWARDCOEFLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_ZJTY_REWARDCOEFLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="COEFID" length="3" name="coefid" type="java.lang.Short"/>
+<property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<property column="EFFECTIBLEMONTH" length="6" name="effectiblemonth" type="java.lang.String"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="PROVIDECOEF" length="10" name="providecoef" type="java.lang.Double"/>
+<property column="RESULT" length="255" name="result" type="java.lang.String"/>
+<property column="ISPASS" length="3" name="ispass" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

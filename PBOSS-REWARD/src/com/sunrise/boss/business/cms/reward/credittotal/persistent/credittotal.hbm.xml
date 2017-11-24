@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.credittotal.persistent.CredittotalVO" table="CH_ADT_CREDITTOTAL">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="WAYID" length="20" name="wayid" type="java.lang.String"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="SLV" length="22" name="slv" type="java.lang.Long"/>
+<property column="CREDITACCOUNT" length="10" name="creditaccount" type="java.lang.Double"/>
+<property column="ADTYPECODE" length="22" name="adtypecode" type="java.lang.Long"/>
+<property column="CREDITLEV" length="10" name="creditlev" type="java.lang.Double"/>
+<property column="CARDSALE" length="10" name="cardsale" type="java.lang.Double"/>
+<property column="SALELEV" length="10" name="salelev" type="java.lang.Double"/>
+<property column="ISCREDITLEV" length="1" name="iscreditlev" type="java.lang.String"/>
+<property column="ISSALELEV" length="1" name="issalelev" type="java.lang.String"/>
+<property column="MANAGEASSESS" length="10" name="manageassess" type="java.lang.Double"/>
+<property column="ASSESS" length="10" name="assess" type="java.lang.Double"/>
+<property column="ASSEGRADE" length="10" name="assegrade" type="java.lang.Double"/>
+<property column="SALEASSESS" length="10" name="saleassess" type="java.lang.Double"/>
+<property column="NONCYC" length="3" name="noncyc" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

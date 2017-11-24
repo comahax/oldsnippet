@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.examine.coefrevision.persistent.CoefrevisionVO" table="CH_PW_COEFREVISION">
+<id column="SEQID" name="seqid" type="java.lang.Long">
+	<generator class="sequence">
+        <param name="sequence">
+           CH_PW_COEFREVISION_SEQ
+        </param>	
+   	</generator>
+</id>
+<property column="EXMNID" length="6" name="exmnid" type="java.lang.Integer"/>
+<property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<property column="EXMNPERIOD" length="6" name="exmnperiod" type="java.lang.String"/>
+<property column="COEFFICIENT" length="10" name="coefficient" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

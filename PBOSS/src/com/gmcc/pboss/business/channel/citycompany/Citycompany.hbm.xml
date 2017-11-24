@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.citycompany.CitycompanyVO" table="CH_PW_CITYCOMPANY">
+<id column="CITYCOMPID" length="14" name="citycompid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CENTERID" length="14" name="centerid" type="java.lang.String"/>
+<property column="CITYCOMPNAME" length="64" name="citycompname" type="java.lang.String"/>
+<property column="CITYCOMPTYPE" length="3" name="citycomptype" type="java.lang.Short"/>
+<property column="AGENT" length="64" name="agent" type="java.lang.String"/>
+<property column="BILLINGCODE" length="5" name="billingcode" type="java.lang.String"/>
+<property column="AREACODE" length="8" name="areacode" type="java.lang.String"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="LONGITUDE" length="15" name="longitude" type="java.lang.String"/>
+<property column="LATITUDE" length="15" name="latitude" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

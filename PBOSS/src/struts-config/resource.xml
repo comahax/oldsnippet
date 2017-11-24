@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="resource" namespace="/resource" extends="pboss-default">	
+		<!-- 套卡资源管理 -->
+		<action name="comressmp_*" class="com.gmcc.pboss.web.resource.comressmp.ComressmpAction" method="{1}">
+			<result name="list">/resource/comressmp/list.jsp</result>
+			<result name="stat">/resource/comressmp/stat.jsp</result>
+            <result name="content">/resource/comressmp/content.jsp</result>
+            <result name="exportexcel">/resource/comressmp/exportexcel.jsp</result>
+            <result name="productdetail">/resource/compack/productdetail.jsp</result>
+            <result name="trunkprint">/resource/compack/trunk_print.jsp</result>
+			<result name="boxprint">/resource/compack/box_print.jsp</result>
+			<result name="packprint">/resource/compack/pack_print.jsp</result>
+        </action>
+        <!-- 套卡资源用途批量更新 -->
+         <action name="comressmp_resuseUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/resource/comressmp/resuseUpdate.jsp</result>
+			<result name="error">/resource/comressmp/resuseUpdate.jsp</result>
+        </action>
+         <action name="comressmp_resuseImport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/resource/comressmp/resuseUpdate.jsp</result>
+			<result name="error">/resource/comressmp/resuseUpdate.jsp</result>
+        </action>
+        <!-- 套卡库区批量更新 -->
+        <action name="comressmp_storareaUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/resource/comressmp/storareaUpdate.jsp</result>
+			<result name="error">/resource/comressmp/storareaUpdate.jsp</result>
+        </action>
+         <action name="comressmp_storareaImport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/resource/comressmp/storareaUpdate.jsp</result>
+			<result name="error">/resource/comressmp/storareaUpdate.jsp</result>
+        </action>
+         <!-- 套卡仓储包号批量更新 -->
+        <action name="comressmp_boxnumUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/resource/comressmp/boxnumUpdate.jsp</result>
+			<result name="error">/resource/comressmp/boxnumUpdate.jsp</result>
+        </action>
+        <action name="comressmp_boxnumImport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/resource/comressmp/boxnumUpdate.jsp</result>
+			<result name="error">/resource/comressmp/boxnumUpdate.jsp</result>
+        </action>
+        <!-- 套卡批量调拨 -->
+        <action name="comressmp_wayidUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction">
+        	<result name="success">/resource/comressmp/wayidUpdate.jsp</result>
+        	<result name="error">/resource/comressmp/wayidUpdate.jsp</result>
+        </action>
+        <action name="comressmp_wayidImport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+        	<result name="success">/resource/comressmp/wayidUpdate.jsp</result>
+        	<result name="error">/resource/comressmp/wayidUpdate.jsp</result>
+        </action>  
+        <!-- 充值卡批量调拨 -->
+        <action name="comrescard_wayidUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction">
+        	<result name="success">/resource/comrescard/wayidUpdate.jsp</result>
+        	<result name="error">/resource/comrescard/wayidUpdate.jsp</result>
+        </action>
+        <action name="comrescard_wayidImport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+        	<result name="success">/resource/comrescard/wayidUpdate.jsp</result>
+        	<result name="error">/resource/comrescard/wayidUpdate.jsp</result>
+        </action>       
+        
+        <!-- 套卡资源日志 -->
+        <action name="comressmplog_*" class="com.gmcc.pboss.web.resource.comressmplog.ComressmplogAction" method="{1}">
+			<result name="list">/resource/comressmplog/list.jsp</result>
+            <result name="content">/resource/comressmplog/content.jsp</result>
+        </action>
+        
+		<!-- 充值卡资源管理 -->
+		<action name="comrescard_*" class="com.gmcc.pboss.web.resource.comrescard.ComrescardAction" method="{1}">
+			<result name="list">/resource/comrescard/list.jsp</result>
+			<result name="stat">/resource/comrescard/stat.jsp</result>
+            <result name="content">/resource/comrescard/content.jsp</result>
+             <result name="exportexcel">/resource/comrescard/exportexcel.jsp</result>
+        </action>
+        <!-- 充值卡资源日志 -->
+       <action name="comrescardlog_*" class="com.gmcc.pboss.web.resource.comrescardlog.ComrescardlogAction" method="{1}">
+			<result name="list">/resource/comrescardlog/list.jsp</result>
+            <result name="content">/resource/comrescardlog/content.jsp</result>
+        </action>
+        <!-- 空白SIM卡资源管理 -->
+        <action name="emptysim_*" class="com.gmcc.pboss.web.resource.emptysim.EmptysimAction" method="{1}">
+			<result name="list">/resource/emptysim/list.jsp</result>
+            <result name="content">/resource/emptysim/content.jsp</result>
+             <result name="stat">/resource/emptysim/stat.jsp</result>
+             <result name="exportexcel">/resource/emptysim/exportstatexcel.jsp</result>
+        </action>
+         <!--空白SIM卡批量调拨 -->
+          <action name="emptysim_wayidUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction">
+        	<result name="success">/resource/emptysim/wayidUpdate.jsp</result>
+        	<result name="error">/resource/emptysim/wayidUpdate.jsp</result>
+        </action>
+          <action name="emptysim_wayidImport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+        	<result name="success">/resource/emptysim/wayidUpdate.jsp</result>
+        	<result name="error">/resource/emptysim/wayidUpdate.jsp</result>
+        </action>  
+        
+        <!-- 空白SIM卡资源日志 -->
+       <action name="emptysimlog_*" class="com.gmcc.pboss.web.resource.emptysimlog.EmptysimlogAction" method="{1}">
+			<result name="list">/resource/emptysimlog/list.jsp</result>
+            <result name="content">/resource/emptysimlog/content.jsp</result>
+        </action>
+     
+        <!-- 商品种类组合日志 -->
+        <action name="comcategoryrelalog_*" class="com.gmcc.pboss.web.resource.comcategoryrelalog.ComcategoryrelalogAction" method="{1}">
+			<result name="list">/resource/comcategoryrelalog/list.jsp</result>
+            <result name="content">/resource/comcategoryrelalog/content.jsp</result>
+        </action>
+        
+        <!-- 号码类型日志 -->
+        <action name="numtypedeflog_*" class="com.gmcc.pboss.web.resource.numtypedeflog.NumtypedeflogAction" method="{1}">
+			<result name="list">/resource/numtypedeflog/list.jsp</result>
+            <result name="content">/resource/numtypedeflog/content.jsp</result>
+        </action>
+         <!-- 号码分类规则日志 -->
+        <action name="numsortrulelog_*" class="com.gmcc.pboss.web.resource.numsortrulelog.NumsortrulelogAction" method="{1}">
+			<result name="list">/resource/numsortrulelog/list.jsp</result>
+            <result name="content">/resource/numsortrulelog/content.jsp</result>
+        </action>
+       
+        <!-- 资源入库参数日志 -->
+        <action name="resloadparamlog_*" class="com.gmcc.pboss.web.resource.resloadparamlog.ResloadparamlogAction" method="{1}">
+			<result name="list">/resource/resloadparamlog/list.jsp</result>
+            <result name="content">/resource/resloadparamlog/content.jsp</result>
+        </action>
+        <!-- 商品数据 -->
+        <action name="com_*" class="com.gmcc.pboss.web.resource.com.ComAction" method="{1}">
+			<result name="list">/resource/com/list.jsp</result>
+            <result name="content">/resource/com/content.jsp</result>
+            <result name="phonetype">/resource/com/phonetype.jsp</result>
+        </action>
+        <action name="com_phonetypeupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/resource/com/phonetype.jsp</result>
+            <result name="error">/resource/com/phonetype.jsp</result>
+        </action>
+        <action name="com_phonetypeimport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/resource/com/phonetype.jsp</result>
+            <result name="error">/resource/com/phonetype.jsp</result>
+        </action>
+        <!-- 商品树 -->
+        <action name="comtree_*" class="com.gmcc.pboss.web.resource.common.ComidTreeAction" method="{1}">
+			<result name="list">/resource/com/selectcomidtree.jsp</result>
+        </action>
+        
+      
+         <!-- 商品种类组合关系 -->
+        <action name="comcategoryrela_*" class="com.gmcc.pboss.web.resource.comcategoryrela.ComcategoryrelaAction" method="{1}">
+			<result name="list">/resource/comcategoryrela/list.jsp</result>
+            <result name="content">/resource/comcategoryrela/content.jsp</result>
+        </action>
+		<!-- 资源入库参数管理 -->
+        <action name="resloadparam_*" class="com.gmcc.pboss.web.resource.resloadparam.ResloadparamAction" method="{1}">
+			<result name="list">/resource/resloadparam/list.jsp</result>
+            <result name="content">/resource/resloadparam/content.jsp</result>
+        </action>
+         <!-- 号码类型 -->
+        <action name="numtypedef_*" class="com.gmcc.pboss.web.resource.numtypedef.NumtypedefAction" method="{1}">
+			<result name="list">/resource/numtypedef/list.jsp</result>
+            <result name="content">/resource/numtypedef/content.jsp</result>
+        </action>
+         <!-- 规则表达式批量导入 -->
+         <action name="numtypedef_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/resource/numtypedef/import.jsp</result>
+			<result name="error">/resource/numtypedef/import.jsp</result>
+        </action>
+         <action name="numtypedef_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/resource/numtypedef/import.jsp</result>
+			<result name="error">/resource/numtypedef/import.jsp</result>
+        </action>
+        <!-- 号码分类规则-->
+        <action name="numsortrule_*" class="com.gmcc.pboss.web.resource.numsortrule.NumsortruleAction" method="{1}">
+			<result name="list">/resource/numsortrule/list.jsp</result>
+            <result name="content">/resource/numsortrule/content.jsp</result>
+            <result name="listbytype">/resource/numsortrule/listbytype.jsp</result>
+        </action>
+        <!-- 资源入库信息查询-->
+        <action name="resimport_*" class="com.gmcc.pboss.web.resource.resimport.ResimportAction" method="{1}">
+			<result name="list">/resource/resimport/list.jsp</result>
+            <result name="content">/resource/resimport/content.jsp</result>
+        </action>
+        <!-- 商品包信息查询-->
+        <action name="compack_*" class="com.gmcc.pboss.web.resource.compack.CompackAction" method="{1}">
+			<result name="list">/resource/compack/list.jsp</result>
+            <result name="content">/resource/compack/content.jsp</result>
+            <result name="confirmresource">/resource/compack/confirmresource.jsp</result>
+			<result name="setscale">/resource/compack/setscale.jsp</result>
+			<result name="pack">/resource/compack/pack.jsp</result>
+			<result name="packinfo">/resource/compack/packstate.jsp</result>
+			<result name="uploadresource">/resource/compack/packtool/uploadresource.jsp</result>
+			<result name="toolsetscale">/resource/compack/packtool/setscale.jsp</result>
+			<result name="toolpack">/resource/compack/packtool/pack.jsp</result>
+        </action>
+        
+        <action name="compack_packToolUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/resource/compack/packtool/uploadresource.jsp</result>
+            <result name="error">/resource/compack/packtool/uploadresource.jsp</result>
+        </action>
+        
+        <!-- 商品包日志查询-->
+        <action name="compacklog_*" class="com.gmcc.pboss.web.resource.compacklog.CompacklogAction" method="{1}">
+			<result name="list">/resource/compacklog/list.jsp</result>
+            <result name="content">/resource/compacklog/content.jsp</result>
+        </action>
+        
+        <!-- 配送商套卡资源查询-->
+        <action name="discomres_*" class="com.gmcc.pboss.web.resource.discomres.DiscomresAction" method="{1}">
+			<result name="list">/resource/discomres/list.jsp</result>
+			<result name="infolist">/resource/discomres/infolist.jsp</result>
+            <result name="content">/resource/discomres/content.jsp</result>
+        </action>
+        <!-- 套卡资源分配-->
+        <action name="resdisform_*" class="com.gmcc.pboss.web.resource.resdisform.ResdisformAction" method="{1}">
+			<result name="list">/resource/resdisform/list.jsp</result>
+			<result name="signlist">/resource/resdisform/signlist.jsp</result>
+            <result name="content">/resource/resdisform/content.jsp</result>
+            <result name="productdetail">/resource/resdisform/productdetail.jsp</result>
+            <result name="exporttxt">/resource/resdisform/exporttxt.jsp</result>
+            <result name="deploy">/resource/resdisform/deploy.jsp</result>
+            <result name="import">/resource/resdisform/import.jsp</result>
+        </action>
+         <!-- 套卡资源批量分配 -->
+         <action name="resdisform_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/resource/resdisform/import.jsp</result>
+			<result name="error">/resource/resdisform/import.jsp</result>
+        </action>
+        <action name="resdisform_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/resource/resdisform/import.jsp</result>
+			<result name="error">/resource/resdisform/import.jsp</result>
+        </action>
+        <action name="comidtreefilter_comidfilter" class="com.gmcc.pboss.web.resource.common.ComidTreeAction" >
+			<result name="success">/resource/com/selectcomidtree.jsp</result>
+        </action>
+        <action name="comidtreefilter_fresh" class="com.gmcc.pboss.web.resource.common.ComidTreeAction" >
+			<result name="success">/resource/com/selectcomidtree.jsp</result>
+        </action>
+        
+        <!-- 订购资源启用-->
+        <action name="orderresstart_*" class="com.gmcc.pboss.web.resource.orderresstart.OrderresstartAction" method="{1}">
+			<result name="list">/resource/orderresstart/list.jsp</result>
+        </action>
+        
+        <!-- 资源回收 -->
+        <action name="comressmp_rescallbackupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/resource/comressmp/rescallback.jsp</result>
+			<result name="error">/resource/comressmp/rescallback.jsp</result>
+        </action>
+        <action name="comressmp_rescallback" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/resource/comressmp/rescallback.jsp</result>
+			<result name="error">/resource/comressmp/rescallback.jsp</result>
+        </action>
+         <!-- 资源库存预警规则设置 -->
+        <action name="resalarmrule_*" class="com.gmcc.pboss.web.resource.resalarmrule.ResalarmruleAction" method="{1}">
+			<result name="list">/resource/resalarmrule/list.jsp</result>
+			<result name="content">/resource/resalarmrule/content.jsp</result>
+        </action>
+        <action name="resalarmrulelog_*" class="com.gmcc.pboss.web.resource.resalarmrulelog.ResalarmrulelogAction" method="{1}">
+			<result name="list">/resource/resalarmrulelog/list.jsp</result>
+			<result name="content">/resource/resalarmrulelog/content.jsp</result>
+        </action>
+		<!-- 预警信息查询 -->
+		<action name="resalarminfo_*" class="com.gmcc.pboss.web.resource.resalarminfo.ResalarminfoAction" method="{1}">
+			<result name="content">/resource/resalarminfo/content.jsp</result>
+			<result name="list">/resource/resalarminfo/list.jsp</result>
+        </action>
+        <!-- 网点激活量预警信息 -->
+        <action name="actalarmstat_*" class="com.gmcc.pboss.web.resource.actalarmstat.ActalarmstatAction" method="{1}">
+			<result name="list">/resource/actalarmstat/list.jsp</result>
+        </action> 
+        <!-- 网点资源信息统计 -->
+        <action name="wayrcstat_*" class="com.gmcc.pboss.web.resource.wayrcstat.WayrcstatAction" method="{1}">
+				<result name="reallist">/resource/wayrcstat/reallist.jsp</result>
+				<result name="historylist">/resource/wayrcstat/historylist.jsp</result>
+        </action>
+        <!-- 网点预警信息 -->
+		<action name="stkalarmstat_*" class="com.gmcc.pboss.web.resource.stkalarmstat.StkalarmstatAction" method="{1}">
+			<result name="list">/resource/stkalarmstat/list.jsp</result>
+			<result name="stat">/resource/stkalarmstat/stat.jsp</result>
+        </action>
+        <action name="alarmredirect_*" class="com.gmcc.pboss.web.resource.alarmredirect.AlarmredirectAction" method="{1}">
+			<result name="redirect">/resource/resourceAlarmsetFrame.jsp</result>
+        </action>
+        <action name="stkalarmct_*" class="com.gmcc.pboss.web.resource.stkalarmct.StkalarmctAction" method="{1}">
+			<result name="list">/resource/stkalarmct/list.jsp</result>
+        </action>
+        <action name="distributableres_*" class="com.gmcc.pboss.web.resource.distributableres.DistributableResAction" method="{1}">
+			<result name="list">/resource/distributableres/list.jsp</result>
+        </action> 
+        
+        <!-- 号码类型查询 -->
+        <action name="phonestate_*" class="com.gmcc.pboss.web.resource.phonestate.PhonestateAction" method="{1}">
+            <result name="list">/resource/phonestate/list.jsp</result> 
+             <result name="batchimport">/resource/phonestate/batchimport.jsp</result> 
+        </action>
+        <action name="phonestate_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/resource/phonestate/batchimport.jsp</result>
+            <result name ="error">/resource/phonestate/batchimport.jsp</result>
+       	</action>
+       	<!-- 号码状态查询 -->
+       	  <action name="phonestate_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/resource/phonestate/batchimport.jsp</result>
+            <result name ="error">/resource/phonestate/batchimport.jsp</result>
+        </action>
+        <!-- 地市资源代码对应关系设置-->
+        <action name="cityrescode_*" class="com.gmcc.pboss.web.resource.cityrescode.CityrescodeAction" method="{1}">
+            <result name="content">/resource/cityrescode/content.jsp</result>
+			<result name="list">/resource/cityrescode/list.jsp</result>
+        </action>
+        <!-- 资源操作工号设置 -->
+        <action name="resoperator_*" class="com.gmcc.pboss.web.resource.resoperator.ResoperatorAction" method="{1}">
+           <result name="content">/resource/resoperator/content.jsp</result>
+		   <result name="list">/resource/resoperator/list.jsp</result>
+        </action>
+        <!-- 空白SIM卡坏卡录入 -->
+        <action name="emptysimbad_*" class="com.gmcc.pboss.web.resource.emptysimbad.EmptysimbadAction" method="{1}">
+			<result name="list">/resource/emptysimbad/list.jsp</result>
+            <result name="content">/resource/emptysimbad/content.jsp</result>
+        </action>
+        <action name="emptysimbad_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/resource/emptysimbad/batchimport.jsp</result>
+            <result name="error">/resource/emptysimbad/batchimport.jsp</result>
+        </action>
+    </package> 
+</struts>

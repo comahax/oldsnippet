@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.sunrise.boss.business.fee.woff.changewait.persistent.ChargeWaitVO" table="TT_CC_CHARGEWAIT">
+		
+		<id name="chargeid" type="java.lang.Long">
+            <column name="CHARGEID" precision="20" scale="0" />
+            <generator class="assigned">
+            </generator>
+        </id>
+		<property column="EBOXID" name="eboxid" type="java.lang.Long"/>
+		<property column="SUBSID" name="subsid" type="java.lang.Long"/>
+		<property name="eboxstr" column="EBOXSTR" type="java.lang.String"  />
+		<property name="acctstr" column="ACCTSTR" type="java.lang.String"  />
+		<property column="BILLCYC" length="8" name="billcyc" type="java.lang.Long"/>			
+		<property column="CHARGETYPE" name="chargetype" type="java.lang.Integer"/>
+		<property column="SOURCE" name="source" type="java.lang.Integer"/>
+		<property column="ISCREDIT" name="iscredit" type="java.lang.Integer"/>
+		
+		<property name="servnumber" column="SERVNUMBER" type="java.lang.String"  />			
+		
+		<property column="REQTIME" length="7" name="reqtime" type="java.util.Date"/>
+		<property column="ORGID" name="orgid" type="java.lang.Long"/>
+		<property name="memo" column="MEMO" type="java.lang.String"  />	
+		
+	</class>
+</hibernate-mapping>

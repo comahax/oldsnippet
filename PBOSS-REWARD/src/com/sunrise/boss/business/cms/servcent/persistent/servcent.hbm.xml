@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.servcent.persistent.ServcentVO" table="CH_PW_SERVCENT">
+<id column="SVCCODE" name="svccode" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="COUNTYID" length="14" name="countyid" not-null="true" type="java.lang.String"/>
+<property column="SVCNAME" length="64" name="svcname" not-null="true" type="java.lang.String"/>
+<property column="SVCTYPE" length="3" name="svctype" type="java.lang.Short"/>
+<property column="AGENT" length="64" name="agent" type="java.lang.String"/>
+<property column="BILLINGCODE" length="5" name="billingcode" type="java.lang.String"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="LONGITUDE" length="15" name="longitude" type="java.lang.String"/>
+<property column="LATITUDE" length="15" name="latitude" type="java.lang.String"/>
+</class>
+
+<sql-query name="boss.cms.servcent.judgeIfReasonable">
+	<return class="com.sunrise.boss.business.cms.servcent.persistent.ServcentVO"/>
+      select * from 
+      (select * from ch_pw_servcent start with svccode = (select svccode from ch_pw_way where wayid = :loginwayid)
+      connect by  prior svccode = countyid) a where a.svccode=:contentcountyid 
+</sql-query>
+<!--查找登录渠道是否有微区域编码 -->
+<sql-query name="boss.cms.servcent.ifHasmacode">
+	<return-scalar type="java.lang.String" column="val"/>
+      select mareacode as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有服务销售中心编码 -->
+<sql-query name="boss.cms.servcent.ifHassvccode">
+	<return-scalar type="java.lang.String" column="val"/>
+      select svccode as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有分公司编码 -->
+<sql-query name="boss.cms.servcent.ifHascountyid">
+	<return-scalar type="java.lang.String" column="val"/>
+      select countyid as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有市公司编码 -->
+<sql-query name="boss.cms.servcent.ifHascityid">
+	<return-scalar type="java.lang.String" column="val"/>
+      select cityid as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+
+<!-- 当登录渠道有服务销售心编码时,查询 -->
+<sql-query name="boss.cms.servcent.queryAsserv">
+	<return class="com.sunrise.boss.business.cms.servcent.persistent.ServcentVO"/>
+      select * from ch_pw_servcent where svccode = (select svccode from ch_pw_way where wayid = :loginwayid)
+</sql-query>
+<!-- 当登录渠道有分公司编码时,查询 -->
+<sql-query name="boss.cms.servcent.queryAscounty">
+	<return class="com.sunrise.boss.business.cms.servcent.persistent.ServcentVO"/>
+      select * from ch_pw_servcent where countyid = (select countyid from ch_pw_way where wayid = :loginwayid)
+</sql-query>
+<!-- 当登录渠道有市公司编码时,查询 -->
+<sql-query name="boss.cms.servcent.queryAscity">
+	<return class="com.sunrise.boss.business.cms.servcent.persistent.ServcentVO"/>
+      select * from (select * from ch_pw_servcent where countyid in 
+      (select countyid from ch_pw_cntycompany where citycompid= 
+      (select cityid from ch_pw_way where wayid = :loginwayid)))
+</sql-query>
+<!-- 当登录渠道省公司时,查询 -->
+<sql-query name="boss.cms.servcent.queryAsprov">
+	<return class="com.sunrise.boss.business.cms.servcent.persistent.ServcentVO"/>
+      select * from ch_pw_servcent 
+</sql-query>
+</hibernate-mapping>

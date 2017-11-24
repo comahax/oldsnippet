@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.operinfo.OperinfoVO" table="SA_SO_OPERINFO">
+ <composite-id>
+	<key-property column="OPERID" length="32" name="operid" type="java.lang.String"/>
+	<key-property column="REGION" length="5" name="region" type="java.lang.Long"/>
+</composite-id>
+
+<property column="BIRTHDAY" length="7" name="birthday" type="java.util.Date"/>
+<property column="WORKDATE" length="7" name="workdate" type="java.util.Date"/>
+<property column="SEX" length="2" name="sex" type="java.lang.String"/>
+<property column="TRAINLEVEL" length="16" name="trainlevel" type="java.lang.String"/>
+<property column="EDUCATIONLEVEL" length="16" name="educationlevel" type="java.lang.String"/>
+<property column="SKILLLEVEL" length="16" name="skilllevel" type="java.lang.String"/>
+<property column="TOTALLEVEL" length="16" name="totallevel" type="java.lang.String"/>
+<property column="COMITYLEVEL" length="16" name="comitylevel" type="java.lang.String"/>
+<property column="CERTID" length="32" name="certid" type="java.lang.String"/>
+<property column="OPERATOR_TYPE" length="1" name="operatorType" type="java.lang.Long"/>
+<property column="NATIVEHOME" length="128" name="nativehome" type="java.lang.String"/>
+<property column="GRADUATEDATE" length="7" name="graduatedate" type="java.util.Date"/>
+<property column="ISMARRAY" length="1" name="ismarray" type="java.lang.Long"/>
+<property column="POLITYFACE" length="16" name="polityface" type="java.lang.String"/>
+<property column="HOMEADDRESS" length="128" name="homeaddress" type="java.lang.String"/>
+<property column="JOBLIVE" length="512" name="joblive" type="java.lang.String"/>
+<property column="NOWPOSTID" length="32" name="nowpostid" type="java.lang.String"/>
+<property column="BLOODTYPE" length="16" name="bloodtype" type="java.lang.String"/>
+<property column="HEALTHY" length="16" name="healthy" type="java.lang.String"/>
+<property column="CHARACTER" length="16" name="character" type="java.lang.String"/>
+<property column="ENJOYFUL" length="128" name="enjoyful" type="java.lang.String"/>
+<property column="PRISOCIETYRELATION" length="128" name="prisocietyrelation" type="java.lang.String"/>
+<property column="FAMILYDES" length="256" name="familydes" type="java.lang.String"/>
+<property column="STARLEVEL" length="16" name="starlevel" type="java.lang.String"/>
+<property column="ASSESSREC" length="256" name="assessrec" type="java.lang.String"/>
+<property column="HR_STATUS" length="1" name="hrStatus" type="java.lang.Long"/>
+<property column="TITLE" length="3" name="title" type="java.lang.String"/>
+<property column="COUNTY_ID" length="32" name="countyId" type="java.lang.String"/>
+<property column="SPECIALTY" length="20" name="specialty" type="java.lang.String"/>
+<property column="FAX" length="20" name="fax" type="java.lang.String"/>
+<property column="HOME_TELE" length="20" name="homeTele" type="java.lang.String"/>
+<property column="EMAIL" length="80" name="email" type="java.lang.String"/>
+<property column="MSISDN" length="11" name="msisdn" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

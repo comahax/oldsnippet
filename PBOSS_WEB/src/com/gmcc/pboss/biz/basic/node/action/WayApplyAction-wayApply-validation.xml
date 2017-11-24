@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<field name="apply.principal">
+		<field-validator type="requiredstring">
+			<message>姓名为必填项</message>
+		</field-validator>
+	</field>
+
+	<field name="apply.principaltel">
+		<field-validator type="requiredstring">
+			<message>移动电话为必填项</message>
+		</field-validator>
+	</field>
+
+	<field name="apply.wayname">
+		<field-validator type="requiredstring">
+			<message>网点名称为必填项</message>
+		</field-validator>
+	</field>
+
+	<field name="apply.address">
+		<field-validator type="requiredstring">
+			<message>网点地址为必填项</message>
+		</field-validator>
+	</field>
+
+	<field name="apply.cityid">
+		<field-validator type="requiredstring">
+			<message>归属地为必填项</message>
+		</field-validator>
+	</field>
+
+	<field name="apply.acctfid">
+		<field-validator type="requiredstring">
+			<message>开户人身份证号为必填</message>
+		</field-validator>
+	</field>
+	<field name="vaildateCode">
+		<field-validator type="requiredstring">
+			<message>验证码必填项</message>
+		</field-validator>
+	</field>
+
+</validators>

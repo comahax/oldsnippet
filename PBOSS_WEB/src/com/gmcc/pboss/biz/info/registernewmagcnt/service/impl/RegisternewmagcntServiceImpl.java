@@ -1,0 +1,75 @@
+package com.gmcc.pboss.biz.info.registernewmagcnt.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.gmcc.pboss.biz.info.registernewmagcnt.dao.RegisternewmagcntDao;
+import com.gmcc.pboss.biz.info.registernewmagcnt.service.RegisternewmagcntService;
+import com.gmcc.pboss.biz.info.registernewmagcnt.support.RegisternewmagQueryParamProcessor;
+import com.gmcc.pboss.biz.info.registernewmagcnt.support.Registernewmagcnt;
+import com.gmcc.pboss.biz.info.salesDetail.model.RegistersimDetail;
+import com.gmcc.pboss.common.bean.LoginMember;
+import com.gmcc.pboss.common.service.ServiceCode;
+import com.gmcc.pboss.common.service.ServiceResult;
+import com.gmcc.pboss.common.service.ServiceRetCode;
+import com.gmcc.pboss.common.service.impl.BaseServiceImpl;
+import com.gmcc.pboss.common.support.QueryParameter;
+import com.gmcc.pboss.common.support.QueryResult;
+
+public class RegisternewmagcntServiceImpl extends BaseServiceImpl implements RegisternewmagcntService {
+
+	public RegisternewmagcntServiceImpl() {
+		super();
+		//设置业务相关属性
+		this.serviceName = "新业务销售汇总查询";
+		this.serviceCode = ServiceCode.REGISTERNEW_TOTAL;
+		isNeedLogin = true;
+	}
+	
+	private RegisternewmagcntDao registernewmagcntDao;
+
+	public RegisternewmagcntDao getRegisternewmagcntDao() {
+		return registernewmagcntDao;
+	}
+
+	public void setRegisternewmagcntDao(RegisternewmagcntDao registernewmagcntDao) {
+		this.registernewmagcntDao = registernewmagcntDao;
+	}
+	
+	/**
+	 * 查询-新业务销售汇总信息，HQL多表连接查询
+	 * select new Object(*)
+	 */
+	public ServiceResult query(LoginMember member, QueryParameter parameter) {		
+		ServiceResult result = new ServiceResult();
+		result.setSuccess(false);
+		result.setRetCode(ServiceRetCode.FAIL);//使用通用业务员编码，对于子业务，可以继承ServiceRetCode定义不用的业务编码（在getAll方法中实现）
+
+		//查询条件处理器
+		this.setProcessor(new RegisternewmagQueryParamProcessor());
+		QueryResult queryResult = this.registernewmagcntDao.getAll(this.getProcessor(),parameter);
+
+		//对查询出的数据进行封装，将封装后的数据作为返回数
+		List data = queryResult.getData();
+		List reversed = new ArrayList<Registernewmagcnt>();
+		for(int i=0;i<data.size();i++){
+			Object[] obj = (Object[])data.get(i);
+			Registernewmagcnt temp = new Registernewmagcnt(
+					(String)obj[0],
+					(String)obj[1],
+					(String)obj[2],
+					(String)obj[3],
+					(String)obj[4],
+					(String)obj[5]);
+			reversed.add(i,temp);
+		}
+		queryResult = new QueryResult(queryResult.getPage(),reversed);
+		
+		result.setRetResult(queryResult);
+
+		result.setRetObject(null);//对于getAll,只返回QueryResult,没有必要加上RetObject
+		result.setSuccess(true);
+		result.setRetCode(ServiceRetCode.SUCCESS);
+		return result;
+	}
+}

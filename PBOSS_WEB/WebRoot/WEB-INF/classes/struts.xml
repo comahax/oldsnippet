@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.i18n.encoding" value="gbk" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResource" />
+	<!-- 开发模式，自动加载 -->
+	<constant name="struts.devMode" value="false"/>
+
+	<!-- 自定义默认 package -->
+    <package name="default" extends="struts-default"  >
+    	 <interceptors>
+    	 	<!-- 自定义栏截器 -->
+	        <interceptor-stack name="customStack" >
+	                <interceptor-ref name="exception"/>
+	                <interceptor-ref name="alias"/>
+	                <interceptor-ref name="params" >
+	                  <param name="excludeParams">\w+_\[0\]\S+,struts.*,NodeCode</param>
+	        		</interceptor-ref>
+	                <interceptor-ref name="servletConfig"/>
+	                <interceptor-ref name="prepare"/>
+	                <interceptor-ref name="i18n"/>
+	                <interceptor-ref name="chain"/>
+	                <!-- 
+	                <interceptor-ref name="modelDriven"/>
+	                 -->
+	                <interceptor-ref name="fileUpload"/>
+	                <!-- 
+	                <interceptor-ref name="checkbox"/>
+	                
+	                <interceptor-ref name="staticParams"/>
+	                
+	                <interceptor-ref name="params">
+	                  <param name="excludeParams">\w+_\[0\]\S+,struts.*,NodeCode</param>
+	       			</interceptor-ref>
+	                 -->
+	                <interceptor-ref name="conversionError"/>
+	                <!-- 本系统在服务端和客户端进行数据校验,以保证数据安全 -->
+	                <interceptor-ref name="validation">
+	                    <param name="excludeMethods">input,back,cancel</param>
+	                </interceptor-ref>
+	                <interceptor-ref name="workflow">
+	                    <param name="excludeMethods">input,back,cancel,browse</param>
+	                </interceptor-ref>
+	        </interceptor-stack>
+         </interceptors>
+		<default-interceptor-ref name="customStack" />
+        
+		<!-- 全局定义跳转 -->
+        <global-results>
+            <result name="actionFailure">/common/ErrorPage.jsp</result>
+        </global-results>
+        <!-- 全局异常  
+          -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="actionFailure"/>
+            <exception-mapping exception="java.lang.NullPointerException" result="actionFailure"/>
+        </global-exception-mappings>
+
+        <!-- Add additional actions here -->
+        
+    </package>
+	<!-- 公共文件 -->
+	<package name="common" namespace="/common" extends="default">
+		<!-- jQuery AC控件后台查询 -->
+		<action name="ajaxQuery" class="jqAcAtion" method="doQuery"></action>
+	</package>
+	
+	<!-- 公共文件 -->
+	<package name="index"  namespace="/" extends="default">
+		<!-- jQuery AC控件后台查询 -->
+		<action name="index" class="indexAction" method="doIndex">
+			<result>/web_index.jsp</result>
+		</action>
+		<action name="flashParameter" class="indexAction" method="doFlashParameter"></action>
+		<action name="refresh" class="indexAction" method="doRefresh"/>
+	</package>
+	<include file="struts-config/struts-sms.xml"/>
+	<include file="struts-config/struts-member.xml"/>
+	<include file="struts-config/struts-manager.xml"/>
+	<include file="struts-config/struts-missioner.xml"/>
+	<include file="struts-config/struts-regactInfo.xml"/>
+	<include file="struts-config/struts-sales.xml"/>
+	<include file="struts-config/struts-reward.xml"/>
+	<include file="struts-config/struts-examine.xml"/>
+	<include file="struts-config/struts-node.xml"/>
+	<include file="struts-config/struts-goods.xml"/>
+	<!-- 
+	<include file="struts-config/struts-cookie.xml"/>
+	 -->
+	<include file="struts-config/struts-communi.xml"/>
+	<include file="struts-config/struts-login.xml"/>
+	<!-- 测试文件 
+	需要启动测试时，请打开
+	<include file="struts-config/struts-test.xml"/>
+	-->
+
+</struts>

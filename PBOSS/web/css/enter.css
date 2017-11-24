@@ -1,0 +1,21 @@
+.middle {
+	background-image: url(../images/image_enter/m-bg.gif);
+	background-repeat: repeat-x;
+	height: 247px;
+	width: 100%;
+	background-position: center center;
+	position:absolute;left:0px;top:30%;
+	text-align:center;
+}
+.m-m {
+	background-image: url(../images/image_enter/m-m.gif);
+	background-repeat: no-repeat;
+	height: 247px;
+	width: 732px;
+	border:#000 solid 0px;
+	text-align:right;
+}
+.login {
+	margin-right:50px;
+	margin-top:70px;
+}

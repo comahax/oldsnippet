@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.fdaudit.FdauditVO" table="CH_PW_FDAUDIT">
+<id column="Recno" length="18" name="recno" type="java.lang.Long">
+<generator class="sequence"/>
+</id>
+<property column="Tablename" length="32" name="tablename" not-null="true" type="java.lang.String"/>
+<property column="typename" length="32" name="typename" not-null="true" type="java.lang.String"/>
+<property column="Pkvalue" length="64" name="pkvalue" not-null="true" type="java.lang.String"/>
+<property column="Pkvalue2" length="64" name="pkvalue2" type="java.lang.String"/>
+<property column="Field" length="32" name="field" not-null="true" type="java.lang.String"/>
+<property column="Fieldvalue" length="255" name="fieldvalue" type="java.lang.String"/>
+<property column="Operid" length="18" name="operid" not-null="true" type="java.lang.String"/>
+<property column="optime" length="7" name="optime" type="java.util.Date"/>
+<property column="auditstatus" length="2" name="auditstatus" type="java.lang.Short"/>
+<property column="auditoperid" length="18" name="auditoperid" type="java.lang.String"/>
+<property column="audittime" length="7" name="audittime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

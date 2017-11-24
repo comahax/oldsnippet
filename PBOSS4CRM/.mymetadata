@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PBOSS4CRM"
+  id="myeclipse.1328771324125"
+  context-root="/PBOSS4CRM-release"
+  j2ee-spec="5.0"
+  archive="PBOSS4CRM.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

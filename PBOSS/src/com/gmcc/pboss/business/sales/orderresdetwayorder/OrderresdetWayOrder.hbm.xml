@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderresdetwayorder.OrderresdetWayOrderVO" table="V_ORDERRESDET_WAY_ORDER">
+<id column="rowcountid" length="14" name="rowcountid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<!-- 
+<id column="COUNTYID" length="28" name="countyid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+-->
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/> 
+<property column="SVCCODE" length="28" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="28" name="mareacode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<!-- 
+<property column="RESTYPE" length="64" name="restype" type="java.lang.String"/>
+<property column="COMCATEGORY" length="40" name="comcategory" type="java.lang.String"/>
+<property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+ 
+<property column="COMNAME" length="28" name="comname" type="java.lang.String"/>
+-->
+<property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+<property column="COMPRICE" length="16" name="comprice" type="java.lang.Double"/>
+<property column="ACTPRICE" length="16" name="actprice" type="java.lang.Double"/>
+<property column="COUNTVALUE" length="16" name="countvalue" type="java.lang.Long"/>
+<!-- 
+<property column="RECORDTIME" length="7" name="recordtime" type="java.util.Date"/>
+ -->
+</class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtcityrecordhis.persistent.ChAdtCityrecordhisVO" table="CH_ADT_CITYRECORDHIS">
+<id column="RECORDID" name="recordid" type="java.lang.Long">
+<generator class="sequence" >
+<param name="sequence" >CH_ADT_CITYRECORDHIS_SEQ</param>
+</generator> 
+</id>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="MOBILE" length="32" name="mobile" type="java.lang.String"/>
+<property column="BRAND" length="3" name="brand" type="java.lang.Short"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="PAYSUM" length="22" name="paysum" type="java.lang.Double"/>
+<property column="PAYMONEY" length="22" name="paymoney" type="java.lang.Double"/>
+<property column="APPROVEID" length="32" name="approveid" type="java.lang.String"/>
+<property column="ISFLAG" length="3" name="isflag" type="java.lang.Short"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="ACCOUNTOPRCODE" length="15" name="accountoprcode" type="java.lang.String"/>
+<property column="ACCOUNTOPTIME" length="7" name="accountoptime" type="java.util.Date"/>
+<property column="SYSTEMFLAG" length="3" name="systemflag" type="java.lang.Short"/>
+<property column="REWARDLISTID" length="14" name="rewardlistid" type="java.lang.Long"/>
+<property column="TASKID" length="10" name="taskid" type="java.lang.Long"/>
+<property column="MBATCHNO" length="10" name="mbatchno" type="java.lang.String"/>
+<property column="PAYMONTH" length="6" name="paymonth" type="java.lang.String"/>
+</class>
+<sql-query name="com.sunrise.boss.business.cms.chadtcityrecordhis.persistent.ChAdtCityrecordhis.doQuerylist">
+<return class="com.sunrise.boss.business.cms.chadtcityrecordhis.persistent.ChAdtCityrecordhisVO" />
+SELECT T.RECORDID,T.OPNID,T.WAYID,T.REWARDTYPE,T.REWARDMONTH,T.MOBILE,T.BRAND,T.OPRTIME,
+T.BUSIVALUE,T.PAYSUM,T.PAYMONEY,T.APPROVEID,T.ISFLAG,T.OPRCODE,T.OPTIME,
+T.ACCOUNTOPRCODE,T.ACCOUNTOPTIME,T.SYSTEMFLAG,T.REWARDLISTID,T.TASKID,T.MBATCHNO,T.PAYMONTH
+ FROM CH_ADT_CITYRECORDHIS T,CH_PW_WAY W
+ WHERE W.WAYID=T.WAYID AND W.WAYTYPE='AG'
+</sql-query>
+<sql-query name="com.sunrise.boss.business.cms.chadtcityrecordhis.persistent.ChAdtCityrecordhis.doQuerylistcounty">
+<return class="com.sunrise.boss.business.cms.chadtcityrecordhis.persistent.ChAdtCityrecordhisVO" />
+SELECT T.RECORDID,T.OPNID,T.WAYID,T.REWARDTYPE,T.REWARDMONTH,T.MOBILE,T.BRAND,T.OPRTIME,
+T.BUSIVALUE,T.PAYSUM,T.PAYMONEY,T.APPROVEID,T.ISFLAG,T.OPRCODE,T.OPTIME,
+T.ACCOUNTOPRCODE,T.ACCOUNTOPTIME,T.SYSTEMFLAG,T.REWARDLISTID,T.TASKID,T.MBATCHNO,T.PAYMONTH
+ FROM CH_ADT_CITYRECORDHIS T,CH_PW_WAY W
+ WHERE W.WAYID=T.WAYID AND W.WAYTYPE='AG' AND W.COUNTYID=:countyid
+</sql-query>
+</hibernate-mapping>

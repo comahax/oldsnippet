@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.bankrecord.VBankrecordVO" table="V_FX_SW_BANKRECORD">
+<id column="DEDUCTID" length="14" name="deductid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="ACCTNUM" length="64" name="acctnum" type="java.lang.String"/>
+<property column="ACCTNAME" length="64" name="acctname" type="java.lang.String"/>
+<property column="STATECHGTIME" length="7" name="statechgtime" type="java.sql.Timestamp"/>
+<property column="AMOUNT" length="16" name="amount" type="java.lang.Double"/>
+<property column="COMPLETETIME" length="7" name="completetime" type="java.sql.Timestamp"/>
+<property column="SHOPNUM" length="32" name="shopnum" type="java.lang.String"/>
+<property column="RETCODE" length="16" name="retcode" type="java.lang.String"/>
+<property column="ERRMSG" length="512" name="errmsg" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="RECORDINFO" length="512" name="recordinfo" type="java.lang.String"/>
+<property column="RECORDSTATE" length="2" name="recordstate" type="java.lang.Short"/>
+<property column="aaa_deductid" length="14" name="aaa_deductid" type="java.lang.Long"/>
+</class>
+
+<sql-query name="com.gmcc.pboss.business.sales.bankrecord.detail">
+	<return class="com.gmcc.pboss.business.sales.bankrecord.VBankrecordVO"/>
+	select b.deductid,b.shopnum,b.acctnum,b.acctname,b.statechgtime,
+		c.countyid, a.amount,a.completetime,a.recordstate,
+		a.retcode,a.errmsg,a.recordinfo,a.deductid aaa_deductid 
+	from FX_SW_BANKRECORD a right join FX_SW_BANKDEDUCT b 
+	inner join FX_CB_BANKSHOP c on b.shopnum=c.shopnum 
+	on a.deductid=b.deductid 
+	where b.state='PROCOVER' 
+	and to_char(b.statechgtime,'YYYYMMDD') &lt; to_char(sysdate,'YYYYMMDD')
+</sql-query>
+</hibernate-mapping>

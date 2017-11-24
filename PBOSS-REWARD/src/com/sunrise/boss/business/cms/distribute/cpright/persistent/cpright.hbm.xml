@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.distribute.cpright.persistent.CprightVO" table="CH_DST_CPRIGHT">
+<composite-id>
+<key-property column="COOPERAUID" length="50" name="cooperauid" type="java.lang.String"/>
+<key-property column="FXTYPE" length="3" name="fxtype" type="java.lang.Short"/>
+</composite-id>
+<property column="RETURNTYPE" length="3" name="returntype" not-null="true" type="java.lang.Short"/>
+<property column="PAYTYPE" length="3" name="paytype" not-null="true" type="java.lang.Short"/>
+<property column="COOPERALEVEL" length="5" name="cooperalevel" not-null="true" type="java.lang.String"/>
+<property column="RESWAYID" length="18" name="reswayid" not-null="true" type="java.lang.String"/>
+<property column="BUSWAYID" length="18" name="buswayid" not-null="true" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

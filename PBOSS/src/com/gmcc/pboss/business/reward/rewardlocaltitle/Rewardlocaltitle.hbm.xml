@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.rewardlocaltitle.RewardlocaltitleVO" table="CH_PW_REWARDLOCALTITLE">
+<composite-id>
+<key-property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<key-property column="RPTTYPE" length="32" name="rpttype" type="java.lang.String"/>
+<key-property column="SEQ" length="8" name="seq" type="java.lang.Integer"/>
+</composite-id>
+<property column="TITLENO" length="8" name="titleno" type="java.lang.Integer"/>
+<property column="SUBNO" length="8" name="subno" type="java.lang.Integer"/>
+<property column="TITLENAME" length="256" name="titlename" type="java.lang.String"/>
+<property column="SUBTITLENAME" length="256" name="subtitlename" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+                        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+ <tlib-version>2.2.3</tlib-version>
+ <jsp-version>1.2</jsp-version>
+ <short-name>st</short-name>
+ <uri>/select-tag</uri>
+ 
+ <tag>
+ 	<name>st</name>
+  	<tag-class>com.gmcc.pboss.common.tagext.SelectTag</tag-class>
+  	<body-content>empty</body-content>
+  	<description>通用Selct标签</description>
+  	
+  	<attribute>
+   		<name>name</name>
+   		<required>false</required>
+   		<rtexprvalue>true</rtexprvalue>
+   		<description>select名称</description>
+  	</attribute>
+  	<attribute>
+   		<name>className</name>
+   		<required>false</required>
+   		<rtexprvalue>true</rtexprvalue>
+   		<description>css名称</description>
+  	</attribute>
+  	
+  	<attribute>
+   		<name>type</name>
+   		<required>true</required>
+   		<rtexprvalue>true</rtexprvalue>
+  	</attribute>
+  	
+  	<attribute>
+   		<name>selected</name>
+   		<required>false</required>
+   		<rtexprvalue>true</rtexprvalue>
+   		<description>被选中的值</description>
+  	</attribute>
+ </tag>
+</taglib>

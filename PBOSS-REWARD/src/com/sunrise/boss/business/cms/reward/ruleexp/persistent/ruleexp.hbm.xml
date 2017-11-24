@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.ruleexp.persistent.RuleexpVO" table="CH_ADT_RULEEXP">
+<composite-id>
+<key-property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<key-property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<key-property column="RULEMODEID" length="8" name="rulemodeid" type="java.lang.Integer"/>
+</composite-id>
+<property column="STATE" length="1" name="state" type="java.lang.Byte"/>
+<property column="TASKID" length="22" name="taskid" not-null="true" type="java.lang.Long"/>
+<property column="RULEITEMEXP" length="500" name="ruleitemexp" type="java.lang.String"/>
+<property column="REMARK" length="1000" name="remark" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

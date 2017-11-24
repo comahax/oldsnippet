@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.qsmanage.invitemacctnew.persistent.InvItemAcctNewBakVO" table="IB_CBI_INVITEMACCTNew_1">
+<composite-id>
+<key-property column="FEEID" length="14" name="feeid" type="java.lang.Long"/>
+<key-property column="INVITEMID" length="10" name="invitemid" type="java.lang.Long"/>
+</composite-id>
+<property column="FEEKIND" length="3" name="feekind" type="java.lang.Short"/>
+<property column="TYPE" length="3" name="type" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

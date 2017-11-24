@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.waystarmonth.persistent.WaystarmonthVO" table="CH_PW_WAYSTARMONTH">
+<composite-id>
+<key-property column="EFTMONTH" length="6" name="eftmonth" type="java.lang.String"/>
+<key-property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+</composite-id>
+<property column="SLV" length="3" name="slv" type="java.lang.Short"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="OPCODE" length="16" name="opcode" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="EFTMONTHTYPE" length="3" name="eftmonthtype" type="java.lang.Short"/>
+<property column="SRC" length="50" name="src" type="java.lang.String"/>
+
+
+
+</class>
+</hibernate-mapping>

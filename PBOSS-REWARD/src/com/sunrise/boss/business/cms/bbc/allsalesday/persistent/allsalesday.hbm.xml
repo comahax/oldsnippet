@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.allsalesday.persistent.AllsalesdayVO" table="CH_BBC_ALLSALESDAY">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="SRCSEQ" length="32" name="srcseq" type="java.lang.String"/>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="CALCOPNID" length="18" name="calcopnid" type="java.lang.String"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="OSSRC" length="2" name="ossrc" type="java.lang.Short"/>
+<property column="SRC" length="255" name="src" type="java.lang.String"/>
+</class>
+
+<!-- 市公司管理员：业务总量统计 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.allsalesday.city.busiTotalStatistic">
+	<return-scalar column="val" type="java.lang.Long"/>
+select count(*) as val
+  from (select 1
+          from ch_bbc_allsalesday a
+         where a.OPRTIME between
+               to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+               to_date(:enddate, 'yyyy-MM-dd hh24miss')
+        union all
+        select 1
+          from ch_bbc_allsaleshis_view b
+         where b.OPRTIME between
+               to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+               to_date(:enddate, 'yyyy-MM-dd hh24miss'))
+</sql-query>
+<!-- 市公司管理员：有推广的网点数 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.allsalesday.city.wayTotalStatistic">
+	<return-scalar column="val" type="java.lang.Long"/>
+select count(*) as val
+  from (select c.wayid, count(*)
+          from (select a.wayid
+                  from ch_bbc_allsalesday a
+                 where a.oprtime between to_date(:startdate,'yyyy-MM-dd hh24miss') and to_date(:enddate,'yyyy-MM-dd hh24miss')
+                union all
+                select b.wayid
+                  from ch_bbc_allsaleshis_view b
+                 where b.oprtime between to_date(:startdate,'yyyy-MM-dd hh24miss') and to_date(:enddate,'yyyy-MM-dd hh24miss')) c
+         group by c.wayid
+        having count(*) > 0)
+</sql-query>
+<!-- 市公司管理员：有推广的专员数 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.allsalesday.city.oprTotalStatistic">
+	<return-scalar column="val" type="java.lang.Long"/>
+select count(*) as val
+  from (select c.oprcode, count(*)
+          from (select a.oprcode
+                  from ch_bbc_allsalesday a
+                 where a.oprtime between to_date(:startdate,'yyyy-MM-dd hh24miss') and to_date(:enddate,'yyyy-MM-dd hh24miss')
+                union all
+                select b.oprcode
+                  from ch_bbc_allsaleshis_view b
+                 where b.oprtime between to_date(:startdate,'yyyy-MM-dd hh24miss') and to_date(:enddate,'yyyy-MM-dd hh24miss')) c
+         group by c. oprcode
+        having count(*) > 0)
+</sql-query>
+<!-- 分公司管理员：业务总量统计 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.allsalesday.county.busiTotalStatistic">
+	<return-scalar column="val" type="java.lang.Long"/>
+select count(*) as val
+  from (select a.wayid
+          from ch_bbc_allsalesday a 
+         where a.oprtime between to_date(:startdate,'yyyy-MM-dd hh24miss') and to_date(:enddate, 'yyyy-MM-dd hh24miss')
+        union all
+        select b.wayid
+          from ch_bbc_allsaleshis_view b
+         where b.oprtime between to_date(:startdate,'yyyy-MM-dd hh24miss') and to_date(:enddate, 'yyyy-MM-dd hh24miss')
+        ) c
+ where c.wayid in (select d.wayid
+                     from ch_pw_way d
+                    start with d.wayid =:wayid
+                   connect by prior d.wayid = d.upperwayid)
+</sql-query>
+<!-- 分公司管理员：有推广的网点数 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.allsalesday.county.wayTotalStatistic">
+	<return-scalar column="val" type="java.lang.Long"/>
+select count(*) as val
+  from (Select c.wayid, count(*)
+          from (select a.wayid
+                  from ch_bbc_allsalesday a
+                 where a.oprtime between
+                       to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+                       to_date(:enddate, 'yyyy-MM-dd hh24miss')
+                union all
+                select b.wayid
+                  from ch_bbc_allsaleshis_view b
+                 where b.oprtime between
+                       to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+                       to_date(:enddate, 'yyyy-MM-dd hh24miss')
+                 ) c
+         where c.wayid in
+               (select d.wayid
+                  from ch_pw_way d
+                 start with d.wayid = :wayid
+                connect by prior d.wayid = d.upperwayid)
+         group by c.wayid
+        having count(*) > 0)
+</sql-query>
+<!-- 分公司管理员：有推广的专员数 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.allsalesday.county.oprTotalStatistic">
+	<return-scalar column="val" type="java.lang.Long"/>
+select count(*) as val
+  from (Select c.oprcode, count(*)
+          from (select a.oprcode, a.wayid
+                  from ch_bbc_allsalesday a 
+                 where a.oprtime between
+                       to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+                       to_date(:enddate, 'yyyy-MM-dd hh24miss')
+                union all
+                select b.oprcode, b.WAYID
+                  from ch_bbc_allsaleshis_view b
+                 where b.oprtime between
+                       to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+                       to_date(:enddate, 'yyyy-MM-dd hh24miss')
+                ) c
+         where c.wayid in
+               (select d.wayid
+                  from ch_pw_way d
+                 start with d.wayid = :wayid
+                connect by prior d.wayid = d.upperwayid)
+         group by c.oprcode
+        having count(*) > 0)
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sunrise.boss.business.admin.logincase.persistent.LogincaseVO" table="SA_SR_LOGINCASE">
+	<composite-id>
+		<key-property column="OPERID" length="18" name="operid" type="java.lang.String"/>
+		<key-property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+		<key-property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+	</composite-id>
+	<property column="MODULE" length="6" name="module" type="java.lang.String"/>
+	<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+	<property column="ROLEID" length="18" name="roleid" type="java.lang.String"/>
+</class>
+	<sql-query name="boss.admin.queryLogincase">
+		 select t.module,t.operid,t.wayid, t.cityid, t.createtime, orn.roleid from sa_sr_logincase t
+	    left join 
+	    (   select orr.operid,orr.roleid ||  '(' || r.rolename || ')'  as roleid from sa_sr_operrole orr, sa_sr_role r
+	        where orr.roleid = r.roleid
+	    )  orn  
+	    on t.operid = orn.operid
+	</sql-query>
+</hibernate-mapping>

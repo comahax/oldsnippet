@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="regactInfo" namespace="/regactInfo" extends="default">
+		<action name="list" class="regactInfoAction" method="doList">
+			<result>/info/regactInfo/regactInfo.jsp</result>
+		</action>
+		
+		<action name="ajaxQuery" class="regactInfoAction" method="doQuery">
+		</action>
+	</package>
+	<package name="regactStatistics" namespace="/regactStatistics" extends="default">
+		<action name="list" class="regactInfoAction" method="doStatistics">
+			<result>/info/regactInfo/regactStatistics.jsp</result>
+		</action>
+		
+		<action name="ajaxQuery" class="regactInfoAction" method="doStatisticsQuery">
+		</action>
+	</package>
+	<!-- 套卡销售汇总查询 (店员/店主) -->
+	<package name="lowsalescardstotal" namespace="/lowsalescardstotal" extends="default">
+		<action name="show" class="lowsalesCardsTotalAction" method="doList">
+			<result>/info/salesCardsTotal/lowsalescardstotal.jsp</result>
+		</action>
+		<action name="ajaxQuery" class="lowsalesCardsTotalAction" method="doQuery">
+		</action>
+		<action name="exportExcel" class="lowsalesCardsTotalAction" method="doExportExcel"/>
+	</package>
+	<!-- 套卡销售汇总查询  明细查询 (店员/店主)-->
+	<package name="lowsalescardstotaldetail" namespace="/lowsalescardstotaldetail" extends="default">
+		<action name="showdetail" class="lowsalesCardsTotalAction" method="doShow">
+			<result>/info/salesCardsTotal/lowregistersimSaleDetail.jsp</result>
+		</action>
+		<action name="ajaxQuery" class="lowsalesCardsTotalAction" method="doQuery2">
+		</action>
+	</package>
+	
+</struts>

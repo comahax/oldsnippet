@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition-config>
+<entity name="com.sunrise.boss.business.resmanage.reckoning.persistent.ReckoningVO">
+<delegate>com.sunrise.boss.delegate.resmanage.oprresmanage.reckon.ReckonDelegate</delegate>
+<property name="typeid" >
+<dependent name="sheetrestype">
+<case oprtype="==" value="0">$IM_SIMTYPE</case>
+<case oprtype="==" value="1">-1</case>
+<case oprtype="==" value="2">#COMSYSTEM</case>
+</dependent>
+</property>
+<property name="sheettime" >
+<definition>TrantDate</definition>
+</property>
+<property name="resaction" >
+<definition>#IM_RESACTION</definition>
+</property>
+</entity>
+</definition-config>

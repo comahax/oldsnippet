@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.chadtwayspecialreward.persistent.ChAdtWayspecialrewardVO" table="CH_ADT_WAYSPECIALREWARD">
+<id column="WAYID" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="WAYSPETYPE" length="8" name="wayspetype" not-null="true" type="java.lang.String"/>
+<property column="CITYID" length="3" name="cityid" not-null="true" type="java.lang.String"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

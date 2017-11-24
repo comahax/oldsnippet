@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.billing.feenotifystate.persistent.FeeNotifyStateVO" table="IB_CC_FEENOTIFYSTATE">
+	<id name="validbillcyc" type="java.lang.Long" >
+		<column name="VALIDBILLCYC" precision="8" scale="0"></column>
+		<generator class="assigned"></generator>
+	</id>
+        <property name="smsfilestate" type="java.lang.Short">
+            <column name="SMSFILESTATE" precision="3" scale="0" />
+        </property>
+        <property name="filestarttime" type="java.util.Date">
+            <column name="FILESTARTTIME" length="19" />
+        </property>
+        <property name="fileendtime" type="java.util.Date">
+            <column name="FILEENDTIME" length="19" />
+        </property>
+        <property name="smssendstate" type="java.lang.Short">
+            <column name="SMSSENDSTATE" precision="3" scale="0" />
+        </property>
+        <property name="smsstarttime" type="java.util.Date">
+            <column name="SMSSTARTTIME" length="19" />
+        </property>
+        <property name="smsendtime" type="java.util.Date">
+            <column name="SMSENDTIME" length="19" />
+        </property>
+        <property name="oprcode" type="java.lang.String">
+            <column name="OPRCODE" precision="32" scale="0" />
+        </property>
+        
+    </class>
+    
+</hibernate-mapping>

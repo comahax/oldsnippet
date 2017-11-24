@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 文件处理配置文件 -->
+<File-Handle>
+	
+	<FTP>
+	
+	<!-- FTP服务器IP -->
+		<Address>10.200.5.201</Address>
+		<!-- FTP服务器端口 -->
+		<Port>21</Port>
+		<!-- FTP登陆用户名 -->
+		<User>zfl</User>
+		<!-- FTP登录密码 -->
+		<Password>zfl123</Password>
+		<!-- FTP服务器当前目录 -->
+		<WorkDir>/pboss_ftp</WorkDir>
+	</FTP>
+	
+	<!-- 文件上传 -->
+	<Uploads>
+		<File>
+			<!-- 文件类型：调查问卷 -->
+			<Type>INDAGATE_QUESTIONNAIRE</Type>
+			<!-- 是否需要登录-->
+			<IsNeedLogin>true</IsNeedLogin>
+			
+			<!-- 是否设置上传次数，为true时UploadTimes有效-->
+			<IsUploadTimesLimit>true</IsUploadTimesLimit>
+			<!-- 上传总次数，不管成功或者失败都计数 -->
+			<UploadTotalTimes>3</UploadTotalTimes>
+			
+			<!-- 缓存数据大小（单位：B）1048576 -->
+			<CacheSize>10240</CacheSize>
+			
+			<!-- 单个上传文件总大小（单位：B）5242880 -->
+			<MaxSize>5242880</MaxSize>
+			<!-- 一次上传文件总大小（单位：B） -->
+			<TotalSize>5242880</TotalSize>
+			
+			<!-- 上传目录公共部分
+			<CommonPath>/projects/pboss/upload/questionare/</CommonPath>
+			 -->
+			<!-- 上传文件后缀名 -->
+			<FileSuffix>doc,xls</FileSuffix>
+			
+			<!-- 是否需要重建目录 -->
+			<IsRecreateDoc>true</IsRecreateDoc>
+			<!-- 重建目录规则：按日期（yyyy/mm/dd） -->
+			<RecreateDocRegular>BY_DATE</RecreateDocRegular>
+			
+			<!-- 是否需要重新命名文件 -->
+			<IsRenameFile>true</IsRenameFile>
+			<!-- 重新命名规则：按登录名称（渠道编码_上传时间_6位随机数） -->
+			<RenameRegular>BY_MNAME</RenameRegular>
+			
+		</File>
+	</Uploads>
+</File-Handle>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =================================================================== -->
+<!-- 该ant文件主要用于打包ServIntf项目的WAR包 (author hbm)                    -->
+<!-- =================================================================== -->
+
+<project name="PBOSS4CRM war build file" default="clean" basedir=".">
+    <echo message="Using Java version ${ant.java.version}."/>
+	<property environment="env"/>
+	<property name="PBOSS4CRM.lib" value="${basedir}/../PBOSS4CRM-lib" /><!--WebRoot/WEB-INF/lib-->
+
+	<property name="PBOSS4CRM.src-core" value="${basedir}/src" />
+	
+	<!-- <property name="PBOSS4CRM.src-ws2" value="${basedir}/.apt_generated" />  jax-ws生成的ws代码 -->
+
+	<property name="PBOSS4CRM.web" value="${basedir}/WebRoot" />
+
+	<property name="PBOSS4CRM.target" value="${basedir}/target" />
+	<property name="PBOSS4CRM.target.src" value="${PBOSS4CRM.target}/src" />
+	<property name="PBOSS4CRM.target.classes" value="${PBOSS4CRM.target}/classes" />
+	<property name="PBOSS4CRM.target.jar" value="${PBOSS4CRM.target}/jar" />
+	<property name="PBOSS4CRM.target.lib" value="${PBOSS4CRM.target}/lib" />
+
+	<property name="PBOSS4CRM.war" value="${basedir}/PBOSS4CRM" />
+	<property name="PBOSS4CRM.war.tail" value="-NGCRM" />
+
+	<property name="jdk.version" value="1.6" />
+	<property name="PBOSS4CRM.encoding" value="UTF-8"/><!--GBK-->
+
+
+	<!-- =================================================================== -->
+	<!-- Define the class path                                               -->
+	<!-- =================================================================== -->
+	<path id="PBOSS4CRM.class.path">
+		<fileset dir="${PBOSS4CRM.lib}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>	
+
+
+	<!-- =================================================================== -->
+	<!-- Prepares the directory structure                                    -->
+	<!-- =================================================================== -->
+	<target name="prepare" >
+		<echo>+---------------------------------------------------+</echo>
+		<echo>|                                                   |</echo>
+		<echo>|      P R E P A R E                                |</echo>
+		<echo>|                                                   |</echo>
+		<echo>+---------------------------------------------------+</echo>
+		<mkdir dir="${PBOSS4CRM.target}" />
+		<mkdir dir="${PBOSS4CRM.target.src}" />
+		<mkdir dir="${PBOSS4CRM.target.classes}" />
+		<mkdir dir="${PBOSS4CRM.target.lib}" />
+		<mkdir dir="${PBOSS4CRM.target.jar}" />
+
+		<copy todir="${PBOSS4CRM.target.src}">
+			<fileset dir="${PBOSS4CRM.src-core}">
+				<include name="**/**" />
+			</fileset>
+		
+		<!--	<fileset dir="${PBOSS4CRM.src-ws2}">
+				<include name="**/**" />
+			</fileset> -->
+		</copy>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Compiles all the classes                                            -->
+	<!-- =================================================================== -->
+	<target name="compile" depends="prepare">
+		<echo>+---------------------------------------------------+</echo>
+		<echo>|                                                   |</echo>
+		<echo>|      C O M P I L I N G S O U R C E S              |</echo>
+		<echo>|                                                   |</echo>
+		<echo>+---------------------------------------------------+</echo>
+		<javac fork="yes" executable="${env.JAVA_HOME}\bin\javac" compiler="javac1.6" destdir="${PBOSS4CRM.target.classes}" encoding="${PBOSS4CRM.encoding}" classpathref="PBOSS4CRM.class.path" debug="on" deprecation="on" optimize="off" target="${jdk.version}">
+			<!-- D:\Program Files\Java\jdk1.6.0_25\bin\javac -->
+			<src path="${PBOSS4CRM.target.src}" />
+		</javac>
+		<copy todir="${PBOSS4CRM.target.classes}">
+			<fileset dir="${PBOSS4CRM.target.src}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+				<include name="**/*.xsd" />
+				<include name="**/*.wsdl" />
+			</fileset>
+		</copy>
+	</target>
+
+	
+	<!-- =================================================================== -->
+	<!-- Single WarModule                                                    -->
+	<!-- =================================================================== -->
+	<target  name="to-war" depends="compile">		
+		<copy todir="${PBOSS4CRM.target.lib}" flatten="yes" includeEmptyDirs="no">
+			<fileset dir="${PBOSS4CRM.lib}">
+				<include name="**/*.jar" />
+				<exclude name="**/javaEE/*" />
+			</fileset>
+		</copy>
+		<war warfile="${PBOSS4CRM.war}-${DSTAMP}${PBOSS4CRM.war.tail}.war" >
+			<fileset dir="${PBOSS4CRM.web}">
+				<exclude name="**/lib/**" />
+				<exclude name="**/classes/**" />
+			</fileset>
+			<lib dir="${PBOSS4CRM.target.lib}" />
+			<lib dir="${PBOSS4CRM.target.jar}" />
+			<classes dir="${PBOSS4CRM.target}/classes" />			
+		</war>		
+	</target>
+	
+
+	<!-- =================================================================== -->
+	<!-- Clean                                                               -->
+	<!-- =================================================================== -->
+	<tstamp/>
+	<target name="clean"  depends = "to-war">
+				<echo message="${TODAY}" />
+				<echo message="${DSTAMP} ${TSTAMP}" />
+				<echo>+---------------------------------------------------+</echo>
+				<echo>|                                                   |</echo>
+				<echo>|      C L E A N                                    |</echo>
+				<echo>|                                                   |</echo>
+				<echo>+---------------------------------------------------+</echo>
+				<delete dir="${PBOSS4CRM.target}" />
+	</target>
+</project>

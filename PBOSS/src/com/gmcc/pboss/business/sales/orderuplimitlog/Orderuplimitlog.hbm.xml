@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderuplimitlog.OrderuplimitlogVO" table="FX_RU_ORDERUPLIMITLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">FX_RU_ORDERUPLIMITLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="RECID" length="14" name="recid" type="java.lang.Long"/>
+<property column="CITYID" length="10" name="cityid" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="COOPTYPE" length="18" name="cooptype" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="MONLIMIT" length="10" name="monlimit" type="java.lang.Long"/>
+<property column="DAYLIMIT" length="10" name="daylimit" type="java.lang.Long"/>
+<property column="STDSTOCK" length="10" name="stdstock" type="java.lang.Long"/>
+<property column="MAXAMTMODE" length="16" name="maxamtmode" type="java.lang.String"/>
+<property column="ALARMVALUE" length="256" name="alarmvalue" type="java.lang.String"/>
+<property column="MAXSTOCK" length="10" name="maxstock" type="java.lang.Long"/>
+<property column="LIMITMODE" length="16" name="limitmode" type="java.lang.String"/>
+<property column="RESTYPE" length="32" name="restype" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

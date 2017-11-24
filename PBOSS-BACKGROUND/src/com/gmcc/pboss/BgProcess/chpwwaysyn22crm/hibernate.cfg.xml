@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="connection.pool_size">5</property>
+		<property name="show_sql">true</property>
+		<property name="hibernate.current_session_context_class">com.sunrise.jop.common.spring.JopSessionContext</property>  
+		
+		
+
+		<!-- 本模块独有的 -->
+		<mapping resource="com/gmcc/pboss/business/chpwwaysyn22crm/waysyn2/Waysyn2.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/chpwwaysyn22crm/waysyn2log/Waysyn2log.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/cntycompany/Cntycompany.hbm.xml" />
+		
+
+		<!-- 商圈管理 
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicircle/Waybusicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicirclelog/Waybusicirclelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicircle/Busicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicirclelog/Busicirclelog.hbm.xml" />
+		-->
+	</session-factory>
+</hibernate-configuration>

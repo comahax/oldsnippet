@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.setcard.VSetcardVO" table="VCH_PW_ACTVWAY">
+<id column="SEQ" length="14" name="seq" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_PW_ACTVWAY_SEQ</param>
+</generator>
+</id>
+<property column="ACTVDAY" length="8" name="actvday" type="java.lang.String"/>
+<property column="WAYID" length="30" name="wayid" type="java.lang.String"/>
+<property column="MOBILE" length="11" name="mobile" type="java.lang.String"/>
+<property column="CITYID" length="2" name="cityid" type="java.lang.String"/>
+<property column="WAYTYPE" length="16" name="waytype" type="java.lang.String"/>
+<property column="INTIME" length="7" name="intime" type="java.util.Date"/>
+<property column="FILENAME" length="256" name="filename" type="java.lang.String"/>
+<property column="COMNAME" length="32" name="comname" type="java.lang.String"/>
+<property column="CITYNAME" length="32" name="cityname" type="java.lang.String"/>
+<property column="WAYTYPENAME" length="32" name="waytypename" type="java.lang.String"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.reward.setcard.doShowNameSql">
+    <return class="com.gmcc.pboss.business.reward.setcard.VSetcardVO"></return>
+SELECT A.SEQ,A.WAYID,A.ACTVDAY,A.MOBILE,A.CITYID,A.WAYTYPE,A.INTIME,A.FILENAME,A.COMNAME,
+       decode(A.CITYID,'GZ','广州','SZ','深圳','ZH','珠海','ST','汕头','SG','韶关','HY','河源','MZ','梅州','HZ','惠州',
+       'SW','汕尾','DG','东莞','ZS','中山','JM','江门','FS','佛山','YJ','阳江','ZJ','湛江','MM','茂名','ZQ','肇庆','QY','清远',
+       'CZ','潮州','JY','揭阳','YF','云浮','未知地市') CITYNAME,decode(A.WAYTYPE,'1','自有渠道','2','社会渠道','未知类型') WAYTYPENAME 
+  FROM CH_PW_ACTVWAY A
+</sql-query>
+</hibernate-mapping>

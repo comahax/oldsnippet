@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.adimarealog.persistent.AdimarealogVO" table="CH_PW_ADIMAREALOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+			<param name="sequence">CH_PW_ADIMAREALOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="ADANAME" length="64" name="adaname" type="java.lang.String"/>
+<property column="ADATYPE" length="2" name="adatype" type="java.lang.Short"/>
+<property column="ADALEVEL" length="2" name="adalevel" type="java.lang.Short"/>
+<property column="UPPERCODE" length="18" name="uppercode" type="java.lang.String"/>
+<property column="DATAYEAR" length="5" name="datayear" type="java.lang.String"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="TOTALPPN" length="10" name="totalppn" type="java.lang.Long"/>
+<property column="RESIPPN" length="10" name="resippn" type="java.lang.Long"/>
+<property column="NONRESIPPN" length="10" name="nonresippn" type="java.lang.Long"/>
+<property column="ADAREA" length="16" name="adarea" type="java.lang.Long"/>
+<property column="AVGINCOME" length="10" name="avgincome" type="java.lang.Long"/>
+<property column="GMCCUSERS" length="10" name="gmccusers" type="java.lang.Long"/>
+<property column="CUCUSERS" length="10" name="cucusers" type="java.lang.Long"/>
+<property column="CTCUSERS" length="10" name="ctcusers" type="java.lang.Long"/>
+<property column="HANDPHONES" length="10" name="handphones" type="java.lang.Long"/>
+<property column="ORGCODE" length="14" name="orgcode" type="java.lang.String"/>
+<property column="ORGTYPE" length="2" name="orgtype" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

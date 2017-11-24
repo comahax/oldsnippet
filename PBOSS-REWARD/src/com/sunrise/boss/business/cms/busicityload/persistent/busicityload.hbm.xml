@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.busicityload.persistent.BusicityloadVO" table="CH_CB_BUSICITYLOAD">
+<composite-id>
+<key-property name="cityid" column="CITYID" type="java.lang.String" length="4"/>
+<key-property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+</composite-id>
+<property name="simcode" column="SIMCODE" type="java.lang.String" length="12"/>
+<property name="showorder" column="SHOWORDER" type="java.lang.Short" length="3"/>
+<property name="createtime" column="CREATETIME" type="java.util.Date" length="7"/>
+<property name="state" column="STATE" type="java.lang.Short" length="2"/>
+<property name="calcflag" column="CALCFLAG" type="java.lang.Short" length="2"/>
+<property name="remark" column="REMARK" type="java.lang.String" length="500"/>
+<property name="waytype" column="WAYTYPE" type="java.lang.String" length="4"/>
+<property name="inuse" column="INUSE" type="java.lang.Integer" length="6"/>
+<property name="infocustomer" column="INFOCUSTOMER" type="java.lang.String" length="500"/>
+<property name="infoemployee" column="INFOEMPLOYEE" type="java.lang.String" length="500"/>
+</class>
+</hibernate-mapping>

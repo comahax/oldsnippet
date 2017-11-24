@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderplan.OrderplanVO" table="FX_SW_ORDERPLAN">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">FX_SW_ORDERPLAN_SEQ</param>
+	</generator>
+</id>
+<property column="ORDERID" length="18" name="orderid" not-null="true" type="java.lang.String"/>
+<property column="SALEPLAN" length="20" name="saleplan" not-null="true" type="java.lang.Long"/>
+<property column="RULEID" length="20" name="ruleid" type="java.lang.Long"/>
+</class>
+</hibernate-mapping>

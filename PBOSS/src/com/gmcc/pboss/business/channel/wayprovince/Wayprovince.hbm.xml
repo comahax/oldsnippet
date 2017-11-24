@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.wayprovince.WayprovinceVO" table="CH_PW_WAYPROVINCE">
+<id column="WAYID" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="UNIQUEWAYID" length="30" name="uniquewayid" type="java.lang.String"/>
+<property column="SECTION" length="30" name="section" type="java.lang.String"/>
+<property column="TOWN" length="30" name="town" type="java.lang.String"/>
+<property column="PROVTYPE" length="3" name="provtype" type="java.lang.Short"/>
+<property column="ETTYPE" length="3" name="ettype" type="java.lang.Short"/>
+<property column="MOBILEMALL" length="3" name="mobilemall" type="java.lang.Short"/>
+<property column="FRONTAREA" length="10" name="frontarea" type="java.lang.Double"/>
+<property column="HASWAITMACH" length="3" name="haswaitmach" type="java.lang.Short"/>
+<property column="HASPOSMACH" length="3" name="hasposmach" type="java.lang.Short"/>
+<property column="HAS24MALL" length="3" name="has24mall" type="java.lang.Short"/>
+<property column="HASVIPSEAT" length="3" name="hasvipseat" type="java.lang.Short"/>
+<property column="HASVIPROOM" length="3" name="hasviproom" type="java.lang.Short"/>
+<property column="G3AREA" length="16" name="g3area" type="java.lang.Double"/>
+<property column="ISPCONNTYPE" length="3" name="ispconntype" type="java.lang.Short"/>
+<property column="FRIEWAYID" length="20" name="friewayid" type="java.lang.String"/>
+<property column="OFWAYID" length="20" name="ofwayid" type="java.lang.String"/>
+</class>
+<sql-query name="getWpByUniquewayid">
+<return class="com.gmcc.pboss.business.channel.wayprovince.WayprovinceVO"/>
+select * from CH_PW_WAYPROVINCE where UNIQUEWAYID=:uniquewayid  
+</sql-query>
+<sql-query name="getWpByWayid">
+<return class="com.gmcc.pboss.business.channel.wayprovince.WayprovinceVO"/>
+select * from CH_PW_WAYPROVINCE where WAYID=:wayid  
+</sql-query>
+</hibernate-mapping>

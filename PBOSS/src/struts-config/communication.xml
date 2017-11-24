@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="public"/>
+	<package name="communication" namespace="/communication" extends="pboss-default">
+		<action name="advinfo_*" class="com.gmcc.pboss.web.communication.advinfo.AdvinfoAction" method="{1}">
+			<result name="list">/communication/advinfo/list.jsp</result>
+	        <result name="content">/communication/advinfo/content.jsp</result>
+	        <result name="krlist">advinfo/krlist.jsp</result>
+	        <result name="qalist">advinfo/qalist.jsp</result>
+	        <result name="advlist">/communication/advinfo/advlist.jsp</result>
+	        <result name="returnEdit" type="chain">
+	        	<param name="actionName">advinfo_krOrAdvedit</param>
+	        	<param name="method">doKrOrAdvedit</param>
+	        </result>
+	        <result name="advReply">/communication/advinfo/advReply.jsp</result>
+	        <result name="advApproval">/communication/advinfo/advApproval.jsp</result>
+		</action>
+		<action name="advinfo_affixDownload" class="com.gmcc.pboss.web.communication.advinfo.AdvinfoAction" method="doAffixDownload">
+			<result name="input" type="chain">
+				<param name="actionName">${downloadReturnActionName}</param>
+	        	<param name="method">${downloadReturnMethod}</param>
+			</result>
+		</action>
+		<action name="advinfo_qareply" class="com.gmcc.pboss.web.communication.advinfo.AdvinfoAction" method="doQareply">
+			<result name="qareply">advinfo/qaReply.jsp</result>
+		</action>
+		<action name="advinfo_qaclose" class="com.gmcc.pboss.web.communication.advinfo.AdvinfoAction" method="doQaclose">
+			<result name="qareply" type="chain">
+				<param name="actionName">advinfo_qareply</param>
+				<param name="method">doQareply</param>
+			</result>
+		</action>
+		<action name="reply_resave" class="com.gmcc.pboss.web.communication.reply.ReplyAction" method="resave">
+			<result name="resave" type="chain">
+				<param name="actionName">advinfo_qareply</param>
+				<param name="method">doQareply</param>
+			</result> 
+		</action>
+		<action name="reply_advRresave" class="com.gmcc.pboss.web.communication.reply.ReplyAction" method="doAdvResave">
+			<result name="advRresave" type="chain">
+				<param name="actionName">advinfo_advreply</param>
+				<param name="method">doAdvreply</param>
+			</result> 
+		</action>
+		<!-- 群组管理 -->
+		<action name="advgroup_*" class="com.gmcc.pboss.web.communication.advgroup.AdvgroupAction" method="{1}">
+			<result name="list">/communication/advgroup/list.jsp</result>
+	        <result name="content">/communication/advgroup/content.jsp</result>
+		</action>
+		<!-- 问卷调查 -->
+		<action name="questionnaire_*" class="com.gmcc.pboss.web.communication.questionnaire.QuestionnaireAction" method="{1}">
+			<result name="list">/communication/questionnaire/list.jsp</result>
+	        <result name="content">/communication/questionnaire/content.jsp</result>
+	        <result name="view">/communication/questionnaire/view.jsp</result>
+		</action>
+		<action name="questionnaire_affixDownload" class="com.gmcc.pboss.web.communication.questionnaire.QuestionnaireAction" method="doAffixDownload">
+            <result name="input" type="chain">
+				<param name="actionName">${downloadReturnActionName}</param>
+	        	<param name="method">${downloadReturnMethod}</param>
+			</result>
+		</action>
+		<!-- 沟通情况查询 -->
+		<action name="rcvobj_*" class="com.gmcc.pboss.web.communication.rcvobj.RcvobjAction" method="{1}">
+			<result name="list">/communication/rcvobj/list.jsp</result>
+	        <result name="content">/communication/rcvobj/content.jsp</result>
+		</action>
+		<!-- 省公司公告管理 -->
+		<action name="chpwcomsadvinfo_*" class="com.gmcc.pboss.web.communication.chpwcomsadvinfo.ChPwComsadvinfoAction" method="{1}">
+			<result name="list">/communication/chpwcomsadvinfo/list.jsp</result>
+	        <result name="content">/communication/chpwcomsadvinfo/content.jsp</result>
+	        <result name="citylist">/communication/chpwcomsadvinfo/citylist.jsp</result>
+	        <result name="show">/communication/chpwcomsadvinfo/show.jsp</result>
+		</action>
+		<action name="chpwcomsrcvobj_*" class="com.gmcc.pboss.web.communication.chpwcomsrcvobj.ChPwComsrcvobjAction" method="{1}">
+			<result name="list">/communication/chpwcomsrcvobj/list.jsp</result>
+	        <result name="content">/communication/chpwcomsrcvobj/content.jsp</result>
+	        <result name="statistics">/communication/chpwcomsrcvobj/statistics.jsp</result>
+		</action>
+	</package>
+</struts>

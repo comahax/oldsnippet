@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.disform.DisformVO" table="FX_SW_DISFORM">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_DISFORM_SEQ</param>
+</generator>
+</id>
+<property column="ORDERID" length="18" name="orderid" not-null="true" type="java.lang.String"/>
+<property column="RECEWAYID" length="18" name="recewayid" not-null="true" type="java.lang.String"/>
+<property column="RECENAME" length="32" name="recename" not-null="true" type="java.lang.String"/>
+<property column="RECETEL" length="12" name="recetel" not-null="true" type="java.lang.String"/>
+<property column="RECEADD" length="256" name="receadd" not-null="true" type="java.lang.String"/>
+<property column="DISCOMCODE" length="18" name="discomcode" not-null="true" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" not-null="true" type="java.util.Date"/>
+<property column="ARRIVETIME" length="7" name="arrivetime" not-null="true" type="java.util.Date"/>
+<property column="DISSTATE" length="16" name="disstate" not-null="true" type="java.lang.String"/>
+<property column="MEMO" length="1000" name="memo" type="java.lang.String"/>
+<property column="STORESMAN" length="16" name="storesman" type="java.lang.String"/>
+<property column="OUTTIME" length="7" name="outtime" type="java.util.Date"/>
+<property column="LOGISTICSNO" length="32" name="logisticsno" type="java.lang.String"/>
+</class>
+</hibernate-mapping>
+

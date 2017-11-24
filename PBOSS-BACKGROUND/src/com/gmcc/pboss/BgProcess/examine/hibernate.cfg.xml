@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="connection.pool_size">5</property>
+		<property name="hibernate.jdbc.batch_size">50</property>
+		<property name="show_sql">false</property>
+		<property name="hibernate.current_session_context_class">com.sunrise.jop.common.spring.JopSessionContext</property>
+		
+		<mapping resource="com/gmcc/pboss/business/cms/way/persistent/way.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/waylog/persistent/waylog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/base/sysparam/Sysparam.hbm.xml"/>
+		
+		
+
+		<!-- 考核 -->
+		<mapping resource="com/gmcc/pboss/business/cms/examine/examine/persistent/examine.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/exmnitem/persistent/exmnitem.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/exmnrslt/persistent/exmnrslt.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/coefficient/persistent/coefficient.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/mapping/persistent/mapping.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/exmnperiod/persistent/exmnperiod.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/exmnitemdtl/persistent/exmnitemdtl.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/itemgraded/persistent/itemgraded.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/itemgradedlog/persistent/itemgradedlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/examinestd/persistent/examinestd.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/exmnstddtl/persistent/exmnstddtl.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/cms/examine/rewardasse/Rewardasse.hbm.xml"/>
+		
+		<mapping resource="com/gmcc/pboss/business/sales/partnerres/Partnerres.hbm.xml"/>
+		
+		<!-- 商圈管理 -->
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicircle/Waybusicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicirclelog/Waybusicirclelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicircle/Busicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicirclelog/Busicirclelog.hbm.xml" />
+		
+	</session-factory>
+</hibernate-configuration>

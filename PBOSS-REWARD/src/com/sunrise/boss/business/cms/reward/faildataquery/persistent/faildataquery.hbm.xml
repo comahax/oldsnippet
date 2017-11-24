@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" table="V_CH_ADT_SIMFIAL">
+<id name="seq" column="SEQ" type="java.lang.Long">
+	<generator class="assigned"/>
+</id>
+<property name="calcmonth" column="CALCMONTH" type="java.lang.String" length="8"/>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<property name="name" column="NAME" type="java.lang.String" length="50"/>
+<property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+<property name="wayname" column="WAYNAME" type="java.lang.String" length="64"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="15"/>
+<property name="mobile" column="MOBILE" type="java.lang.String" length="15"/>
+<property name="oprtime" column="OPRTIME" type="java.util.Date"/>
+<property name="creattime" column="CREATTIME" type="java.util.Date"/>
+<property name="ruleid" column="RULEID" type="java.lang.String" length="18"/>
+<property name="adtflag" column="ADTFLAG" type="java.lang.Short" length="2"/>
+<property name="adtcode" column="ADTCODE" type="java.lang.String" length="32"/>
+<property name="adtremark" column="ADTREMARK" type="java.lang.String" length="255"/>
+<property name="rewardtype" column="REWARDTYPE" type="java.lang.String" length="255"/>
+<property name="rewardflag" column="REWARDFLAG" type="java.lang.Short" length="3"/>
+<property name="repairmonth" column="REPAIRMONTH" type="java.lang.String" length="8"/>
+<property name="batchno" column="BATCHNO" type="java.lang.String" length="18"/>
+<property name="bakinfo" column="BAKINFO" type="java.lang.String" length="132"/>
+<property name="bakinfo2" column="BAKINFO2" type="java.lang.String" length="40"/>
+<property name="bakinfo3" column="BAKINFO3" type="java.lang.Short" length="14"/>
+<property name="wrapfee" column="WRAPFEE" type="java.lang.Double" length="10"/>
+<property column="PRODID" length="32" name="prodid" type="java.lang.String"/>
+<property column="BAKINFO4" length="14" name="bakinfo4" type="java.lang.Double"/>
+<property column="BAKINFO5" length="14" name="bakinfo5" type="java.lang.Double"/> 
+<property column="BAKINFO6" length="32" name="bakinfo6" type="java.lang.String"/>
+<property column="BAKINFO7" length="32" name="bakinfo7" type="java.lang.String"/>
+<property column="BAKINFO8" length="32" name="bakinfo8" type="java.lang.String"/>
+<property column="BAKINFO9" length="32" name="bakinfo9" type="java.lang.String"/>
+<property column="BAKINFO10" length="32" name="bakinfo10" type="java.lang.String"/>  
+</class>
+<sql-query name="faildataquery.simfail">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'标准卡积分酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+	, '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+	from CH_ADT_SIMFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.jmjtfail">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'标准卡专门津贴' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+	, '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+	from CH_ADT_JMJTFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.bossfail">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务基本酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	, '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.salefail">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'套卡固定酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+	, '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+	from CH_ADT_SALEFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.bossjlfail">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.createtime as creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务奖励酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	, '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+	from CH_ADT_BOSSJLFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<!-- ****** -->
+<sql-query name="faildataquery.faildata11">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务一期酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=1 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata22">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务二期酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata33">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+   select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务三期酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=3 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata44">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务考核酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata55">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务基础酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=1 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata66">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.createtime as creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务考核酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSJLFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+
+<sql-query name="faildataquery.allfail">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select * from (
+
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'标准卡积分酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+	from CH_ADT_SIMFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) 
+	
+	union
+
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'标准卡专门津贴' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+	from CH_ADT_JMJTFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) 
+
+	union
+
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务基本酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) 
+
+	union
+
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'套卡固定酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+	from CH_ADT_SALEFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) 
+
+	union
+
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.createtime as creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务奖励酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	from CH_ADT_BOSSJLFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) 
+	
+	) order by calcmonth,opnid,oprtime
+	
+</sql-query>
+
+<sql-query name="faildataquery.simfailhis">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'标准卡积分酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+ , '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+ from CH_ADT_SIMFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.jmjtfailhis">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'标准卡专门津贴' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+	, '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+	from CH_ADT_JMJTFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.bossfailhis">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务基本酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	, '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.salefailhis">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'套卡固定酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,'' as bakinfo2,'' as bakinfo3,'' as wrapfee
+	from CH_ADT_SALEFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.bossjlfailhis">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select 
+		m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.createtime as creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务奖励酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	, '' as prodid,0 as bakinfo4,'' as bakinfo5,'' as bakinfo6,'' as bakinfo7,'' as bakinfo8,'' as bakinfo9,'' as bakinfo10
+	from CH_ADT_BOSSJLFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+
+
+<!-- ^^^^^^ -->
+
+<sql-query name="faildataquery.faildatahis11">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务一期酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=1 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+<sql-query name="faildataquery.faildatahis22">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务二期酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+<sql-query name="faildataquery.faildatahis33">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务三期酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=3 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+<sql-query name="faildataquery.faildatahis44">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务考核酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+<sql-query name="faildataquery.faildatahis55">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务基础酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=1 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+<sql-query name="faildataquery.faildatahis66">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.createtime as creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'服务业务考核酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSJLFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+<sql-query name="faildataquery.faildata90">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'基本校验' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and nvl(m.noncyc,0)=0 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata91">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'一期销售酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=1 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata92">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'二期销售酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata93">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'三期销售酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=3 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildatahis90">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'基本校验' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and nvl(m.noncyc,0)=0 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildatahis91">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'一期销售酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=1 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildatahis92">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'二期销售酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildatahis93">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'三期销售酬金' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee
+	,m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=3 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildatahis111">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'T、T+1、T+2基本校验' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee,
+	m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=1 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildatahis112">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'T、T+1、T+2基本校验' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee,
+	m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildatahis113">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,nvl(m.adtremark,a.adtremark)  as adtremark ,'T、T+1、T+2基本校验' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee,
+	m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAILhis m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata111">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,
+	nvl(m.adtremark,a.adtremark)  as adtremark ,'T、T+1、T+2一期酬金60%' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee,
+	m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=1 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata112">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,
+	nvl(m.adtremark,a.adtremark)  as adtremark ,'T+3二期酬金40%' as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee,
+	m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) and m.noncyc=2 order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+<sql-query name="faildataquery.faildata113">
+	<return class="com.sunrise.boss.business.cms.reward.faildataquery.persistent.FaildataqueryVO" />
+	select m.seq,m.calcmonth,m.opnid,c.name,m.wayid,w.wayname,m.oprcode,m.mobile,m.oprtime,m.creattime,m.ruleid,m.adtflag,m.adtcode,
+	nvl(m.adtremark,a.adtremark)  as adtremark ,
+	case when m.noncyc=1 then 'T、T+1、T+2一期酬金60%'  when m.noncyc=2 then 'T+3二期酬金40%' else ' ' end as rewardtype,m.rewardflag,m.repairmonth,m.batchno, m.bakinfo,m.bakinfo2,m.bakinfo3,m.wrapfee,
+	m.prodid,m.bakinfo4,m.bakinfo5,m.bakinfo6,m.bakinfo7,m.bakinfo8,m.bakinfo9,m.bakinfo10
+	from CH_ADT_BOSSFAIL m,CH_PW_OPERATION c,CH_PW_WAY w,CH_ADT_ADTCODE a
+	where m.opnid=c.opnid(+) and m.wayid=w.wayid(+) and m.adtcode=a.adtcode(+) order by m.calcmonth,m.opnid,m.oprtime
+</sql-query>
+
+
+
+</hibernate-mapping>

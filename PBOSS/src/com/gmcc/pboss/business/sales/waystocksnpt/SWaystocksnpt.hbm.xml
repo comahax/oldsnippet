@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.waystocksnpt.SWaystocksnptVO" table="V_FX_SW_WAYSTOCKSNPT">
+<composite-id>
+			<key-property name="wayid"></key-property>
+			<key-property name="brand"></key-property>
+			<key-property name="comcategory"></key-property>
+		</composite-id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="STOCKNUM" length="20" name="stocknum" type="java.lang.Long"/>
+<property column="ACTRATE" length="16" name="actrate" type="java.lang.Double"/>
+</class>
+<sql-query name="querySalelist">
+<return class="com.gmcc.pboss.business.sales.waystocksnpt.SWaystocksnptVO"/>
+select '' as countyid,
+       '' as svccode,
+       '' as mareacode,
+       s1.wayid,
+       '' as wayname,
+       '' as starlevel,
+       '' as orderid,
+       s1.brand,
+       s1.comcategory,
+       s1.cnt2 as STOCKNUM
+         from (select t1.wayid, t2.brand, t2.comcategory, count(*) as cnt2
+                 from ch_pw_way t1, FX_SW_PARTNERRES t2
+                where t1.wayid = t2.wayid
+                  and t2.restype = 'COMRESSMP'
+                  and t2.wayid = :wayid
+                  and t2.comcategory = :comcategory
+                  and t2.brand = :brand
+               --and to_char(t2.createtime, 'YYYYMMDD') = :createtime
+                group by t1.wayid, t2.brand, t2.comcategory) s1,
+              ch_pw_way w
+        where s1.wayid = w.wayid
+</sql-query>
+
+<!-- 网点空白SIM卡销售量明细 -->
+<sql-query name="querySaleRecord">
+<return class="com.gmcc.pboss.business.sales.waystocksnpt.SWaystocksnptVO"/>
+select w.countyid,
+       w.svccode,
+       w.mareacode,
+       w.upperwayid,
+       w.waymagcode,
+       s1.orderid,
+       s1.wayid,
+       w.wayname,
+       w.starlevel,
+       s1.emptyno,
+       s1.createtime as stocktime,
+       s1.comcategory,
+       '' as acttime,
+       c.iccid
+  from (select t2.wayid,
+               t3.orderid,
+               t4.emptyno,
+               t2.createtime,
+               t2.comcategory
+          from FX_SW_PARTNERRES t2, fx_sw_order t3, fx_sw_orderresdet t4
+         where t2.wayid = t3.wayid
+           and t3.orderid = t4.orderid
+           and t2.emptyno = t4.emptyno
+           and t2.batchno = t4.batchno
+           and t2.restype = 'EMPTYSIM'
+           and t3.orderstate = 'FINISHED') s1,
+       Ch_pw_way w,
+       IM_FX_EMPTYSIM c
+ where s1.wayid = w.wayid
+   and s1.emptyno = c.emptyno
+union all
+select w.countyid,
+       w.svccode,
+       w.mareacode,
+       w.upperwayid,
+       w.waymagcode,
+       '' as orderid,
+       s1.wayid,
+       w.wayname,
+       w.starlevel,
+       s1.emptyno,
+       s1.createtime as stocktime,
+       s1.comcategory,
+       '' as acttime,
+       c.iccid
+  from (select t2.wayid, t2.emptyno, t2.comcategory, t2.createtime
+          from FX_SW_PARTNERRES t2
+         where t2.batchno is null
+           and t2.restype = 'EMPTYSIM') s1,
+       Ch_pw_way w,
+       IM_FX_EMPTYSIM c
+ where s1.wayid = w.wayid
+   and s1.emptyno = c.emptyno
+</sql-query>
+
+<!-- 网点空白SIM卡使用量明细 -->
+<sql-query name="queryUsedRecord">
+<return class="com.gmcc.pboss.business.sales.waystocksnpt.SWaystocksnptVO"/>
+select w.countyid,
+       w.svccode,
+       w.mareacode,
+       w.upperwayid,
+       s1.orderid,
+       s1.wayid,
+       w.wayname,
+       w.starlevel,
+       s1.emptyno,
+       s1.comcategory,
+       s1.state,
+       s1.changetime
+  from (select t2.wayid,
+               t3.orderid,
+               t4.emptyno,
+               t2.comcategory,
+               t5.state,
+               t5.changetime
+          from FX_SW_PARTNERRES   t2,
+               fx_sw_order        t3,
+               fx_sw_orderresdet  t4,
+               FX_SN_SIMNOACTINFO t5
+         where t2.wayid = t3.wayid
+           and t3.orderid = t4.orderid
+           and t2.emptyno = t4.emptyno
+           and t2.batchno = t4.batchno
+           and t4.emptyno = t5.emptyno
+           and t2.restype = 'EMPTYSIM'
+           and t3.orderstate = 'FINISHED') s1,
+       Ch_pw_way w,
+       IM_FX_EMPTYSIM c
+ where s1.wayid = w.wayid
+   and s1.emptyno = c.emptyno
+union all
+select w.countyid,
+       w.svccode,
+       w.mareacode,
+       w.upperwayid,
+       '' as orderid,
+       s1.wayid,
+       w.wayname,
+       w.starlevel,
+       s1.emptyno,
+       s1.comcategory,
+       s1.state,
+       s1.changetime
+  from (select t2.wayid, t2.emptyno, t2.comcategory, t5.state, t5.changetime
+          from FX_SW_PARTNERRES t2, FX_SN_SIMNOACTINFO t5
+         where t2.batchno is null
+           and t2.emptyno = t5.emptyno
+           and t2.restype = 'EMPTYSIM') s1,
+       Ch_pw_way w,
+       IM_FX_EMPTYSIM c
+ where s1.wayid = w.wayid
+   and s1.emptyno = c.emptyno
+</sql-query>
+</hibernate-mapping>

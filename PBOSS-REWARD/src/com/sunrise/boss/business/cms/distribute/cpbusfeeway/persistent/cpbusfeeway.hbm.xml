@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.distribute.cpbusfeeway.persistent.CpbusfeewayVO" table="CH_DST_CPBUSFEEWAY">
+<id column="CPBUSID" name="cpbusid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_DST_CPBUSFEEWAY_SEQ</param>
+	</generator>
+</id>
+<property column="COOPERAUID" length="50" name="cooperauid" not-null="true" type="java.lang.String"/>
+<property column="FXTYPE" length="3" name="fxtype" not-null="true" type="java.lang.Short"/>
+<property column="BUSFEEWAY" length="18" name="busfeeway" not-null="true" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

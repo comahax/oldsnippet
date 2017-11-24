@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="common-support" namespace="/common" extends="pboss-default">
+        <action name="picker_*" class="com.sunrise.jop.web.example.picker.PickerAction" method="{1}">
+        	<result name="picker">/common/picker.jsp</result>    
+        </action>
+        
+        <action name="morecheck_*" class="com.sunrise.jop.web.example.picker.MoreCheckAction" method="{1}">
+        	<result name="morecheck">/common/morecheck.jsp</result>    
+        </action>
+        
+        
+        <!-- 文件上传-->
+        <action name="upload_*" class="com.gmcc.pboss.web.common.batch.upload.UploadAction" method="{1}">
+        <result name="examineinfo_upload">/examine/examineinfo/import.jsp</result>
+        </action>
+        <!-- 商品优惠方案(商品种类选择框 复选) -->
+        <action name="productcategoryselect_*" class="com.gmcc.pboss.web.common.productcategoryselect.ProductCategorySelectAction" method="{1}">
+           <result name="showlist">/common/toselect.jsp</result>
+        </action>
+        
+        <!-- 复选 -->
+        <action name="multiselect_*" class="com.gmcc.pboss.web.common.multiselect.MultiSelectAction" method="{1}">
+        	<result name="showopr">/common/selectopr.jsp</result>
+        </action>
+	</package>
+</struts>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.sysparamlog.SysparamlogVO" table="IB_GL_SYSPARAMLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">IB_GL_SYSPARAMLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="SYSTEMID" length="14" name="systemid" type="java.lang.Long"/>
+<property column="PARAMTYPE" length="16" name="paramtype" type="java.lang.String"/>
+<property column="BEGINTIME" length="7" name="begintime" type="java.util.Date"/>
+<property column="ENDTIME" length="7" name="endtime" type="java.util.Date"/>
+<property column="PARAMNAME" length="32" name="paramname" type="java.lang.String"/>
+<property column="PARAMVALUE" length="256" name="paramvalue" type="java.lang.String"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

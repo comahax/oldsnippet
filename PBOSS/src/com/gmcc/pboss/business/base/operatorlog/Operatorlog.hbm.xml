@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.operatorlog.OperatorlogVO" table="SA_SO_OPERATORLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">SA_SO_OPERATORLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="OPERID" length="16" name="operid" type="java.lang.String"/>
+<property column="REGION" length="5" name="region" type="java.lang.Integer"/>
+<property column="OPERNAME" length="64" name="opername" type="java.lang.String"/>
+<property column="PASSWORD" length="30" name="password" type="java.lang.String"/>
+<property column="PASSCHGDATE" length="7" name="passchgdate" type="java.util.Date"/>
+<property column="OPERGROUP" length="16" name="opergroup" type="java.lang.String"/>
+<property column="OPERTYPE" length="16" name="opertype" type="java.lang.String"/>
+<property column="OPERLEVEL" length="16" name="operlevel" type="java.lang.String"/>
+<property column="ISMANAGER" length="1" name="ismanager" type="java.lang.Byte"/>
+<property column="CONTACTPHONE" length="20" name="contactphone" type="java.lang.String"/>
+<property column="ORGID" length="32" name="orgid" type="java.lang.String"/>
+<property column="ISRESTRICT" length="1" name="isrestrict" type="java.lang.Byte"/>
+<property column="STARTTIME" length="2" name="starttime" type="java.lang.Short"/>
+<property column="ENDTIME" length="2" name="endtime" type="java.lang.Short"/>
+<property column="ENABLEGPRS" length="1" name="enablegprs" type="java.lang.Byte"/>
+<property column="GPRSSTARTTIME" length="2" name="gprsstarttime" type="java.lang.Short"/>
+<property column="GPRSENDTIME" length="2" name="gprsendtime" type="java.lang.Short"/>
+<property column="ISCHKMAC" length="1" name="ischkmac" type="java.lang.Byte"/>
+<property column="MAC" length="32" name="mac" type="java.lang.String"/>
+<property column="NOTES" length="256" name="notes" type="java.lang.String"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+<property column="RELE_STAFF_ID" length="16" name="releStaffId" type="java.lang.String"/>
+<property column="CHECK_MAC" length="1" name="checkMac" type="java.lang.Byte"/>
+<property column="GPRS_ENDTIME" length="7" name="gprsEndtime" type="java.util.Date"/>
+<property column="GPRS_STARTTIME" length="7" name="gprsStarttime" type="java.util.Date"/>
+<property column="ENABLE_GPRS" length="1" name="enableGprs" type="java.lang.Byte"/>
+<property column="RESTRICT_TIME" length="5" name="restrictTime" type="java.lang.Integer"/>
+<property column="START_TIME" length="5" name="startTime" type="java.lang.Integer"/>
+<property column="END_TIME" length="5" name="endTime" type="java.lang.Integer"/>
+<property column="HR_STATUS" length="5" name="hrStatus" type="java.lang.Integer"/>
+<property column="ASSESSREC" length="10" name="assessrec" type="java.lang.String"/>
+<property column="STARLEVEL" length="10" name="starlevel" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

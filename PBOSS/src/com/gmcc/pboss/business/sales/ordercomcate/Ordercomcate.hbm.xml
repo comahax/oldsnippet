@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.ordercomcate.OrdercomcateVO" table="FX_SW_ORDERCOMCATE">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_ORDERCOMCATE_SEQ</param>
+</generator>
+</id>
+<property column="ORDERID" length="18" name="orderid" not-null="true" type="java.lang.String"/>
+<property column="ORDERCOMTYPE" length="16" name="ordercomtype" not-null="true" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" not-null="true" type="java.lang.String"/>
+<property column="ORDERAMT" length="10" name="orderamt" not-null="true" type="java.lang.Long"/>
+<property column="UNITPRICE" length="16" name="unitprice" type="java.lang.Double"/>
+<property column="TOTALPRICE" length="16" name="totalprice" type="java.lang.Double"/>
+<property column="PLANCODE" length="256" name="planCode" type="java.lang.String"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+</class>
+
+<sql-query name="com.gmcc.pboss.business.sales.doOrdercomcateStocksQuery">
+select b.comcategory, b.ordercomtype, c.countyid,c.svccode, sum(b.orderamt) orderamt
+  from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, CH_PW_WAY c
+ where a.orderid = b.orderid
+   and a.wayid = c.wayid  and a.orderid in(':orderids')
+ group by b.comcategory, b.ordercomtype, c.countyid,c.svccode
+</sql-query>
+<sql-query name="queryOrderamtByAllBrand">
+	<return-scalar column="orderamt" type="java.lang.Long"/>
+	select sum(b.orderamt) as orderamt
+	from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, 
+	(select distinct COMCATEGORY, RESTYPE, BRAND from IM_PR_COMCATEGORYRELA) c
+	where a.orderid = b.orderid
+	and a.orderid = :orderid
+	and b.comcategory = c.comcategory
+	and b.ordercomtype = 'CUSTORDER'
+	and c.restype = 'COMRESSMP'
+</sql-query>
+
+<sql-query name="querySimamtByOrderID">
+<return-scalar column="comcategory" type="java.lang.String"/>
+<return-scalar column="simamt" type="java.lang.Long"/>
+select b.comcategory comcategory, sum(b.orderamt) simamt
+  from FX_SW_ORDER a,
+       FX_SW_ORDERCOMCATE b,
+       (select distinct COMCATEGORY
+          from IM_PR_COMCATEGORYRELA
+         where restype = 'EMPTYSIM') c
+ where a.orderid = b.orderid
+   and a.orderid = :orderid
+   and b.comcategory = c.comcategory
+   and b.ordercomtype = 'CUSTORDER'
+ group by b.comcategory
+</sql-query>
+
+
+<sql-query name="queryOrderamtByBrand">
+	<return-scalar column="orderamt" type="java.lang.Long"/>
+	select sum(b.orderamt) as orderamt
+	from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, 
+	(select distinct COMCATEGORY, RESTYPE, BRAND from IM_PR_COMCATEGORYRELA) c
+	where a.orderid = b.orderid
+	and a.orderid = :orderid
+	and b.comcategory = c.comcategory
+	and b.ordercomtype = 'CUSTORDER'
+	and c.restype = 'COMRESSMP'
+	and c.brand = :brand
+</sql-query>
+
+<!-- 空白SIM卡实时订购量更新(订单作废) -->
+<sql-query name="querySimOrderamtByAllBrand">
+	<return-scalar column="orderamt" type="java.lang.Long"/>
+	select sum(b.orderamt) as orderamt 
+	 from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, 
+	(select distinct COMCATEGORY, RESTYPE from IM_PR_COMCATEGORYRELA) c
+	 where a.orderid = b.orderid
+	and a.orderid = :orderid
+	 and b.comcategory = c.comcategory
+	 and b.ordercomtype = 'CUSTORDER'
+	 and c.restype = 'EMPTYSIM'
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.sales.doQueryEmptySimRealTimeUpdateBuyCount">
+  <return-scalar column="count" type="java.lang.Long"/>
+  <return-scalar column="comcategory" type="java.lang.String"/>
+	select b.comcategory comcategory, sum(b.orderamt) count
+  from FX_SW_ORDER a,
+       FX_SW_ORDERCOMCATE b,
+       (select distinct comcategory
+          from IM_PR_COMCATEGORYRELA t
+         where t.restype = 'EMPTYSIM') c
+ where a.orderid = b.orderid
+   and b.comcategory = c.comcategory
+   and a.wayid = :wayid
+   and a.createtime &gt;=
+       to_date(to_char(sysdate, 'yyyy-MM') || '-01', 'yyyy-MM-dd')
+   and a.orderstate &lt;&gt; 'CANCEL'
+   and b.ordercomtype = 'CUSTORDER'
+ group by b.comcategory
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.sales.doQueryEmptySimRealTimeUpdateDayMonthCount">
+         <return-scalar column="count" type="java.lang.Long"/>
+	<return-scalar column="comcategory" type="java.lang.String"/>
+  select b.comcategory comcategory, sum(b.orderamt) count
+  from FX_SW_ORDER a,
+       FX_SW_ORDERCOMCATE b,
+       (select distinct comcategory
+          from IM_PR_COMCATEGORYRELA t
+         where t.restype = 'EMPTYSIM') c
+ where a.orderid = b.orderid
+   and b.comcategory = c.comcategory
+   and a.wayid = :wayid
+   and a.orderstate not in ('CANCEL', 'FINISHED')
+   and b.ordercomtype = 'CUSTORDER'
+ group by b.comcategory
+</sql-query>
+<!--  批量触发划扣结果短信（统计商品种类订购数量）-->
+<sql-query name="queryDataByOrderId"> 
+   select comcategory,sum(orderamt) as orderamt from FX_SW_ORDERCOMCATE  where orderid=:ORDERID
+   group by comcategory
+</sql-query>
+
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdreportitem.persistent.ChPdReportitemVO" table="CH_PD_REPORTITEM">
+<id column="ITEMID" name="itemid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_PD_REPORTITEM_SEQ</param>
+	</generator>
+</id>
+<property column="REWARDMONTH" length="8" name="rewardmonth" type="java.lang.String"/>
+<property column="PROVAGENTID" length="15" name="provagentid" type="java.lang.String"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="COLUMNCODE" length="16" name="columncode" type="java.lang.String"/>
+<property column="COLUMNNAME" length="30" name="columnname" type="java.lang.String"/>
+<property column="REWARDSUM" length="15" name="rewardsum" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.et.chzdetsaleinfo.persistent.ChZdEtsaleinfoVO" table="CH_ZD_ETSALEINFO">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="CITY" length="8" name="city" type="java.lang.String"/>
+<property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="128" name="wayname" type="java.lang.String"/>
+<property column="OPRCODE" length="32" name="oprcode" type="java.lang.String"/>
+<property column="ZD_PLATFORM" length="32" name="zdplatform" type="java.lang.String"/>
+<property column="PRODUCTTYPE" length="32" name="producttype" type="java.lang.String"/>
+<property column="IMEI" length="32" name="imei" type="java.lang.String"/>
+<property column="SALE_PRICE" length="8" name="saleprice" type="java.lang.Float"/>
+<property column="LSALE_PRICE" length="8" name="lsaleprice" type="java.lang.Float"/>
+<property column="SALENUM" length="8" name="salenum" type="java.lang.Integer"/>
+<property column="SALEDAY" length="7" name="saleday" type="java.util.Date"/>
+<property column="BATCHNO" length="8" name="batchno" type="java.lang.String"/>
+<property column="NOTE" length="32" name="note" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

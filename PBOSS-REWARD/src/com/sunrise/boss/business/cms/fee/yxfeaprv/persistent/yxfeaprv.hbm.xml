@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.fee.yxfeaprv.persistent.YxfeaprvVO" table="CH_FE_YXFEAPRV">
+<id column="SEQ" name="seq" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_FE_YXFEAPRV_SEQ</param>
+	</generator>
+</id>
+<property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="APPTIME" length="7" name="apptime" not-null="true" type="java.sql.Timestamp"/>
+<property column="APPOPRCODE" length="15" name="appoprcode" not-null="true" type="java.lang.String"/>
+<property column="APPFEE" length="16" name="appfee" not-null="true" type="java.lang.Double"/>
+<property column="EXTIME" length="7" name="extime" type="java.sql.Timestamp"/>
+<property column="EXOPRCODE" length="15" name="exoprcode" type="java.lang.String"/>
+<property column="EXFEE" length="16" name="exfee" type="java.lang.Double"/>
+<property column="OPINION" length="255" name="opinion" type="java.lang.String"/>
+<property column="RECVFEE" length="16" name="recvfee" type="java.lang.Double"/>
+<property column="RECVOPRCODE" length="15" name="recvoprcode" type="java.lang.String"/>
+<property column="RECVTIME" length="7" name="recvtime" type="java.sql.Timestamp"/>
+<property column="YXFEEUSE" length="255" name="yxfeeuse" not-null="true" type="java.lang.String"/>
+<property column="STATE" length="3" name="state" not-null="true" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

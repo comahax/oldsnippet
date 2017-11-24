@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file-config>
+	<file id="SIM_0_0" citynameidx="17" dirparamid="52" forward="importsim" nameprefix="SIMCARD">
+		<param>cardmill</param>
+		<param>simtype</param>
+		<param>capacity</param>
+		<param>smscapacity</param>
+		<param>telcapacity</param>
+		<param>cityid</param>
+	</file>
+	<file id="SIM_0_8" citynameidx="24" dirparamid="52" forward="importsim" nameprefix="WZYKDH_SIMCARD">
+		<param>cardmill</param>
+		<param>simtype</param>
+		<param>capacity</param>
+		<param>smscapacity</param>
+		<param>telcapacity</param>
+		<param>cityid</param>
+	</file>
+	<file id="SMP_0_0" citynameidx="17" dirparamid="53" forward="importcomressmp" nameprefix="PKGCARD">
+		<param>comid</param>
+		<param>prodid</param>
+		<param>price</param>
+		<param>comdisc</param>
+		<param>simprice</param>
+		<param>batchno</param>
+		<param>wayid</param>
+		<param>simtype</param>
+		<param>s_comactive</param>
+		<param>especnoupd</param>
+		<param>simyno</param>
+		<param>dummycz</param>
+		<param>mobiletype</param>
+		<param>noprompt</param>
+		<param>cityid</param>
+	</file>
+	<file id="NORES_0_0" citynameidx="16" dirparamid="51" forward="importnores" nameprefix="NUMRES">
+		<param>nofeetpl</param>
+		<param>wayid</param>
+		<param>notype</param>
+		<param>prodid</param>
+		<param>mobiletype</param>
+		<param>noprompt</param>
+		<param>starttime</param>
+		<param>stoptime</param>
+		<param>cityid</param>
+	</file>
+	
+	<file id="COMRESCARD_0_0" citynameidx="15" dirparamid="54" forward="importcomrescard" nameprefix="VCRES">
+		<param>comid</param>
+		<param>price</param>
+		<param>comdisc</param>
+		<param>comstate</param>
+		<param>wayid</param>
+		<param>comsource</param>
+		<param>stockprice</param>
+		<param>info</param>
+		<param>cityid</param>
+	</file>
+	<file id="IMSI_0_0" citynameidx="14" dirparamid="55" forward="importimsi" nameprefix="IMSI">
+		<param>imsisectstate</param>
+		<param>sstarttime</param>
+		<param>cityid</param>
+	</file>
+</file-config>

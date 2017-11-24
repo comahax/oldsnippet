@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.paymentbatch.persistent.PaymentbatchVO" table="CH_ADT_PAYMENTBATCH">
+<id column="BATCHNO" name="batchno" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+<property column="PAYMENTFLAG" length="2" name="paymentflag" type="java.lang.Short"/>
+<property column="PAYMENTOPRCODE" length="15" name="paymentoprcode" type="java.lang.String"/>
+<property column="PAYMENTOPRTIME" length="7" name="paymentoprtime" type="java.util.Date"/>
+<property column="LISTFLAG" length="2" name="listflag" type="java.lang.Short"/>
+<property column="ENDFLAG" length="2" name="endflag" type="java.lang.Short"/>
+<property column="PAYMONTH" length="6" name="paymonth" type="java.lang.String"/>
+<property column="ENDOPRCODE" length="15" name="endoprcode" type="java.lang.String"/>
+<property column="ENDTIME" length="7" name="endtime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

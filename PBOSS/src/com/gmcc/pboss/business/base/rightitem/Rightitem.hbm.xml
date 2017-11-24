@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.rightitem.RightitemVO" table="SA_SR_RIGHTITEM">
+<id column="RIGHTID" length="32" name="rightid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="REGION" length="5" name="region" type="java.lang.Integer"/>
+<property column="RIGHTNAME" length="64" name="rightname" type="java.lang.String"/>
+<property column="RIGHTGROUP" length="32" name="rightgroup" type="java.lang.String"/>
+<property column="ISPUBLIC" length="1" name="ispublic" type="java.lang.Byte"/>
+<property column="NOTES" length="256" name="notes" type="java.lang.String"/>
+<property column="ORGID" length="32" name="orgid" type="java.lang.String"/>
+<property column="OPERID" length="32" name="operid" type="java.lang.String"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+</class>
+<sql-query name="getRightRootID">
+SELECT *
+  FROM SA_SR_RIGHTITEM
+ WHERE RIGHTID IN
+       (select distinct (rightgroup)
+          from SA_SR_RIGHTITEM
+         where orgid in (select WAYID
+                           from ch_pw_way
+                         connect by prior wayid = upperwayid
+                          start with wayid = :wayid)
+           and REGION = :cityid)
+   and rightgroup = '0'
+</sql-query>
+<sql-query name="queryTextSQL">
+select *
+  from sa_sr_rightitem
+ where rightid in
+       (select distinct (rightid)
+          from sa_sr_rightitem item
+         start with item.rightid like :queryText
+                 or item.rightname like :queryText
+        connect by prior item.rightgroup = item.rightid)
+</sql-query>
+</hibernate-mapping>

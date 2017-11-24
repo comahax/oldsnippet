@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.communication.chpwcomsadvinfo.ChPwComsadvinfoVO" table="CH_PW_COMSADVINFO">
+<id column="ADVINFOID" length="14" name="advinfoid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_COMSADVINFO_SEQ</param>
+</generator>
+</id>
+<property column="TITLE" length="256" name="title" type="java.lang.String"/>
+<property column="CONTENT" length="4000" name="content" type="java.lang.String"/>
+<property column="RELEASETIME" length="7" name="releasetime" type="java.util.Date"/>
+<property column="SMSNOTIFY" length="2" name="smsnotify" type="java.lang.Short"/>
+<property column="AFFIXNAME" length="128" name="affixname" type="java.lang.String"/>
+<property column="AFFIXPATH" length="256" name="affixpath" type="java.lang.String"/>
+<property column="RELEASECODE" length="18" name="releasecode" type="java.lang.String"/>
+<property column="RCVOBJTYPE" length="32" name="rcvobjtype" type="java.lang.String"/>
+<property column="STATE" length="3" name="state" type="java.lang.Short"/>
+</class>
+<!-- 根据角色ID查询拥有该角色的操作员  -->
+<sql-query name="com.gmcc.pboss.business.communication.chpwcomsadvinfo.QueryOperatorByRoleId">
+select o.operid, o.opername, o.contactphone, o.region
+  from sa_so_operator o, sa_sr_operrole r
+ where o.operid = r.operid
+   and r.roleid = :roleid
+</sql-query>
+
+<!-- 根据当前登录工号查询待阅省公司公告  -->
+<sql-query name="com.gmcc.pboss.business.communication.chpwcomsadvinfo.doCityList">
+select a.advinfoid, a.title, a.releasetime, a.rcvobjtype,
+       a.smsnotify, a.releasecode, r.rvcobjid, r.state
+  from CH_PW_COMSADVINFO a, CH_PW_COMSRCVOBJ r
+ where a.advinfoid = r.advinfoid
+   and a.state = 2
+   and r.objid = :objid
+</sql-query>
+</hibernate-mapping>

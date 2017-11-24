@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.resalarmrule.ResalarmruleVO" table="IM_RU_RESALARMRULE">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">IM_RU_RESALARMRULE_SEQ</param>
+</generator>
+</id>
+<property column="CITYID" length="10" name="cityid" not-null="true" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="LOWSTOCK" length="10" name="lowstock" type="java.lang.Long"/>
+<property column="UPACTRATE" length="16" name="upactrate" type="java.lang.Double"/>
+<property column="HANDLERCODE" length="16" name="handlercode" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

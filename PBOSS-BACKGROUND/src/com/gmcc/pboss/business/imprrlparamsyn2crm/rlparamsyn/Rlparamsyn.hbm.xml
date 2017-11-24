@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.imprrlparamsyn2crm.rlparamsyn.RlparamsynVO" table="IM_PR_RLPARAMSYN">
+<id column="ITEMID" length="14" name="itemid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" not-null="true" type="java.util.Date"/>
+<property column="OPRACT" length="3" name="opract" not-null="true" type="java.lang.Short"/>
+<property column="ID" length="18" name="id" type="java.lang.Long"/>
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="RESTYPE" length="32" name="restype" type="java.lang.String"/>
+<property column="RECEIVEWAY" length="18" name="receiveway" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

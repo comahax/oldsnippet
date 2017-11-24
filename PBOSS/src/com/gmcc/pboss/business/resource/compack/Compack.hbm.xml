@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.compack.CompackVO" table="IM_PR_COMPACK">
+<composite-id>
+<key-property column="BATCHNO" length="30" name="batchno" type="java.lang.String"/>
+<key-property column="BOXNUM" length="100" name="boxnum" type="java.lang.String"/>
+</composite-id>
+<property column="AMOUNT" length="3" name="amount" type="java.lang.Short"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="PACKSTATE" length="16" name="packstate" type="java.lang.String"/>
+<property column="RESUSE" length="20" name="resuse" type="java.lang.String"/>
+<property column="STORAREA" length="10" name="storarea" type="java.lang.String"/>
+<property column="NOSECT" length="10" name="nosect" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="DISCOMCODE" length="18" name="discomcode" type="java.lang.String"/>
+<property column="PACKTIME" length="7" name="packtime" type="java.util.Date"/>
+</class>
+
+<!-- 按商品种类、号码类型对套卡资源表和商品种类组合关系表进行分组统计 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.queryByWayidAndBatchno"> 
+ select b.COMCATEGORY, a.NUMBERTYPE, count(*) NUM
+ from IM_FX_COMRESSMP a, IM_PR_COMCATEGORYRELA b
+ where a.WAYID =:DISCOMCODE
+ and a.BATCHNO =:BATCHNO
+ and a.COMSTATE in(1,30)
+ and a.COMID= b.COMID
+ group by b.comcategory, a.numbertype
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.resource.compack.doQueryCompackResdrawByCountyid">
+	select t1.*  from Im_Pr_Compack t1  , ch_pw_way t2 
+		where t1.wayid=t2.wayid and t2.countyid=:countyid
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.compack.doQueryCompackResdrawBySvccode">
+	select t1.*  from Im_Pr_Compack t1  , ch_pw_way t2 
+		where t1.wayid=t2.wayid and t2.svccode=:svccode
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.compack.doQueryCompackResdrawByMareacode">
+	select t1.*  from Im_Pr_Compack t1  , ch_pw_way t2 
+		where t1.wayid=t2.wayid and t2.mareacode=:mareacode
+</sql-query>
+<!-- 关联渠道表，获取商品包明细列表 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.doList">
+	<return class="com.gmcc.pboss.business.resource.compack.CompackVO"></return>
+	select a.BATCHNO,
+	a.BOXNUM,
+	a.AMOUNT,
+	a.COMCATEGORY,
+	a.PACKSTATE,
+	a.RESUSE,
+	a.STORAREA,
+	a.NOSECT,
+	a.WAYID,
+	a.DISCOMCODE,
+	a.PACKTIME,
+	w.COUNTYID
+	from IM_PR_COMPACK a,CH_PW_WAY w
+	where a.WAYID=w.WAYID
+</sql-query>
+
+</hibernate-mapping>

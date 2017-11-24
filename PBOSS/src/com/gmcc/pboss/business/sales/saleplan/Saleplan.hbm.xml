@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.saleplan.SaleplanVO" table="FX_RU_SALEPLAN">
+
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">fx_ru_saleplan_seq</param>
+</generator>
+</id>
+
+
+<property column="CITYID" length="10" name="cityid" not-null="true" type="java.lang.String"/>
+<property column="PLANCODE" length="256" name="plancode" type="java.lang.String"/>
+<property column="PLANNAME" length="512" name="planname" type="java.lang.String"/>
+<property column="BEGINDATE" length="7" name="begindate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="COMCATEGORY" length="512" name="comcategory" type="java.lang.String"/>
+<property column="PREMODE" length="20" name="premode" type="java.lang.String"/>
+<property column="PREVALUE" length="16" name="prevalue" type="java.lang.Double"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+</class>
+
+<!-- 获取有效优惠方案 -->
+<sql-query name="com.gmcc.pboss.business.sales.saleplan.doQuerySalePlan">
+	<return class="com.gmcc.pboss.business.sales.saleplan.SaleplanVO"/>
+	select a.* from FX_RU_SALEPLAN a
+		where  a.CITYID = :cityid  		
+		and a.BEGINDATE&lt;=to_date(:beginDate, 'yyyy-MM-dd hh24:mi:ss') 
+		and a.ENDDATE&gt;=to_date(:endDate, 'yyyy-MM-dd hh24:mi:ss') 
+		and a.COMCATEGORY like :comcategory
+		order by a.BEGINDATE asc
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.promotion.rewardstd.RewardstdVO" table="CH_CX_REWARDSTD">
+<composite-id>
+<key-property column="COMCATEGORY" length="32" name="comcategory" type="java.lang.String"/>
+<key-property column="RULEID" length="6" name="ruleid" type="java.lang.Long"/>
+</composite-id>
+<property column="REWARD" length="16" name="reward" not-null="true" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

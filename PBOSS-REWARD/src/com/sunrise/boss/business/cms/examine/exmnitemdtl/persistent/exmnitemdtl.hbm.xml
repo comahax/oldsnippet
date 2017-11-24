@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.examine.exmnitemdtl.persistent.ExmnitemdtlVO" table="CH_PW_EXMNITEMDTL">
+<id column="SEQID" name="seqid" type="java.lang.Long">
+	<generator class="sequence">
+        <param name="sequence">
+           CH_PW_EXMNITEMDTL_SEQ
+        </param>	
+   	</generator>
+</id>
+<property column="EXMNID" length="6" name="exmnid" type="java.lang.Integer"/>
+<property column="EXMNSTDID" length="6" name="exmnstdid" type="java.lang.Integer"/>
+<property column="CITYID" length="3" name="cityid" type="java.lang.String"/>
+<property column="MARKTYPE" length="1" name="marktype" type="java.lang.String"/>
+<property column="BASEMK" length="16" name="basemk" type="java.lang.Double"/>
+<property column="DYNAMICMK" length="16" name="dynamicmk" type="java.lang.Double"/>
+<property column="LEASTCRTCL" length="16" name="leastcrtcl" type="java.lang.Double"/>
+<property column="LARGESTCRTCL" length="16" name="largestcrtcl" type="java.lang.Double"/>
+<property column="PSEQID" length="10" name="pseqid" type="java.lang.Long"/>
+</class>
+</hibernate-mapping>

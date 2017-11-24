@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.chzjtyempltotal.persistent.ChZjtyEmpltotalVO" table="CH_ZJTY_EMPLTOTAL">
+<composite-id>
+<key-property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<key-property column="YEARMONTH" length="6" name="yearmonth" type="java.lang.String"/>
+</composite-id>
+<property column="AMOUNT" length="4" name="amount" type="java.lang.Double"/>
+<property column="MEMO" length="255" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

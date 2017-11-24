@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.qsmanage.paramstest.testmobileno.persistent.TestMobilenoVO" table="TEST_MOBILENO">
+<id column="MOBILENO" name="mobileno" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="STATE" length="2" name="state" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.audit.AuditVO" table="FX_SW_AUDIT">
+<id column="SEQID" length="14" name="seqid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="PRESENTER" length="16" name="presenter" type="java.lang.String"/>
+<property column="SMSNTIME" length="7" name="smsntime" type="java.util.Date"/>
+<property column="AUDITOR" length="16" name="auditor" type="java.lang.String"/>
+<property column="AUDITTIME" length="7" name="audittime" type="java.util.Date"/>
+<property column="OPINION" length="512" name="opinion" type="java.lang.String"/>
+<property column="STATE" length="32" name="state" type="java.lang.String"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+</class>
+<!-- 默认查询逻辑 -->
+<sql-query name="com.gmcc.pboss.business.sales.audit.defaultquery" >
+<return class="com.gmcc.pboss.business.sales.audit.AuditVO"/>
+   select * from fx_sw_audit t where t.auditor=:operid or presenter= :operid 
+</sql-query>
+<!-- 充值卡库存统计 -->
+<sql-query name="com.gmcc.pboss.business.sales.audit.Audit.getAuditInfo">
+select * from FX_SW_AUDIT a ,FX_SW_AUDITDET b where a.seqid=b.auditseq
+</sql-query>
+</hibernate-mapping>

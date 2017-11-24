@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderuplimit.OrderuplimitVO" table="FX_RU_ORDERUPLIMIT">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">FX_RU_ORDERUPLIMIT_SEQ</param>
+	</generator>
+</id>
+<property column="CITYID" length="10" name="cityid" not-null="true" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="COOPTYPE" length="18" name="cooptype" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="BRAND" length="256" name="brand" type="java.lang.String"/>
+<property column="MONLIMIT" length="10" name="monlimit" type="java.lang.Long"/>
+<property column="DAYLIMIT" length="10" name="daylimit" type="java.lang.Long"/>
+<property column="STDSTOCK" length="10" name="stdstock" type="java.lang.Long"/>
+<property column="MAXAMTMODE" length="16" name="maxamtmode" type="java.lang.String"/>
+<property column="ALARMVALUE" length="256" name="alarmvalue" type="java.lang.String"/>
+<property column="MAXSTOCK" length="10" name="maxstock" type="java.lang.Long"/>
+<property column="LIMITMODE" length="16" name="limitmode" type="java.lang.String"/>
+<property column="RESTYPE" length="32" name="restype" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="ONCELIMIT" length="10" name="oncelimit" type="java.lang.Long"/>
+</class>
+
+<sql-query name="pboss.sales.emptysimtype">
+<return-scalar column="comcategory" type="java.lang.String"/>
+<return-scalar column="dictname" type="java.lang.String"/>
+select distinct c.comcategory comcategory ,d.dictname dictname
+  from IM_PR_COMCATEGORYRELA c, sa_db_dictitem d
+ where c.comcategory = d.dictid
+   and d.groupid = 'IM_FXCOMCATEGORY'
+   and restype = 'EMPTYSIM'
+</sql-query>
+
+</hibernate-mapping>

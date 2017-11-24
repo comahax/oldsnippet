@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtbusitoapprove.persistent.ChAdtBusitoapproveVO" table="CH_ADT_BUSITOAPPROVE">
+<id column="APPROVEID" name="approveid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="BATCHID" length="16" name="batchid" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="OPNNAME" length="50" name="opnname" type="java.lang.String"/>
+<property column="REWARDTYPE" length="5" name="rewardtype" type="java.lang.String"/>
+<property column="REGION" length="10" name="region" type="java.lang.String"/>
+<property column="ISSLV" length="3" name="isslv" type="java.lang.String"/>
+<property column="SLV" length="3" name="slv" type="java.lang.String"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="ACCTYPE" length="2" name="acctype" type="java.lang.String"/>
+<property column="REWARDSTD" length="16" name="rewardstd" type="java.lang.Double"/>
+<property column="INTVMONTH" length="5" name="intvmonth" type="java.lang.Integer"/>
+<property column="ISPROV" length="2" name="isprov" type="java.lang.String"/>
+<property column="RULEINFO" length="1000" name="ruleinfo" type="java.lang.String"/>
+<property column="RULEDESC" length="2000" name="ruledesc" type="java.lang.String"/>
+<property column="ISSLVLEV" length="3" name="isslvlev" type="java.lang.Short"/>
+<property column="SLVLEV" length="3" name="slvlev" type="java.lang.Short"/>
+<property column="CITYSTD" length="10" name="citystd" type="java.lang.Double"/>
+<property column="COUNTRYSTD" length="10" name="countrystd" type="java.lang.Double"/>
+<property column="CITYACCOUNTLIMIT" length="10" name="cityaccountlimit" type="java.lang.Double"/>
+<property column="COUNTYACCOUNTLIMIT" length="10" name="countyaccountlimit" type="java.lang.Double"/>
+<property column="CITYCORELIMIT" length="10" name="citycorelimit" type="java.lang.Double"/>
+<property column="COUNTYCORELIMIT" length="10" name="countycorelimit" type="java.lang.Double"/>
+<property column="PERCENTAGE" length="3" name="percentage" type="java.lang.Short"/>
+<property column="YEARS" length="4" name="years" type="java.lang.Short"/>
+<property column="APPTIME" length="7" name="apptime" type="java.util.Date"/>
+<property column="SYSTEMDATE" length="7" name="systemdate" type="java.util.Date"/>
+<property column="ADDOPNTIME" length="7" name="addopntime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.querybyno.dgeboxchglog.persistent.DgEboxChgLogVO" table="TT_TMP_EBOXCHGLOG">
+        <id name="logid" type="java.lang.Long">
+            <column name="LOGID" precision="14" scale="0" />
+            <generator class="sequence">
+            	<param name="sequence">TT_TMP_EBOXCHGLOG_SEQ</param>
+            </generator>
+        </id>
+        <property name="eboxid" type="java.lang.Long">
+            <column name="EBOXID" precision="14" scale="0" not-null="true" />
+        </property>
+        <property name="eboxunitid" type="java.lang.Long">
+            <column name="EBOXUNITID" precision="14" scale="0" not-null="true" />
+        </property>
+        <property name="eboxunitdetid" type="java.lang.Long">
+            <column name="EBOXUNITDETID" precision="14" not-null="true" />
+        </property>
+        <property name="chgamt" type="java.lang.Long">
+            <column name="CHGAMT" precision="14" />
+        </property>
+        <property name="afterchgamt" type="java.lang.Long">
+            <column name="AFTERCHGAMT" precision="14" />
+        </property>
+        <property name="opercode" type="java.lang.String">
+            <column name="OPERCODE" length="15" />
+        </property>
+        <property name="reason" type="java.lang.String">
+            <column name="REASON" length="64" />
+        </property>
+        <property name="reason2" type="java.lang.String">
+            <column name="REASON2" length="64" />
+        </property>
+        <property name="chgtime" type="java.util.Date">
+            <column name="CHGTIME" length="7" />
+        </property>
+      
+        <property name="yxplanid" type="java.lang.Long">
+            <column name="YXPLANID" precision="14"  />
+        </property>
+        <property name="genbillcyc" type="java.lang.Long">
+            <column name="GENBILLCYC" precision="8" />
+        </property>
+        <property name="baseamt" type="java.lang.Long">
+            <column name="BASEAMT" precision="14" />
+        </property>
+        <property name="presentamt" type="java.lang.Long">
+            <column name="PRESENTAMT" precision="14" />
+        </property>
+        <property name="invalidamt" type="java.lang.Long">
+            <column name="INVALIDAMT" precision="14" />
+        </property>
+        <property name="billflag" type="java.lang.Short">
+            <column name="BILLFLAG" precision="2" />
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

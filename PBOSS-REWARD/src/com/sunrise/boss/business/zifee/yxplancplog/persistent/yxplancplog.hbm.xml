@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.yxplancplog.persistent.YxplancplogVO" table="PC_PS_YXPLANCPLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">PC_PS_YXPLANCPLOG_SEQ</param>
+</generator>
+</id>
+<property name="createtime" column="CREATETIME" type="java.util.Date" length="7" not-null="true"/>
+<property name="modifytime" column="MODIFYTIME" type="java.util.Date" length="7" not-null="true"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="15" not-null="true"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="32" not-null="true"/>
+<property name="orgyxplanid" column="ORGYXPLANID" type="java.lang.Long" length="14" not-null="true"/>
+<property name="newyxplanid" column="NEWYXPLANID" type="java.lang.Long" length="14" not-null="true"/>
+<property name="copyitem" column="COPYITEM" type="java.lang.String" length="500" not-null="true"/>
+<property name="batchno" column="BATCHNO" type="java.lang.String" length="32"/>
+<property name="oprresulte" column="OPRRESULTE" type="java.lang.String" length="32"/>
+<property name="oprstate" column="OPRSTATE" type="java.lang.String" length="32" not-null="true"/>
+<property name="oprobject" column="OPROBJECT" type="java.lang.String" length="32"/>
+<property name="remark" column="REMARK" type="java.lang.String" length="500"/>
+</class>
+<sql-query name="cms.getyxplancplog">
+	<return class="com.sunrise.boss.business.zifee.yxplancplog.persistent.YxplancplogVO"/>
+	SELECT CP.* FROM PC_PS_YXPLANCPLOG CP,PC_PS_YXPLAN YX WHERE CP.NEWYXPLANID = YX.YXPLANID 
+	    AND YX.AREACODE=:AREACODE ORDER BY CP.CREATETIME DESC
+</sql-query>
+</hibernate-mapping>

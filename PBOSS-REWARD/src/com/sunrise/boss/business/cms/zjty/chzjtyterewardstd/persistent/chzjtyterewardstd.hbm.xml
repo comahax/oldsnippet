@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.chzjtyterewardstd.persistent.ChZjtyTerewardstdVO" table="CH_ZJTY_TEREWARDSTD">
+<composite-id>
+<key-property column="CITYCODE" length="3" name="citycode" type="java.lang.Short"/>
+<key-property column="COMID" length="18" name="comid" type="java.lang.String"/>
+<key-property column="REWARDTYPE" length="2" name="rewardtype" type="java.lang.Short"/>
+</composite-id>
+<property column="REWARDSTD" length="16" name="rewardstd" type="java.lang.Double"/>
+<property column="ACCTYPE" length="3" name="acctype" type="java.lang.Short"/>
+<property column="ADTREMARK" length="128" name="adtremark" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="STANDARDPRICE" length="14" name="standardprice" type="java.lang.Double"/>
+
+</class>
+</hibernate-mapping>

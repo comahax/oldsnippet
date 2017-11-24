@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.resdisform.ResdisformVO" table="IM_PR_RESDISFORM">
+<composite-id>
+<key-property column="DISCOMCODE" length="18" name="discomcode" type="java.lang.String"/>
+<key-property column="DISID" length="20" name="disid" type="java.lang.String"/>
+</composite-id>
+<property column="RESAMT" length="10" name="resamt" type="java.lang.Long"/>
+<property column="STORAREA" length="16" name="storarea" type="java.lang.String"/>
+<property column="DISCODE" length="16" name="discode" type="java.lang.String"/>
+<property column="DISTIME" length="7" name="distime" type="java.util.Date"/>
+<property column="SIGNCODE" length="16" name="signcode" type="java.lang.String"/>
+<property column="SIGNTIME" length="7" name="signtime" type="java.util.Date"/>
+<property column="ISSUECODE" length="16" name="issuecode" type="java.lang.String"/>
+<property column="ISSUTIME" length="7" name="issutime" type="java.util.Date"/>
+<property column="SMSCONTENT" length="256" name="smscontent" type="java.lang.String"/>
+<property column="DISFORMSTATE" length="16" name="disformstate" type="java.lang.String"/>
+<property column="STATINFO" length="256" name="statinfo" type="java.lang.String"/>
+</class>
+<!-- 商品明细 -->
+<!-- 
+<sql-query name="com.gmcc.pboss.business.resource.resdisform.productdetail">
+select a.batchno,a.boxnum,b.iccid,c.comcategory
+from IM_PR_DISCOMRES a,IM_FX_COMRESSMP b,IM_PR_COMCATEGORYRELA c
+where a.batchno = b.batchno and a.boxnum = b.boxnum and c.comid = b.comid
+      and a.disid =:DISID and a.discomcode =:DISCOMCODE
+</sql-query>
+ -->
+ 
+ <!-- 资源发布时取渠道商（店主）信息  deploy = 1 发布-->
+ <sql-query name="com.gmcc.pboss.business.resource.resdisform.getemployee">
+ select e.employeeid,e.employeename, e.officeTel,w.wayid,w.wayname ,w.logiscode, 1 deploy
+ from CH_PW_WAY w,CH_PW_EMPLOYEE e 
+ where w.wayid = e.wayid
+ and e.ISNET=1
+ and e.EMPSTATUS=0
+ 
+ </sql-query>
+ 
+</hibernate-mapping>

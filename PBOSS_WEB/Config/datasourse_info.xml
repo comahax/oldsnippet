@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSources>
+	<!-- 实际生产环境中需要根据具体实际，对数据库信息做必要修改 -->
+	<!-- 公共库 -->
+	<DataSource>
+		<UniqueResourceName>oracle/common</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- 中山 -->
+	<DataSource>
+		<UniqueResourceName>oracle/zs</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- 广州 -->
+	<DataSource>
+		<UniqueResourceName>oracle/gz</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- 清远 -->
+	<DataSource>
+		<UniqueResourceName>oracle/qy</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- 汕尾 -->
+	<DataSource>
+		<UniqueResourceName>oracle/sw</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- ZH珠海 --> 
+	<DataSource>
+		<UniqueResourceName>oracle/zh</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- SZ深圳 -->
+	<DataSource>
+		<UniqueResourceName>oracle/sz</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- DG东莞 -->
+	<DataSource>
+		<UniqueResourceName>oracle/dg</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- FS佛山 -->
+	<DataSource>
+		<UniqueResourceName>oracle/fs</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- HZ惠州 -->
+	<DataSource>
+		<UniqueResourceName>oracle/hz</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- ZQ肇庆 -->
+	<DataSource>
+		<UniqueResourceName>oracle/zq</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- ST汕头 -->
+	<DataSource>
+		<UniqueResourceName>oracle/st</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- CZ潮州 -->
+	<DataSource>
+		<UniqueResourceName>oracle/cz</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- JM江门 -->
+	<DataSource>
+		<UniqueResourceName>oracle/jm</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_jm</user>
+		<password>CE64A04B00C1B86C8ED5BF2F44EEC55B</password>
+	</DataSource>
+	<!-- MM茂名 -->
+	<DataSource>
+		<UniqueResourceName>oracle/mm</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- SG韶关 -->
+	<DataSource>
+		<UniqueResourceName>oracle/sg</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- YJ阳江 -->
+	<DataSource>
+		<UniqueResourceName>oracle/yj</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- ZJ湛江 -->
+	<DataSource>
+		<UniqueResourceName>oracle/zj</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- HY河源 -->
+	<DataSource>
+		<UniqueResourceName>oracle/hy</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- MZ梅州 -->
+	<DataSource>
+		<UniqueResourceName>oracle/mz</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- JY揭阳 -->
+	<DataSource>
+		<UniqueResourceName>oracle/jy</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+	<!-- YF云浮 -->
+	<DataSource>
+		<UniqueResourceName>oracle/yf</UniqueResourceName>
+		<XaDataSourceClassName>oracle.jdbc.xa.client.OracleXADataSource</XaDataSourceClassName>
+		<URL>jdbc:oracle:thin:@172.16.1.100:1521:yxng</URL>
+		<user>pboss_zs</user>
+		<password>CDBEB343B5860DF4</password>
+	</DataSource>
+</DataSources>

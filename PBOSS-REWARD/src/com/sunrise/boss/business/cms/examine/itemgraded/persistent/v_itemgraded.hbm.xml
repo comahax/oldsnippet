@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.examine.itemgraded.persistent.VItemgradedWayVO" table="V_CH_PW_ITEMGRADED">
+<composite-id>
+<key-property column="EXMNID" length="6" name="exmnid" type="java.lang.Integer"/>
+<key-property column="EXMNSTDID" length="6" name="exmnstdid" type="java.lang.Integer"/>
+<key-property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+</composite-id>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="ADTYPECODE" length="32" name="adtypecode" type="java.lang.String"/>
+<property column="STARLEVEL" length="32" name="starlevel" type="java.lang.String"/>
+<property column="EXMNNAME" length="50" name="exmnname" type="java.lang.String"/>
+<property column="EXMNSTDNAME" length="50"  name="exmnstdname" type="java.lang.String"/>
+<property column="ISVOTED" length="16"  name="isvoted" type="java.lang.String"/>
+<property column="EXMNSCORE" length="10" name="exmnscore" type="java.lang.Double"/>
+</class>
+<sql-query name="getItemgradedWayInfo">
+<return class="com.sunrise.boss.business.cms.examine.itemgraded.persistent.VItemgradedWayVO"/>
+	SELECT A.WAYID wayid,
+       A.WAYNAME wayname,
+       DECODE(A.ADTYPECODE,
+              0,
+              '城区',
+              1,
+              '郊县',
+              2,
+              '一类乡镇',
+              3,
+              '二类乡镇',
+              4,
+              '三类乡镇',
+              '其他')  AS adtypecode,
+       DECODE(A.STARLEVEL,
+              1,
+              '一星级',
+              2,
+              '二星级',
+              3,
+              '三星级',
+              4,
+              '四星级',
+              5,
+              '五星级',
+              6,
+              '六星级',
+              '未定星级') AS starlevel,
+       B.EXMNID exmnid,
+       B.EXMNNAME exmnname,
+       D.EXMNSTDID exmnstdid,
+       C.EXMNSTDNAME exmnstdname,
+       DECODE(D.ISVOTED, 0, '否', '是') AS isvoted,
+       D.EXMNSCORE exmnscore
+  from 
+  	   CH_PW_EXAMINE    B,
+       CH_PW_EXAMINESTD C,
+       CH_PW_EXMNITEM   D,
+  	   CH_PW_WAY        A,
+       CH_PW_OPRNWAYID  E
+ where B.EXMNID = D.EXMNID
+   AND D.EXMNSTDID = C.EXMNSTDID
+   AND B.ADTYPE LIKE '%' || A.ADTYPECODE || '%'
+   AND B.STARLEVEL LIKE '%' || A.STARLEVEL || '%'
+   and (B.CITYID =:cityid  OR B.APPLYCITYID LIKE :likecityid)
+   and B.STATE = 1
+   AND A.CITYID =:cityid
+   AND A.WAYID = E.WAYID
+   AND A.WAYTYPE = 'AG'
+   AND A.WAYSUBTYPE &lt;&gt; 'ZJTY'
+   AND E.OPERID =:operid
+ ORDER BY B.EXMNID, D.EXMNSTDID, A.ADTYPECODE, A.STARLEVEL, A.WAYID
+	
+</sql-query>
+<sql-query name="getItemgradedWayInfo2">
+<return class="com.sunrise.boss.business.cms.examine.itemgraded.persistent.VItemgradedWayVO"/>
+	SELECT A.WAYID wayid,
+       A.WAYNAME wayname,
+       DECODE(A.ADTYPECODE,
+              0,
+              '城区',
+              1,
+              '郊县',
+              2,
+              '一类乡镇',
+              3,
+              '二类乡镇',
+              4,
+              '三类乡镇',
+              '其他')  AS adtypecode,
+       DECODE(A.STARLEVEL,
+              1,
+              '一星级',
+              2,
+              '二星级',
+              3,
+              '三星级',
+              4,
+              '四星级',
+              5,
+              '五星级',
+              6,
+              '六星级',
+              '未定星级') AS starlevel,
+       B.EXMNID exmnid,
+       B.EXMNNAME exmnname,
+       D.EXMNSTDID exmnstdid,
+       C.EXMNSTDNAME exmnstdname,
+       DECODE(D.ISVOTED, 0, '否', '是') AS isvoted,
+       D.EXMNSCORE exmnscore
+  from 
+  	   CH_PW_EXAMINE    B,
+       CH_PW_EXAMINESTD C,
+       CH_PW_EXMNITEM   D,
+  	   CH_PW_WAY        A
+ where B.EXMNID = D.EXMNID
+   AND D.EXMNSTDID = C.EXMNSTDID
+   AND B.ADTYPE LIKE '%' || A.ADTYPECODE || '%'
+   AND B.STARLEVEL LIKE '%' || A.STARLEVEL || '%'
+   and (B.CITYID =:cityid  OR B.APPLYCITYID LIKE :likecityid)
+   and B.STATE = 1
+   AND A.CITYID =:cityid
+   AND A.WAYTYPE = 'AG'
+   AND A.WAYSUBTYPE &lt;&gt; 'ZJTY'
+ ORDER BY B.EXMNID, D.EXMNSTDID, A.ADTYPECODE, A.STARLEVEL, A.WAYID
+	
+</sql-query>
+</hibernate-mapping>

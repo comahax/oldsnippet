@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.plandisccode.persistent.PlandisccodeVO" table="PC_PS_PLANDISCCODE">
+	<composite-id>
+		<key-property column="YXPLANID" length="14" name="yxplanid" type="java.lang.Long"/>
+		<key-property column="DISCCODE" length="6" name="disccode" type="java.lang.String"/>
+	</composite-id>
+	<property column="AFFIXINFO" length="500" name="affixinfo" type="java.lang.String"/>
+	<property column="AFFIXTYPE" length="32" name="affixtype" type="java.lang.String"/>
+	<property column="REMARK" length="500" name="remark" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

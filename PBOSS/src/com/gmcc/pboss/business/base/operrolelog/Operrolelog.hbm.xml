@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.operrolelog.OperrolelogVO" table="SA_SR_OPERROLELOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">SA_SR_OPERROLELOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="OPERID" length="16" name="operid" type="java.lang.String"/>
+<property column="ROLEID" length="16" name="roleid" type="java.lang.String"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+</class>
+<sql-query name="system.log.roleLimitedQuery">
+select *
+  from sa_sr_operrolelog
+ 	where operid in (select operid from sa_so_operator where region = :region)
+ 	and roleid in (select roleid from sa_sr_role where isback = '0')
+</sql-query>
+<sql-query name="system.log.withoutRoleLimitedQuery">
+select *
+  from sa_sr_operrolelog
+ 	where operid in (select operid from sa_so_operator where region = :region)
+</sql-query>
+</hibernate-mapping>

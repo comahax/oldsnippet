@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.paymentlog.PaymentlogVO" table="CH_CW_PAYMENTLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_CW_PAYMENTLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="OPTYPE" length="16" name="optype" type="java.lang.String"/>
+<property column="OPMONTH" length="6" name="opmonth" type="java.lang.String"/>
+<property column="PAYMONTH" length="6" name="paymonth" type="java.lang.String"/>
+<property column="LTYPE" length="128" name="ltype" type="java.lang.String"/>
+<property column="STYPE" length="128" name="stype" type="java.lang.String"/>
+<property column="PAYEE" length="128" name="payee" type="java.lang.String"/>
+<property column="PAYSUM" length="18" name="paysum" type="java.lang.Double"/>
+<property column="REWARDSTD" length="4000" name="rewardstd" type="java.lang.String"/>
+<property column="RULE" length="4000" name="rule" type="java.lang.String"/>
+<property column="DEDUCTION" length="4000" name="deduction" type="java.lang.String"/>
+<property column="SEQ" length="14" name="seq" type="java.lang.Long"/>
+<property column="BATCH" length="32" name="batch" type="java.lang.String"/>
+<property column="NOTE" length="4000" name="note" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="BANK" length="256" name="bank" type="java.lang.String"/>
+<property column="DEPOSITBANK" length="256" name="depositbank" type="java.lang.String"/>
+<property column="ACCOUNT" length="64" name="account" type="java.lang.String"/>
+<property column="BILLNUMBER" length="80" name="billnumber" type="java.lang.String"/>
+<property column="COUNTYID" length="32" name="countyid" type="java.lang.String"/>
+<property column="PUBPRI" length="4" name="pubpri" type="java.lang.String"/>
+<property column="RATE" length="7" name="rate" type="java.lang.Float"/>
+<property column="UPOPRCODE" length="15" name="upoprcode" type="java.lang.String"/>
+<property column="CHECKEDFLAG" length="32" name="checkedflag" type="java.lang.String"/>
+<property column="SENDSTATE" length="4" name="sendstate" type="java.lang.String"/>
+<property column="BKACTNAME" length="256" name="bkactname" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

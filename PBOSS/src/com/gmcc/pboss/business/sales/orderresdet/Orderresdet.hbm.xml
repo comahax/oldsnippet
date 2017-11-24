@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderresdet.OrderresdetVO" table="FX_SW_ORDERRESDET">
+<id column="DETID" length="14" name="detid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_ORDERRESDET_SEQ</param>
+</generator>
+</id>
+<property column="ORDERID" length="18" name="orderid" not-null="true" type="java.lang.String"/>
+<property column="ORDERCOMTYPE" length="16" name="ordercomtype" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="RESTYPE" length="32" name="restype" type="java.lang.String"/>
+<property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+<property column="BATCHNO" length="30" name="batchno" type="java.lang.String"/>
+<property column="BOXNUM" length="100" name="boxnum" type="java.lang.String"/>
+<property column="COMRESID" length="20" name="comresid" type="java.lang.String"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/><!-- 分销1.23版本新加 -->
+<property column="COMPRICE" length="18" name="comprice" type="java.lang.Double"/>
+<property column="ACTPRICE" length="18" name="actprice" type="java.lang.Double"/>
+<property column="EMPTYNO" length="21" name="emptyno" type="java.lang.String"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.sales.orderresdet.doQueryOrderresdetGroupView">
+	select t.comcategory,t.ordercomtype,t.batchno,t.boxnum from FX_SW_ORDERRESDET t 
+	 where t.orderid=:orderid group by t.comcategory,t.batchno,t.boxnum,t.ordercomtype 
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.sales.orderresdet.DAYANDMONTHORDER_STATE_NOTBY_BRAND">
+	select sum(b.orderamt) num 
+			 from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, (select distinct COMCATEGORY, RESTYPE, BRAND from IM_PR_COMCATEGORYRELA) c 
+			where a.orderid = b.orderid and b.comcategory = c.comcategory 
+			and a.wayid = :WAYID and a.createtime &gt;= to_date(to_char(sysdate, 'yyyy-MM')||'01', 'yyyy-MM-dd')
+			and a.orderstate &lt;&gt; 'CANCEL' and b.ordercomtype = 'CUSTORDER' and c.restype = 'COMRESSMP'
+</sql-query>
+
+
+
+<sql-query name="com.gmcc.pboss.business.sales.orderresdet.DAYANDMONTHORDER_STATE_BY_BRAND">
+	select sum(b.orderamt) num 
+			from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b,  (select distinct COMCATEGORY, RESTYPE, BRAND from IM_PR_COMCATEGORYRELA) c
+			 where a.orderid = b.orderid and b.comcategory = c.comcategory and a.wayid = :WAYID 
+			and a.createtime &gt;= to_date(to_char(sysdate, 'yyyy-MM')||'01', 'yyyy-MM-dd') 
+			and a.orderstate &lt;&gt; 'CANCEL' and b.ordercomtype = 'CUSTORDER' and c.restype = 'COMRESSMP' and c.brand = :BRAND
+</sql-query>
+
+
+<sql-query name="com.gmcc.pboss.business.sales.orderresdet.STORAGE_COUNT_NOTBY_BRAND">
+	select count(*) num from FX_SW_PARTNERRES a 
+			where a.wayid = :WAYID and a.restype = 'COMRESSMP' and a.isactive = 0
+</sql-query>
+
+
+<sql-query name="com.gmcc.pboss.business.sales.orderresdet.STORAGE_STATE_NOTBY_BRAND">
+	select sum(b.orderamt) num  from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, 
+			 (select distinct COMCATEGORY, RESTYPE, BRAND from IM_PR_COMCATEGORYRELA) c  
+			where a.orderid = b.orderid  and b.comcategory = c.comcategory  and a.wayid = :WAYID  
+			and a.orderstate not in('CANCEL', 'FINISHED')  and b.ordercomtype = 'CUSTORDER'  and c.restype = 'COMRESSMP' 
+</sql-query>
+
+
+
+<sql-query name="com.gmcc.pboss.business.sales.orderresdet.STORAGE_COUNT_BY_BRAND">
+	select count(*) num from FX_SW_PARTNERRES a
+			where a.wayid = :WAYID and a.restype = 'COMRESSMP' and a.isactive = 0 and a.brand = :BRAND 
+</sql-query>
+
+
+<sql-query name="com.gmcc.pboss.business.sales.orderresdet.STORAGE_STATE_BY_BRAND">
+	select sum(b.orderamt) num from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b,  
+			(select distinct COMCATEGORY, RESTYPE, BRAND from IM_PR_COMCATEGORYRELA) c 
+			where a.orderid = b.orderid and b.comcategory = c.comcategory and a.wayid = :WAYID 
+			and a.orderstate not in('CANCEL', 'FINISHED') and b.ordercomtype = 'CUSTORDER' and c.restype = 'COMRESSMP' and c.brand = :BRAND
+</sql-query>
+<sql-query name="sales.orderresdet.groupby">
+	SELECT COMCATEGORY,COUNT(COMCATEGORY) AS ORDERID FROM  FX_SW_ORDERRESDET  WHERE ORDERID=:orderid  GROUP BY COMCATEGORY
+</sql-query>
+
+
+<!--limin add 云浮发票打印 -->
+<sql-query name="sales.orderresdet.groupbyordercomtype">
+	SELECT restype,SUM(ACTPRICE) AS actprice FROM FX_SW_ORDERRESDET T WHERE ORDERID=:orderid GROUP BY RESTYPE
+</sql-query>
+
+<!--limin add 云浮发票打印 -->
+<sql-query name="sales.orderresdet.groupbyordercomtypedetail">
+		SELECT SW.statistic,SW.actprice,PR.comcategory,SW.comid FROM IM_PR_COMCATEGORYRELA PR,(
+	SELECT COMID,COUNT(1) AS statistic,SUM(ACTPRICE) AS actprice FROM FX_SW_ORDERRESDET WHERE ORDERID=:orderid
+	AND RESTYPE= :restype
+	GROUP BY COMID) SW WHERE SW.COMID = PR.COMID
+</sql-query>
+
+<!--limin add 云浮发票打印 -->
+<sql-query name="sales.orderresdet.groupbyordercomtypeKBSIMdetail">
+		SELECT COUNT(1) AS statistic,SUM(ACTPRICE) AS actprice FROM FX_SW_ORDERRESDET  WHERE ORDERID=:orderid AND RESTYPE=:restype
+</sql-query>
+
+<!--limin add 云浮业务单打印 -->
+<sql-query name="sales.orderresdet.groupbyordercomtypeBusiness">
+		SELECT im.comprice FROM FX_SW_ORDERRESDET fx,IM_PR_COM im  WHERE im.comid = fx.comid and fx.ORDERID= :orderid and fx.comcategory = :comcategory
+</sql-query>
+
+<!--批量导出订单明细 -->
+<sql-query name="sales.orderresdet.resdetbatchexport">
+	select t.orderid, o.wayid, t.detid, t.comid, t.comcategory, t.batchno, t.boxnum, t.comresid, t.ordercomtype
+	from fx_sw_orderresdet t, fx_sw_order o where t.orderid = o.orderid
+</sql-query>
+</hibernate-mapping>

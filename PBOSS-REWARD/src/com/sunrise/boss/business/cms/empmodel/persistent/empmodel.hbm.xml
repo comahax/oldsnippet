@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.empmodel.persistent.EmpmodelVO" table="CH_PW_EMPMODEL">
+<id column="EMPMODELID" name="empmodelid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_PW_EMPMODEL_SEQ</param>
+	</generator>
+</id>
+<property column="EMPLOYEEID" length="18" name="employeeid" type="java.lang.String"/>
+<property column="MODEL" length="12" name="model" type="java.lang.String"/>
+<property column="STATE" length="3" name="state" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.yxplansplitscale.persistent.YxPlanSplitScaleVO" table="PC_PS_YXPLANSCALE">
+<composite-id>
+<key-property column="YXPLANID" length="14" name="yxplanid" type="java.lang.Long"/>
+<key-property column="YXPLANITEMID" length="32" name="yxplanitemid" type="java.lang.String"/>
+<key-property column="YXPLANKINDID" length="10" name="yxplankindid" type="java.lang.Long"/>
+<key-property column="YXPLANTYPEID" length="10" name="yxplantypeid" type="java.lang.Long"/>
+</composite-id>
+<property column="SCALE" length="7" name="scale" not-null="false" type="java.lang.Float"/>
+</class>
+</hibernate-mapping>

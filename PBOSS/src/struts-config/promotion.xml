@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="promotion" namespace="/promotion" extends="pboss-default">
+	<!-- 元素实例 -->
+		<action name="elmtinst_*" class="com.gmcc.pboss.web.promotion.elmtinst.ElmtinstAction" method="{1}">
+			<result name="list">/promotion/elmtinst/list.jsp</result>
+            <result name="content">/promotion/elmtinst/content.jsp</result>
+            <result name="elmtinstSelect">/promotion/ruleitem/elmtinstSelect.jsp</result>
+        </action>
+        <action name="elmtinstlog_*" class="com.gmcc.pboss.web.promotion.elmtinstlog.ElmtinstlogAction" method="{1}">
+			<result name="list">/promotion/elmtinstlog/list.jsp</result>
+            <result name="content">/promotion/elmtinstlog/content.jsp</result>
+        </action>
+    <!-- 元素模版 -->    
+        <action name="elmttmpl_*" class="com.gmcc.pboss.web.promotion.elmttmpl.ElmttmplAction" method="{1}">
+			<result name="list">/promotion/elmttmpl/list.jsp</result>
+            <result name="content">/promotion/elmttmpl/content.jsp</result>
+        </action>
+         <action name="elmttmpllog_*" class="com.gmcc.pboss.web.promotion.elmttmpllog.ElmttmpllogAction" method="{1}">
+			<result name="list">/promotion/elmttmpllog/list.jsp</result>
+            <result name="content">/promotion/elmttmpllog/content.jsp</result>
+        </action>
+    <!-- 酬金界面 -->
+	 	<action name="rewardstd_*" class="com.gmcc.pboss.web.promotion.rewardstd.RewardstdAction" method="{1}">
+			<result name="list">/promotion/rewardstd/list.jsp</result>
+            <result name="content">/promotion/rewardstd/content.jsp</result>
+        </action>
+        <action name="rewardstdlog_*" class="com.gmcc.pboss.web.promotion.rewardstdlog.RewardstdlogAction" method="{1}">
+			<result name="list">/promotion/rewardstdlog/list.jsp</result>
+            <result name="content">/promotion/rewardstdlog/content.jsp</result>
+        </action>
+	 <!-- 订货量 -->
+		<action name="pquantity_*" class="com.gmcc.pboss.web.promotion.pquantity.PquantityAction" method="{1}">
+			<result name="list">/promotion/pquantity/list.jsp</result>
+            <result name="content">/promotion/pquantity/content.jsp</result>
+        </action>
+        <action name="pquantitylog_*" class="com.gmcc.pboss.web.promotion.pquantitylog.PquantitylogAction" method="{1}">
+			<result name="list">/promotion/pquantitylog/list.jsp</result>
+            <result name="content">/promotion/pquantitylog/content.jsp</result>
+        </action>
+	 <!-- 搭售 -->
+	 	<action name="tieinsale_*" class="com.gmcc.pboss.web.promotion.tieinsale.TieinsaleAction" method="{1}">
+			<result name="list">/promotion/tieinsale/list.jsp</result>
+            <result name="content">/promotion/tieinsale/content.jsp</result>
+        </action>
+        <action name="tieinsalelog_*" class="com.gmcc.pboss.web.promotion.tieinsalelog.TieinsalelogAction" method="{1}">
+			<result name="list">/promotion/tieinsalelog/list.jsp</result>
+            <result name="content">/promotion/tieinsalelog/content.jsp</result>
+        </action>
+	 <!-- 赠送(售前) -->
+	 	<action name="presentingb_*" class="com.gmcc.pboss.web.promotion.presentingb.PresentingbAction" method="{1}">
+			<result name="list">/promotion/presentingb/list.jsp</result>
+            <result name="content">/promotion/presentingb/content.jsp</result>
+        </action>
+        <action name="presentingblog_*" class="com.gmcc.pboss.web.promotion.presentingblog.PresentingblogAction" method="{1}">
+			<result name="list">/promotion/presentingblog/list.jsp</result>
+            <result name="content">/promotion/presentingblog/content.jsp</result>
+        </action>
+	 <!-- 赠送(售后) -->
+	 	<action name="presentinga_*" class="com.gmcc.pboss.web.promotion.presentinga.PresentingaAction" method="{1}">
+			<result name="list">/promotion/presentinga/list.jsp</result>
+            <result name="content">/promotion/presentinga/content.jsp</result>
+        </action>
+        <action name="presentingalog_*" class="com.gmcc.pboss.web.promotion.presentingalog.PresentingalogAction" method="{1}">
+			<result name="list">/promotion/presentingalog/list.jsp</result>
+            <result name="content">/promotion/presentingalog/content.jsp</result>
+        </action>
+    <!-- 促销方案 -->
+         <action name="spproposal_*" class="com.gmcc.pboss.web.promotion.spproposal.SpproposalAction" method="{1}">
+			<result name="list">/promotion/spproposal/list.jsp</result>
+            <result name="content">/promotion/spproposal/content.jsp</result>
+        </action>
+        <action name="spproposallog_*" class="com.gmcc.pboss.web.promotion.spproposallog.SpproposallogAction" method="{1}">
+			<result name="list">/promotion/spproposallog/list.jsp</result>
+            <result name="content">/promotion/spproposallog/content.jsp</result>
+        </action>
+    <!-- 方案与商品种类 -->  
+        <action name="ppzlncom_*" class="com.gmcc.pboss.web.promotion.ppzlncom.PpzlncomAction" method="{1}">
+			<result name="list">/promotion/ppzlncom/list.jsp</result>
+            <result name="content">/promotion/ppzlncom/content.jsp</result>
+        </action>
+        <action name="ppzlncomlog_*" class="com.gmcc.pboss.web.promotion.ppzlncomlog.PpzlncomlogAction" method="{1}">
+			<result name="list">/promotion/ppzlncomlog/list.jsp</result>
+            <result name="content">/promotion/ppzlncomlog/content.jsp</result>
+        </action>
+        <action name="ppzlncom_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/promotion/ppzlncom/batch.jsp</result>
+            <result name ="error">/promotion/ppzlncom/batch.jsp</result>
+       	</action>
+        <action name="ppzlncom_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/promotion/ppzlncom/batch.jsp</result>
+            <result name ="error">/promotion/ppzlncom/batch.jsp</result>
+        </action>
+    <!-- 方案与渠道 -->    
+    	<action name="ppzlnptnr_*" class="com.gmcc.pboss.web.promotion.ppzlnptnr.PpzlnptnrAction" method="{1}">
+			<result name="list">/promotion/ppzlnptnr/list.jsp</result>
+            <result name="content">/promotion/ppzlnptnr/content.jsp</result>
+        </action>
+        <action name="ppzlnptnrlog_*" class="com.gmcc.pboss.web.promotion.ppzlnptnrlog.PpzlnptnrlogAction" method="{1}">
+			<result name="list">/promotion/ppzlnptnrlog/list.jsp</result>
+            <result name="content">/promotion/ppzlnptnrlog/content.jsp</result>
+        </action>
+        <action name="ppzlnptnr_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/promotion/ppzlnptnr/batch.jsp</result>
+            <result name ="error">/promotion/ppzlnptnr/batch.jsp</result>
+       	</action>
+        <action name="ppzlnptnr_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/promotion/ppzlnptnr/batch.jsp</result>
+            <result name ="error">/promotion/ppzlnptnr/batch.jsp</result>
+        </action>
+            
+    <!-- 方案与资源 -->   
+        <action name="ppzlnres_*" class="com.gmcc.pboss.web.promotion.ppzlnres.PpzlnresAction" method="{1}">
+			<result name="list">/promotion/ppzlnres/list.jsp</result>
+            <result name="content">/promotion/ppzlnres/content.jsp</result>
+        </action>
+        <action name="ppzlnreslog_*" class="com.gmcc.pboss.web.promotion.ppzlnreslog.PpzlnreslogAction" method="{1}">
+			<result name="list">/promotion/ppzlnreslog/list.jsp</result>
+            <result name="content">/promotion/ppzlnreslog/content.jsp</result>
+        </action>
+        <action name="ppzlnres_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/promotion/ppzlnres/batch.jsp</result>
+            <result name ="error">/promotion/ppzlnres/batch.jsp</result>
+       	</action>
+        <action name="ppzlnres_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/promotion/ppzlnres/batch.jsp</result>
+            <result name ="error">/promotion/ppzlnres/batch.jsp</result>
+        </action>
+        
+	<!-- 方案与规则 -->
+	 	<action name="ppzlnrule_*" class="com.gmcc.pboss.web.promotion.ppzlnrule.PpzlnruleAction" method="{1}">
+			<result name="list">/promotion/ppzlnrule/list.jsp</result>
+            <result name="content">/promotion/ppzlnrule/content.jsp</result>
+        </action>
+        <action name="ppzlnrulelog_*" class="com.gmcc.pboss.web.promotion.ppzlnrulelog.PpzlnrulelogAction" method="{1}">
+			<result name="list">/promotion/ppzlnrulelog/list.jsp</result>
+            <result name="content">/promotion/ppzlnrulelog/content.jsp</result>
+        </action>
+    <!-- 规则 -->    
+        <action name="rule_*" class="com.gmcc.pboss.web.promotion.rule.RuleAction" method="{1}">
+			<result name="list">/promotion/rule/list.jsp</result>
+            <result name="content">/promotion/rule/content.jsp</result>
+        </action>
+         <action name="rulelog_*" class="com.gmcc.pboss.web.promotion.rulelog.RulelogAction" method="{1}">
+			<result name="list">/promotion/rulelog/list.jsp</result>
+            <result name="content">/promotion/rulelog/content.jsp</result>
+        </action>
+    <!-- 规则明细 -->    
+        <action name="ruleitem_*" class="com.gmcc.pboss.web.promotion.ruleitem.RuleitemAction" method="{1}">
+			<result name="list">/promotion/ruleitem/list.jsp</result>
+            <result name="content">/promotion/ruleitem/content.jsp</result>
+        </action>
+         <action name="ruleitemlog_*" class="com.gmcc.pboss.web.promotion.ruleitemlog.RuleitemlogAction" method="{1}">
+			<result name="list">/promotion/ruleitemlog/list.jsp</result>
+            <result name="content">/promotion/ruleitemlog/content.jsp</result>
+        </action>
+        
+          <action name="rewarddetail_*" class="com.gmcc.pboss.web.promotion.rewarddetail.RewarddetailAction" method="{1}">
+			<result name="list">/promotion/rewarddetail/list.jsp</result>
+            <result name="content">/promotion/rewarddetail/content.jsp</result>
+        </action>
+	</package>
+</struts>

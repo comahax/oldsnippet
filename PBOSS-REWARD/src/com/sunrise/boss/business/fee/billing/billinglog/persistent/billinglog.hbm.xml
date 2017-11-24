@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.billing.billinglog.persistent.BillingLogVO" table="IB_WL_BILLINGLOG" >
+        <id name="logid" type="long">
+            <column name="LOGID" precision="14" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="validbillcyc" type="long">
+            <column name="VALIDBILLCYC" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="billingcon" type="string">
+            <column name="BILLINGCON" length="64" not-null="true" />
+        </property>
+        <property name="starttime" type="timestamp">
+            <column name="STARTTIME" length="7" />
+        </property>
+        <property name="endtime" type="timestamp">
+            <column name="ENDTIME" length="7" />
+        </property>
+        <property name="billingphase" type="string">
+            <column name="BILLINGPHASE" length="20" not-null="true" />
+        </property>
+        <property name="subphase" type="string">
+            <column name="SUBPHASE" length="20" />
+        </property>
+        <property name="processcnt" type="long">
+            <column name="PROCESSCNT" precision="14" scale="0" />
+        </property>
+        <property name="processamt" type="double">
+            <column name="PROCESSAMT" precision="16" />
+        </property>
+        <property name="opercode" type="string">
+            <column name="OPERCODE" length="16" />
+        </property>
+        <property name="failreason" type="string">
+            <column name="FAILREASON" length="64" />
+        </property>
+        <property name="status" type="long">
+            <column name="STATUS" precision="3" scale="0" />
+        </property>
+        <property name="batchnum" type="string">
+            <column name="BATCHNUM" length="8" />
+        </property>
+        <property name="citycomp" type="string">
+            <column name="CITYCOMP" length="5" />
+        </property>
+    </class>
+</hibernate-mapping>

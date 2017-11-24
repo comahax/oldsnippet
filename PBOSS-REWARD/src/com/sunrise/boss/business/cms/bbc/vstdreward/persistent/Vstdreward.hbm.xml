@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.vstdreward.persistent.VstdrewardVO" table="CH_BBC_VSTDREWARD">
+<composite-id>
+<key-property column="REWARDID" length="40" name="rewardid" type="java.lang.Long"/>
+<key-property column="REGION" length="10" name="region" type="java.lang.String"/>
+<key-property column="OSSRC" length="2" name="ossrc" type="java.lang.Short"/>
+</composite-id>
+<property column="REWARDNAME" length="40" name="rewardname" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="INTVMONTH" length="5" name="intvmonth" type="java.lang.Integer"/>
+<property column="REWARDSTD" length="14" name="rewardstd" type="java.lang.Double"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="STOPDATE" length="7" name="stopdate" type="java.util.Date"/>
+<property column="ACCTYPE" length="3" name="acctype" type="java.lang.Short"/>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+<property column="REWARDPROJ" length="3" name="rewardproj" type="java.lang.Short" />
+</class>
+<sql-query name="queryRewardTables">
+	<return class="com.sunrise.boss.business.cms.bbc.vstdreward.persistent.VstdrewardVO"></return>
+	select A.REWARDID,
+       A.REWARDNAME,
+       B.OPNID,
+       B.REGION,
+       B.OSSRC,
+       A.REWARDTYPE,
+       B.INTVMONTH,
+       B.REWARDSTD,
+       A.STARTDATE,
+       A.STOPDATE,
+       A.MEMO,
+       B.RULEID,
+       B.ACCTYPE,
+       A.REWARDPROJ
+  from CH_BBC_STDREWARD A, CH_BBC_STDREWARDBJ B
+ WHERE A.REWARDID = B.REWARDID
+ AND (REGION = '999' OR REGION =:REGION)
+ ORDER BY B.OPNID, B.REGION, B.OSSRC, A.STARTDATE, B.INTVMONTH
+</sql-query>
+<sql-query name="queryRewardTablesDesc">
+	<return class="com.sunrise.boss.business.cms.bbc.vstdreward.persistent.VstdrewardVO"></return>
+	select A.REWARDID,
+       A.REWARDNAME,
+       B.OPNID,
+       B.REGION,
+       B.OSSRC,
+       A.REWARDTYPE,
+       B.INTVMONTH,
+       B.REWARDSTD,
+       A.STARTDATE,
+       A.STOPDATE,
+       A.MEMO,
+       B.RULEID,
+       B.ACCTYPE,
+       A.REWARDPROJ
+  from CH_BBC_STDREWARD A, CH_BBC_STDREWARDBJ B
+ WHERE A.REWARDID = B.REWARDID
+ AND (REGION = '999' OR REGION =:REGION)
+ ORDER BY B.OPNID, B.REGION desc, B.OSSRC, A.STARTDATE, B.INTVMONTH
+</sql-query>
+<sql-query name="queryRewardTables2">
+	<return class="com.sunrise.boss.business.cms.bbc.vstdreward.persistent.VstdrewardVO"></return>
+	select A.REWARDID,
+       A.REWARDNAME,
+       B.OPNID,
+       B.REGION,
+       B.OSSRC,
+       A.REWARDTYPE,
+       B.INTVMONTH,
+       B.REWARDSTD,
+       A.STARTDATE,
+       A.STOPDATE,
+       A.MEMO,
+       B.RULEID,
+       B.ACCTYPE,
+       A.REWARDPROJ
+  from CH_BBC_STDREWARD A, CH_BBC_STDREWARDBJ B
+ WHERE A.REWARDID = B.REWARDID
+ AND REGION =:REGION
+ ORDER BY B.OPNID, B.REGION, B.OSSRC, A.STARTDATE, B.INTVMONTH
+</sql-query>
+</hibernate-mapping>

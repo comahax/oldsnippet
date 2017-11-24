@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+    <form-beans>
+    	<form-bean name="/common/managelog/manageLogForm" type="com.sunrise.boss.ui.commons.managelog.ManageLogForm"/>
+        <form-bean name="/example/example1/Example1Form" type="com.sunrise.boss.ui.example.example1.Example1Form"/>
+        <form-bean name="/example/batchtest/BatchtestForm" type="com.sunrise.boss.ui.example.batchtest.BatchtestForm" />
+        <form-bean name="/commons/SysparamForm" type="com.sunrise.boss.ui.commons.sysparam.SysparamForm"/>        
+         <form-bean name="/commons/subscriberForm" type="com.sunrise.boss.ui.commons.subscriber.SubscriberForm"/>
+         <form-bean name="/commons/zoom/ZoomForm" type="com.sunrise.boss.ui.commons.zoom.ZoomForm" />
+         <form-bean name="/commons/myzoom/MyZoomForm" type="com.sunrise.boss.ui.commons.myzoom.MyZoomForm" />
+         <form-bean name="/commons/morecheck/moreCheckForm" type="com.sunrise.boss.ui.commons.morecheck.MoreCheckForm" />
+         <form-bean name="/commons/batchlog/BatchlogForm" type="com.sunrise.boss.ui.commons.batchlog.BatchlogForm" />
+         
+         <form-bean name="/admin/logincase/LogincaseForm" type="com.sunrise.boss.ui.admin.logincase.LogincaseForm" />	
+         <form-bean name="/commons/combineinput/CombineinputForm" type="com.sunrise.boss.ui.commons.combineinput.CombineinputForm" />
+         <form-bean name="/commons/combineinput/RewardOprForm" type="com.sunrise.boss.ui.commons.combineinput.CombineinputForm" />
+         <form-bean name="/commons/multiselect/MultiselectForm" type="com.sunrise.boss.ui.commons.multiselect.MultiselectForm" />
+    </form-beans>
+    
+    <global-exceptions>
+    <exception handler="com.sunrise.boss.ui.commons.handler.StrutsExceptionHandler" key="errors.generalerror" path="/errorpage/struts_error.jsp" type="java.lang.Exception" />
+    </global-exceptions>
+    <global-forwards>
+      <forward name="fileNotFound" path="/errorpage/file_not_found.htm" />
+      <forward name="permissionDeny" path="/errorpage/permission_deny.htm" />
+      <forward name="requireLogin" path="/errorpage/require_login.htm" />
+      <forward name="error" path="/errorpage/errorpage.jsp"/>
+    </global-forwards>
+    
+    <action-mappings>
+    	<!-- example(list & content) -->
+        <action name="/example/example1/Example1Form" path="/example/example1"
+                scope="request" type="com.sunrise.boss.ui.example.example1.Example1Action">
+            <forward name="list" path="/example/example1/list.jsp"/>
+            <forward name="content" path="/example/example1/content.jsp"/>
+        </action>
+        <!-- example(测试文件上传) -->
+	    <action name="/example/batchtest/BatchtestForm" path="/example/batchtest/upload" scope="request" type="com.sunrise.boss.ui.commons.batch.upload.UploadFileAction">
+	      <forward name="success" path="/example/batchtest/batchtest.jsp"/>
+	      <forward name="error"   path="/example/batchtest/batchtest.jsp"/>
+	    </action>
+	    <action name="/example/batchtest/BatchtestForm" path="/example/batchtest/process" scope="request" type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+	      <forward name="success" path="/example/batchtest/batchtest.jsp"/>
+	      <forward name="error"   path="/example/batchtest/batchtest.jsp"/>
+	    </action>
+		<!-- 系统参数管理 -->
+        <action name="/commons/SysparamForm" path="/commons/sysparam"
+                scope="request" type="com.sunrise.boss.ui.commons.sysparam.SysparamAction">
+            <forward name="list"    path="/commons/sysparam/list.jsp"/>
+            <forward name="content" path="/commons/sysparam/content.jsp"/>
+        </action>	    
+        
+        <action name="/admin/logincase/LogincaseForm"   path="/admin/logincase" scope="request" type="com.sunrise.boss.ui.admin.logincase.LogincaseAction">
+        	<forward name="list" path="/admin/logincase/list.jsp" />
+        	<forward name="content" path="/admin/logincase/list.jsp" />
+      	</action>
+      	
+	    <!-- example(login) -->	
+      	<action input="/login.jsp" path="/login" scope="request" type="com.sunrise.boss.ui.example.login.LoginAction">
+        	<forward name="success" path="/index.jsp" />
+        	<forward name="error" path="/login.jsp" />
+      	</action>
+      	<!-- 管理日志 -->
+ 		<action name="/common/managelog/manageLogForm" path="/common/managelog"
+                scope="request" type="com.sunrise.boss.ui.commons.managelog.ManageLogAction">
+            <forward name="list" path="/commons/managelog/list.jsp"/>
+        </action>
+      <!-- 号码选择用户选择框 -->	
+      	<action  name="/commons/subscriberForm" path="/commons/subscriber" scope="request" 
+				 type="com.sunrise.boss.ui.commons.subscriber.SubscriberAction">
+        	<forward name="subscriber" path="/commons/subscriber.jsp" />
+        	<forward name="list" path="/commons/changednum.jsp" />
+      	</action>
+      	
+      	<action name="/commons/zoom/ZoomForm" path="/zoom" scope="request" type="com.sunrise.boss.ui.commons.zoom.ZoomAction">
+        	<forward name="list" path="/commons/ShowZoom.jsp" />
+      	</action>
+      	<action name="/commons/myzoom/MyZoomForm" path="/myzoom" scope="request" type="com.sunrise.boss.ui.commons.myzoom.MyZoomAction">
+        	<forward name="list" path="/commons/ShowMyZoom.jsp" />
+      	</action>
+	
+		<!-- 多选弹出框 -->	
+		<action name="/commons/morecheck/moreCheckForm" path="/commons/morecheck" scope="request" type="com.sunrise.boss.ui.commons.morecheck.MoreCheckAction">
+        	<forward name="morecheck" path="/commons/morecheck.jsp" />
+      	</action>
+      	
+      	<action name="/commons/batchlog/BatchlogForm" path="/commons/batchlog" scope="request" type="com.sunrise.boss.ui.commons.batchlog.BatchlogAction">
+			<forward name="list" path="/commons/batchlog/list.jsp" />
+            <forward name="down" path="/commons/batch/download.jsp" />
+		</action>
+		<action name="/cms/rewardpunish/RewardpunishlogForm" path="/cms/rewardpunishlog" scope="request" type="com.sunrise.boss.ui.commons.rewardpunishlog.RewardpunishlogAction">
+			<forward name="list" path="/cms/rewardpunishlog/list.jsp" />
+		</action>
+		
+		<!-- combineinput -->
+	    <action name="/commons/combineinput/CombineinputForm" path="/commons/combineinput" scope="request" type="com.sunrise.boss.ui.commons.combineinput.CombineinputAction">
+	      <forward name="success" path="/commons/combineinput/select.jsp"/>
+	      <forward name="error"   path="/commons/combineinput/select.jsp"/>
+	      <forward name="select2" path="/commons/combineinput/select2.jsp"/>
+	      <forward name="select"   path="/commons/combineinput/select.jsp"/>
+	    </action>
+	    <action name="/commons/combineinput/RewardOprForm" path="/commons/rewardopr" scope="request" type="com.sunrise.boss.ui.commons.combineinput.RewardOprAction">
+	      <forward name="success" path="/commons/combineinput/select.jsp"/>
+	      <forward name="error"   path="/commons/combineinput/select.jsp"/>
+	      <forward name="select2" path="/commons/combineinput/select2.jsp"/>
+	      <forward name="select"   path="/commons/combineinput/select.jsp"/>
+	    </action>
+		<!-- multiselect -->
+	    <action name="/commons/multiselect/MultiselectForm" path="/commons/multiselect" scope="request" type="com.sunrise.boss.ui.commons.multiselect.MultiselectAction">
+	      <forward name="success" path="/commons/multiselect/select.jsp"/>
+	      <forward name="error"   path="/commons/multiselect/select.jsp"/>
+	    </action>
+    </action-mappings>
+
+    <message-resources parameter="com.sunrise.boss.resource.i18n.common.public" key="public"/>
+    <message-resources parameter="com.sunrise.boss.resource.i18n.common.main" key="main" null="false"/>
+    <message-resources parameter="com.sunrise.boss.resource.i18n.common.Upload" key="upload" null="false"/>
+    <message-resources parameter="com.sunrise.boss.resource.i18n.example.Example1" key="example1" null="false"/>
+    <message-resources parameter="com.sunrise.boss.resource.i18n.example.Batchtest" key="batchtest" null="false"/>
+    <message-resources parameter="com.sunrise.boss.resource.i18n.common.sysparam.Sysparam" key="sysparam" null="false"/>    
+    <message-resources parameter="com.sunrise.boss.resource.i18n.common.Subscriber" key="subscriber" null="false"/>    
+    <message-resources parameter="com.sunrise.boss.resource.i18n.common.Batchlog" key="batchlog" null="false" />
+    <message-resources parameter="com.sunrise.boss.resource.i18n.admin.Logincase" key="logincase" null="false" />
+    <message-resources parameter="com.sunrise.boss.resource.i18n.common.ManageLog" key="managelog" null="false" />
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/WEB-INF/validation/validator-rules.xml,/WEB-INF/validation/validation.xml"/>
+    </plug-in>
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/tiles-config/tiles-defs.xml"/>
+    </plug-in>
+
+</struts-config>

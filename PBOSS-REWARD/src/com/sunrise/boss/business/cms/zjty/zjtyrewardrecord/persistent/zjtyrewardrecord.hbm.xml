@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtyrewardrecord.persistent.ZjtyRewardrecordVO" table="CH_ZJTY_REWARDRECORD">
+<id column="REWARDLISTID" name="rewardlistid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="OPERSEQ" length="14" name="operseq" not-null="true" type="java.lang.Long"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<property column="WAYOPRCODE" length="18" name="wayoprcode" type="java.lang.String"/>
+<property column="TOTALSUM" length="14" name="totalsum" type="java.lang.Double"/>
+<property column="PAYSUM" length="14" name="paysum" type="java.lang.Double"/>
+<property column="COEF1" length="2" name="coef1" type="java.lang.Float"/>
+<property column="COEF2" length="2" name="coef2" type="java.lang.Float"/>
+<property column="COEF3" length="2" name="coef3" type="java.lang.Float"/>
+<property column="COEF4" length="2" name="coef4" type="java.lang.Float"/>
+<property column="BATCHNO" length="6" name="batchno" type="java.lang.String"/>
+<property column="RUNTIME" length="7" name="runtime" type="java.util.Date"/>
+<property column="MOBILE" length="11" name="mobile" not-null="true" type="java.lang.String"/>
+<property column="OID" length="32" name="oid" type="java.lang.String"/>
+<property column="RULEID" length="32" name="ruleid" not-null="true" type="java.lang.String"/>
+<property column="REWARDID" length="14" name="rewardid" type="java.lang.Long"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDSTD" length="16" name="rewardstd" type="java.lang.Double"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="ISBUDGET" length="3" name="isbudget" type="java.lang.Short"/>
+<property column="PAYMONTH1" length="6" name="paymonth1" type="java.lang.String"/>
+<property column="PAYMONEY1" length="22" name="paymoney1" type="java.lang.Double"/>
+<property column="PAYMONTH2" length="6" name="paymonth2" type="java.lang.String"/>
+<property column="PAYMONEY2" length="22" name="paymoney2" type="java.lang.Double"/>
+<property column="PAYMONTH3" length="6" name="paymonth3" type="java.lang.String"/>
+<property column="PAYMONEY3" length="22" name="paymoney3" type="java.lang.Double"/>
+<property column="ACCTYPE" length="3" name="acctype" type="java.lang.Short"/>
+<property column="ASSEGRADE" length="7" name="assegrade" type="java.lang.Float"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="REWARDFLAG" length="3" name="rewardflag" type="java.lang.Short"/>
+<property column="NONCYC" length="3" name="noncyc" type="java.lang.Short"/>
+<property column="BAKINFO" length="132" name="bakinfo" type="java.lang.String"/>
+<property column="BAKINFO2" length="132" name="bakinfo2" type="java.lang.String"/>
+<property column="BAKINFO3" length="14" name="bakinfo3" type="java.lang.Double"/>
+<property column="WRAPFEE" length="10" name="wrapfee" type="java.lang.Double"/>
+<property column="ASSEGRADE2" length="7" name="assegrade2" type="java.lang.Double"/>
+<property column="ADTFLAG" length="2" name="adtflag" type="java.lang.Short"/>
+<property column="PRODID" length="32" name="prodid" type="java.lang.String"/>
+<property column="BAKINFO4" length="14" name="bakinfo4" type="java.lang.Double"/>
+<property column="BAKINFO5" length="14" name="bakinfo5" type="java.lang.Double"/> 
+<property column="BAKINFO6" length="32" name="bakinfo6" type="java.lang.String"/>
+<property column="BAKINFO7" length="32" name="bakinfo7" type="java.lang.String"/>
+<property column="BAKINFO8" length="32" name="bakinfo8" type="java.lang.String"/>
+<property column="BAKINFO9" length="32" name="bakinfo9" type="java.lang.String"/>
+<property column="BAKINFO10" length="32" name="bakinfo10" type="java.lang.String"/>  
+</class>
+</hibernate-mapping>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.disform.GDisformVO" table="G_FX_SW_DISFORM">
+<!-- <id column="COMID" length="18" name="comid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>  -->
+<composite-id>
+<key-property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+<key-property column="COMPRICE" length="14" name="comprice" type="java.lang.Long"/>
+<key-property column="SELLPRICE" length="14" name="sellprice"  type="java.lang.Double"/>
+</composite-id>
+<!-- 
+<property column="COMPRICE" length="14" name="comprice" type="java.lang.Long"/>
+<property column="SELLPRICE" length="14" name="sellprice"  type="java.lang.Double"/>
+ -->
+<property column="RECID" length="14" name="recid" type="java.lang.Long" />
+<property column="ORINCOMPRICE" length="14" name="orincomprice" type="java.lang.Long"/>
+<property column="ORINSELLPRICE" length="14" name="orinsellprice"  type="java.lang.Double"/>
+<property column="MEMO" length="16" name="memo" type="java.lang.String"/>
+<property column="NUM" length="16" name="num" type="java.lang.Long"/>
+<property column="DISCOMCODE" length="18" name="discomcode"  type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+
+
+
+
+</class>
+<sql-query name="queryGatherPrint">
+<return class="com.gmcc.pboss.business.sales.disform.GDisformVO"/>
+	select '' as recid,
+               '' as COMPRICE,
+               o.comid as COMID,
+               '' as ORINCOMPRICE,
+               '' as SELLPRICE,
+               '' as ORINSELLPRICE,
+               '' as MEMO,
+               d.discomcode as DISCOMCODE,
+               od.countyid as COUNTYID,
+               count(*) as NUM
+          from Fx_Sw_Orderresdet o, FX_SW_DISFORM d, fx_sw_order od
+         where o.orderid = d.orderid
+           and od.countyid = :countyid
+           and d.orderid = od.orderid
+           and d.disstate &lt;&gt; 'CANCEL'
+           and od.orderstate &lt;&gt; 'CANCEL'
+           and d.createtime &lt;= to_date(:dnmcreatetime,'yyyy-MM-dd hh24:mi:ss')
+           and d.createtime &gt;= to_date(:dnlcreatetime,'yyyy-MM-dd hh24:mi:ss')
+           group by o.comid,d.discomcode,od.countyid
+</sql-query>
+<!-- 配送单汇总打印 -->
+<!-- 用 num存储count(*),用sellprice 存储actprict-->
+<sql-query name="doqueryGatherPrint">
+<return class="com.gmcc.pboss.business.sales.disform.GDisformVO"/>
+SELECT '' AS COUNTYID,'' AS DISCOMCODE,'' AS MEMO,'' AS ORINSELLPRICE,'' AS ORINCOMPRICE,'' AS RECID,C.COMID, C.COMPRICE, C.ACTPRICE as SELLPRICE, COUNT(*) AS NUM
+  FROM FX_SW_DISFORM A, FX_SW_ORDER B, FX_SW_ORDERRESDET C
+ WHERE A.ORDERID = B.ORDERID
+   AND B.ORDERID = C.ORDERID
+   AND A.CREATETIME &lt;=
+       to_date(:dnmcreatetime, 'yyyy-MM-dd hh24:mi:ss')
+   AND A.CREATETIME &gt;=
+       to_date(:dnlcreatetime, 'yyyy-MM-dd hh24:mi:ss')
+   AND B.COUNTYID = :COUNTYID
+   AND A.DISCOMCODE = :DISCOMCODE
+   AND A.DISSTATE &lt;&gt; 'CANCEL'
+   AND B.ORDERSTATE &lt;&gt; 'CANCEL'
+ GROUP BY C.COMID, C.COMPRICE, C.ACTPRICE
+</sql-query>
+</hibernate-mapping>

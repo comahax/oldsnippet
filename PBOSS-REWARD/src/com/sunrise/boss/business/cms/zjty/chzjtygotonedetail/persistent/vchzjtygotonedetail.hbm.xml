@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.chzjtygotonedetail.persistent.VChZjtyGotonedetailVO">
+<id column="MARK" name="mark" type="java.lang.Long">
+<generator class="sequence"/>
+</id>
+<property column="cooperauid" length="256" name="cooperauid" type="java.lang.String"/>
+<property column="city" length="256" name="city" type="java.lang.String"/>
+<property column="wayname" length="256" name="wayname" type="java.lang.String"/>
+<property column="rewardreporttime" length="256" name="rewardreporttime" type="java.lang.String"/>
+<property column="ywl58khcj" length="256" name="ywl58khcj" type="java.lang.String"/>
+<property column="ywl58jlcj1" length="256" name="ywl58jlcj1" type="java.lang.String"/>
+<property column="ywl58jlcj2" length="256" name="ywl58jlcj2" type="java.lang.String"/>
+<property column="ywl58jlcj3" length="256" name="ywl58jlcj3" type="java.lang.String"/>
+<property column="ywl58jlcj4" length="256" name="ywl58jlcj4" type="java.lang.String"/>
+<property column="ywl58jlcj5" length="256" name="ywl58jlcj5" type="java.lang.String"/>
+<property column="ywl58jlcj6" length="256" name="ywl58jlcj6" type="java.lang.String"/>
+<property column="ywl58jlcj7" length="256" name="ywl58jlcj7" type="java.lang.String"/>
+<property column="ywl58jlcj8" length="256" name="ywl58jlcj8" type="java.lang.String"/>
+<property column="ywl58jlcj9" length="256" name="ywl58jlcj9" type="java.lang.String"/>
+<property column="ywl58jlcj10" length="256" name="ywl58jlcj10" type="java.lang.String"/>
+<property column="ywl58jlcj11" length="256" name="ywl58jlcj11" type="java.lang.String"/>
+<property column="ywl58jlcj12" length="256" name="ywl58jlcj12" type="java.lang.String"/>
+<property column="ywl88khcj" length="256" name="ywl88khcj" type="java.lang.String"/>
+<property column="ywl88jlcj1" length="256" name="ywl88jlcj1" type="java.lang.String"/>
+<property column="ywl88jlcj2" length="256" name="ywl88jlcj2" type="java.lang.String"/>
+<property column="ywl88jlcj3" length="256" name="ywl88jlcj3" type="java.lang.String"/>
+<property column="ywl88jlcj4" length="256" name="ywl88jlcj4" type="java.lang.String"/>
+<property column="ywl88jlcj5" length="256" name="ywl88jlcj5" type="java.lang.String"/>
+<property column="ywl88jlcj6" length="256" name="ywl88jlcj6" type="java.lang.String"/>
+<property column="ywl88jlcj7" length="256" name="ywl88jlcj7" type="java.lang.String"/>
+<property column="ywl88jlcj8" length="256" name="ywl88jlcj8" type="java.lang.String"/>
+<property column="ywl88jlcj9" length="256" name="ywl88jlcj9" type="java.lang.String"/>
+<property column="ywl88jlcj10" length="256" name="ywl88jlcj10" type="java.lang.String"/>
+<property column="ywl88jlcj11" length="256" name="ywl88jlcj11" type="java.lang.String"/>
+<property column="ywl88jlcj12" length="256" name="ywl88jlcj12" type="java.lang.String"/>
+<property column="ywl128khcj" length="256" name="ywl128khcj" type="java.lang.String"/>
+<property column="ywl128jlcj1" length="256" name="ywl128jlcj1" type="java.lang.String"/>
+<property column="ywl128jlcj2" length="256" name="ywl128jlcj2" type="java.lang.String"/>
+<property column="ywl128jlcj3" length="256" name="ywl128jlcj3" type="java.lang.String"/>
+<property column="ywl128jlcj4" length="256" name="ywl128jlcj4" type="java.lang.String"/>
+<property column="ywl128jlcj5" length="256" name="ywl128jlcj5" type="java.lang.String"/>
+<property column="ywl128jlcj6" length="256" name="ywl128jlcj6" type="java.lang.String"/>
+<property column="ywl128jlcj7" length="256" name="ywl128jlcj7" type="java.lang.String"/>
+<property column="ywl128jlcj8" length="256" name="ywl128jlcj8" type="java.lang.String"/>
+<property column="ywl128jlcj9" length="256" name="ywl128jlcj9" type="java.lang.String"/>
+<property column="ywl128jlcj10" length="256" name="ywl128jlcj10" type="java.lang.String"/>
+<property column="ywl128jlcj11" length="256" name="ywl128jlcj11" type="java.lang.String"/>
+<property column="ywl128jlcj12" length="256" name="ywl128jlcj12" type="java.lang.String"/>
+<property column="ywl158khcj" length="256" name="ywl158khcj" type="java.lang.String"/>
+<property column="ywl158jlcj1" length="256" name="ywl158jlcj1" type="java.lang.String"/>
+<property column="ywl158jlcj2" length="256" name="ywl158jlcj2" type="java.lang.String"/>
+<property column="ywl158jlcj3" length="256" name="ywl158jlcj3" type="java.lang.String"/>
+<property column="ywl158jlcj4" length="256" name="ywl158jlcj4" type="java.lang.String"/>
+<property column="ywl158jlcj5" length="256" name="ywl158jlcj5" type="java.lang.String"/>
+<property column="ywl158jlcj6" length="256" name="ywl158jlcj6" type="java.lang.String"/>
+<property column="ywl158jlcj7" length="256" name="ywl158jlcj7" type="java.lang.String"/>
+<property column="ywl158jlcj8" length="256" name="ywl158jlcj8" type="java.lang.String"/>
+<property column="ywl158jlcj9" length="256" name="ywl158jlcj9" type="java.lang.String"/>
+<property column="ywl158jlcj10" length="256" name="ywl158jlcj10" type="java.lang.String"/>
+<property column="ywl158jlcj11" length="256" name="ywl158jlcj11" type="java.lang.String"/>
+<property column="ywl158jlcj12" length="256" name="ywl158jlcj12" type="java.lang.String"/>
+<property column="ywl188khcj" length="256" name="ywl188khcj" type="java.lang.String"/>
+<property column="ywl188jlcj1" length="256" name="ywl188jlcj1" type="java.lang.String"/>
+<property column="ywl188jlcj2" length="256" name="ywl188jlcj2" type="java.lang.String"/>
+<property column="ywl188jlcj3" length="256" name="ywl188jlcj3" type="java.lang.String"/>
+<property column="ywl188jlcj4" length="256" name="ywl188jlcj4" type="java.lang.String"/>
+<property column="ywl188jlcj5" length="256" name="ywl188jlcj5" type="java.lang.String"/>
+<property column="ywl188jlcj6" length="256" name="ywl188jlcj6" type="java.lang.String"/>
+<property column="ywl188jlcj7" length="256" name="ywl188jlcj7" type="java.lang.String"/>
+<property column="ywl188jlcj8" length="256" name="ywl188jlcj8" type="java.lang.String"/>
+<property column="ywl188jlcj9" length="256" name="ywl188jlcj9" type="java.lang.String"/>
+<property column="ywl188jlcj10" length="256" name="ywl188jlcj10" type="java.lang.String"/>
+<property column="ywl188jlcj11" length="256" name="ywl188jlcj11" type="java.lang.String"/>
+<property column="ywl188jlcj12" length="256" name="ywl188jlcj12" type="java.lang.String"/>
+<property column="ywl288khcj" length="256" name="ywl288khcj" type="java.lang.String"/>
+<property column="ywl288jlcj1" length="256" name="ywl288jlcj1" type="java.lang.String"/>
+<property column="ywl288jlcj2" length="256" name="ywl288jlcj2" type="java.lang.String"/>
+<property column="ywl288jlcj3" length="256" name="ywl288jlcj3" type="java.lang.String"/>
+<property column="ywl288jlcj4" length="256" name="ywl288jlcj4" type="java.lang.String"/>
+<property column="ywl288jlcj5" length="256" name="ywl288jlcj5" type="java.lang.String"/>
+<property column="ywl288jlcj6" length="256" name="ywl288jlcj6" type="java.lang.String"/>
+<property column="ywl288jlcj7" length="256" name="ywl288jlcj7" type="java.lang.String"/>
+<property column="ywl288jlcj8" length="256" name="ywl288jlcj8" type="java.lang.String"/>
+<property column="ywl288jlcj9" length="256" name="ywl288jlcj9" type="java.lang.String"/>
+<property column="ywl288jlcj10" length="256" name="ywl288jlcj10" type="java.lang.String"/>
+<property column="ywl288jlcj11" length="256" name="ywl288jlcj11" type="java.lang.String"/>
+<property column="ywl288jlcj12" length="256" name="ywl288jlcj12" type="java.lang.String"/>
+<property column="ywlmzonetogotone" length="256" name="ywlmzonetogotone" type="java.lang.String"/>
+<property column="dwkhcj" length="256" name="dwkhcj" type="java.lang.String"/>
+<property column="dw58cj" length="256" name="dw58cj" type="java.lang.String"/>
+<property column="dw88cj" length="256" name="dw88cj" type="java.lang.String"/>
+<property column="dw128cj" length="256" name="dw128cj" type="java.lang.String"/>
+<property column="dw158cj" length="256" name="dw158cj" type="java.lang.String"/>
+<property column="dw188cj" length="256" name="dw188cj" type="java.lang.String"/>
+<property column="dw288cj" length="256" name="dw288cj" type="java.lang.String"/>
+<property column="dwmzonetogotone" length="256" name="dwmzonetogotone" type="java.lang.String"/>
+<property column="cjtotal58khcj" length="256" name="cjtotal58khcj" type="java.lang.String"/>
+<property column="cjtotal58jlcj1" length="256" name="cjtotal58jlcj1" type="java.lang.String"/>
+<property column="cjtotal58jlcj2" length="256" name="cjtotal58jlcj2" type="java.lang.String"/>
+<property column="cjtotal58jlcj3" length="256" name="cjtotal58jlcj3" type="java.lang.String"/>
+<property column="cjtotal58jlcj4" length="256" name="cjtotal58jlcj4" type="java.lang.String"/>
+<property column="cjtotal58jlcj5" length="256" name="cjtotal58jlcj5" type="java.lang.String"/>
+<property column="cjtotal58jlcj6" length="256" name="cjtotal58jlcj6" type="java.lang.String"/>
+<property column="cjtotal58jlcj7" length="256" name="cjtotal58jlcj7" type="java.lang.String"/>
+<property column="cjtotal58jlcj8" length="256" name="cjtotal58jlcj8" type="java.lang.String"/>
+<property column="cjtotal58jlcj9" length="256" name="cjtotal58jlcj9" type="java.lang.String"/>
+<property column="cjtotal58jlcj10" length="256" name="cjtotal58jlcj10" type="java.lang.String"/>
+<property column="cjtotal58jlcj11" length="256" name="cjtotal58jlcj11" type="java.lang.String"/>
+<property column="cjtotal58jlcj12" length="256" name="cjtotal58jlcj12" type="java.lang.String"/>
+<property column="cjtotal88khcj" length="256" name="cjtotal88khcj" type="java.lang.String"/>
+<property column="cjtotal88jlcj1" length="256" name="cjtotal88jlcj1" type="java.lang.String"/>
+<property column="cjtotal88jlcj2" length="256" name="cjtotal88jlcj2" type="java.lang.String"/>
+<property column="cjtotal88jlcj3" length="256" name="cjtotal88jlcj3" type="java.lang.String"/>
+<property column="cjtotal88jlcj4" length="256" name="cjtotal88jlcj4" type="java.lang.String"/>
+<property column="cjtotal88jlcj5" length="256" name="cjtotal88jlcj5" type="java.lang.String"/>
+<property column="cjtotal88jlcj6" length="256" name="cjtotal88jlcj6" type="java.lang.String"/>
+<property column="cjtotal88jlcj7" length="256" name="cjtotal88jlcj7" type="java.lang.String"/>
+<property column="cjtotal88jlcj8" length="256" name="cjtotal88jlcj8" type="java.lang.String"/>
+<property column="cjtotal88jlcj9" length="256" name="cjtotal88jlcj9" type="java.lang.String"/>
+<property column="cjtotal88jlcj10" length="256" name="cjtotal88jlcj10" type="java.lang.String"/>
+<property column="cjtotal88jlcj11" length="256" name="cjtotal88jlcj11" type="java.lang.String"/>
+<property column="cjtotal88jlcj12" length="256" name="cjtotal88jlcj12" type="java.lang.String"/>
+<property column="cjtotal128khcj" length="256" name="cjtotal128khcj" type="java.lang.String"/>
+<property column="cjtotal128jlcj1" length="256" name="cjtotal128jlcj1" type="java.lang.String"/>
+<property column="cjtotal128jlcj2" length="256" name="cjtotal128jlcj2" type="java.lang.String"/>
+<property column="cjtotal128jlcj3" length="256" name="cjtotal128jlcj3" type="java.lang.String"/>
+<property column="cjtotal128jlcj4" length="256" name="cjtotal128jlcj4" type="java.lang.String"/>
+<property column="cjtotal128jlcj5" length="256" name="cjtotal128jlcj5" type="java.lang.String"/>
+<property column="cjtotal128jlcj6" length="256" name="cjtotal128jlcj6" type="java.lang.String"/>
+<property column="cjtotal128jlcj7" length="256" name="cjtotal128jlcj7" type="java.lang.String"/>
+<property column="cjtotal128jlcj8" length="256" name="cjtotal128jlcj8" type="java.lang.String"/>
+<property column="cjtotal128jlcj9" length="256" name="cjtotal128jlcj9" type="java.lang.String"/>
+<property column="cjtotal128jlcj10" length="256" name="cjtotal128jlcj10" type="java.lang.String"/>
+<property column="cjtotal128jlcj11" length="256" name="cjtotal128jlcj11" type="java.lang.String"/>
+<property column="cjtotal128jlcj12" length="256" name="cjtotal128jlcj12" type="java.lang.String"/>
+<property column="cjtotal158khcj" length="256" name="cjtotal158khcj" type="java.lang.String"/>
+<property column="cjtotal158jlcj1" length="256" name="cjtotal158jlcj1" type="java.lang.String"/>
+<property column="cjtotal158jlcj2" length="256" name="cjtotal158jlcj2" type="java.lang.String"/>
+<property column="cjtotal158jlcj3" length="256" name="cjtotal158jlcj3" type="java.lang.String"/>
+<property column="cjtotal158jlcj4" length="256" name="cjtotal158jlcj4" type="java.lang.String"/>
+<property column="cjtotal158jlcj5" length="256" name="cjtotal158jlcj5" type="java.lang.String"/>
+<property column="cjtotal158jlcj6" length="256" name="cjtotal158jlcj6" type="java.lang.String"/>
+<property column="cjtotal158jlcj7" length="256" name="cjtotal158jlcj7" type="java.lang.String"/>
+<property column="cjtotal158jlcj8" length="256" name="cjtotal158jlcj8" type="java.lang.String"/>
+<property column="cjtotal158jlcj9" length="256" name="cjtotal158jlcj9" type="java.lang.String"/>
+<property column="cjtotal158jlcj10" length="256" name="cjtotal158jlcj10" type="java.lang.String"/>
+<property column="cjtotal158jlcj11" length="256" name="cjtotal158jlcj11" type="java.lang.String"/>
+<property column="cjtotal158jlcj12" length="256" name="cjtotal158jlcj12" type="java.lang.String"/>
+<property column="cjtotal188khcj" length="256" name="cjtotal188khcj" type="java.lang.String"/>
+<property column="cjtotal188jlcj1" length="256" name="cjtotal188jlcj1" type="java.lang.String"/>
+<property column="cjtotal188jlcj2" length="256" name="cjtotal188jlcj2" type="java.lang.String"/>
+<property column="cjtotal188jlcj3" length="256" name="cjtotal188jlcj3" type="java.lang.String"/>
+<property column="cjtotal188jlcj4" length="256" name="cjtotal188jlcj4" type="java.lang.String"/>
+<property column="cjtotal188jlcj5" length="256" name="cjtotal188jlcj5" type="java.lang.String"/>
+<property column="cjtotal188jlcj6" length="256" name="cjtotal188jlcj6" type="java.lang.String"/>
+<property column="cjtotal188jlcj7" length="256" name="cjtotal188jlcj7" type="java.lang.String"/>
+<property column="cjtotal188jlcj8" length="256" name="cjtotal188jlcj8" type="java.lang.String"/>
+<property column="cjtotal188jlcj9" length="256" name="cjtotal188jlcj9" type="java.lang.String"/>
+<property column="cjtotal188jlcj10" length="256" name="cjtotal188jlcj10" type="java.lang.String"/>
+<property column="cjtotal188jlcj11" length="256" name="cjtotal188jlcj11" type="java.lang.String"/>
+<property column="cjtotal188jlcj12" length="256" name="cjtotal188jlcj12" type="java.lang.String"/>
+<property column="cjtotal288khcj" length="256" name="cjtotal288khcj" type="java.lang.String"/>
+<property column="cjtotal288jlcj1" length="256" name="cjtotal288jlcj1" type="java.lang.String"/>
+<property column="cjtotal288jlcj2" length="256" name="cjtotal288jlcj2" type="java.lang.String"/>
+<property column="cjtotal288jlcj3" length="256" name="cjtotal288jlcj3" type="java.lang.String"/>
+<property column="cjtotal288jlcj4" length="256" name="cjtotal288jlcj4" type="java.lang.String"/>
+<property column="cjtotal288jlcj5" length="256" name="cjtotal288jlcj5" type="java.lang.String"/>
+<property column="cjtotal288jlcj6" length="256" name="cjtotal288jlcj6" type="java.lang.String"/>
+<property column="cjtotal288jlcj7" length="256" name="cjtotal288jlcj7" type="java.lang.String"/>
+<property column="cjtotal288jlcj8" length="256" name="cjtotal288jlcj8" type="java.lang.String"/>
+<property column="cjtotal288jlcj9" length="256" name="cjtotal288jlcj9" type="java.lang.String"/>
+<property column="cjtotal288jlcj10" length="256" name="cjtotal288jlcj10" type="java.lang.String"/>
+<property column="cjtotal288jlcj11" length="256" name="cjtotal288jlcj11" type="java.lang.String"/>
+<property column="cjtotal288jlcj12" length="256" name="cjtotal288jlcj12" type="java.lang.String"/>
+<property column="cjtotalmzonetogotone" length="256" name="cjtotalmzonetogotone" type="java.lang.String"/>
+<property column="manageexamine" length="256" name="manageexamine" type="java.lang.String"/>
+<property column="vetocoefficient" length="256" name="vetocoefficient" type="java.lang.String"/>
+<property column="ordercoefficient" length="256" name="ordercoefficient" type="java.lang.String"/>
+<property column="campaigncoefficient" length="256" name="campaigncoefficient" type="java.lang.String"/>
+<property column="totalreward" length="256" name="totalreward" type="java.lang.String"/>
+</class>
+
+<sql-query name="querychzjtygotonedetail">
+	<return class="com.sunrise.boss.business.cms.zjty.chzjtygotonedetail.persistent.VChZjtyGotonedetailVO" />
+	select mark, max(decode(type, 'cooperauid', datacontent, '')) as cooperauid,
+       max(decode(type, 'city', datacontent, '')) as city,
+       max(decode(type, 'wayname', datacontent, '')) as wayname,
+       max(decode(type, 'rewardreporttime', datacontent, '')) as rewardreporttime,
+       max(decode(type, 'ywl58khcj', datacontent, '')) as ywl58khcj,
+       max(decode(type, 'ywl58jlcj1', datacontent, '')) as ywl58jlcj1,
+       max(decode(type, 'ywl58jlcj2', datacontent, '')) as ywl58jlcj2,
+       max(decode(type, 'ywl58jlcj3', datacontent, '')) as ywl58jlcj3,
+       max(decode(type, 'ywl58jlcj4', datacontent, '')) as ywl58jlcj4,
+       max(decode(type, 'ywl58jlcj5', datacontent, '')) as ywl58jlcj5,
+       max(decode(type, 'ywl58jlcj6', datacontent, '')) as ywl58jlcj6,
+       max(decode(type, 'ywl58jlcj7', datacontent, '')) as ywl58jlcj7,
+       max(decode(type, 'ywl58jlcj8', datacontent, '')) as ywl58jlcj8,
+       max(decode(type, 'ywl58jlcj9', datacontent, '')) as ywl58jlcj9,
+       max(decode(type, 'ywl58jlcj10', datacontent, '')) as ywl58jlcj10,
+       max(decode(type, 'ywl58jlcj11', datacontent, '')) as ywl58jlcj11,
+       max(decode(type, 'ywl58jlcj12', datacontent, '')) as ywl58jlcj12,
+       max(decode(type, 'ywl88khcj', datacontent, '')) as ywl88khcj,
+       max(decode(type, 'ywl88jlcj1', datacontent, '')) as ywl88jlcj1,
+       max(decode(type, 'ywl88jlcj2', datacontent, '')) as ywl88jlcj2,
+       max(decode(type, 'ywl88jlcj3', datacontent, '')) as ywl88jlcj3,
+       max(decode(type, 'ywl88jlcj4', datacontent, '')) as ywl88jlcj4,
+       max(decode(type, 'ywl88jlcj5', datacontent, '')) as ywl88jlcj5,
+       max(decode(type, 'ywl88jlcj6', datacontent, '')) as ywl88jlcj6,
+       max(decode(type, 'ywl88jlcj7', datacontent, '')) as ywl88jlcj7,
+       max(decode(type, 'ywl88jlcj8', datacontent, '')) as ywl88jlcj8,
+       max(decode(type, 'ywl88jlcj9', datacontent, '')) as ywl88jlcj9,
+       max(decode(type, 'ywl88jlcj10', datacontent, '')) as ywl88jlcj10,
+       max(decode(type, 'ywl88jlcj11', datacontent, '')) as ywl88jlcj11,
+       max(decode(type, 'ywl88jlcj12', datacontent, '')) as ywl88jlcj12,
+       max(decode(type, 'ywl128khcj', datacontent, '')) as ywl128khcj,
+       max(decode(type, 'ywl128jlcj1', datacontent, '')) as ywl128jlcj1,
+       max(decode(type, 'ywl128jlcj2', datacontent, '')) as ywl128jlcj2,
+       max(decode(type, 'ywl128jlcj3', datacontent, '')) as ywl128jlcj3,
+       max(decode(type, 'ywl128jlcj4', datacontent, '')) as ywl128jlcj4,
+       max(decode(type, 'ywl128jlcj5', datacontent, '')) as ywl128jlcj5,
+       max(decode(type, 'ywl128jlcj6', datacontent, '')) as ywl128jlcj6,
+       max(decode(type, 'ywl128jlcj7', datacontent, '')) as ywl128jlcj7,
+       max(decode(type, 'ywl128jlcj8', datacontent, '')) as ywl128jlcj8,
+       max(decode(type, 'ywl128jlcj9', datacontent, '')) as ywl128jlcj9,
+       max(decode(type, 'ywl128jlcj10', datacontent, '')) as ywl128jlcj10,
+       max(decode(type, 'ywl128jlcj11', datacontent, '')) as ywl128jlcj11,
+       max(decode(type, 'ywl128jlcj12', datacontent, '')) as ywl128jlcj12,
+       max(decode(type, 'ywl158khcj', datacontent, '')) as ywl158khcj,
+       max(decode(type, 'ywl158jlcj1', datacontent, '')) as ywl158jlcj1,
+       max(decode(type, 'ywl158jlcj2', datacontent, '')) as ywl158jlcj2,
+       max(decode(type, 'ywl158jlcj3', datacontent, '')) as ywl158jlcj3,
+       max(decode(type, 'ywl158jlcj4', datacontent, '')) as ywl158jlcj4,
+       max(decode(type, 'ywl158jlcj5', datacontent, '')) as ywl158jlcj5,
+       max(decode(type, 'ywl158jlcj6', datacontent, '')) as ywl158jlcj6,
+       max(decode(type, 'ywl158jlcj7', datacontent, '')) as ywl158jlcj7,
+       max(decode(type, 'ywl158jlcj8', datacontent, '')) as ywl158jlcj8,
+       max(decode(type, 'ywl158jlcj9', datacontent, '')) as ywl158jlcj9,
+       max(decode(type, 'ywl158jlcj10', datacontent, '')) as ywl158jlcj10,
+       max(decode(type, 'ywl158jlcj11', datacontent, '')) as ywl158jlcj11,
+       max(decode(type, 'ywl158jlcj12', datacontent, '')) as ywl158jlcj12,
+       max(decode(type, 'ywl188khcj', datacontent, '')) as ywl188khcj,
+       max(decode(type, 'ywl188jlcj1', datacontent, '')) as ywl188jlcj1,
+       max(decode(type, 'ywl188jlcj2', datacontent, '')) as ywl188jlcj2,
+       max(decode(type, 'ywl188jlcj3', datacontent, '')) as ywl188jlcj3,
+       max(decode(type, 'ywl188jlcj4', datacontent, '')) as ywl188jlcj4,
+       max(decode(type, 'ywl188jlcj5', datacontent, '')) as ywl188jlcj5,
+       max(decode(type, 'ywl188jlcj6', datacontent, '')) as ywl188jlcj6,
+       max(decode(type, 'ywl188jlcj7', datacontent, '')) as ywl188jlcj7,
+       max(decode(type, 'ywl188jlcj8', datacontent, '')) as ywl188jlcj8,
+       max(decode(type, 'ywl188jlcj9', datacontent, '')) as ywl188jlcj9,
+       max(decode(type, 'ywl188jlcj10', datacontent, '')) as ywl188jlcj10,
+       max(decode(type, 'ywl188jlcj11', datacontent, '')) as ywl188jlcj11,
+       max(decode(type, 'ywl188jlcj12', datacontent, '')) as ywl188jlcj12,
+       max(decode(type, 'ywl288khcj', datacontent, '')) as ywl288khcj,
+       max(decode(type, 'ywl288jlcj1', datacontent, '')) as ywl288jlcj1,
+       max(decode(type, 'ywl288jlcj2', datacontent, '')) as ywl288jlcj2,
+       max(decode(type, 'ywl288jlcj3', datacontent, '')) as ywl288jlcj3,
+       max(decode(type, 'ywl288jlcj4', datacontent, '')) as ywl288jlcj4,
+       max(decode(type, 'ywl288jlcj5', datacontent, '')) as ywl288jlcj5,
+       max(decode(type, 'ywl288jlcj6', datacontent, '')) as ywl288jlcj6,
+       max(decode(type, 'ywl288jlcj7', datacontent, '')) as ywl288jlcj7,
+       max(decode(type, 'ywl288jlcj8', datacontent, '')) as ywl288jlcj8,
+       max(decode(type, 'ywl288jlcj9', datacontent, '')) as ywl288jlcj9,
+       max(decode(type, 'ywl288jlcj10', datacontent, '')) as ywl288jlcj10,
+       max(decode(type, 'ywl288jlcj11', datacontent, '')) as ywl288jlcj11,
+       max(decode(type, 'ywl288jlcj12', datacontent, '')) as ywl288jlcj12,
+       max(decode(type, 'ywlmzonetogotone', datacontent, '')) as ywlmzonetogotone,
+       max(decode(type, 'dwkhcj', datacontent, '')) as dwkhcj,
+       max(decode(type, 'dw58cj', datacontent, '')) as dw58cj,
+       max(decode(type, 'dw88cj', datacontent, '')) as dw88cj,
+       max(decode(type, 'dw128cj', datacontent, '')) as dw128cj,
+       max(decode(type, 'dw158cj', datacontent, '')) as dw158cj,
+       max(decode(type, 'dw188cj', datacontent, '')) as dw188cj,
+       max(decode(type, 'dw288cj', datacontent, '')) as dw288cj,
+       max(decode(type, 'dwmzonetogotone', datacontent, '')) as dwmzonetogotone,
+       max(decode(type, 'cjtotal58khcj', datacontent, '')) as cjtotal58khcj,
+       max(decode(type, 'cjtotal58jlcj1', datacontent, '')) as cjtotal58jlcj1,
+       max(decode(type, 'cjtotal58jlcj2', datacontent, '')) as cjtotal58jlcj2,
+       max(decode(type, 'cjtotal58jlcj3', datacontent, '')) as cjtotal58jlcj3,
+       max(decode(type, 'cjtotal58jlcj4', datacontent, '')) as cjtotal58jlcj4,
+       max(decode(type, 'cjtotal58jlcj5', datacontent, '')) as cjtotal58jlcj5,
+       max(decode(type, 'cjtotal58jlcj6', datacontent, '')) as cjtotal58jlcj6,
+       max(decode(type, 'cjtotal58jlcj7', datacontent, '')) as cjtotal58jlcj7,
+       max(decode(type, 'cjtotal58jlcj8', datacontent, '')) as cjtotal58jlcj8,
+       max(decode(type, 'cjtotal58jlcj9', datacontent, '')) as cjtotal58jlcj9,
+       max(decode(type, 'cjtotal58jlcj10', datacontent, '')) as cjtotal58jlcj10,
+       max(decode(type, 'cjtotal58jlcj11', datacontent, '')) as cjtotal58jlcj11,
+       max(decode(type, 'cjtotal58jlcj12', datacontent, '')) as cjtotal58jlcj12,
+       max(decode(type, 'cjtotal88khcj', datacontent, '')) as cjtotal88khcj,
+       max(decode(type, 'cjtotal88jlcj1', datacontent, '')) as cjtotal88jlcj1,
+       max(decode(type, 'cjtotal88jlcj2', datacontent, '')) as cjtotal88jlcj2,
+       max(decode(type, 'cjtotal88jlcj3', datacontent, '')) as cjtotal88jlcj3,
+       max(decode(type, 'cjtotal88jlcj4', datacontent, '')) as cjtotal88jlcj4,
+       max(decode(type, 'cjtotal88jlcj5', datacontent, '')) as cjtotal88jlcj5,
+       max(decode(type, 'cjtotal88jlcj6', datacontent, '')) as cjtotal88jlcj6,
+       max(decode(type, 'cjtotal88jlcj7', datacontent, '')) as cjtotal88jlcj7,
+       max(decode(type, 'cjtotal88jlcj8', datacontent, '')) as cjtotal88jlcj8,
+       max(decode(type, 'cjtotal88jlcj9', datacontent, '')) as cjtotal88jlcj9,
+       max(decode(type, 'cjtotal88jlcj10', datacontent, '')) as cjtotal88jlcj10,
+       max(decode(type, 'cjtotal88jlcj11', datacontent, '')) as cjtotal88jlcj11,
+       max(decode(type, 'cjtotal88jlcj12', datacontent, '')) as cjtotal88jlcj12,
+       max(decode(type, 'cjtotal128khcj', datacontent, '')) as cjtotal128khcj,
+       max(decode(type, 'cjtotal128jlcj1', datacontent, '')) as cjtotal128jlcj1,
+       max(decode(type, 'cjtotal128jlcj2', datacontent, '')) as cjtotal128jlcj2,
+       max(decode(type, 'cjtotal128jlcj3', datacontent, '')) as cjtotal128jlcj3,
+       max(decode(type, 'cjtotal128jlcj4', datacontent, '')) as cjtotal128jlcj4,
+       max(decode(type, 'cjtotal128jlcj5', datacontent, '')) as cjtotal128jlcj5,
+       max(decode(type, 'cjtotal128jlcj6', datacontent, '')) as cjtotal128jlcj6,
+       max(decode(type, 'cjtotal128jlcj7', datacontent, '')) as cjtotal128jlcj7,
+       max(decode(type, 'cjtotal128jlcj8', datacontent, '')) as cjtotal128jlcj8,
+       max(decode(type, 'cjtotal128jlcj9', datacontent, '')) as cjtotal128jlcj9,
+       max(decode(type, 'cjtotal128jlcj10', datacontent, '')) as cjtotal128jlcj10,
+       max(decode(type, 'cjtotal128jlcj11', datacontent, '')) as cjtotal128jlcj11,
+       max(decode(type, 'cjtotal128jlcj12', datacontent, '')) as cjtotal128jlcj12,
+       max(decode(type, 'cjtotal158khcj', datacontent, '')) as cjtotal158khcj,
+       max(decode(type, 'cjtotal158jlcj1', datacontent, '')) as cjtotal158jlcj1,
+       max(decode(type, 'cjtotal158jlcj2', datacontent, '')) as cjtotal158jlcj2,
+       max(decode(type, 'cjtotal158jlcj3', datacontent, '')) as cjtotal158jlcj3,
+       max(decode(type, 'cjtotal158jlcj4', datacontent, '')) as cjtotal158jlcj4,
+       max(decode(type, 'cjtotal158jlcj5', datacontent, '')) as cjtotal158jlcj5,
+       max(decode(type, 'cjtotal158jlcj6', datacontent, '')) as cjtotal158jlcj6,
+       max(decode(type, 'cjtotal158jlcj7', datacontent, '')) as cjtotal158jlcj7,
+       max(decode(type, 'cjtotal158jlcj8', datacontent, '')) as cjtotal158jlcj8,
+       max(decode(type, 'cjtotal158jlcj9', datacontent, '')) as cjtotal158jlcj9,
+       max(decode(type, 'cjtotal158jlcj10', datacontent, '')) as cjtotal158jlcj10,
+       max(decode(type, 'cjtotal158jlcj11', datacontent, '')) as cjtotal158jlcj11,
+       max(decode(type, 'cjtotal158jlcj12', datacontent, '')) as cjtotal158jlcj12,
+       max(decode(type, 'cjtotal188khcj', datacontent, '')) as cjtotal188khcj,
+       max(decode(type, 'cjtotal188jlcj1', datacontent, '')) as cjtotal188jlcj1,
+       max(decode(type, 'cjtotal188jlcj2', datacontent, '')) as cjtotal188jlcj2,
+       max(decode(type, 'cjtotal188jlcj3', datacontent, '')) as cjtotal188jlcj3,
+       max(decode(type, 'cjtotal188jlcj4', datacontent, '')) as cjtotal188jlcj4,
+       max(decode(type, 'cjtotal188jlcj5', datacontent, '')) as cjtotal188jlcj5,
+       max(decode(type, 'cjtotal188jlcj6', datacontent, '')) as cjtotal188jlcj6,
+       max(decode(type, 'cjtotal188jlcj7', datacontent, '')) as cjtotal188jlcj7,
+       max(decode(type, 'cjtotal188jlcj8', datacontent, '')) as cjtotal188jlcj8,
+       max(decode(type, 'cjtotal188jlcj9', datacontent, '')) as cjtotal188jlcj9,
+       max(decode(type, 'cjtotal188jlcj10', datacontent, '')) as cjtotal188jlcj10,
+       max(decode(type, 'cjtotal188jlcj11', datacontent, '')) as cjtotal188jlcj11,
+       max(decode(type, 'cjtotal188jlcj12', datacontent, '')) as cjtotal188jlcj12,
+       max(decode(type, 'cjtotal288khcj', datacontent, '')) as cjtotal288khcj,
+       max(decode(type, 'cjtotal288jlcj1', datacontent, '')) as cjtotal288jlcj1,
+       max(decode(type, 'cjtotal288jlcj2', datacontent, '')) as cjtotal288jlcj2,
+       max(decode(type, 'cjtotal288jlcj3', datacontent, '')) as cjtotal288jlcj3,
+       max(decode(type, 'cjtotal288jlcj4', datacontent, '')) as cjtotal288jlcj4,
+       max(decode(type, 'cjtotal288jlcj5', datacontent, '')) as cjtotal288jlcj5,
+       max(decode(type, 'cjtotal288jlcj6', datacontent, '')) as cjtotal288jlcj6,
+       max(decode(type, 'cjtotal288jlcj7', datacontent, '')) as cjtotal288jlcj7,
+       max(decode(type, 'cjtotal288jlcj8', datacontent, '')) as cjtotal288jlcj8,
+       max(decode(type, 'cjtotal288jlcj9', datacontent, '')) as cjtotal288jlcj9,
+       max(decode(type, 'cjtotal288jlcj10', datacontent, '')) as cjtotal288jlcj10,
+       max(decode(type, 'cjtotal288jlcj11', datacontent, '')) as cjtotal288jlcj11,
+       max(decode(type, 'cjtotal288jlcj12', datacontent, '')) as cjtotal288jlcj12,
+       max(decode(type, 'cjtotalmzonetogotone', datacontent, '')) as cjtotalmzonetogotone,
+       max(decode(type, 'manageexamine', datacontent, '')) as manageexamine,
+       max(decode(type, 'vetocoefficient', datacontent, '')) as vetocoefficient,
+       max(decode(type, 'ordercoefficient', datacontent, '')) as ordercoefficient,
+       max(decode(type, 'campaigncoefficient', datacontent, '')) as campaigncoefficient,
+       max(decode(type, 'totalreward', datacontent, '')) as totalreward
+  from CH_ZJTY_GOTONEDETAIL group by mark
+</sql-query>
+</hibernate-mapping>

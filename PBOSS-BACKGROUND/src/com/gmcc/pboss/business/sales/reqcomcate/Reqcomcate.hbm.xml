@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.reqcomcate.ReqcomcateVO" table="FX_SW_REQCOMCATE">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">FX_SW_REQCOMCATE_SEQ</param>
+	</generator>
+</id>
+<property column="REQID" length="18" name="reqid" not-null="true" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" not-null="true" type="java.lang.String"/>
+<property column="ORDERAMT" length="10" name="orderamt" not-null="true" type="java.lang.Long"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.resinfostat.ResinfostatVO" table="IM_FX_RESINFOSTAT">
+<composite-id>
+<key-property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<key-property column="STATDATE" length="7" name="statdate" type="java.util.Date"/>
+<key-property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+</composite-id>
+<property column="KCAMOUNT" length="10" name="kcamount" type="java.lang.Long"/>
+<property column="LHAMOUNT" length="10" name="lhamount" type="java.lang.Long"/>
+<property column="JHAMOUNT" length="10" name="jhamount" type="java.lang.Long"/>
+<property column="MAXSTOCK" length="10" name="maxstock" type="java.lang.Long"/>
+<property column="REDVALUE" length="10" name="redvalue" type="java.lang.Long"/>
+<property column="YELVALUE" length="10" name="yelvalue" type="java.lang.Long"/>
+<property column="ALARMLEVEL" length="16" name="alarmlevel" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

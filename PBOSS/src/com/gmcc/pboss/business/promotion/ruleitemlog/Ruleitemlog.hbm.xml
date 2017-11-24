@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.promotion.ruleitemlog.RuleitemlogVO" table="CH_CX_RULEITEMLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_CX_RULEITEMLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="32" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="ITEMID" length="10" name="itemid" type="java.lang.Long"/>
+<property column="RULEID" length="6" name="ruleid" type="java.lang.Integer"/>
+<property column="OPTEXPRESSION" length="64" name="optexpression" type="java.lang.String"/>
+<property column="DATATYPE" length="32" name="datatype" type="java.lang.String"/>
+<property column="FILTERMODE" length="32" name="filtermode" type="java.lang.String"/>
+<property column="MATCHING" length="64" name="matching" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

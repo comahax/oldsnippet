@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dblog-config>	
+	
+	<!-- action：要进行日志操作的方法名 -->
+	<!-- name：业务表VO名 -->
+	<!-- logname：日志表VO名 -->
+	<!-- column、logcolumn：日志表和映射的日志表，这里是VO的属性名 -->
+	
+	<table ation="create,update,delete" name="com.sunrise.boss.business.cms.citycompany.persistent.CitycompanyVO" logname="com.sunrise.boss.business.cms.citycomlog.persistent.CitycomlogVO">
+      <id column="citycompid" logcolumn="citycompid"/>
+      <id column="centerid" logcolumn="centerid"/>
+      <id column="citycompname" logcolumn="citycompname"/>
+      <id column="citycomptype" logcolumn="citycomptype"/>
+      <id column="agent" logcolumn="agent"/>
+      <id column="billingcode" logcolumn="billingcode"/>
+	</table>	
+	
+</dblog-config>

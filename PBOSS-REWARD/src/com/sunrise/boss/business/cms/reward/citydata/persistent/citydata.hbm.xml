@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.citydata.persistent.CitydataVO" table="CH_ADT_CITYDATA">
+<id name="seq" column="SEQ" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_ADT_CITYDATA_SEQ</param>
+</generator>
+</id>
+<property name="calcmonth" column="CALCMONTH" type="java.lang.String" length="8"/>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+<property name="oprtime" column="OPRTIME" type="java.util.Date"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="15"/>
+<property name="mobile" column="MOBILE" type="java.lang.String" length="15"/>
+<property name="busivalue" column="BUSIVALUE" type="java.lang.Double" length="14" precision="2"/>
+<property name="brand" column="BRAND" type="java.lang.Short" length="1"/>
+<property name="datasource" column="DATASOURCE" type="java.lang.String" length="64"/>
+<property name="validflag" column="VALIDFLAG" type="java.lang.Short" length="2"/>
+<property name="remark" column="REMARK" type="java.lang.String" length="250"/>
+<property name="rewardtype" column="REWARDTYPE" type="java.lang.Short" length="3"/>
+<property name="cityid" column="CITYID" type="java.lang.String" length="4"/>
+<property name="createtime" column="CREATETIME" type="java.util.Date"/>
+<property name="createcode" column="CREATECODE" type="java.lang.String" length="18"/>
+<property name="batchno" column="BATCHNO" type="java.lang.String" length="18"/>
+<property name="fileinfo" column="FILEINFO" type="java.lang.String" length="50"/>
+<property name="adtcode" column="ADTCODE" type="java.lang.String" length="32"/>
+<property name="adtremark" column="ADTREMARK" type="java.lang.String" length="255"/>
+<property name="state" column="STATE" type="java.lang.Short" length="2"/>
+</class>
+</hibernate-mapping>
+
+
+
+
+

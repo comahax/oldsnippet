@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.numtypedef.NumtypedefVO" table="IM_RU_NUMTYPEDEF">
+<id column="TYPEID" length="14" name="typeid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">IM_RU_NUMTYPEDEF_SEQ</param>
+	</generator>
+</id>
+<property column="TYPECODE" length="10" name="typecode" not-null="true" type="java.lang.String"/>
+<property column="TYPENAME" length="100" name="typename" not-null="true" type="java.lang.String"/>
+<property column="TYPEDESC" length="200" name="typedesc" type="java.lang.String"/>
+<property column="PRILEVEL" length="3" name="prilevel" not-null="true" type="java.lang.Short"/>
+<property column="EFFECTIVE" length="3" name="effective" not-null="true" type="java.lang.Short"/>
+<property column="ISDEFAULT" length="3" name="isdefault" not-null="true" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

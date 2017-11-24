@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderorderproce.OrderOrderproceVO" table="FX_SW_ORDER">
+<id column="rowcountid" length="14" name="rowcountid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="PAYTYPE" length="16" name="paytype" type="java.lang.String"/>
+<property column="sumrecamt" length="16" name="sumrecamt" type="java.lang.Double"/>
+<property column="countrecamt" length="16" name="countrecamt" type="java.lang.Long"/>
+
+</class>
+</hibernate-mapping>

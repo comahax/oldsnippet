@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	
+			<!--以下为使用容器提供的DataSource时要提供的设置-->
+		<property name="connection.datasource">xa-common-ds</property>
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.WebSphereTransactionManagerLookup</property>
+
+		<!--<property name="transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>-->
+		<property name="jta.UserTransaction">java:comp/UserTransaction</property>
+		<property name="current_session_context_class">jta</property>
+		
+		<!-- 解决_sql_查询中文乱码问题 -->
+		<property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="jdbc.batch_size">5</property>
+		<property name="jdbc.fetch_size">5</property>
+		<property name="max_fetch_depth">1</property>
+		<property name="show_sql">true</property>
+		
+		<mapping resource="com/sunrise/boss/business/fee/woff/acct/persistent/acct.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/zifee/yxplan/persistent/yxplan.hbm.xml" />
+		
+	</session-factory>
+</hibernate-configuration>

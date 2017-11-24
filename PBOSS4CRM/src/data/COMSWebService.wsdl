@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://www.gmcc.net/pboss/COMSWebService/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	name="COMSWebService" 
+	targetNamespace="http://www.gmcc.net/pboss/COMSWebService/">
+	
+	<wsdl:types>
+		<xs:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+			targetNamespace="http://www.gmcc.net/pboss/COMSWebService/" 
+			elementFormDefault="qualified">
+			<include schemaLocation="./COMSWebService.xsd"/>
+        </xs:schema>
+	</wsdl:types>
+	
+  <wsdl:message name="opncodeapplyRequest">
+    <wsdl:part element="tns:opncodeapplyreq" name="opncodeapplyreq"/>
+  </wsdl:message>
+  <wsdl:message name="opncodeapplyResponse">
+    <wsdl:part element="tns:opncodeapplyrsp" name="opncodeapplyrsp"/>
+  </wsdl:message>
+  <wsdl:portType name="COMSWebServicePort">
+    <wsdl:operation name="opncodeapply">
+      <wsdl:documentation>新业务编码申请接口</wsdl:documentation>
+      <wsdl:input message="tns:opncodeapplyRequest"/>
+      <wsdl:output message="tns:opncodeapplyResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="COMSWebServiceSOAP" type="tns:COMSWebServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="opncodeapply">
+      <soap:operation soapAction="http://www.gmcc.net/pboss/COMSWebService/opncodeapply"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="COMSWebService">
+    <wsdl:port binding="tns:COMSWebServiceSOAP" name="COMSWebServiceSOAP">
+      <soap:address location="http://127.0.0.1:9083/services/COMSWebService" />
+      <!-- 
+      http://127.0.0.1:9083/services/COMSWebService
+      http://10.243.215.42/coms4crm/services/COMSWebService
+       -->
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

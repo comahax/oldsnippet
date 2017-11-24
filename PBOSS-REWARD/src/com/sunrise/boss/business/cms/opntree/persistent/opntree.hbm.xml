@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO" table="V_CH_OPERATION">
+<composite-id>
+<key-property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+</composite-id>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="PARENTID" length="18" name="parentid" type="java.lang.String"/>
+<property column="STATE" length="2" name="state" type="java.lang.Short"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="ISBUSI" length="1" name="isbusi" type="java.lang.Byte"/>
+<property column="OPNLEVEL" length="3" name="opnlevel" type="java.lang.Short"/>
+</class>
+<!-- ZJTY -->
+<!-- 树形结构业务展现 由最下层往最上级找 -->
+<sql-query name="zjty.operation.queryup">
+<return class="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO"></return>
+select * from (select * from ch_zjty_operation)
+ 	start with OPNID = :id or name like :name
+	connect by prior parentid = opnid
+</sql-query>  
+<!-- 树形结构业务展现 由最上层往最下层找 -->
+<sql-query name="zjty.operation.querydown">
+<return class="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO"></return>
+select *
+  from ch_zjty_operation
+start with parentid = :parentid
+connect by prior opnid = parentid
+order by opnid
+</sql-query>
+<!-- BBC -->
+<!-- 树形结构业务展现 由最下层往最上级找 -->
+<sql-query name="bbc.operation.queryup">
+<return class="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO"></return>
+select * from (select * from ch_bbc_operation)
+ 	start with OPNID = :id or name like :name
+	connect by prior parentid = opnid
+</sql-query>  
+<!-- 树形结构业务展现 由最上层往最下层找 -->
+<sql-query name="bbc.operation.querydown">
+<return class="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO"></return>
+select *
+  from ch_bbc_operation
+start with parentid = :parentid
+connect by prior opnid = parentid
+order by opnid
+</sql-query>
+<!-- PW -->
+<!-- 树形结构业务展现 由最下层往最上级找 -->
+<sql-query name="pw.operation.queryup">
+<return class="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO"></return>
+select * from (select * from ch_pw_operation)
+ 	start with OPNID = :id or name like :name
+	connect by prior parentid = opnid
+</sql-query>  
+<!-- 树形结构业务展现 由最上层往最下层找 -->
+<sql-query name="pw.operation.querydown">
+<return class="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO"></return>
+select *
+  from ch_pw_operation
+start with parentid = :parentid
+connect by prior opnid = parentid
+order by opnid
+</sql-query>
+<!-- WAY -->
+<!-- 树形结构业务展现 由最下层往最上级找 -->
+<sql-query name="way.operation.queryup">
+<return class="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO"></return>
+select * from (select WAYID as opnid,WAYNAME as name,UPPERWAYID as parentid,CREATETIME as STARTDATE,DISABLETIME as ENDDATE,WAYSTATE as STATE,0 as ISBUSI,'' as OPNLEVEL from ch_pw_way)
+ 	start with OPNID = :id or name like :name
+	connect by prior parentid = opnid
+</sql-query>  
+<!-- 树形结构业务展现 由最上层往最下层找 -->
+<sql-query name="way.operation.querydown">
+<return class="com.sunrise.boss.business.cms.opntree.persistent.OpnTreeVO"></return>
+select *
+  from (select WAYID as opnid,WAYNAME as name,UPPERWAYID as parentid,CREATETIME as STARTDATE,DISABLETIME as ENDDATE,WAYSTATE as STATE,0 as ISBUSI,'' as OPNLEVEL from ch_pw_way)
+start with parentid = :parentid
+connect by prior opnid = parentid
+order by opnid
+</sql-query>
+</hibernate-mapping>

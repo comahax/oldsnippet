@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.salesstd.SalesstdVO" table="FX_RU_SALESSTD">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_RU_SALESSTD_SEQ</param>
+</generator>
+</id>
+<property column="CITYID" length="10" name="cityid" not-null="true" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="SALESSTD" length="10" name="salesstd" type="java.lang.Long"/>
+</class>
+
+
+
+<!-- 获取合作商销量阀值 -->
+<sql-query name="com.gmcc.pboss.business.sales.salesstdquery.doQueryLimit">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="wayName" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="salesstd" type="java.lang.Long"/>
+	select b.wayid, b.wayName, a.brand, a.salesstd
+		 from FX_RU_SALESSTD a, CH_PW_WAY b, FX_RU_WAYASSISTANT c
+		 where a.CITYID = b.CITYID
+		 and a.COUNTYID = b.COUNTYID
+		 and a.MAREACODE = b.MAREACODE
+		 and a.STARLEVEL = b.STARLEVEL
+		 and b.WAYID = c.WAYID
+		 and a.CITYID = :cityid
+		 and b.WAYSTATE = 1 
+		 and c.CANORDER = 1 
+		 order by b.WAYID, a.BRAND asc
+</sql-query>
+
+<!-- 获取当月销量 -->
+<sql-query name="com.gmcc.pboss.business.sales.salesstdquery.doQuerySale">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="count" type="java.lang.Long"/>
+	select wayid,brand,count(*) as count from FX_SW_PARTNERRES
+		where  RESTYPE = 'COMRESSMP' 
+		and ISACTIVE = 1 
+		and ACTTIME>=to_date(:acttime, 'yyyy-MM-dd hh24:mi:ss')  
+		group by WAYID,BRAND
+		order by WAYID,BRAND
+</sql-query>
+</hibernate-mapping>

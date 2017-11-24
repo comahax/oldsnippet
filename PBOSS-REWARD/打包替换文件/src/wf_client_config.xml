@@ -1,0 +1,46 @@
+<servicesClientConfigurations xmlns="http://xmlns.oracle.com/bpel/services/client">
+   
+   <ejb>
+      <serverURL>ormi://10.200.30.21/hw_services</serverURL> <!-- for stand alone -->
+      <!--serverURL>opmn:ormi://10.200.30.21:home/hw_services</serverURL-->  <!-- for opmn managed instance -->
+      <user>oc4jadmin</user>
+      <password>welcome1</password>
+      <initialContextFactory>oracle.j2ee.rmi.RMIInitialContextFactory</initialContextFactory>
+   </ejb>
+   
+   <identityService>
+      <soapEndPoint>http://10.200.30.21:9700/integration/services/IdentityService/identity</soapEndPoint>
+   </identityService>
+
+   <identityConfigService>
+      <soapEndPoint>http://10.200.30.21:9700/integration/services/IdentityService/configuration</soapEndPoint>
+   </identityConfigService>
+ 
+   <taskService>
+      <soapEndPoint>http://10.200.30.21:9700/integration/services/TaskService/TaskServicePort</soapEndPoint>
+   </taskService>
+
+   <taskMetadataService>
+      <soapEndPoint>http://10.200.30.21:9700/integration/services/TaskMetadataService/TaskMetadataServicePort</soapEndPoint>
+   </taskMetadataService>
+
+   <taskQueryService>
+      <soapEndPoint>http://10.200.30.21:9700/integration/services/TaskQueryService/TaskQueryService</soapEndPoint>
+   </taskQueryService>
+
+   <userMetadataService>
+      <soapEndPoint>http://10.200.30.21:9700/integration/services/UserMetadataService/UserMetadataService</soapEndPoint>
+   </userMetadataService>
+
+   <runtimeConfigService>
+      <soapEndPoint>http://10.200.30.21:9700/integration/services/RuntimeConfigService/RuntimeConfigService</soapEndPoint>
+   </runtimeConfigService>
+ 
+   <!-- specifies the mapping for portal realm to is_config realm -->
+   <portal>  
+      <realmMapping>jazn.com</realmMapping>
+   </portal>  
+
+</servicesClientConfigurations>
+
+

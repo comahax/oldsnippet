@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.flowname.FlownameVO" table="CH_PW_FLOWNAME">
+<id column="STEPID" length="64" name="stepid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="STEPNAME" length="256" name="stepname" type="java.lang.String"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="ISSMS" length="2" name="issms" type="java.lang.Short"/>
+<property column="SENDTIME" length="64" name="sendtime" type="java.lang.String"/>
+<property column="NEXTSTEPID" length="64" name="nextstepid" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

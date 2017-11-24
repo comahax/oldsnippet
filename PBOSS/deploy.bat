@@ -1,0 +1,1 @@
+ws_ant -f E:\PBOSS\deploy.xml

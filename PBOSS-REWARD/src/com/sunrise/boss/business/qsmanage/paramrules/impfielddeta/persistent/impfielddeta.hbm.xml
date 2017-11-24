@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.qsmanage.paramrules.impfielddeta.persistent.ImpFieldDetaVO" table="QSCS_RU_IMPFIELDDETA">
+<composite-id>
+	<key-property name="ruleid" type="java.lang.Long">
+		<column name="RULEID" precision="10" scale="0"></column>
+	</key-property>
+	<key-property name="fieldindex" type="java.lang.Short">
+		<column name="FIELDINDEX" precision="3" scale="0"></column>
+	</key-property>
+	<key-property name="tabcode" type="java.lang.String">
+		<column name="TABCODE" length="64"></column>
+	</key-property>
+</composite-id>
+<property column="BUSINAME" length="64" name="businame" type="java.lang.String"/>
+<property column="FIELDCODE" length="32" name="fieldcode" type="java.lang.String"/>
+<property column="FIELDNAME" length="32" name="fieldname" type="java.lang.String"/>
+<property column="DEFAULTVALUE" length="256" name="defaultvalue" type="java.lang.String"/>
+<property column="FIELDTYPE" length="32" name="fieldtype" type="java.lang.String"/>
+<property column="MAINFIELD" length="3" name="mainfield" type="java.lang.Short"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>
+	

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.resmanage.sheet.persistent.SheetVO" table="IM_PR_SHEET" >
+    
+		<id name="sheetid" type="java.lang.String">
+            <column name="SHEETID" length="20" />
+            <generator class="assigned" />
+        </id>
+		
+		<property name="createtime" type="java.util.Date">
+            <column name="CREATETIME" length="7" />
+        </property>
+        <property name="sheettype" type="java.lang.Long">
+            <column name="SHEETTYPE" precision="3" scale="0"/>
+        </property>
+        <property name="sheetstate" type="java.lang.Long">
+            <column name="SHEETSTATE" precision="3" scale="0"/>
+        </property>
+        <property name="sheetrestype" type="java.lang.Long">
+            <column name="SHEETRESTYPE" precision="3" />
+        </property>
+        <property name="salesopr" type="java.lang.String">
+            <column name="SALESOPR" length="15"/>
+        </property>
+        <property name="oprcode" type="java.lang.String">
+            <column name="OPRCODE" length="15" />
+        </property>
+        <property name="oprtime" type="java.util.Date">
+            <column name="OPRTIME" length="7" />
+        </property>
+        <property name="hasprinted" type="java.lang.Long">
+            <column name="HASPRINTED" precision="1" scale="0"/>
+        </property>
+        <property name="wayid" type="java.lang.String">
+            <column name="WAYID" length="8" not-null="true" />
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO" length="128"/>
+        </property>
+        
+    </class>
+    
+    
+    
+	<sql-query name="maxSheetId">	
+		select max(substr(this.sheetid,3,16)) as val from IM_PR_SHEET this	
+	</sql-query>
+	
+
+</hibernate-mapping>

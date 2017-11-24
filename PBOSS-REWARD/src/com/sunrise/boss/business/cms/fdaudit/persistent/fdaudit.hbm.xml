@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.fdaudit.persistent.FdauditVO" table="CH_PW_FDAUDIT">
+<id column="RECNO" name="recno" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_PW_FDAUDIT_SEQ</param>
+	</generator>
+</id>
+<property column="TABLENAME" length="32" name="tablename" not-null="true" type="java.lang.String"/>
+<property column="TYPENAME" length="32" name="typename" not-null="true" type="java.lang.String"/>
+<property column="PKVALUE" length="64" name="pkvalue" not-null="true" type="java.lang.String"/>
+<property column="PKVALUE2" length="64" name="pkvalue2" type="java.lang.String"/>
+<property column="FIELD" length="32" name="field" not-null="true" type="java.lang.String"/>
+<property column="FIELDVALUE" length="255" name="fieldvalue" type="java.lang.String"/>
+<property column="OPERID" length="18" name="operid" not-null="true" type="java.lang.String"/>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="AUDITSTATUS" length="2" name="auditstatus" type="java.lang.Short"/>
+<property column="AUDITOPERID" length="18" name="auditoperid" type="java.lang.String"/>
+<property column="AUDITTIME" length="7" name="audittime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

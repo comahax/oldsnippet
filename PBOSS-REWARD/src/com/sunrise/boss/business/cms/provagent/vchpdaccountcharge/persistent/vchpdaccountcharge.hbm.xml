@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.vchpdaccountcharge.persistent.VChPdAccountchargeVO" table="V_CH_PD_ACCOUNTCHARGE">
+<id column="CHARGEID" name="chargeid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="PRODNO" length="18" name="prodno" type="java.lang.String"/>
+<property column="PROVAGENTID" length="15" name="provagentid" type="java.lang.String"/>
+<property column="PRODID" length="15" name="prodid" type="java.lang.String"/>
+<property column="CUSTNAME" length="5" name="custname" type="java.lang.String"/>
+<property column="CHARGEMONEY" length="15" name="chargemoney" type="java.lang.Double"/>
+<property column="FEEMONTH" length="8" name="feemonth" type="java.lang.String"/>
+<property column="INCOMSTIME" length="7" name="incomstime" type="java.util.Date"/>
+<property column="PHASE" length="3" name="phase" type="java.lang.Short"/>
+<property column="SRCFILE" length="256" name="srcfile" type="java.lang.String"/>
+<property column="REWARDID" length="14" name="rewardid" type="java.lang.Long"/>
+</class>
+<sql-query name="cms.provagent.VChPdAccountchargeQuery">
+<return class="com.sunrise.boss.business.cms.provagent.vchpdaccountcharge.persistent.VChPdAccountchargeVO"></return>
+select a.CHARGEID,b.CITYID,a.PRODNO,b.PROVAGENTID,b.PRODID,b.CUSTNAME,a.CHARGEMONEY,a.FEEMONTH,a.INCOMSTIME,a.PHASE,a.SRCFILE,a.REWARDID 
+from CH_PD_ACCOUNTCHARGE a, CH_PD_SUBSCRIPTION b where a.prodno=b.prodno
+</sql-query>
+</hibernate-mapping>

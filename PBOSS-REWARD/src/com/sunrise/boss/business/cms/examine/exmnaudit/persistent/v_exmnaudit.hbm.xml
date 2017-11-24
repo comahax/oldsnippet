@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.examine.exmnaudit.persistent.VExmnauditVO" table="CH_PW_EXMNAUDIT">
+<id column="SEQID" name="seqid" type="java.lang.Long">
+	<generator class="sequence">
+        <param name="sequence">
+           CH_PW_EXMNAUDIT_SEQ
+        </param>	
+   	</generator>
+</id>
+<property column="PRESENTER" length="16" name="presenter" type="java.lang.String"/>
+<property column="SUBMISSIONTIME" length="7" name="submissiontime" type="java.util.Date"/>
+<property column="AUDITOR" length="16" name="auditor" type="java.lang.String"/>
+<property column="AUDITOPINION" length="512" name="auditopinion" type="java.lang.String"/>
+<property column="ITEMGRADEDID" length="14" name="itemgradedid" type="java.lang.Long"/>
+<property column="STATE" length="32" name="state" type="java.lang.String"/>
+
+<property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<property column="EXMNID" length="6" name="exmnid" type="java.lang.Integer"/>
+<property column="EXMNSTDID" length="6" name="exmnstdid" type="java.lang.Integer"/>
+<property column="EXMNPERIOD" length="6" name="exmnperiod" type="java.lang.String"/>
+<property column="PENALMARK" length="5" name="penalmark" type="java.lang.Float"/>
+</class>
+<sql-query name="queryExmnauditInfoList">
+<return class="com.sunrise.boss.business.cms.examine.exmnaudit.persistent.VExmnauditVO"/>
+	select
+ e.seqid,e.itemgradedid,e.auditopinion,e.presenter,e.auditor,e.submissiontime,e.state,i.wayid,i.exmnid,i.exmnstdid,i.exmnperiod,i.penalmark
+ from CH_PW_ITEMGRADED i inner join CH_PW_EXMNAUDIT e on i.seqid=e.itemgradedid
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.stdrewardbj.persistent.StdrewardbjVO" table="CH_PW_STDREWARDBJ">
+<composite-id>
+<key-property name="region" column="REGION" type="java.lang.String" length="10"/>
+<key-property name="rewardid" column="REWARDID" type="java.lang.Long" length="14"/>
+</composite-id>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18" not-null="true"/>
+<property name="acctype" column="ACCTYPE" type="java.lang.Short" length="3"/>
+<property name="rewardstd" column="REWARDSTD" type="java.lang.Double" length="16"/>
+<property name="intvmonth" column="INTVMONTH" type="java.lang.Integer" length="5"/>
+<property name="ruleid" column="RULEID" type="java.lang.String" length="18"/>
+</class>
+</hibernate-mapping>

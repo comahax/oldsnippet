@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.discomres.VDiscomresVO" table="V_IM_PR_DISCOMRES">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">IM_PR_DISCOMRES_SEQ</param>
+</generator>
+</id>
+<property column="DISID" length="20" name="disid" not-null="true" type="java.lang.String"/>
+<property column="DISCOMCODE" length="18" name="discomcode" not-null="true" type="java.lang.String"/>
+<property column="BATCHNO" length="30" name="batchno" type="java.lang.String"/>
+<property column="BOXNUM" length="100" name="boxnum" type="java.lang.String"/>
+<property column="ISSUTIME" length="7" name="issutime" type="java.sql.Timestamp"/>
+<property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+<property column="COMRESID" length="32" name="comresid" type="java.lang.String"/>
+<property column="COMSTATE" length="3" name="comstate" not-null="true" type="java.lang.Short"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.resource.discomres.queryDiscomresList">
+<return class="com.gmcc.pboss.business.resource.discomres.VDiscomresVO"/>
+	select c.comid,c.comresid,c.comstate,d.recid,d.disid,d.discomcode,d.batchno,d.boxnum,r.issutime
+	from IM_FX_COMRESSMP c,IM_PR_DISCOMRES d ,IM_PR_RESDISFORM r
+                  where d.DISID = r.DISID and d.DISCOMCODE = r.DISCOMCODE and d.BOXNUM = c.BOXNUM and d.BATCHNO = c.BATCHNO
+</sql-query>
+</hibernate-mapping>

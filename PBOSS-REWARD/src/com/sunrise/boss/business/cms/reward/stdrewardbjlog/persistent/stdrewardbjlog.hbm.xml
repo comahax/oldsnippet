@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.stdrewardbjlog.persistent.StdrewardbjlogVO" table="CH_WL_STDREWARDBJLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_WL_STDREWARDBJLOG_SEQ</param>
+	</generator>
+</id>
+<property name="optime" column="OPTIME" type="java.util.Date" length="7"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="16"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="8"/>
+<property name="success" column="SUCCESS" type="java.lang.String" length="8"/>
+<property name="rewardid" column="REWARDID" type="java.lang.Long" length="14"/>
+<property name="region" column="REGION" type="java.lang.String" length="10"/>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<property name="rewardstd" column="REWARDSTD" type="java.lang.Double" length="16"/>
+<property name="intvmonth" column="INTVMONTH" type="java.lang.Integer" length="5"/>
+<property name="ruleid" column="RULEID" type="java.lang.String" length="18"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.common.combineinput.persistent.CombineinputVO" table="V_COMBINEINPUT">
+<id name="id" column="ID" type="java.lang.String">
+	<generator class="assigned"/>
+</id>
+<property name="name" column="NAME" type="java.lang.String" length="128"/>
+<property name="upid" column="UPID" type="java.lang.String" length="128"/>
+<property name="extend1" column="EXTEND1" type="java.lang.String" length="128"/>
+<property name="extend2" column="EXTEND2" type="java.lang.String" length="128"/>
+<property name="extend3" column="EXTEND3" type="java.lang.String" length="128"/>
+</class>
+<sql-query name="boss.common.combineinput.queryDictitemCase">
+ SELECT a.DICTID as id, a.DICTNAME as name, '' as upid, 
+ '' as extend1, '' as extend2, '' as extend3 
+ FROM SA_DB_DICTITEM a where a.GROUPID = 'PC_MONTHBILLTYPE'
+</sql-query>
+<sql-query name="boss.common.combineinput.queryAcctJoinCase">
+ SELECT a.acctid as id, a.acctname as name, b.vc_filedef as upid,
+ '' as extend1, '' as extend2, '' as extend3
+ FROM IB_PF_ACCT a LEFT OUTER JOIN IB_ACC_BILLFILEFMT b 
+ ON a.acctid = b.int_acctid  WHERE a.acctstate = 1
+</sql-query>
+<sql-query name="boss.common.combineinput.queryOperationOption">
+	select a.opnid as id,a.name as name,'' as upid,a.busibelong as extend1,'' as extend2, '' as extend3 
+	from CH_PW_OPERATION a
+	where isbusi=1
+</sql-query>
+
+</hibernate-mapping>

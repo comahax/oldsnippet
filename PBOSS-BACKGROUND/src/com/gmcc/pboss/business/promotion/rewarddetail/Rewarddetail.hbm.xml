@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.promotion.rewarddetail.RewarddetailVO" table="CH_CX_REWARDDETAIL">
+<id column="SEQID" length="14" name="seqid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_CX_REWARDDETAIL_SEQ</param>
+</generator>
+</id>
+<property column="CREATINGTIME" length="7" name="creatingtime" type="java.util.Date"/>
+<property column="PID" length="6" name="pid" type="java.lang.Long"/>
+<property column="RULEID" length="6" name="ruleid" type="java.lang.Long"/>
+<property column="SOURCEID" length="32" name="sourceid" type="java.lang.String"/>
+<property column="OPNID" length="32" name="opnid" type="java.lang.String"/>
+<property column="MOBILE" length="32" name="mobile" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<property column="CALCMONTH" length="6" name="calcmonth" type="java.lang.String"/>
+<property column="COMCATEGORY" length="32" name="comcategory" type="java.lang.String"/>
+<property column="RWDTYPE" length="32" name="rwdtype" type="java.lang.String"/>
+<property column="STDAMOUNT" length="16" name="stdamount" type="java.lang.Double"/>
+<property column="AMOUNT" length="16" name="amount" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

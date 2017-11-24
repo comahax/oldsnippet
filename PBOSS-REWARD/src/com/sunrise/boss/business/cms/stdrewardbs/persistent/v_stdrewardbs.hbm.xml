@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.stdrewardbs.persistent.V_StdrewardbsVO" table="V_CH_PW_STDREWARDBS">
+<composite-id>
+	<key-property name="rewardid" column="REWARDID" type="java.lang.Long"/>
+	<key-property name="region" column="REGION" type="java.lang.String" />
+</composite-id>
+<property name="slv" column="SLV" type="java.lang.String"/>
+<property name="citystd" column="CITYSTD" type="java.lang.Double" length="14"/>
+<property name="countrystd" column="COUNTRYSTD" type="java.lang.Double" length="14"/>
+<property name="citystd2" column="CITYSTD2" type="java.lang.Double" length="14"/>
+<property name="countrystd2" column="COUNTRYSTD2" type="java.lang.Double" length="14"/>
+<property name="acctype" column="ACCTYPE" type="java.lang.Short" length="3"/>
+<property name="citycorelimit" column="CITYCORELIMIT" type="java.lang.Long" length="14"/>
+<property name="cityaccountlimit" column="CITYACCOUNTLIMIT" type="java.lang.Long" length="14"/>
+<property name="countycorelimit" column="COUNTYCORELIMIT" type="java.lang.Long" length="14"/>
+<property name="countyaccountlimit" column="COUNTYACCOUNTLIMIT" type="java.lang.Long" length="14"/>
+</class>
+<sql-query name="boss.cms.stdrewardbs.unionQuery">
+<return class="com.sunrise.boss.business.cms.stdrewardbs.persistent.V_StdrewardbsVO"></return>
+select t1.rewardid,t1.slv as slv,t1.region as region,t1.citystd as citystd,t1.countrystd as countrystd,
+       case when t2.acctype !='11' then t2.citystdtop else t2.citystd end as citystd2,
+       case when t2.acctype !='11' then t2.countrystdtop else t2.countrystd end as countrystd2,
+       t1.acctype as acctype,
+       t1.citycorelimit as citycorelimit,t1.cityaccountlimit as cityaccountlimit ,
+		t1.countycorelimit as countycorelimit  ,t1.countyaccountlimit as countyaccountlimit 
+from CH_PW_STDREWARDBS t1,CH_PW_STDREWARDBS t2
+where t1.rewardid=t2.rewardid and t1.region=t2.region and t1.islimt ='1' and t2.islimt='0'
+union all
+select rewardid as rewardid,slv as slv,region as region,citystd as citystd,countrystd as countrystd,-1 as citystd2 ,-1 as countrystd2,acctype as acctype
+,citycorelimit,cityaccountlimit,countycorelimit,countyaccountlimit
+from CH_PW_STDREWARDBS 
+where (rewardid,region) not in (select t1.rewardid,t2.region from CH_PW_STDREWARDBS t1,CH_PW_STDREWARDBS t2 
+where t1.rewardid=t2.rewardid and t1.region=t2.region and t1.islimt ='1' and t2.islimt='0')
+</sql-query>
+</hibernate-mapping>

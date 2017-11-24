@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sunrise.boss.business.fee.common.eboxchg.persistent.EboxchgVO" table="IB_WL_EboxChgLog">
+		<id column="logid" name="logid" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">IB_WL_EBOXCHGLOG_SEQ</param>
+			</generator>
+		</id>
+
+		<property column="eboxid" length="14" name="eboxid" type="java.lang.Long" />
+		<property column="eboxunitid" length="14" name="eboxunitid" type="java.lang.Long" />
+		<property column="eboxunitdetid" length="14" name="eboxunitdetid" type="java.lang.Long" />
+		<property column="beforechgamt" length="16" name="beforechgamt" type="java.lang.Double" />
+		<property column="afterchgamt" length="16" name="afterchgamt" type="java.lang.Double" />
+		<property column="opercode" length="15" name="opercode" type="java.lang.String" />
+		<property column="reason" length="64" name="reason" type="java.lang.String" />
+		<property column="reason2" length="64" name="reason2" type="java.lang.String" />
+		<property column="chgtime" length="7" name="chgtime" type="java.sql.Timestamp" />
+		<property column="source" length="255" name="source" type="java.lang.String" />
+		<property column="yxplanid" length="14" name="yxplanid" type="java.lang.Long" />
+	</class>
+</hibernate-mapping>

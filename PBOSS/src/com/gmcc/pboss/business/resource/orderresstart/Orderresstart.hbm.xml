@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.orderresstart.OrderresstartVO" table="V_IM_FX_COMRESSMP">
+<id column="COMID" length="18" name="comid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="COUNT" length="10" name="count" type="java.lang.Long"/>
+
+</class>
+
+<!-- 根据商品批次、商品状态（待分配）对套卡资源表 (IM_FX_COMRESSMP)的商品标识进行分组统计 -->
+<sql-query name="com.gmcc.pboss.business.resource.comressmp.orderresstart.comresstat">
+	select c.COMID as COMID, count(*) as COUNT
+  		from IM_FX_COMRESSMP c
+ 		where c.COMSTATE = :COMSTATE
+   			and c.BATCHNO = :BATCHNO
+ group by c.COMID, c.BATCHNO, c.COMSTATE
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.resource.comrescard.orderresstart.comresstat">
+	select c.COMID as COMID, count(*) as COUNT
+  		from IM_FX_COMRESCARD c
+ 		where c.COMSTATE = :COMSTATE
+   			and c.BATCHNO = :BATCHNO
+ group by c.COMID, c.BATCHNO, c.COMSTATE
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.resource.emptysim.orderresstart.comresstat">
+	select c.SIMTYPE as COMID, count(*) as COUNT
+  		from IM_FX_EMPTYSIM c
+ 		where c.USESTATE = :USESTATE
+   			and c.BATCHNO = :BATCHNO
+ group by c.SIMTYPE, c.BATCHNO, c.USESTATE
+</sql-query>
+</hibernate-mapping>

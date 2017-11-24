@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="B2MService"
+	targetNamespace="http://www.gmcc.net/pboss/B2MService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://www.gmcc.net/pboss/B2MService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<xsd:schema attributeFormDefault="unqualified"
+			elementFormDefault="qualified" targetNamespace="http://www.gmcc.net/pboss/B2MService/"
+			xmlns:tns="http://www.gmcc.net/pboss/B2MService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="msgreqheader">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="xsd:string" name="platform_src" />
+						<xsd:element type="xsd:string" name="process_code" />
+						<xsd:element type="xsd:string" minOccurs="0" name="verify_code" />
+						<xsd:element type="xsd:string" name="req_time" >
+							<xsd:annotation>
+								<xsd:documentation>yyyymmddhh24miss
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element type="xsd:string" minOccurs="0" name="req_seq" />
+						<xsd:element type="xsd:string" minOccurs="0" name="unicontact" />
+						<xsd:element type="xsd:string" minOccurs="0" name="testflag" >
+							<xsd:annotation>
+								<xsd:documentation>1:test;0 or no such element:product environment</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element type="xsd:string" name="route"/>
+						<xsd:element minOccurs="0" name="channelinfo">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" minOccurs="0" name="operatorid" />
+									<xsd:element type="xsd:string" minOccurs="0" name="channelid" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="msgrspheader">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element type="xsd:string" name="platform_src" />
+						<xsd:element type="xsd:string" name="process_code" />
+						<xsd:element type="xsd:string" minOccurs="0" name="verify_code" />
+						<xsd:element type="xsd:string" name="resp_time" >
+							<xsd:annotation>
+								<xsd:documentation>yyyymmddhh24miss
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element minOccurs="0" name="sequence">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element minOccurs="0" name="req_seq" type="xsd:string" fixed="32"/>
+									<xsd:element minOccurs="0" name="operation_seq" type="xsd:string" fixed="32"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="retinfo">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="retcode" type="xsd:int"/>
+									<xsd:element name="rettype" type="xsd:int"/>
+									<xsd:element name="retmsg" type="xsd:string"/><!-- CDATA -->									
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="singlerecordrequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader" />
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" name="recommender" />
+									<xsd:element type="xsd:string" name="transactor" />
+									<xsd:element type="xsd:string" name="businessid" />
+									<xsd:element type="xsd:string" name="recommondtime" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="singlerecordresponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+						<xsd:element name="msgbody" minOccurs="0" maxOccurs="1">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" name="city"/>
+									<xsd:element type="xsd:string" name="brand"/>
+									<xsd:element type="xsd:string" name="recommender"/>
+									<xsd:element type="xsd:string" name="transactor"/>
+									<xsd:element type="xsd:string" name="teletype"/>
+									<xsd:element type="xsd:string" name="businessid"/>
+									<xsd:element type="xsd:string" name="businessname"/>
+									<xsd:element type="xsd:string" name="reward"/>
+									<xsd:element type="xsd:string" name="time"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="monthstatisticrequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader" />
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" name="recommender" />
+									<xsd:element type="xsd:string" name="month" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="monthstatisticresponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+						<xsd:element name="msgbody" minOccurs="0" maxOccurs="1">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" name="reward"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="sumstatisticrequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader" />
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" name="recommender" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="sumstatisticresponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+						<xsd:element name="msgbody" minOccurs="0" maxOccurs="1">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" name="reward"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="monthdetailrequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader" />
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" name="recommender" />
+									<xsd:element type="xsd:string" name="month" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="monthdetailresponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+						<xsd:element name="msgbody" minOccurs="0" maxOccurs="1">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="details" minOccurs="0" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element type="xsd:string" name="businessname"/>
+												<xsd:element type="xsd:string" name="transactor"/>
+												<xsd:element type="xsd:string" name="reward"/>
+												<xsd:element type="xsd:string" name="time"/>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="smsbosynrequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader" />
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element type="xsd:string" name="srcseq" />
+									<xsd:element type="xsd:string" minOccurs="0" name="ruleid" >
+										<xsd:annotation>
+											<xsd:documentation>dafault value:ZINC</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element type="xsd:string" name="opnid" />
+									<xsd:element type="xsd:string" name="calcopnid" />
+									<xsd:element type="xsd:string" name="calcmonth" >
+										<xsd:annotation>
+											<xsd:documentation>YYYYMM</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element type="xsd:string" name="wayid" />
+									<xsd:element type="xsd:string" name="oprtime" >
+										<xsd:annotation>
+											<xsd:documentation>yyyymmddhh24miss</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element type="xsd:string" name="oprcode" />
+									<xsd:element type="xsd:string" name="mobile" />
+									<xsd:element type="xsd:string" name="busivalue" >
+										<xsd:annotation>
+											<xsd:documentation>value must be 1</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element type="xsd:string" name="rewardtype" >
+										<xsd:annotation>
+											<xsd:documentation>value must be 9</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element type="xsd:string" name="ossrc" >
+										<xsd:annotation>
+											<xsd:documentation>value must in 3,4,5</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="smsbosynresponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="singlerecordrequest">
+		<wsdl:part name="request" element="tns:singlerecordrequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="singlerecordresponse">
+		<wsdl:part name="response" element="tns:singlerecordresponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="monthstatisticrequest">
+		<wsdl:part name="request" element="tns:monthstatisticrequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="monthstatisticresponse">
+		<wsdl:part name="response" element="tns:monthstatisticresponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sumstatisticrequest">
+		<wsdl:part name="request" element="tns:sumstatisticrequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sumstatisticresponse">
+		<wsdl:part name="response" element="tns:sumstatisticresponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="monthdetailrequest">
+		<wsdl:part name="request" element="tns:monthdetailrequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="monthdetailresponse">
+		<wsdl:part name="response" element="tns:monthdetailresponse"></wsdl:part>
+	</wsdl:message>
+	<!--  
+	<wsdl:message name="singlerecord_faultMsg">
+	</wsdl:message>
+	-->
+	<wsdl:message name="smsbosynrequest">
+		<wsdl:part name="request" element="tns:smsbosynrequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="smsbosynresponse">
+		<wsdl:part name="response" element="tns:smsbosynresponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="B2MServicePort">
+		<wsdl:operation name="singlerecord">
+			<wsdl:input message="tns:singlerecordrequest"></wsdl:input>
+			<wsdl:output message="tns:singlerecordresponse"></wsdl:output>
+        </wsdl:operation>
+		<wsdl:operation name="monthstatistic">
+			<wsdl:input message="tns:monthstatisticrequest"></wsdl:input>
+			<wsdl:output message="tns:monthstatisticresponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sumstatistic">
+			<wsdl:input message="tns:sumstatisticrequest"></wsdl:input>
+			<wsdl:output message="tns:sumstatisticresponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="monthdetail">
+			<wsdl:input message="tns:monthdetailrequest"></wsdl:input>
+			<wsdl:output message="tns:monthdetailresponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="smsbosyn">
+			<wsdl:input message="tns:smsbosynrequest"></wsdl:input>
+			<wsdl:output message="tns:smsbosynresponse"></wsdl:output>
+        </wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="B2MServiceSoapBinding" type="tns:B2MServicePort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="singlerecord">
+			<soap:operation soapAction="http://www.gmcc.net/pboss/B2MService/singlerecord" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="monthstatistic">
+			<soap:operation soapAction="http://www.gmcc.net/pboss/B2MService/monthstatistic" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sumstatistic">
+			<soap:operation soapAction="http://www.gmcc.net/pboss/B2MService/sumstatistic" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="monthdetail">
+			<soap:operation soapAction="http://www.gmcc.net/pboss/B2MService/monthdetail" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="smsbosyn">
+			<soap:operation soapAction="http://www.gmcc.net/pboss/B2MService/smsbosyn" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="B2MService">
+		<wsdl:port name="B2MServiceSoap" binding="tns:B2MServiceSoapBinding">
+			<soap:address location="http://10.244.153.21/coms4crm/services/B2MService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

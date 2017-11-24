@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.jfopnmap.persistent.JfopnmapVO" table="CH_BBC_JFOPNMAP">
+<composite-id>
+	<key-property name="busiid" column="BUSIID" length="12" type="java.lang.String" />
+	<key-property name="entid" column="ENTID" length="12" type="java.lang.String" />
+	<key-property name="opnid" column="OPNID" length="18" type="java.lang.String" />
+</composite-id>
+<property name="cityid" column="CITYID" type="java.lang.String" length="4"/>
+</class>
+</hibernate-mapping>

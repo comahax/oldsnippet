@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.fee.qsmanage.accttyperel.persistent.AcctTypeRelBakVO"
+		table="IB_CB_ACCTTYPEREL_1">
+		<id name="acctid" type="java.lang.String">
+			<column name="ACCTID" length="14" />
+			<generator class="assigned">
+			</generator>
+		</id>
+		<property name="accttype" type="java.lang.Short">
+            <column name="accttype" precision="3"  />
+        </property>
+	</class>
+</hibernate-mapping>

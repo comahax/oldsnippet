@@ -1,0 +1,166 @@
+/*====================================================*/
+/*		       树类型表格类型                   */
+/*====================================================*/
+
+.accbllbg {
+	text-align:left;
+	filter:progid:DXImageTransform.Microsoft.Shadow(Strength=0, Direction=135, color=ffffff);
+}
+
+.bg_1 {
+	background-image: url(../../images/accounting/bg.jpg);
+	background-repeat: no-repeat;
+	height: 808px;
+	width: 791px;
+	
+}
+
+.point1 {
+	width:500px;height:20px;
+	text-align: left;background:url(../../images/accounting/point1.jpg) no-repeat 0px 0px;
+	left: 5px;
+	top: 160px;
+	position: absolute;
+}
+
+.k1 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 165px;
+	top: 217px;
+}
+.k2 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 165px;
+	top: 281px;
+}
+.k3 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 83px;
+	top: 372px;
+}
+.k4 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 248px;
+	top: 372px;
+}
+
+.k5 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 165px;
+	top: 470px;
+}
+.k6 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 83px;
+	top: 575px;
+}
+.k7 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 248px;
+	top: 575px;
+}
+
+.L1 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 526px;
+	top: 217px;
+}
+.L2 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 526px;
+	top: 275px;
+}
+.L3 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 440px;
+	top: 335px;
+}
+.L4 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 606px;
+	top: 335px;
+}
+
+
+.L5 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 526px;
+	top: 433px;
+}
+.L6 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 526px;
+	top: 500px;
+}
+.L7 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 526px;
+	top: 566px;
+}
+.L8 {
+	border:#333333 solid 1px;background:#67D282;
+	left: 526px;
+	top: 638px;
+}
+
+.k1,.k2,.k3,.k4,.k5,.k6,.k7,.L1,.L2,.L3,.L4,.L5,.L6,.L7,.L8{
+	height: 30px;
+	width: 115px;
+	background-repeat: no-repeat;
+	position: absolute;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 10px;
+	font-size: 12px;
+	font-weight: 900;
+	color: #000000;
+	
+
+	}
+	
+.mcolor0 {
+	border:#AAE4F7 solid 1px;
+	background:url(../../images/accounting/0.jpg);
+	
+}
+.mcolor1 {
+	border:#7AD4EE solid 1px;
+	background:url(../../images/accounting/1.jpg);
+}
+.mcolor2 {
+	border:#DAC11B solid 1px;
+	background:url(../../images/accounting/2.jpg);
+}
+.mcolor3 {
+	border:#4BC76A solid 1px;
+	background:url(../../images/accounting/3.jpg);
+}
+.mcolor4 {
+	border:#FB5A58 solid 1px;
+	background:url(../../images/accounting/4.jpg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	

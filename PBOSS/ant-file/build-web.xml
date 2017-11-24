@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 该ant文件主要用于打包jar文件（提供给网站使用的接口）-->
+<project name="pboss build file" default="to-jar" basedir="..">
+
+	<property name="pboss.lib" value="${basedir}/lib"/>
+	<property name="pboss.src" value="${basedir}/src"/>
+	<property name="pboss.target" value="${basedir}/target"/>
+	<property name="pboss.target.src" value="${pboss.target}/src"/>
+	<property name="pboss.target.classes" value="${pboss.target}/classes"/>
+
+	<property name="jdk.version" value="1.4"/>
+
+
+    <!-- =================================================================== -->
+    <!-- Define the class path                                               -->
+    <!-- =================================================================== -->
+    <path id="pboss.class.path">
+        <fileset dir="${pboss.lib}">
+            <include name="spring/*.jar"/>
+            <include name="common/commons-logging.jar"/>
+        </fileset>
+    </path>                                               
+
+    <!-- =================================================================== -->
+    <!-- Clean                                                               -->
+    <!-- =================================================================== -->
+    <target name="clean">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      C L E A N                                    |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>    	
+        <delete dir="${pboss.target}"/>
+    </target>
+
+
+    <!-- =================================================================== -->
+    <!-- Prepares the directory structure                                    -->
+    <!-- =================================================================== -->
+    <target name="prepare" depends="clean">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      P R E P A R E                                |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>    	
+        <mkdir dir="${pboss.target}"/>
+        <mkdir dir="${pboss.target.src}"/>
+    	<mkdir dir="${pboss.target.classes}"/>
+		
+        <copy todir="${pboss.target.src}">
+            <fileset dir="${pboss.src}">
+            	<include name="com/gmcc/pboss/service/send/**"/>            	
+            	<include name="com/gmcc/pboss/service/result/**"/>
+            	<include name="com/gmcc/pboss/service/WebSiteService.java"/>
+            </fileset>
+        </copy>
+    </target>
+	
+    <!-- =================================================================== -->
+    <!-- Compiles all the Web Site Service classes                           -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="prepare">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      C O M P I L I N G S O U R C E S              |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+        <javac destdir="${pboss.target.classes}" classpathref="pboss.class.path" debug="on" deprecation="on" optimize="off" target="${jdk.version}">
+            <src path="${pboss.target.src}"/>
+        </javac>
+    </target>
+	
+    <!-- =================================================================== -->
+    <!-- Jar the Web Site Service classes                                    -->
+    <!-- =================================================================== -->
+	<target name="to-jar" depends="compile">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      J A R                                        |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+		<jar destfile="${pboss.target}/websiteservice-${jdk.version}.jar">
+            <fileset dir="${pboss.target.classes}">
+            </fileset>
+		</jar>
+		
+		<zip destfile="${pboss.target}/websiteservice-${jdk.version}-src.zip">
+            <fileset dir="${pboss.target.src}">
+            </fileset>
+		</zip>
+	</target>
+</project>

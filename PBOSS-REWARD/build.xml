@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="pboss-reward" default="SingleWarModule" basedir=".">
+	<echo message="Java Version: ${ant.java.version}"/>
+    <!-- Local system paths -->
+    <property file="${basedir}/build.properties"/>
+
+    <!-- =================================================================== -->
+    <!-- Define the class path                                               -->
+    <!-- =================================================================== -->
+    <path id="boss.class.path">
+        <fileset dir="${lib.dir}">
+            <include name="projectNeed/*.jar"/>
+            <include name="forCompile/*.jar"/>
+        </fileset>
+    </path>                                               
+
+    <!-- =================================================================== -->
+    <!-- Clean                                                               -->
+    <!-- =================================================================== -->
+    <target name="clean">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      C L E A N                                    |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>    	
+        <delete dir="${boss.dist.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Prepares the directory structure                                    -->
+    <!-- =================================================================== -->
+    <target name="prepare" depends="clean">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      P R E P A R E                                |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>    	
+        <mkdir dir="${boss.classes.dir}"/>
+        <mkdir dir="${boss.lib.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Compiles all the classes                                            -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="prepare">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      C O M P I L I N G S O U R C E S              |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+        <javac fork="true" memoryinitialsize="128m" memorymaximumsize="256m" destdir="${boss.classes.dir}" classpathref="boss.class.path" debug="on" deprecation="on" optimize="off" target="1.5" includeantruntime="false">
+            <src path="${boss.java.dir}"/>
+        </javac>
+
+        <copy todir="${boss.classes.dir}">
+            <fileset dir="${boss.java.dir}">
+                <include name="**/*.xml"/>
+                <include name="**/*.properties"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Single WarModule                                                    -->
+    <!-- =================================================================== -->
+    <target name="SingleWarModule" depends="compile" >
+    	<tstamp>
+			<format property="TODAY" pattern="yyyyMMddHH" />
+		</tstamp>
+    	
+        <copy todir="${boss.lib.dir}" flatten="yes" includeEmptyDirs="no">
+            <fileset dir="${lib.dir}">
+                <include name="projectNeed/*.jar"/>
+            </fileset>
+        </copy>
+        <war warfile="${boss.dist.dir}/${ant.project.name}_${TODAY}.war" webxml="${boss.web.xml}">
+            <fileset dir="${boss.web.dir}">
+                <exclude name="**/classes/**"/>
+                <exclude name="**/lib/**"/>
+            </fileset>
+            <classes dir="${boss.classes.dir}"/>
+            <lib dir="${boss.lib.dir}"/>
+         </war>
+    </target>
+</project>

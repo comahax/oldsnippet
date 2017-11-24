@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping> 
+    <class name="com.sunrise.boss.business.fee.integral.custintedeta.persistent.CustInteDetaVO" table="IB_CU_CUSTINTDETA">
+        <composite-id>
+            <key-property name="userid" type="java.lang.Long">
+                <column name="USERID" precision="10" scale="0" />
+            </key-property> 
+             <key-property name="validbillcyc" type="java.lang.Long">
+                <column name="VALIDBILLCYC" precision="8" scale="0" />
+            </key-property>
+             <key-property name="custid" type="java.lang.Long">
+                <column name="CUSTID" precision="10" scale="0" />
+            </key-property>          
+            <key-property name="jftype" type="java.lang.Integer">
+                <column name="JFTYPE" precision="3" scale="0" />
+            </key-property>                                              
+        </composite-id>
+        
+        <property name="value" type="java.lang.Long">
+            <column name="VALUE" precision="10" scale="0" />
+        </property>
+        <property name="oprtime" type="java.util.Date">
+            <column name="OPRTIME" length="7" />
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO" length="128" />
+        </property>
+    </class>
+</hibernate-mapping>

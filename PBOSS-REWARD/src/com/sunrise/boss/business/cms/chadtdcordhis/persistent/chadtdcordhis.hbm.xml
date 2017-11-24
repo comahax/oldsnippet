@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtdcordhis.persistent.ChAdtDcordhisVO" table="CH_ADT_DCORDHIS">
+<id column="ID" name="id" type="java.lang.Long">
+<generator class="sequence"/>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="UPPEROPNID" length="18" name="upperopnid" type="java.lang.String"/>
+<property column="SUBOPNID" length="18" name="subopnid" type="java.lang.String"/>
+<property column="OPRMONTH" length="6" name="oprmonth" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="GOTONEBUSIVALUE" length="10" name="gotonebusivalue" type="java.lang.Long"/>
+<property column="GOTONEMONEY" length="16" name="gotonemoney" type="java.lang.Double"/>
+<property column="SZXBUSIVALUE" length="10" name="szxbusivalue" type="java.lang.Long"/>
+<property column="SZXMONEY" length="16" name="szxmoney" type="java.lang.Double"/>
+<property column="MZONEBUSIVALUE" length="10" name="mzonebusivalue" type="java.lang.Long"/>
+<property column="MZONEMONEY" length="16" name="mzonemoney" type="java.lang.Double"/>
+<property column="TDBUSIVALUE" length="10" name="tdbusivalue" type="java.lang.Long"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="TDMONEY" length="16" name="tdmoney" type="java.lang.Double"/>
+<property column="OTHERBUSIVALUE" length="10" name="otherbusivalue" type="java.lang.Long"/>
+<property column="OTHERMONEY" length="16" name="othermoney" type="java.lang.Double"/>
+<property column="BUSIVALUESUM" length="10" name="busivaluesum" type="java.lang.Long"/>
+<property column="MONEYSUM" length="16" name="moneysum" type="java.lang.Double"/>
+<property column="ISFLAG" length="3" name="isflag" type="java.lang.Short"/>
+<property column="ADJUSTOPRCODE" length="15" name="adjustoprcode" type="java.lang.String"/>
+<property column="ADJUSTOPTIME" length="7" name="adjustoptime" type="java.util.Date"/>
+<property column="PAYMENTOPRCODE" length="15" name="paymentoprcode" type="java.lang.String"/>
+<property column="PAYMENTOPTIME" length="7" name="paymentoptime" type="java.util.Date"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/>
+<property column="MBATCHNO" length="10" name="mbatchno" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

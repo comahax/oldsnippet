@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.qsmanage.paramsmanage.chgreglog.persistent.ChgReglogVO" table="QSCS_CHG_REGLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">QSCS_CHG_REGLOG_SEQ</param>
+	</generator>
+</id>
+<property column="CHGTIME" length="7" name="chgtime" type="java.util.Date"/>
+<property column="CHGCODE" length="32" name="chgcode" type="java.lang.String"/>
+<property column="REQID" length="11" name="reqid" type="java.lang.Long"/>
+<property column="TABNAME" length="32" name="tabname" type="java.lang.String"/>
+<property column="OLDVALUE" length="4000" name="oldvalue" type="java.lang.String"/>
+<property column="NEWVALUE" length="4000" name="newvalue" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

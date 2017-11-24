@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.dcord.persistent.VDcordVO">
+<id column="ID" name="id" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="30" name="wayname" type="java.lang.String"/>
+<property column="STARLEVEL" length="3" name="starlevel" type="java.lang.Short"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="UPPEROPNID" length="18" name="upperopnid" type="java.lang.String"/>
+<property column="SUBOPNID" length="18" name="subopnid" type="java.lang.String"/>
+<property column="OPRMONTH" length="6" name="oprmonth" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="GOTONEBUSIVALUE" length="10" name="gotonebusivalue" type="java.lang.Long"/>
+<property column="GOTONEMONEY" length="16" name="gotonemoney" type="java.lang.Double"/>
+<property column="SZXBUSIVALUE" length="10" name="szxbusivalue" type="java.lang.Long"/>
+<property column="SZXMONEY" length="16" name="szxmoney" type="java.lang.Double"/>
+<property column="MZONEBUSIVALUE" length="10" name="mzonebusivalue" type="java.lang.Long"/>
+<property column="MZONEMONEY" length="16" name="mzonemoney" type="java.lang.Double"/>
+<property column="TDBUSIVALUE" length="10" name="tdbusivalue" type="java.lang.Long"/>
+<property column="TDMONEY" length="16" name="tdmoney" type="java.lang.Double"/>
+<property column="OTHERBUSIVALUE" length="10" name="otherbusivalue" type="java.lang.Long"/>
+<property column="OTHERMONEY" length="16" name="othermoney" type="java.lang.Double"/>
+<property column="BUSIVALUESUM" length="10" name="busivaluesum" type="java.lang.Long"/>
+<property column="MONEYSUM" length="16" name="moneysum" type="java.lang.Double"/>
+<property column="ISFLAG" length="3" name="isflag" type="java.lang.Short"/>
+<property column="ADJUSTOPRCODE" length="15" name="adjustoprcode" type="java.lang.String"/>
+<property column="ADJUSTOPTIME" length="7" name="adjustoptime" type="java.util.Date"/>
+<property column="PAYMENTOPRCODE" length="15" name="paymentoprcode" type="java.lang.String"/>
+<property column="PAYMENTOPTIME" length="7" name="paymentoptime" type="java.util.Date"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/>
+<property column="ABATCHNO" length="18" name="abatchno" type="java.lang.String"/>
+<property column="PAYMONTH" length="6" name="paymonth" type="java.lang.String"/>
+</class>
+<sql-query name="com.sunrise.boss.business.cms.vdcord.persistent.doQuery">
+	<return class="com.sunrise.boss.business.cms.vdcord.persistent.VDcordVO" />
+select t.id,t.countyid,t.wayid,w.wayname,w.starlevel,t.opnid,t.upperopnid,t.subopnid,
+  t.oprmonth,t.rewardtype,t.rewardmonth,t.gotonebusivalue,t.gotonemoney,t.szxbusivalue,
+  t.szxmoney,t.mzonebusivalue,t.mzonemoney,t.tdbusivalue,t.tdmoney,t.otherbusivalue,
+  t.othermoney,t.busivaluesum,t.moneysum,t.isflag,t.adjustoprcode,t.adjustoptime,
+  t.paymentoprcode,t.paymentoptime,t.batchno,t.abatchno,t.paymonth
+  from CH_ADT_DCORD t,ch_pw_way w
+ where w.wayid=t.wayid and w.waytype='AG' and w.cityid=:cityid
+</sql-query>
+</hibernate-mapping>

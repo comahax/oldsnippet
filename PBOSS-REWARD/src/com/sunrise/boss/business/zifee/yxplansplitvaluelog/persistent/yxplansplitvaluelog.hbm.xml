@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.yxplansplitvaluelog.persistent.YxplanSplitValuelogVO" table="PC_PS_YXPLANSPLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">PC_PS_YXPLANSPLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.sql.Timestamp"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="BILLCYCLE" length="8" name="billcycle" type="java.lang.Integer"/>
+<property column="BRANDID" length="32" name="brandid" type="java.lang.String"/>
+<property column="ITEMID" length="32" name="itemid" type="java.lang.String"/>
+<property column="SPLITFEE" length="16" name="splitfee" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

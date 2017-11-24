@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.montask.persistent.MontaskVO" table="CH_ADT_MONTASK">
+<composite-id>
+<key-property column="OWNERTASKID" length="16" name="ownertaskid" type="java.lang.String"/>
+<key-property column="TASKID" length="16" name="taskid" type="java.lang.String"/>
+</composite-id>
+<property column="TASKNAME" length="100" name="taskname" type="java.lang.String"/>
+<property column="TASKLEVEL" length="3" name="tasklevel" type="java.lang.Short"/>
+<property column="RUNORDER" length="3" name="runorder" type="java.lang.Short"/>
+<property column="TYPE" length="6" name="type" type="java.lang.String"/>
+<property column="STATE" length="1" name="state" type="java.lang.Short"/>
+<property column="PROCSTAT" length="3" name="procstat" type="java.lang.Short"/>
+<property column="STARTTIME" length="3" name="starttime" type="java.lang.String"/>
+<property column="ENDTIME" length="3" name="endtime" type="java.lang.String"/>
+
+
+</class>
+<sql-query name="queryMonTaskid">
+	<return	class="com.sunrise.boss.business.cms.reward.montask.persistent.MontaskVO"/>
+	select  'OWNERTASKID' as OWNERTASKID,
+            a.TASKID,
+            a.TASKNAME,
+            '' as TASKLEVEL,
+            '' as RUNORDER,
+            '' as TYPE,
+            '' as STATE,
+            a.PROCSTAT,
+            a.STARTTIME,
+            a.ENDTIME,
+            b.serialno
+  from ch_adt_taskprocess a,
+       (select t.taskid, max(serialno) as serialno
+          from ch_adt_taskprocess t
+         where t.validbillcyc = :validbillcyc00 or t.validbillcyc=:validbillcyc
+         group by t.taskid
+         order by t.taskid) b
+ where a.taskid = b.taskid
+   and a.serialno = b.serialno
+   and a.taskid in (select taskid
+                      from CH_ADT_MONTASK
+                     where state = 1
+                       and type = 'AG'
+                       and taskid not in (select ownertaskid
+                                            from ch_adt_montask
+                                           where state = 1
+                                             and type = 'AG')
+                     start with OWNERTASKID = 910003
+                    connect by prior taskid = OWNERTASKID)
+ order by a.taskid, a.serialno
+</sql-query>
+</hibernate-mapping>

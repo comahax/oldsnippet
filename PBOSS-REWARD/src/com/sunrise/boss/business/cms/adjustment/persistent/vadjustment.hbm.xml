@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.adjustment.persistent.VAdjustmentVO">
+<id column="ID" name="id" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="WAYNAME" length="30" name="wayname" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="PAYSUM" length="16" name="paysum" type="java.lang.Double"/>
+<property column="INVOICESUM" length="16" name="invoicesum" type="java.lang.Double"/>
+<property column="TAXMONEY" length="10" name="taxmoney" type="java.lang.Double"/>
+<property column="REALPAY" length="16" name="realpay" type="java.lang.Double"/>
+<property column="REMARK" length="128" name="remark" type="java.lang.String"/>
+<property column="RPMONEY" length="10" name="rpmoney" type="java.lang.Double"/>
+<property column="ACCTTYPE" length="3" name="accttype" type="java.lang.Short"/>
+<property column="CHAINHEAD" length="18" name="chainhead" type="java.lang.String"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/>
+<property column="FEES" length="10" name="fees" type="java.lang.Double"/>
+<property column="UPPEROPNID" length="18" name="upperopnid" type="java.lang.String"/>
+</class>
+<sql-query name="com.sunrise.boss.business.cms.adjustment.persistent.doquery.checked">
+	<return class="com.sunrise.boss.business.cms.adjustment.persistent.VAdjustmentVO" />
+select a.id,a.countyid,a.rewardmonth,a.wayid,w.wayname,w.starlevel,a.paysum paysum,(nvl(a.paysum,0)+nvl(a.rpmoney,0)-nvl(a.fees,0)) invoicesum,a.taxmoney,
+   (nvl(a.paysum,0)-nvl(a.taxmoney,0)+nvl(a.rpmoney,0)-nvl(a.fees,0)) realpay,a.remark,a.rpmoney,wa.accttype,a.fees,
+   w.chainhead,a.batchno batchno,a.upperopnid
+  from  ch_adt_adjustment a,ch_pw_wayaccount wa,ch_pw_way w
+  where w.wayid=a.wayid and w.wayid=wa.wayid 
+   and w.waysubtype!='DIS' and wa.accid=0
+   and w.waytype='AG' and w.cityid=:cityid  
+union all
+select a.id,a.countyid,a.rewardmonth,a.wayid,w.wayname,w.starlevel,a.paysum paysum,(nvl(a.paysum,0)+nvl(a.rpmoney,0)-nvl(a.fees,0)) invoicesum,a.taxmoney,
+   (nvl(a.paysum,0)-nvl(a.taxmoney,0)+nvl(a.rpmoney,0)-nvl(a.fees,0)) realpay,a.remark,a.rpmoney,wa.accttype,a.fees,
+   w.chainhead,a.batchno batchno,a.upperopnid
+  from  ch_adt_adjustment a,ch_pw_wayaccount wa,ch_pw_way w
+  where w.wayid=a.wayid and w.wayid=wa.wayid 
+   and w.waysubtype='DIS' and wa.accid=1
+   and w.waytype='AG' and w.cityid=:cityid
+</sql-query>
+<sql-query name="com.sunrise.boss.business.cms.adjustment.persistent.doquery.checked.withupperopnid">
+	<return class="com.sunrise.boss.business.cms.adjustment.persistent.VAdjustmentVO" />
+select a.id,a.countyid,a.rewardmonth,a.wayid,w.wayname,w.starlevel,a.paysum paysum,(nvl(a.paysum,0)+nvl(a.rpmoney,0)-nvl(a.fees,0)) invoicesum,a.taxmoney,
+   (nvl(a.paysum,0)-nvl(a.taxmoney,0)+nvl(a.rpmoney,0)-nvl(a.fees,0)) realpay,a.remark,a.rpmoney,wa.accttype,a.fees,
+   w.chainhead,a.batchno batchno,a.upperopnid
+  from  ch_adt_adjustment a,ch_pw_wayaccount wa,ch_pw_way w
+  where w.wayid=a.wayid and w.wayid=wa.wayid 
+   and w.waysubtype!='DIS' and wa.accid=0
+   and w.waytype='AG' and w.cityid=:cityid  
+union all
+select a.id,a.countyid,a.rewardmonth,a.wayid,w.wayname,w.starlevel,a.paysum paysum,(nvl(a.paysum,0)+nvl(a.rpmoney,0)-nvl(a.fees,0)) invoicesum,a.taxmoney,
+   (nvl(a.paysum,0)-nvl(a.taxmoney,0)+nvl(a.rpmoney,0)-nvl(a.fees,0)) realpay,a.remark,a.rpmoney,wa.accttype,a.fees,
+   w.chainhead,a.batchno batchno,a.upperopnid
+  from  ch_adt_adjustment a,ch_pw_wayaccount wa,ch_pw_way w
+  where w.wayid=a.wayid and w.wayid=wa.wayid 
+   and w.waysubtype='DIS' and wa.accid=1
+   and w.waytype='AG' and w.cityid=:cityid
+</sql-query>
+<sql-query name="com.sunrise.boss.business.cms.adjustment.persistent.doquery.unchecked">
+	<return class="com.sunrise.boss.business.cms.adjustment.persistent.VAdjustmentVO" />
+select rownum id,C.WAYID,C.REWARDMONTH,C.COUNTYID,C.WAYNAME,C.STARLEVEL,
+       C.PAYSUM,C.INVOICESUM,C.TAXMONEY,C.REALPAY,C.REMARK,C.RPMONEY,C.ACCTTYPE,
+       C.CHAINHEAD,C.BATCHNO,C.FEES,null UPPEROPNID
+from (select d.wayid,d.rewardmonth,d.countyid,w.wayname,w.starlevel,wa.accttype,
+       w.chainhead,d.batchno,
+       sum(d.moneysum) paysum,sum(d.moneysum) invoicesum,0 taxmoney,sum(d.moneysum) realpay,null remark,0 rpmoney,0 fees
+  from ch_adt_dcord d,ch_pw_wayaccount wa,ch_pw_way w
+  where not exists(select 1 from ch_adt_adjustment a
+      where a.wayid=d.wayid and a.rewardmonth=d.rewardmonth and a.batchno is null)
+    and w.wayid=wa.wayid and w.wayid=d.wayid 
+    and ((w.waysubtype!='DIS' and wa.accid=0) or (w.waysubtype='DIS' and wa.accid=1))
+    and d.isflag=0 and w.waytype='AG' and w.cityid=:cityid
+  group by d.countyid,d.rewardmonth,d.wayid,w.wayname,w.starlevel,wa.accttype,w.chainhead,d.batchno
+  order by d.countyid,d.rewardmonth,d.wayid
+) C
+</sql-query>
+<sql-query name="com.sunrise.boss.business.cms.adjustment.persistent.doquery.unchecked.withupperopnid">
+	<return class="com.sunrise.boss.business.cms.adjustment.persistent.VAdjustmentVO" />
+select rownum id,C.WAYID,C.REWARDMONTH,C.COUNTYID,C.WAYNAME,C.STARLEVEL,
+       C.PAYSUM,C.INVOICESUM,C.TAXMONEY,C.REALPAY,C.REMARK,C.RPMONEY,C.ACCTTYPE,
+       C.CHAINHEAD,C.BATCHNO,C.FEES,C.UPPEROPNID
+from (select d.wayid,d.rewardmonth,d.countyid,w.wayname,w.starlevel,wa.accttype,
+       w.chainhead,d.batchno,d.upperopnid,
+       sum(d.moneysum) paysum,sum(d.moneysum) invoicesum,0 taxmoney,sum(d.moneysum) realpay,null remark,0 rpmoney,0 fees
+  from ch_adt_dcord d,ch_pw_wayaccount wa,ch_pw_way w
+  where not exists(select 1 from ch_adt_adjustment a
+      where a.wayid=d.wayid and a.rewardmonth=d.rewardmonth and a.upperopnid=d.upperopnid and a.batchno is null)
+    and w.wayid=wa.wayid and w.wayid=d.wayid 
+    and ((w.waysubtype!='DIS' and wa.accid=0) or (w.waysubtype='DIS' and wa.accid=1))
+    and d.isflag=0 and w.waytype='AG' and w.cityid=:cityid
+  group by d.countyid,d.rewardmonth,d.wayid,w.wayname,w.starlevel,wa.accttype,w.chainhead,d.batchno,d.upperopnid
+  order by d.countyid,d.rewardmonth,d.wayid
+) C
+</sql-query>
+<sql-query name="com.sunrise.boss.business.cms.adjustment.persistent.dosaveunchecked">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="rewardmonth" type="java.lang.String"/>
+	<return-scalar column="paysum" type="java.lang.Double"/>
+	<!-- 因为使用的不是标准的Hibernate3，所以即使有这四个字段构成的构造函数也不可以的 -->
+	<!--  return class="com.sunrise.boss.business.cms.adjustment.persistent.AdjustmentVO" / -->
+select d.wayid,d.countyid,d.rewardmonth,sum(d.moneysum) paysum
+ from ch_adt_dcord d
+ where not exists(select 1 from ch_adt_adjustment a
+      where a.wayid=:wayid and a.rewardmonth=:rewardmonth and a.batchno is null)
+    and d.wayid=:wayid and d.countyid=:countyid and d.rewardmonth=:rewardmonth and d.isflag=0
+ group by d.countyid,d.rewardmonth,d.wayid
+</sql-query>
+<sql-query name="com.sunrise.boss.business.cms.adjustment.persistent.dosaveunchecked.withupperopnid">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="rewardmonth" type="java.lang.String"/>
+	<return-scalar column="upperopnid" type="java.lang.String"/>
+	<return-scalar column="paysum" type="java.lang.Double"/>
+	<!-- 因为使用的不是标准的Hibernate3，所以即使有这几个字段构成的构造函数也不可以的 -->
+	<!--  return class="com.sunrise.boss.business.cms.adjustment.persistent.AdjustmentVO" / -->
+select d.wayid,d.countyid,d.rewardmonth,d.upperopnid,sum(d.moneysum) paysum
+ from ch_adt_dcord d
+ where not exists(select 1 from ch_adt_adjustment a
+      where a.wayid=:wayid and a.rewardmonth=:rewardmonth and a.upperopnid=:upperopnid and a.batchno is null)
+    and d.wayid=:wayid and d.countyid=:countyid and d.rewardmonth=:rewardmonth and d.upperopnid=:upperopnid and d.isflag=0
+ group by d.countyid,d.rewardmonth,d.wayid,d.upperopnid
+</sql-query>
+</hibernate-mapping>

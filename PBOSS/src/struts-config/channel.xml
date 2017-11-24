@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="channel" namespace="/channel" extends="pboss-default">
+		<action name="way_*" class="com.gmcc.pboss.web.channel.way.WayAction" method="{1}">
+			<result name="list">/channel/way/list.jsp</result>
+			<result name="salelist">/channel/saleway/list.jsp</result>
+            <result name="content">/channel/way/content.jsp</result>
+            <result name="itemgraded">/channel/way/listForItemgraded.jsp</result>
+            <result name="showOperatorTree">/channel/way/showOperatorTree.jsp</result>
+            <result name="showwaytree">/channel/way/showWayTree.jsp</result>
+            <result name="selectWayTree">/channel/way/selectWayTree.jsp</result>
+            <result name="logsway">/channel/logsway/list.jsp</result>
+            <result name="logswaycontent">/channel/logsway/content.jsp</result>
+            <result name="logswayimport">/channel/logsway/import.jsp</result>
+            <result name="disway">/channel/disway/list.jsp</result>
+            <result name="diswaycontent">/channel/disway/content.jsp</result>
+        </action>
+         <action name="logiswayupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/channel/logsway/import.jsp</result>
+            <result name ="error">/channel/logsway/import.jsp</result>
+        </action>
+        <action name="logiswayimport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/channel/logsway/import.jsp</result>
+            <result name ="error">/channel/logsway/import.jsp</result>
+        </action>
+         <action name="diswayupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/channel/disway/import.jsp</result>
+            <result name ="error">/channel/disway/import.jsp</result>
+        </action>
+        <action name="diswayimport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/channel/disway/import.jsp</result>
+            <result name ="error">/channel/disway/import.jsp</result>
+        </action>
+        <action name="employee_*" class="com.gmcc.pboss.web.channel.employee.EmployeeAction" method="{1}">
+			<result name="list">/channel/employee/list.jsp</result>
+            <result name="content">/channel/employee/content.jsp</result>
+            <result name="managerlist">/channel/employee/managerlist.jsp</result>
+            <result name="managercontent">/channel/employee/managercontent.jsp</result>
+            <result name="zjtylist">/channel/zjty/employee/list.jsp</result>
+            <result name="zjtycontent">/channel/zjty/employee/content.jsp</result>
+            <result name="toimport">/channel/employee/societypeopleimport.jsp</result>
+        </action>
+         <action name="employeeupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/channel/employee/import.jsp</result>
+            <result name ="error">/channel/employee/import.jsp</result>
+        </action>
+        <action name="employeeimport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/channel/employee/import.jsp</result>
+            <result name ="error">/channel/employee/import.jsp</result>
+        </action>
+        <action name="societypeopleupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/channel/employee/societypeopleimport.jsp</result>
+            <result name ="error">/channel/employee/societypeopleimport.jsp</result>
+        </action>
+        <action name="societypeopleimport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/channel/employee/societypeopleimport.jsp</result>
+            <result name ="error">/channel/employee/societypeopleimport.jsp</result>
+        </action>
+        <action name="zjtypeopleupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/channel/zjty/employee/zjtypeopleimport.jsp</result>
+            <result name ="error">/channel/zjty/employee/zjtypeopleimport.jsp</result>
+        </action>
+        <action name="zjtypeopleimport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/channel/zjty/employee/zjtypeopleimport.jsp</result>
+            <result name ="error">/channel/zjty/employee/zjtypeopleimport.jsp</result>
+        </action>
+         <action name="svwaycnstr_*" class="com.gmcc.pboss.web.channel.svwaycnstr.SvwaycnstrAction" method="{1}">
+			<result name="list">/channel/svwaycnstr/list.jsp</result>
+            <result name="content">/channel/svwaycnstr/content.jsp</result>
+        </action>
+        <action name="waytype_*" class="com.gmcc.pboss.web.channel.waytype.WaytypeAction" method="{1}">
+			<result name="list">/channel/waytype/list.jsp</result>
+            <result name="content">/channel/waytype/content.jsp</result>
+            <result name="excel">/channel/waytype/list.jsp</result>
+            <result name="search">/channel/waytype/list.jsp</result>
+            <result name="txt">/channel/waytype/list.jsp</result>
+        </action>
+        <action name="waytypeupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/channel/waytype/batchwaytype.jsp</result>
+            <result name ="error">/channel/waytype/batchwaytype.jsp</result>
+        </action>
+        <action name="waytypebatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/channel/waytype/batchwaytype.jsp</result>
+            <result name ="error">/channel/waytype/batchwaytype.jsp</result>
+        </action>
+        <action name="adimarea_*" class="com.gmcc.pboss.web.channel.adimarea.AdimareaAction" method="{1}">
+			<result name="list">/channel/adimarea/list.jsp</result>
+            <result name="content">/channel/adimarea/content.jsp</result>
+        </action>
+        <action name="areacenter_*" class="com.gmcc.pboss.web.channel.areacenter.AreacenterAction" method="{1}">
+			<result name="list">/channel/areacenter/list.jsp</result>
+            <result name="content">/channel/areacenter/content.jsp</result>
+        </action>
+        <action name="citycompany_*" class="com.gmcc.pboss.web.channel.citycompany.CitycompanyAction" method="{1}">
+			<result name="list">/channel/citycompany/list.jsp</result>
+            <result name="content">/channel/citycompany/content.jsp</result>
+        </action>
+        <action name="cntycompany_*" class="com.gmcc.pboss.web.channel.cntycompany.CntycompanyAction" method="{1}">
+			<result name="list">/channel/cntycompany/list.jsp</result>
+            <result name="content">/channel/cntycompany/content.jsp</result>
+        </action>
+        <action name="servcent_*" class="com.gmcc.pboss.web.channel.servcent.ServcentAction" method="{1}">
+			<result name="list">/channel/servcent/list.jsp</result>
+            <result name="content">/channel/servcent/content.jsp</result>
+        </action>
+        
+        <!-- 渠道管理 by Linli -->
+		<action name="netsyn_*" class="com.gmcc.pboss.web.channel.netsyn.NetsynAction" method="{1}">
+			<result name="list">/channel/netsyn/list.jsp</result>
+            <result name="content">/channel/netsyn/content.jsp</result>
+        </action>
+		<action name="netsynlog_*" class="com.gmcc.pboss.web.channel.netsynlog.NetsynlogAction" method="{1}">
+			<result name="list">/channel/netsynlog/list.jsp</result>
+            <result name="content">/channel/netsynlog/content.jsp</result>
+        </action>
+		<action name="bchcontact_*" class="com.gmcc.pboss.web.channel.bchcontact.BchcontactAction" method="{1}">
+			<result name="list">/channel/bchcontact/list.jsp</result>
+            <result name="content">/channel/bchcontact/content.jsp</result>
+        </action>
+		<action name="wayaccount_*" class="com.gmcc.pboss.web.channel.wayaccount.WayaccountAction" method="{1}">
+			<result name="list">/channel/wayaccount/list.jsp</result>
+            <result name="content">/channel/wayaccount/content.jsp</result>
+        </action>
+		<action name="waycompact_*" class="com.gmcc.pboss.web.channel.waycompact.WaycompactAction" method="{1}">
+			<result name="list">/channel/waycompact/list.jsp</result>
+            <result name="content">/channel/waycompact/content.jsp</result>
+        </action>
+		<action name="waybussarea_*" class="com.gmcc.pboss.web.channel.waybussarea.WaybussareaAction" method="{1}">
+			<result name="list">/channel/waybussarea/list.jsp</result>
+            <result name="content">/channel/waybussarea/content.jsp</result>
+        </action>
+		<action name="postinfo_*" class="com.gmcc.pboss.web.channel.postinfo.PostinfoAction" method="{1}">
+			<result name="list">/channel/postinfo/list.jsp</result>
+            <result name="content">/channel/postinfo/content.jsp</result>
+        </action>
+		<action name="waysyn_*" class="com.gmcc.pboss.web.channel.waysyn.WaysynAction" method="{1}">
+			<result name="list">/channel/waysyn/list.jsp</result>
+            <result name="content">/channel/waysyn/content.jsp</result>
+        </action>
+        <action name="waysynlog_*" class="com.gmcc.pboss.web.channel.waysynlog.WaysynlogAction" method="{1}">
+			<result name="list">/channel/waysynlog/list.jsp</result>
+            <result name="content">/channel/waysynlog/content.jsp</result>
+        </action>
+         <action name="auditwork_*" class="com.gmcc.pboss.web.channel.auditwork.AuditworkAction" method="{1}">
+			<result name="list">/channel/auditwork/list.jsp</result>
+            <result name="content">/channel/auditwork/content.jsp</result>
+            <result name="list2">/channel/auditwork/list2.jsp</result>
+        </action>
+        <action name="fdauditdef_*" class="com.gmcc.pboss.web.channel.fdauditdef.FdauditdefAction" method="{1}">
+			<result name="list">/channel/fdauditdef/list.jsp</result>
+			<result name="content">/channel/fdauditdef/content.jsp</result>
+			<result name="enable">/channel/fdauditdef/list.jsp</result>
+			<result name="disable">/channel/fdauditdef/list.jsp</result>
+        </action>
+        <!-- 零售渠道信息管理 -->
+        <action name="saleway_*" class="com.gmcc.pboss.web.channel.saleway.SalewayAction" method="{1}">
+			<result name="list">/channel/saleway/list.jsp</result>
+            <result name="content">/channel/saleway/content.jsp</result>
+            <result name="download">/common/download.jsp</result>
+            <result name="toDelete">/channel/saleway/toDelete.jsp</result>
+        </action>
+        <action name="salewayopenupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/channel/saleway/batchopen.jsp</result>
+   			<result name="error">/channel/saleway/batchopen.jsp</result>
+		</action>
+		<action name="salewayopenbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/channel/saleway/batchopen.jsp</result>
+            <result name ="error">/channel/saleway/batchopen.jsp</result>
+		</action>
+		<!-- 自建他营渠道信息批处理 -->
+		<action name="zjtywayinfoupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/channel/zjty/zjtywayinfo/batch.jsp</result>
+   			<result name="error">/channel/zjty/zjtywayinfo/batch.jsp</result>
+		</action>
+		<action name="zjtywayinfobatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/channel/zjty/zjtywayinfo/batch.jsp</result>
+            <result name ="error">/channel/zjty/zjtywayinfo/batch.jsp</result>
+		</action>
+		<action name="salewayupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/channel/saleway/batchsaleway.jsp</result>
+   			<result name="error">/channel/saleway/batchsaleway.jsp</result>
+		</action>
+		<action name="salewaybatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/channel/saleway/batchsaleway.jsp</result>
+            <result name ="error">/channel/saleway/batchsaleway.jsp</result>
+		</action>
+		
+         <!-- 渠道资料日志查询 -->
+        <action name="employeelog_*" class="com.gmcc.pboss.web.channel.employeelog.EmployeelogAction" method="{1}">
+			<result name="list">/channel/employeelog/list.jsp</result>
+			<result name="listmg">/channel/employeelog/listmg.jsp</result>
+        </action>
+        <action name="waylog_*" class="com.gmcc.pboss.web.channel.waylog.WaylogAction" method="{1}">
+            <result name="listag">/channel/waylog/listag.jsp</result>
+            <result name="listdis">/channel/waylog/listdis.jsp</result>
+            <result name="listlogs">/channel/waylog/listlogs.jsp</result>
+        </action>
+        <action name="bchcontlog_*" class="com.gmcc.pboss.web.channel.bchcontlog.BchcontlogAction" method="{1}">
+			<result name="list">/channel/bchcontlog/list.jsp</result>
+        </action>
+        <action name="waycompctlog_*" class="com.gmcc.pboss.web.channel.waycompctlog.WaycompctlogAction" method="{1}">
+			<result name="list">/channel/waycompctlog/list.jsp</result>
+        </action>
+        <action name="employeeapply_*" class="com.gmcc.pboss.web.channel.employeeapply.EmployeeapplyAction" method="{1}">
+			<result name="list">/channel/employeeapply/list.jsp</result>
+			<result name="content">/channel/employeeapply/content.jsp</result>
+        </action>
+        <action name="employeeapplylog_*" class="com.gmcc.pboss.web.channel.employeeapplylog.EmployeeapplylogAction" method="{1}">
+			<result name="list">/channel/employeeapplylog/list.jsp</result>
+        </action>
+        <action name="wayapply_*" class="com.gmcc.pboss.web.channel.wayapply.WayapplyAction" method="{1}">
+			<result name="list">/channel/wayapply/list.jsp</result>
+			<result name="content">/channel/wayapply/content.jsp</result>
+			<result name="discontent">/channel/wayapply/discontent.jsp</result>
+			<result name="salecontent">/channel/wayapply/salecontent.jsp</result>
+			<result name="getcountid">/channel/wayapply/content.jsp</result>
+        </action>
+        <action name="wayapplylog_*" class="com.gmcc.pboss.web.channel.wayapplylog.WayapplylogAction" method="{1}">
+			<result name="list">/channel/wayapplylog/list.jsp</result>
+        </action>
+        <action name="wayacctlog_*" class="com.gmcc.pboss.web.channel.wayacctlog.WayacctlogAction" method="{1}">
+			<result name="list">/channel/wayacctlog/list.jsp</result>
+        </action>
+        <action name="flowname_*" class="com.gmcc.pboss.web.channel.flowname.FlownameAction" method="{1}">
+			<result name="list">/channel/flowname/list.jsp</result>
+            <result name="content">/channel/flowname/content.jsp</result>
+        </action>
+         <action name="waitreq_*" class="com.gmcc.pboss.web.channel.waitreq.WaitreqAction" method="{1}">
+			<result name="list">/channel/waitreq/list.jsp</result>
+            <result name="content">/channel/waitreq/content.jsp</result>
+        </action>
+        <action name="result_*" class="com.gmcc.pboss.web.channel.result.ResultAction" method="{1}">
+			<result name="list">/channel/result/list.jsp</result>
+            <result name="content">/channel/result/content.jsp</result>
+        </action>
+        <action name="bank_*" class="com.gmcc.pboss.web.channel.bank.BankAction" method="{1}">
+            <result name="bankselect">/sales/bankdeduct/bankselect.jsp</result>
+        </action>
+        
+        <action name="changelog_*" class="com.gmcc.pboss.web.channel.changelog.ChangelogAction" method="{1}">
+            <result name="list">/channel/changelog/list.jsp</result>
+        </action>
+        
+        <action name="wayrechargeno_*" class="com.gmcc.pboss.web.channel.wayrechargeno.WayrechargenoAction" method="{1}">
+			<result name="list">/channel/wayrechargeno/list.jsp</result>
+		  	<result name="content">/channel/wayrechargeno/content.jsp</result>
+		</action>
+		<!--  渠道空充号码导入管理  上传 -->
+		<action name="wayrechargenoupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+		    <result name="success">/channel/wayrechargeno/batch.jsp</result>
+			<result name="error">/channel/wayrechargeno/batch.jsp</result>
+		</action>
+		<!--  渠道空充号码导入管理  处理 -->
+		<action name="wayrechargenobatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/channel/wayrechargeno/batch.jsp</result>
+			<result name="error">/channel/wayrechargeno/batch.jsp</result>
+		</action>
+		  <!--【渠道管理】【保证金管理】【保证金申请单管理】-->
+       	 <action name="bondform_*" class="com.gmcc.pboss.web.channel.bondform.BondformAction" method="{1}">
+			<result name="list">/channel/bondform/list.jsp</result>
+			<result name="content">/channel/bondform/content.jsp</result>
+        </action>
+        	
+       	 <action name="bondaudit_*" class="com.gmcc.pboss.web.channel.bondaudit.BondauditAction" method="{1}">
+			<result name="list">/channel/bondaudit/list.jsp</result>
+			<result name="content">/channel/bondaudit/content.jsp</result>
+        </action>
+        	
+		<!-- 自建他营渠道 -->
+        <action name="zjtywayinfo_*" class="com.gmcc.pboss.web.channel.zjty.zjtywayinfo.ZjtywayinfoAction" method="{1}">
+			<result name="list">/channel/zjty/zjtywayinfo/list.jsp</result>
+            <result name="content">/channel/zjty/zjtywayinfo/content.jsp</result>
+        </action>
+          <!-- 发票请领 -->
+		<action name="invoice_*"  class="com.gmcc.pboss.web.channel.invoice.InvoiceAction" method="{1}">
+		       <result name="list">/channel/invoice/list.jsp</result>
+		       <result name="content">/channel/invoice/content.jsp</result>
+		</action>
+		<!-- 保证金申请单 -->
+		<action name="bondformlog_*" class="com.gmcc.pboss.web.channel.bondformlog.BondformlogAction" method="{1}">
+		       <result name="list">/channel/bondformlog/list.jsp</result>
+		       <result name="content">/channel/bondformlog/content.jsp</result> 
+		</action>
+		<!-- 授权网点申请管理 --> 
+		<action name="checkedapply_*" class="com.gmcc.pboss.web.channel.checkedapply.CheckedapplyAction" method="{1}">
+		       <result name="list">/channel/checkedapply/list.jsp</result>
+		       <result name="editlist">/channel/checkedapply/editlist.jsp</result>
+		       <result name="download">/common/download.jsp</result>
+		       <result name="applyenter">/channel/checkedapply/applyenter.jsp</result>
+		       <result name="applyexit">/channel/checkedapply/applyexit.jsp</result>
+		       <result name="batchapply">/channel/checkedapply/batchapply.jsp</result>
+		</action>
+		 <action name="checkedapply_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/channel/checkedapply/batchapply.jsp</result>
+            <result name ="error">/channel/checkedapply/batchapply.jsp</result>
+       	</action>
+       	
+       	  <action name="checkedapply_import" class="com.gmcc.pboss.web.channel.checkedapply.BatchTaskAction">
+			<result name ="success">/channel/checkedapply/batchapply.jsp</result>
+            <result name ="error">/channel/checkedapply/batchapply.jsp</result>
+        </action>
+		
+		<!-- 授权网点明细查询 -->
+		<action name="checkedapplydetail_*" class="com.gmcc.pboss.web.channel.checkedapplydetail.CheckedapplydetailAction" method="{1}">
+		       <result name="list">/channel/checkedapplydetail/list.jsp</result>
+		       <result name="content">/channel/checkedapplydetail/content.jsp</result> 
+		</action>
+		
+		<!-- 授权网点统计 -->
+		<action name="checkedapplystat_*" class="com.gmcc.pboss.web.channel.checkedapplystat.CheckedapplyStatAction" method="{1}">
+		       <result name="list">/channel/checkedapplystat/list.jsp</result>
+		       <result name="content">/channel/checkedapplystat/content.jsp</result> 
+		</action>
+		
+		<!--limin add 授权网点审核管理 --> 
+		<action name="waychecked_*" class="com.gmcc.pboss.web.channel.waychecked.WaycheckedAction" method="{1}">
+		       <result name="list">/channel/waychecked/list.jsp</result>
+		       <result name="content">/channel/waychecked/editlist.jsp</result>
+		</action>
+		
+		<!-- 商圈管理 -->
+		<action name="busicircle_*" class="com.gmcc.pboss.web.channel.busicircle.BusicircleAction" method="{1}">
+		       <result name="list">/channel/busicircle/list.jsp</result>
+		       <result name="content">/channel/busicircle/content.jsp</result> 
+		</action>
+		       <action name="busicircle_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/channel/busicircle/batch.jsp</result>
+            <result name ="error">/channel/busicircle/batch.jsp</result>
+       	</action>
+       	
+       	  <action name="busicircle_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/channel/busicircle/batch.jsp</result>
+            <result name ="error">/channel/busicircle/batch.jsp</result>
+        </action>
+        <!-- 入柜商渠道管理 -->
+        <action name="impway_*" class="com.gmcc.pboss.web.channel.impway.ImpWayAction" method="{1}">
+			<result name="list">/channel/impway/list.jsp</result>
+            <result name="content">/channel/impway/content.jsp</result>
+        </action>
+        <action name="impwayupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/channel/impway/batchimpway.jsp</result>
+   			<result name="error">/channel/impway/batchimpway.jsp</result>
+		</action>
+		<action name="impwaybatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/channel/impway/batchimpway.jsp</result>
+   			<result name="error">/channel/impway/batchimpway.jsp</result>
+		</action>
+		
+		<!-- 门店宣传管理  a-biao:20140417 -->
+        <action name="waystoreinfo_*" class="com.gmcc.pboss.web.channel.waystoreinfo.WaystoreinfoAction" method="{1}">
+			<interceptor-ref name="fileUpload">
+         		 <!-- 配置允许上传的文件大小 -->
+         	 	 <param name="maximumSize">3145728</param>
+        	   </interceptor-ref>
+     		<interceptor-ref name="defaultStack"></interceptor-ref> 
+			<result name="list">/channel/waystoreinfo/list.jsp</result>
+            <result name="content">/channel/waystoreinfo/content.jsp</result>
+            <result name="error">/channel/waystoreinfo/batchwaystoreinfopic.jsp</result>
+            <result name="download">/common/download.jsp</result>
+        </action>  
+	   <action name="waystoreinfo_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/channel/waystoreinfo/batchwaystoreinfo.jsp</result>
+   			<result name="error">/channel/waystoreinfo/batchwaystoreinfo.jsp</result>
+       	</action>
+       	<action name="waystoreinfo_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/channel/waystoreinfo/batchwaystoreinfo.jsp</result>
+   			<result name="error">/channel/waystoreinfo/batchwaystoreinfo.jsp</result>
+        </action>
+		 
+		 <!-- 金融购机渠道管理 -->
+        <action name="financeway_*" class="com.gmcc.pboss.web.channel.financeway.FinanceWayAction" method="{1}">
+			<result name="list">/channel/financeway/list.jsp</result>
+            <result name="content">/channel/financeway/content.jsp</result>
+        </action>
+		
+		 <!-- 互联网渠道管理 -->
+        <action name="netway_*" class="com.gmcc.pboss.web.channel.netway.NetWayAction" method="{1}">
+			<result name="list">/channel/netway/list.jsp</result>
+            <result name="content">/channel/netway/content.jsp</result>
+        </action>
+		 
+		 <!-- 全网渠道编码管理 -->
+        <action name="bbossway_*" class="com.gmcc.pboss.web.channel.bbossway.BbosswayAction" method="{1}">
+			<result name="list">/channel/bbossway/list.jsp</result>
+            <result name="content">/channel/bbossway/content.jsp</result>
+        </action>
+		
+	</package>
+</struts>

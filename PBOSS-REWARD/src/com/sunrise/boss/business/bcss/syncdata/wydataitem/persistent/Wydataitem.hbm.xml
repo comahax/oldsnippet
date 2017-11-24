@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.bcss.syncdata.wydataitem.persistent.WydataitemVO" table="DC_MM_WYDATAITEM">
+<composite-id>
+<key-property column="FILECODE" length="40" name="filecode" type="java.lang.String"/>
+<key-property column="ITEMID" length="8" name="itemid" type="java.lang.Integer"/>
+</composite-id>
+<property column="ITEMCODE" length="30" name="itemcode" type="java.lang.String"/>
+<property column="ITEMNAME" length="30" name="itemname" type="java.lang.String"/>
+<property column="ITEMTYPE" length="3" name="itemtype" type="java.lang.Short"/>
+<property column="ITEMFORMAT" length="30" name="itemformat" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,9 @@
+/PBOSS_WEB/src/spring/applicationContext-datasource.xml
+/PBOSS_WEB/src/com/gmcc/pboss/common/config/FileConfig.xml
+
+/PBOSS_WEB/WebRoot/login.jsp
+
+还要注意生产环境的这几个配置文件，配置菜单的
+applicationContext-action.xml
+applicationContext-service.xml
+applicationContext-dao.xml

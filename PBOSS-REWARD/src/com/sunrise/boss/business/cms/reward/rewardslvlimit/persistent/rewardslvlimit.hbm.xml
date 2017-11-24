@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.rewardslvlimit.persistent.RewardslvlimitVO" table="CH_PW_REWARDSLVLIMIT">
+<composite-id>
+<key-property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<key-property column="REGION" length="10" name="region" type="java.lang.String"/>
+<key-property column="REWARDID" length="14" name="rewardid" type="java.lang.Long"/>
+<key-property column="SLV" length="3" name="slv" type="java.lang.Short"/>
+</composite-id>
+<property column="REWARDLIMIT" length="10" name="rewardlimit" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

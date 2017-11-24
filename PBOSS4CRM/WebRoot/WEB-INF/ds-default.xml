@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+    >    
+    <context:component-scan base-package="net.gmcc.pboss"/>
+  
+<!-- Default JDBC DataSource for TEST
+  <bean id="PBOSS4CRMDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+    <property name="url" value="jdbc:oracle:thin:@10.200.4.212:1521:boss20cs"/>
+    <property name="username" value="pboss"/>
+    <property name="password" value="pbosscs"/>
+  </bean>   
+    <bean id="PBOSS4CRMDataSource_ZS" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+    <property name="url" value="jdbc:oracle:thin:@10.200.4.212:1521:boss20cs"/>
+    <property name="username" value="pboss_zs"/>
+    <property name="password" value="pbosszscs"/>
+  </bean>
+  <bean id="PBOSS4CRMDataSource_JM" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+    <property name="url" value="jdbc:oracle:thin:@10.200.4.212:1521:boss20cs"/>
+    <property name="username" value="pboss_jm"/>
+    <property name="password" value="pbossjmcs"/>
+  </bean>
+  <bean id="PBOSS4CRMDataSource_BOSS" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+    <property name="url" value="jdbc:oracle:thin:@10.200.25.151:1521:boss20dev"/>
+    <property name="username" value="common"/>
+    <property name="password" value="common"/>
+  </bean>
+-->
+  <!-- Release -->
+  <!-- COMS common db -->
+  <bean id="PBOSS4CRMDataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-common2-ds" />
+  </bean>
+  <!-- cities db -->  
+  <bean id="PBOSS4CRMDataSource_JM" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-jm2-ds" />
+  </bean> 
+  <bean id="PBOSS4CRMDataSource_ZS" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-zs2-ds" />
+  </bean>  
+  <bean id="PBOSS4CRMDataSource_FS" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-fs2-ds" />
+  </bean> 
+  <bean id="PBOSS4CRMDataSource_ZH" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-zh2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_ZJ" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-zj2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_YJ" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-yj2-ds" />
+  </bean> 
+  <bean id="PBOSS4CRMDataSource_MM" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-mm2-ds" />
+  </bean>  
+  <bean id="PBOSS4CRMDataSource_ST" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-st2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_SW" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-sw2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_JY" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-jy2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_CZ" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-cz2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_DG" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-dg2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_HY" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-hy2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_HZ" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-hz2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_MZ" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-mz2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_ZQ" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-zq2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_YF" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-yf2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_QY" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-qy2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_SG" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-sg2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_GZ" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-gz2-ds" />
+  </bean>
+  <bean id="PBOSS4CRMDataSource_SZ" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-sz2-ds" />
+  </bean>
+  <!-- BOSS common db :After all cities change to NGBOSS,shut down the BOSS2.0 data source.
+  To avoid problems that maybe exist in java source code,turn "xa-bosscommon-ds" to "xa-common-ds".-->
+  <bean id="PBOSS4CRMDataSource_BOSS" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+    <property name="jndiName" value="xa-common-ds" />
+  </bean>
+  
+
+  
+  <!-- dynamicDataSource  -->
+  <!-- 动态数据源设置,默认为公共库; 添加数据源,先在上面配置JNDI,然后在此处进行配置(key:value-ref),并修改DynamicSourceMap类.-->
+  <bean id="dataSource" class="net.gmcc.pboss.common.dynamicds.DynamicSource">
+     <property name="targetDataSources">    
+        <map key-type="java.lang.String"> 
+        	<entry key="JM" value-ref="PBOSS4CRMDataSource_JM"/>           	
+          	<entry key="ZS" value-ref="PBOSS4CRMDataSource_ZS"/>
+          	<entry key="FS" value-ref="PBOSS4CRMDataSource_FS"/>
+          	<entry key="ZH" value-ref="PBOSS4CRMDataSource_ZH"/>
+          	<entry key="ZJ" value-ref="PBOSS4CRMDataSource_ZJ"/>
+          	<entry key="YJ" value-ref="PBOSS4CRMDataSource_YJ"/>
+          	<entry key="MM" value-ref="PBOSS4CRMDataSource_MM"/>
+          	<entry key="ST" value-ref="PBOSS4CRMDataSource_ST"/>
+          	<entry key="SW" value-ref="PBOSS4CRMDataSource_SW"/>
+          	<entry key="JY" value-ref="PBOSS4CRMDataSource_JY"/>
+          	<entry key="CZ" value-ref="PBOSS4CRMDataSource_CZ"/>
+          	<entry key="DG" value-ref="PBOSS4CRMDataSource_DG"/>
+          	<entry key="HY" value-ref="PBOSS4CRMDataSource_HY"/>
+          	<entry key="HZ" value-ref="PBOSS4CRMDataSource_HZ"/>
+          	<entry key="MZ" value-ref="PBOSS4CRMDataSource_MZ"/>
+          	<entry key="ZQ" value-ref="PBOSS4CRMDataSource_ZQ"/>
+			<entry key="SG" value-ref="PBOSS4CRMDataSource_SG"/>			
+			<entry key="QY" value-ref="PBOSS4CRMDataSource_QY"/>			
+			<entry key="YF" value-ref="PBOSS4CRMDataSource_YF"/>
+			<entry key="GZ" value-ref="PBOSS4CRMDataSource_GZ"/>
+			<entry key="SZ" value-ref="PBOSS4CRMDataSource_SZ"/>
+          	<entry key="BOSS" value-ref="PBOSS4CRMDataSource_BOSS" />
+        </map>    
+     </property> 
+     
+     <property name="defaultTargetDataSource" ref="PBOSS4CRMDataSource"/>    
+  </bean>   
+  
+  <bean id="sessionFactory" class="net.gmcc.pboss.common.beans.AnnotationSessionFactoryBeanExt">
+    <!-- -->
+    <property name="dataSource" ref="dataSource"/> 
+    <property name="annotatedClassesLocations">
+      <list>
+        <value>classpath*:net/gmcc/pboss/domain/model/*/*.class</value>
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</prop>
+        <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+        <prop key="hibernate.show_sql">true</prop>
+        <prop key="hibernate.generate_statistics">true</prop>
+        <prop key="hibernate.jdbc.batch_size">30</prop>
+        <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+        <prop key="hibernate.cache.use_query_cache">true</prop>
+      </props>
+    </property>
+    <property name="eventListeners">
+      <map>
+        <entry key="merge">
+          <bean class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener"/>
+        </entry>
+      </map>
+    </property>
+  </bean>
+  
+   <!--生产  WAS JTA  : must use jndi (datasource) -->
+  <bean id="transactionManager" class="org.springframework.transaction.jta.WebSphereUowTransactionManager"/>
+  
+  <!--测试  hibernateTransactionManager 把事务放置在了DAO层  
+  <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+      <property name="sessionFactory" ref="sessionFactory"/>
+  </bean> 
+  --> 
+  
+  <!-- DAO层接口实现 -->
+  <bean id="dao" class="net.gmcc.pboss.common.dao.BaseDaoHibernateImpl">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+  <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/> 
+</beans>

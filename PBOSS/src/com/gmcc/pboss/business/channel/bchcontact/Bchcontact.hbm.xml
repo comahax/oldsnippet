@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.bchcontact.BchcontactVO" table="CH_PW_BCHCONTACT">
+<id column="WAYID" length="18" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="PRINCIPAL" length="64" name="principal" type="java.lang.String"/>
+<property column="PRINCIPALTEL" length="20" name="principaltel" type="java.lang.String"/>
+<property column="PRINCIPALEMAIL" length="128" name="principalemail" type="java.lang.String"/>
+<property column="PRINCIPALPHONE" length="20" name="principalphone" type="java.lang.String"/>
+<property column="LINKMAN" length="64" name="linkman" type="java.lang.String"/>
+<property column="LINKMANTEL" length="20" name="linkmantel" type="java.lang.String"/>
+<property column="LINKMANEMAIL" length="128" name="linkmanemail" type="java.lang.String"/>
+<property column="HOTLINE" length="20" name="hotline" type="java.lang.String"/>
+<property column="FAX" length="20" name="fax" type="java.lang.String"/>
+<property column="ADDRESS" length="128" name="address" type="java.lang.String"/>
+<property column="ZIPCODE" length="10" name="zipcode" type="java.lang.String"/>
+<property column="BAILTYPE" length="2" name="bailtype" type="java.lang.Short"/>
+<property column="SERVBOUND" length="3" name="servbound" type="java.lang.Short"/>
+<property column="COPLEVEL" length="3" name="coplevel" type="java.lang.Short"/>
+<property column="BUSNUM" length="30" name="busnum" type="java.lang.String"/>
+<property column="CERTITYPE" length="3" name="certitype" type="java.lang.Short"/>
+<property column="CERTINUM" length="30" name="certinum" type="java.lang.String"/>
+<property column="REGADRESS" length="128" name="regadress" type="java.lang.String"/>
+<property column="REGCAPITAL" length="16" name="regcapital" type="java.lang.Long"/>
+<property column="COMPANY" length="60" name="company" type="java.lang.String"/>
+<property column="PROVCODE" length="18" name="provcode" type="java.lang.String"/>
+<property column="BROLE" length="64" name="brole" type="java.lang.String"/>
+<property column="COMPANYTYPE" length="64" name="companytype" type="java.lang.String"/>
+<property column="REGID" length="18" name="regid" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.rewardpunish.persistent.RewardpunishVO" table="CH_PW_REWARDPUNISH">
+<id name="recordid" type="java.lang.Long">
+            <column name="RECORDID" precision="14" scale="0" />
+            <generator class="sequence">
+            <param name="sequence">CH_PW_REWARDPUNISH_SEQ</param>
+            </generator>
+        </id>
+<property column="OBJECTID" length="15" name="objectid" not-null="true" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYTYPE" length="4" name="waytype" type="java.lang.String"/>
+<property column="RPTIME" length="7" name="rptime" type="java.util.Date"/>
+<property column="RPNAME" length="256" name="rpname" type="java.lang.String"/>
+<property column="RPCAUSE" length="256" name="rpcause" type="java.lang.String"/>
+<property column="RPPLAN" length="256" name="rpplan" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

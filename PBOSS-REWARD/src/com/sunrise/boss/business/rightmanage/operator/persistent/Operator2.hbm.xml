@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.rightmanage.operator.persistent.Operator2VO" table="SA_SO_OPERATOR">
+		<id name="operid" column="OPERID" type="java.lang.String" length="15">
+			<generator class="assigned" />
+		</id>
+		<property name="region" column="REGION" type="java.lang.Integer"
+			length="5" />
+		<property name="opername" column="OPERNAME"
+			type="java.lang.String" length="64" not-null="true" />
+		<property name="password" column="PASSWORD"
+			type="java.lang.String" length="30" />
+		<property name="passchgdate" column="PASSCHGDATE"
+			type="java.util.Date" length="7" not-null="true" />
+		<property name="opergroup" column="OPERGROUP"
+			type="java.lang.String" length="16" />
+		<property name="opertype" column="OPERTYPE"
+			type="java.lang.String" length="16" not-null="true" />
+		<property name="operlevel" column="OPERLEVEL"
+			type="java.lang.String" length="16" />
+		<property name="ismanager" column="ISMANAGER"
+			type="java.lang.Byte" length="1" not-null="true" />
+		<property name="contactphone" column="CONTACTPHONE"
+			type="java.lang.String" length="20" />
+		<property name="orgid" column="ORGID" type="java.lang.String"
+			length="32" not-null="true" />
+		<property name="isrestrict" column="ISRESTRICT"
+			type="java.lang.Byte" length="1" not-null="true" />
+		<property name="starttime" column="STARTTIME"
+			type="java.lang.Short" length="2" not-null="true" />
+		<property name="endtime" column="ENDTIME" type="java.lang.Short"
+			length="2" not-null="true" />
+		<property name="enablegprs" column="ENABLEGPRS"
+			type="java.lang.Byte" length="1" not-null="true" />
+		<property name="gprsstarttime" column="GPRSSTARTTIME"
+			type="java.lang.Short" length="2" not-null="true" />
+		<property name="gprsendtime" column="GPRSENDTIME"
+			type="java.lang.Short" length="2" not-null="true" />
+		<property name="ischkmac" column="ISCHKMAC"
+			type="java.lang.Byte" length="1" not-null="true" />
+		<property name="mac" column="MAC" type="java.lang.String"
+			length="32" />
+		<property name="notes" column="NOTES" type="java.lang.String"
+			length="256" />
+		<property name="createdate" column="CREATEDATE"
+			type="java.util.Date" not-null="true" />
+		<property name="status" column="STATUS" type="java.lang.Byte"
+			length="1" not-null="true" />
+		<property name="statusdate" column="STATUSDATE"
+			type="java.util.Date" />
+	</class>
+</hibernate-mapping>

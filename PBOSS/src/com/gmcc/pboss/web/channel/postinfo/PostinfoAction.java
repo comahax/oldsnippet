@@ -1,0 +1,42 @@
+/**
+ * auto-generated code
+ * Wed Jul 01 17:28:49 CST 2009
+ */
+ package com.gmcc.pboss.web.channel.postinfo;
+
+import com.gmcc.pboss.business.channel.postinfo.PostinfoVO ;
+import com.sunrise.jop.ui.struts2.BaseAction ;
+import com.gmcc.pboss.business.channel.postinfo.PostinfoDBParam;
+import com.gmcc.pboss.control.channel.postinfo.Postinfo ;
+
+/**
+ * <p>Title: PostinfoAction </p>;
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2006</p>
+ * <p>Company: sunrise Tech Ltd.</p>
+ * @author Linli
+ * @version 1.0
+ */
+public class PostinfoAction extends BaseAction{
+	
+	public PostinfoAction() {
+		super();
+
+		//????????¡¤?¡¤¡§??¡À?????
+		this.setForm(new PostinfoForm());
+		this.setParam(new PostinfoWebParam());
+
+        //???¡§VO?¨¤
+        setClsVO(PostinfoVO.class);
+        //???¡§?¡Â?¨¹??¡Á¨¦?????????????¡Â?¨¹???¨°?¨¨???¡§?????????¡Â?¨¹??¡Á???????
+        this.pkNameArray=new String[]{"postid"};
+		this.setClsControl(Postinfo.class);
+		this.setClsQueryParam(PostinfoDBParam.class) ;
+
+		/**
+		 * ???????¡§??????????????????BaseAction??CRUD???¨¢?¡Â?????¡§??Delegate????¡ã??¨¦??????¡À????¡§
+		 * this.setClsDelegate(ExampleDelegate.class);
+		 * this.setClsQueryParam(ExampleDBParam.class);
+		 */
+	}
+}

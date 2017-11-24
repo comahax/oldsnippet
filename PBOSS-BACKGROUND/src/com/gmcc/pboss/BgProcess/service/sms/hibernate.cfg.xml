@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="connection.pool_size">5</property>
+		<property name="show_sql">true</property>
+		<property name="hibernate.current_session_context_class">com.sunrise.jop.common.spring.JopSessionContext</property>
+		<property name="hibernate.transaction.factory_class">com.atomikos.icatch.jta.hibernate3.AtomikosJTATransactionFactory</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.jdbc.batch_size">50</property>
+		<property name="hibernate.jdbc.fetch_size">5</property>
+		<property name="hibernate.connection.pool_size">2</property>
+		<property name="hibernate.connection.autocommit">false</property>
+		<property name="hibernate.cache.use_query_cache">false</property>
+		
+		
+		
+		
+		<mapping resource="com/gmcc/pboss/business/base/dictitem/Dictitem.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/sysparam/Sysparam.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/smstmpl/Smstmpl.hbm.xml" />
+		
+		<mapping resource="com/gmcc/pboss/business/resource/comcategoryrela/Comcategoryrela.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/employee/Employee.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/employeelog/Employeelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/wayaccount/Wayaccount.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/way/Way.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/waitreq/Waitreq.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/employeeextend/Employeeextend.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/employeeextendlog/Employeeextendlog.hbm.xml" />
+		<!--  <mapping resource="com/gmcc/pboss/business/channel/empconfirm/Empconfirm.hbm.xml"/>-->
+		<!--  <mapping resource="com/gmcc/pboss/business/channel/emodconfirm/Emodconfirm.hbm.xml" />-->
+		<!--  <mapping resource="com/gmcc/pboss/business/channel/empmodel/Empmodel.hbm.xml"/>-->
+		<!--  <mapping resource="com/gmcc/pboss/business/channel/empmodellog/Empmodellog.hbm.xml"/>-->
+		
+		<mapping resource="com/gmcc/pboss/business/sales/activerate/Activerate.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/wayassistant/Wayassistant.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/comorderstate/Comorderstate.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderunit/Orderunit.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/order/Order.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderlog/Orderlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderreq/Orderreq.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/reqcomcate/Reqcomcate.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/ordercomcate/Ordercomcate.hbm.xml"/>
+		
+		<mapping resource="com/gmcc/pboss/business/sales/ordertimes/Ordertimes.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/smsconfirm/Smsconfirm.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/disform/Disform.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderproce/Orderproce.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/process/Process.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/ordertask/Ordertask.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/timesect/Timesect.hbm.xml"/>
+		
+		<mapping resource="com/gmcc/pboss/business/sales/audit/Audit.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/auditlog/Auditlog.hbm.xml"/>
+		
+		<mapping resource="com/gmcc/pboss/business/reward/dictparam/Dictparam.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/stockalarm/Stockalarm.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/realtimeamt/Realtimeamt.hbm.xml"/>
+		
+		<mapping resource="com/gmcc/pboss/business/sales/canorderinfo/Canorderinfo.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/bondform/Bondform.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/bondformlog/Bondformlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/invoice/Invoice.hbm.xml"/>
+		
+		<!-- 商圈管理 -->
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicircle/Waybusicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicirclelog/Waybusicirclelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicircle/Busicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicirclelog/Busicirclelog.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>

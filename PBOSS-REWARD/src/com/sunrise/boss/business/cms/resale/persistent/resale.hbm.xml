@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.resale.persistent.ResaleVO" table="CH_PW_RESALE">
+<id column="MOBILE" name="mobile" type="java.lang.String">
+<generator class="assigned">
+</generator>
+</id>
+<property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+<property name="countyid" column="COUNTYID" type="java.lang.String" length="14"/>
+<property name="brand" column="BRAND" type="java.lang.Long" length="22"/>
+<property name="daytime" column="DAYTIME" type="java.util.Date" length="7"/>
+<property name="opntype" column="OPNTYPE" type="java.lang.String" length="18" />
+<property name="calcmonth" column="CALCMONTH" type="java.lang.String" length="8" />
+</class>
+</hibernate-mapping>

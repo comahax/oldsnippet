@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.waysyn.persistent.WaysynVO" table="CH_PW_WAYSYN">
+<id name="itemid" column="ITEMID" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_PW_WAYSYN_SEQ</param>
+	</generator>
+</id>
+<property name="opract" column="OPRACT" type="java.lang.Short" length="3"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="16"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="8"/>
+<property name="oprtime" column="OPRTIME" type="java.util.Date" length="7"/>
+<property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+<property name="wayname" column="WAYNAME" type="java.lang.String" length="256"/>
+<property name="upperwayid" column="UPPERWAYID" type="java.lang.String" length="18"/>
+<property name="cityid" column="CITYID" type="java.lang.String" length="14"/>
+<property name="waytype" column="WAYTYPE" type="java.lang.String" length="4"/>
+<property name="waystate" column="WAYSTATE" type="java.lang.Short" length="3"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bchcontact.persistent.BchcontactVO" table="CH_PW_BCHCONTACT">
+<id column="WAYID" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="PRINCIPAL" length="64" name="principal" not-null="true" type="java.lang.String"/>
+<property column="PRINCIPALTEL" length="20" name="principaltel" not-null="true" type="java.lang.String"/>
+<property column="LINKMAN" length="64" name="linkman" not-null="true" type="java.lang.String"/>
+<property column="LINKMANTEL" length="20" name="linkmantel" not-null="true" type="java.lang.String"/>
+<property column="HOTLINE" length="20" name="hotline" type="java.lang.String"/>
+<property column="FAX" length="20" name="fax" type="java.lang.String"/>
+<property column="ADDRESS" length="128" name="address" type="java.lang.String"/>
+<property column="ZIPCODE" length="10" name="zipcode" type="java.lang.String"/>
+<property column="PRINCIPALEMAIL" length="128" name="principalemail" type="java.lang.String"/>
+<property column="PRINCIPALPHONE" length="20" name="principalphone" type="java.lang.String"/>
+<property column="LINKMANEMAIL" length="128" name="linkmanemail" type="java.lang.String"/>
+<property column="BAILTYPE" length="2" name="bailtype" type="java.lang.Short"/>
+<property column="SERVBOUND" length="2" name="servbound" type="java.lang.Short"/>
+<property column="COPLEVEL" length="5" name="coplevel" type="java.lang.Integer"/>
+<property column="BUSNUM" length="30" name="busnum" type="java.lang.String"/>
+<property column="CERTITYPE" length="5" name="certitype" type="java.lang.Integer"/>
+<property column="CERTINUM" length="30" name="certinum" type="java.lang.String"/>
+<property column="REGADRESS" length="128" name="regadress" type="java.lang.String"/>
+<property column="REGCAPITAL" length="14" name="regcapital" type="java.lang.Long"/>
+<property column="COMPANY" length="60" name="company" type="java.lang.String"/>
+<property column="PROVCODE" length="18" name="provcode" type="java.lang.String"/>
+<property column="BROLE" length="64" name="brole" type="java.lang.String"/>
+<property column="COMPANYTYPE" length="64" name="companytype" type="java.lang.String"/>
+</class>
+<sql-query name="boss.cms.queryBchcontactByAGWay">
+	<return class="com.sunrise.boss.business.cms.bchcontact.persistent.BchcontactVO"/>
+       select * from ch_pw_bchcontact where wayid in
+      (select wayid from ch_pw_way where waytype='AG' and waysubtype =:subtype 
+      connect by prior wayid=upperwayid 
+      start with wayid =:basewayid )
+</sql-query>
+</hibernate-mapping>

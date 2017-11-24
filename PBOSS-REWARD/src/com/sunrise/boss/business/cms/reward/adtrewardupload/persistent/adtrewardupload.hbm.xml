@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.adtrewardupload.persistent.AdtRewarduploadVO" table="CH_ADT_REWARDUPLOAD">
+<id column="TASKID" name="taskid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_ADT_REWARDUPLOAD_SEQ</param>
+	</generator>
+</id>
+<property column="UPLOADFILE" length="200" name="uploadfile" type="java.lang.String"/>
+<property column="TASKSTATE" length="1" name="taskstate" type="java.lang.Byte"/>
+<property column="RESULTFILE" length="200" name="resultfile" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="UPLOADTIME" length="7" name="uploadtime" type="java.util.Date"/>
+<property column="ENDTIME" length="7" name="endtime" type="java.util.Date"/>
+<property column="TOTALCOUNT" length="7" name="totalcount" type="java.lang.Integer"/>
+<property column="CURRENTCOUNT" length="7" name="currentcount" type="java.lang.Integer"/>
+<property column="SUCCESSCOUNT" length="7" name="successcount" type="java.lang.Integer"/>
+<property column="FAILCOUNT" length="7" name="failcount" type="java.lang.Integer"/>
+<property column="MOBILE" length="13" name="mobile" type="java.lang.String"/>
+<property column="SUCCESSSUM" length="14" name="successsum" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

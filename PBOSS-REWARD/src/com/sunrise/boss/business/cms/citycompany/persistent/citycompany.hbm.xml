@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.citycompany.persistent.CitycompanyVO" table="CH_PW_CITYCOMPANY">
+<id column="CITYCOMPID" name="citycompid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CENTERID" length="1" name="centerid" type="java.lang.String"/>
+<property column="CITYCOMPNAME" length="64" name="citycompname" type="java.lang.String"/>
+<property column="CITYCOMPTYPE" length="4" name="citycomptype" type="java.lang.Short"/>
+<property column="AGENT" length="64" name="agent" type="java.lang.String"/>
+<property column="BILLINGCODE" length="5" name="billingcode" type="java.lang.String"/>
+<property column="AREACODE" length="8" name="areacode" type="java.lang.String"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="LONGITUDE" length="15" name="longitude" type="java.lang.String"/>
+<property column="LATITUDE" length="15" name="latitude" type="java.lang.String"/>
+<property column="CITYLEVEL" length="1" name="citylevel" type="java.lang.Short"/>
+</class>
+<!--查找登录渠道是否有微区域编码 -->
+<sql-query name="boss.cms.citycompany.ifHasmacode">
+	<return-scalar type="java.lang.String" column="val"/>
+      select mareacode as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有服务销售中心编码 -->
+<sql-query name="boss.cms.citycompany.ifHassvccode">
+	<return-scalar type="java.lang.String" column="val"/>
+      select svccode as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有分公司编码 -->
+<sql-query name="boss.cms.citycompany.ifHascountyid">
+	<return-scalar type="java.lang.String" column="val"/>
+      select countyid as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有市公司编码 -->
+<sql-query name="boss.cms.citycompany.ifHascityid">
+	<return-scalar type="java.lang.String" column="val"/>
+      select cityid as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+
+<!-- 当登录渠道有市公司编码时,查询 -->
+<sql-query name="boss.cms.citycompany.queryAscity">
+	<return class="com.sunrise.boss.business.cms.citycompany.persistent.CitycompanyVO"/>
+      select * from ch_pw_citycompany where citycompid = 
+      (select cityid from ch_pw_way where wayid = :loginwayid)
+</sql-query>
+<!-- 当登录渠道为省公司时,查询 -->
+<sql-query name="boss.cms.citycompany.queryAsprov">
+	<return class="com.sunrise.boss.business.cms.citycompany.persistent.CitycompanyVO"/>
+      select * from ch_pw_citycompany 
+</sql-query>
+</hibernate-mapping>

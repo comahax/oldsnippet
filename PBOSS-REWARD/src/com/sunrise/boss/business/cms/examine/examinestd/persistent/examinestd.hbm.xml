@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.examine.examinestd.persistent.ExaminestdVO" table="CH_PW_EXAMINESTD">
+<id column="EXMNSTDID" name="exmnstdid" type="java.lang.Long">
+	<generator class="sequence">
+        <param name="sequence">
+           CH_PW_EXAMINESTD_SEQ
+        </param>	
+   	</generator>
+</id>
+<property column="EXMNSTDNAME" length="50" name="exmnstdname" type="java.lang.String"/>
+<property column="MARKMODE" length="32" name="markmode" type="java.lang.String"/>
+<property column="SYSLOGIC" length="1024" name="syslogic" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" table="V_CH_ZJTY_BOSSSUCC">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_ZJTY_BOSSSUCC_SEQ</param>
+</generator>
+</id>
+<property column="SRCSEQ" length="14" name="srcseq" type="java.lang.Long"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="OPRCODE" length="18" name="oprcode" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="WRAPFEE" name="wrapfee" type="java.lang.Double"/>
+<property column="NONCYC" name="noncyc" type="java.lang.Short"/>
+<property column="REWARDTYPE" name="rewardtype" type="java.lang.Short"/>
+<property column="CALCFLAG" name="calcflag" type="java.lang.Short"/>
+<property column="CALCREMARK" name="calcremark" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="WADTTIME" name="wadttime" type="java.util.Date"/>
+<property column="UPDATETIME" name="updatetime" type="java.util.Date"/>
+<property column="BRAND" length="1" name="brand" type="java.lang.Byte"/>
+<property column="CREATTIME" length="7" name="creattime" type="java.util.Date"/>
+<property column="ADTTIME" length="7" name="adttime" type="java.util.Date"/>
+<property column="SRC" length="255" name="src" type="java.lang.String"/>
+<property column="CALCOPNID" length="18" name="calcopnid" type="java.lang.String"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="RULEITEMID" length="18" name="ruleitemid" type="java.lang.String"/>
+<property column="ADTFLAG" length="2" name="adtflag" type="java.lang.Short"/>
+<property column="ADTCODE" length="32" name="adtcode" type="java.lang.String"/>
+<property column="ADTREMARK" length="255" name="adtremark" type="java.lang.String"/>
+<property column="ADTTTIME" length="7" name="adtttime" type="java.util.Date"/>
+</class>
+<sql-query name="zjtydataquery.bosssucc">
+	<return class="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" />
+	select seq, srcseq, cityid, opnid, wayid, oprcode, oprtime, mobile, busivalue, brand, creattime, 
+		adtttime, src, calcopnid, calcmonth, ruleid, ruleitemid, adtflag, adtcode, adtremark, '' as adttime, 
+		'' as wrapfee, '' as noncyc, '' as rewardtype, '' as calcflag, '' as calcremark, '' as createtime, '' as wadttime, '' as updatetime
+		from ch_zjty_bosssucc
+</sql-query>
+<sql-query name="zjtydataquery.bossfail">
+	<return class="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" />
+	select seq, srcseq, cityid, opnid, wayid, oprcode, oprtime, mobile, busivalue, brand, creattime, 
+		adtttime, src, calcopnid, calcmonth, ruleid, ruleitemid, adtflag, adtcode, adtremark, '' as adttime,
+		'' as wrapfee, '' as noncyc, '' as rewardtype, '' as calcflag, '' as calcremark, '' as createtime, '' as wadttime, '' as updatetime
+		from ch_zjty_bossfail
+</sql-query>
+<sql-query name="zjtydataquery.bossjlsucc">
+	<return class="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" />
+	select seq, srcseq, ruleid, ruleitemid, opnid, calcopnid, wayid, oprtime, oprcode, mobile, busivalue,
+		wrapfee, noncyc, rewardtype, calcmonth, calcflag, calcremark, createtime, wadttime, updatetime,
+		adtflag, adtcode, adtremark, src, '' as cityid, '' as brand, '' as creattime, '' as adttime, '' as adtttime
+		from ch_zjty_bossjlsucc
+</sql-query>
+<sql-query name="zjtydataquery.bossjlfail">
+	<return class="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" />
+	select seq, srcseq, ruleid, ruleitemid, opnid, calcopnid, wayid, oprtime, oprcode, mobile, busivalue,
+		wrapfee, noncyc, rewardtype, calcmonth, calcflag, calcremark, createtime, wadttime, updatetime,
+		adtflag, adtcode, adtremark, src, '' as cityid, '' as brand, '' as creattime, '' as adttime, '' as adtttime
+		from ch_zjty_bossjlfail
+</sql-query>
+<sql-query name="zjtydataquery.salesucc">
+	<return class="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" />
+	select seq, srcseq, cityid, opnid, wayid, oprcode, oprtime, mobile, busivalue, brand, creattime, 
+		'' as adttime,src, calcopnid, calcmonth, ruleid, ruleitemid, adtflag, adtcode, adtremark, '' as adtttime, 
+		'' as wrapfee, '' as noncyc, '' as rewardtype, '' as calcflag, '' as calcremark, '' as createtime, '' as wadttime, '' as updatetime
+		from ch_zjty_salesucc
+</sql-query>
+<sql-query name="zjtydataquery.salefail">
+	<return class="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" />
+	select seq, srcseq, cityid, opnid, wayid, oprcode, oprtime, mobile, BUSIVALUE, brand, creattime, 
+		'' as adttime,src, calcopnid, calcmonth, ruleid, ruleitemid, adtflag, adtcode, adtremark, '' as adtttime, 
+		'' as wrapfee, '' as noncyc, '' as rewardtype, '' as calcflag, '' as calcremark, '' as createtime, '' as wadttime, '' as updatetime
+		from ch_zjty_salefail
+</sql-query>
+<sql-query name="zjtydataquery.tmnalsucc">
+	<return class="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" />
+	select seq, srcseq, cityid, opnid, wayid, oprcode, oprtime, mobile, busivalue, brand, creattime, 
+		adttime,src, calcopnid, calcmonth, ruleid, ruleitemid, adtflag, adtcode, adtremark, '' as adtttime, 
+		'' as wrapfee, '' as noncyc, '' as rewardtype, '' as calcflag, '' as calcremark, '' as createtime, '' as wadttime, '' as updatetime
+		from ch_zjty_tmnalsucc
+</sql-query>
+<sql-query name="zjtydataquery.tmnalfail">
+	<return class="com.sunrise.boss.business.cms.zjty.zjtydataquery.persistent.ZjtyDataqueryVO" />
+	select seq, srcseq, cityid, opnid, wayid, oprcode, oprtime, mobile, busivalue, brand, creattime, 
+		adttime,src, calcopnid, calcmonth, ruleid, ruleitemid, adtflag, adtcode, adtremark, '' as adtttime, 
+		'' as wrapfee, '' as noncyc, '' as rewardtype, '' as calcflag, '' as calcremark, '' as createtime, '' as wadttime, '' as updatetime
+		from ch_zjty_tmnalfail
+</sql-query>
+</hibernate-mapping>

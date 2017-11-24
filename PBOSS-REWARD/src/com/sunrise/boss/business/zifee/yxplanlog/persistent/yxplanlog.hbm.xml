@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.yxplanlog.persistent.YxplanlogVO" table="PC_PS_YXPLANLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">PC_PS_YXPLANLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.sql.Timestamp"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="YXPLANID" length="14" name="yxplanid" type="java.lang.Long"/>
+<property column="YXPLANNAME" length="128" name="yxplanname" type="java.lang.String"/>
+<property column="YXPLANCODE" length="40" name="yxplancode" type="java.lang.String"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="STOPDATE" length="7" name="stopdate" type="java.util.Date"/>
+<property column="CHECKERCODE" length="15" name="checkercode" type="java.lang.String"/>
+<property column="OPERATORCODE" length="15" name="operatorcode" type="java.lang.String"/>
+<property column="PRIO" length="14" name="prio" type="java.lang.Long"/>
+<property column="MINCONSUME" length="10" name="minconsume" type="java.lang.Double"/>
+<property column="CONSUMECYCLE" length="14" name="consumecycle" type="java.lang.Long"/>
+<property column="BINDPACKAGEFLAG" length="1" name="bindpackageflag" type="java.lang.Byte"/>
+<property column="BINDMONTHS" length="14" name="bindmonths" type="java.lang.Long"/>
+<property column="BOOKFLAG" length="1" name="bookflag" type="java.lang.Byte"/>
+<property column="RCPREPAYFLAG" length="1" name="rcprepayflag" type="java.lang.Byte"/>
+<property column="COULDUSETIMES" length="14" name="couldusetimes" type="java.lang.Long"/>
+<property column="MINDISCCYCLE" length="14" name="mindisccycle" type="java.lang.Long"/>
+<property column="DISCOFFSET" length="14" name="discoffset" type="java.lang.Long"/>
+<property column="TIMEUNIT" length="32" name="timeunit" type="java.lang.String"/>
+<property column="STARTTIMETYPE" length="1" name="starttimetype" type="java.lang.Byte"/>
+<property column="GROUPFLAG" length="1" name="groupflag" type="java.lang.Byte"/>
+<property column="BACKUPFLAG" length="1" name="backupflag" type="java.lang.Byte"/>
+<property column="PRINTFLAG" length="1" name="printflag" type="java.lang.Byte"/>
+<property column="FEECALCPRIVFLAG" length="1" name="feecalcprivflag" type="java.lang.Byte"/>
+<property column="RECFEEPRIVFLAG" length="1" name="recfeeprivflag" type="java.lang.Byte"/>
+<property column="STOPUSERRENTFLAG" length="1" name="stopuserrentflag" type="java.lang.Byte"/>
+<property column="ISOUTMEMBERPRIV" length="1" name="isoutmemberpriv" type="java.lang.Byte"/>
+<property column="SOURCE" length="255" name="source" type="java.lang.String"/>
+<property column="BILLINGCODE" length="20" name="billingcode" type="java.lang.String"/>
+<property column="DISCCONDITION" length="255" name="disccondition" type="java.lang.String"/>
+<property column="SALESTYPE" length="14" name="salestype" type="java.lang.Long"/>
+<property column="CHANNELCODE" length="18" name="channelcode" type="java.lang.String"/>
+<property column="PLANKIND" length="32" name="plankind" type="java.lang.String"/>
+<property column="PLANTYPE" length="32" name="plantype" type="java.lang.String"/>
+<property column="FEEPRIO" length="1" name="feeprio" type="java.lang.Byte"/>
+<property column="SPECIALFLAG" length="32" name="specialflag" type="java.lang.String"/>
+<property column="DISCSCOPE" length="8" name="discscope" type="java.lang.String"/>
+<property column="FEECOMMENT" length="255" name="feecomment" type="java.lang.String"/>
+<property column="REMARK" length="2000" name="remark" type="java.lang.String"/>
+<property column="FIXFEESPECFLAG" length="32" name="fixfeespecflag" type="java.lang.String"/>
+<property column="AREACODE" length="32" name="areacode" type="java.lang.String"/>
+<property column="CHECKUS" length="3" name="checkus" type="java.lang.Short"/>
+<property column="USERSTAUSFLAG" length="128" name="userstausflag" type="java.lang.String"/>
+<property column="PRIVELGEPRO" length="2" name="privelgepro" type="java.lang.String"/>
+<property column="YXPLANSHORTNAME" length="256" name="yxplanshortname" type="java.lang.String" />
+</class>
+</hibernate-mapping>

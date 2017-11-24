@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.yxplansplitvalue.persistent.YxPlanSplitValueVO" table="PC_PS_YXPLANSPLIT">
+<composite-id>
+<key-property column="BILLCYCLE" length="22" name="billcycle" type="java.lang.Long"/>
+<key-property column="BRANDID" length="32" name="brandid" type="java.lang.String"/>
+<key-property column="ITEMID" length="32" name="itemid" type="java.lang.String"/>
+</composite-id>
+<property column="SPLITFEE" length="16" name="splitfee" not-null="true" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.chcwpaymentsend.VChCwPaymentsendVO" table="VCH_CW_PAYMENTSEND">
+<id column="SBATCH" name="sbatch" length="14" type="java.lang.String">
+   <generator class="assigned"/>
+</id>
+</class>
+<sql-query name="com.gmcc.pboss.business.reward.chcwpaymentsend.doQueryBySql">
+<return class="com.gmcc.pboss.business.reward.chcwpaymentsend.VChCwPaymentsendVO"></return>
+SELECT DISTINCT SBATCH FROM CH_CW_PAYMENTSEND P WHERE P.SBATCH IS NOT NULL
+</sql-query>
+</hibernate-mapping>

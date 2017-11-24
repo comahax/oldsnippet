@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdagent.persistent.ChPdAgentVO" table="CH_PD_AGENT">
+<id column="PROVAGENTID" length="15" name="provagentid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="PROVAGENTNAME" length="50" name="provagentname" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

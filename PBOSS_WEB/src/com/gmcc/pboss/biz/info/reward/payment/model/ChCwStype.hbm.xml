@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.gmcc.pboss.biz.info.reward.payment.model.ChCwStype" table="CH_CW_STYPE">
+    	<id name="seq" type="java.lang.Long">
+			<column name="SEQ" length="14" />
+			<generator class="sequence">
+	          <param name="sequence">CH_CW_STYPE_SEQ</param>
+            </generator>
+		</id>
+		<property name="stype" type="java.lang.String">
+			<column name="STYPE" length="128" />
+		</property>
+		<property name="ltype" type="java.lang.String">
+			<column name="LTYPE" length="128" />
+		</property>
+		<property name="cityid" type="java.lang.String">
+			<column name="CITYID" length="2" />
+		</property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation_request>
+	<MsgReqHeader>
+		<menuid>menuid_way</menuid><!--菜单ID-->
+		<process_code>process_code_way</process_code><!--业务编码-->
+		<verify_code>verify_code_way</verify_code><!--验证码-->
+		<req_time>20120201154745</req_time>	<!--请求时间-->
+		<req_seq>req_seq_way</req_seq>	<!--请求流水-->
+		<unicontact>unicontact_way</unicontact><!--统一接触流水号-->
+		<testflag>1</testflag><!-- 1标示测试，0或者不传表示生产 -->
+		<route><!--路由标识-->
+			<route_type>0</route_type><!--路由类型 0:region 1:号码信息-->
+			<route_value>750</route_value><!--路由值-->
+		</route>
+		<channelinfo>
+			<operatorid>JJMADC0001</operatorid><!--操作员-->
+			<channelid>channelid_way</channelid><!--渠道-->
+			<unitid></unitid><!--渠道下单位-->
+		</channelinfo>
+	</MsgReqHeader>
+	<MsgBody>
+	    <wayinfo>
+			<oprtype>create</oprtype><!-- create update -->
+			<wayid>TDZS2012</wayid>
+			<shortname></shortname>
+			<svbrchcode></svbrchcode>
+			<svccode>CQ</svccode>
+			<mareacode>JMBB</mareacode>
+			<buztypecode></buztypecode>
+			<adtypecode></adtypecode>
+			<address></address>
+			<logiscode>CH_2333</logiscode>
+			<latitude></latitude>
+			<longtitude></longtitude>
+			<adacode></adacode>
+			<waymagcode>JMPBOSS0000061</waymagcode>
+			<catetype></catetype>
+			<formtype></formtype>
+			<starttime></starttime>
+			<buzarea></buzarea>
+			<mainlayer></mainlayer>
+			<sublayer></sublayer>
+			<buzphoneno></buzphoneno>
+			<wayname>渠道编码wayid+++</wayname>
+			<cooperator></cooperator>
+			<waytype>AG</waytype>
+			<waysubtype>PSAL</waysubtype>
+			<custtype></custtype>
+			<upperwayid>TDJM05010</upperwayid>
+			<busicode></busicode>
+			<countyid>JMCQ</countyid>
+			<cityid>JM</cityid>
+			<centerid></centerid>
+			<citylevel></citylevel>
+			<waylevel>4</waylevel>
+			<bchlevel></bchlevel>
+			<function></function>
+			<miscode></miscode>
+			<createtime>20120201162020</createtime>
+			<disabletime></disabletime>
+			<waystate>1</waystate>
+			<runbyself></runbyself>
+			<depotdet></depotdet>
+			<isshare></isshare>
+			<alarmbizamount></alarmbizamount>
+			<prtsource></prtsource>
+			<isconnected></isconnected>
+			<connecttype></connecttype>
+			<runmode></runmode>
+			<iscoreway></iscoreway>
+			<starlevel>3</starlevel>
+			<pt></pt>
+			<chainhead></chainhead>
+			<signstatus></signstatus>
+			<empnumber></empnumber>
+			<magnumber></magnumber>
+			<terminumber></terminumber>
+			<updatedate></updatedate>
+			<isstraitprd></isstraitprd>
+			<taxtype></taxtype>
+			<istietong></istietong>
+			<rivltype></rivltype>
+			<iskzcz></iskzcz>
+			<distype></distype>
+			<calcumode></calcumode>
+			<uniformtime>999999</uniformtime>
+			<checked></checked>
+			<buzmanager>张三</buzmanager><!-- 店面经理 -->
+			<subrunmode>1</subrunmode><!-- 经营模式子类型 -->
+		</wayinfo>
+	</MsgBody>
+</operation_request>

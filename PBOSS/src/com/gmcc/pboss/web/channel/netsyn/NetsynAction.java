@@ -1,0 +1,42 @@
+/**
+ * auto-generated code
+ * Wed Jul 01 17:32:06 CST 2009
+ */
+ package com.gmcc.pboss.web.channel.netsyn;
+
+import com.gmcc.pboss.business.channel.netsyn.NetsynVO ;
+import com.sunrise.jop.ui.struts2.BaseAction ;
+import com.gmcc.pboss.business.channel.netsyn.NetsynDBParam;
+import com.gmcc.pboss.control.channel.netsyn.Netsyn ;
+
+/**
+ * <p>Title: NetsynAction </p>;
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2006</p>
+ * <p>Company: sunrise Tech Ltd.</p>
+ * @author Linli
+ * @version 1.0
+ */
+public class NetsynAction extends BaseAction{
+	
+	public NetsynAction() {
+		super();
+
+		//????????¡¤?¡¤¡§??¡À?????
+		this.setForm(new NetsynForm());
+		this.setParam(new NetsynWebParam());
+
+        //???¡§VO?¨¤
+        setClsVO(NetsynVO.class);
+        //???¡§?¡Â?¨¹??¡Á¨¦?????????????¡Â?¨¹???¨°?¨¨???¡§?????????¡Â?¨¹??¡Á???????
+        this.pkNameArray=new String[]{"itemid"};
+		this.setClsControl(Netsyn.class);
+		this.setClsQueryParam(NetsynDBParam.class) ;
+
+		/**
+		 * ???????¡§??????????????????BaseAction??CRUD???¨¢?¡Â?????¡§??Delegate????¡ã??¨¦??????¡À????¡§
+		 * this.setClsDelegate(ExampleDelegate.class);
+		 * this.setClsQueryParam(ExampleDBParam.class);
+		 */
+	}
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.stdrewardut.persistent.VStdrewardutVO" table="V_CH_PW_STDREWARDUT">
+<composite-id>
+<key-property column="REGION" length="10" name="region" type="java.lang.String"/>
+<key-property column="REWARDID" length="14" name="rewardid" type="java.lang.Long"/>
+<key-property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+</composite-id>
+<property column="ISLIMT" length="3" name="islimt" type="java.lang.Short"/>
+<property column="REWARDNAME" length="80" name="rewardname" type="java.lang.String"/>
+<property column="STARTDATE" length="9" name="startdate" type="java.util.Date"/>
+<property column="STOPDATE" length="9" name="stopdate" type="java.util.Date"/>
+<property column="REWARDSTD" length="14" name="rewardstd" type="java.lang.Double"/>
+<property column="INTVMONTH" length="5" name="intvmonth" type="java.lang.Long"/>
+<property column="INTEGRALNUM" length="8" name="integralnum" type="java.lang.Long"/>
+<property column="UNITPRICE" length="4" name="unitprice" type="java.lang.Double"/>
+<property column="RELATEITEM" length="10" name="relateitem" type="java.lang.String"/>
+<property column="REWARDTYPE" length="10" name="rewardtype" type="java.lang.Short"/>
+
+</class>
+<sql-query name="queryStdrewardut">
+<return class="com.sunrise.boss.business.cms.reward.stdrewardut.persistent.VStdrewardutVO"/>
+select b.wayid,b.region,a.rewardid,a.rewardtype,a.rewardname,a.startdate,a.stopdate,b.rewardstd,b.intvmonth,b.integralnum,b.unitprice, b.relateitem, b.islimt from CH_PW_STDREWARD a ,CH_PW_STDREWARDUT b where a.rewardid=b.rewardid and b.wayid='DIS999' and b.islimt=0 and a.rewardtype in ('51','52','53') order by b.region
+</sql-query>
+</hibernate-mapping>

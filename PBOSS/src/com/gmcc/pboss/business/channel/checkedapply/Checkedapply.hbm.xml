@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.checkedapply.CheckedapplyVO" table="CH_PW_CHECKEDAPPLY">
+<id column="APPLYNO" length="14" name="applyno" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_CHECKEDAPPLY_SEQ</param>
+</generator>
+</id>
+<property column="CITYID" length="3" name="cityid" type="java.lang.String"/>
+<property column="APTIME" length="7" name="aptime" type="java.util.Date"/>
+<property column="OPRCODE" length="30" name="oprcode" type="java.lang.String"/>
+<property column="MOBILENO" length="15" name="mobileno" type="java.lang.String"/>
+<property column="APPATH" length="4000" name="appath" type="java.lang.String"/>
+<property column="APPLYTYPE" length="2" name="applytype" type="java.lang.String"/>
+<property column="STATUS" length="2" name="status" type="java.lang.String"/>
+<property column="OPRCODE2" length="30" name="oprcode2" type="java.lang.String"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+<property column="CHKMEMO" length="512" name="chkmemo" type="java.lang.String"/>
+<property column="PPTPATH" length="4000" name="pptpath" type="java.lang.String"/>
+</class>
+
+<sql-query name="queryCheckedapplyStat">
+	<return-scalar column="cityid" type="java.lang.String"/>
+	<return-scalar column="applytype" type="java.lang.String"/>
+	<return-scalar column="status" type="java.lang.String"/>
+	<return-scalar column="istop" type="java.lang.String"/>
+	<return-scalar column="aptime" type="java.util.Date"/>
+	<return-scalar column="wtype" type="java.lang.String"/>
+	<return-scalar column="wayid" type="java.lang.String"/>
+	select c.cityid, c.applytype, c.status, a.istop, c.aptime, 
+	   b.wtype, a.wayid, a.wayname, a.countyid, b.OPRTIME, 
+	   c.OPRCODE2, b.OPRCODE, b.CHKTYPE, b.waystatus
+  from ch_pw_way a, ch_pw_checkedapplydetail b, CH_PW_CHECKEDAPPLY c
+ where a.wayid = b.wayid and b.applyno = c.applyno
+ order by a.cityid asc
+</sql-query>
+
+<sql-query name="queryCheckedapplyPro">
+	<return class="com.gmcc.pboss.business.channel.checkedapply.CheckedapplyVO"/>
+	select * from CH_PW_CHECKEDAPPLY where (STATUS=5 or STATUS=6 or STATUS=0 or STATUS=1 or STATUS=2)
+</sql-query>
+
+<sql-query name="queryCheckedapplyCity">
+	<return class="com.gmcc.pboss.business.channel.checkedapply.CheckedapplyVO"/>
+	select * from CH_PW_CHECKEDAPPLY
+</sql-query>
+
+
+</hibernate-mapping>

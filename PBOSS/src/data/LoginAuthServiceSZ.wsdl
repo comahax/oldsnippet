@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:tns="http://boss.huawei.com/webservice/loginAuth"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	targetNamespace="http://boss.huawei.com/webservice/loginAuth">
+	<types>
+		<xs:schema
+			targetNamespace="http://boss.huawei.com/webservice/loginAuth"
+			elementFormDefault="qualified">
+			<xs:include schemaLocation="./LoginAuth.xsd" />
+		</xs:schema>
+	</types>
+	
+	<message name="GetAuthTypeRequest">
+		<part name="GetAuthTypeRequestMessage" element="tns:GetAuthTypeRequest">
+		</part>
+	</message>
+	<message name="GetAuthTypeResult">
+		<part name="GetAuthTypeResultMessage" element="tns:GetAuthTypeResult"></part>
+	</message>
+	
+		<message name="SimpAuthCheckRequest">
+		<part name="SimpAuthCheckRequestMessage" element="tns:SimpAuthCheckRequest">
+		</part>
+	</message>
+	<message name="SimpAuthCheckResult">
+		<part name="SimpAuthCheckResultMessage" element="tns:SimpAuthCheckResult"></part>
+	</message>
+	
+		<message name="DynamicCheckRequest">
+		<part name="DynamicCheckRequestMessage" element="tns:DynamicCheckRequest">
+		</part>
+	</message>
+	<message name="DynamicCheckResult">
+		<part name="DynamicCheckResultMessage" element="tns:DynamicCheckResult"></part>
+	</message>
+	
+		<message name="RSACheckRequest">
+		<part name="RSACheckRequestMessage" element="tns:RSACheckRequest">
+		</part>
+	</message>
+	<message name="RSACheckResult">
+		<part name="RSACheckResultMessage" element="tns:RSACheckResult"></part>
+	</message>
+	
+	<message name="SecAuthCheckRequest">
+		<part name="SecAuthCheckRequestMessage" element="tns:SecAuthCheckRequest">
+		</part>
+	</message>
+	<message name="SecAuthCheckResult">
+		<part name="SecAuthCheckResultMessage" element="tns:SecAuthCheckResult"></part>
+	</message>
+	
+		<message name="SafeWordCheckRequest">
+		<part name="SafeWordCheckRequestMessage" element="tns:SafeWordCheckRequest">
+		</part>
+	</message>
+	<message name="SafeWordCheckResult">
+		<part name="SafeWordCheckResultMessage" element="tns:SafeWordCheckResult"></part>
+	</message>
+	
+	<portType name="loginAuth">
+		<operation name="GetAuthType">
+			<input name="request" message="tns:GetAuthTypeRequest"></input>
+			<output name="result" message="tns:GetAuthTypeResult"></output>
+		</operation>
+	
+		<operation name="SimpAuthCheck">
+			<input name="request" message="tns:SimpAuthCheckRequest"></input>
+			<output name="result" message="tns:SimpAuthCheckResult"></output>
+		</operation>
+	
+		<operation name="DynamicCheck">
+			<input name="request" message="tns:DynamicCheckRequest"></input>
+			<output name="result" message="tns:DynamicCheckResult"></output>
+		</operation>
+	
+		<operation name="RSACheck">
+			<input name="request" message="tns:RSACheckRequest"></input>
+			<output name="result" message="tns:RSACheckResult"></output>
+		</operation>
+	
+		<operation name="SecAuthCheck">
+			<input name="request" message="tns:SecAuthCheckRequest"></input>
+			<output name="result" message="tns:SecAuthCheckResult"></output>
+		</operation>
+	
+		<operation name="SafeWordCheck">
+			<input name="request" message="tns:SafeWordCheckRequest"></input>
+			<output name="result" message="tns:SafeWordCheckResult"></output>
+		</operation>
+	</portType>
+	
+	<binding name="loginAuthBinding" type="tns:loginAuth">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="GetAuthType">
+			<soap:operation soapAction="GetAuthType" style="document" />
+			<input>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/GetAuthType" />
+			</input>
+			<output>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/GetAuthType" />
+			</output>
+		</operation>
+		
+			<operation name="SimpAuthCheck">
+			<soap:operation soapAction="SimpAuthCheck" style="document" />
+			<input>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/SimpAuthCheck" />
+			</input>
+			<output>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/SimpAuthCheck" />
+			</output>
+		</operation>
+		
+			<operation name="DynamicCheck">
+			<soap:operation soapAction="DynamicCheck" style="document" />
+			<input>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/DynamicCheck" />
+			</input>
+			<output>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/DynamicCheck" />
+			</output>
+		</operation>
+		
+			<operation name="RSACheck">
+			<soap:operation soapAction="RSACheck" style="document" />
+			<input>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/RSACheck" />
+			</input>
+			<output>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/RSACheck" />
+			</output>
+		</operation>
+		
+			<operation name="SecAuthCheck">
+			<soap:operation soapAction="SecAuthCheck" style="document" />
+			<input>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/SecAuthCheck" />
+			</input>
+			<output>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/SecAuthCheck" />
+			</output>
+		</operation>
+					
+	<operation name="SafeWordCheck">
+			<soap:operation soapAction="SafeWordCheck" style="document" />
+			<input>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/SafeWordCheck" />
+			</input>
+			<output>
+				<soap:body use="literal"
+					namespace="http://boss.huawei.com/webservice/loginAuth/SafeWordCheck" />
+			</output>
+		</operation>
+		
+	</binding>
+	<service name="loginAuthService">
+		<port name="loginAuthServicePort"
+			binding="tns:loginAuthBinding">
+				<soap:address
+				location="http://10.243.210.120:80/bservice/services/loginAuthService" />
+		</port>
+	</service>
+</definitions>
+
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.dgrealprod.rbeboxchglog.persistent.RbEboxChgLogVO" table="RB_WL_EBOXCHGLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property name="subsid" column="SUBSID" type="java.lang.Long" length="14"/>
+<property name="baltype" column="BALTYPE" type="java.lang.Short" length="2"/>
+<property name="chgamt" column="CHGAMT" type="java.lang.Long" length="14"/>
+<property name="afterchgamt" column="AFTERCHGAMT" type="java.lang.Long" length="14"/>
+<property name="opercode" column="OPERCODE" type="java.lang.String" length="15"/>
+<property name="reason" column="REASON" type="java.lang.String" length="64"/>
+<property name="reason2" column="REASON2" type="java.lang.String" length="64"/>
+<property name="chgtime" column="CHGTIME" type="java.util.Date" length="7"/>
+<property name="yxplanid" column="YXPLANID" type="java.lang.Long" length="14"/>
+<property name="baseamt" column="BASEAMT" type="java.lang.Long" length="14"/>
+<property name="presentamt" column="PRESENTAMT" type="java.lang.Long" length="14"/>
+<property name="invalidamt" column="INVALIDAMT" type="java.lang.Long" length="14"/>
+<property name="billflag" column="BILLFLAG" type="java.lang.Short" length="2"/>
+<property name="memo" column="MEMO" type="java.lang.String" length="64"/>
+<property name="logtype" column="LOGTYPE" type="java.lang.Short" length="2"/>
+</class>
+
+
+<sql-query name="queryRbEboxChgLog">
+	<return class="com.sunrise.boss.business.fee.dgrealprod.rbeboxchglog.persistent.RbEboxChgLogVO"/>
+	select * from RB_WL_EBOXCHGLOG where chgamt>0
+</sql-query>
+
+
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.kdkhzl.chpwbroadaccount.persistent.ChPwBroadaccountVO" table="CH_PW_BROADACCOUNT">
+<id column="BROADID" name="broadid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="ACCOUNT" length="12" name="account" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

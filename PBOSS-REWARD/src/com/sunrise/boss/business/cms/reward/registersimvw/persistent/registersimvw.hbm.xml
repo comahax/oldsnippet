@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.registersimvw.persistent.RegistersimvwVO" table="V_REGISTERSIMVW">
+<id column="SEQID" length="14" name="seqid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="ACTIVEDATE" length="7" name="activedate" type="java.util.Date"/>
+<property column="EMPLOYEEID" length="15" name="employeeid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="18" name="waymagcode" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="EMPLOYEENAME" length="30" name="employeename" type="java.lang.String"/>
+<property column="NAME" length="30" name="name" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OFFICETEL" length="12" name="officetel" type="java.lang.String"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="BRAND" length="3" name="brand" type="java.lang.Short"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="COMCLASSID" length="6" name="comclassid" type="java.lang.Short"/>
+<property column="COMPRICE" length="14" name="comprice" type="java.lang.Long"/>
+<property column="MENDFALG" length="2" name="mendfalg" type="java.lang.Short"/>
+<property column="COMNAME" length="128" name="comname" type="java.lang.String"/>
+<property column="COMTYPE" length="6" name="comtype" type="java.lang.Short"/>
+</class>
+<sql-query name="reward.registersimvw.registersimvw">
+<return class="com.sunrise.boss.business.cms.reward.registersimvw.persistent.RegistersimvwVO"></return>
+SELECT ROWNUM AS SEQID,TT.* FROM (SELECT DISTINCT A.SEQID AS DD,
+       A.WAYID,
+       A.OPRCODE,
+       C.WAYNAME,
+       C.WAYMAGCODE,
+       C.COUNTYID,
+       C.STARLEVEL,
+       C.SVCCODE,
+       D.EMPLOYEEID,
+       D.EMPLOYEENAME,
+       null AS NAME,
+       D.OFFICETEL,
+       A.MOBILE,
+       A.BRAND,
+       A.OPNID,
+       A.OPRTIME,
+       A.comname,
+       A.comtype,
+       A.COMCLASSID,
+       A.COMPRICE/100 AS COMPRICE,
+       A.MENDFALG,
+       B.ACTIVEDATE
+  FROM CH_PW_REGISTERSIM A,
+       FX_SN_NOACTINFO   B,
+       CH_PW_WAY         C,
+       CH_PW_EMPLOYEE    D
+ WHERE A.WAYID = C.WAYID
+   AND A.OPRCODE = D.EMPLOYEEID
+   AND B.MOBILENO(+) = A.MOBILE
+   AND A.CITYID = :CITYID
+   AND A.OPRTIME BETWEEN :STARTIME AND :ENDTIME
+ ORDER BY A.SEQID,A.WAYID) TT
+</sql-query>
+<sql-query name="reward.registersimvw.registersimvw.activedate">
+<return class="com.sunrise.boss.business.cms.reward.registersimvw.persistent.RegistersimvwVO"></return>
+SELECT ROWNUM AS SEQID,TT.* FROM (SELECT DISTINCT A.SEQID AS DD,
+       A.WAYID,
+       A.OPRCODE,
+       C.WAYNAME,
+       C.WAYMAGCODE,
+       C.COUNTYID,
+       C.STARLEVEL,
+       C.SVCCODE,
+       D.EMPLOYEEID,
+       D.EMPLOYEENAME,
+       null AS NAME,
+       D.OFFICETEL,
+       A.MOBILE,
+       A.BRAND,
+       A.OPNID,
+       A.OPRTIME,
+       A.comname,
+       A.comtype,
+       A.COMCLASSID,
+       A.COMPRICE/100 AS COMPRICE,
+       A.MENDFALG,
+       B.ACTIVEDATE
+  FROM CH_PW_REGISTERSIM A,
+       FX_SN_NOACTINFO   B,
+       CH_PW_WAY         C,
+       CH_PW_EMPLOYEE    D
+ WHERE A.WAYID = C.WAYID
+   AND A.OPRCODE = D.EMPLOYEEID
+   AND B.MOBILENO(+) = A.MOBILE
+   AND A.CITYID = :CITYID
+   AND A.OPRTIME BETWEEN :STARTIME AND :ENDTIME
+   AND B.ACTIVEDATE(+) BETWEEN :STARTIME1 AND :ENDTIME1
+ ORDER BY A.SEQID,A.WAYID) TT
+</sql-query>
+</hibernate-mapping>

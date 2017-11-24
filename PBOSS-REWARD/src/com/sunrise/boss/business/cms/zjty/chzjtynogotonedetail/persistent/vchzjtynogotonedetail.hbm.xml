@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.chzjtynogotonedetail.persistent.VChZjtyNogotonedetailVO" table="V_CH_ZJTY_NOGOTONEDETAIL">
+<id column="MARK" name="mark" type="java.lang.Long">
+<generator class="sequence"/>
+</id>
+<property column="cooperauid" length="256" name="cooperauid" type="java.lang.String"/>
+<property column="city" length="256" name="city" type="java.lang.String"/>
+<property column="wayname" length="256" name="wayname" type="java.lang.String"/>
+<property column="rewardreporttime" length="256" name="rewardreporttime" type="java.lang.String"/>
+<property column="ywlmzone100" length="256" name="ywlmzone100" type="java.lang.String"/>
+<property column="ywlmzone55" length="256" name="ywlmzone55" type="java.lang.String"/>
+<property column="ywlmzone25" length="256" name="ywlmzone25" type="java.lang.String"/>
+<property column="ywlsz100" length="256" name="ywlsz100" type="java.lang.String"/>
+<property column="ywlsz55" length="256" name="ywlsz55" type="java.lang.String"/>
+<property column="ywlcardtotal" length="256" name="ywlcardtotal" type="java.lang.String"/>
+<property column="ywlmzonewl" length="256" name="ywlmzonewl" type="java.lang.String"/>
+<property column="ywlt52g" length="256" name="ywlt52g" type="java.lang.String"/>
+<property column="ywlt53g" length="256" name="ywlt53g" type="java.lang.String"/>
+<property column="ywlt102g" length="256" name="ywlt102g" type="java.lang.String"/>
+<property column="ywlt103g" length="256" name="ywlt103g" type="java.lang.String"/>
+<property column="ywlt152g" length="256" name="ywlt152g" type="java.lang.String"/>
+<property column="ywlt153g" length="256" name="ywlt153g" type="java.lang.String"/>
+<property column="ywlt202g" length="256" name="ywlt202g" type="java.lang.String"/>
+<property column="ywlt203g" length="256" name="ywlt203g" type="java.lang.String"/>
+<property column="ywlt252g" length="256" name="ywlt252g" type="java.lang.String"/>
+<property column="ywlt253g" length="256" name="ywlt253g" type="java.lang.String"/>
+<property column="ywlt302g" length="256" name="ywlt302g" type="java.lang.String"/>
+<property column="ywlt303g" length="256" name="ywlt303g" type="java.lang.String"/>
+<property column="ywlt352g" length="256" name="ywlt352g" type="java.lang.String"/>
+<property column="ywlt353g" length="256" name="ywlt353g" type="java.lang.String"/>
+<property column="ywlt402g" length="256" name="ywlt402g" type="java.lang.String"/>
+<property column="ywlt403g" length="256" name="ywlt403g" type="java.lang.String"/>
+<property column="ywlt502g" length="256" name="ywlt502g" type="java.lang.String"/>
+<property column="ywlt503g" length="256" name="ywlt503g" type="java.lang.String"/>
+<property column="ywlmifi" length="256" name="ywlmifi" type="java.lang.String"/>
+<property column="ywlchangecard" length="256" name="ywlchangecard" type="java.lang.String"/>
+<property column="ywlopenmobile" length="256" name="ywlopenmobile" type="java.lang.String"/>
+<property column="ywlservicechange" length="256" name="ywlservicechange" type="java.lang.String"/>
+<property column="ywlpkchanlow" length="256" name="ywlpkchanlow" type="java.lang.String"/>
+<property column="ywlpkchanhigh" length="256" name="ywlpkchanhigh" type="java.lang.String"/>
+<property column="ywlcash" length="256" name="ywlcash" type="java.lang.String"/>
+<property column="ywlmoneyamount" length="256" name="ywlmoneyamount" type="java.lang.String"/>
+<property column="ywlpkchan" length="256" name="ywlpkchan" type="java.lang.String"/>
+<property column="ywlzuservicechange" length="256" name="ywlzuservicechange" type="java.lang.String"/>
+<property column="ywlcashamount" length="256" name="ywlcashamount" type="java.lang.String"/>
+<property column="ywlfamilybroadband" length="256" name="ywlfamilybroadband" type="java.lang.String"/>
+<property column="ywlhlzx51" length="256" name="ywlhlzx51" type="java.lang.String"/>
+<property column="ywlhlzx53" length="256" name="ywlhlzx53" type="java.lang.String"/>
+<property column="ywlhlzx101" length="256" name="ywlhlzx101" type="java.lang.String"/>
+<property column="ywlhlzx103" length="256" name="ywlhlzx103" type="java.lang.String"/>
+<property column="ywlinfocomress" length="256" name="ywlinfocomress" type="java.lang.String"/>
+<property column="dwmzone100" length="256" name="dwmzone100" type="java.lang.String"/>
+<property column="dwmzone55" length="256" name="dwmzone55" type="java.lang.String"/>
+<property column="dwmzone25" length="256" name="dwmzone25" type="java.lang.String"/>
+<property column="dwsz100" length="256" name="dwsz100" type="java.lang.String"/>
+<property column="dwsz55" length="256" name="dwsz55" type="java.lang.String"/>
+<property column="dwcardtotal" length="256" name="dwcardtotal" type="java.lang.String"/>
+<property column="dwmzonewl" length="256" name="dwmzonewl" type="java.lang.String"/>
+<property column="dwt52g" length="256" name="dwt52g" type="java.lang.String"/>
+<property column="dwt53g" length="256" name="dwt53g" type="java.lang.String"/>
+<property column="dwt102g" length="256" name="dwt102g" type="java.lang.String"/>
+<property column="dwt103g" length="256" name="dwt103g" type="java.lang.String"/>
+<property column="dwt152g" length="256" name="dwt152g" type="java.lang.String"/>
+<property column="dwt153g" length="256" name="dwt153g" type="java.lang.String"/>
+<property column="dwt202g" length="256" name="dwt202g" type="java.lang.String"/>
+<property column="dwt203g" length="256" name="dwt203g" type="java.lang.String"/>
+<property column="dwt252g" length="256" name="dwt252g" type="java.lang.String"/>
+<property column="dwt253g" length="256" name="dwt253g" type="java.lang.String"/>
+<property column="dwt302g" length="256" name="dwt302g" type="java.lang.String"/>
+<property column="dwt303g" length="256" name="dwt303g" type="java.lang.String"/>
+<property column="dwt352g" length="256" name="dwt352g" type="java.lang.String"/>
+<property column="dwt353g" length="256" name="dwt353g" type="java.lang.String"/>
+<property column="dwt402g" length="256" name="dwt402g" type="java.lang.String"/>
+<property column="dwt403g" length="256" name="dwt403g" type="java.lang.String"/>
+<property column="dwt502g" length="256" name="dwt502g" type="java.lang.String"/>
+<property column="dwt503g" length="256" name="dwt503g" type="java.lang.String"/>
+<property column="dwmifi" length="256" name="dwmifi" type="java.lang.String"/>
+<property column="dwchangecard" length="256" name="dwchangecard" type="java.lang.String"/>
+<property column="dwopenmobile" length="256" name="dwopenmobile" type="java.lang.String"/>
+<property column="dwservicechange" length="256" name="dwservicechange" type="java.lang.String"/>
+<property column="dwpkchanlow" length="256" name="dwpkchanlow" type="java.lang.String"/>
+<property column="dwpkchanhigh" length="256" name="dwpkchanhigh" type="java.lang.String"/>
+<property column="dwcash" length="256" name="dwcash" type="java.lang.String"/>
+<property column="dwmoneyamount" length="256" name="dwmoneyamount" type="java.lang.String"/>
+<property column="dwpkchan" length="256" name="dwpkchan" type="java.lang.String"/>
+<property column="dwzuservicechange" length="256" name="dwzuservicechange" type="java.lang.String"/>
+<property column="dwcashamount" length="256" name="dwcashamount" type="java.lang.String"/>
+<property column="dwfamilybroadband" length="256" name="dwfamilybroadband" type="java.lang.String"/>
+<property column="dwhlzx51" length="256" name="dwhlzx51" type="java.lang.String"/>
+<property column="dwhlzx53" length="256" name="dwhlzx53" type="java.lang.String"/>
+<property column="dwhlzx101" length="256" name="dwhlzx101" type="java.lang.String"/>
+<property column="dwhlzx103" length="256" name="dwhlzx103" type="java.lang.String"/>
+<property column="dwinfocomress" length="256" name="dwinfocomress" type="java.lang.String"/>
+<property column="cjtotalmzone100" length="256" name="cjtotalmzone100" type="java.lang.String"/>
+<property column="cjtotalmzone55" length="256" name="cjtotalmzone55" type="java.lang.String"/>
+<property column="cjtotalmzone25" length="256" name="cjtotalmzone25" type="java.lang.String"/>
+<property column="cjtotalsz100" length="256" name="cjtotalsz100" type="java.lang.String"/>
+<property column="cjtotalsz55" length="256" name="cjtotalsz55" type="java.lang.String"/>
+<property column="cjtotalcardtotal" length="256" name="cjtotalcardtotal" type="java.lang.String"/>
+<property column="cjtotalmzonewl" length="256" name="cjtotalmzonewl" type="java.lang.String"/>
+<property column="cjtotalt52g" length="256" name="cjtotalt52g" type="java.lang.String"/>
+<property column="cjtotalt53g" length="256" name="cjtotalt53g" type="java.lang.String"/>
+<property column="cjtotalt102g" length="256" name="cjtotalt102g" type="java.lang.String"/>
+<property column="cjtotalt103g" length="256" name="cjtotalt103g" type="java.lang.String"/>
+<property column="cjtotalt152g" length="256" name="cjtotalt152g" type="java.lang.String"/>
+<property column="cjtotalt153g" length="256" name="cjtotalt153g" type="java.lang.String"/>
+<property column="cjtotalt202g" length="256" name="cjtotalt202g" type="java.lang.String"/>
+<property column="cjtotalt203g" length="256" name="cjtotalt203g" type="java.lang.String"/>
+<property column="cjtotalt252g" length="256" name="cjtotalt252g" type="java.lang.String"/>
+<property column="cjtotalt253g" length="256" name="cjtotalt253g" type="java.lang.String"/>
+<property column="cjtotalt302g" length="256" name="cjtotalt302g" type="java.lang.String"/>
+<property column="cjtotalt303g" length="256" name="cjtotalt303g" type="java.lang.String"/>
+<property column="cjtotalt352g" length="256" name="cjtotalt352g" type="java.lang.String"/>
+<property column="cjtotalt353g" length="256" name="cjtotalt353g" type="java.lang.String"/>
+<property column="cjtotalt402g" length="256" name="cjtotalt402g" type="java.lang.String"/>
+<property column="cjtotalt403g" length="256" name="cjtotalt403g" type="java.lang.String"/>
+<property column="cjtotalt502g" length="256" name="cjtotalt502g" type="java.lang.String"/>
+<property column="cjtotalt503g" length="256" name="cjtotalt503g" type="java.lang.String"/>
+<property column="cjtotalmifi" length="256" name="cjtotalmifi" type="java.lang.String"/>
+<property column="cjtotalchangecard" length="256" name="cjtotalchangecard" type="java.lang.String"/>
+<property column="cjtotalopenmobile" length="256" name="cjtotalopenmobile" type="java.lang.String"/>
+<property column="cjtotalservicechange" length="256" name="cjtotalservicechange" type="java.lang.String"/>
+<property column="cjtotalpkchanlow" length="256" name="cjtotalpkchanlow" type="java.lang.String"/>
+<property column="cjtotalpkchanhigh" length="256" name="cjtotalpkchanhigh" type="java.lang.String"/>
+<property column="cjtotalcash" length="256" name="cjtotalcash" type="java.lang.String"/>
+<property column="cjtotalmoneyamount" length="256" name="cjtotalmoneyamount" type="java.lang.String"/>
+<property column="cjtotalpkchan" length="256" name="cjtotalpkchan" type="java.lang.String"/>
+<property column="cjtotalzuservicechange" length="256" name="cjtotalzuservicechange" type="java.lang.String"/>
+<property column="cjtotalcashamount" length="256" name="cjtotalcashamount" type="java.lang.String"/>
+<property column="cjtotalfamilybroadband" length="256" name="cjtotalfamilybroadband" type="java.lang.String"/>
+<property column="cjtotalhlzx51" length="256" name="cjtotalhlzx51" type="java.lang.String"/>
+<property column="cjtotalhlzx53" length="256" name="cjtotalhlzx53" type="java.lang.String"/>
+<property column="cjtotalhlzx101" length="256" name="cjtotalhlzx101" type="java.lang.String"/>
+<property column="cjtotalhlzx103" length="256" name="cjtotalhlzx103" type="java.lang.String"/>
+<property column="cjtotalinfocomress" length="256" name="cjtotalinfocomress" type="java.lang.String"/>
+<property column="manageexamine" length="256" name="manageexamine" type="java.lang.String"/>
+<property column="vetocoefficient" length="256" name="vetocoefficient" type="java.lang.String"/>
+<property column="ordercoefficient" length="256" name="ordercoefficient" type="java.lang.String"/>
+<property column="campaigncoefficient" length="256" name="campaigncoefficient" type="java.lang.String"/>
+<property column="totalreward" length="256" name="totalreward" type="java.lang.String"/>
+</class>
+
+<sql-query name="querychzjtynogotonedetail">
+	<return class="com.sunrise.boss.business.cms.zjty.chzjtynogotonedetail.persistent.VChZjtyNogotonedetailVO" />
+	select mark, max(decode(type, 'cooperauid', datacontent, '')) as cooperauid,
+       max(decode(type, 'city', datacontent, '')) as city,
+       max(decode(type, 'wayname', datacontent, '')) as wayname,
+       max(decode(type, 'rewardreporttime', datacontent, '')) as rewardreporttime,
+       max(decode(type, 'ywlmzone100', datacontent, '')) as ywlmzone100,
+       max(decode(type, 'ywlmzone55', datacontent, '')) as ywlmzone55,
+       max(decode(type, 'ywlmzone25', datacontent, '')) as ywlmzone25,
+       max(decode(type, 'ywlsz100', datacontent, '')) as ywlsz100,
+       max(decode(type, 'ywlsz55', datacontent, '')) as ywlsz55,
+       max(decode(type, 'ywlcardtotal', datacontent, '')) as ywlcardtotal,
+       max(decode(type, 'ywlmzonewl', datacontent, '')) as ywlmzonewl,
+       max(decode(type, 'ywlt52g', datacontent, '')) as ywlt52g,
+       max(decode(type, 'ywlt53g', datacontent, '')) as ywlt53g,
+       max(decode(type, 'ywlt102g', datacontent, '')) as ywlt102g,
+       max(decode(type, 'ywlt103g', datacontent, '')) as ywlt103g,
+       max(decode(type, 'ywlt152g', datacontent, '')) as ywlt152g,
+       max(decode(type, 'ywlt153g', datacontent, '')) as ywlt153g,
+       max(decode(type, 'ywlt202g', datacontent, '')) as ywlt202g,
+       max(decode(type, 'ywlt203g', datacontent, '')) as ywlt203g,
+       max(decode(type, 'ywlt252g', datacontent, '')) as ywlt252g,
+       max(decode(type, 'ywlt253g', datacontent, '')) as ywlt253g,
+       max(decode(type, 'ywlt302g', datacontent, '')) as ywlt302g,
+       max(decode(type, 'ywlt303g', datacontent, '')) as ywlt303g,
+       max(decode(type, 'ywlt352g', datacontent, '')) as ywlt352g,
+       max(decode(type, 'ywlt353g', datacontent, '')) as ywlt353g,
+       max(decode(type, 'ywlt402g', datacontent, '')) as ywlt402g,
+       max(decode(type, 'ywlt403g', datacontent, '')) as ywlt403g,
+       max(decode(type, 'ywlt502g', datacontent, '')) as ywlt502g,
+       max(decode(type, 'ywlt503g', datacontent, '')) as ywlt503g,
+       max(decode(type, 'ywlmifi', datacontent, '')) as ywlmifi,
+       max(decode(type, 'ywlchangecard', datacontent, '')) as ywlchangecard,
+       max(decode(type, 'ywlopenmobile', datacontent, '')) as ywlopenmobile,
+       max(decode(type, 'ywlservicechange', datacontent, '')) as ywlservicechange,
+       max(decode(type, 'ywlpkchanlow', datacontent, '')) as ywlpkchanlow,
+       max(decode(type, 'ywlpkchanhigh', datacontent, '')) as ywlpkchanhigh,
+       max(decode(type, 'ywlcash', datacontent, '')) as ywlcash,
+       max(decode(type, 'ywlmoneyamount', datacontent, '')) as ywlmoneyamount,
+       max(decode(type, 'ywlpkchan', datacontent, '')) as ywlpkchan,
+       max(decode(type, 'ywlzuservicechange', datacontent, '')) as ywlzuservicechange,
+       max(decode(type, 'ywlcashamount', datacontent, '')) as ywlcashamount,
+       max(decode(type, 'ywlfamilybroadband', datacontent, '')) as ywlfamilybroadband,
+       max(decode(type, 'ywlhlzx51', datacontent, '')) as ywlhlzx51,
+       max(decode(type, 'ywlhlzx53', datacontent, '')) as ywlhlzx53,
+       max(decode(type, 'ywlhlzx101', datacontent, '')) as ywlhlzx101,
+       max(decode(type, 'ywlhlzx103', datacontent, '')) as ywlhlzx103,
+       max(decode(type, 'ywlinfocomress', datacontent, '')) as ywlinfocomress,
+       max(decode(type, 'dwmzone100', datacontent, '')) as dwmzone100,
+       max(decode(type, 'dwmzone55', datacontent, '')) as dwmzone55,
+       max(decode(type, 'dwmzone25', datacontent, '')) as dwmzone25,
+       max(decode(type, 'dwsz100', datacontent, '')) as dwsz100,
+       max(decode(type, 'dwsz55', datacontent, '')) as dwsz55,
+       max(decode(type, 'dwcardtotal', datacontent, '')) as dwcardtotal,
+       max(decode(type, 'dwmzonewl', datacontent, '')) as dwmzonewl,
+       max(decode(type, 'dwt52g', datacontent, '')) as dwt52g,
+       max(decode(type, 'dwt53g', datacontent, '')) as dwt53g,
+       max(decode(type, 'dwt102g', datacontent, '')) as dwt102g,
+       max(decode(type, 'dwt103g', datacontent, '')) as dwt103g,
+       max(decode(type, 'dwt152g', datacontent, '')) as dwt152g,
+       max(decode(type, 'dwt153g', datacontent, '')) as dwt153g,
+       max(decode(type, 'dwt202g', datacontent, '')) as dwt202g,
+       max(decode(type, 'dwt203g', datacontent, '')) as dwt203g,
+       max(decode(type, 'dwt252g', datacontent, '')) as dwt252g,
+       max(decode(type, 'dwt253g', datacontent, '')) as dwt253g,
+       max(decode(type, 'dwt302g', datacontent, '')) as dwt302g,
+       max(decode(type, 'dwt303g', datacontent, '')) as dwt303g,
+       max(decode(type, 'dwt352g', datacontent, '')) as dwt352g,
+       max(decode(type, 'dwt353g', datacontent, '')) as dwt353g,
+       max(decode(type, 'dwt402g', datacontent, '')) as dwt402g,
+       max(decode(type, 'dwt403g', datacontent, '')) as dwt403g,
+       max(decode(type, 'dwt502g', datacontent, '')) as dwt502g,
+       max(decode(type, 'dwt503g', datacontent, '')) as dwt503g,
+       max(decode(type, 'dwmifi', datacontent, '')) as dwmifi,
+       max(decode(type, 'dwchangecard', datacontent, '')) as dwchangecard,
+       max(decode(type, 'dwopenmobile', datacontent, '')) as dwopenmobile,
+       max(decode(type, 'dwservicechange', datacontent, '')) as dwservicechange,
+       max(decode(type, 'dwpkchanlow', datacontent, '')) as dwpkchanlow,
+       max(decode(type, 'dwpkchanhigh', datacontent, '')) as dwpkchanhigh,
+       max(decode(type, 'dwcash', datacontent, '')) as dwcash,
+       max(decode(type, 'dwmoneyamount', datacontent, '')) as dwmoneyamount,
+       max(decode(type, 'dwpkchan', datacontent, '')) as dwpkchan,
+       max(decode(type, 'dwzuservicechange', datacontent, '')) as dwzuservicechange,
+       max(decode(type, 'dwcashamount', datacontent, '')) as dwcashamount,
+       max(decode(type, 'dwfamilybroadband', datacontent, '')) as dwfamilybroadband,
+       max(decode(type, 'dwhlzx51', datacontent, '')) as dwhlzx51,
+       max(decode(type, 'dwhlzx53', datacontent, '')) as dwhlzx53,
+       max(decode(type, 'dwhlzx101', datacontent, '')) as dwhlzx101,
+       max(decode(type, 'dwhlzx103', datacontent, '')) as dwhlzx103,
+       max(decode(type, 'dwinfocomress', datacontent, '')) as dwinfocomress,
+       max(decode(type, 'cjtotalmzone100', datacontent, '')) as cjtotalmzone100,
+       max(decode(type, 'cjtotalmzone55', datacontent, '')) as cjtotalmzone55,
+       max(decode(type, 'cjtotalmzone25', datacontent, '')) as cjtotalmzone25,
+       max(decode(type, 'cjtotalsz100', datacontent, '')) as cjtotalsz100,
+       max(decode(type, 'cjtotalsz55', datacontent, '')) as cjtotalsz55,
+       max(decode(type, 'cjtotalcardtotal', datacontent, '')) as cjtotalcardtotal,
+       max(decode(type, 'cjtotalmzonewl', datacontent, '')) as cjtotalmzonewl,
+       max(decode(type, 'cjtotalt52g', datacontent, '')) as cjtotalt52g,
+       max(decode(type, 'cjtotalt53g', datacontent, '')) as cjtotalt53g,
+       max(decode(type, 'cjtotalt102g', datacontent, '')) as cjtotalt102g,
+       max(decode(type, 'cjtotalt103g', datacontent, '')) as cjtotalt103g,
+       max(decode(type, 'cjtotalt152g', datacontent, '')) as cjtotalt152g,
+       max(decode(type, 'cjtotalt153g', datacontent, '')) as cjtotalt153g,
+       max(decode(type, 'cjtotalt202g', datacontent, '')) as cjtotalt202g,
+       max(decode(type, 'cjtotalt203g', datacontent, '')) as cjtotalt203g,
+       max(decode(type, 'cjtotalt252g', datacontent, '')) as cjtotalt252g,
+       max(decode(type, 'cjtotalt253g', datacontent, '')) as cjtotalt253g,
+       max(decode(type, 'cjtotalt302g', datacontent, '')) as cjtotalt302g,
+       max(decode(type, 'cjtotalt303g', datacontent, '')) as cjtotalt303g,
+       max(decode(type, 'cjtotalt352g', datacontent, '')) as cjtotalt352g,
+       max(decode(type, 'cjtotalt353g', datacontent, '')) as cjtotalt353g,
+       max(decode(type, 'cjtotalt402g', datacontent, '')) as cjtotalt402g,
+       max(decode(type, 'cjtotalt403g', datacontent, '')) as cjtotalt403g,
+       max(decode(type, 'cjtotalt502g', datacontent, '')) as cjtotalt502g,
+       max(decode(type, 'cjtotalt503g', datacontent, '')) as cjtotalt503g,
+       max(decode(type, 'cjtotalmifi', datacontent, '')) as cjtotalmifi,
+       max(decode(type, 'cjtotalchangecard', datacontent, '')) as cjtotalchangecard,
+       max(decode(type, 'cjtotalopenmobile', datacontent, '')) as cjtotalopenmobile,
+       max(decode(type, 'cjtotalservicechange', datacontent, '')) as cjtotalservicechange,
+       max(decode(type, 'cjtotalpkchanlow', datacontent, '')) as cjtotalpkchanlow,
+       max(decode(type, 'cjtotalpkchanhigh', datacontent, '')) as cjtotalpkchanhigh,
+       max(decode(type, 'cjtotalcash', datacontent, '')) as cjtotalcash,
+       max(decode(type, 'cjtotalmoneyamount', datacontent, '')) as cjtotalmoneyamount,
+       max(decode(type, 'cjtotalpkchan', datacontent, '')) as cjtotalpkchan,
+       max(decode(type, 'cjtotalzuservicechange', datacontent, '')) as cjtotalzuservicechange,
+       max(decode(type, 'cjtotalcashamount', datacontent, '')) as cjtotalcashamount,
+       max(decode(type, 'cjtotalfamilybroadband', datacontent, '')) as cjtotalfamilybroadband,
+       max(decode(type, 'cjtotalhlzx51', datacontent, '')) as cjtotalhlzx51,
+       max(decode(type, 'cjtotalhlzx53', datacontent, '')) as cjtotalhlzx53,
+       max(decode(type, 'cjtotalhlzx101', datacontent, '')) as cjtotalhlzx101,
+       max(decode(type, 'cjtotalhlzx103', datacontent, '')) as cjtotalhlzx103,
+       max(decode(type, 'cjtotalinfocomress', datacontent, '')) as cjtotalinfocomress,
+       max(decode(type, 'manageexamine', datacontent, '')) as manageexamine,
+       max(decode(type, 'vetocoefficient', datacontent, '')) as vetocoefficient,
+       max(decode(type, 'ordercoefficient', datacontent, '')) as ordercoefficient,
+       max(decode(type, 'campaigncoefficient', datacontent, '')) as campaigncoefficient,
+       max(decode(type, 'totalreward', datacontent, '')) as totalreward
+  from CH_ZJTY_NOGOTONEDETAIL group by mark
+</sql-query>
+</hibernate-mapping>

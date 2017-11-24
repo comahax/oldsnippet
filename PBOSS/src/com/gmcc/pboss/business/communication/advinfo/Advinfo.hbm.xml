@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.communication.advinfo.AdvinfoVO" table="CH_PW_ADVINFO">
+<id column="ADVINFOID" length="14" name="advinfoid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_ADVINFO_SEQ</param>
+</generator>
+</id>
+<property column="TITLE" length="256" name="title" type="java.lang.String"/>
+<property column="CONTENT" name="content" type="java.lang.String"/>
+<property column="TYPE" length="3" name="type" type="java.lang.Short"/>
+<property column="RELEASETIME" length="7" name="releasetime" type="java.util.Date"/>
+<property column="PLANTIME" length="7" name="plantime" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="DESTTYPE" length="3" name="desttype" type="java.lang.Short"/>
+<property column="SMSNOTIFY" length="2" name="smsnotify" type="java.lang.Short"/>
+<property column="NDAPPROVAL" length="2" name="ndapproval" type="java.lang.Short"/>
+<property column="OPRCODE" length="18" name="oprcode" type="java.lang.String"/>
+<property column="STATE" length="3" name="state" type="java.lang.Short"/>
+<property column="IMGLOGOPATH" length="256" name="imglogopath" type="java.lang.String"/>
+<property column="URL" length="512" name="url" type="java.lang.String"/>
+</class>
+<!-- 查找在线问答信息  -->
+<sql-query name="com.gmcc.pboss.business.communication.advinfo.queryQAOnline">
+	select ai.advinfoid,ai.title,ai.releasetime,ai.state,emp.wayid,way.wayname,ai.oprcode,way.waymagcode,opr.opername
+	from CH_PW_ADVINFO ai inner join CH_PW_EMPLOYEE emp on ai.oprcode = emp.employeeid 
+	inner join CH_PW_WAY way on emp.wayid = way.wayid 
+	left outer join SA_SO_OPERATOR opr on opr.operid = way.waymagcode 
+	where ai.type = 2
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.communication.advinfo.queryPendingTask">
+	Select t2.ADVINFOID,t2.RVCOBJID,TITLE,CONTENT,TYPE,RELEASETIME,PLANTIME,ENDDATE,DESTTYPE,SMSNOTIFY, NDAPPROVAL, URL, OPRCODE, t2.STATE from CH_PW_ADVINFO t1 , CH_PW_RCVOBJ t2 where t1. ADVINFOID = t2. ADVINFOID and t1.type=5 and t1.state = 3 and
+	t2. STATE =1  and t2.objid = :oprcode
+	order by RELEASETIME desc
+</sql-query>
+</hibernate-mapping>

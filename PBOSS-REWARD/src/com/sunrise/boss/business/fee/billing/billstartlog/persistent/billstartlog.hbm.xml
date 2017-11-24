@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.billing.billstartlog.persistent.BillStartLogVO" table="IB_WL_BILLSTARTLOG" >
+        
+        <id name="logid" type="java.lang.Long">
+			<column name="LOGID" precision="14" scale="0" />
+			<generator class="sequence">
+            	<param name="sequence">IB_WL_BILLSTARTLOG_SEQ</param>
+            </generator>
+		</id>
+        <property name="validbillcyc" type="java.lang.Long">
+            <column name="VALIDBILLCYC" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="startstep" type="java.lang.String">
+            <column name="STARTSTEP"  />
+        </property>
+        <property name="starttime" type="java.util.Date">
+            <column name="STARTTIME" length="7" />
+        </property>
+
+        <property name="ruleid" type="java.lang.Long">
+            <column name="RULEID" precision="14" scale="0" not-null="true" />
+        </property>
+
+        <property name="opercode" type="java.lang.String">
+            <column name="OPERCODE" length="16" not-null="true" />
+        </property>
+        <property name="batchnum" type="java.lang.String">
+            <column name="BATCHNUM" length="3" />
+        </property>
+        <property name="region" type="java.lang.String">
+            <column name="REGION" length="14" />
+        </property>
+        <property name="startrsn" type="java.lang.String">
+            <column name="STARTRSN" length="255" />
+        </property>
+    </class>
+</hibernate-mapping>

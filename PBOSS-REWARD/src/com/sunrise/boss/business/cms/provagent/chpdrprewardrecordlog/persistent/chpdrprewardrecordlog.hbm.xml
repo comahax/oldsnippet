@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdrprewardrecordlog.persistent.ChPdRprewardrecordlogVO" table="CH_PD_RPREWARDRECORDLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_PD_RPREWARDRECORDLOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="RPSEQID" length="14" name="rpseqid" not-null="true" type="java.lang.Long"/>
+<property column="PROVAGENTID" length="15" name="provagentid" type="java.lang.String"/>
+<property column="PRODNO" length="18" name="prodno" type="java.lang.String"/>
+<property column="REWARDMONTH" length="8" name="rewardmonth" type="java.lang.String"/>
+<property column="PHASE" length="3" name="phase" type="java.lang.Short"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="RPMONEY" length="15" name="rpmoney" type="java.lang.Double"/>
+<property column="ADCREWARDID" length="14" name="adcrewardid" type="java.lang.Long"/>
+</class>
+</hibernate-mapping>

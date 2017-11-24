@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.promotion.ppzlnrule.PpzlnruleVO" table="CH_CX_PPZLNRULE">
+<composite-id>
+<key-property column="PID" length="6" name="pid" type="java.lang.Long"/>
+<key-property column="RULEID" length="6" name="ruleid" type="java.lang.Long"/>
+</composite-id>
+</class>
+<sql-query name="com.gmcc.pboss.business.promotion.ppzlnrule.queryRulesByPid">
+	select rule.RULEID,pr.PID,rule.PRI from CH_CX_PPZLNRULE pr inner join CH_CX_RULE rule 
+	on pr.RULEID = rule.RULEID where pr.PID = :PID
+</sql-query>
+</hibernate-mapping>

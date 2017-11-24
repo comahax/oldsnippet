@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name="com.sunrise.boss.business.fee.persistent.creditchgreqtt.CreditChgReqTTVO" table="TT_IB_CC_CREDITCHGREQ">
+	<id column="CREDITREQID" name="creditreqid" type="java.lang.Long">
+		<generator class="sequence"> 
+			<param name="sequence">TT_IB_CC_CREDITCHGREQ_SEQ</param> 
+		</generator>
+	</id>
+	<property column="SUBSID" length="14" name="subsid" not-null="true" type="java.lang.Long"/>
+	<property column="EBOXID" length="14" name="eboxid" not-null="true" type="java.lang.Long"/>
+	<property column="REQTYPE" length="3" name="reqtype" not-null="true" type="java.lang.Short"/>
+	<property column="REQSOURCE" length="3" name="reqsource" not-null="true" type="java.lang.Short"/>
+	<property column="REQTIME" length="7" name="reqtime" not-null="true" type="java.util.Date"/>
+	<property column="DEALSTATE" length="3" name="dealstate" not-null="true" type="java.lang.Short"/>
+	<property column="OPERCODE" length="16" name="opercode" type="java.lang.String"/>
+</class>
+
+</hibernate-mapping>

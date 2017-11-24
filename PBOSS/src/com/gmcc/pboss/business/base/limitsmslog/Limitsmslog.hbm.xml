@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.limitsmslog.LimitsmslogVO" table="CH_CTI_LIMITSMSLOG">
+<id column="LOGIN" length="14" name="login" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_CTI_LIMITSMSLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="SEQ" length="14" name="seq" not-null="true" type="java.lang.Long"/>
+<property column="SMS" length="250" name="sms" not-null="true" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

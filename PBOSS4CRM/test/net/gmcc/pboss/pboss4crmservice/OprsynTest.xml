@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation_request>
+	<MsgReqHeader>
+		<menuid>menuid_opr</menuid><!--菜单ID-->
+		<process_code>process_code_opr</process_code>
+		<!--
+			业务编码
+		-->
+		<verify_code>verify_code_opr</verify_code><!--验证码-->
+		<req_time>20120207095945</req_time>	<!--请求时间-->
+		<req_seq>req_seq_opr</req_seq>	<!--请求流水-->
+		<unicontact>unicontact_opr</unicontact><!--统一接触流水号-->
+		<testflag>1</testflag><!-- 1标示测试，0或者不传表示生产 -->
+		<route><!--路由标识-->
+			<route_type>0</route_type><!--路由类型 0:region 1:号码信息-->
+			<route_value>760</route_value><!--路由值-->
+		</route>
+		<channelinfo>
+			<operatorid>operatorid_opr</operatorid><!--操作员-->
+			<channelid>channelid_opr</channelid><!--渠道-->
+			<unitid>unitid_opr</unitid><!--渠道下单位-->
+		</channelinfo>
+	</MsgReqHeader>
+	<MsgBody>
+		<oprinfo>
+			<optime>20120207120653</optime>
+			<oprcode>crm_oprcode</oprcode>
+			<oprtype>update</oprtype>
+			<operid>Lily---</operid>
+			<region>760</region>
+			<opername>pboss测试工号</opername>
+			<password>lily</password>
+			<passchgdate>20091008085956</passchgdate>
+			<opergroup>1</opergroup>
+			<opertype>OPRT32</opertype>
+			<operlevel>1</operlevel>
+			<ismanager></ismanager>
+			<contactphone>88888888</contactphone>
+			<orgid>TDZS-----</orgid>
+			<isrestrict>1</isrestrict>
+			<starttime>1</starttime>
+			<endtime>1</endtime>
+			<enablegprs>1</enablegprs>
+			<gprsstarttime>1</gprsstarttime>
+			<gprsendtime>1</gprsendtime>
+			<ischkmac>1</ischkmac>
+			<mac>1</mac>
+			<notes>1</notes>
+			<createdate>20101001212112</createdate>
+			<status>1</status>
+			<statusdate>20101111155306</statusdate>
+			<rele_staff_id></rele_staff_id>
+			<start_using_time>20101008121212</start_using_time>
+			<end_using_time>20111008111111</end_using_time>
+			<logintype></logintype>
+			<smnotityflag>1</smnotityflag>
+		</oprinfo>
+	</MsgBody>
+</operation_request>

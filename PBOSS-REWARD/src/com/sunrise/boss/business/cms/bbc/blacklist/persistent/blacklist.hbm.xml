@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.blacklist.persistent.BlacklistVO" table="CH_BBC_BLACKLIST">
+<id column="MOBILE" name="mobile" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="NAME" length="20" name="name" type="java.lang.String"/>
+<property column="FILTERTYPE" length="20" name="filtertype" type="java.lang.String"/>
+<property column="STARTTIME" length="7" name="starttime" type="java.util.Date"/>
+<property column="ENDTIME" length="7" name="endtime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  -->
+<interface-config>
+	<param-beans>
+		<!--资源管理(发放、回收)参数：起始资源编号|终止资源编号|源渠道标识|目标渠道标识|商品类型|商品标识|配送单号|-->
+		<param-bean name="manageres"
+			style="begno|endno|outwayid|inwayid|comtype|comid|sendno|"
+			type="com.sunrise.boss.business.resmanage.interf.param.ManageResParam" />
+		<!--SIM卡入库：ICCID号|PUK码|容量|短信息容量|电话本容量|卡商| SIM类型|主IMSI码|-->
+		<param-bean name="btsim"
+			style="iccid|pukno|capacity|smscapacity|telcapacity|cardmill|simtype|hostimsi|"
+			type="com.sunrise.boss.business.resmanage.interf.param.SimParam" />
+		<!-- 充值卡入库：商品资源编号 |批次 |商品类型|商品标识|商品价格|商品状态|渠道标识|商品供货商|商品折扣|进货价格|最后激活期|关键信息| -->
+		<param-bean name="btcomrescard"
+			style="comresid|batchno|comtype|comid|dprice|comstate|wayid|comsource|comdisc|dstockprice|comactive|info|"
+			type="com.sunrise.boss.business.resmanage.interf.param.ComResCardParam" />
+		<!-- 套卡入库：号码|主SIM卡|IMSI|PUK|商品标识|产品|商品单价|商品折扣|SIM卡价格|套卡批次|渠道标识|Sim卡类型|最后激活期|特号转存模板|Sim卡是否已入库|是否具有虚拟充值卡|用机类型|号码特定种类| -->
+		<param-bean name="btcomressmp"
+			style="mobileno|simno|imsino|pukno|comid|prodid|dprice|dcomdisc|dsimprice|batchno|wayid|simtype|s_comactive|especnoupd|simyno|dummycz|mobiletype|noprompt|"
+			type="com.sunrise.boss.business.resmanage.interf.param.ComResSmpParam" />
+		<!-- 手机入库：商品资源编号|批次|商品类型|商品标识|商品单价|商品状态|渠道标识|商品折扣|手机供应商|最后激活期| -->
+		<param-bean name="btcomresphone"
+			style="comresid|batchno|restype|comid|dprice|comstate|wayid|dcomdisc|comsource|comactive|"
+			type="com.sunrise.boss.business.resmanage.interf.param.ComresPhoneParam" />
+		<!-- 积分卡入库:积分卡标识|起始时间|终止时间|渠道| -->
+		<param-bean name="btvipcard"
+			style="vipcardno|begintime|endtime|wayid|"
+			type="com.sunrise.boss.business.resmanage.interf.param.VipCardParam">
+		</param-bean>
+	</param-beans>
+	<interface-mappings>
+		<!-- SIM卡资源管理接口 -->
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageSim"
+			path="/resmanage/sim/distribute" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageSim"
+			path="/resmanage/sim/recycle" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageSim"
+			path="/resmanage/sim/update" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageSim"
+			path="/resmanage/sim/batchin" name="btsim">
+		</interface>  
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageSim"
+			path="/resmanage/sim/send" name="manageres">
+		</interface>
+		<!-- 充值卡资源管理接口 -->
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresCard"
+			path="/resmanage/comrescard/batchin" name="btcomrescard">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresCard"
+			path="/resmanage/comrescard/distribute" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresCard"
+			path="/resmanage/comrescard/recycle" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresCard"
+			path="/resmanage/comrescard/update" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresCard"
+			path="/resmanage/comrescard/send" name="manageres">
+		</interface>
+		<!-- 手机资源管理接口 -->
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresPhone"
+			path="/resmanage/comresphone/batchin" name="btcomresphone">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresPhone"
+			path="/resmanage/comresphone/distribute" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresPhone"
+			path="/resmanage/comresphone/recycle" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresPhone"
+			path="/resmanage/comresphone/update" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresPhone"
+			path="/resmanage/comresphone/send" name="manageres">
+		</interface>
+		<!-- 套卡资源管理接口 -->
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresSmp"
+			path="/resmanage/comressmp/batchin" name="btcomressmp">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresSmp"
+			path="/resmanage/comressmp/distribute" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresSmp"
+			path="/resmanage/comressmp/recycle" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresSmp"
+			path="/resmanage/comressmp/update" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageComresSmp"
+			path="/resmanage/comressmp/send" name="manageres">
+		</interface>
+		<!-- 积分卡资源管理接口 -->
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageVipCard"
+			path="/resmanage/vipcard/batchin" name="btvipcard">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageVipCard"
+			path="/resmanage/vipcard/distribute" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageVipCard"
+			path="/resmanage/vipcard/recycle" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageVipCard"
+			path="/resmanage/vipcard/update" name="manageres">
+		</interface>
+		<interface
+			type="com.sunrise.boss.business.resmanage.interf.busirules.ManageVipCard"
+			path="/resmanage/vipcard/send" name="manageres">
+		</interface>
+	</interface-mappings>
+</interface-config>

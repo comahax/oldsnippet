@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.batchlog.BatchlogVO" table="CH_PW_BATCHLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_BATCHLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRTYPE" length="30" name="oprtype" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OPRWAYID" length="18" name="oprwayid" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="BATCHNAME" length="50" name="batchname" type="java.lang.String"/>
+<property column="UPLOADPATH" length="255" name="uploadpath" type="java.lang.String"/>
+<property column="RESULTPATH" length="255" name="resultpath" type="java.lang.String"/>
+</class>
+<sql-query name="system.batchlogLimitedQuery">
+select *
+  from CH_PW_BATCHLOG
+  	where oprcode in (select operid from sa_so_operator where region = :region)
+</sql-query>
+</hibernate-mapping>

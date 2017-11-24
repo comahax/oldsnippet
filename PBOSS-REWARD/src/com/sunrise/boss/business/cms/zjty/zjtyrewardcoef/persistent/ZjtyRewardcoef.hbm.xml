@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtyrewardcoef.persistent.ZjtyRewardcoefVO" table="CH_ZJTY_REWARDCOEF">
+<composite-id>
+<key-property column="COEFID" length="3" name="coefid" type="java.lang.Short"/>
+<key-property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<key-property column="EFFECTIBLEMONTH" length="6" name="effectiblemonth" type="java.lang.String"/>
+</composite-id>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="PROVIDECOEF" length="10" name="providecoef" type="java.lang.Double"/>
+<property column="RESULT" length="255" name="result" type="java.lang.String"/>
+<property column="ISPASS" length="3" name="ispass" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

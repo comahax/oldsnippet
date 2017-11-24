@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.mmopnlog.persistent.MmopnlogVO" table="CH_BBC_MMOPNLOG">
+<id column="LOGID" name="logid" type="java.lang.String">
+<generator class="sequence">
+	<param name="sequence">CH_BBC_MMOPNLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="ENTID" length="12" name="entid" type="java.lang.String"/>
+<property column="BUSIID" length="12" name="busiid" type="java.lang.String"/>
+<property column="ACCTYPE" length="3" name="acctype" type="java.lang.Short"/>
+<property column="REWARDSTD" length="14" name="rewardstd" type="java.lang.Double"/>
+<property column="STATE" length="1" name="state" type="java.lang.Byte"/>
+<property column="OSSRC" length="2" name="ossrc" type="java.lang.Short"/>
+<property column="SHORTOPN" length="12" name="shortopn" type="java.lang.String"/>
+<property column="WAPURL" length="128" name="wapurl" type="java.lang.String"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+<property column="OPNMON" length="256" name="opnmon" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

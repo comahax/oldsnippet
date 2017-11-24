@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+  <tlib-version>2.2.3</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>p</short-name>
+  <uri>/pboss-tags</uri>
+  <display-name>"PBOSS Tags"</display-name>
+  <description><![CDATA["To make it easier to access dynamic data;
+                    the Apache Struts framework includes a library of custom tags.
+                    The tags interact with the framework's validation and internationalization features;
+                    to ensure that input is correct and output is localized.
+                    The Struts Tags can be used with JSP FreeMarker or Velocity.."]]></description>
+
+  <tag>
+    <name>smpBrand</name>
+    <tag-class>com.gmcc.pboss.common.ui.PbossSmpSelectorTag</tag-class>
+    <body-content>empty</body-content>
+    <description><![CDATA[套卡品牌标签，根据是否区分品牌显示不同的下拉列表内容 ]]></description>
+    <attribute>
+      <name>mode</name>
+      <required>true</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description><![CDATA[显示模式,根据具体业务控制下拉列表内容,必需 。
+      				  "def"表示区分品牌，"all"表示不区分品牌，
+      				  "of"表示系统开关]]></description>
+    </attribute>
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description><![CDATA[id for referencing element. For UI and form tags it will be used as HTML id attribute]]></description>
+    </attribute>
+    <attribute>
+      <name>dbFlag</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description><![CDATA[ 数据库标识，非必须]]></description>
+    </attribute>
+    <attribute>
+		<name>disabled</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>		
+	<attribute>
+		<name>cssStyle</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>cssClass</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description><![CDATA[The name to set for element]]></description>
+    </attribute>
+    <attribute>
+		<name>onchange</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+  </tag>
+  
+</taglib>

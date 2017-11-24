@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="GBK"?>
+<project name="auto_package" basedir="." default="moveWar">
+	<property file="E:\PBOSS\autobuild.properties" />
+	<!--检查代码列表-->
+	<target name="checkCodeList">
+		<echo message="===================================================================" />
+		<echo message="检查代码列表 ..." />
+		<echo message="===================================================================" />
+		<exec dir="${checkCodeList.dir}" executable="${jdk.dir}">
+			<arg line="checkCodeList" />
+		</exec>
+	</target>
+
+	<target name="getCode" depends="checkCodeList">
+		<echo message="获取当前日期 ..." />
+		<tstamp>
+			<format property="TODAY_UK" pattern="MMddHH" />
+		</tstamp>
+		<echo message="===================================================================" />
+		<echo message="运行RunGetCode.bat命令 ..." />
+		<echo message="===================================================================" />
+		<echo message="" />
+		<exec dir="${getcode.dir}" executable="${getcode.dir}/RunGetCode.bat">
+			<arg line="${TODAY_UK}" />
+		</exec>
+
+		<echo message="" />
+		<echo message="===================================================================" />
+		<echo message="拷贝${getcode.src.dir}文件到 ${code.src.dir}下的文件夹 ..." />
+		<echo message="===================================================================" />
+		<copy todir="${code.src.dir}" overwrite="true">
+			<fileset dir="${getcode.src.dir}">
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="modifyHibernateFile" depends="getCode">
+		<echo message="===================================================================" />
+		<echo message="修改hibernate_bosscomm.cfg.xml配置文件" />
+		<echo message="===================================================================" />
+		<echo message="" />
+		<echo message="拷贝文件${hibernate.dir}/hibernate_bosscomm.cfg.xml到 ${hibernate_bosscomm.dir}..." />
+		<copy todir="${hibernate_bosscomm.dir}" overwrite="true">
+			<fileset file="${hibernate.dir}/hibernate_bosscomm.cfg.xml">
+			</fileset>
+		</copy>
+		<echo message="" />
+		<echo message="运行CommonHibernateVaildate类 ..." />
+		<echo message="" />
+		<exec dir="${checkhibernatexml.dir}" executable="${jdk.dir}">
+			<arg line="com.boss15.BossCommonHibernateVaildate" />
+		</exec>
+		<echo message="" />
+		<echo message="拷贝${hibernate_bosscomm.dir}目录生成的hibernate_bosscomm.cfg.xml文件到${hibernate.dist.dir}  ..." />
+		<copy todir="${hibernate.dist.dir}" overwrite="true">
+			<fileset file="${hibernate_bosscomm.dir}/hibernate_bosscomm.cfg.xml">
+			</fileset>
+		</copy>
+
+		<echo message="===================================================================" />
+		<echo message="修改hibernate_comm.cfg.xml配置文件" />
+		<echo message="===================================================================" />
+		<echo message="" />
+		<echo message="拷贝文件${hibernate.dir}/hibernate_comm.cfg.xml到 ${hibernate_comm.dir}..." />
+		<copy todir="${hibernate_comm.dir}" overwrite="true">
+			<fileset file="${hibernate.dir}/hibernate_comm.cfg.xml">
+			</fileset>
+		</copy>
+		<echo message="" />
+		<echo message="运行CommonHibernateVaildate类 ..." />
+		<echo message="" />
+		<exec dir="${checkhibernatexml.dir}" executable="${jdk.dir}">
+			<arg line="com.boss15.CommonHibernateVaildate" />
+		</exec>
+		<echo message="" />
+		<echo message="拷贝${hibernate_comm.dir}目录生成的hibernate_comm.cfg.xml文件到${hibernate.dist.dir}  ..." />
+		<copy todir="${hibernate.dist.dir}" overwrite="true">
+			<fileset file="${hibernate_comm.dir}/hibernate_comm.cfg.xml">
+			</fileset>
+		</copy>
+
+		<echo message="===================================================================" />
+		<echo message="修改hibernate.cfg.xml配置文件" />
+		<echo message="===================================================================" />
+		<echo message="" />
+
+		<echo message="拷贝${hibernate.dir}/hibernate.cfg.xml文件到 ${hibernate_city.dir} ..." />
+		<copy todir="${hibernate_city.dir}" overwrite="true">
+			<fileset file="${hibernate.dir}/hibernate.cfg.xml">
+			</fileset>
+		</copy>
+		<echo message="" />
+		<echo message="运行HibernateVaildate类 ..." />
+		<echo message="" />
+		<exec dir="${checkhibernatexml.dir}" executable="${jdk.dir}">
+			<arg line="com.boss15.HibernateVaildate" />
+		</exec>
+		<echo message="" />
+		<echo message="拷贝E:\PBOSS\war目录生成的hibernate地市文件到E:\PBOSS\code\PBOSS\src  ..." />
+		<copy todir="${hibernate.dist.dir}" overwrite="true">
+			<fileset file="${hibernate_city.dir}/hibernate*.xml">
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="package" depends="modifyHibernateFile">
+		<echo message="===================================================================" />
+		<echo message="开始编译，打包 ..." />
+		<echo message="===================================================================" />
+
+		<ant antfile="${code.src.dir}/build.xml" inheritAll="false" />
+		<echo message="编译，打包成功 ..." />
+	</target>
+
+	<target name="moveWar" depends="package">
+		<echo message="" />
+		<echo message="===================================================================" />
+		<echo message="建立目录 ${TODAY_UK}，拷贝打好的包到${war.dir}/${TODAY_UK}" />
+		<echo message="===================================================================" />
+
+		<mkdir dir="${war.dir}/${TODAY_UK}" />
+
+		<echo message="" />
+		<echo message="拷贝文件到${war.dir}/${TODAY_UK}..." />
+		<copy file="${code.src.dir}/pboss.war" todir="${war.dir}/${TODAY_UK}" overwrite="true">
+		</copy>
+		<copy file="${code.src.dir}/pboss.war" todir="${war.latest.dir}" overwrite="true" />
+
+		<echo message="===================================================================" />
+		<echo message="生成日志目录 ${TODAY_UK}" />
+		<echo message="===================================================================" />
+
+		<mkdir dir="${log.dir}/${TODAY_UK}" />
+		<copy file="${getcode.dir}/logs/log${TODAY_UK}.txt" todir="${log.dir}/${TODAY_UK}" overwrite="true">
+		</copy>
+
+
+
+		<echo message="===================================================================" />
+		<echo message="删除${hibernate.dist.dir}目录下面各个地市配置文件hibernate_*zw.cfg.xml" />
+		<echo message="===================================================================" />
+		<echo message="" />
+
+		<delete>
+			<fileset file="${hibernate.dist.dir}/hibernate_*zw.cfg.xml" />
+		</delete>
+
+
+		<echo message="===================================================================" />
+		<echo message="运行结束，请核查日志目录${log.dir}/${TODAY_UK}中的日志。" />
+		<echo message="===================================================================" />
+
+
+
+	</target>
+</project>

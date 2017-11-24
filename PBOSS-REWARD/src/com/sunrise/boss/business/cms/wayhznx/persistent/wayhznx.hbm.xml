@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.wayhznx.persistent.WayhznxVO" table="CH_PW_WAYHZNX">
+<id column="WAYID" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="YEARS" length="4" name="years" type="java.lang.Short"/>
+<property column="YEARSTIME" length="7" name="yearstime" type="java.util.Date"/>
+<property column="CALCMONTH" length="6" name="calcmonth" type="java.lang.String"/>
+<property column="CLEARTIME" length="7" name="cleartime" type="java.util.Date"/>
+<property column="LASTSTARTTIME" length="7" name="laststarttime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.bcss.syncdata.wydata.persistent.WydataVO"
+		table="DC_MM_WYDATA">
+		<composite-id>
+			<key-property column="FILECODE" length="40" name="filecode"
+				type="java.lang.String" />
+			<key-property column="FIELD1" length="255" name="field1"
+				type="java.lang.String" />
+		</composite-id>
+		<property column="SERIALNO" length="14" name="serialno"
+			type="java.lang.Long" />
+		<property column="DATAID" length="14" name="dataid"
+			type="java.lang.Long" />
+		<property name="indate" type="java.util.Date">
+			<column name="INDATE" />
+		</property>
+		<property column="FIELD2" length="255" name="field2"
+			type="java.lang.String" />
+		<property column="FIELD3" length="255" name="field3"
+			type="java.lang.String" />
+		<property column="FIELD4" length="255" name="field4"
+			type="java.lang.String" />
+		<property column="FIELD5" length="255" name="field5"
+			type="java.lang.String" />
+		<property column="FIELD6" length="255" name="field6"
+			type="java.lang.String" />
+		<property column="FIELD7" length="255" name="field7"
+			type="java.lang.String" />
+		<property column="FIELD8" length="255" name="field8"
+			type="java.lang.String" />
+		<property column="FIELD9" length="255" name="field9"
+			type="java.lang.String" />
+		<property column="FIELD10" length="255" name="field10"
+			type="java.lang.String" />
+		<property column="FIELD11" length="255" name="field11"
+			type="java.lang.String" />
+		<property column="FIELD12" length="255" name="field12"
+			type="java.lang.String" />
+		<property column="FIELD13" length="255" name="field13"
+			type="java.lang.String" />
+		<property column="FIELD14" length="255" name="field14"
+			type="java.lang.String" />
+		<property column="FIELD15" length="255" name="field15"
+			type="java.lang.String" />
+		<property column="FIELD16" length="255" name="field16"
+			type="java.lang.String" />
+		<property column="FIELD17" length="255" name="field17"
+			type="java.lang.String" />
+		<property column="FIELD18" length="255" name="field18"
+			type="java.lang.String" />
+		<property column="FIELD19" length="255" name="field19"
+			type="java.lang.String" />
+		<property column="FIELD20" length="255" name="field20"
+			type="java.lang.String" />
+		<property column="FIELD21" length="255" name="field21"
+			type="java.lang.String" />
+		<property column="FIELD22" length="255" name="field22"
+			type="java.lang.String" />
+		<property column="FIELD23" length="255" name="field23"
+			type="java.lang.String" />
+		<property column="FIELD24" length="255" name="field24"
+			type="java.lang.String" />
+		<property column="FIELD25" length="255" name="field25"
+			type="java.lang.String" />
+		<property column="FIELD26" length="255" name="field26"
+			type="java.lang.String" />
+		<property column="FIELD27" length="255" name="field27"
+			type="java.lang.String" />
+		<property column="FIELD28" length="255" name="field28"
+			type="java.lang.String" />
+		<property column="FIELD29" length="255" name="field29"
+			type="java.lang.String" />
+		<property column="FIELD30" length="255" name="field30"
+			type="java.lang.String" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	default-autowire="byName" default-lazy-init="true">
+	<!-- 门户首页 -->
+	<bean id="indexAction" class="com.gmcc.pboss.biz.index.action.IndexAction" scope="prototype">
+		<!-- 
+		<property name="service" ref="communicatePlateauService"/>
+		<property name="cpService" ref="communicateInterlocutionService"/>
+		 -->
+		 <property name="delayLoadService" ref="delayLoadService" />
+	</bean>
+	<!-- 短信 -->
+	<bean id="smsAction" class="com.gmcc.pboss.common.sms.action.SMSAction" scope="prototype">
+		<property name="service" ref="smsService"/>
+	</bean>
+	<!-- 雇员 -->
+	<bean id="memberAction" class="com.gmcc.pboss.member.action.MemberAction" scope="prototype">
+		<property name="service" ref="memberService"/>
+	</bean>
+	<!-- 登录 -->
+	<bean id="loginAction" class="com.gmcc.pboss.member.action.LoginAction" scope="prototype">
+		<property name="service" ref="memberService"/>
+		<property name="cpService" ref="communicatePlateauService"/>
+		<!-- 查询固定参数——获取登录方式参数  -->
+		<property name="constantService" ref="constantService"></property>
+	</bean>
+	<!-- 公共文件ACTION -->
+	<bean id="jqAcAtion" class="com.gmcc.pboss.common.action.JQAcAction" scope="prototype">
+		<property name="operation" ref="operationService"/>
+	</bean>
+	
+	<bean id="operationAction" class="com.gmcc.pboss.biz.info.reward.action.OperationAction" scope="prototype">
+		<property name="service" ref="operationService" />
+	</bean>
+
+	<!-- 套卡激活情况查询 -->
+	<bean id="regactInfoAction" class="com.gmcc.pboss.biz.info.regactInfo.action.RegactInfoAction" scope="prototype">
+		<property name="service" ref="regactInfoService" />
+		<property name="stService" ref="regactStatisticsService" />
+	</bean>
+
+	<!-- 销售报表 - 商品订购历史查询 -->
+	<bean id="salesHistoryAction" class="com.gmcc.pboss.biz.info.salesRpt.action.SalesHistoryAction" scope="prototype">
+		<property name="service" ref="salesHistoryService" />
+	</bean>
+
+	<!-- 销售报表 - 订单信息查询 -->
+	<bean id="salesOrderAction" class="com.gmcc.pboss.biz.info.salesRpt.action.SalesOrderAction" scope="prototype">
+		<property name="service" ref="salesOrderService" />
+		<!-- 查询系统参数表，确定是否显示订单状态列表的所有选项 -->
+		<property name="ibGlSysparamService" ref="ibGlSysparamService"/>
+	</bean>
+	
+	<!-- 配送商管理 -->
+	<bean id="deliveryAction" class="com.gmcc.pboss.biz.info.delivery.action.DeliveryAction" scope="prototype">
+		<property name="service" ref="deliveryService" />
+		<property name="delayLoadService" ref="delayLoadService" />
+	</bean>
+	<bean id="batchDeliveryAction" class="com.gmcc.pboss.biz.info.delivery.action.BatchDeliveryAction" scope="prototype">
+		<property name="service" ref="batchDeliveryService" />
+	</bean>
+	
+	<!-- 垫资单 -->
+	<bean id="adpaysumAction" class="com.gmcc.pboss.biz.info.adpay.action.AdpaysumAction" scope="prototype">
+		<property name="service" ref="adpaysumService" />
+		<property name="adpaydtlService" ref="adpaydtlService"/>
+	</bean>
+
+	
+	<!-- 酬金明细-》酬金明细查询      社会渠道 -->
+	<bean id="rewardRecordAction" class="com.gmcc.pboss.biz.info.reward.action.RewardRecordAction" scope="prototype">
+		<property name="service" ref="rewardRecordService" />
+	</bean>
+	<!-- 酬金明细-》酬金校验失败信息查询      社会渠道 -->
+	<bean id="rewardVerifiedAction" class="com.gmcc.pboss.biz.info.reward.action.RewardVerifiedAction" scope="prototype">
+		<property name="service" ref="failService" />
+	</bean>
+	
+	<!-- 酬金明细-》酬金明细查询      B2M网站 --> 
+	<bean id="bbcRewardRecordAction" class="com.gmcc.pboss.biz.info.reward.action.BbcRewardRecordAction" scope="prototype">
+		<property name="service" ref="bbcRewardRecordService" />
+	</bean>
+	<!-- 酬金明细-》酬金校验失败信息查询      B2M网站 -->
+	<bean id="bbcRewardVerifiedAction" class="com.gmcc.pboss.biz.info.reward.action.BbcRewardVerifiedAction" scope="prototype">
+		<property name="service" ref="bbcFailService" />
+	</bean>
+	
+	<!-- 酬金报表 -->
+	<bean id="rewardTotalAction" class="com.gmcc.pboss.biz.info.reward.action.RewardTotalAction" scope="prototype">
+		<!-- 月应发酬金报表-社会渠道 -->
+		<property name="service" ref="rewardGenService" />
+		<!-- 月应发酬金报表-网站渠道 -->
+		<!--property name="bbcRewardTotalService" ref="bbcRewardTotalService" /-->
+		<property name="bbcRewardGenService" ref="bbcRewardGenService" />
+		<!-- 月实际支付酬金报表-社会渠道 -->
+		<property name="rewardTotalService" ref="rewardTotalService" />
+		<!-- 月实际支付酬金报表-网站渠道 -->
+		<property name="bbcRewardTotalService" ref="bbcRewardTotalService" />
+		<!--  -->
+		<property name="rewardBalanceService" ref="rewardBalanceService" />
+	</bean>
+	
+	<!-- 网站渠道B2M网站酬金总额查询 -->
+	<bean id="bbcRewardTotalAction" class="com.gmcc.pboss.biz.info.reward.action.BbcRewardTotalAction" scope="prototype">
+		<property name="service" ref="bbcRewardTotalService" />
+	</bean>
+	
+	
+	<!-- 考核查询 -->
+	<bean id="chPwExmnRsltAction" class="com.gmcc.pboss.biz.info.examine.action.ChPwExmnRsltAction" scope="prototype">
+		<property name="service" ref="chPwExmnRsltService" />
+	</bean>
+	
+	<!-- 网点资料 -->
+	<bean id="nodeAction" class="com.gmcc.pboss.biz.info.node.action.NodeAction" scope="prototype">
+		<property name="service" ref="nodeInfoService" />
+	</bean>
+	
+	<!-- 商品订购 -->
+	<bean id="goodsReserveAction" class="com.gmcc.pboss.biz.basic.goods.action.GoodsReserveAction" scope="prototype">
+		<property name="service" ref="goodsRemote" />
+		<!-- 查询系统参数，确认是否显示激活率信息 -->
+		<property name="ibGlSysparamService" ref="ibGlSysparamService"/>
+	</bean>
+	
+	<bean id="wayApplyAction" class="com.gmcc.pboss.biz.basic.node.action.WayApplyAction" scope="prototype">
+		<property name="service" ref="wayApplyService" />
+	</bean>
+	
+	<!-- 
+	<bean id="menuCookieAction" class="com.gmcc.pboss.common.cookie.action.MenuCookieAction" scope="prototype">
+	</bean>
+	 -->
+	 
+	<!-- 沟通平台 -->
+	<bean id="communicatePlateauAction" class="com.gmcc.pboss.biz.communi.action.CommunicatePlateauAction" scope="prototype">
+		<property name="service" ref="communicatePlateauService" />
+		<property name="cpService" ref="communicateInterlocutionService"/>
+	</bean>
+	<bean id="communicateReplyAction" class="com.gmcc.pboss.biz.communi.action.CommunicateReplyAction" scope="prototype">
+		<property name="service" ref="communicateReplyService"/>
+	</bean>
+	
+	<!-- 菜单栏 
+	<bean id="menuLaodAction" class="com.gmcc.pboss.menu.action.MenuLoadAction" scope="prototype">
+		<property name="saDbWebfunctionitemService" ref="saDbWebfunctionitemService"/>
+	</bean>
+	-->
+	<!-- 订购次数信息查询 -->
+	<bean id="orderTimesAction" class="com.gmcc.pboss.biz.info.salesRpt.action.OrderTimesAction" scope="prototype">
+		<property name="orderTimesService" ref="orderTimesService"/>
+	</bean>
+	<!-- 经理人员界面：店员信息查询  -->
+	<bean id="managerMemberAction" class="com.gmcc.pboss.manager.action.ManagerMemberAction" scope="prototype">
+		<property name="service" ref="managerMemberService"/>
+	</bean>
+	<!-- 经理人员界面：网点信息查询 -->
+	<bean id="managerNodeAction" class="com.gmcc.pboss.manager.action.ManagerNodeAction" scope="prototype">
+		<property name="service" ref="managerNodeService"></property>
+		<property name="delayLoadService" ref="delayLoadService" />
+	</bean>
+	<!-- 经理人员界面：特定网点店员信息展示 -->
+	<bean id="nodeMemberAction" class="com.gmcc.pboss.manager.action.NodeMemberAction" scope="prototype">
+		<property name="nodeMemberService" ref="nodeMemberService"></property>
+	</bean>
+	<!-- 网点查询 -->
+	<bean id="wayAction" class="com.gmcc.pboss.biz.info.way.action.WayAction" scope="prototype">
+		<property name="service" ref="wayService" />
+	</bean>
+	<!-- 新业务销售汇总查询 -->
+	<bean id="registernewcntAction" class="com.gmcc.pboss.biz.info.registernewcnt.action.RegisternewcntAction" scope="prototype">
+		<property name="service" ref="registernewcntService" />
+		<property name="registernewServie" ref="registernewcntdServie" />
+	</bean>
+	<bean id="registernewmagcntAction" class="com.gmcc.pboss.biz.info.registernewmagcnt.action.RegisternewmagcntAction" scope="prototype">
+		<property name="service" ref="registernewmagcntService" />
+		<property name="registernewServie" ref="registernewmagcntdServie" />
+	</bean>
+	<!-- 销售汇总查询 -->
+	<bean id="salescntAction" class="com.gmcc.pboss.biz.info.salescnt.action.SalescntAction" scope="prototype">
+		<property name="service" ref="salescntService" />
+		<property name="stService" ref="memService" />
+	</bean>
+	<!-- 销售服务中心查询 -->
+	<bean id="servcentAction" class="com.gmcc.pboss.biz.info.servcent.action.ServcentAction" scope="prototype">
+		<property name="service" ref="servcentService" />
+	</bean>
+	<!-- 新业务销售明细查询-店员店主-CH_PW_REGISTERNEW -->
+	<bean id="registernewAction" class="com.gmcc.pboss.biz.info.salesDetail.action.RegisternewAction" scope="prototype">
+		<property name="registernewService" ref="registernewService"/>
+		<!-- 提取业务编码和名称 -->
+		<property name="operationsmsService" ref="operationsmsService"></property>
+	</bean>
+	<!-- 新业务销售明细查询-经理人员-CH_PW_REGISTERNEW -->
+	<bean id="magRegisternewAction" class="com.gmcc.pboss.biz.info.salesDetail.action.MagRegisternewAction" scope="prototype">
+		<property name="magRegisternewService" ref="magRegisternewService"/>
+		<property name="constantService" ref="constantService"/>
+	</bean>
+	<!-- 套卡销售明细-店员店主 -->
+	<bean id="registersimAction" class="com.gmcc.pboss.biz.info.salesDetail.action.RegistersimAction" scope="prototype">
+		<property name="registersimService" ref="registersimService"></property>
+	</bean>
+	<!-- 套卡销售明细-经理人员-->
+	<bean id="magRegistersimAction" class="com.gmcc.pboss.biz.info.salesDetail.action.MagRegistersimAction" scope="prototype">
+		<property name="magRegistersimService" ref="magRegistersimService"></property>
+		<property name="constantService" ref="constantService"/>
+	</bean>
+	<!-- 操作业务编码CH_PW_OPERATIONSMS -->
+	<bean id="operationsmsAction" class="com.gmcc.pboss.biz.info.salesDetail.action.OperationsmsAction" scope="prototype">
+		<property name="operationsmsService" ref="operationsmsService"></property>
+	</bean>
+	<!-- 人员信息CH_PW_EMPLOYEE -->
+	<bean id="employeeAction" class="com.gmcc.pboss.biz.info.salesDetail.action.EmployeeAction" scope="prototype">
+		<property name="employeeService" ref="employeeService"/>
+	</bean>
+	<!-- 套卡销售汇总(经理) -->
+	<bean id="salesCardsTotalAction" class="com.gmcc.pboss.biz.info.salesCardsTotal.action.SalesCardsTotalAction" scope="prototype">
+		<property name="service" ref="cardsTotalService"></property>
+		<property name="detailservice" ref="totalmagRegistersimService"></property>
+	</bean>
+	<!-- 套卡销售汇总(店主/店员) -->
+	<bean id="lowsalesCardsTotalAction" class="com.gmcc.pboss.biz.info.lowsalesCardsTotal.action.SalesCardsTotalAction" scope="prototype">
+		<property name="service" ref="lowcardsTotalService"></property>
+		<property name="detailservice" ref="lowRegistersimService"></property>
+	</bean>
+	<!-- 客户质量发展奖励酬金 明细 -->
+	<bean id="cardrewdetAction" class="com.gmcc.pboss.biz.info.rewardcard.action.CardrewdetAction" scope="prototype">
+		<property name="cardrewdetService" ref="cardrewdetService"/>
+	</bean>
+	<!-- 客户质量发展奖励酬金 汇总 -->
+	<bean id="cardrewdetStatAction" class="com.gmcc.pboss.biz.info.rewardcard.action.CardrewdetStatAction" scope="prototype">
+		<property name="cardrewdetService" ref="cardrewdetService"/>
+	</bean>
+	<!-- 酬金汇总结果 -->
+	<bean id="cityrecordAction" class="com.gmcc.pboss.biz.info.reward.cityrecord.action.CityrecordAction" scope="prototype">
+		<property name="cityrecordService" ref="cityrecordService" />
+	</bean>
+	<!-- 税后酬金查询 -->
+	<bean id="adjustmentAction" class="com.gmcc.pboss.biz.info.reward.adjustment.action.AdjustmentAction" scope="prototype">
+		<property name="adjustmentService" ref="adjustmentService" />
+	</bean>
+	
+	<!-- 推广专员  创新联盟数据业务推荐成功明细查询-->
+	<bean id="recommendSuccessAction" class="com.gmcc.pboss.biz.info.missioner.recommend.success.action.RecommendSuccessAction" scope="prototype">
+		<property name="rsMissionerService" ref="rsMissionerService"/>
+		<property name="rsAgencyService" ref="rsAgencyService"/>
+		<property name="delayLoadService" ref="delayLoadService" />
+	</bean>
+	<!-- 推广专员  创新联盟数据业务推荐失败明细查询-->
+	<bean id="unvrcfaildayAction" class="com.gmcc.pboss.biz.info.missioner.recommend.unvrcfailday.action.UnvrcfaildayAction" scope="prototype">
+		<property name="unvrcfaildayService" ref="unvrcfaildayService" />
+	</bean>
+	<!-- 推广专员  实时酬金核算记录查询-》酬金核算成功记录查询-->
+	<bean id="realtimesuccAction" class="com.gmcc.pboss.biz.info.missioner.realtimeaccounting.succ.action.RealtimesuccAction" scope="prototype">
+		<property name="realtimesuccService" ref="realtimesuccService" />
+	</bean>
+	<!-- 推广专员  实时酬金核算记录查询-》酬金核算失败记录查询-->
+	<bean id="realtimefailAction" class="com.gmcc.pboss.biz.info.missioner.realtimeaccounting.fail.action.RealtimefailAction" scope="prototype">
+		<property name="realtimefailService" ref="realtimefailService" />
+	</bean>
+	<!-- 终端酬金  终端计酬成功明细-->
+	<bean id="rewardTdSucAction" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdsuc.action.RewardTdSucAction" scope="prototype">
+		<property name="rewardTdSucService" ref="rewardTdSucService" />
+	</bean>
+    <!-- 终端酬金  终端计酬失败明细-->
+	<bean id="rewardTdFailAction" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdfail.action.RewardTdFailAction" scope="prototype">
+		<property name="rewardTdFailService" ref="rewardTdFailService" />
+	</bean>
+    <!-- 终端酬金  终端计酬成功数据汇总-->	
+	<bean id="rewardTdRecordAction" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdrecord.action.RewardTdRecordAction" scope="prototype">
+		<property name="rewardTdRecordService" ref="rewardTdRecordService" />
+	</bean>
+	<!-- 终端酬金  终端预发计酬成功明细-->
+	<bean id="rewardAdSucAction" class="com.gmcc.pboss.biz.info.rewardtd.rewardadsuc.action.RewardAdSucAction" scope="prototype">
+		<property name="rewardAdSucService" ref="rewardAdSucService" />
+	</bean>
+	 <!-- 终端酬金  终端预发计酬失败明细-->
+	<bean id="rewardAdFailAction" class="com.gmcc.pboss.biz.info.rewardtd.rewardadfail.action.RewardAdFailAction" scope="prototype">
+		<property name="rewardAdFailService" ref="rewardAdFailService" />
+	</bean>
+	
+	
+	<!-- 业务明细报表（结算月维度） 2014年10月20日-->
+	<bean id="settlementMonthAction" class="com.gmcc.pboss.biz.info.rewardtd.settlementmonth.action.SettlementMonthAction" scope="prototype">
+		<property name="settlementMonthService" ref="settlementMonthService" />
+	</bean>
+	<!-- 业务明细报表（销售月维度） 2014年10月20日-->
+	<bean id="saleMonthAction" class="com.gmcc.pboss.biz.info.rewardtd.salemonth.action.SaleMonthAction" scope="prototype">
+		<property name="saleMonthService" ref="saleMonthService" />
+	</bean>
+	
+	 <!-- 月度应发酬金报表-->
+	<bean id="monthRemunerationAction" class="com.gmcc.pboss.biz.info.rewardtd.monthremuneration.action.MonthRemunerationAction" scope="prototype">
+		<property name="monthRemunerationService" ref="monthRemunerationService" />
+	</bean>
+	
+	 <!-- 业务办理酬金分期表-->
+	<bean id="rewardBusinessAction" class="com.gmcc.pboss.biz.info.rewardtd.rewardbusiness.action.RewardBusinessAction" scope="prototype">
+		<property name="rewardBusinessService" ref="rewardBusinessService" />
+	</bean>
+
+	<!-- 酬金一体化报表-->
+	<bean id="paymentAction" class="com.gmcc.pboss.biz.info.reward.payment.action.PaymentAction" scope="prototype">
+		<property name="paymentService" ref="paymentService" />
+	</bean>
+</beans>

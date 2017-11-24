@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 生产机WAS7.0.0.0在Servlet2.5发布时不能将WAR包发布上去，改为Servlet2.4版本；Servlet2.5在测试机WAS7.0.0.13则可以发布。
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ -->
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<listener>   
+         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>   
+    </listener>  
+    <listener>
+         <listener-class>net.gmcc.pboss.utils.ServiceUtil</listener-class>
+    </listener>
+    
+    <servlet>   
+        <display-name>cxf</display-name>
+        <servlet-name>cxf</servlet-name>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>   
+        <load-on-startup>1</load-on-startup>   
+    </servlet>
+    
+    <servlet>
+    	<description>
+    		JAX-WS endpoint - TerminalRewardServiceService
+    	</description>
+    	<display-name>TerminalRewardServiceService</display-name>
+    	<servlet-name>TerminalRewardServiceService</servlet-name>
+    	<servlet-class>
+    		com.sun.xml.ws.transport.http.servlet.WSServlet
+    	</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>TerminalRewardServiceService</servlet-name>
+    	<url-pattern>/TerminalRewardServicePort</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cxf</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+    
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config> 
+    
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <listener>
+  	<listener-class>
+  		com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+  	</listener-class>
+  </listener></web-app>

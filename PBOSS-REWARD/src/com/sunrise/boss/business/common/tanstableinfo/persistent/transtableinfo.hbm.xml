@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sunrise.boss.business.common.tanstableinfo.persistent.TansTableInfoVO" table="IB_GL_TRANSTABLEINFO">
+		<id column="TABLENAME" name="tablename" type="java.lang.String">
+			<generator class="assigned"/>
+		</id>
+		<property column="FIELDNAME" length="255" name="fieldname" type="java.lang.String"/>
+		<property column="FIELDTYPE" length="64" name="fieldtype" type="java.lang.String"/>
+		<property column="TRANSCOND" length="64" name="transcond" type="java.lang.String"/>
+		<property column="FIELDVALUE" length="255" name="fieldvalue" type="java.lang.String"/>				
+		
+		<property column="TRANSTIME" length="7" name="transtime" type="java.util.Date"/>
+		<property column="UPDATETIME" length="7" name="updatetime" type="java.util.Date"/>
+		<property column="MEMO" length="255" name="memo" type="java.lang.String"/>
+	</class>
+</hibernate-mapping>

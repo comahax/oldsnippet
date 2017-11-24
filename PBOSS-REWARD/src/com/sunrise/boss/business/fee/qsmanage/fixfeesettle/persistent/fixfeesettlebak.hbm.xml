@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.fee.qsmanage.fixfeesettle.persistent.FixFeeSettleBakVO"
+		table="IB_RENT_SETTLEPERCENT_1">
+		<id column="DATAID" name="dataid" type="java.lang.Long">
+		<generator class="assigned">
+		</generator>
+		</id>
+		<property column="ACCTID" length="14" name="acctid"
+			type="java.lang.Long" />
+		<property column="PRODID" length="32" name="prodid"
+			type="java.lang.String" />
+		<property column="SETTLETYPE" length="8" name="settletype"
+			type="java.lang.String" />
+		<property column="REGION" length="5" name="region"
+			type="java.lang.Integer" />
+		<property column="CONAME" length="128" name="coname"
+			type="java.lang.String" />
+		<property column="PERCENT" length="8" name="percent"
+			type="java.lang.Double" />
+		<property column="BEGINCYC" length="8" name="begincyc"
+			type="java.lang.Integer" />
+		<property column="ENDCYC" length="8" name="endcyc"
+			type="java.lang.Integer" />
+		<property column="ISDERATED" length="1" name="isderated"
+			type="java.lang.Integer" />
+		<property column="GETUNWOFF" length="3" name="getunwoff"
+			type="java.lang.Integer" />
+		<property column="STEP" length="3" name="step"
+			type="java.lang.Integer" />
+	</class>
+</hibernate-mapping>
+
+

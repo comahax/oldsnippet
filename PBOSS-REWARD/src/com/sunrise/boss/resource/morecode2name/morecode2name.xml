@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syscode-config>
+	<!-- 注意：definition的值要唯一，推荐统一用大写字母 -->
+	<!-- 这里的VO实际上要对应数据库里的一张表 -->
+	
+	
+	
+	<!-- 配置字典表中全选的翻译名 -->
+	<syscode-dynamic>
+		<definition>WOFF-ACCT</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.woff.acct.persistent.AcctVO
+		</value-object>
+		<code>acctid</code>
+		<name>acctname</name>
+		<allcode>*,</allcode>
+		<allname>全部费项</allname>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>PAYMODE</definition>
+		<value-object>com.sunrise.boss.business.fee.persistent.paymode.PayModeVO</value-object>
+		<code>paymode</code>
+		<name>paymodename</name>
+		<allcode>*,</allcode>
+		<allname>全部付费模式</allname>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>VIPTYPE</definition>
+		<value-object>com.sunrise.boss.business.common.viptype.persistent.VipTypeVO</value-object>
+		<code>itemid</code>
+		<name>itemname</name>
+		<allcode>*,</allcode>
+		<allname>全部客户服务等级</allname>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>SA_BANK</definition>
+		<value-object>com.sunrise.boss.business.fee.persistent.bank.BankVO</value-object>
+		<code>bankid</code>
+		<name>bankname</name>
+		<allcode>*,</allcode>
+		<allname>全部银行</allname>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>PRODUCT</definition>
+		<value-object>com.sunrise.boss.business.zifee.pcppproduct.persistent.PcPpProductVO</value-object>
+		<code>prodid</code>
+		<name>prodname</name>
+		<allcode>*,</allcode>
+		<allname>全部产品</allname>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>SMSTYPE</definition>
+		<value-object>com.sunrise.boss.business.fee.note.smsassort.persistent.SmsAssortVO</value-object>
+		<code>smstype</code>
+		<name>descrp</name>
+		<allcode>*,</allcode>
+		<allname>全部短信类型</allname>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CITYCOMPANY</definition>
+		<value-object>com.sunrise.boss.business.cms.citycompany.persistent.CitycompanyVO</value-object>
+		<code>citycompid</code>
+		<name>citycompname</name>
+		<allcode>*,</allcode>
+		<allname>全部地市</allname>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>EBOXUNIT</definition>
+		<value-object>com.sunrise.boss.business.fee.woff.eboxunit.persistent.EBoxUnitVO</value-object>
+		<code>eboxunitid</code>
+		<name>eboxunitname</name>
+		<allcode>*,</allcode>
+		<allname>所有帐本科目</allname>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>AVOIDRULE</definition>
+		<value-object>com.sunrise.boss.business.fee.credit.credstatechg.persistent.CredStateChgVO</value-object>
+		<code>ruleid</code>
+		<name>ruledescp</name>
+		<allcode>*,</allcode>
+		<allname>所有信控规则</allname>
+	</syscode-dynamic>
+	
+
+
+	<!--配置字典表中全选的翻译名 --> 
+	<syscode-local>
+		<definition>MONSTATUS</definition>
+		<allcode>*,</allcode>
+		<allname>全部状态</allname>
+		<items>
+			<itemvalue code="0">未月结</itemvalue>
+			<itemvalue code="1">已月结</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>TSACCTTYPE</definition>
+		<allcode>*,</allcode>
+		<allname>全部状态</allname>
+		<items>
+			<itemvalue code="0">对公</itemvalue>
+			<itemvalue code="1">对私</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>TELINFO</definition>
+		<allcode>*,</allcode>
+		<allname>所有联系电话</allname>
+		<items>
+			<itemvalue code="0">工作电话</itemvalue>
+			<itemvalue code="1">私人/住宅电话</itemvalue>
+			<itemvalue code="2">备用电话</itemvalue>
+			<itemvalue code="3">联系人电话</itemvalue>
+			<itemvalue code="4">使用人联系电话</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>ADDRINFO</definition>
+		<allcode>*,</allcode>
+		<allname>所有联系地址</allname>
+		<items>
+			<itemvalue code="0">客户住址</itemvalue>
+			<itemvalue code="1">身份证地址</itemvalue>
+			<itemvalue code="2">通信地址</itemvalue>
+			<itemvalue code="3">话费通知地址</itemvalue>
+			<itemvalue code="4">发票邮寄地址</itemvalue>
+			<itemvalue code="5">使用人联系地址</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>RBXZMODE</definition>
+		<allcode>*,</allcode>
+		<allname>所有销账模式</allname>
+		<items>
+			<itemvalue code="0">非实时销帐方式</itemvalue>
+			<itemvalue code="1">珠海实时销帐方式处理</itemvalue>
+			<itemvalue code="2">东莞实时销帐方式处理</itemvalue>			
+		</items>
+	</syscode-local>
+	
+	
+	<!-- 配置字典表中全选的翻译名 definition应和字典表中的组对应  -->
+	<syscode-dict>
+		<itemvalue definition="CustClass1">*,|全部客户</itemvalue>
+		<itemvalue definition="MobileType_mbtp">*,|全部用机类型</itemvalue>
+		<itemvalue definition="CustClass2">*,|全部客户</itemvalue>
+		<itemvalue definition="IB_CREDITLEVEL">*,|所有级别</itemvalue>
+		<itemvalue definition="CRDT">*,|所有级别</itemvalue>
+		<itemvalue definition="IB_CRDTCHGPAYTYPE">*,|所有方式</itemvalue>
+		<itemvalue definition="IB_CRDTCHGSOURCE">*,|所有来源</itemvalue>
+		<itemvalue definition="US">*,|所有用户状态</itemvalue>
+		<itemvalue definition="IB_STOPTYPE">*,|所有欠停类型</itemvalue>
+		<itemvalue definition="IB_CRDTSTATE">*,|所有信用状态</itemvalue>
+		<itemvalue definition="IB_PAYMODETYPE">*,|所有付费模式</itemvalue>
+		<itemvalue definition="IB_LOCKFLAG">*,|所有欠停类型</itemvalue>
+		<itemvalue definition="IM_NOPROMPT">*,|所有号码特定种类</itemvalue>
+	</syscode-dict>
+	<syscode-local>
+		<definition>SELNOFEE_STATE</definition>
+		<allcode>0,1,3,4,5,6,7,8,9,10,11,12</allcode>
+		<allname>全部状态</allname>
+		<items>
+			<itemvalue code="0">可售号</itemvalue>
+			<itemvalue code="1">预订号</itemvalue>
+			<itemvalue code="3">改号态</itemvalue>
+			<itemvalue code="4">预留号</itemvalue>
+			<itemvalue code="5">禁售号</itemvalue>
+			<itemvalue code="6">半停</itemvalue>
+			<itemvalue code="7">停机</itemvalue>
+			<itemvalue code="8">预销号</itemvalue>
+			<itemvalue code="9">被销号</itemvalue>						
+			<itemvalue code="10">未投放</itemvalue>
+			<itemvalue code="11">暂选</itemvalue>			
+			<itemvalue code="12">回收</itemvalue>			
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>PRODID</definition>
+		<allcode>*,</allcode>
+		<allname>全部产品</allname>
+		<items>
+			<itemvalue code="101">回割动感月租卡</itemvalue>
+			<itemvalue code="102">回割动感日租卡</itemvalue>
+			<itemvalue code="1005">回割动感日租卡</itemvalue>
+			<itemvalue code="201">神州行零月租卡</itemvalue>
+			<itemvalue code="202">神州行套餐卡</itemvalue>
+			<itemvalue code="203">神州大众卡</itemvalue>
+			<itemvalue code="204">神州大众日租卡</itemvalue>
+			<itemvalue code="205">OCE神州行零月租卡</itemvalue>
+			<itemvalue code="206">OCE神州行套餐卡(神州行畅听卡)</itemvalue>
+			<itemvalue code="207">OCE神州大众卡(神州行大众月租卡)</itemvalue>
+			<itemvalue code="208">OCE神州大众日租卡</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>CRED_ACCTPAYTYPE</definition>
+		<allcode>*,</allcode>
+		<allname>全部</allname>
+		<items>
+		    <itemvalue code="-1">无支付关系</itemvalue>
+		    <itemvalue code="0">信息化帐户支付集团产品</itemvalue>
+		    <itemvalue code="1">个人帐户支付集团产品</itemvalue>
+		</items>
+	</syscode-local>
+	
+	
+</syscode-config>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 经理人员的Action配置都放在此命名控件下，以免过多命名空间难以维护并影响权限检测效率 -->
+	<!-- 经理       -->
+	<!-- 注意namespace不能为“manager”，会与tomcat的管理员manager路径冲突 -->
+	<package name="managerView" namespace="/managerView" extends="default">
+		<!-- 基础信息-网点、店员店主查询 -->
+		<!-- 店员信息展示 -->
+		<action name="assistantList" class="managerMemberAction" method="doList">
+			<result>/info/manager/assistantList.jsp</result>
+		</action>
+		<!-- 特定店员信息展示 -->
+		<action name="assistantLoad" class="managerMemberAction" method="doLoad">
+			<result name="success">/info/manager/assistantInfo.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<action name="Ajax_memberList" class="managerMemberAction" method="doAjaxList" />
+		<!-- 网点信息展示 -->
+		<action name="nodeList" class="managerNodeAction" method="doList">
+			<result>/info/manager/nodeList.jsp</result>
+		</action>
+		<!-- 特定网点信息展示 -->
+		<action name="nodeLoad" class="managerNodeAction" method="doLoad">
+			<result name="success">/info/manager/nodeInfo.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<action name="Ajax_nodeList" class="managerNodeAction" method="doAjaxList" />
+		<!-- 特定网点下店员信息展示 -->
+		<action name="nodeMemberList" class="nodeMemberAction" method="doList">
+			<result>/info/manager/nodeMemberList.jsp</result>
+		</action>
+		<action name="Ajax_nodeMemberList" class="nodeMemberAction" method="doAjaxList"/>
+		
+		<!-- 酬金 -->
+		<!-- 酬金汇总结果 -->
+		<action name="cityrecordView" class="cityrecordAction" method="doView">
+			<result>/info/reward/cityrecord/statMag.jsp</result>
+		</action>
+		<action name="cityrecordStat" class="cityrecordAction" method="doStat">
+			<result>/info/reward/cityrecord/statMag.jsp</result>
+		</action>
+		<action name="cityrecordList" class="cityrecordAction" method="doList">
+			<result>/info/reward/cityrecord/listMag.jsp</result>
+		</action>
+		<action name="cityrecordAjax" class="cityrecordAction" method="doAjax" />
+		
+		<!-- 税后酬金结果查询 -->
+		<action name="adjustmentView" class="adjustmentAction" method="doView">
+			<result>/info/reward/adjustment/adjustmentstatMag.jsp</result>
+		</action>
+		<action name="adjustmentStat" class="adjustmentAction" method="doStat">
+			<result>/info/reward/adjustment/adjustmentstatMag.jsp</result>
+		</action>
+		<action name="adjustmentAjax" class="adjustmentAction" method="doAjax" />
+		
+			  <!-- 业务明细报表（结算月维度） 2014年10月20日-->
+	    <action name="settlementMonth" class="settlementMonthAction" method="doStat">
+			<result>/info/reward/rewardtd/settlementmonth/settlementmonthMag.jsp</result>
+		</action>
+	    <action name="settlementMonthAjax" class="settlementMonthAction" method="doAjax" />
+	    <action name="settlementMonthExcel" class="settlementMonthAction" method="doExcelExport" />
+		
+		 <!-- 业务明细报表（销售月维度） 2014年10月20日-->
+	    <action name="saleMonth" class="saleMonthAction" method="doStat">
+			<result>/info/reward/rewardtd/salemonth/salemonthMag.jsp</result>
+		</action>
+	    <action name="saleMonthAjax" class="saleMonthAction" method="doAjax" />
+	    <action name="saleMonthExcel" class="saleMonthAction" method="doExcelExport" />
+		 <!-- 月度应发酬金报表-->
+	    <action name="monthRemuneration" class="monthRemunerationAction" method="doStat">
+			<result>/info/reward/rewardtd/monthremuneration/magMonRem.jsp</result>
+		</action>
+	    <action name="monthRemunerationAjax" class="monthRemunerationAction" method="doAjax">
+	    <result>/info/reward/rewardtd/monthremuneration/magMonRem.jsp</result>
+	    </action>
+	    <action name="monthRemunerationExcel" class="monthRemunerationAction" method="doExcelExport">
+	     <result>/info/reward/rewardtd/monthremuneration/exportExcel.jsp</result>
+	    </action>
+		
+		 <!-- 业务办理酬金分期表-->
+	    <action name="rewardBusiness" class="rewardBusinessAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardbusiness/rewardBusinessMag.jsp</result>
+		</action>
+	    <action name="rewardBusinessAjax" class="rewardBusinessAction" method="doAjax">
+	    <result>/info/reward/rewardtd/rewardbusiness/rewardBusinessMag.jsp</result>
+	    </action>
+	    <action name="rewardBusinessExcel" class="rewardBusinessAction" method="doExcelExport">
+	     <result>/info/reward/rewardtd/rewardbusiness/exportExcel.jsp</result>
+	    </action>
+	</package>
+	
+	<!-- 新业务销售管理 -->
+	<package name="registernewmagcnt" namespace="/registernewmagcnt" extends="default">
+		<!-- 新业务销售汇总查询 -->
+		<action name="list" class="registernewmagcntAction" method="doList">
+			<result>/info/registernewmagcnt/registernewmagcnt.jsp</result>
+		</action>
+		<!-- ajax查询 -->
+		<action name="ajaxQuery" class="registernewmagcntAction" method="doQuery">
+		</action>
+		<!-- 导出excel -->
+		<action name="exportExcel" class="registernewmagcntAction" method="doExportExcel" />
+	</package>
+	<!-- 新业务销售汇总查询 明细查询 -->
+	<package name="registernewmagcntd" namespace="/registernewmagcntd" extends="default">
+		<action name="show" class="registernewmagcntAction" method="doShow">
+			<result>/info/registernewmagcnt/registerNewSaleDetail.jsp</result>
+		</action>
+		<!-- ajax查询 -->
+		<action name="regAjax" class="registernewmagcntAction" method="doQuery2">
+		</action>
+	</package>
+	<!-- 信息查询 >销售明细查询  -->
+	<package name="magSaleDetail" namespace="/magSaleDetail" extends="default">
+		<!-- 新业务销售明细查询 -->
+		<action name="registernewList" class="magRegisternewAction" method="doList">
+			<result>/info/salesDetail/magRegNewSaleDetail.jsp</result>
+		</action>
+		<action name="regAjax" class="magRegisternewAction" method="doAjax"/>
+		<!-- 导出Excel -->
+		<action name="exportExcelRegNew" class="magRegisternewAction" method="doExportExcel"/>
+		<!-- 导出txt -->
+		<action name="exportTxtRegNew" class="magRegisternewAction" method="doExportTxt"/>
+		
+		<!-- 套卡销售明细查询 -->
+		<action name="registersimList" class="magRegistersimAction" method="doList">
+			<result>/info/salesDetail/magRegSimSaleDetail.jsp</result>
+		</action>
+		<action name="regSimAjax" class="magRegistersimAction" method="doAjax"/>
+		<!-- 导出Excel -->
+		<action name="exportExcelRegSim" class="magRegistersimAction" method="doExportExcel"/>
+		<!-- 导出txt -->
+		<action name="exportTxtRegSim" class="magRegistersimAction" method="doExportTxt"/>
+		
+		<!-- 业务编码弹出窗口 -->
+		<action name="opnselect" class="operationsmsAction" method="doOpnSelect">
+			<result>/info/salesDetail/opnselect.jsp</result>
+		</action>
+		<action name="opnAjax" class="operationsmsAction" method="doOpnAjax"/>
+		
+		<!-- 经理下属网点选择弹出窗口 -->
+		<action name="waySelect" class="managerNodeAction" method="doListPopup">
+			<result>/info/salesDetail/wayselect.jsp</result>
+		</action>
+		<action name="wayAjax" class="managerNodeAction" method="doAjaxListPopup"/>
+		
+		<!-- 经理下属店员选择弹出窗口  -->
+		<action name="employeeSelect" class="employeeAction" method="doListPopupTab">
+			<result>/info/salesDetail/employeeselect.jsp</result>
+		</action>
+		<action name="employeeAjax" class="employeeAction" method="doAjaxPopupTab"/>
+	</package>
+	<!-- 套卡销售汇总查询 (经理) -->
+	<package name="salescardstotal" namespace="/salescardstotal" extends="default">
+		<action name="show" class="salesCardsTotalAction" method="doList">
+			<result>/info/salesCardsTotal/salescardstotal.jsp</result>
+		</action>
+		<action name="ajaxQuery" class="salesCardsTotalAction" method="doQuery">
+		</action>
+		<!-- 导出Excel -->
+		<action name="exportExcel" class="salesCardsTotalAction" method="doExportExcel"/>
+	</package>
+	<!-- 套卡销售汇总查询  明细查询 (经理)-->
+	<package name="salescardstotaldetail" namespace="/salescardstotaldetail" extends="default">
+		<action name="showdetail" class="salesCardsTotalAction" method="doShow">
+			<result>/info/salesCardsTotal/registersimSaleDetail.jsp</result>
+		</action>
+		<action name="ajaxQuery" class="salesCardsTotalAction" method="doQuery2">
+		</action>
+	</package>
+		<package name="cityView" namespace="/cityView" extends="default">
+		<!-- 市管理员登陆 -->
+		<action name="nodeCityList" class="managerNodeAction" method="doCityList">
+			<result>/info/city/nodeInfo.jsp</result>
+		</action>
+		
+		<!-- 终端酬金  终端计酬成功明细-->
+		<action name="rewardTdSucStat" class="rewardTdSucAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardtdsuc/rewardtdsucCitystat.jsp</result>
+		</action>
+		<action name="rewardTdSucAjax" class="rewardTdSucAction" method="doAjax" />
+		<action name="rewardTdSucExcel" class="rewardTdSucAction" method="doExcelExport" />
+	    <!-- 终端酬金  终端计酬失败明细-->
+	    <action name="rewardTdFailStat" class="rewardTdFailAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardtdfail/rewardtdfailCitystat.jsp</result>
+		</action>
+	    <action name="rewardTdFailAjax" class="rewardTdFailAction" method="doAjax" />
+	    <action name="rewardTdFailExcel" class="rewardTdFailAction" method="doExcelExport" />
+	    
+	</package>
+	<package name="gdView" namespace="/gdView" extends="default">
+		<!-- 省管理员登陆 -->
+		<action name="nodeGdList" class="managerNodeAction" method="doGdList">
+			<result>/info/city/nodeInfoGd.jsp</result>
+		</action>
+		<!-- 终端酬金  终端计酬成功明细-->
+		<action name="rewardTdSucStat" class="rewardTdSucAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardtdsuc/rewardtdsucGdstat.jsp</result>
+		</action>
+		<action name="rewardTdSucAjax" class="rewardTdSucAction" method="doAjax" />
+		<action name="rewardTdSucExcel" class="rewardTdSucAction" method="doExcelExport" />
+	    <!-- 终端酬金  终端计酬失败明细-->
+	    <action name="rewardTdFailStat" class="rewardTdFailAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardtdfail/rewardtdfailGdstat.jsp</result>
+		</action>
+	    <action name="rewardTdFailAjax" class="rewardTdFailAction" method="doAjax" />
+	    <action name="rewardTdFailExcel" class="rewardTdFailAction" method="doExcelExport" />
+		
+		<!-- 酬金一体化报表-->
+	    <action name="payMent" class="paymentAction" method="doStat">
+			<result>/info/reward/payment/payment.jsp</result>
+		</action>
+	    <action name="paymentAjax" class="paymentAction" method="doAjax" >
+	        <result>/info/reward/payment/payment.jsp</result>
+	    </action>
+	    
+	    <!-- 酬金一体化  酬金一体化配置-->
+	    <action name="paymentConfig" class="paymentConfigAction" method="doList">
+			<result>/info/reward/payment/paymentConfig.jsp</result>
+		</action>
+		
+		<action name="paymentConfigUpdate" class="paymentConfigAction" method="doUpdate">
+			<result>/info/reward/payment/paymentConfig.jsp</result>
+		</action>
+		
+		<action name="paymentConfigAjax" class="paymentConfigAction" method="doAjax"/>
+		
+		<!-- 酬金一体化  酬金一体化管理-->
+	    <action name="paymentManage" class="paymentManageAction" method="doList">
+			<result>/info/reward/payment/paymentManage.jsp</result>
+		</action>
+		
+		<action name="paymentManageCheck" class="paymentManageAction" method="doCheck">
+			<result>/info/reward/payment/paymentManage.jsp</result>
+		</action>
+		
+		<action name="paymentManageBatchCheck" class="paymentManageAction" method="doBatchCheck">
+			<result>/info/reward/payment/paymentManage.jsp</result>
+		</action>
+		
+		<action name="paymentManageRollback" class="paymentManageAction" method="doRollback">
+			<result>/info/reward/payment/paymentManage.jsp</result>
+		</action>
+		
+		<action name="paymentManageBatchRollback" class="paymentManageAction" method="doBatchRollback">
+			<result>/info/reward/payment/paymentManage.jsp</result>
+		</action>
+		
+		<action name="paymentManageAjax" class="paymentManageAction" method="doAjax"/>
+		
+		<!-- 酬金一体化  酬金一体化管理 弹出页面-->
+		<action name="paymentPayeePop" class="paymentManagePayeePopAction" method="doList">
+			<result>/info/reward/payment/select/payeeselect.jsp</result>
+		</action>
+		<action name="paymentPayeePopAjax" class="paymentManagePayeePopAction" method="doAjax"/>
+		
+		<action name="paymentStypePop" class="paymentManageStypePopAction" method="doStypeList">
+			<result>/info/reward/payment/select/stypeselect.jsp</result>
+		</action>
+		<action name="paymentStypePopAjax" class="paymentManageStypePopAction" method="doStypeAjax"/>
+		
+		<action name="paymentLtypePop" class="paymentManageStypePopAction" method="doLtypeList">
+			<result>/info/reward/payment/select/ltypeselect.jsp</result>
+		</action>
+		<action name="paymentLtypePopAjax" class="paymentManageStypePopAction" method="doLtypeAjax"/>
+		
+		<action name="paymentWayPop" class="paymentManageWayPopAction" method="doList">
+			<result>/info/reward/payment/select/wayselect.jsp</result>
+		</action>
+		<action name="paymentWayPopAjax" class="paymentManageWayPopAction" method="doAjax"/>
+		
+	</package>
+</struts>

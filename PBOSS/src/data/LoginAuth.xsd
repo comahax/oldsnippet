@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://boss.huawei.com/webservice/loginAuth" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://boss.huawei.com/webservice/loginAuth" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="GetAuthTypeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:RequestHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="operatorID" type="xs:string"/>
+							<xs:element name="macAddr"  nillable="true" type="xs:string"/>
+							<xs:element name="remoteName" nillable="true" type="xs:string"/>
+							<xs:element name="remoteIP" nillable="true" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetAuthTypeResult">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:ResultHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="type" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="DynamicCheckRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:RequestHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+                        <xs:element minOccurs="0" name="operatorID"  type="xs:string"/>
+                        <xs:element minOccurs="0" name="step" type="xs:int"/>
+                        <xs:element minOccurs="0" name="passWord" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="macAddr" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteIP" nillable="true" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DynamicCheckResult">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:ResultHeader"/>
+				<xs:element name="MessageBody"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+		<xs:element name="RSACheckRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:RequestHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+                        <xs:element minOccurs="0" name="operatorID"  type="xs:string"/>
+                        <xs:element minOccurs="0" name="step" type="xs:int"/>
+                        <xs:element minOccurs="0" name="passWord" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="curToken" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="nextToken" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="macAddr" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteIP" nillable="true" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RSACheckResult">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:ResultHeader"/>
+				<xs:element name="MessageBody"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="SafeWordCheckRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:RequestHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+                        <xs:element minOccurs="0" name="operatorID"  type="xs:string"/>
+                        <xs:element minOccurs="0" name="step" type="xs:int"/>
+                        <xs:element minOccurs="0" name="challengeMessage" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="challengeCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="passWord" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="macAddr" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteIP" nillable="true" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SafeWordCheckResult">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:ResultHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="challengemsg" type="xs:string"/>
+							<xs:element name="challengecode" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+		<xs:element name="SecAuthCheckRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:RequestHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+                        <xs:element minOccurs="0" name="operatorID" type="xs:string"/>
+                        <xs:element minOccurs="0" name="step" type="xs:int"/>
+                        <xs:element minOccurs="0" name="passWord" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="secondPass" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="macAddr" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteIP" nillable="true" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SecAuthCheckResult">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:ResultHeader"/>
+				<xs:element name="MessageBody"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+		<xs:element name="SimpAuthCheckRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:RequestHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+                        <xs:element minOccurs="0" name="operatorID"  type="xs:string"/>
+                        <xs:element minOccurs="0" name="passWord" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="macAddr" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="remoteIP" nillable="true" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SimpAuthCheckResult">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:ResultHeader"/>
+				<xs:element name="MessageBody"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	
+	
+	
+	<xs:complexType name="ResultHeader">
+		<xs:sequence>
+			<xs:element name="SequenceId" type="xs:string"/>
+			<xs:element name="rtCode" type="xs:string"/>
+			<xs:element name="rtMessage" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestHeader">
+		<xs:sequence>
+			<xs:element name="Version" type="xs:string"/>
+			<xs:element name="SequenceId" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
+

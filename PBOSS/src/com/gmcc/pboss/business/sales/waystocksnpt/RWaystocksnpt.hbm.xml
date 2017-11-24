@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.waystocksnpt.RWaystocksnptVO" table="R_FX_SW_WAYSTOCKSNPT">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="COMRESID" length="18" name="comresid" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="STOCKTIME" length="7" name="stocktime" type="java.util.Date"/>
+<property column="ACTTIME" length="7" name="acttime" type="java.util.Date"/> 
+<property column="UPPERWAYID" length="18" name="upperwayid" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="18" name="waymagcode" type="java.lang.String"/>
+<property column="ICCID" length="21" name="iccid" type="java.lang.String"/>
+</class>
+<sql-query name="queryWaystockSmprecord">
+<return class="com.gmcc.pboss.business.sales.waystocksnpt.RWaystocksnptVO"/>
+select s1.recid, w.countyid,
+             w.svccode,
+             w.mareacode,
+             s1.orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.brand,
+             s1.comresid,
+             s1.createtime as stocktime,
+             s1.comcategory,
+             '' as acttime,
+             '' as upperwayid,
+             '' as waymagcode,
+             '' as iccid
+        from (select t2.recid, t2.wayid, t2.brand, t3.orderid, t4.comresid, t3.createtime, t2.comcategory
+                from FX_SW_PARTNERRES  t2,
+                     fx_sw_order       t3,
+                     fx_sw_orderresdet t4
+               where t2.wayid = t3.wayid
+                 and t3.orderid = t4.orderid
+                 and t2.comresid = t4.comresid
+                 and t2.restype = 'COMRESSMP'
+                 and t2.isactive = 0
+                 and t3.orderstate = 'FINISHED') s1,
+             Ch_pw_way w
+       where s1.wayid = w.wayid
+</sql-query>
+<sql-query name="querySalessmprecord">
+<return class="com.gmcc.pboss.business.sales.waystocksnpt.RWaystocksnptVO"/> 
+ select s1.recid, w.countyid,
+             w.svccode,
+             w.mareacode,
+             w.upperwayid,
+   			 w.waymagcode, 
+             s1.orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.brand,
+             s1.comresid,
+             s1.createtime as stocktime,
+             s1.comcategory,
+             '' as acttime,
+             c.iccid as iccid
+        from (select t2.recid, t2.wayid, t2.brand, t3.orderid, t4.comresid, t2.createtime, t2.comcategory, t2.comid 
+                from FX_SW_PARTNERRES  t2,
+                     fx_sw_order       t3,
+                     Fx_Sw_Orderresdet T4
+               Where T3.Orderid = T4.Orderid
+                 and t2.comresid = t4.comresid
+                 And T2.Batchno = T4.Batchno
+                 and t2.wayid = t3.wayid
+                 and t2.restype = 'COMRESSMP'
+                 And T3.Orderstate = 'FINISHED'
+       
+        union all
+       
+       select t2.recid, t2.wayid, t2.brand,  '' as orderid, t2.comresid,t2.createtime,t2.comcategory,t2.comid 
+                from FX_SW_PARTNERRES  t2
+               where t2.batchno is null
+                 and t2.restype = 'COMRESSMP') s1,
+             Ch_Pw_Way W,Im_Fx_Comressmp C
+       where s1.wayid = w.wayid and s1.comresid=c.comresid and s1.comid=c.comid
+</sql-query>
+<sql-query name="querySalescardrecord">
+<return class="com.gmcc.pboss.business.sales.waystocksnpt.RWaystocksnptVO"/>
+select s1.recid, w.countyid,
+             w.svccode,
+             w.mareacode,
+             s1.orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             '' as brand,
+             s1.comresid,
+             s1.createtime as stocktime,
+             s1.comcategory,
+             '' as acttime,
+             w.waymagcode,
+             w.upperwayid,
+             '' As Iccid
+        from (select t2.recid, t2.wayid,'' as brand,t3.orderid, t4.comresid, t2.comcategory, t2.createtime
+                from FX_SW_PARTNERRES  t2,
+                     fx_sw_order       t3,
+                     fx_sw_orderresdet t4
+               where t3.orderid = t4.orderid
+                 And T2.Wayid = T3.Wayid
+                 and t2.comresid = t4.comresid
+                 and t2.restype = 'COMRESCARD'
+                 and t3.orderstate = 'FINISHED'
+        Union All
+       select t2.recid, t2.wayid, t2.brand, '' as orderid, t2.comresid,t2.comcategory,t2.createtime
+                from FX_SW_PARTNERRES  t2
+               where t2.batchno is null
+                 and t2.restype = 'COMRESCARD') s1,
+             Ch_Pw_Way W
+       Where S1.Wayid = W.Wayid
+</sql-query>
+<sql-query name="queryActivesmprecord">
+<return class="com.gmcc.pboss.business.sales.waystocksnpt.RWaystocksnptVO"/>
+select s1.recid,
+       w.countyid,
+       w.svccode,
+       w.mareacode,
+       w.upperwayid,
+       w.waymagcode,
+       s1.orderid,
+       s1.wayid,
+       w.wayname,
+       w.starlevel,
+       s1.brand,
+       s1.comresid,
+       s1.acttime,
+       '' as stocktime,
+       s1.comcategory,
+       '' as iccid
+from (select t2.recid, t2.wayid, t2.brand, t3.orderid, t4.comresid, t2.acttime, t2.comcategory
+      from  FX_SW_PARTNERRES  t2,
+            fx_sw_order       t3,
+            fx_sw_orderresdet t4
+      where t3.orderid = t4.orderid
+        And T2.Comresid = T4.Comresid
+        and t2.wayid = t3.wayid
+        and trunc(t2.CREATETIME)=trunc(t3.recordtime)
+        and t2.restype = 'COMRESSMP'
+        and t2.isactive = 1
+        and t3.orderstate = 'FINISHED'
+      union all
+      select t2.recid, t2.wayid, t2.brand, '' as orderid, t2.comresid, t2.acttime, t2.comcategory 
+      from  FX_SW_PARTNERRES  t2
+      where t2.batchno is null
+        and t2.restype = 'COMRESSMP'
+        and t2.isactive = 1) s1,
+     Ch_Pw_Way W
+where s1.wayid = w.wayid 
+       
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.smstmpl.SmstmplVO" table="CH_SMS_SMSTMPL">
+<id column="SID" length="32" name="sid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="SNAME" length="50" name="sname" type="java.lang.String"/>
+<property column="STYPE" length="32" name="stype" type="java.lang.String"/>
+<property column="SSTATE" length="32" name="sstate" type="java.lang.String"/>
+<property column="SCONTENT" length="1024" name="scontent" type="java.lang.String"/>
+<property column="SMEMO" length="1024" name="smemo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

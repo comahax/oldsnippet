@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtdictparamlog.persistent.ChAdtDictparamlogVO" table="CH_ADT_DICTPARAMLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_ADT_DICTPARAMLOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="DKEY" length="64" name="dkey" not-null="true" type="java.lang.String"/>
+<property column="DVALUE" length="200" name="dvalue" not-null="true" type="java.lang.String"/>
+<property column="STATE" length="1" name="state" type="java.lang.Byte"/>
+<property column="TYPE" length="18" name="type" type="java.lang.String"/>
+<property column="DICTTYPE" length="18" name="dicttype" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

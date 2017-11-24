@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation_request>
+	<MsgReqHeader>
+		<menuid>menuid_opr</menuid><!--菜单ID-->
+		<process_code>process_code_opr</process_code>
+		<verify_code>verify_code_opr</verify_code><!--验证码-->
+		<req_time>20120514114200</req_time>	<!--请求时间-->
+		<req_seq>req_seq_opr</req_seq>	<!--请求流水-->
+		<unicontact>unicontact_opr</unicontact><!--统一接触流水号-->
+		<testflag>1</testflag><!-- 1标示测试，0或者不传表示生产 -->
+		<route><!--路由标识-->
+			<route_type>0</route_type><!--路由类型 0:region 1:号码信息-->
+			<route_value>760</route_value><!--路由值-->
+		</route>
+		<channelinfo>
+			<operatorid>pboss</operatorid><!--操作员-->
+			<channelid>channelid_opr</channelid><!--渠道-->
+			<unitid>unitid_opr</unitid><!--渠道下单位-->
+		</channelinfo>
+	</MsgReqHeader>
+	<MsgBody>
+		<busitype>0</busitype><!-- 0 入帐  1 退入帐 -->
+		<orderid>ZS201204060009</orderid><!-- 订单编号 -->
+		<bossworkfid>-1</bossworkfid><!-- BOSS工单编号 -->
+		<orderresult>入账失败</orderresult><!-- 应答结果 -->
+		<orderresultinfo>入账失败</orderresultinfo><!-- 应答信息 -->
+	</MsgBody>
+</operation_request>

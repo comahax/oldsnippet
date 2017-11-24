@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtsaleslog.persistent.ChAdtSaleslogVO" table="CH_ADT_SALESLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_ADT_SALESLOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="WAYATTR" length="2" name="wayattr" type="java.lang.String"/>
+<property column="SALES" length="10" name="sales" type="java.lang.Long"/>
+<property column="REWARDSTD" length="16" name="rewardstd" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.cityrecord.persistent.VCityrecord4VO">
+<id column="SEQ" name="seq" type="java.lang.Long">
+	<generator class="assigned"/>
+</id>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<property name="rewardtype" column="REWARDTYPE" type="java.lang.Short" length="3"/>
+<property name="mobile" column="MOBILE" type="java.lang.String" length="15"/>
+<property name="rewardmonth" column="REWARDMONTH" type="java.lang.String" length="6"/>
+<property name="oprtime" column="OPRTIME" type="java.util.Date" length="7"/>
+<property name="busivalue" column="BUSIVALUE" type="java.lang.Double" length="14"/>
+<property name="paysum" column="PAYSUM" type="java.lang.Double" length="12"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.resmanage.oprresmanage.auditlog.persistent.AuditlogVO" table="IM_WL_AUDITLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">IM_WL_AUDITLOG_SEQ</param>
+	</generator>
+</id>
+<property column="SHEETID" length="20" name="sheetid" not-null="true" type="java.lang.String"/>
+<property column="REQOPRCODE" length="15" name="reqoprcode" not-null="true" type="java.lang.String"/>
+<property column="INOPRCODE" length="15" name="inoprcode" not-null="true" type="java.lang.String"/>
+<property column="OUTOPRCODE" length="15" name="outoprcode" not-null="true" type="java.lang.String"/>
+<property column="AUDITOPRCODE" length="15" name="auditoprcode" not-null="true" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" not-null="true" type="java.util.Date"/>
+<property column="AUDITTIME" length="7" name="audittime" not-null="true" type="java.util.Date"/>
+<property column="OPRTYPE" length="3" name="oprtype" not-null="true" type="java.lang.Short"/>
+
+<property name="wayid" type="java.lang.String">
+    <column name="WAYID" length="18" not-null="true" />
+</property>
+
+</class>
+</hibernate-mapping>

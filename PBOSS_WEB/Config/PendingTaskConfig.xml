@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+待办任务信息。
+-->
+<PENDINGTASKS>
+	
+	<TASK><!-- 网点注册 -->
+		<!-- 名称 -->
+		<NAME>WAY_REGISTER</NAME>
+		<!-- CH_PW_ADVINFO.TITLE -->
+		<TITEL>新增网点注册，请审批。</TITEL>
+		<!-- CH_PW_ADVINFO.CONTENT -->
+		<URL>/channel/wayapply_edit.do</URL>
+		<!-- CH_PW_ADVINFO.PLANTIME 当前时间加7天 -->
+		<PLANTIME>7</PLANTIME>
+		<!-- CH_PW_ADVINFO.DESTTYPE 内部工号 -->
+		<DESTTYPE>7</DESTTYPE>
+		<!-- CH_PW_ADVINFO.SMSNOTIFY 是否短信通知 -->
+		<SMSNOTIFY>1</SMSNOTIFY>
+		<!-- CH_PW_ADVINFO.NDAPPROVAL 是否需要审批 -->
+		<NDAPPROVAL>0</NDAPPROVAL>
+		<!-- CH_PW_ADVINFO.STATE 状态：已发布 -->
+		<STATE>3</STATE>
+	</TASK>
+	
+	<TASK><!-- 网点修改 -->
+		<NAME>WAY_UPDATE</NAME>
+		<TITEL>网点资料修改申请，请审批。</TITEL>
+		<URL>/channel/wayapply_edit.do</URL>
+		<PLANTIME>7</PLANTIME>
+		<DESTTYPE>7</DESTTYPE>
+		<SMSNOTIFY>1</SMSNOTIFY>
+		<NDAPPROVAL>0</NDAPPROVAL>
+		<STATE>3</STATE>
+	</TASK>
+	
+	<TASK><!-- 网点退出 -->
+		<NAME>WAY_REMOVE</NAME>
+		<TITEL>网点退出申请，请审批。</TITEL>
+		<URL>/channel/wayapply_edit.do</URL>
+		<PLANTIME>7</PLANTIME>
+		<DESTTYPE>7</DESTTYPE>
+		<SMSNOTIFY>1</SMSNOTIFY>
+		<NDAPPROVAL>0</NDAPPROVAL>
+		<STATE>3</STATE>
+	</TASK>
+	
+	<TASK><!-- 店员注册 -->
+		<NAME>EMPLOYEE_REGISTER</NAME>
+		<TITEL>新增店员信息，请审批。</TITEL>
+		<URL>/channel/employeeapply_edit.do</URL>
+		<PLANTIME>7</PLANTIME>
+		<DESTTYPE>7</DESTTYPE>
+		<SMSNOTIFY>1</SMSNOTIFY>
+		<NDAPPROVAL>0</NDAPPROVAL>
+		<STATE>3</STATE>
+	</TASK>
+	
+	<TASK><!-- 店员信息更新 -->
+		<NAME>EMPLOYEE_UPDATE</NAME>
+		<TITEL>店员信息更新，请审批。</TITEL>
+		<URL>/channel/employeeapply_edit.do</URL>
+		<PLANTIME>7</PLANTIME>
+		<DESTTYPE>7</DESTTYPE>
+		<SMSNOTIFY>1</SMSNOTIFY>
+		<NDAPPROVAL>0</NDAPPROVAL>
+		<STATE>3</STATE>
+	</TASK>
+	
+	<TASK><!-- 店员退出 -->
+		<NAME>EMPLOYEE_REMOVE</NAME>
+		<TITEL>店员退出，请审批。</TITEL>
+		<URL>/channel/employeeapply_edit.do</URL>
+		<PLANTIME>7</PLANTIME>
+		<DESTTYPE>7</DESTTYPE>
+		<SMSNOTIFY>1</SMSNOTIFY>
+		<NDAPPROVAL>0</NDAPPROVAL>
+		<STATE>3</STATE>
+	</TASK>
+	
+</PENDINGTASKS>

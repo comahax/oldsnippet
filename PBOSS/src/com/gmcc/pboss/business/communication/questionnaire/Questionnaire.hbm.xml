@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.communication.questionnaire.QuestionnaireVO" table="CH_PW_ADVINFO">
+<id column="ADVINFOID" length="14" name="advinfoid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_ADVINFO_SEQ</param>
+</generator>
+</id>
+<property column="TITLE" length="256" name="title" type="java.lang.String"/>
+<property column="CONTENT" length="2048" name="content" type="java.lang.String"/>
+<property column="TYPE" length="3" name="type" type="java.lang.Short"/>
+<property column="RELEASETIME" length="7" name="releasetime" type="java.util.Date"/>
+<property column="PLANTIME" length="7" name="plantime" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="DESTTYPE" length="3" name="desttype" type="java.lang.Short"/>
+<property column="SMSNOTIFY" length="2" name="smsnotify" type="java.lang.Short"/>
+<property column="NDAPPROVAL" length="2" name="ndapproval" type="java.lang.Short"/>
+<property column="OPRCODE" length="18" name="oprcode" type="java.lang.String"/>
+<property column="STATE" length="3" name="state" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

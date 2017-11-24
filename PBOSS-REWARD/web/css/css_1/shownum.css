@@ -1,0 +1,75 @@
+.loading_off {
+	display:none; 
+	position:absolute; 
+	right:10px; 
+	top:10px; 
+	z-index:10; 
+	width:100px; 
+	height:22px; 
+	font-size:12px; 
+	color:#FFFFFF; 
+	background:#063550; 
+	padding-top:3px; 
+	text-align:center;
+}
+.loading_on {
+	display:on; 
+	position:absolute; 
+	right:10px; 
+	top:10px; 
+	z-index:10; 
+	width:100px; 
+	height:22px; 
+	font-size:12px; 
+	color:#FFFFFF; 
+	background:#ff0000; 
+	padding-top:3px; 
+	text-align:center;
+}
+.myphonebody {
+	width:90%;
+	border-collapse:collapse;
+	border-left:#e3e3e3 solid 1px;
+	border-top:#e3e3e3 solid 1px;
+	text-align:left;
+}
+.phonelogo {
+	width:90%;
+	height:60px;
+	background:url(../../images/phonelogo.jpg) no-repeat;
+}
+.myphone {
+	width:25%;
+	height:40px;
+	color:#2C88BF;
+	text-align:center;
+	padding-left:30px;
+	border-right:#e3e3e3 solid 1px;
+	border-bottom:#e3e3e3 solid 1px;
+	font-family:Arial,"Century Gothic","Eras Bold ITC";font-size:22px;
+}
+.mymoney {
+	width:8%;
+	height:40px;
+	color:#2C88BF;
+	text-align:center;
+	border-right:#e3e3e3 solid 1px;
+	border-bottom:#e3e3e3 solid 1px;
+	font-family:Arial,"Century Gothic","Eras Bold ITC";font-size:16px;
+}
+body {
+	padding:0px;
+	margin:0px;
+	text-align:center;
+	background:#FCFCFC url(../../images/phoneback.jpg) repeat-x;
+}
+.myhead {
+	background:#E6F5FC;
+	font-size:12px;
+	font-weight:100;
+}
+.mybody {
+	background:expression(this.rowIndex%2==0 ? '#F4F9FC' : '#EDF3F7');
+	font-size:14px;
+	font-weight:900;
+}

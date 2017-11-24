@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.prodservset.persistent.ProdservsetVO" table="PC_PS_PRODSERVSET">
+<id column="YXPLANID" name="yxplanid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="MODELTYPE" length="2" name="modeltype" type="java.lang.Short"/>
+<property column="SERVELEVEL" length="2" name="servelevel" type="java.lang.Short"/>
+<property column="SERVERNAME" length="30" name="servername" type="java.lang.String"/>
+<property column="FLOWCONTROL" length="10" name="flowcontrol" type="java.lang.Long"/>
+<property column="LOWFLOW" length="10" name="lowflow" type="java.lang.Long"/>
+<property column="BUSITYPE" length="2" name="busitype" type="java.lang.Short"/>
+<property column="FEEAMT" length="16" name="feeamt" type="java.lang.Double"/>
+<property column="ACCTID" length="20" name="acctid" type="java.lang.String"/>
+<property column="MEMO" length="2000" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

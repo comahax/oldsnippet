@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.numtyperule.NumtyperuleVO" table="V_IM_RU_NUMTYPEDEF">
+<id column="ROWNUMBER" length="14" name="rownumber" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="TYPEID" length="14" name="typeid" not-null="true" type="java.lang.Long"/>
+<property column="RULEID" length="14" name="ruleid"  type="java.lang.Long"/>
+<property column="TYPECODE" length="10" name="typecode" not-null="true" type="java.lang.String"/>
+<property column="TYPENAME" length="100" name="typename" not-null="true" type="java.lang.String"/>
+<property column="TYPEDESC" length="200" name="typedesc" type="java.lang.String"/>
+<property column="PRILEVEL" length="3" name="prilevel" not-null="true" type="java.lang.Short"/>
+<property column="EFFECTIVE" length="3" name="effective" not-null="true" type="java.lang.Short"/>
+<property column="ISDEFAULT" length="3" name="isdefault" not-null="true" type="java.lang.Short"/>
+<property column="RULEEXP" length="20" name="ruleexp"  type="java.lang.String"/>
+
+</class>
+
+<!-- 关联查询号码类型定义表（IM_RU_NUMTYPEDEF）和号码分类规则表（IM_RU_NUMSORTRULE）数据，关联条件为类型ID -->
+<sql-query name="com.gmcc.pboss.business.resource.numtyperule.queryLeftJoinNumsortrule">
+	select rownum rownumber,t.TYPEID TYPEID,t.TYPECODE TYPECODE,t.TYPENAME TYPENAME,t.TYPEDESC TYPEDESC,t.PRILEVEL PRILEVEL,
+	t.EFFECTIVE EFFECTIVE,t.ISDEFAULT ISDEFAULT, r.RULEID RULEID,r.RULEEXP RULEEXP
+	from IM_RU_NUMTYPEDEF t 
+	left join IM_RU_NUMSORTRULE  r on r.typeid = t.typeid
+	where t.effective=1 
+ 	order by t.prilevel asc
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.comrescarddetail.ComrescarddetailVO" table="FX_SW_COMRESCARDDETAIL">
+<id column="SID" length="10" name="sid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">FX_SW_COMRESCARDDETAIL_SEQ</param>
+	</generator>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="COMRESID" length="20" name="comresid" type="java.lang.String"/>
+<property column="STOCKTIME" length="7" name="stocktime" type="java.util.Date"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="18" name="waymagcode" type="java.lang.String"/>
+<property column="UPPERWAYID" length="18" name="upperwayid" type="java.lang.String"/>
+<property column="ACTTIME" length="18" name="acttime" type="java.lang.String"/>
+<property column="BRAND" length="18" name="brand" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="STATISTICSTIME" length="7" name="statisticstime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

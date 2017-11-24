@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.registersim.persistent.RegistersimVO" table="CH_PW_REGISTERSIM">
+<id column="SEQID" name="seqid" type="long">
+<generator class="sequence"/>
+</id>
+<property column="CITYID" length="3" name="cityid" type="string"/>
+<property column="OPRCODE" length="15" name="oprcode" type="string"/>
+<property column="WAYID" length="18" name="wayid" type="string"/>
+<property column="OPNID" length="18" name="opnid" type="string"/>
+<property column="MOBILE" length="15" name="mobile" type="string"/>
+<property column="POSVALID" length="3" name="posvalid" type="string"/>
+<property column="POSDIFF" length="3" name="posdiff" type="short"/>
+<property column="BRAND" length="3" name="brand" type="short"/>
+<property column="OPRTIME" length="7" name="oprtime" type="date"/>
+<property column="IMEI" length="15" name="imei" type="string"/>
+<property column="IMSI" length="15" name="imsi" type="string"/>
+<property column="ADDTIME" length="7" name="addtime" type="date"/>
+<property column="COMCLASSID" length="6" name="comclassid" type="integer"/>
+<property column="COMPRICE" length="14" name="comprice" type="long"/>
+<property column="MENDFALG" length="2" name="mendfalg" type="short"/>
+</class>
+</hibernate-mapping>

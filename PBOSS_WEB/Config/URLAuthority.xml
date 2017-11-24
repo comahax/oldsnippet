@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- URL 权限管理 -->
+
+<URL>
+<!-- 不用登录就可以访问的JSP -->
+<UNLOGIN_JSP>
+	<VALUE>/login.jsp</VALUE>
+	<VALUE>/register.jsp</VALUE>
+	<VALUE>/test.jsp</VALUE>
+	<!-- <VALUE>/common/template/*</VALUE> -->
+	<VALUE>/test/*</VALUE>
+</UNLOGIN_JSP>
+
+<!-- 不用登录就可以访问的ACTION -->
+<UNLOGIN_ACTION>
+	<VALUE>/login.do</VALUE>
+	<VALUE>/logout.do</VALUE>
+	<VALUE>/tologin.do</VALUE>
+	<VALUE>/tologin2.do</VALUE>
+	<VALUE>/communi/showReply.do</VALUE>
+	<VALUE>/communi/affixPDownload.do</VALUE>
+	<VALUE>/communi/showPublic.do</VALUE>
+	<VALUE>/image</VALUE>
+	<VALUE>/node/wayApply.do</VALUE>
+	<VALUE>/test/*</VALUE>
+	<VALUE>/sms/RndCode.do</VALUE>
+</UNLOGIN_ACTION>
+
+<!-- 店主能使用的URL -->
+<SHOP_MASTER>
+	<VALUE>/*</VALUE>
+</SHOP_MASTER>
+
+<!-- 店员能使用的URL -->
+<SHOP_ASSISTANT>
+	<VALUE>/</VALUE>
+	<VALUE>/index.jsp</VALUE>
+	<VALUE>/index.do</VALUE>
+	<!-- 沟通平台 -->
+	<VALUE>/communi/*</VALUE>
+	<VALUE>/interlocution/*</VALUE>
+	<VALUE>/message.jsp</VALUE>
+	<VALUE>/registernewmagcnt/*</VALUE>
+	<VALUE>/registernewmagcntd/*</VALUE>
+	<VALUE>/salescnt/*</VALUE>
+	<VALUE>/way/*</VALUE>
+	<VALUE>/servcent/*</VALUE>
+	<!-- 销售明细查询 -->
+	<VALUE>/salesDetail/*</VALUE>
+	<!-- 套卡销售汇总(店员店主) -->
+	<VALUE>/lowsalescardstotal/*</VALUE>
+	<VALUE>/lowsalescardstotaldetail/*</VALUE>
+</SHOP_ASSISTANT>
+
+<!-- 配送商能使用的URL -->
+<DELIVERY_MAN>
+	<VALUE>/delivery/*</VALUE>
+	<VALUE>/adpay/*</VALUE>
+	<VALUE>/message.jsp</VALUE>
+	<VALUE>/service/Logout.do</VALUE>
+</DELIVERY_MAN>
+
+<!-- 经理人员URL -->
+<MANAGER>
+	<VALUE>/managerView/*</VALUE>
+	<VALUE>/assistant/*</VALUE>
+	<VALUE>/magSaleDetail/*</VALUE>
+	<VALUE>/message.jsp</VALUE>
+	<VALUE>/service/Logout.do</VALUE>
+	<VALUE>/registernewcnt/*</VALUE>
+	<VALUE>/registernewcntd/*</VALUE>
+	<VALUE>/way/*</VALUE>
+	<VALUE>/servcent/*</VALUE>
+	<VALUE>/salescardstotal/*</VALUE>
+	<VALUE>/salescardstotaldetail/*</VALUE>
+</MANAGER>
+
+<!-- 推广专员URL -->
+<MISSIONER>
+<VALUE>/missioner/*</VALUE>
+</MISSIONER>
+
+<!-- 省管理人员URL -->
+<GD_MANAGER>
+	<VALUE>/gdView/*</VALUE>
+	<VALUE>/assistant/*</VALUE>
+	<VALUE>/magSaleDetail/*</VALUE>
+	<VALUE>/message.jsp</VALUE>
+	<VALUE>/service/Logout.do</VALUE>
+	<VALUE>/registernewcnt/*</VALUE>
+	<VALUE>/registernewcntd/*</VALUE>
+	<VALUE>/way/*</VALUE>
+	<VALUE>/servcent/*</VALUE>
+	<VALUE>/salescardstotal/*</VALUE>
+	<VALUE>/salescardstotaldetail/*</VALUE>
+</GD_MANAGER>
+
+<!-- 市管理人员URL -->
+<CITY_MANAGER>
+	<VALUE>/cityView/*</VALUE>
+	<VALUE>/assistant/*</VALUE>
+	<VALUE>/magSaleDetail/*</VALUE>
+	<VALUE>/message.jsp</VALUE>
+	<VALUE>/service/Logout.do</VALUE>
+	<VALUE>/registernewcnt/*</VALUE>
+	<VALUE>/registernewcntd/*</VALUE>
+	<VALUE>/way/*</VALUE>
+	<VALUE>/servcent/*</VALUE>
+	<VALUE>/salescardstotal/*</VALUE>
+	<VALUE>/salescardstotaldetail/*</VALUE>
+</CITY_MANAGER>
+</URL>

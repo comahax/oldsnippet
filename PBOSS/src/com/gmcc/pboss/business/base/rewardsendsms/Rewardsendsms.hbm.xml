@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.rewardsendsms.RewardsendsmsVO" table="CH_PW_REWARDSENDSMS">
+<id column="SEQID" length="14" name="seqid" type="java.lang.String">
+<generator class="sequence">
+		<param name="sequence">CH_PW_REWARDSENDSMS_SEQ</param>
+	</generator>
+</id>
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="SENDTEL" length="11" name="sendtel" type="java.lang.String"/>
+<property column="TYPE" length="2" name="type" type="java.lang.Short"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

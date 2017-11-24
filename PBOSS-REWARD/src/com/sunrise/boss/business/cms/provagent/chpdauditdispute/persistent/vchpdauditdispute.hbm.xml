@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdauditdispute.persistent.VChPdAuditdisputeVO">
+<id column="DISPUTEID" name="disputeid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="REWARDID" length="14" name="rewardid" not-null="true" type="java.lang.Long"/>
+<property column="PROVAGENTID" length="15" name="provagentid" type="java.lang.String"/>
+<property column="PRODNO" length="18" name="prodno" type="java.lang.String"/>
+<property column="PRODID" length="15" name="prodid" type="java.lang.String"/>
+<property column="PRODNAME" length="30" name="prodname" type="java.lang.String"/>
+<property column="CUSTID" length="15" name="custid" type="java.lang.String"/>
+<property column="CUSTNAME" length="50" name="custname" type="java.lang.String"/>
+<property column="PHASE" length="3" name="phase" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="8" name="rewardmonth" type="java.lang.String"/>
+<property column="REWARDMONEY" length="15" name="rewardmoney" type="java.lang.Double"/>
+<property column="AUDITROLE" length="1" name="auditrole" type="java.lang.Byte"/>
+<property column="CONTENT" length="256" name="content" type="java.lang.String"/>
+<property column="AUDITEENAME" length="20" name="auditeename" type="java.lang.String"/>
+<property column="TELEPHONE" length="15" name="telephone" type="java.lang.String"/>
+<property column="ISACCEPTED" length="1" name="isaccepted" type="java.lang.Byte"/>
+<property column="ISDEALED" length="1" name="isdealed" type="java.lang.Byte"/>
+<property column="DEALTYPE" length="1" name="dealtype" type="java.lang.Byte"/>
+<property column="SUPPLESEQ" length="14" name="suppleseq" type="java.lang.Long"/>
+<property column="INCOMSTIME" length="7" name="incomstime" type="java.util.Date"/>
+</class>
+<sql-query name="cms.provagent.QueryAuditdispute"> 
+<return class="com.sunrise.boss.business.cms.provagent.chpdauditdispute.persistent.VChPdAuditdisputeVO"></return>
+SELECT A.DISPUTEID, R.CITYID, R.REWARDID, R.PROVAGENTID, R.PRODNO, R.PRODID,
+       R.PRODNAME, R.CUSTID, R.CUSTNAME, R.PHASE, R.REWARDMONTH, R.REWARDMONEY,
+       A.AUDITROLE, A.CONTENT, A.AUDITEENAME, A.TELEPHONE, A.ISACCEPTED,
+       A.ISDEALED, A.DEALTYPE, A.SUPPLESEQ, A.INCOMSTIME
+  FROM CH_PD_AUDITDISPUTE A, CH_PD_REWARDRECORD R
+ WHERE A.REWARDID = R.REWARDID ORDER BY R.REWARDMONTH DESC, A.DISPUTEID ASC
+</sql-query>
+</hibernate-mapping>

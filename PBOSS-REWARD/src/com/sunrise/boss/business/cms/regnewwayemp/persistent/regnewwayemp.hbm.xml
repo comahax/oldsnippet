@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.regnewwayemp.persistent.RegNewWayEmpVO" table="V_REGISTERNEW_WAY_EMP">
+<id column="SEQID" name="seqid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="18" name="waymagcode" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="EMPLOYEENAME" length="30" name="employeename" type="java.lang.String"/>
+<property column="NAME" length="30" name="name" type="java.lang.String"/>
+<property column="OFFICETEL" length="12" name="officetel" type="java.lang.String"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="BRAND" length="3" name="brand" type="java.lang.Short"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="EMPLOYEEID" length="15" name="employeeid" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+</class>
+<sql-query name="reward.regnewwayemp.RegNewWayEmpVO">
+<return class="com.gmcc.pboss.business.reward.regnewwayemp.RegNewWayEmpVO"></return>
+select DISTINCT a.wayid,
+       c.wayname,
+       c.waymagcode,
+       c.countyid,
+       c.starlevel,
+       d.employeename,
+       e.employeename AS name,
+       d.officeTel,
+       a.mobile,
+       a.brand,
+       a.opnid,
+       a.oprtime,
+       
+       a.SEQID,
+       a.OPRCODE,
+       c.SVCCODE,
+       d.EMPLOYEEID
+  from CH_PW_REGISTERNEW a, 
+  		ch_pw_way c, 
+  		ch_pw_employee d,
+  		CH_PW_EMPLOYEE e
+ where a.wayid = c.wayid
+   AND a.OPRCODE = d.EMPLOYEEID
+   AND e.EMPLOYEEID = c.WAYMAGCODE
+
+</sql-query>
+</hibernate-mapping>

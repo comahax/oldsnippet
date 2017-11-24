@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.comdisscale.ComdisscaleVO" table="FX_RU_COMDISSCALE">
+
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">fx_ru_comdisscale_seq</param>
+</generator>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="DISSCALE" length="16" name="disscale" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

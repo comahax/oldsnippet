@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.promotion.promotingwayid.PromotingwayidVO" table="CH_CX_PROMOTINGWAYID">
+<composite-id>
+<key-property column="PID" length="6" name="pid" type="java.lang.Long"/>
+<key-property column="RULEID" length="6" name="ruleid" type="java.lang.Long"/>
+<key-property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+</composite-id>
+</class>
+</hibernate-mapping>

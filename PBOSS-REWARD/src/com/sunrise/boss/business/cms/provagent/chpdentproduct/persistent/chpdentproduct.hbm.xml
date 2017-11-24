@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdentproduct.persistent.ChPdEntproductVO" table="CH_PD_ENTPRODUCT">
+<id column="PRODID" name="prodid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="PRODNAME" length="30" name="prodname" type="java.lang.String"/>
+<property column="CATEGORY" length="16" name="category" type="java.lang.String"/>
+<property column="SUBCATEGORY" length="16" name="subcategory" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

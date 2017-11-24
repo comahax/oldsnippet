@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.qsmanage.woffrule.persistent.WoffRuleBakVO" table="IB_RU_WOFFRULE_1">
+<composite-id>
+<key-property column="ACCTID" length="14" name="acctid" type="java.lang.Long"/>
+<key-property column="EBOXUNITID" length="14" name="eboxunitid" type="java.lang.Long"/>
+</composite-id>
+	<property column="TYPE" length="22" name="type" type="java.lang.Short"/>
+	<property column="BEGINTIME" length="7" name="begintime" type="java.util.Date"/>
+	<property column="ENDTIME" length="7" name="endtime" type="java.util.Date"/>
+	<property column="PRI" length="10" name="pri" type="java.lang.Long"/>
+	<property column="MEMO" length="255" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

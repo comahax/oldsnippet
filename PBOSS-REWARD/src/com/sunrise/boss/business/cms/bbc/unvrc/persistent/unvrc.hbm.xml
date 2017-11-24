@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.unvrc.persistent.UnvrcVO" table="CH_BBC_UNVRC">
+<id column="RCID" name="rcid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="RCNO" length="15" name="rcno" type="java.lang.String"/>
+<property column="RCNAME" length="30" name="rcname" type="java.lang.String"/>
+<property column="REGDATE" length="7" name="regdate" type="java.util.Date"/>
+<property column="RCSTATE" length="3" name="rcstate" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

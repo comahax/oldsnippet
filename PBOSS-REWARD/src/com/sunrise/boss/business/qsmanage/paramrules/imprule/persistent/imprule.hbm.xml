@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.qsmanage.paramrules.imprule.persistent.ImpRuleVO" table="QSCS_RU_IMPRULE">
+<id name="ruleid" column="RULEID" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">QSCS_RU_IMPORTRULE_SEQ</param>
+	</generator>
+</id>
+<property column="STATUS" length="2" name="status" type="java.lang.Short"/>
+<property column="STATUSTIME" length="16" name="statustime" type="java.util.Date"/>
+<property column="FILEHEAD" length="32" name="filehead" type="java.lang.String"/>
+<property column="FILETAIL" length="32" name="filetail" type="java.lang.String"/>
+<property column="SEPCHAR" length="8" name="sepchar" type="java.lang.String"/>
+<property column="FIELDNUM" length="4" name="fieldnum" type="java.lang.Short"/>
+<property column="RULENAME" length="128" name="rulename" type="java.lang.String"/>
+<property column="FILENUM" length="7" name="filenum" type="java.lang.Integer"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>
+	

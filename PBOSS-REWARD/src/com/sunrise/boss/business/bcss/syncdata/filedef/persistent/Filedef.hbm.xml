@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.bcss.syncdata.filedef.persistent.FiledefVO" table="DC_MM_FILEDEF">
+<id column="FILECODE" name="filecode" length="40" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="FILETYPE" length="50" name="filetype" type="java.lang.String"/>
+<property column="FILEPATH" length="100" name="filepath" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,2176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syscode-config>
+	<!-- 注意：definition的值要唯一，推荐统一用大写字母 -->
+	<!-- 这里的VO实际上要对应数据库里的一张表 -->
+	<syscode-dynamic>
+		<definition>WAYASSESSOBJECT</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.wayassess.wayassessobject.persistent.WayassessobjectVO
+		</value-object>
+		<code>objectid</code>
+		<name>objectname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>WAYASSESS</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.wayassess.wayassess.persistent.WayassessVO
+		</value-object>
+		<code>assessid</code>
+		<name>assessname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>WAYASSESSTEMPLATE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.wayassess.wayassesstemplate.persistent.WayassessTemplateVO
+		</value-object>
+		<code>templateid</code>
+		<name>templatename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ACTTYPE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.acttype.persistent.ActtypeVO
+		</value-object>
+		<code>typeid</code>
+		<name>name</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>OPERATION</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.operation.persistent.OperationVO
+		</value-object>
+		<code>opnid</code>
+		<name>name</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>BBC_OPERATION</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.bbc.operation.persistent.BBCoperationVO
+		</value-object>
+		<code>opnid</code>
+		<name>name</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ACCTNAME</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.woff.acct.persistent.AcctVO
+		</value-object>
+		<code>acctid</code>
+		<name>acctname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>COMSYSTEM</definition>
+		<value-object>
+			com.sunrise.boss.business.resmanage.com.persistent.ComVO
+		</value-object>
+		<code>comid</code>
+		<name>comname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>SERVICE</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.credit.service.persistent.ServiceVO
+		</value-object>
+		<code>itemid</code>
+		<name>itemname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>PRODUCT</definition>
+		<value-object>
+			com.sunrise.boss.business.zifee.pcppproduct.persistent.PcPpProductVO
+		</value-object>
+		<code>prodid</code>
+		<name>prodname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CRMPCPPPRODUCT</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.crmpcppproduct.persistent.CrmPcPpProductVO
+		</value-object>
+		<code>prodid</code>
+		<name>prodname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>AREAGROUPINFO</definition>
+		<value-object>
+			com.sunrise.boss.business.zifee.areagroupinfo.persistent.AreaGroupInfoVO
+		</value-object>
+		<code>areagroupid</code>
+		<name>remark</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ZIFEE-YXPLAN</definition>
+		<value-object>
+			com.sunrise.boss.business.zifee.yxplan.persistent.YxPlanVO
+		</value-object>
+		<code>yxplanid</code>
+		<name>yxplanname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ZJTY_OPERATION</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.zjty.zjtyoperation.persistent.ZjtyOperationVO
+		</value-object>
+		<code>opnid</code>
+		<name>name</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>YXPLANSHORTNAME</definition>
+		<value-object>
+			com.sunrise.boss.business.zifee.yxplan.persistent.YxPlanVO
+		</value-object>
+		<code>yxplanid</code>
+		<name>yxplanshortname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ZIFEE-ACCTNAME</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.woff.acct.persistent.AcctVO
+		</value-object>
+		<code>acctid</code>
+		<name>acctname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ZIFEE-YXPLANTYPE</definition>
+		<value-object>
+			com.sunrise.boss.business.zifee.yxplantype.persistent.YxPlanTypeVO
+		</value-object>
+		<code>yxplantypeid</code>
+		<name>yxplantypename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ZIFEE-YXPLANKIND</definition>
+		<value-object>
+			com.sunrise.boss.business.zifee.yxplankind.persistent.YxPlanKindVO
+		</value-object>
+		<code>yxplankindid</code>
+		<name>yxplankindname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ZIFEE-YXPLANGROUP</definition>
+		<value-object>
+			com.sunrise.boss.business.zifee.yxplangroup.persistent.YxPlanGroupVO
+		</value-object>
+		<code>yxplangroupid</code>
+		<name>yxplangroupname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>BUSINESS</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.business.persistent.BusinessVO
+		</value-object>
+		<code>busicode</code>
+		<name>business</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ZIFEE_REFSERV</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.credit.service.persistent.ServiceVO
+		</value-object>
+		<code>itemid</code>
+		<name>itemname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>DICTITEM</definition>
+		<value-object>
+			com.sunrise.boss.business.admin.dictitem.persistent.DictitemVO
+		</value-object>
+		<code>dictid</code>
+		<name>dictname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_ASSESSID</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.empassess.persistent.EmpassessVO
+		</value-object>
+		<code>assessid</code>
+		<name>assessname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_TEMPLATEID</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.empassesstemplate.persistent.EmpassesstemplateVO
+		</value-object>
+		<code>templateid</code>
+		<name>templatename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_RULEID</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.empassessrule.persistent.EmpassessruleVO
+		</value-object>
+		<code>ruleid</code>
+		<name>rulename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_ADT_RULE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.reward.rule.persistent.RuleVO
+		</value-object>
+		<code>ruleid</code>
+		<name>rulename</name>
+	</syscode-dynamic>
+
+	<syscode-dynamic>
+		<definition>CHADTRULEITEM</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.reward.ruleitem.persistent.RuleitemVO
+		</value-object>
+		<code>ruleitemid</code>
+		<name>ruleitemname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>BBCWAY</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.nasway.persistent.NaswayVO
+		</value-object>
+		<code>wayid</code>
+		<name>wayname</name>
+	</syscode-dynamic>
+
+	<syscode-local>
+		<definition>REASON</definition>
+		<items>
+			<itemvalue code="0">缴费</itemvalue>
+			<itemvalue code="1">主动开机</itemvalue>
+			<itemvalue code="2">激活</itemvalue>
+			<itemvalue code="3">有效期</itemvalue>
+			<itemvalue code="99">大小月</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>UNV_REWARDKIND</definition>
+		<items>
+		    <itemvalue code="UNPB">全员代理合作商</itemvalue>
+		    <itemvalue code="DIS">连锁经营合作商</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>CH_UNV_OSSRC</definition>
+		<items>
+		    <itemvalue code="3">全员代理短信</itemvalue>
+		    <itemvalue code="4">全员代理OTA</itemvalue>
+		    <itemvalue code="5">全员代理WAP</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ISUNPB</definition>
+		<items>
+			<itemvalue code="0">创薪联盟</itemvalue>
+			<itemvalue code="1">其他渠道</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>B2MUNPB</definition>
+		<items>
+			<itemvalue code="B2M">B2M网站酬金</itemvalue>
+			<itemvalue code="UNPB">全员代理酬金</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>IS_UNV_YN</definition>
+		<items>
+		    <itemvalue code="0">否</itemvalue>
+		    <itemvalue code="1">是</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>OPTYPE</definition>
+		<items>
+			<itemvalue code="INSERT">增加</itemvalue>
+			<itemvalue code="UPDATE">修改</itemvalue>
+			<itemvalue code="DELETE">删除</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ZIFEE_YON</definition>
+		<items>
+			<itemvalue code="1">是</itemvalue>
+			<itemvalue code="0">否</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ZIFEE_STARTIMETYPE</definition>
+		<items>
+			<itemvalue code="1">在月底特定时间内申请下下月生效</itemvalue>
+			<itemvalue code="0">不论什么时间申请都是下月生效</itemvalue>
+		</items>
+	</syscode-local>
+	<!-- 资费模块 结束-->
+
+	<syscode-dynamic>
+		<definition>PRINT-BILLITEMNAME</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.print.billitem.persistent.BillItemVO
+		</value-object>
+		<code>billitemid</code>
+		<name>billitemname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>PRINT-INVITEMNAME</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.print.invitem.persistent.InvItemVO
+		</value-object>
+		<code>invitemid</code>
+		<name>invitemname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>PRINT-BILLITEMNAMENEW</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.print.billitemnew.persistent.BillItemNewVO
+		</value-object>
+		<code>billitemid</code>
+		<name>billitemname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>PRINT-INVITEMNAMENEW</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.print.invitemnew.persistent.InvItemNewVO
+		</value-object>
+		<code>invitemid</code>
+		<name>invitemname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>WOFF-ACCT</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.woff.acct.persistent.AcctVO
+		</value-object>
+		<code>acctid</code>
+		<name>acctname</name>
+	</syscode-dynamic>
+
+	<!-- 渠道模块 开始 -->
+	<syscode-dynamic>
+		<definition>WAYTYPE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.waytype.persistent.WaytypeVO
+		</value-object>
+		<code>waytypecode</code>
+		<name>waytypename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>WAY</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.way.persistent.WayVO
+		</value-object>
+		<code>wayid</code>
+		<name>wayname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CUSTWAYTYPE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.custwaytype.persistent.CustwaytypeVO
+		</value-object>
+		<code>custwaytypecode</code>
+		<name>custwaytypename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CUSTBCHTYPE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.custbchtype.persistent.CustbchtypeVO
+		</value-object>
+		<code>bchtypecode</code>
+		<name>bchtypename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>AREACENTER</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.areacenter.persistent.AreacenterVO
+		</value-object>
+		<code>centerid</code>
+		<name>centername</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CITYCOMPANY</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.citycompany.persistent.CitycompanyVO
+		</value-object>
+		<code>citycompid</code>
+		<name>citycompname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CITYCOMPANY_AREA</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.citycompany.persistent.CitycompanyVO
+		</value-object>
+		<code>areacode</code>
+		<name>citycompname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CNTYCOMPANY</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.cntycompany.persistent.CntycompanyVO
+		</value-object>
+		<code>countycompid</code>
+		<name>countycompname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>COOPERATOR</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.distribute.cooperator.persistent.CooperatorVO
+		</value-object>
+		<code>cooperauid</code>
+		<name>cooperaname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_ADIMAREA</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.adimarea.persistent.AdimareaVO
+		</value-object>
+		<code>adacode</code>
+		<name>adaname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>AUDIT_JHCHARGEWAY</definition>
+		<value-object>
+			com.sunrise.boss.business.admin.dictitem.persistent.DictitemVO
+		</value-object>
+		<code>dictid</code>
+		<name>dictname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_MICROAREA</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.microarea.persistent.MicroareaVO
+		</value-object>
+		<code>macode</code>
+		<name>maname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_SERVCENT</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.servcent.persistent.ServcentVO
+		</value-object>
+		<code>svccode</code>
+		<name>svcname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_DD_BANKIDPAR</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.audit.bankidpar.persistent.BankidparVO
+		</value-object>
+		<code>bankid</code>
+		<name>bankname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>OPERATORNAME</definition>
+		<value-object>
+			com.sunrise.boss.business.admin.operator.persistent.OperatorVO
+		</value-object>
+		<code>operid</code>
+		<name>opername</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_PARENTPOST</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.postinfo.persistent.PostinfoVO
+		</value-object>
+		<code>postid</code>
+		<name>postname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_SALARYSYSTEM</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.salarysystem.persistent.SalarysystemVO
+		</value-object>
+		<code>salarysysid</code>
+		<name>salarysysname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_SALARYSTRUCTURE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.salarystructure.persistent.SalarystructureVO
+		</value-object>
+		<code>structureid</code>
+		<name>structurename</name>
+	</syscode-dynamic>
+
+<!-- 酬金标识 -->
+<syscode-dynamic>
+		<definition>REWARDID</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.stdreward.persistent.StdrewardVO
+		</value-object>
+		<code>rewardid</code>
+		<name>rewardname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>SA_BANK</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.persistent.bank.BankVO
+		</value-object>
+		<code>bankid</code>
+		<name>bankname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>SHEETID</definition>
+		<value-object>
+			com.sunrise.boss.business.resmanage.sheet.persistent.SheetVO
+		</value-object>
+		<code>sheetid</code>
+		<name>sheetid</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_DEFINE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.define.persistent.DefineVO
+		</value-object>
+		<code>itemid</code>
+		<name>itemname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_FACI</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.faci.persistent.FaciVO
+		</value-object>
+		<code>faciid</code>
+		<name>faciname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_OFFICE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.officerec.persistent.OfficerecVO
+		</value-object>
+		<code>recid</code>
+		<name>recname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_WAYTYPE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.waytype.persistent.WaytypeVO
+		</value-object>
+		<code>recid</code>
+		<name>recname</name>
+	</syscode-dynamic>
+		<syscode-dynamic>
+		<definition>CH_LAYOUT</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.layout.persistent.LayoutVO
+		</value-object>
+		<code>layoutid</code>
+		<name>layoutname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_DICTITEM</definition>
+		<value-object>
+			com.sunrise.boss.business.admin.dictitem.persistent.DictitemVO
+		</value-object>
+		<code>dictid</code>
+		<name>dictname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_FOLDER</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.folder.persistent.FolderVO
+		</value-object>
+		<code>seq</code>
+		<name>foldername</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_POSTINFO</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.postinfo.persistent.PostinfoVO
+		</value-object>
+		<code>postid</code>
+		<name>postname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>SERVCENT</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.servcent.persistent.ServcentVO
+		</value-object>
+		<code>svccode</code>
+		<name>svcname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>MICROAREA</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.microarea.persistent.MicroareaVO
+		</value-object>
+		<code>macode</code>
+		<name>maname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>SCPINFO</definition>
+		<value-object>
+			com.sunrise.boss.business.resmanage.scpinfo.persistent.ScpinfoVO
+		</value-object>
+		<code>id</code>
+		<name>name</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>FILEDEF</definition>
+		<value-object>
+			com.sunrise.boss.business.resmanage.filedef.persistent.FiledefVO
+		</value-object>
+		<code>filecode</code>
+		<name>filename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_EMPLOYEE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.employee.persistent.EmployeeVO
+		</value-object>
+		<code>employeeid</code>
+		<name>employeename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>MASTERID</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.woff.cooperrater.persistent.CooperraterVO
+		</value-object>
+		<code>masterid</code>
+		<name>masterid</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_TYPEINFO</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.reward.typeinfo.persistent.TypeinfoVO
+		</value-object>
+		<code>type</code>
+		<name>typename</name>
+	</syscode-dynamic>
+
+	<!-- 渠道资质管理 -->
+	<syscode-dynamic>
+		<definition>BCSS_FILETYPE</definition>
+		<value-object>
+			com.sunrise.boss.business.bcss.syncdata.filedef.persistent.FiledefVO
+		</value-object>
+		<code>filecode</code>
+		<name>filetype</name>
+	</syscode-dynamic>
+
+	<!-- 地市短信业务编码配置信息表 -->
+	<syscode-dynamic>
+		<definition>OPERATIONSMS</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.reward.operationsms.persistent.OperationsmsVO
+		</value-object>
+		<code>opnid</code>
+		<name>opnname</name>
+	</syscode-dynamic>
+
+	<syscode-local>
+		<definition>SUBSYSTEM</definition>
+		<items>
+			<itemvalue code="IM">资源管理</itemvalue>
+			<itemvalue code="CH">渠道管理</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SUBTASKNAME</definition>
+		<items>
+			<itemvalue code="900002910002">数据清理和采集</itemvalue>
+		    <itemvalue code="91000253">动态参数更新</itemvalue>
+		    <itemvalue code="91000251">数据清理</itemvalue>
+		    <itemvalue code="91000291">公共基准数据采集</itemvalue>
+		    <itemvalue code="900000900002">社会渠道酬金</itemvalue>
+		    <itemvalue code="900000900001">月初数据备份采集</itemvalue>
+		    <itemvalue code="900001910001">月初文件备份采集</itemvalue>
+		    <itemvalue code="91000153">动态参数更新</itemvalue>
+		    <itemvalue code="91000152">文件备份</itemvalue>
+		    <itemvalue code="91000190">公共基准数据采集</itemvalue>
+		    <itemvalue code="900002910003">业务数据采集、清洗和校验</itemvalue>
+		    <itemvalue code="900002260">待校验</itemvalue>
+		    <itemvalue code="900002250">文件生成</itemvalue>
+		    <itemvalue code="900002240">入库</itemvalue>
+		    <itemvalue code="900002270">二次校验</itemvalue>
+		    <itemvalue code="900002601">计件酬金计算</itemvalue>
+		    <itemvalue code="900002602">星级酬金计算</itemvalue>
+		    <itemvalue code="900002604">合作年限奖金计算</itemvalue>
+		    <itemvalue code="900002606">酬金调整</itemvalue>
+		    <itemvalue code="9000029600">酬金明细导出</itemvalue>
+		    <itemvalue code="90000150">备份上月渠道信息</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SVWAYSTATUS</definition>
+		<items>
+			<itemvalue code="0">未启用</itemvalue>
+			<itemvalue code="1">启用</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ISLOCK</definition>
+		<items>
+			<itemvalue code="0">未审核</itemvalue>
+			<itemvalue code="2">已锁定（已审核）</itemvalue>
+			<itemvalue code="1">未锁定（已审核）</itemvalue>
+		</items>
+	</syscode-local>
+	<!--          本地自定义模块               -->
+	<syscode-local>
+		<definition>ZIFEE_VALID</definition>
+		<items>
+			<itemvalue code="0">无效</itemvalue>
+			<itemvalue code="1">有效</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CONFIRM</definition>
+		<items>
+			<itemvalue code="0">未确认</itemvalue>
+			<itemvalue code="3">已确认</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>PROCESS</definition>
+		<items>
+			<itemvalue code="G1">G1 固定费计算</itemvalue>
+			<itemvalue code="G2">G2 用户出帐</itemvalue>
+			<itemvalue code="G3">G3 帐户出帐</itemvalue>
+			<itemvalue code="G4">G4 出帐确认</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>EBOXTYPE</definition>
+		<items>
+			<itemvalue code="1">营收款</itemvalue>
+			<itemvalue code="2">购卡款</itemvalue>
+			<itemvalue code="3">保证金</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SUBPHASE</definition>
+		<items>
+		    <itemvalue code="G1">G1 固定费</itemvalue>
+			<itemvalue code="G11">全球通计算</itemvalue>
+			<itemvalue code="G12">预付费计算</itemvalue>
+			<itemvalue code="G2">G2 用户出帐</itemvalue>
+			<itemvalue code="G21">原始有主</itemvalue>
+			<itemvalue code="G22">原始无主</itemvalue>
+			<itemvalue code="G23">补收冲减</itemvalue>
+			<itemvalue code="G24">无主转有</itemvalue>
+			<itemvalue code="G25">合并固定费</itemvalue>
+			<itemvalue code="G26">金卡减免</itemvalue>
+			<itemvalue code="G27">最低消费处理</itemvalue>
+			<itemvalue code="G28">用户应收</itemvalue>
+			<itemvalue code="G3">G3 帐户出帐</itemvalue>
+			<itemvalue code="G31">帐户分帐</itemvalue>
+			<itemvalue code="G32">集团优惠</itemvalue>
+			<itemvalue code="G33">帐户帐单取整</itemvalue>
+			<itemvalue code="G4">G4 出帐确认</itemvalue>
+			<itemvalue code="G41">出帐确认</itemvalue>
+			<itemvalue code="G42">退一奖一</itemvalue>
+			<itemvalue code="G51">账单优惠</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>RECFEECALRUL_PATYPE</definition>
+		<items>
+			<itemvalue code="0">现金</itemvalue>
+			<itemvalue code="1">划扣</itemvalue>
+			<itemvalue code="2">托收</itemvalue>
+			<itemvalue code="3">欠费检查</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>WOFF_RUTLTYPE</definition>
+		<items>
+			<itemvalue code="0">允许</itemvalue>
+			<itemvalue code="1">限制</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ISREPLAY</definition>
+		<items>
+			<itemvalue code="1">需要</itemvalue>
+			<itemvalue code="0">不需要</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SOURCE</definition>
+		<items>
+			<itemvalue code="0">缴费</itemvalue>
+			<itemvalue code="1">主动开机</itemvalue>
+			<itemvalue code="2">激活</itemvalue>
+			<itemvalue code="3">有效期变更</itemvalue>
+			<itemvalue code="4">携号转品牌</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>STATUS</definition>
+		<items>
+			<itemvalue code="0">正使用</itemvalue>
+			<itemvalue code="1">主动停机（含申请停机和挂失停机）</itemvalue>
+			<itemvalue code="2">欠费停机（含有效期停机）</itemvalue>
+			<itemvalue code="3">主动停机＋欠费停机（含有效期停机）</itemvalue>
+			<itemvalue code="4">所有</itemvalue>
+		</items>
+	</syscode-local>
+	<!-- 中测渠道积分 -->
+	<syscode-local>
+		<definition>SUCCESSFLAG</definition>
+		<items>
+			<itemvalue code="yes">通过</itemvalue>
+			<itemvalue code="no">不通过</itemvalue>
+		</items>
+	</syscode-local>
+	<!-- 是否退回（渠道有价物流程） -->
+	<syscode-local>
+		<definition>CMS_ISBACK</definition>
+		<items>
+			<itemvalue code="0">否</itemvalue>
+			<itemvalue code="1">是</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>MONSTATUS</definition>
+		<items>
+			<itemvalue code="0">未月结</itemvalue>
+			<itemvalue code="1">已月结</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ADDANDDELETE</definition>
+		<items>
+			<itemvalue code="0">增加</itemvalue>
+			<itemvalue code="1">删除</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>BUSI_OPRTYPE</definition>
+		<items>
+			<itemvalue code="I">新增</itemvalue>
+			<itemvalue code="U">修改</itemvalue>
+			<itemvalue code="D">删除或取消</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>M_OPRACTION</definition>
+		<items>
+			<itemvalue code="INSERT">新增</itemvalue>
+			<itemvalue code="UPDATE">修改</itemvalue>
+			<itemvalue code="DELETE">删除</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>BUSI_BRAND</definition>
+		<items>
+			<itemvalue code="1">全球通</itemvalue>
+			<itemvalue code="2">神州行</itemvalue>
+			<itemvalue code="3">动感地带</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_RECRANGE</definition>
+		<items>
+			<itemvalue code="0">营业厅内</itemvalue>
+			<itemvalue code="1">营业厅外</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_FLOWTYPE</definition>
+		<items>
+			<itemvalue code="0">客流量</itemvalue>
+			<itemvalue code="1">人流量</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SETTLETYPE</definition>
+		<items>
+			<itemvalue code="01">酬金结算</itemvalue>
+			<itemvalue code="02">分成结算</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>OPRTYPE</definition>
+		<items>
+			<itemvalue code="1">新增</itemvalue>
+			<itemvalue code="2">修改前</itemvalue>
+			<itemvalue code="3">修改后</itemvalue>
+			<itemvalue code="4">删除</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_AUDIT_AUDITSTATE</definition>
+		<items>
+			<itemvalue code="0">已审核</itemvalue>
+			<itemvalue code="1">未审核</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_INDEPOT</definition>
+		<items>
+			<itemvalue code="5">SIM卡</itemvalue>
+			<itemvalue code="0">充值卡</itemvalue>
+			<itemvalue code="3">套卡</itemvalue>
+			<itemvalue code="1">手机</itemvalue>
+			<itemvalue code="2">积分卡</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_RECORDOBJECT</definition>
+		<items>
+			<itemvalue code="0">工号</itemvalue>
+			<itemvalue code="1">渠道</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>CH_OPTTYPE</definition>
+		<items>
+			<itemvalue code="0">新增</itemvalue>
+			<itemvalue code="1">删除</itemvalue>
+			<itemvalue code="2">修改前</itemvalue>
+			<itemvalue code="3">修改后</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>CH_SEARCH</definition>
+		<items>
+			<itemvalue code="0">按工号查询</itemvalue>
+			<itemvalue code="1">按渠道查询</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>CH_SUMTYPE</definition>
+		<items>
+			<itemvalue code="0">按工号汇总</itemvalue>
+			<itemvalue code="1">按渠道汇总</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_OPRINCOMEST</definition>
+		<items>
+			<itemvalue code="1">已提交</itemvalue>
+			<itemvalue code="2">提交已确认</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SUCCESS</definition>
+		<items>
+			<itemvalue code="0">成功</itemvalue>
+			<itemvalue code="1">失败</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>OPRSTATE</definition>
+		<items>
+			<itemvalue code="0">CX未处理HW未处理</itemvalue>
+			<itemvalue code="1">CX已处理HW未处理</itemvalue>
+			<itemvalue code="2">CX已处理HW已处理</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>PC_OPRTYPE</definition>
+		<items>
+			<itemvalue code="Single">单个复制</itemvalue>
+			<itemvalue code="Batch">批量复制</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>BATCHSUCCESS</definition>
+		<items>
+			<itemvalue code="0">成功</itemvalue>
+			<itemvalue code="1">失败</itemvalue>
+			<itemvalue code="2">部分成功</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CZTYPE</definition>
+		<items>
+			<itemvalue code="CZ">充值</itemvalue>
+			<itemvalue code="NCZ">充正</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_SUBDSTORDERSTATE</definition>
+		<items>
+			<itemvalue code="10">插入中间表失败</itemvalue>
+			<itemvalue code="11">订单完成，同步中</itemvalue>
+			<itemvalue code="12">订单同步成功</itemvalue>
+			<itemvalue code="13">订单同步失败</itemvalue>
+			<itemvalue code="15">返销账失败</itemvalue>
+			<itemvalue code="8">已作废</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>COMM</definition>
+		<items>
+			<itemvalue code="Close">取消</itemvalue>
+			<itemvalue code="Open">开通</itemvalue>
+			<itemvalue code="Puase">暂停</itemvalue>
+			<itemvalue code="Reset">恢复</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>PROCESSFLAG</definition>
+		<items>
+			<itemvalue code="0">未处理</itemvalue>
+			<itemvalue code="1">成功处理</itemvalue>
+			<itemvalue code="9">失败</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>PROCESSED</definition>
+		<items>
+			<itemvalue code="0">未处理</itemvalue>
+			<itemvalue code="1">已回收</itemvalue>
+			<itemvalue code="2">处理失败</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_AUDIT_OPTYPE</definition>
+		<items>
+			<itemvalue code="I">新增</itemvalue>
+			<itemvalue code="U">更新</itemvalue>
+			<itemvalue code="D">删除</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_FILEDTYPE</definition>
+		<items>
+			<itemvalue code="0">数值型</itemvalue>
+			<itemvalue code="1">字符型</itemvalue>
+			<itemvalue code="2">日期型</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_PKTYPE</definition>
+		<items>
+			<itemvalue code="0">数值型</itemvalue>
+			<itemvalue code="1">字符型</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_STEMPRIGHT</definition>
+		<items>
+			<itemvalue code="1">分销权限</itemvalue>
+			<itemvalue code="2">渠道权限</itemvalue>
+			<itemvalue code="3">店员权限</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>REWARDSTDMODE</definition>
+		<items>
+		    <itemvalue code="1">统一标准酬金设置</itemvalue>
+		    <itemvalue code="2">标准关联渠道星级设置</itemvalue>
+		    <itemvalue code="3">网点酬金总额封顶设置</itemvalue>
+		    <itemvalue code="4">标准关联期数设置</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-dynamic>
+		<definition>CH_PW_FDAUDITDEF</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.fdauditdef.persistent.FdauditdefVO
+		</value-object>
+		<code>typename</code>
+		<name>typechname</name>
+	</syscode-dynamic>
+	<syscode-local>
+		<definition>CH_STARTSTATE</definition>
+		<items>
+			<itemvalue code="0">未启用</itemvalue>
+			<itemvalue code="1">已启用</itemvalue>
+		</items>
+	</syscode-local>
+	<!-- 审核状态 -->
+	<syscode-local>
+		<definition>CH_AUDITSTATE</definition>
+		<items>
+			<itemvalue code="0">待审核</itemvalue>
+			<itemvalue code="1">已审核</itemvalue>
+			<itemvalue code="2">未通过</itemvalue>
+		</items>
+	</syscode-local>
+	<!-- 有效性标志 -->
+	<syscode-local>
+		<definition>CH_VALIDFLAG</definition>
+		<items>
+			<itemvalue code="0">失效</itemvalue>
+			<itemvalue code="1">有效</itemvalue>
+		</items>
+	</syscode-local>
+    	<syscode-local>
+		<definition>CHRSTATUS</definition>
+		<items>
+			<itemvalue code="0">不可以处理</itemvalue>
+			<itemvalue code="1">可以处理</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CHR_CZTYPE</definition>
+		<items>
+			<itemvalue code="0">普通充值卡充值</itemvalue>
+			<itemvalue code="1">自动转预存</itemvalue>
+			<itemvalue code="2">手工转预存</itemvalue>
+			<itemvalue code="3">手工赠送</itemvalue>
+			<itemvalue code="4">自动赠送</itemvalue>
+		</items>
+	</syscode-local>
+    <syscode-local>
+		<definition>CITYIDNUM2NMAME</definition>
+		<items>
+    		<itemvalue code="200">广州</itemvalue>
+			<itemvalue code="755">深圳</itemvalue>
+			<itemvalue code="756">珠海</itemvalue>
+			<itemvalue code="757">佛山</itemvalue>
+			<itemvalue code="754">汕头</itemvalue>
+			<itemvalue code="752">惠州</itemvalue>
+			<itemvalue code="759">湛江</itemvalue>
+			<itemvalue code="750">江门</itemvalue>
+			<itemvalue code="758">肇庆</itemvalue>
+			<itemvalue code="751">韶关</itemvalue>
+			<itemvalue code="753">梅州</itemvalue>
+			<itemvalue code="769">东莞</itemvalue>
+			<itemvalue code="760">中山</itemvalue>
+			<itemvalue code="668">茂名</itemvalue>
+			<itemvalue code="660">汕尾</itemvalue>
+			<itemvalue code="768">潮州</itemvalue>
+			<itemvalue code="663">揭阳</itemvalue>
+			<itemvalue code="662">阳江</itemvalue>
+			<itemvalue code="763">清远</itemvalue>
+			<itemvalue code="762">河源</itemvalue>
+			<itemvalue code="766">云浮</itemvalue>
+			<itemvalue code="999">全省</itemvalue>
+		</items>
+	</syscode-local>
+	  <syscode-local>
+		<definition>CITYNAME</definition>
+		<items>
+		  <itemvalue code="GD">广东</itemvalue>
+    		<itemvalue code="GZ">广州</itemvalue>
+			<itemvalue code="SZ">深圳</itemvalue>
+			<itemvalue code="ZH">珠海</itemvalue>
+			<itemvalue code="FS">佛山</itemvalue>
+			<itemvalue code="ST">汕头</itemvalue>
+			<itemvalue code="HZ">惠州</itemvalue>
+			<itemvalue code="ZJ">湛江</itemvalue>
+			<itemvalue code="JM">江门</itemvalue>
+			<itemvalue code="ZQ">肇庆</itemvalue>
+			<itemvalue code="SG">韶关</itemvalue>
+			<itemvalue code="MZ">梅州</itemvalue>
+			<itemvalue code="DG">东莞</itemvalue>
+			<itemvalue code="ZS">中山</itemvalue>
+			<itemvalue code="MM">茂名</itemvalue>
+			<itemvalue code="SW">汕尾</itemvalue>
+			<itemvalue code="CZ">潮州</itemvalue>
+			<itemvalue code="JY">揭阳</itemvalue>
+			<itemvalue code="YJ">阳江</itemvalue>
+			<itemvalue code="QY">清远</itemvalue>
+			<itemvalue code="HY">河源</itemvalue>
+			<itemvalue code="YF">云浮</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>REGIONNAME</definition>
+		<items>
+    		<itemvalue code="GZ">广州</itemvalue>
+			<itemvalue code="SZ">深圳</itemvalue>
+			<itemvalue code="ZH">珠海</itemvalue>
+			<itemvalue code="FS">佛山</itemvalue>
+			<itemvalue code="ST">汕头</itemvalue>
+			<itemvalue code="HZ">惠州</itemvalue>
+			<itemvalue code="ZJ">湛江</itemvalue>
+			<itemvalue code="JM">江门</itemvalue>
+			<itemvalue code="ZQ">肇庆</itemvalue>
+			<itemvalue code="SG">韶关</itemvalue>
+			<itemvalue code="MZ">梅州</itemvalue>
+			<itemvalue code="DG">东莞</itemvalue>
+			<itemvalue code="ZS">中山</itemvalue>
+			<itemvalue code="MM">茂名</itemvalue>
+			<itemvalue code="SW">汕尾</itemvalue>
+			<itemvalue code="CZ">潮州</itemvalue>
+			<itemvalue code="JY">揭阳</itemvalue>
+			<itemvalue code="YJ">阳江</itemvalue>
+			<itemvalue code="QY">清远</itemvalue>
+			<itemvalue code="HY">河源</itemvalue>
+			<itemvalue code="YF">云浮</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>CITYNAME2</definition>
+		<items>
+		  <itemvalue code="999">全省</itemvalue>
+    		<itemvalue code="GZ">广州</itemvalue>
+			<itemvalue code="SZ">深圳</itemvalue>
+			<itemvalue code="ZH">珠海</itemvalue>
+			<itemvalue code="FS">佛山</itemvalue>
+			<itemvalue code="ST">汕头</itemvalue>
+			<itemvalue code="HZ">惠州</itemvalue>
+			<itemvalue code="ZJ">湛江</itemvalue>
+			<itemvalue code="JM">江门</itemvalue>
+			<itemvalue code="ZQ">肇庆</itemvalue>
+			<itemvalue code="SG">韶关</itemvalue>
+			<itemvalue code="MZ">梅州</itemvalue>
+			<itemvalue code="DG">东莞</itemvalue>
+			<itemvalue code="ZS">中山</itemvalue>
+			<itemvalue code="MM">茂名</itemvalue>
+			<itemvalue code="SW">汕尾</itemvalue>
+			<itemvalue code="CZ">潮州</itemvalue>
+			<itemvalue code="JY">揭阳</itemvalue>
+			<itemvalue code="YJ">阳江</itemvalue>
+			<itemvalue code="QY">清远</itemvalue>
+			<itemvalue code="HY">河源</itemvalue>
+			<itemvalue code="YF">云浮</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>CITYNAME3</definition>
+		<items>
+		  <itemvalue code="GD">全省</itemvalue>
+    		<itemvalue code="GZ">广州</itemvalue>
+			<itemvalue code="SZ">深圳</itemvalue>
+			<itemvalue code="ZH">珠海</itemvalue>
+			<itemvalue code="FS">佛山</itemvalue>
+			<itemvalue code="ST">汕头</itemvalue>
+			<itemvalue code="HZ">惠州</itemvalue>
+			<itemvalue code="ZJ">湛江</itemvalue>
+			<itemvalue code="JM">江门</itemvalue>
+			<itemvalue code="ZQ">肇庆</itemvalue>
+			<itemvalue code="SG">韶关</itemvalue>
+			<itemvalue code="MZ">梅州</itemvalue>
+			<itemvalue code="DG">东莞</itemvalue>
+			<itemvalue code="ZS">中山</itemvalue>
+			<itemvalue code="MM">茂名</itemvalue>
+			<itemvalue code="SW">汕尾</itemvalue>
+			<itemvalue code="CZ">潮州</itemvalue>
+			<itemvalue code="JY">揭阳</itemvalue>
+			<itemvalue code="YJ">阳江</itemvalue>
+			<itemvalue code="QY">清远</itemvalue>
+			<itemvalue code="HY">河源</itemvalue>
+			<itemvalue code="YF">云浮</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CITYNAME_ZH_CN</definition>
+		<items>
+    		<itemvalue code="广州">广州</itemvalue>
+			<itemvalue code="深圳">深圳</itemvalue>
+			<itemvalue code="珠海">珠海</itemvalue>
+			<itemvalue code="佛山">佛山</itemvalue>
+			<itemvalue code="汕头">汕头</itemvalue>
+			<itemvalue code="惠州">惠州</itemvalue>
+			<itemvalue code="湛江">湛江</itemvalue>
+			<itemvalue code="江门">江门</itemvalue>
+			<itemvalue code="肇庆">肇庆</itemvalue>
+			<itemvalue code="韶关">韶关</itemvalue>
+			<itemvalue code="梅州">梅州</itemvalue>
+			<itemvalue code="东莞">东莞</itemvalue>
+			<itemvalue code="中山">中山</itemvalue>
+			<itemvalue code="茂名">茂名</itemvalue>
+			<itemvalue code="汕尾">汕尾</itemvalue>
+			<itemvalue code="潮州">潮州</itemvalue>
+			<itemvalue code="揭阳">揭阳</itemvalue>
+			<itemvalue code="阳江">阳江</itemvalue>
+			<itemvalue code="清远">清远</itemvalue>
+			<itemvalue code="河源">河源</itemvalue>
+			<itemvalue code="云浮">云浮</itemvalue>
+			<itemvalue code="全省">全省</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>PAYFLAG</definition>
+		<items>
+			<itemvalue code="0">成功</itemvalue>
+			<itemvalue code="1">在途</itemvalue>
+			<itemvalue code="2">失败</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CHARGE_SOURCE</definition>
+		<items>
+			<itemvalue code="2">充值缴费</itemvalue>
+			<itemvalue code="3">固定费更新</itemvalue>
+			<itemvalue code="4">账本调整</itemvalue>
+			<itemvalue code="10">占号费</itemvalue>
+			<itemvalue code="100">其他</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CHARGETYPE</definition>
+		<items>
+			<itemvalue code="0">全量销账</itemvalue>
+			<itemvalue code="2">增量销账</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_STATE</definition>
+		<items>
+			<itemvalue code="0">失效</itemvalue>
+			<itemvalue code="1">生效</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_CALCFLAG</definition>
+		<items>
+			<itemvalue code="0">不需要计酬</itemvalue>
+			<itemvalue code="1">需要计酬</itemvalue>
+		</items>
+	</syscode-local>
+
+	<!-- 酬金查询明细与总表 -->
+	<syscode-local>
+		<definition>CH_STARLEVEL</definition>
+		<items>
+			<itemvalue code="0">未定星级</itemvalue>
+			<itemvalue code="1">一星级</itemvalue>
+			<itemvalue code="2">二星级</itemvalue>
+			<itemvalue code="3">三星级</itemvalue>
+			<itemvalue code="4">四星级</itemvalue>
+			<itemvalue code="5">五星级</itemvalue>
+			<itemvalue code="6">六星级</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_REWARDTYPE</definition>
+		<items>
+			<itemvalue code="-1">酬金调整</itemvalue>
+			<itemvalue code="0">标准卡固定酬金</itemvalue>
+			<itemvalue code="1">标准卡积分酬金</itemvalue>
+			<itemvalue code="2">标准卡专门津贴</itemvalue>
+			<itemvalue code="3">数据业务基本酬金</itemvalue>
+			<itemvalue code="4">数据业务奖励酬金</itemvalue>
+			<itemvalue code="5">服务业务基本酬金</itemvalue>
+			<itemvalue code="6">服务业务奖励酬金</itemvalue>
+			<itemvalue code="7">星级酬金</itemvalue>
+			<itemvalue code="8">项目启动金</itemvalue>
+			<itemvalue code="30">合作年限奖</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>CH_PWREWARDTYPE</definition>
+		<items>
+			<itemvalue code="51">专营补贴酬金</itemvalue>
+			<itemvalue code="52">销售达标酬金</itemvalue>
+			<itemvalue code="53">销售超额酬金</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ISBUDGET</definition>
+		<items>
+			<itemvalue code="0">预估</itemvalue>
+			<itemvalue code="1">实算</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ACCTYPE</definition>
+		<items>
+			<itemvalue code="1">按笔数计算</itemvalue>
+			<itemvalue code="2">按比例计算</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_PPAYSTATE</definition>
+		<items>
+			<itemvalue code="0">已发放</itemvalue>
+			<itemvalue code="1">未发放</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ISDELAY</definition>
+		<items>
+			<itemvalue code="0">否</itemvalue>
+			<itemvalue code="1">是</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ADT_RULEREL_VALID</definition>
+		<items>
+			<itemvalue code="0">无效</itemvalue>
+			<itemvalue code="1">有效</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ADTFLAG</definition>
+		<items>
+			<itemvalue code="-2">作废</itemvalue>
+			<itemvalue code="-1">失败</itemvalue>
+			<itemvalue code="0">待校验</itemvalue>
+			<itemvalue code="1">成功</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>PRESENTACCTID</definition>
+		<items>
+			<itemvalue code="20">动感品牌赠送帐本科目</itemvalue>
+			<itemvalue code="21">神大品牌赠送帐本科目</itemvalue>
+		</items>
+	</syscode-local>
+	<!-- BBC网站酬金 -->
+	<syscode-local>
+		<definition>CH_BBCREWARDTYPE</definition>
+		<items>
+			<itemvalue code="9">销售类基本酬金</itemvalue>
+			<itemvalue code="10">销售类奖励酬金</itemvalue>
+			<itemvalue code="11">新增网站活跃客户基本酬金</itemvalue>
+			<itemvalue code="12">新增网站活跃客户奖励酬金</itemvalue>
+			<itemvalue code="13">e100活跃客户基本酬金</itemvalue>
+			<itemvalue code="14">e100活跃客户奖励酬金</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_BBCCBBUSIBELONG</definition>
+		<items>
+			<itemvalue code="DATABUSI">数据销售类</itemvalue>
+			<itemvalue code="SELL">服务销售类</itemvalue>
+			<itemvalue code="CZ">充值销售类</itemvalue>
+			<itemvalue code="QUER">查询类</itemvalue>
+			<itemvalue code="ACTV">活跃类</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>CH_BBC_OSSRC</definition>
+		<items>
+		    <itemvalue code="0">社会渠道代理商</itemvalue>
+		    <itemvalue code="1">Web网盟</itemvalue>
+		    <itemvalue code="2">Wap网盟</itemvalue>
+		</items>
+	</syscode-local>
+	<!-- 自建他营(zjty)酬金 -->
+	<syscode-local>
+		<definition>CH_ZJTY_REWARDTYPE</definition>
+		<items>
+			<itemvalue code="80">标准卡销售酬金</itemvalue>
+			<itemvalue code="81">标准卡激活酬金</itemvalue>
+			<itemvalue code="82">标准卡客户质量奖</itemvalue>
+			<itemvalue code="83">服务业务基本酬金</itemvalue>
+			<itemvalue code="84">服务业务奖励酬金</itemvalue>
+			<itemvalue code="85">数据业务基本酬金</itemvalue>
+			<itemvalue code="86">数据业务奖励酬金</itemvalue>
+			<itemvalue code="87">终端销售基本酬金</itemvalue>
+			<itemvalue code="88">固定酬金</itemvalue>
+			<itemvalue code="89">自助业务酬金</itemvalue>
+			<itemvalue code="90">G3和家庭市场产品酬金</itemvalue>
+			<itemvalue code="91">集团业务酬金</itemvalue>
+			<itemvalue code="92">营销重点类酬金</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ISPASS</definition>
+		<items>
+			<itemvalue code="-1">未审核</itemvalue>
+			<itemvalue code="0">未通过</itemvalue>
+			<itemvalue code="1">通过</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ZJTY_ACCTYPE</definition>
+		<items>
+			<itemvalue code="0">按笔数计算</itemvalue>
+			<itemvalue code="1">按比例计算</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ZJTY_EXAMINECOEF</definition>
+		<items>
+			<itemvalue code="0">管理考核系数</itemvalue>
+			<itemvalue code="1">综合排名系数</itemvalue>
+			<itemvalue code="2">否决考核系数</itemvalue>
+			<itemvalue code="3">竞标系数</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ZJTY_EXAMINECOEF2</definition>
+		<items>
+			<itemvalue code="0">管理考核系数</itemvalue>
+			<itemvalue code="1">综合排名系数</itemvalue>
+			<itemvalue code="2">否决考核系数</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ZJTY_CITYLEVEL</definition>
+		<items>
+			<itemvalue code="0">一类地市</itemvalue>
+			<itemvalue code="1">二类地市</itemvalue>
+			<itemvalue code="2">三类地市</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ZJTY_BUSIBELONG</definition>
+		<items>
+			<itemvalue code="SERV">服务业务类</itemvalue>
+			<itemvalue code="CARD">标准卡类</itemvalue>
+			<itemvalue code="DATA">数据业务类</itemvalue>
+		 	<itemvalue code="CLIENT">定制终端类</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>ACCTTYPE</definition>
+		<items>
+			<itemvalue code="1">本地实收业务</itemvalue>
+			<itemvalue code="2">全省全网实收业务</itemvalue>
+			<itemvalue code="3">无线电频率占用费</itemvalue>
+			<itemvalue code="4">滞纳金</itemvalue>
+			<itemvalue code="5">非实收业务</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ACCTTCODEYPE</definition>
+		<items>
+			<itemvalue code="0">特殊会计代码与会计科目说明</itemvalue>
+			<itemvalue code="1">月基本费</itemvalue>
+			<itemvalue code="2">增值业务费</itemvalue>
+			<itemvalue code="3">通信费</itemvalue>
+			<itemvalue code="4">退费</itemvalue>
+			<itemvalue code="5">代收费</itemvalue>
+			<itemvalue code="6">补收费</itemvalue>
+			<itemvalue code="7">他人代付</itemvalue>
+			<itemvalue code="8">代他人付费</itemvalue>
+			<itemvalue code="9">违约金</itemvalue>
+			<itemvalue code="10">梦网信息费</itemvalue>
+			<itemvalue code="11">其他</itemvalue>
+		</items>
+	</syscode-local>
+
+	<!-- 当前用于IMSI段管理　　注意: 'GD-省公司'　-->
+	<syscode-local>
+		<definition>COMPANYNAME</definition>
+		<items>
+			<itemvalue code="GD">省公司</itemvalue>
+    		<itemvalue code="GZ">广州市公司</itemvalue>
+			<itemvalue code="SZ">深圳市公司</itemvalue>
+			<itemvalue code="ZH">珠海市公司</itemvalue>
+			<itemvalue code="FS">佛山市公司</itemvalue>
+			<itemvalue code="ST">汕头市公司</itemvalue>
+			<itemvalue code="HZ">惠州市公司</itemvalue>
+			<itemvalue code="ZJ">湛江市公司</itemvalue>
+			<itemvalue code="JM">江门市公司</itemvalue>
+			<itemvalue code="ZQ">肇庆市公司</itemvalue>
+			<itemvalue code="SG">韶关市公司</itemvalue>
+			<itemvalue code="MZ">梅州市公司</itemvalue>
+			<itemvalue code="DG">东莞市公司</itemvalue>
+			<itemvalue code="ZS">中山市公司</itemvalue>
+			<itemvalue code="MM">茂名市公司</itemvalue>
+			<itemvalue code="SW">汕尾市公司</itemvalue>
+			<itemvalue code="CZ">潮州市公司</itemvalue>
+			<itemvalue code="JY">揭阳市公司</itemvalue>
+			<itemvalue code="YJ">阳江市公司</itemvalue>
+			<itemvalue code="QY">清远市公司</itemvalue>
+			<itemvalue code="HY">河源市公司</itemvalue>
+			<itemvalue code="YF">云浮市公司</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>ISRESTRICT</definition>
+		<items>
+		    <itemvalue code="1">申请权限</itemvalue>
+			<itemvalue code="2">审批权限</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>DEALSTATE</definition>
+		<items>
+		    <itemvalue code="0">申请审批</itemvalue>
+			<itemvalue code="1">审批通过</itemvalue>
+			<itemvalue code="2">审批不通过</itemvalue>
+			<itemvalue code="3">取消申请（删除）</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>DEALSTATE2</definition>
+		<items>
+			<itemvalue code="1">审批通过</itemvalue>
+			<itemvalue code="2">审批不通过</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>TRASTATE</definition>
+		<items>
+		    <itemvalue code="0">未送去划扣</itemvalue>
+			<itemvalue code="1">划扣成功</itemvalue>
+			<itemvalue code="2">划扣失败</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>BRANDMODE</definition>
+		<items>
+		    <itemvalue code="GO">全球通</itemvalue>
+			<itemvalue code="SCP">SCP</itemvalue>
+			<itemvalue code="OCS">OCS</itemvalue>
+			<itemvalue code="HG">准实时回割</itemvalue>
+			<itemvalue code="OCE">OCE实销</itemvalue>
+			<itemvalue code="RB">实时账务</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>AIRCHGTYPE</definition>
+		<items>
+		    <itemvalue code="手工划帐">手工划帐</itemvalue>
+			<itemvalue code="自动划扣">自动划扣</itemvalue>
+			<itemvalue code="差异调整">差异调整</itemvalue>
+			<itemvalue code="BOSS增加">BOSS增加</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ERRORTYPE</definition>
+		<items>
+		    <itemvalue code="流水号重复">流水号重复</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>QSCHGTYPE</definition>
+		<items>
+		    <itemvalue code="0">单个</itemvalue>
+		    <itemvalue code="1">批量</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>QS_MAINFIELD</definition>
+		<items>
+		    <itemvalue code="0">可为空</itemvalue>
+		    <itemvalue code="1">关键－不可为空</itemvalue>
+		    <itemvalue code="2">关键－可为空</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>EMPROLE</definition>
+		<items>
+			<itemvalue code="1"> 省级代理商店主</itemvalue>
+			<itemvalue code="2"> 省级代理商店员</itemvalue>
+			<itemvalue code="3"> 省级代理商员工</itemvalue>
+			<itemvalue code="4"> 地市代理商店主</itemvalue>
+			<itemvalue code="5"> 地市代理商店员</itemvalue>
+			<itemvalue code="6"> 客服人员</itemvalue>
+			<itemvalue code="7"> 营业厅人员</itemvalue>
+			<itemvalue code="8"> 分公司人员</itemvalue>
+			<itemvalue code="9"> 客户经理</itemvalue>
+			<itemvalue code="10"> 网吧店主</itemvalue>
+			<itemvalue code="11"> 网吧员工</itemvalue>
+			<itemvalue code="12"> 公司职员</itemvalue>
+			<itemvalue code="13"> 机关职员</itemvalue>
+			<itemvalue code="14"> 报业专员</itemvalue>
+			<itemvalue code="15"> 医药业专员</itemvalue>
+			<itemvalue code="16"> 校园专员</itemvalue>
+			<itemvalue code="17"> 厂矿专员</itemvalue>
+			<itemvalue code="18"> 服务业专员</itemvalue>
+			<itemvalue code="19"> 农业专员</itemvalue>
+			<itemvalue code="20"> 其他</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SMSSTATUS</definition>
+		<items>
+			<itemvalue code="0"> 待确认</itemvalue>
+			<itemvalue code="1">已确认(接受修改)</itemvalue>
+			<itemvalue code="2"> 已确认（拒绝修改）</itemvalue>
+		</items>
+	</syscode-local>
+	<!-- 考核 -->
+	<syscode-local>
+		<definition>ISVOTED</definition>
+		<items>
+			<itemvalue code="1">是</itemvalue>
+			<itemvalue code="0">否</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ISSUCCESS</definition>
+		<items>
+			<itemvalue code="0">成功</itemvalue>
+			<itemvalue code="1">失败</itemvalue>
+			<itemvalue code="2">待处理</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-dynamic>
+		<definition>EXAMINESTD</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.examine.examinestd.persistent.ExaminestdVO
+		</value-object>
+		<code>exmnstdid</code>
+		<name>exmnstdname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>EXAMINE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.examine.examine.persistent.ExamineVO
+		</value-object>
+		<code>exmnid</code>
+		<name>exmnname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ADTCODE</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.reward.adtcode.persistent.AdtcodeVO
+		</value-object>
+		<code>adtcode</code>
+		<name>adtremark</name>
+	</syscode-dynamic>
+	<syscode-local>
+		<definition>mutistarts</definition>
+		<items>
+			<itemvalue code="100000">一星级</itemvalue>
+			<itemvalue code="010000">二星级</itemvalue>
+			<itemvalue code="001000">三星级</itemvalue>
+			<itemvalue code="000100">四星级</itemvalue>
+			<itemvalue code="000010">五星级</itemvalue>
+			<itemvalue code="000001">六星级</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ISFLAG</definition>
+		<items>
+			<itemvalue code="0">待结算</itemvalue>
+			<itemvalue code="1">待确认</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SYSTEMFLAG</definition>
+		<items>
+			<itemvalue code="1">地市上传酬金</itemvalue>
+			<itemvalue code="2">社会渠道酬金</itemvalue>
+			<itemvalue code="3">创薪联盟酬金</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>REWARDTYPE</definition>
+		<items>
+			<itemvalue code="1">一期</itemvalue>
+			<itemvalue code="2">二期</itemvalue>
+			<itemvalue code="3">三期</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CHADTDICTIDNAME</definition>
+		<items>
+			<itemvalue code="CH_REWARDTYPE">酬金期数</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_TASKSSTATUS</definition>
+		<items>
+			<itemvalue code="0">已处理</itemvalue>
+			<itemvalue code="1">处理中</itemvalue>
+			<itemvalue code="2">待处理</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_ADT_ADJUSTCHECKED</definition>
+		<items>
+			<itemvalue code="0">已核对</itemvalue>
+			<itemvalue code="1">未核对</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ADT_STATUS</definition>
+		<items>
+			<itemvalue code="0">已出报表</itemvalue>
+			<itemvalue code="1">完成汇总</itemvalue>
+			<itemvalue code="2">待出帐</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ADT_PAYMENTFLAG</definition>
+		<items>
+			<itemvalue code="0">同意出报表</itemvalue>
+			<itemvalue code="1">已出报表</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ADT_LISTFLAG</definition>
+		<items>
+			<itemvalue code="0">未出报表</itemvalue>
+			<itemvalue code="1">已出报表</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>ADT_ENDFLAG</definition>
+		<items>
+			<itemvalue code="0">否</itemvalue>
+			<itemvalue code="1">是</itemvalue>
+			<itemvalue code="2">明细数据更新中</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>CLASSPLATFORMBRANDINFO_STATE</definition>
+		<items>
+			<itemvalue code="1">有效</itemvalue>
+			<itemvalue code="0">失效</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>LUOJI_REWARDTYPE</definition>
+		<items>
+			<itemvalue code="1">合约终端酬金</itemvalue>
+			<itemvalue code="2">零合约终端酬金</itemvalue>
+			<itemvalue code="3">裸机终端基础酬金</itemvalue>
+			<itemvalue code="4">裸机终端省激励酬金</itemvalue>
+			<itemvalue code="5">裸机终端市激励酬金</itemvalue>
+		</items>
+	</syscode-local>
+
+		<syscode-local>
+		<definition>CLASSPLATFORMTDSTD_ACCTYPE</definition>
+		<items>
+			<itemvalue code="1">按笔</itemvalue>
+			<itemvalue code="2">按比例</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-local>
+		<definition>ZJ_CZHY</definition>
+		<items>
+			<itemvalue code="ZJ_CZHY_NonBrandGotone">预付费</itemvalue>
+			<itemvalue code="ZJ_CZHY_BrandGotone">全球通</itemvalue>
+		</items>
+	</syscode-local>
+
+	<syscode-dynamic>
+		<definition>IM_PR_COM</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.reward.imprcom.persistent.ImPrComVO
+		</value-object>
+		<code>comid</code>
+		<name>comname</name>
+	</syscode-dynamic>
+	
+	<syscode-local>
+		<definition>CH_ZJTY_GOTONEDETAIL_TYPE</definition>
+		<items>
+			<itemvalue code="cooperauid">合作商</itemvalue>
+			<itemvalue code="city">地市</itemvalue>
+			<itemvalue code="wayname">营业厅名称</itemvalue>
+			<itemvalue code="rewardreporttime">月份</itemvalue>
+			<itemvalue code="ywl58khcj">业务量（1）不选或选58商旅套餐、58上网套餐开户酬金</itemvalue>
+			<itemvalue code="ywl58jlcj1">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金1</itemvalue>
+			<itemvalue code="ywl58jlcj2">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金2</itemvalue>
+			<itemvalue code="ywl58jlcj3">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金3</itemvalue>
+			<itemvalue code="ywl58jlcj4">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金4</itemvalue>
+			<itemvalue code="ywl58jlcj5">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金5</itemvalue>
+			<itemvalue code="ywl58jlcj6">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金6</itemvalue>
+			<itemvalue code="ywl58jlcj7">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金7</itemvalue>
+			<itemvalue code="ywl58jlcj8">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金8</itemvalue>
+			<itemvalue code="ywl58jlcj9">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金9</itemvalue>
+			<itemvalue code="ywl58jlcj10">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金10</itemvalue>
+			<itemvalue code="ywl58jlcj11">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金11</itemvalue>
+			<itemvalue code="ywl58jlcj12">业务量（1）不选或选58商旅套餐、58上网套餐激励酬金12</itemvalue>
+			<itemvalue code="ywl88khcj">业务量（2）选88商旅套餐或88上网套餐开户酬金</itemvalue>
+			<itemvalue code="ywl88jlcj1">业务量（2）选88商旅套餐或88上网套餐激励酬金1</itemvalue>
+			<itemvalue code="ywl88jlcj2">业务量（2）选88商旅套餐或88上网套餐激励酬金2</itemvalue>
+			<itemvalue code="ywl88jlcj3">业务量（2）选88商旅套餐或88上网套餐激励酬金3</itemvalue>
+			<itemvalue code="ywl88jlcj4">业务量（2）选88商旅套餐或88上网套餐激励酬金4</itemvalue>
+			<itemvalue code="ywl88jlcj5">业务量（2）选88商旅套餐或88上网套餐激励酬金5</itemvalue>
+			<itemvalue code="ywl88jlcj6">业务量（2）选88商旅套餐或88上网套餐激励酬金6</itemvalue>
+			<itemvalue code="ywl88jlcj7">业务量（2）选88商旅套餐或88上网套餐激励酬金7</itemvalue>
+			<itemvalue code="ywl88jlcj8">业务量（2）选88商旅套餐或88上网套餐激励酬金8</itemvalue>
+			<itemvalue code="ywl88jlcj9">业务量（2）选88商旅套餐或88上网套餐激励酬金9</itemvalue>
+			<itemvalue code="ywl88jlcj10">业务量（2）选88商旅套餐或88上网套餐激励酬金10</itemvalue>
+			<itemvalue code="ywl88jlcj11">业务量（2）选88商旅套餐或88上网套餐激励酬金11</itemvalue>
+			<itemvalue code="ywl88jlcj12">业务量（2）选88商旅套餐或88上网套餐激励酬金12</itemvalue>
+			<itemvalue code="ywl128khcj">业务量（3）选128商旅套餐或128上网套餐开户酬金</itemvalue>
+			<itemvalue code="ywl128jlcj1">业务量（3）选128商旅套餐或128上网套餐激励酬金1</itemvalue>
+			<itemvalue code="ywl128jlcj2">业务量（3）选128商旅套餐或128上网套餐激励酬金2</itemvalue>
+			<itemvalue code="ywl128jlcj3">业务量（3）选128商旅套餐或128上网套餐激励酬金3</itemvalue>
+			<itemvalue code="ywl128jlcj4">业务量（3）选128商旅套餐或128上网套餐激励酬金4</itemvalue>
+			<itemvalue code="ywl128jlcj5">业务量（3）选128商旅套餐或128上网套餐激励酬金5</itemvalue>
+			<itemvalue code="ywl128jlcj6">业务量（3）选128商旅套餐或128上网套餐激励酬金6</itemvalue>
+			<itemvalue code="ywl128jlcj7">业务量（3）选128商旅套餐或128上网套餐激励酬金7</itemvalue>
+			<itemvalue code="ywl128jlcj8">业务量（3）选128商旅套餐或128上网套餐激励酬金8</itemvalue>
+			<itemvalue code="ywl128jlcj9">业务量（3）选128商旅套餐或128上网套餐激励酬金9</itemvalue>
+			<itemvalue code="ywl128jlcj10">业务量（3）选128商旅套餐或128上网套餐激励酬金10</itemvalue>
+			<itemvalue code="ywl128jlcj11">业务量（3）选128商旅套餐或128上网套餐激励酬金11</itemvalue>
+			<itemvalue code="ywl128jlcj12">业务量（3）选128商旅套餐或128上网套餐激励酬金12</itemvalue>
+			<itemvalue code="ywl158khcj">业务量（4）158商旅套餐开户酬金</itemvalue>
+			<itemvalue code="ywl158jlcj1">业务量（4）158商旅套餐激励酬金1</itemvalue>
+			<itemvalue code="ywl158jlcj2">业务量（4）158商旅套餐激励酬金2</itemvalue>
+			<itemvalue code="ywl158jlcj3">业务量（4）158商旅套餐激励酬金3</itemvalue>
+			<itemvalue code="ywl158jlcj4">业务量（4）158商旅套餐激励酬金4</itemvalue>
+			<itemvalue code="ywl158jlcj5">业务量（4）158商旅套餐激励酬金5</itemvalue>
+			<itemvalue code="ywl158jlcj6">业务量（4）158商旅套餐激励酬金6</itemvalue>
+			<itemvalue code="ywl158jlcj7">业务量（4）158商旅套餐激励酬金7</itemvalue>
+			<itemvalue code="ywl158jlcj8">业务量（4）158商旅套餐激励酬金8</itemvalue>
+			<itemvalue code="ywl158jlcj9">业务量（4）158商旅套餐激励酬金9</itemvalue>
+			<itemvalue code="ywl158jlcj10">业务量（4）158商旅套餐激励酬金10</itemvalue>
+			<itemvalue code="ywl158jlcj11">业务量（4）158商旅套餐激励酬金11</itemvalue>
+			<itemvalue code="ywl158jlcj12">业务量（4）158商旅套餐激励酬金12</itemvalue>
+			<itemvalue code="ywl188khcj">业务量（5）选188商旅套餐开户酬金</itemvalue>
+			<itemvalue code="ywl188jlcj1">业务量（5）选188商旅套餐激励酬金1</itemvalue>
+			<itemvalue code="ywl188jlcj2">业务量（5）选188商旅套餐激励酬金2</itemvalue>
+			<itemvalue code="ywl188jlcj3">业务量（5）选188商旅套餐激励酬金3</itemvalue>
+			<itemvalue code="ywl188jlcj4">业务量（5）选188商旅套餐激励酬金4</itemvalue>
+			<itemvalue code="ywl188jlcj5">业务量（5）选188商旅套餐激励酬金5</itemvalue>
+			<itemvalue code="ywl188jlcj6">业务量（5）选188商旅套餐激励酬金6</itemvalue>
+			<itemvalue code="ywl188jlcj7">业务量（5）选188商旅套餐激励酬金7</itemvalue>
+			<itemvalue code="ywl188jlcj8">业务量（5）选188商旅套餐激励酬金8</itemvalue>
+			<itemvalue code="ywl188jlcj9">业务量（5）选188商旅套餐激励酬金9</itemvalue>
+			<itemvalue code="ywl188jlcj10">业务量（5）选188商旅套餐激励酬金10</itemvalue>
+			<itemvalue code="ywl188jlcj11">业务量（5）选188商旅套餐激励酬金11</itemvalue>
+			<itemvalue code="ywl188jlcj12">业务量（5）选188商旅套餐激励酬金12</itemvalue>
+			<itemvalue code="ywl288khcj">业务量（6）选288、388、588、888商旅套餐开户酬金</itemvalue>
+			<itemvalue code="ywl288jlcj1">业务量（6）选288、388、588、888商旅套餐激励酬金1</itemvalue>
+			<itemvalue code="ywl288jlcj2">业务量（6）选288、388、588、888商旅套餐激励酬金2</itemvalue>
+			<itemvalue code="ywl288jlcj3">业务量（6）选288、388、588、888商旅套餐激励酬金3</itemvalue>
+			<itemvalue code="ywl288jlcj4">业务量（6）选288、388、588、888商旅套餐激励酬金4</itemvalue>
+			<itemvalue code="ywl288jlcj5">业务量（6）选288、388、588、888商旅套餐激励酬金5</itemvalue>
+			<itemvalue code="ywl288jlcj6">业务量（6）选288、388、588、888商旅套餐激励酬金6</itemvalue>
+			<itemvalue code="ywl288jlcj7">业务量（6）选288、388、588、888商旅套餐激励酬金7</itemvalue>
+			<itemvalue code="ywl288jlcj8">业务量（6）选288、388、588、888商旅套餐激励酬金8</itemvalue>
+			<itemvalue code="ywl288jlcj9">业务量（6）选288、388、588、888商旅套餐激励酬金9</itemvalue>
+			<itemvalue code="ywl288jlcj10">业务量（6）选288、388、588、888商旅套餐激励酬金10</itemvalue>
+			<itemvalue code="ywl288jlcj11">业务量（6）选288、388、588、888商旅套餐激励酬金11</itemvalue>
+			<itemvalue code="ywl288jlcj12">业务量（6）选288、388、588、888商旅套餐激励酬金12</itemvalue>
+			<itemvalue code="ywlmzonetogotone">业务量（7）预付费转全球通</itemvalue>
+			<itemvalue code="dwkhcj">单位酬金开户酬金</itemvalue>
+			<itemvalue code="dw58cj">单位酬金不选或选58商旅套餐、58上网套餐</itemvalue>
+			<itemvalue code="dw88cj">单位酬金选88商旅套餐或88上网套餐</itemvalue>
+			<itemvalue code="dw128cj">单位酬金选128商旅套餐或128上网套餐</itemvalue>
+			<itemvalue code="dw158cj">单位酬金158商旅套餐</itemvalue>
+			<itemvalue code="dw188cj">单位酬金选188商旅套餐</itemvalue>
+			<itemvalue code="dw288cj">单位酬金选288、388、588、888商旅套餐</itemvalue>
+			<itemvalue code="dwmzonetogotone">单位酬金（7）预付费转全球通</itemvalue>
+			<itemvalue code="cjtotal58khcj">酬金总额（1）不选或选58商旅套餐、58上网套餐开户酬金</itemvalue>
+			<itemvalue code="cjtotal58jlcj1">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金1</itemvalue>
+			<itemvalue code="cjtotal58jlcj2">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金2</itemvalue>
+			<itemvalue code="cjtotal58jlcj3">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金3</itemvalue>
+			<itemvalue code="cjtotal58jlcj4">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金4</itemvalue>
+			<itemvalue code="cjtotal58jlcj5">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金5</itemvalue>
+			<itemvalue code="cjtotal58jlcj6">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金6</itemvalue>
+			<itemvalue code="cjtotal58jlcj7">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金7</itemvalue>
+			<itemvalue code="cjtotal58jlcj8">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金8</itemvalue>
+			<itemvalue code="cjtotal58jlcj9">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金9</itemvalue>
+			<itemvalue code="cjtotal58jlcj10">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金10</itemvalue>
+			<itemvalue code="cjtotal58jlcj11">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金11</itemvalue>
+			<itemvalue code="cjtotal58jlcj12">酬金总额（1）不选或选58商旅套餐、58上网套餐激励酬金12</itemvalue>
+			<itemvalue code="cjtotal88khcj">酬金总额（2）选88商旅套餐或88上网套餐开户酬金</itemvalue>
+			<itemvalue code="cjtotal88jlcj1">酬金总额（2）选88商旅套餐或88上网套餐激励酬金1</itemvalue>
+			<itemvalue code="cjtotal88jlcj2">酬金总额（2）选88商旅套餐或88上网套餐激励酬金2</itemvalue>
+			<itemvalue code="cjtotal88jlcj3">酬金总额（2）选88商旅套餐或88上网套餐激励酬金3</itemvalue>
+			<itemvalue code="cjtotal88jlcj4">酬金总额（2）选88商旅套餐或88上网套餐激励酬金4</itemvalue>
+			<itemvalue code="cjtotal88jlcj5">酬金总额（2）选88商旅套餐或88上网套餐激励酬金5</itemvalue>
+			<itemvalue code="cjtotal88jlcj6">酬金总额（2）选88商旅套餐或88上网套餐激励酬金6</itemvalue>
+			<itemvalue code="cjtotal88jlcj7">酬金总额（2）选88商旅套餐或88上网套餐激励酬金7</itemvalue>
+			<itemvalue code="cjtotal88jlcj8">酬金总额（2）选88商旅套餐或88上网套餐激励酬金8</itemvalue>
+			<itemvalue code="cjtotal88jlcj9">酬金总额（2）选88商旅套餐或88上网套餐激励酬金9</itemvalue>
+			<itemvalue code="cjtotal88jlcj10">酬金总额（2）选88商旅套餐或88上网套餐激励酬金10</itemvalue>
+			<itemvalue code="cjtotal88jlcj11">酬金总额（2）选88商旅套餐或88上网套餐激励酬金11</itemvalue>
+			<itemvalue code="cjtotal88jlcj12">酬金总额（2）选88商旅套餐或88上网套餐激励酬金12</itemvalue>
+			<itemvalue code="cjtotal128khcj">酬金总额（3）选128商旅套餐或128上网套餐开户酬金</itemvalue>
+			<itemvalue code="cjtotal128jlcj1">酬金总额（3）选128商旅套餐或128上网套餐激励酬金1</itemvalue>
+			<itemvalue code="cjtotal128jlcj2">酬金总额（3）选128商旅套餐或128上网套餐激励酬金2</itemvalue>
+			<itemvalue code="cjtotal128jlcj3">酬金总额（3）选128商旅套餐或128上网套餐激励酬金3</itemvalue>
+			<itemvalue code="cjtotal128jlcj4">酬金总额（3）选128商旅套餐或128上网套餐激励酬金4</itemvalue>
+			<itemvalue code="cjtotal128jlcj5">酬金总额（3）选128商旅套餐或128上网套餐激励酬金5</itemvalue>
+			<itemvalue code="cjtotal128jlcj6">酬金总额（3）选128商旅套餐或128上网套餐激励酬金6</itemvalue>
+			<itemvalue code="cjtotal128jlcj7">酬金总额（3）选128商旅套餐或128上网套餐激励酬金7</itemvalue>
+			<itemvalue code="cjtotal128jlcj8">酬金总额（3）选128商旅套餐或128上网套餐激励酬金8</itemvalue>
+			<itemvalue code="cjtotal128jlcj9">酬金总额（3）选128商旅套餐或128上网套餐激励酬金9</itemvalue>
+			<itemvalue code="cjtotal128jlcj10">酬金总额（3）选128商旅套餐或128上网套餐激励酬金10</itemvalue>
+			<itemvalue code="cjtotal128jlcj11">酬金总额（3）选128商旅套餐或128上网套餐激励酬金11</itemvalue>
+			<itemvalue code="cjtotal128jlcj12">酬金总额（3）选128商旅套餐或128上网套餐激励酬金12</itemvalue>
+			<itemvalue code="cjtotal158khcj">酬金总额（4）158商旅套餐开户酬金</itemvalue>
+			<itemvalue code="cjtotal158jlcj1">酬金总额（4）158商旅套餐激励酬金1</itemvalue>
+			<itemvalue code="cjtotal158jlcj2">酬金总额（4）158商旅套餐激励酬金2</itemvalue>
+			<itemvalue code="cjtotal158jlcj3">酬金总额（4）158商旅套餐激励酬金3</itemvalue>
+			<itemvalue code="cjtotal158jlcj4">酬金总额（4）158商旅套餐激励酬金4</itemvalue>
+			<itemvalue code="cjtotal158jlcj5">酬金总额（4）158商旅套餐激励酬金5</itemvalue>
+			<itemvalue code="cjtotal158jlcj6">酬金总额（4）158商旅套餐激励酬金6</itemvalue>
+			<itemvalue code="cjtotal158jlcj7">酬金总额（4）158商旅套餐激励酬金7</itemvalue>
+			<itemvalue code="cjtotal158jlcj8">酬金总额（4）158商旅套餐激励酬金8</itemvalue>
+			<itemvalue code="cjtotal158jlcj9">酬金总额（4）158商旅套餐激励酬金9</itemvalue>
+			<itemvalue code="cjtotal158jlcj10">酬金总额（4）158商旅套餐激励酬金10</itemvalue>
+			<itemvalue code="cjtotal158jlcj11">酬金总额（4）158商旅套餐激励酬金11</itemvalue>
+			<itemvalue code="cjtotal158jlcj12">酬金总额（4）158商旅套餐激励酬金12</itemvalue>
+			<itemvalue code="cjtotal188khcj">酬金总额（5）选188商旅套餐开户酬金</itemvalue>
+			<itemvalue code="cjtotal188jlcj1">酬金总额（5）选188商旅套餐激励酬金1</itemvalue>
+			<itemvalue code="cjtotal188jlcj2">酬金总额（5）选188商旅套餐激励酬金2</itemvalue>
+			<itemvalue code="cjtotal188jlcj3">酬金总额（5）选188商旅套餐激励酬金3</itemvalue>
+			<itemvalue code="cjtotal188jlcj4">酬金总额（5）选188商旅套餐激励酬金4</itemvalue>
+			<itemvalue code="cjtotal188jlcj5">酬金总额（5）选188商旅套餐激励酬金5</itemvalue>
+			<itemvalue code="cjtotal188jlcj6">酬金总额（5）选188商旅套餐激励酬金6</itemvalue>
+			<itemvalue code="cjtotal188jlcj7">酬金总额（5）选188商旅套餐激励酬金7</itemvalue>
+			<itemvalue code="cjtotal188jlcj8">酬金总额（5）选188商旅套餐激励酬金8</itemvalue>
+			<itemvalue code="cjtotal188jlcj9">酬金总额（5）选188商旅套餐激励酬金9</itemvalue>
+			<itemvalue code="cjtotal188jlcj10">酬金总额（5）选188商旅套餐激励酬金10</itemvalue>
+			<itemvalue code="cjtotal188jlcj11">酬金总额（5）选188商旅套餐激励酬金11</itemvalue>
+			<itemvalue code="cjtotal188jlcj12">酬金总额（5）选188商旅套餐激励酬金12</itemvalue>
+			<itemvalue code="cjtotal288khcj">酬金总额（6）选288、388、588、888商旅套餐开户酬金</itemvalue>
+			<itemvalue code="cjtotal288jlcj1">酬金总额（6）选288、388、588、888商旅套餐激励酬金1</itemvalue>
+			<itemvalue code="cjtotal288jlcj2">酬金总额（6）选288、388、588、888商旅套餐激励酬金2</itemvalue>
+			<itemvalue code="cjtotal288jlcj3">酬金总额（6）选288、388、588、888商旅套餐激励酬金3</itemvalue>
+			<itemvalue code="cjtotal288jlcj4">酬金总额（6）选288、388、588、888商旅套餐激励酬金4</itemvalue>
+			<itemvalue code="cjtotal288jlcj5">酬金总额（6）选288、388、588、888商旅套餐激励酬金5</itemvalue>
+			<itemvalue code="cjtotal288jlcj6">酬金总额（6）选288、388、588、888商旅套餐激励酬金6</itemvalue>
+			<itemvalue code="cjtotal288jlcj7">酬金总额（6）选288、388、588、888商旅套餐激励酬金7</itemvalue>
+			<itemvalue code="cjtotal288jlcj8">酬金总额（6）选288、388、588、888商旅套餐激励酬金8</itemvalue>
+			<itemvalue code="cjtotal288jlcj9">酬金总额（6）选288、388、588、888商旅套餐激励酬金9</itemvalue>
+			<itemvalue code="cjtotal288jlcj10">酬金总额（6）选288、388、588、888商旅套餐激励酬金10</itemvalue>
+			<itemvalue code="cjtotal288jlcj11">酬金总额（6）选288、388、588、888商旅套餐激励酬金11</itemvalue>
+			<itemvalue code="cjtotal288jlcj12">酬金总额（6）选288、388、588、888商旅套餐激励酬金12</itemvalue>
+			<itemvalue code="cjtotalmzonetogotone">酬金总额（7）预付费转全球通</itemvalue>
+			<itemvalue code="manageexamine">考核系数管理考核系数</itemvalue>
+			<itemvalue code="vetocoefficient">考核系数否决系数</itemvalue>
+			<itemvalue code="ordercoefficient">考核系数综合排名系数</itemvalue>
+			<itemvalue code="campaigncoefficient">考核系数竞标系数</itemvalue>
+			<itemvalue code="totalreward">全省统一基础酬金总额</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>CH_ZJTY_NOGOTONEDETAIL_TYPE</definition>
+		<items>
+			<itemvalue code="cooperauid">合作商</itemvalue>
+			<itemvalue code="city">地市</itemvalue>
+			<itemvalue code="wayname">营业厅名称</itemvalue>
+			<itemvalue code="rewardreporttime">月份</itemvalue>
+			<itemvalue code="ywlmzone100">销量套卡销售（7）动感地带100元</itemvalue>
+			<itemvalue code="ywlmzone55">销量套卡销售（8）动感地带55元</itemvalue>
+			<itemvalue code="ywlmzone25">销量套卡销售（9）动感地带25元</itemvalue>
+			<itemvalue code="ywlsz100">销量套卡销售（10）神州行100元</itemvalue>
+			<itemvalue code="ywlsz55">销量套卡销售（11）神州行55元</itemvalue>
+			<itemvalue code="ywlcardtotal">销量充值业务（12）充值总金额(含30、50、100、300元充值卡)</itemvalue>
+			<itemvalue code="ywlmzonewl">销量（13）动感地带网聊卡</itemvalue>
+			<itemvalue code="ywlt52g">销量（14）定制终端销售量低于5002G终端</itemvalue>
+			<itemvalue code="ywlt53g">销量（14）定制终端销售量低于5003G终端</itemvalue>
+			<itemvalue code="ywlt102g">销量（14）定制终端销售量501-10002G终端</itemvalue>
+			<itemvalue code="ywlt103g">销量（14）定制终端销售量501-10003G终端</itemvalue>
+			<itemvalue code="ywlt152g">销量（14）定制终端销售量1001-15002G终端</itemvalue>
+			<itemvalue code="ywlt153g">销量（14）定制终端销售量1001-15003G终端</itemvalue>
+			<itemvalue code="ywlt202g">销量（14）定制终端销售量1501-20002G终端</itemvalue>
+			<itemvalue code="ywlt203g">销量（14）定制终端销售量1501-20003G终端</itemvalue>
+			<itemvalue code="ywlt252g">销量（14）定制终端销售量2001-25002G终端</itemvalue>
+			<itemvalue code="ywlt253g">销量（14）定制终端销售量2001-25003G终端</itemvalue>
+			<itemvalue code="ywlt302g">销量（14）定制终端销售量2501-30002G终端</itemvalue>
+			<itemvalue code="ywlt303g">销量（14）定制终端销售量2501-30003G终端</itemvalue>
+			<itemvalue code="ywlt352g">销量（14）定制终端销售量3001-35002G终端</itemvalue>
+			<itemvalue code="ywlt353g">销量（14）定制终端销售量3001-35003G终端</itemvalue>
+			<itemvalue code="ywlt402g">销量（14）定制终端销售量3501-40002G终端</itemvalue>
+			<itemvalue code="ywlt403g">销量（14）定制终端销售量3501-40003G终端</itemvalue>
+			<itemvalue code="ywlt502g">销量（14）定制终端销售量4000以上2G终端</itemvalue>
+			<itemvalue code="ywlt503g">销量（14）定制终端销售量4000以上3G终端</itemvalue>
+			<itemvalue code="ywlmifi">销量（14）定制终端销售量MIFI</itemvalue>
+			<itemvalue code="ywlchangecard">销量（15）补换卡</itemvalue>
+			<itemvalue code="ywlopenmobile">销量（16）停/开机</itemvalue>
+			<itemvalue code="ywlservicechange">销量（17）服务功能变更（服务功能变更包括中文秘书、主叫显示、 语音信箱、三方通话、呼叫限制、沟通100通讯录、会议通话、理财通等8种的新增或取消。同一号码每月只计算一次）</itemvalue>
+			<itemvalue code="ywlpkchanlow">销量（18A）套餐变更（高改低）</itemvalue>
+			<itemvalue code="ywlpkchanhigh">销量（18B）套餐变更（低改高）</itemvalue>
+			<itemvalue code="ywlcash">销量（19）现金缴费金额</itemvalue>
+			<itemvalue code="ywlmoneyamount">销量（20）预存话费金额（注：定制终端营销案所产生的预存话费不计入此列）</itemvalue>
+			<itemvalue code="ywlpkchan">销量（21）套餐变更</itemvalue>
+			<itemvalue code="ywlzuservicechange">销量（22）服务功能变更（包括中文秘书、主叫显示、 语音信箱、三方通话、呼叫限制、沟通100通讯录、会议通话、理财通等8种的新增或取消及停/开机业务）</itemvalue>
+			<itemvalue code="ywlcashamount">销量（23）现金缴费金额</itemvalue>
+			<itemvalue code="ywlfamilybroadband">销量(24)欢乐在线(含商务版)5元套餐1个月后</itemvalue>
+			<itemvalue code="ywlhlzx51">销量(24)欢乐在线(含商务版)5元套餐3个月后</itemvalue>
+			<itemvalue code="ywlhlzx53">销量(24)欢乐在线(含商务版)10元套餐1个月后</itemvalue>
+			<itemvalue code="ywlhlzx101">销量(24)欢乐在线(含商务版)10元套餐3个月后</itemvalue>
+			<itemvalue code="ywlhlzx103">销量(25)信息机套卡</itemvalue>
+			<itemvalue code="ywlinfocomress">销量家庭宽带开户</itemvalue>
+			<itemvalue code="dwmzone100">单位酬金套卡销售（7）动感地带100元</itemvalue>
+			<itemvalue code="dwmzone55">单位酬金套卡销售（8）动感地带55元</itemvalue>
+			<itemvalue code="dwmzone25">单位酬金套卡销售（9）动感地带25元</itemvalue>
+			<itemvalue code="dwsz100">单位酬金套卡销售（10）神州行100元</itemvalue>
+			<itemvalue code="dwsz55">单位酬金套卡销售（11）神州行55元</itemvalue>
+			<itemvalue code="dwcardtotal">单位酬金充值业务（12）充值总金额(含30、50、100、300元充值卡)</itemvalue>
+			<itemvalue code="dwmzonewl">单位酬金（13）动感地带网聊卡</itemvalue>
+			<itemvalue code="dwt52g">单位酬金（14）定制终端销售量低于5002G终端</itemvalue>
+			<itemvalue code="dwt53g">单位酬金（14）定制终端销售量低于5003G终端</itemvalue>
+			<itemvalue code="dwt102g">单位酬金（14）定制终端销售量501-10002G终端</itemvalue>
+			<itemvalue code="dwt103g">单位酬金（14）定制终端销售量501-10003G终端</itemvalue>
+			<itemvalue code="dwt152g">单位酬金（14）定制终端销售量1001-15002G终端</itemvalue>
+			<itemvalue code="dwt153g">单位酬金（14）定制终端销售量1001-15003G终端</itemvalue>
+			<itemvalue code="dwt202g">单位酬金（14）定制终端销售量1501-20002G终端</itemvalue>
+			<itemvalue code="dwt203g">单位酬金（14）定制终端销售量1501-20003G终端</itemvalue>
+			<itemvalue code="dwt252g">单位酬金（14）定制终端销售量2001-25002G终端</itemvalue>
+			<itemvalue code="dwt253g">单位酬金（14）定制终端销售量2001-25003G终端</itemvalue>
+			<itemvalue code="dwt302g">单位酬金（14）定制终端销售量2501-30002G终端</itemvalue>
+			<itemvalue code="dwt303g">单位酬金（14）定制终端销售量2501-30003G终端</itemvalue>
+			<itemvalue code="dwt352g">单位酬金（14）定制终端销售量3001-35002G终端</itemvalue>
+			<itemvalue code="dwt353g">单位酬金（14）定制终端销售量3001-35003G终端</itemvalue>
+			<itemvalue code="dwt402g">单位酬金（14）定制终端销售量3501-40002G终端</itemvalue>
+			<itemvalue code="dwt403g">单位酬金（14）定制终端销售量3501-40003G终端</itemvalue>
+			<itemvalue code="dwt502g">单位酬金（14）定制终端销售量4000以上2G终端</itemvalue>
+			<itemvalue code="dwt503g">单位酬金（14）定制终端销售量4000以上3G终端</itemvalue>
+			<itemvalue code="dwmifi">单位酬金（14）定制终端销售量MIFI</itemvalue>
+			<itemvalue code="dwchangecard">单位酬金（15）补换卡</itemvalue>
+			<itemvalue code="dwopenmobile">单位酬金（16）停/开机</itemvalue>
+			<itemvalue code="dwservicechange">单位酬金（17）服务功能变更（服务功能变更包括中文秘书、主叫显示、 语音信箱、三方通话、呼叫限制、沟通100通讯录、会议通话、理财通等8种的新增或取消。同一号码每月只计算一次）</itemvalue>
+			<itemvalue code="dwpkchanlow">单位酬金（18A）套餐变更（高改低）</itemvalue>
+			<itemvalue code="dwpkchanhigh">单位酬金（18B）套餐变更（低改高）</itemvalue>
+			<itemvalue code="dwcash">单位酬金（19）现金缴费金额</itemvalue>
+			<itemvalue code="dwmoneyamount">单位酬金（20）预存话费金额（注：定制终端营销案所产生的预存话费不计入此列）</itemvalue>
+			<itemvalue code="dwpkchan">单位酬金（21）套餐变更</itemvalue>
+			<itemvalue code="dwzuservicechange">单位酬金（22）服务功能变更（包括中文秘书、主叫显示、 语音信箱、三方通话、呼叫限制、沟通100通讯录、会议通话、理财通等8种的新增或取消及停/开机业务）</itemvalue>
+			<itemvalue code="dwcashamount">单位酬金（23）现金缴费金额</itemvalue>
+			<itemvalue code="dwfamilybroadband">单位酬金(24)欢乐在线(含商务版)5元套餐1个月后</itemvalue>
+			<itemvalue code="dwhlzx51">单位酬金(24)欢乐在线(含商务版)5元套餐3个月后</itemvalue>
+			<itemvalue code="dwhlzx53">单位酬金(24)欢乐在线(含商务版)10元套餐1个月后</itemvalue>
+			<itemvalue code="dwhlzx101">单位酬金(24)欢乐在线(含商务版)10元套餐3个月后</itemvalue>
+			<itemvalue code="dwhlzx103">单位酬金(25)信息机套卡</itemvalue>
+			<itemvalue code="dwinfocomress">单位酬金家庭宽带开户</itemvalue>
+			<itemvalue code="cjtotalmzone100">酬金总额套卡销售（7）动感地带100元</itemvalue>
+			<itemvalue code="cjtotalmzone55">酬金总额套卡销售（8）动感地带55元</itemvalue>
+			<itemvalue code="cjtotalmzone25">酬金总额套卡销售（9）动感地带25元</itemvalue>
+			<itemvalue code="cjtotalsz100">酬金总额套卡销售（10）神州行100元</itemvalue>
+			<itemvalue code="cjtotalsz55">酬金总额套卡销售（11）神州行55元</itemvalue>
+			<itemvalue code="cjtotalcardtotal">酬金总额充值业务（12）充值总金额(含30、50、100、300元充值卡)</itemvalue>
+			<itemvalue code="cjtotalmzonewl">酬金总额（13）动感地带网聊卡</itemvalue>
+			<itemvalue code="cjtotalt52g">酬金总额（14）定制终端销售量低于5002G终端</itemvalue>
+			<itemvalue code="cjtotalt53g">酬金总额（14）定制终端销售量低于5003G终端</itemvalue>
+			<itemvalue code="cjtotalt102g">酬金总额（14）定制终端销售量501-10002G终端</itemvalue>
+			<itemvalue code="cjtotalt103g">酬金总额（14）定制终端销售量501-10003G终端</itemvalue>
+			<itemvalue code="cjtotalt152g">酬金总额（14）定制终端销售量1001-15002G终端</itemvalue>
+			<itemvalue code="cjtotalt153g">酬金总额（14）定制终端销售量1001-15003G终端</itemvalue>
+			<itemvalue code="cjtotalt202g">酬金总额（14）定制终端销售量1501-20002G终端</itemvalue>
+			<itemvalue code="cjtotalt203g">酬金总额（14）定制终端销售量1501-20003G终端</itemvalue>
+			<itemvalue code="cjtotalt252g">酬金总额（14）定制终端销售量2001-25002G终端</itemvalue>
+			<itemvalue code="cjtotalt253g">酬金总额（14）定制终端销售量2001-25003G终端</itemvalue>
+			<itemvalue code="cjtotalt302g">酬金总额（14）定制终端销售量2501-30002G终端</itemvalue>
+			<itemvalue code="cjtotalt303g">酬金总额（14）定制终端销售量2501-30003G终端</itemvalue>
+			<itemvalue code="cjtotalt352g">酬金总额（14）定制终端销售量3001-35002G终端</itemvalue>
+			<itemvalue code="cjtotalt353g">酬金总额（14）定制终端销售量3001-35003G终端</itemvalue>
+			<itemvalue code="cjtotalt402g">酬金总额（14）定制终端销售量3501-40002G终端</itemvalue>
+			<itemvalue code="cjtotalt403g">酬金总额（14）定制终端销售量3501-40003G终端</itemvalue>
+			<itemvalue code="cjtotalt502g">酬金总额（14）定制终端销售量4000以上2G终端</itemvalue>
+			<itemvalue code="cjtotalt503g">酬金总额（14）定制终端销售量4000以上3G终端</itemvalue>
+			<itemvalue code="cjtotalmifi">酬金总额（14）定制终端销售量MIFI</itemvalue>
+			<itemvalue code="cjtotalchangecard">酬金总额（15）补换卡</itemvalue>
+			<itemvalue code="cjtotalopenmobile">酬金总额（16）停/开机</itemvalue>
+			<itemvalue code="cjtotalservicechange">酬金总额（17）服务功能变更（服务功能变更包括中文秘书、主叫显示、 语音信箱、三方通话、呼叫限制、沟通100通讯录、会议通话、理财通等8种的新增或取消。同一号码每月只计算一次）</itemvalue>
+			<itemvalue code="cjtotalpkchanlow">酬金总额（18A）套餐变更（高改低）</itemvalue>
+			<itemvalue code="cjtotalpkchanhigh">酬金总额（18B）套餐变更（低改高）</itemvalue>
+			<itemvalue code="cjtotalcash">酬金总额（19）现金缴费金额</itemvalue>
+			<itemvalue code="cjtotalmoneyamount">酬金总额（20）预存话费金额（注：定制终端营销案所产生的预存话费不计入此列）</itemvalue>
+			<itemvalue code="cjtotalpkchan">酬金总额（21）套餐变更</itemvalue>
+			<itemvalue code="cjtotalzuservicechange">酬金总额（22）服务功能变更（包括中文秘书、主叫显示、 语音信箱、三方通话、呼叫限制、沟通100通讯录、会议通话、理财通等8种的新增或取消及停/开机业务）</itemvalue>
+			<itemvalue code="cjtotalcashamount">酬金总额（23）现金缴费金额</itemvalue>
+			<itemvalue code="cjtotalfamilybroadband">酬金总额(24)欢乐在线(含商务版)5元套餐1个月后</itemvalue>
+			<itemvalue code="cjtotalhlzx51">酬金总额(24)欢乐在线(含商务版)5元套餐3个月后</itemvalue>
+			<itemvalue code="cjtotalhlzx53">酬金总额(24)欢乐在线(含商务版)10元套餐1个月后</itemvalue>
+			<itemvalue code="cjtotalhlzx101">酬金总额(24)欢乐在线(含商务版)10元套餐3个月后</itemvalue>
+			<itemvalue code="cjtotalhlzx103">酬金总额(25)信息机套卡</itemvalue>
+			<itemvalue code="cjtotalinfocomress">酬金总额家庭宽带开户</itemvalue>
+			<itemvalue code="manageexamine">考核系数管理考核系数</itemvalue>
+			<itemvalue code="vetocoefficient">考核系数否决系数</itemvalue>
+			<itemvalue code="ordercoefficient">考核系数综合排名系数</itemvalue>
+			<itemvalue code="campaigncoefficient">考核系数竞标系数</itemvalue>
+			<itemvalue code="totalreward">全省统一基础酬金总额</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<!-- start add for BR201308190004 省级代理商计酬  by feng at 2013-09-02 -->
+	<syscode-local>
+		<definition>PD_YESORNO</definition>
+		<items>
+			<itemvalue code="0">否</itemvalue>
+			<itemvalue code="1">是</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-dynamic>
+		<definition>CH_PD_AGENT</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.provagent.chpdagent.persistent.ChPdAgentVO
+		</value-object>
+		<code>provagentid</code>
+		<name>provagentname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_PD_ENTPRODUCT</definition>
+		<value-object>
+			com.sunrise.boss.business.cms.provagent.chpdentproduct.persistent.ChPdEntproductVO
+		</value-object>
+		<code>prodid</code>
+		<name>prodname</name>
+	</syscode-dynamic>
+	<!-- end add for BR201308190004 省级代理商计酬  by feng at 2013-09-02 -->
+</syscode-config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.webfunctionitem.WebfunctionitemVO" table="SA_DB_WEBFUNCTIONITEM">
+<id column="FUNCID" length="32" name="funcid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="FUNCNAME" length="64" name="funcname" type="java.lang.String"/>
+<property column="PARENTID" length="32" name="parentid" type="java.lang.String"/>
+<property column="GUIOBJECT" length="256" name="guiobject" type="java.lang.String"/>
+<property column="TIPTEXT" length="32" name="tiptext" type="java.lang.String"/>
+<property column="SORTORDER" length="4" name="sortorder" type="java.lang.Short"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+<property column="TYPE" length="1" name="type" type="java.lang.Byte"/>
+</class>
+<!-- 查询指定功能菜单及其下所有子功能菜单 暂时没有考虑权限问题-->
+<sql-query name="system.webfunctionitem.queryAllFunctionByParentId.test">
+	select distinct * from sa_db_webFunctionItem
+	 start with funcid = :funcid connect by nocycle prior funcid = parentid 
+	order by parentID,sortOrder
+</sql-query>
+<sql-query name="system.webfunctionitem.queryAllAthorizedFunctionitems.test">
+	select distinct * from sa_db_webFunctionItem order by parentID,sortOrder
+</sql-query>
+<sql-query name="system.functionitem.queryTopMenuTree.test">
+  select distinct * from sa_db_webFunctionItem where parentid = :parentid order by parentID, sortOrder
+</sql-query>
+<sql-query name="querywebFunctionitemTextSQL">
+select *
+  from sa_db_webfunctionitem
+ where funcid in
+       (select distinct (funcid)
+          from sa_db_webfunctionitem item
+         start with item.funcid like :queryText
+                 or item.funcname like :queryText
+        connect by prior item.parentid = item.funcid)
+</sql-query>
+</hibernate-mapping>

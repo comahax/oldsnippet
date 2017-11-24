@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.operation.OperationVO" table="CH_PW_OPERATION">
+<id column="OPNID" name="opnid" type="java.lang.String" length="18">
+<generator class="assigned"/>
+</id>
+<property column="PARENTID" length="18" name="parentid" type="java.lang.String"/>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"/>
+<property column="STATE" length="2" name="state" type="java.lang.Short"/>
+<property column="STARTDATE" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" name="enddate" type="java.util.Date"/>
+<property column="ISBUSI" name="isbusi" type="java.lang.Short"/>
+<property column="OPNLEVEL" name="opnlevel" type="java.lang.Short"/>
+<property column="BUSIKIND" name="busikind" type="java.lang.Short"/>
+<property column="BUSIBELONG" name="busibelong" type="java.lang.String"/>
+</class>
+<sql-query name="cms.operation.querysubtype">
+<return class="com.gmcc.pboss.business.channel.operation.OperationVO"></return>
+select * from ch_pw_operation 
+where :id like '%,'||opnid||',%'
+</sql-query>
+<sql-query name="cms.operation.parentlevel">
+<return class="com.gmcc.pboss.business.channel.operation.OperationVO"></return>
+select *
+  from ch_pw_operation
+ start with opnid = :upperid
+connect by prior parentid = opnid
+</sql-query>
+<sql-query name="cms.operation.fifthlevel">
+<return class="com.gmcc.pboss.business.channel.operation.OperationVO"></return>
+select OPNID, PARENTID, NAME, REMARK, STATE
+  from (select OPNID, PARENTID, NAME, REMARK, STATE, level lvl
+          from ch_pw_operation
+         start with parentid = '0'
+        connect by prior opnid = parentid)
+ where lvl = 5
+</sql-query>
+<sql-query name="cms.operation.allsubopn">
+<return class="com.gmcc.pboss.business.channel.operation.OperationVO"></return>
+select OPNID, PARENTID, NAME, REMARK, STATE,STARTDATE,ENDDATE,ISBUSI,OPNLEVEL,BUSIKIND,BUSIBELONG
+  from ch_pw_operation
+ start with parentid = :id
+connect by prior opnid = parentid
+</sql-query>
+
+<sql-query name="cms.operation.opnbyisbusi">
+<return class="com.gmcc.pboss.business.channel.operation.OperationVO"></return>
+		select * from ch_pw_operation
+         start with parentid = :rootid
+        connect by prior opnid = parentid
+</sql-query>
+
+<sql-query name="cms.operation.querybusiload">
+<return-scalar column="opnid" type="java.lang.String"/>
+		select opnid from CH_CB_BUSILOAD where loadtype='CITY' and loadinfo=:cityid
+</sql-query>
+
+<sql-query name="cms.operation.querybusiupper">
+<return-scalar column="opnid" type="java.lang.String"/>
+<return-scalar column="name" type="java.lang.String"/>
+<return-scalar column="layers" type="java.lang.Integer"/>
+<return-scalar column="isbusi" type="java.lang.String"/>
+		select opnid,name,isbusi,level as layers from CH_PW_OPERATION start with opnid=:opnid connect by prior parentid=opnid order by layers desc
+</sql-query>
+
+<sql-query name="cms.operation.queryupper">
+<return class="com.gmcc.pboss.business.channel.operation.OperationVO"></return>
+		select * from (select * from ch_pw_operation)
+ 	start with OPNID = :id or name like :name
+	connect by prior parentid = opnid
+</sql-query>
+</hibernate-mapping>

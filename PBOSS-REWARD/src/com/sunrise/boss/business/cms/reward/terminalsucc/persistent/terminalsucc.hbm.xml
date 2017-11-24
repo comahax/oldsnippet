@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.terminalsucc.persistent.TerminalsuccVO" table="CH_ADT_TERMINALSUCC">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_ADT_TERMINALSUCC_SEQ</param>
+</generator>
+</id>
+<property column="SRCSEQ" length="14" name="srcseq" type="java.lang.Long"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="BRAND" length="1" name="brand" type="java.lang.Byte"/>
+<property column="CREATTIME" length="7" name="creattime" type="java.util.Date"/>
+<property column="ADTTTIME" length="7" name="adtttime" type="java.util.Date"/>
+<property column="SRC" length="64" name="src" type="java.lang.String"/>
+<property column="CALCOPNID" length="18" name="calcopnid" type="java.lang.String"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="RULEITEMID" length="18" name="ruleitemid" type="java.lang.String"/>
+<property column="ADTFLAG" length="2" name="adtflag" type="java.lang.Short"/>
+<property column="ADTCODE" length="32" name="adtcode" type="java.lang.String"/>
+<property column="ADTREMARK" length="255" name="adtremark" type="java.lang.String"/>
+<property column="OID" length="14" name="oid" type="java.lang.Long"/>
+<property column="REWARDFLAG" length="3" name="rewardflag" type="java.lang.Short"/>
+<property column="REPAIRMONTH" length="8" name="repairmonth" type="java.lang.String"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/>
+<property column="NONCYC" length="3" name="noncyc" type="java.lang.Short"/>
+<property column="IMEI" length="132" name="imei" type="java.lang.String"/>
+<property column="COMID" length="132" name="comid" type="java.lang.String"/>
+</class>
+</hibernate-mapping>
+

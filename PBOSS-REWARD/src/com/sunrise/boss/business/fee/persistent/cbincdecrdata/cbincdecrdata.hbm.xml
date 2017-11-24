@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.persistent.cbincdecrdata.CBIncDecrDataVO" table="IB_CB_INCDECRDATA">
+<id name="incdecrid" column="INCDECRID" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">IB_CB_INCDECRDATA_SEQ</param>
+</generator>
+</id>
+<property name="subsid" column="SUBSID" type="java.lang.Long" length="14" not-null="true"/>
+<property name="validbillcyc" column="VALIDBILLCYC" type="java.lang.Integer" length="8" not-null="true"/>
+<property name="acctid" column="ACCTID" type="java.lang.Long" length="14" not-null="true"/>
+<property name="type" column="TYPE" type="java.lang.Short" length="3" not-null="true"/>
+<property name="attribute" column="ATTRIBUTE" type="java.lang.Short" length="3"/>
+<property name="checkercode" column="CHECKERCODE" type="java.lang.String" length="16"/>
+<property name="opercode" column="OPERCODE" type="java.lang.String" length="16" not-null="true"/>
+<property name="incrdecramt" column="INCRDECRAMT" type="java.lang.Double" length="16" not-null="true"/>
+<property name="genbillcyc" column="GENBILLCYC" type="java.lang.Integer" length="8"/>
+<property name="outbillcyc" column="OUTBILLCYC" type="java.lang.Integer" length="8"/>
+<property name="inputdate" column="INPUTDATE" type="java.util.Date" length="7"/>
+<property name="isaward" column="ISAWARD" type="java.lang.Short" length="3"/>
+<property name="validflag" column="VALIDFLAG" type="java.lang.Short" length="3"/>
+<property name="incrdecrreason" column="INCRDECRREASON" type="java.lang.String" length="256"/>
+<property name="memo" column="MEMO" type="java.lang.String" length="256"/>
+<property name="largersncode" column="LARGERSNCODE" type="java.lang.String" length="10"/>
+<property name="smallrsncode" column="SMALLRSNCODE" type="java.lang.String" length="10"/>
+<property name="isicp" column="ISICP" type="java.lang.Short" length="3"/>
+<property name="icpid" column="ICPID" type="java.lang.String" length="8"/>
+<property name="icptype" column="ICPTYPE" type="java.lang.String" length="10"/>
+<property name="lodge" column="LODGE" type="java.lang.String" length="128"/>
+<property name="portid" column="PORTID" type="java.lang.String" length="18"/>
+<property name="icptype2" column="ICPTYPE2" type="java.lang.String" length="10"/>
+<property name="dealstate" column="DEALSTATE" type="java.lang.Short" length="3"/>
+<property name="busitype" column="BUSITYPE" type="java.lang.Short" length="3"/>
+<property name="desputetype" column="DESPUTETYPE" type="java.lang.Short" length="3"/>
+</class>
+</hibernate-mapping>

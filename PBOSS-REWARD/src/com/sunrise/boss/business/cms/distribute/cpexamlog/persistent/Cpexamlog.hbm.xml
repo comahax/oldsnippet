@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.distribute.cpexamlog.persistent.CpexamlogVO" table="CH_DST_CPEXAMLOG">
+<id column="LOGID" name="logid" type="java.lang.Integer">
+<generator class="sequence">
+		<param name="sequence">CH_DST_CPEXAMLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="EXAMID" length="14" name="examid" not-null="true" type="java.lang.Long"/>
+<property column="COOPERAUID" length="50" name="cooperauid" not-null="true" type="java.lang.String"/>
+<property column="COMTYPE" length="6" name="comtype" not-null="true" type="java.lang.Integer"/>
+<property column="EXAMTYPE" length="3" name="examtype" not-null="true" type="java.lang.Short"/>
+<property column="EXAMRESULT" length="16" name="examresult" not-null="true" type="java.lang.Double"/>
+<property column="BASENUM" length="6" name="basenum" not-null="true" type="java.lang.Integer"/>
+<property column="REALNUM" length="6" name="realnum" not-null="true" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

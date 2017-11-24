@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.resmanage.oprresmanage.audit.persistent.AuditVO" table="IM_PR_AUDIT">
+<id name="sheetid" type="java.lang.String">
+    <column name="SHEETID" length="20" />
+    <generator class="assigned" />
+</id>
+<property column="AUDITOPRCODE" length="15" name="auditoprcode" not-null="true" type="java.lang.String"/>
+<property column="INOPRCODE" length="15" name="inoprcode" not-null="true" type="java.lang.String"/>
+<property column="OUTOPRCODE" length="15" name="outoprcode" not-null="true" type="java.lang.String"/>
+<property column="REQOPRCODE" length="15" name="reqoprcode" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" not-null="true" type="java.util.Date"/>
+<property column="STATE" length="3" name="state" type="java.lang.Short"/>
+
+<property name="wayid" type="java.lang.String">
+    <column name="WAYID" length="18" not-null="true" />
+</property>
+
+</class>
+</hibernate-mapping>

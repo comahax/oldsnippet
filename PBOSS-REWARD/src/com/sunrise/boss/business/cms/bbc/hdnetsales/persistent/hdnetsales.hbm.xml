@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.hdnetsales.persistent.HdnetsalesVO" table="CH_BBC_HDNETSALES">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="sequence"/>
+</id>
+<property column="SRCSEQ" length="32" name="srcseq" type="java.lang.String"/>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="CALCOPNID" length="18" name="calcopnid" type="java.lang.String"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="OSSRC" length="2" name="ossrc" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

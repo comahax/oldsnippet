@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="userTransactionName" value="java:comp/UserTransaction"/>
+	</bean>	
+ 
+	
+	<!-- 注册自动代理创建，为业务Bean添加拦截器 -->	
+	<bean id="BOAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">	
+		<property name="proxyTargetClass" value="true"></property>
+		<property name="beanNames">
+			<list>
+				<value>*ControlBean</value>				
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>			
+				<value>provCheckMethodPointcutAdvisor</value>	
+				<value>trasactionMethodPointcutAdvisor</value>	<!-- 注意： 事务拦截器必须包含在业务日志拦截器中，以免事务控制混乱；或者将业务日志的方法recordLog 设置为 PROPAGATION_REQUIRES_NEW 属性 -->					
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 注册通知器 advisor -->
+	<bean id="transactionAdvisor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref local="transactionManager"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>				
+			</props>
+		</property>
+	</bean>
+	
+	 
+	<!-- 注册方法名过滤通知器 advisor -->
+	<bean id="trasactionMethodPointcutAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedNames">
+			<list>
+				<value>*</value>
+			</list>
+		</property>
+		<property name="advice">
+			<ref local="transactionAdvisor" />
+		</property>
+	</bean>
+	
+	<!-- 注册基于方法名的权限控制拦截器 -->
+	<bean id="provCheckAdvisor" class="com.sunrise.boss.common.advisor.ProvCheckAdvisor" />
+	<bean id="provCheckMethodPointcutAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedNames">
+			<list>
+				<value>doCreate*</value>
+				<value>doUpdate*</value>
+				<value>doRemove*</value>
+				<value>doSave*</value>
+				<value>doDelete*</value>
+				<value>doCancel*</value>
+			</list>
+		</property>
+		<property name="advice">
+			<ref local="provCheckAdvisor" />
+		</property>
+	</bean>
+</beans>

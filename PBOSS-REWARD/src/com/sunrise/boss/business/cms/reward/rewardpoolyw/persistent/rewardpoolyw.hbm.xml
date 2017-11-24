@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.rewardpoolyw.persistent.RewardpoolywVO" table="CH_PW_REWARDPOOLYW">
+<composite-id>
+<key-property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<key-property name="region" column="REGION" type="java.lang.String" length="10"/>
+<key-property name="rewardtype" column="REWARDTYPE" type="java.lang.Integer" length="5"/>
+</composite-id>
+</class>
+</hibernate-mapping>

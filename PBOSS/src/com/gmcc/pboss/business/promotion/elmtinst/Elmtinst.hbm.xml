@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.promotion.elmtinst.ElmtinstVO" table="CH_CX_ELMTINST">
+<id column="INSTID" length="10" name="instid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="INSTNAME" length="50" name="instname" not-null="true" type="java.lang.String"/>
+<property column="TMPLID" length="6" name="tmplid" not-null="true" type="java.lang.Long"/>
+<property column="PARAMS" length="512" name="params" type="java.lang.String"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+</class>
+
+<sql-query name="com.gmcc.pboss.business.promotion.elmtinst.queryElmttmplByInstId">
+		select et.GATHERINGMODE,et.GATHERINGLOGIC,et.COLUMNSINFO from CH_CX_ELMTTMPL et inner join CH_CX_ELMTINST ei 
+		on et.TMPLID = ei.TMPLID where ei.INSTID = :instid
+</sql-query>
+</hibernate-mapping>

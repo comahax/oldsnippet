@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtycompact.persistent.ZjtyCompactVO" table="CH_ZJTY_COMPACT">
+<id column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+<property column="CONEF" length="3" name="conef" type="java.lang.Float"/>
+<property column="OPERTIME" length="7" name="opertime" type="java.util.Date"/>
+<property column="OPERCODE" length="32" name="opercode" type="java.lang.String"/>
+<property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+<property column="FIXEDNUM" length="6" name="fixednum" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

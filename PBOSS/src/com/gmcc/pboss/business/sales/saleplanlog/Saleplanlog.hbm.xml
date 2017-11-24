@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.saleplanlog.SaleplanlogVO" table="FX_RU_SALEPLANLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">fx_ru_saleplanlog_seq</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="RECID" length="14" name="recid" type="java.lang.Long"/>
+<property column="CITYID" length="10" name="cityid" type="java.lang.String"/>
+<property column="PLANCODE" length="256" name="plancode" type="java.lang.String"/>
+<property column="PLANNAME" length="512" name="planname" type="java.lang.String"/>
+<property column="BEGINDATE" length="7" name="begindate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="COMCATEGORY" length="512" name="comcategory" type="java.lang.String"/>
+<property column="PREMODE" length="20" name="premode" type="java.lang.String"/>
+<property column="PREVALUE" length="16" name="prevalue" type="java.lang.Double"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

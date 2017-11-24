@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.waystockrecord.WaystockrecordVO" table="FX_SW_WAYSTOCKRECORD">
+<id column="SEQID" length="14" name="seqid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_WAYSTOCKRECORD_SEQ</param>
+</generator>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="COMRESID" length="32" name="comresid" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="STOCKTIME" length="7" name="stocktime" type="java.util.Date"/>
+<property column="EMPTYNO" length="21" name="emptyno" type="java.lang.String"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.resource.comcategoryrela.loadAllComCateAndBrand">
+	<return-scalar column="comcategory" type="java.lang.String"/>
+	<return-scalar column="wayname" type="java.lang.String"/>
+		select distinct t.comcategory, d.dictname as wayname from IM_PR_COMCATEGORYRELA t, SA_DB_DICTITEM d 
+where t.restype = 'COMRESSMP' and d.groupid='IM_FXCOMCATEGORY' and t.comcategory = d.dictid order by comcategory
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.comcategoryrela.comcategorycount">
+<return-scalar column="counts" type="java.lang.Long"/>
+select count(*) as counts from IM_PR_COMCATEGORYRELA t, SA_DB_DICTITEM d 
+where t.restype = 'COMRESSMP' and d.groupid='IM_FXCOMCATEGORY' and t.comcategory = d.dictid order by comcategory
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.sales.waystockrecord.querywaystockrecord">
+select SEQID,COUNTYID,SVCCODE,MAREACODE,ORDERID,WAYID,WAYNAME,STARLEVEL,BRAND,COMRESID,COMCATEGORY,STOCKTIME,EMPTYNO from FX_SW_WAYSTOCKRECORD
+ where to_char(STOCKTIME,'yyyyMMdd')=:stocktime order by SEQID
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.operright.OperrightVO" table="SA_SR_OPERRIGHT">
+<composite-id>
+<key-property column="OPERID" length="32" name="operid" type="java.lang.String"/>
+<key-property column="RIGHTID" length="32" name="rightid" type="java.lang.String"/>
+</composite-id>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="SORTORDER" length="3" name="sortorder" type="java.lang.Short"/>
+<property column="FLAG" length="1" name="flag" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+</class>
+<!-- 权限检查判断, 先只检查工号授权，需要完善角色上的权限 -->
+<sql-query name="base.operright.hasPermisson">
+	<return-scalar column="val" type="java.lang.Integer"/>
+	  select count(*) val
+		 from
+		 (   
+		     --工号上的权限
+		     (select operright.operid, operright.rightid, operright.status 
+		         from SA_SR_OPERRIGHT operright
+		     	where operright.operid = :oprcode
+		     	and   operright.rightid = :permissionId
+		     	and   operright.status = 1
+		     )
+		      union
+		      --角色上的权限
+		     (  select operrole.operid, roleright.itemid, operrole.status
+            	   from SA_SR_ROLERIGHT roleright, sa_sr_operrole operrole
+		          where roleright.status = 1
+		          and   operrole.status = 1
+		          and   operrole.roleid = roleright.itemid 
+		          and   roleright.rightid = :permissionId
+		          and   operrole.operid = :oprcode
+		     )
+		 )
+</sql-query>
+<!-- 权限检查判断 先只检查工号授权，需要完善角色上的权限-->
+<sql-query name="base.operright.hasURIPermisson">
+	<return-scalar column="val" type="java.lang.Integer"/>
+	select count(*) val from sys_module module ,
+	  (   select distinct p.module_code from
+    
+     (   --工号上的权限
+       (select op.oper_id, op.perm_code, op.star_ttime, op.stop_time from sys_oper_perm op
+       	where op.oper_id = :oprcode
+       )
+        union 
+        --角色上的权限
+       (  select opp.oper_id, rp.perm_code, rp.star_ttime, rp.stop_time 
+               from sys_role_perm rp,
+           (select opr.* from sys_oper_role opr where opr.oper_id =:oprcode) opp
+         where rp.role_code = opp.role_code      
+       ) 
+     ) op      
+     , sys_perm p
+	   where   op.oper_id = :oprcode and op.perm_code = p.perm_code ) 
+    opp
+	  where
+	  module.module_code = opp.module_code
+	  and  module.module_uri = :currentURI
+</sql-query>
+<sql-query name="system.operrightLimitedQuery">
+select *
+  from SA_SR_OPERRIGHT
+  	where operid in (select operid from sa_so_operator where region = :region and status='1')
+</sql-query>
+</hibernate-mapping>

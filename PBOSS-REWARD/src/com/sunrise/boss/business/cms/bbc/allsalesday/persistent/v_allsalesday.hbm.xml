@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.allsalesday.persistent.VAllsalesdayVO">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="OPNNAME" length="50" name="opnname" type="java.lang.String"/>
+<property column="CALCOPNID" length="18" name="calcopnid" type="java.lang.String"/>
+<property column="CALOPNNAME" length="50" name="calopnname" type="java.lang.String"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="OSSRC" length="2" name="ossrc" type="java.lang.Short"/>
+<property column="EMPATTR2" length="3" name="empattr2" type="java.lang.Short"/>
+<property column="SRCSEQ" length="32" name="srcseq" type="java.lang.String"/>
+</class>
+
+<!-- 是否为市公司管理员 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.isCityAdmin">
+	<return-scalar column="val" type="java.lang.Integer"/>
+select count(*) as val
+  from sa_so_operator a, ch_pw_way b
+ where a.orgid = b.wayid
+   and b.upperwayid = 'GDYD'
+   and a.operid = :oprcode
+</sql-query>
+<!-- 是否为分公司管理员 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.isCountyAdmin">
+	<return-scalar column="val" type="java.lang.Integer"/>
+select count(*) as val
+  from sa_so_operator a, ch_pw_way b
+ where a.orgid = b.wayid
+   and b.upperwayid = :upperwayid
+   and a.operid = :oprcode
+</sql-query>
+<!-- 市公司管理员查询逻辑 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.vallsalesday.queryAllsalesdayCityAdmin">
+	<return class="com.sunrise.boss.business.cms.bbc.vallsalesday.persistent.VAllsalesdayVO" />
+(select d.seq,d.ruleid,d.opnid,o.name as opnname,d.calcopnid,o2.name as calopnname,d.calcmonth,d.wayid,w.wayname,d.oprtime,
+   d.oprcode,d.mobile,d.busivalue,d.rewardtype,d.ossrc,e.empattr2,d.srcseq
+   from ch_bbc_allsalesday d,ch_pw_way w,ch_pw_employee e,ch_bbc_operation o,ch_bbc_operation o2
+   where d.wayid = w.WAYID
+    and d.oprcode = e.telephone and e.isnet=2
+    and d.opnid = o.opnid
+    and d.calcopnid = o2.opnid)
+union all
+(select d.seq,d.ruleid,d.opnid,o.name as opnname,d.calcopnid,o2.name as calopnname,d.calcmonth,d.wayid,w.wayname,d.oprtime,
+   d.oprcode,d.mobile,d.busivalue,d.rewardtype,d.ossrc,e.empattr2,d.srcseq
+   from ch_bbc_allsalesday d,ch_pw_way w,ch_bbc_provemp e,ch_bbc_operation o,ch_bbc_operation o2
+   where d.wayid = w.WAYID
+    and d.oprcode = e.telephone and e.isnet=2
+    and d.opnid = o.opnid
+    and d.calcopnid = o2.opnid)
+union all
+(select v.seq,v.ruleid,v.opnid,o.name as opnname,v.calcopnid,o2.name as calopnname,v.calcmonth,v.wayid,w.wayname,v.oprtime,
+   v.oprcode,v.mobile,v.busivalue,v.rewardtype,v.ossrc,e.empattr2,v.srcseq
+   from ch_bbc_allsaleshis_view v,ch_pw_way w,ch_pw_employee e,ch_bbc_operation o,ch_bbc_operation o2
+   where v.WAYID = w.WAYID
+    and v.OPRCODE = e.telephone and e.isnet=2
+    and v.OPNID = o.opnid
+    and v.calcopnid = o2.opnid)
+union all
+(select v.seq,v.ruleid,v.opnid,o.name as opnname,v.calcopnid,o2.name as calopnname,v.calcmonth,v.wayid,w.wayname,v.oprtime,
+   v.oprcode,v.mobile,v.busivalue,v.rewardtype,v.ossrc,e.empattr2,v.srcseq
+   from ch_bbc_allsaleshis_view v,ch_pw_way w,ch_bbc_provemp e,ch_bbc_operation o,ch_bbc_operation o2
+   where v.WAYID = w.WAYID
+    and v.OPRCODE = e.telephone and e.isnet=2
+    and v.OPNID = o.opnid
+    and v.calcopnid = o2.opnid)
+</sql-query>
+<!-- 分公司管理员查询逻辑 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.vallsalesday.queryAllsalesdayCountyAdmin">
+	<return class="com.sunrise.boss.business.cms.bbc.vallsalesday.persistent.VAllsalesdayVO" />
+(select d.seq,d.ruleid,d.opnid,o.name as opnname,d.calcopnid,o2.name as calopnname,d.calcmonth,d.wayid,w.wayname,d.oprtime,
+     d.oprcode,d.mobile,d.busivalue,d.rewardtype,d.ossrc,e.empattr2,d.srcseq
+     from ch_bbc_allsalesday d,ch_pw_way w,ch_pw_employee e,ch_bbc_operation o,ch_bbc_operation o2
+     where d.wayid = w.WAYID
+      and d.oprcode = e.telephone and e.isnet=2
+      and d.opnid = o.opnid
+      and d.calcopnid = o2.opnid
+      and d.wayid in (select t.wayid from ch_pw_way t start with t.wayid=:wayid connect by prior t.wayid=t.upperwayid))
+union all
+(select v.seq,v.ruleid,v.opnid,o.name as opnname,v.calcopnid,o2.name as calopnname,v.calcmonth,v.wayid,w.wayname,v.oprtime,
+     v.oprcode,v.mobile,v.busivalue,v.rewardtype,v.ossrc,e.empattr2,v.srcseq
+     from ch_bbc_allsaleshis_view v,ch_pw_way w,ch_pw_employee e,ch_bbc_operation o,ch_bbc_operation o2
+     where v.WAYID = w.WAYID
+      and v.OPRCODE = e.telephone and e.isnet=2
+      and v.OPNID = o.opnid
+      and v.calcopnid = o2.opnid
+      and v.wayid in (select t.wayid from ch_pw_way t start with t.wayid=:wayid connect by prior t.wayid=t.upperwayid))
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.allsalesday.persistent.VBusiStatisticVO">
+<id column="opnid" name="opnid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="val" length="14" name="val" type="java.lang.Long"/>
+</class>
+<!-- 市公司管理员：各业务对应总量 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.allsalesday.city.busiDetailTotalStatistic">
+	<return class="com.sunrise.boss.business.cms.bbc.allsalesday.persistent.VBusiStatisticVO" />
+select c.opnid as opnid, count(*) as val
+  from (select a.opnid
+          from ch_bbc_allsalesday a
+         where a.oprtime between
+               to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+               to_date(:enddate, 'yyyy-MM-dd hh24miss')
+        union all
+        select b.opnid
+          from ch_bbc_allsaleshis_view b
+         where b.oprtime between
+               to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+               to_date(:enddate, 'yyyy-MM-dd hh24miss')
+        ) c
+ group by c.opnid order by c.opnid
+</sql-query>
+<!-- 分公司管理员：各业务对应总量 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.allsalesday.county.busiDetailTotalStatistic">
+	<return class="com.sunrise.boss.business.cms.bbc.allsalesday.persistent.VBusiStatisticVO" />
+select c.opnid as opnid, count(*) as val
+  from (select wayid, opnid
+          from ch_bbc_allsalesday a
+         where a.oprtime between to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+               to_date(:enddate, 'yyyy-MM-dd hh24miss')
+        union all
+        select wayid, opnid
+          from ch_bbc_allsaleshis_view b
+         where b.oprtime between to_date(:startdate, 'yyyy-MM-dd hh24miss') and
+               to_date(:enddate, 'yyyy-MM-dd hh24miss')) c
+ where c.wayid in (select d.wayid
+                     from ch_pw_way d
+                    start with d.wayid = :wayid
+                   connect by prior d.wayid = d.upperwayid)
+ group by c.opnid order by c.opnid
+</sql-query>
+</hibernate-mapping>

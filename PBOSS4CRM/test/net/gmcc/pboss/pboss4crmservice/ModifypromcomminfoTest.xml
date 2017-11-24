@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation_request>
+	<MsgReqHeader>
+		<menuid>PBOSS</menuid><!--菜单ID-->
+		<process_code>modifypromcomminfo</process_code>
+		<verify_code></verify_code><!--验证码-->
+		<req_time>20120221161647</req_time>	<!--请求时间-->
+		<req_seq>75012022102856053100000000000000000</req_seq>	<!--请求流水 32位-->
+		<unicontact></unicontact><!--统一接触流水号-->
+		<testflag>0</testflag><!-- 1标示测试，0或者不传表示生产 -->
+		<route><!--路由标识-->
+			<route_type>0</route_type><!--路由类型 0:region 1:号码信息-->
+			<route_value>760</route_value><!--路由值-->
+		</route>
+		<channelinfo>
+			<operatorid>pboss</operatorid><!--操作员-->
+			<channelid>JFJM00000</channelid><!--渠道-->
+			<unitid></unitid><!--渠道下单位-->
+		</channelinfo>
+	</MsgReqHeader>
+	<MsgBody>
+		<mobileno>13902024548</mobileno>
+		<companycode></companycode>
+		<commissionercode></commissionercode>
+		<agentcode>JMU_00000</agentcode>
+		<staffname>11111111111</staffname>
+		<staffcode>1</staffcode>
+		<personid>1</personid>
+		<email>1</email>
+		<registerdate>20120221000000</registerdate>
+		<enabledate>20120221000000</enabledate>
+		<stopdate>20120221000000</stopdate>
+		<status>0</status>
+		<oercode>2</oercode>
+		<istenseed></istenseed>
+		<isinternal></isinternal>
+	</MsgBody>
+</operation_request>

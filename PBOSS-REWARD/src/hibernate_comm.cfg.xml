@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+		<!--以下为使用容器提供的DataSource时要提供的设置-->
+		<property name="connection.datasource">xa-common-ds</property>
+		<!-- WEBSPHERE下部署 
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.WebSphereTransactionManagerLookup</property>
+		-->
+		<!-- JBOSS下部署 -->
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+		<property name="jta.UserTransaction">java:comp/UserTransaction</property>
+		<property name="current_session_context_class">jta</property>
+		
+	<!--以下为使用Hibernate管理连接时要提供的设置-->
+	<!-- 
+	<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+	<property name="connection.url">jdbc:oracle:thin:@10.200.5.200:1521:BOSS15TEST</property>
+	<property name="connection.username">common</property>
+	<property name="connection.password">common</property>
+	 -->
+	  
+	<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+	<property name="jdbc.batch_size">5</property>
+	<property name="jdbc.fetch_size">5</property>
+	<property name="max_fetch_depth">1</property>
+	<property name="show_sql">false</property>
+	
+	<mapping resource="com/sunrise/boss/business/common/managelog/persistent/managelog.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/admin/dictitem/persistent/dictitem.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/admin/dictgroup/persistent/dictgroup.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/woff/woffrule/persistent/woffrule.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/woff/eboxunit/persistent/eboxunit.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/woff/acctset/persistent/acctset.hbm.xml" />
+	
+	<mapping resource="com/sunrise/boss/business/resmanage/com/persistent/com.hbm.xml" />
+	
+	<!--省级运营管理平台参数管理-->
+	<mapping resource="com/sunrise/boss/business/fee/qsmanage/acctbak/persistent/acctbak.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/qsmanage/acctset/persistent/acctsetbak.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/qsmanage/woffrule/persistent/woffrulebak.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/qsmanage/acctebox/persistent/accteboxbak.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/qsmanage/accttyperel/persistent/accttyperelbak.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/qsmanage/acctincome/persistent/acctincomebak.hbm.xml"/>
+	
+	<mapping resource="com/sunrise/boss/business/qsmanage/paramrules/imprule/persistent/imprule.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/qsmanage/paramrules/impfielddeta/persistent/impfielddeta.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/qsmanage/paramrules/imptabledeta/persistent/imptabledeta.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/qsmanage/paramrules/tabdefine/persistent/tabdefine.hbm.xml" />
+	
+	<mapping resource="com/sunrise/boss/business/zifee/yxplangroup/persistent/yxplangroup.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/zifee/log/persistent/yxplanfeelog.hbm.xml" />
+	
+	 <mapping resource="com/sunrise/boss/business/zifee/yxplan/persistent/yxplan.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/zifee/yxplanlog/persistent/yxplanlog.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/woff/acct/persistent/acct.hbm.xml" /> 
+	<mapping resource="com/sunrise/boss/business/zifee/yxplangrouplog/persistent/yxplangrouplog.hbm.xml" />
+
+	<mapping resource="com/sunrise/boss/business/cms/citycompany/persistent/citycompany.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/cityrewardad/persistent/cityrewardad.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/cntycompany/persistent/cntycompany.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/way/persistent/way.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/wayhierarchy/persistent/wayhierarchy.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/waytype/persistent/waytype.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/citycomlog/persistent/citycomlog.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/cntycomlog/persistent/cntycomlog.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/waytypelog/persistent/waytypelog.hbm.xml" />
+	
+	<mapping resource="com/sunrise/boss/business/zifee/yxplangpinf/persistent/yxplangpinf.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/zifee/yxplangplog/persistent/yxplangplog.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/zifee/yxplancplog/persistent/yxplancplog.hbm.xml" />
+
+	<!-- 财务效益 -->
+
+	<mapping resource="com/sunrise/boss/business/cms/operation/persistent/operation.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/cms/operationlog/persistent/operationlog.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/zifee/yxplanpresnt/persistent/yxplanpresnt.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/zifee/yxplanpstlog/persistent/yxplanpstlog.hbm.xml" />
+	<!-- 招标书基本信息管理 -->
+	<!-- 渠道资质管理 -->
+	<!-- 渠道积分 中测 -->
+	
+	<mapping resource="com/sunrise/boss/business/cms/provincialright/persistent/provincialright.hbm.xml" />
+	
+	<!-- 省级运营平台：资源管理 -->
+		<mapping resource="com/sunrise/boss/business/common/sysparam/persistent/sysparam.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/common/batchlog/persistent/batchlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/busiload/persistent/busiload.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/busiloadlog/persistent/busiloadlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/waysnpt/persistent/waysnpt.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/qsmanage/paramsmanage/chgreq/persistent/ChgReq.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/qsmanage/paramsmanage/chghis/persistent/ChgHis.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/qsmanage/paramstest/testmobileno/persistent/testmobileno.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/qsmanage/paramstest/testopr/persistent/testopr.hbm.xml" />
+		<!--集团编号管理-->
+		<!-- 酬金管理 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardbjlog/persistent/stdrewardbjlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardbj/persistent/stdrewardbj.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdreward/persistent/stdreward.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardlog/persistent/stdrewardlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardbp/persistent/stdrewardbp.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardbplog/persistent/stdrewardbplog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardbs/persistent/stdrewardbs.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardbss/persistent/stdrewardbss.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardbsslog/persistent/stdrewardbsslog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardbjstar/persistent/stdrewardbjstar.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardbjstarlog/persistent/stdrewardbjstarlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardbjway/persistent/stdrewardbjway.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardbjwaylog/persistent/stdrewardbjwaylog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardhz/persistent/Stdrewardhz.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardhzlog/persistent/Stdrewardhzlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardut/persistent/stdrewardut.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardut/persistent/Vstdrewardut.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardutlog/persistent/stdrewardutlog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/servcent/persistent/servcent.hbm.xml" />
+		
+		<mapping resource="com/sunrise/boss/business/cms/stdrewardbslog/persistent/stdrewardbslog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/rewardpoolr/persistent/rewardpoolr.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/rewardpoolrlog/persistent/rewardpoolrlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/busicityload/persistent/busicityload.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bcityloadlog/persistent/bcityloadlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/rule/persistent/rule.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/rulelog/persistent/rulelog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/ruleonbusi/persistent/ruleonbusi.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/busyxplan/persistent/busyxplan.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/vbusyxplan/persistent/vbusyxplan.hbm.xml" />
+	    <mapping resource="com/sunrise/boss/business/cms/reward/busyxplanlog/persistent/busyxplanlog.hbm.xml" />
+	    <mapping resource="com/sunrise/boss/business/cms/reward/wayxplan/persistent/wayxplan.hbm.xml" />
+	    <mapping resource="com/sunrise/boss/business/cms/reward/wayxplanlog/persistent/wayxplanlog.hbm.xml" />
+	    <mapping resource="com/sunrise/boss/business/cms/reward/ruleitemlog/persistent/ruleitemlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/ruleitem/persistent/ruleitem.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/rulerel/persistent/rulerel.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/rulerellog/persistent/rulerellog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/ruleitemrl/persistent/ruleitemrl.hbm.xml"/>
+	    <mapping resource="com/sunrise/boss/business/cms/reward/rewardpoolywlog/persistent/rewardpoolywlog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/rewardpoolyw/persistent/rewardpoolyw.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/rewardconf/persistent/rewardconf.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/busitosmp/persistent/busitosmp.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/busitosmplog/persistent/busitosmplog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/busitocom/persistent/busitocom.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/busitocomlog/persistent/busitocomlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/rulemode/persistent/rulemode.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/rulemodelog/persistent/rulemodelog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/terminalsucc/persistent/terminalsucc.hbm.xml" />
+				
+		<!-- 树形结构展现 -->
+		<mapping resource="com/sunrise/boss/business/cms/opntree/persistent/opntree.hbm.xml" />		
+		
+		<mapping resource="com/sunrise/boss/business/cms/adimarea/persistent/adimarea.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/adimarealog/persistent/adimarealog.hbm.xml" />
+		<!-- 数据一致性 中测-->
+		<mapping resource="com/sunrise/boss/business/bcss/syncdata/wydata/persistent/Wydata.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/bcss/syncdata/wydatalog/persistent/Wydatalog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/bcss/syncdata/filedef/persistent/Filedef.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/bcss/syncdata/filetask/persistent/Filetask.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/bcss/syncdata/wydataitem/persistent/Wydataitem.hbm.xml"/>
+		
+		<!-- 考核管理-->
+		<mapping resource="com/sunrise/boss/business/cms/examine/examinestd/persistent/examinestd.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/examinestdlog/persistent/examinestdlog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/examine/persistent/examine.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/examinelog/persistent/examinelog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/exmnperiod/persistent/exmnperiod.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/exmnperiodlog/persistent/exmnperiodlog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/exmnitem/persistent/exmnitem.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/exmnitemlog/persistent/exmnitemlog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/exmnitemdtl/persistent/exmnitemdtl.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/exmnitemdtllog/persistent/exmnitemdtllog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/mapping/persistent/mapping.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/examine/mappinglog/persistent/mappinglog.hbm.xml"/>
+		
+		<!-- 自建他营模块 yde -->
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtyoperation/persistent/ZjtyOperation.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtyoperationlog/persistent/ZjtyOperationlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtyrewardcoef/persistent/ZjtyRewardcoef.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtylvlrwd/persistent/ZjtyLvlrwd.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtycitylvlrwd/persistent/ZjtyCitylvlrwd.hbm.xml" />
+		<!-- <mapping resource="com/sunrise/boss/business/cms/zjty/zjtystdreward/persistent/ZjtyStdreward.hbm.xml" /> -->
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtystdrewardbj/persistent/ZjtyStdrewardbj.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtystdrewardbjlog/persistent/ZjtyStdrewardbjlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtystdrewardlog/persistent/ZjtyStdrewardlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtyrewardcoeflog/persistent/zjtyRewardcoeflog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtyoprtcost/persistent/ChZjtyOprtcost.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtyoprtcostlog/persistent/ChZjtyOprtcostlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtycompcoef/persistent/zjtycompcoef.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtycompcoeflog/persistent/zjtycompcoeflog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtybusitosmp/persistent/zjtybusitosmp.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtybusitosmplog/persistent/zjtybusitosmplog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtybusyxplan/persistent/zjtybusyxplan.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtybusyxplanlog/persistent/zjtybusyxplanlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtycompact/persistent/zjtycompact.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtyassess/persistent/zjtyassess.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/zjtystdreward/persistent/zjtystdreward.hbm.xml" />
+		
+		<!-- 自建他营渠道业务管理->酬金报表查询 hejw -->
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtylocalgdrewardtotal/persistent/chzjtylocalgdrewardtotal.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtylocaljjrewardtotal/persistent/chzjtylocaljjrewardtotal.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtylocalperconfigdetail/persistent/chzjtylocalperconfigdetail.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtylocalperconfigtotal/persistent/chzjtylocalperconfigtotal.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtylocalrewardbusiness/persistent/chzjtylocalrewardbusiness.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtylocalrewardtotal/persistent/chzjtylocalrewardtotal.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtylocalzdsalereward/persistent/chzjtylocalzdsalereward.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtygotonedetail/persistent/chzjtygotonedetail.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtygotonedetail/persistent/vchzjtygotonedetail.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtynogotonedetail/persistent/chzjtynogotonedetail.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtynogotonedetail/persistent/vchzjtynogotonedetail.hbm.xml" />
+		
+		<!-- 酬金管理->自建他营渠道业务管理->终端酬金标准参数管理 hejw -->
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtyterewardstd/persistent/chzjtyterewardstd.hbm.xml" />
+		
+		<!-- BBC网站模块 -->
+        <mapping resource="com/sunrise/boss/business/cms/bbc/jfopnmap/persistent/Jfopnmap.hbm.xml" />
+	    <mapping resource="com/sunrise/boss/business/cms/bbc/jfopnmaplog/persistent/Jfopnmaplog.hbm.xml" />
+        <mapping resource="com/sunrise/boss/business/cms/bbc/operation/persistent/bbcoperation.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/operationlog/persistent/bbcoperationlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/stdreward/persistent/BBCstdreward.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/vstdreward/persistent/Vstdreward.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/stdrewardbj/persistent/BBCstdrewardbj.hbm.xml" />
+ 		<mapping resource="com/sunrise/boss/business/cms/bbc/stdrewardbjlog/persistent/BBCstdrewardbjlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/stdrewardlog/persistent/bbcstdrewardlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/yxplan/persistent/yxplanbbc.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/yxplanlog/persistent/yxplanbbclog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/nasrwdtotal/persistent/Nasrwdtotal.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/nasway/persistent/Nasway.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/bbc/bbcyzrewarddet/persistent/bbcyzrewarddet.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/mmopn/persistent/mmopn.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/mmopnlog/persistent/mmopnlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/bbcreopnrange/persistent/bbcreopnrange.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/bbc/directory/persistent/directory.hbm.xml" />
+		<!-- opnacctmap服务费项对应关系调用到了fee账务的acct.hbm.xml模块 -->
+		<mapping resource="com/sunrise/boss/business/cms/bbc/opnacctmap/persistent/Opnacctmap.hbm.xml" />
+	    <mapping resource="com/sunrise/boss/business/cms/bbc/opnacctmap/persistent/V_Opnacctmap.hbm.xml" />
+	   	<mapping resource="com/sunrise/boss/business/cms/bbc/opnacctmaplog/persistent/Opnacctmaplog.hbm.xml" />
+	   	<mapping resource="com/sunrise/boss/business/cms/reward/cbopnacctmap/persistent/Cbopnacctmap.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/cbopnacctmap/persistent/V_Cbopnacctmap.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/cbopnacctmaplog/persistent/Cbopnacctmaplog.hbm.xml" />
+		
+		<mapping resource="com/sunrise/boss/business/cms/waystarcsale/persistent/waystarcsale.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/waystarcsalelog/persistent/waystarcsalelog.hbm.xml" />
+		<!-- 地市短信业务编码配置信息表 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/operationsms/persistent/operationsms.hbm.xml"/>
+		<!-- 销售业务积分标准设置 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/salecreditstd/persistent/salecreditstd.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/salecreditstdlog/persistent/salecreditstdlog.hbm.xml"/>
+		<!-- 税率管理规则配置 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/tax/persistent/tax.hbm.xml"/>
+		
+		<mapping resource="com/sunrise/boss/business/cms/registersim/persistent/registersim.hbm.xml" />
+		<!-- 放号质量价值激励酬金参数管理 -->
+		<mapping resource="com/sunrise/boss/business/cms/salereward/persistent/salereward.hbm.xml" />
+		<!-- 渠道星级酬金标准导入 -->
+		<mapping resource="com/sunrise/boss/business/cms/waystrarewardstd/persistent/waystrarewardstd.hbm.xml" />
+		<!-- 市公司酬金标准管理 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/creditstd/persistent/creditstd.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/creditstd/persistent/vcreditstd.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/creditstd/persistent/vprocreditstd.hbm.xml"/>
+		<!-- 菜单路径：【酬金管理】-【社会渠道业务管理】-【酬金参数管理】-【星级评定效益监控】
+		-【月度考核积分汇总查询】-【考核分数导入】-【批量导入】 -补充说明 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/assessinfo/persistent/assessinfo.hbm.xml"/>
+		<!-- 酬金总额封顶设置表 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/rewardslvlimit/persistent/rewardslvlimit.hbm.xml"/>
+		
+		<!-- 酬金管理->社会渠道业务管理->数据有效性管理->业务与审批编码关系查询 -->
+		<mapping resource="com/sunrise/boss/business/cms/chadtbusitoapprove/persistent/chadtbusitoapprove.hbm.xml" />
+		<!-- 【酬金管理】-【社会渠道业务管理】-【酬金参数管理】-新增省公司长期激励标准表CH_PW_STDREWARDCQ -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardcq/persistent/stdrewardcq.hbm.xml" />
+		<!-- 积分奖励地市业务类型对应表【公共库】（CH_ADT_SALEPOINTFLAG） -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/salepointflag/persistent/salepointflag.hbm.xml" />
+		<!-- 省级参数配置表【公共库】（CH_PW_DICTPARAM） -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/pwdictparam/persistent/pwdictparam.hbm.xml" />
+		<!-- 界面类型对应表【公共库】（CH_PW_TYPEINFO）  -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/typeinfo/persistent/typeinfo.hbm.xml" />
+		<!-- 出帐状态表CH_ADT_MONITOR（公共库） -->
+		<mapping resource="com/sunrise/boss/business/cms/monitor/persistent/monitor.hbm.xml"/>
+		<!-- 付款批次表CH_ADT_PAYMENTBATCH（公共库） -->
+		<mapping resource="com/sunrise/boss/business/cms/paymentbatch/persistent/paymentbatch.hbm.xml"/>
+		<!-- 自营厅酬金标准表 -->
+		<mapping resource="com/sunrise/boss/business/cms/et/chetstdreward/persistent/chetstdreward.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardbjnoncyc/persistent/stdrewardbjnoncyc.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/stdrewardbjnoncyclog/persistent/stdrewardbjnoncyclog.hbm.xml"/>
+		
+		<mapping resource="com/sunrise/boss/business/cms/zjty/chzjtyrewfilenote/persistent/chzjtyrewfilenote.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/resmanage/nosect/persistent/nosect.hbm.xml" />
+		<!-- 酬金管理-社会渠道业务管理-酬金参数管理-商圈门店补贴酬金标准参数管理 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/creditstd3g/persistent/creditstd3g.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/creditstd3glog/persistent/creditstd3glog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/creditstd3g/persistent/vcreditstd3g.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/reward/salecreditstd3g/persistent/salecreditstd3g.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/reward/salecreditstd3glog/persistent/salecreditstd3glog.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/terminalrewardstd/persistent/terminalrewardstd.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/chadtwaymod/persistent/chadtwaymod.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/chadtwaymodlog/persistent/chadtwaymodlog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/chpwwaybusicircle/persistent/chpwwaybusicircle.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/chpwwaybusicirclelog/persistent/chpwwaybusicirclelog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/chadtsales/persistent/chadtsales.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/chadtsaleslog/persistent/chadtsaleslog.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/fee/chadtrulerel/persistent/chadtrulerel.hbm.xml" />
+		
+		<!-- 类平台裸机终端 -->
+		<mapping resource="com/sunrise/boss/business/cms/chadtclassplatformbrandinfo/persistent/chadtclassplatformbrandinfo.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/chadtclassplatformtdinfo/persistent/chadtclassplatformtdinfo.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/chadtclassplatformtdstd/persistent/chadtclassplatformtdstd.hbm.xml" /> 
+		
+		<!-- 多平台终端协议价信息表 -->
+		<mapping resource="com/sunrise/boss/business/cms/chzdplatforminfo/persistent/chzdplatforminfo.hbm.xml" />
+		<!-- 酬金管理—社会渠道业务管理-酬金管理-代客下单终端销售酬金 -->
+		<mapping resource="com/sunrise/boss/business/cms/dktersalereward/persistent/dktersalereward.hbm.xml" />
+		
+		<mapping resource="com/sunrise/boss/business/cms/reward/imprcom/persistent/imprcom.hbm.xml" />
+		
+		<!-- start add for BR201308190004 省级代理商计酬  by feng at 2013-09-02 -->
+		<!-- 酬金管理-省级代理商业务管理-代理商资料管理  -->
+		<mapping resource="com/sunrise/boss/business/cms/provagent/chpdagent/persistent/chpdagent.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/provagent/chpdagentlog/persistent/chpdagentlog.hbm.xml" />
+		<!-- 酬金管理-政企代理商业务管理-集团产品信息管理  -->
+		<mapping resource="com/sunrise/boss/business/cms/provagent/chpdentproduct/persistent/chpdentproduct.hbm.xml" />
+		<mapping resource="com/sunrise/boss/business/cms/provagent/chpdentproductlog/persistent/chpdentproductlog.hbm.xml" />
+		<!-- 酬金管理-政企代理商业务管理-代理商酬金报表数据查询  -->
+		<mapping resource="com/sunrise/boss/business/cms/provagent/chpdreportfile/persistent/chpdreportfile.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/provagent/chpdreportitem/persistent/chpdreportitem.hbm.xml"/>
+		<!-- 酬金管理-政企代理商业务管理-代理商计酬规则管理  -->
+		<mapping resource="com/sunrise/boss/business/cms/provagent/chpdrewardrule/persistent/chpdrewardrule.hbm.xml"/>
+		<mapping resource="com/sunrise/boss/business/cms/provagent/chpdrewardrulelog/persistent/chpdrewardrulelog.hbm.xml"/>
+		<!-- end add for BR201308190004 省级代理商计酬  by feng at 2013-09-02 -->
+		
+		<!-- start add for BR201310180003 国美、苏宁裸机改造 by feng at 2013-11-16 -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/chadtwayspecialreward/persistent/chadtwayspecialreward.hbm.xml"/>
+		<!-- end add for BR201310180003 国美、苏宁裸机改造  by feng at 2013-11-16 -->
+		<!-- 新增CH_ADT_BASEPRODID by lyl -->
+		<mapping resource="com/sunrise/boss/business/cms/reward/chadtbaseprodid/persistent/chadtbaseprodid.hbm.xml"/>
+		<!-- 【酬金管理】-【效益监控】-【统计报表管理】 --> 
+		<mapping resource="com/sunrise/boss/business/cms/chpwstatreports/persistent/chpwstatreports.hbm.xml"/>
+		
+		<!-- 【酬金管理】-【渠道资料管理】-【数据业务运营渠道】-【地市优惠产品设置】 -->
+		<mapping resource="com/sunrise/boss/business/cms/chbbcmarketact/persistent/chbbcmarketact.hbm.xml"/>
+		
+		 <!--  【酬金管理】-【数据下载】-【文件中转管理】-->   
+		<mapping resource="com/sunrise/boss/business/cms/chpwfiletransfer/persistent/chpwfiletransfer.hbm.xml"/>
+		
+		
+</session-factory>
+</hibernate-configuration>

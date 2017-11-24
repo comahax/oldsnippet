@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdrewardrulelog.persistent.ChPdRewardrulelogVO" table="CH_PD_REWARDRULELOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_PD_REWARDRULELOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="RULEID" length="14" name="ruleid" not-null="true" type="java.lang.Long"/>
+<property column="COOPERTYPE" length="1" name="coopertype" type="java.lang.Byte"/>
+<property column="COOPERRATE" length="3" name="cooperrate" type="java.lang.Float"/>
+<property column="SUBCATOGRAY" length="15" name="subcatogray" type="java.lang.String"/>
+<property column="PHASE1" length="3" name="phase1" type="java.lang.Short"/>
+<property column="PHASE1RATE" length="3" name="phase1rate" type="java.lang.Float"/>
+<property column="PHASE2" length="3" name="phase2" type="java.lang.Short"/>
+<property column="PHASE2RATE" length="3" name="phase2rate" type="java.lang.Float"/>
+<property column="PHASE3RATE" length="3" name="phase3rate" type="java.lang.Float"/>
+<property column="INUSETIME" length="7" name="inusetime" type="java.util.Date"/>
+<property column="OUTUSETIME" length="7" name="outusetime" type="java.util.Date"/>
+<property column="VERSION" length="6" name="version" type="java.lang.Float"/>
+</class>
+</hibernate-mapping>

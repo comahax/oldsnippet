@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.creditstd.persistent.CreditstdVO" table="CH_ADT_CREDITSTD">
+<id name="seq" column="SEQ" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_ADT_CREDITSTD_SEQ</param>
+	</generator>
+</id>
+<property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+<property column="SLV" length="22" name="slv" type="java.lang.Long"/>
+<property column="CREDITSTD" length="10" name="creditstd" type="java.lang.Double"/>
+<property column="CARDSTD" length="10" name="cardstd" type="java.lang.Double"/>
+<property column="ADTYPECODE" length="22" name="adtypecode" type="java.lang.Long"/>
+<property column="SLVLEV" length="22" name="slvlev" type="java.lang.Long"/>
+<property column="REWARDSTD" length="10" name="rewardstd" type="java.lang.Double"/>
+<property column="REWARDID" length="10" name="rewardid" type="java.lang.Long"/>
+<property column="RULEID" length="30" name="ruleid" type="java.lang.String"/>
+<property column="INTVMONTH" length="10" name="intvmonth" type="java.lang.Long"/>
+<property column="ISLIMIT" length="10" name="islimit" type="java.lang.Long"/>
+</class>
+<!--  -->
+<sql-query name="sumopprewardtype">
+<return-scalar column="sums" type="java.lang.Double"/>
+select sum(a.rewardstd) as sums  from ch_adt_creditstd a, ch_pw_stdreward b 
+where  a.rewardid=b.rewardid and b.rewardtype=:rewardtype and a.slv=:slv
+and a.slvlev=:slvlev and a.adtypecode=:adtypecode and a.cityid=:cityid
+</sql-query>
+<sql-query name="sumopprewardtype4singlton">
+<return-scalar column="sums" type="java.lang.Double"/>
+select sum(a.rewardstd) as sums  from ch_adt_creditstd a, ch_pw_stdreward b 
+where  a.rewardid=b.rewardid  and a.slv=:slv
+and a.slvlev=:slvlev and a.adtypecode=:adtypecode and a.cityid=:cityid
+and a.ruleid &lt;&gt;:ruleid and a.intvmonth&lt;&gt;:intvmonth
+</sql-query>
+<sql-query name="checkalevel">
+<return-scalar column="sums" type="java.lang.Double"/>
+select a.seq as seq  from ch_adt_creditstd a, ch_pw_stdreward b 
+where  a.rewardid=b.rewardid and b.rewardtype=:rewardtype and a.slv=:slv
+and a.slvlev=:slvlev and a.adtypecode=:adtypecode and a.cityid=:cityid
+</sql-query>
+</hibernate-mapping>

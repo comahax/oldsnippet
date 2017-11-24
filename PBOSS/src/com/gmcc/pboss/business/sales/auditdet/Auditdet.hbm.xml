@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.auditdet.AuditdetVO" table="FX_SW_AUDITDET">
+<composite-id>
+<key-property column="AUDITSEQ" length="14" name="auditseq" type="java.lang.Long"/>
+<key-property column="RECID" length="14" name="recid" type="java.lang.Long"/>
+</composite-id>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

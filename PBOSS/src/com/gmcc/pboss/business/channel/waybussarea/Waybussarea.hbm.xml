@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.waybussarea.WaybussareaVO" table="CH_PW_WAYBUSSAREA">
+<id column="WAYID" length="18" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="TOTALAREA" length="16" name="totalarea" type="java.lang.Double"/>
+<property column="CONSULTAREA" length="16" name="consultarea" type="java.lang.Double"/>
+<property column="BUSAREA" length="16" name="busarea" type="java.lang.Double"/>
+<property column="NEWBUSAREA" length="16" name="newbusarea" type="java.lang.Double"/>
+<property column="TERMAREA" length="16" name="termarea" type="java.lang.Double"/>
+<property column="SELFSERVAREA" length="16" name="selfservarea" type="java.lang.Double"/>
+<property column="CUSTAREA" length="16" name="custarea" type="java.lang.Double"/>
+<property column="VIPAREA" length="16" name="viparea" type="java.lang.Double"/>
+<property column="BGDAREA" length="16" name="bgdarea" type="java.lang.Double"/>
+<property column="BOSSAREA" length="14" name="bossarea" type="java.lang.String"/>
+<property column="PUBLISHAREA" length="10" name="publisharea" type="java.lang.Long"/>
+<property column="SHOPWINAREA" length="10" name="shopwinarea" type="java.lang.Long"/>
+<property column="DOORHEIGHT" length="12" name="doorheight" type="java.lang.Double"/>
+<property column="DOORLENGTH" length="12" name="doorlength" type="java.lang.Double"/>
+<property column="BACKHEIGHT" length="12" name="backheight" type="java.lang.Double"/>
+<property column="BACKLENGTH" length="12" name="backlength" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

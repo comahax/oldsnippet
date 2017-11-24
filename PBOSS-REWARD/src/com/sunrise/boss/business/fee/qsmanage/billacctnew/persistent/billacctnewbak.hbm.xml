@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sunrise.boss.business.fee.qsmanage.billacctnew.persistent.BillAcctNewBakVO" table="IB_CBP_BILLACCTNEW_1" >
+        <composite-id >
+            <key-property name="billitemid" type="java.lang.Long">
+                <column name="BILLITEMID" precision="10" scale="0" />
+            </key-property>
+            <key-property name="acctid" type="java.lang.Long">
+                <column name="ACCTID" precision="14" scale="0" />
+            </key-property>
+        </composite-id>
+        <property name="accttype" type="java.lang.Long">
+            <column name="ACCTTYPE" precision="3" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
+
+
+
+
+
+
+
+
+ 

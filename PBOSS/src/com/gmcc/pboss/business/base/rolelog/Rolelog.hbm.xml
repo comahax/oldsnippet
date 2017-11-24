@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.rolelog.RolelogVO" table="SA_SR_ROLELOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">SA_SR_ROLELOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="ROLEID" length="32" name="roleid" type="java.lang.String"/>
+<property column="ROLENAME" length="64" name="rolename" type="java.lang.String"/>
+<property column="ISPUBLIC" length="1" name="ispublic" type="java.lang.Byte"/>
+<property column="OPERID" length="16" name="operid" type="java.lang.String"/>
+<property column="ORGID" length="32" name="orgid" type="java.lang.String"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+<property column="ISBACK" length="1" name="isback" type="java.lang.Byte"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

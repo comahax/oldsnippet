@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.busyxplanlog.persistent.BusyxplanlogVO" table="CH_CB_BUSYXPLANLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_CB_BUSYXPLANLOG_SEQ</param>
+	</generator>
+</id>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18" not-null="true"/>
+<property name="yxplanid" column="YXPLANID" type="java.lang.Long" length="14"/>
+<property name="wrapfee" column="WRAPFEE" type="java.lang.Double" length="10"/>
+<property name="cityid" column="CITYID" type="java.lang.String" length="4"/>
+<property name="optime" column="OPTIME" type="java.util.Date" length="7"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="16"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="8"/>
+<property name="success" column="SUCCESS" type="java.lang.String" length="8"/>
+<property name="noncyc" column="NONCYC" type="java.lang.Long" length="3"/>
+<property name="prodid" column="PRODID" type="java.lang.String" length="32"/>
+<property name="planbusitype" column="PLANBUSITYPE" type="java.lang.String" length="32"/>
+
+</class>
+</hibernate-mapping>

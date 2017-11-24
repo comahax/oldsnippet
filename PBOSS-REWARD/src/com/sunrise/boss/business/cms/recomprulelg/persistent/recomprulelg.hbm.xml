@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.recomprulelg.persistent.RecompRuleLgVO" table="CH_WL_RECOMPRULELG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence"> 
+<param name="sequence">CH_WL_RECOMPRULELG_SEQ</param> 
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.sql.Timestamp"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="RECID" length="8" name="recid" type="java.lang.Integer"/>
+<property column="TARGET" length="12" name="target" type="java.lang.Long"/>
+<property column="QUOTIETY" length="16" name="quotiety" type="java.lang.Double"/>
+<property column="BALANCETERM" length="128" name="balanceterm" type="java.lang.String"/>
+<property column="STANDARD" length="16" name="standard" type="java.lang.Double"/>
+<property column="COMTYPE" length="4" name="comtype" type="java.lang.String"/>
+<property column="BCHLEVEL" length="4" name="bchlevel" type="java.lang.String"/>
+<property column="INTEGRAL" length="16" name="integral" type="java.lang.Double"/>
+<property column="BUSINESSTYPE" length="32" name="businesstype" type="java.lang.String"/>
+<property column="PRODID" length="8" name="prodid" type="java.lang.Integer"/>
+<property column="PROSALECODE" length="15" name="prosalecode" type="java.lang.String"/>
+<property column="SALSEPRODID" length="8" name="salseprodid" type="java.lang.Integer"/>
+<property column="INYXPLANID" length="10" name="inyxplanid" type="java.lang.Long"/>
+<property column="INTIME" length="7" name="intime" type="java.sql.Timestamp"/>
+<property column="CUSTSTATE" length="3" name="custstate" type="java.lang.Short"/>
+<property column="CHARGETYPE" length="3" name="chargetype" type="java.lang.Short"/>
+<property column="MOMENT" length="3" name="moment" type="java.lang.Short"/>
+<property column="FITSTATION" length="3" name="fitstation" type="java.lang.Short"/>
+<property column="FITOPR" length="15" name="fitopr" type="java.lang.String"/>
+<property column="BOSSAREA" length="14" name="bossarea" not-null="true" type="java.lang.String"/>
+<property column="CALCULATEMODE" length="100" name="calculatemode" type="java.lang.String"/>
+<property column="STARTTIME" length="7" name="starttime" type="java.sql.Timestamp"/>
+<property column="STOPTIME" length="7" name="stoptime" type="java.sql.Timestamp"/>
+<property column="PRI" length="3" name="pri" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

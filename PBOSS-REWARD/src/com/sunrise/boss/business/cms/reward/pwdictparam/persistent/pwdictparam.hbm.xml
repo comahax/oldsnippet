@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.pwdictparam.persistent.PwDictparamVO" table="CH_PW_DICTPARAM">
+<id column="DKEY" name="dkey" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="DVALUE" length="200" name="dvalue" not-null="true" type="java.lang.String"/>
+<property column="STATE" length="1" name="state" type="java.lang.Byte"/>
+<property column="DICTTYPE" length="18" name="dicttype" type="java.lang.String"/>
+<property column="FORMAT" length="200" name="format" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.integral.custinte.persistent.CustInteVO" table="IB_CU_CUSTINTEGRAL">
+        <composite-id>
+            <key-property name="custid" type="java.lang.Long">
+                <column name="CUSTID" precision="14" scale="0" />
+            </key-property>
+            <key-property name="integralcyc" type="java.lang.Long">
+                <column name="INTEGRALCYC" precision="8" scale="0" />
+            </key-property>
+        </composite-id> 
+        <property name="integral" type="java.lang.Long">
+            <column name="INTEGRAL" precision="10" scale="0" />
+        </property>
+        <property name="availintegral" type="java.lang.Long">
+            <column name="AVAILINTEGRAL" precision="10" scale="0" />
+        </property>
+        <property name="moveint" type="java.lang.Long">
+            <column name="MOVEINT" precision="10" scale="0" />
+        </property>
+        <property name="starttime" type="java.util.Date">
+            <column name="STARTTIME" length="7" />
+        </property>
+        <property name="stoptime" type="java.util.Date">
+            <column name="STOPTIME" length="7" />
+        </property>
+        <property name="updatetime" type="java.util.Date">
+            <column name="UPDATETIME" length="7" />
+        </property>
+        <property name="unavailint" type="java.lang.Long">
+            <column name="UNAVAILINT" precision="10" scale="0" />
+        </property>
+        <property name="saleint" type="java.lang.Long">
+            <column name="SALEINT" precision="11" scale="0" />
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO" length="128" />
+        </property>
+    </class>
+</hibernate-mapping>

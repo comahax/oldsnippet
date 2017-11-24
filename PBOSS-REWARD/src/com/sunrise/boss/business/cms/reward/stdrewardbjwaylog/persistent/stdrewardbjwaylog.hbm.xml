@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.stdrewardbjwaylog.persistent.StdrewardbjwaylogVO" table="CH_PW_STDREWARDBJWAYLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_PW_STDREWARDBJWAYLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="REWARDID" length="14" name="rewardid" type="java.lang.Long"/>
+<property column="REGION" length="10" name="region" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="REWARDSTD" length="16" name="rewardstd" type="java.lang.Double"/>
+<property column="ACCTYPE" length="3" name="acctype" type="java.lang.Short"/>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

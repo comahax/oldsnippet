@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.stkalarmstat.StkalarmstatVO" table="IM_FX_STKALARMSTAT">
+<id column="SEQID" length="14" name="seqid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">IM_FX_STKALARMSTAT_SEQ</param>
+	</generator>
+</id>
+<property column="ALARMDATE" length="7" name="alarmdate" type="java.util.Date"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="ALARMLEVEL" length="16" name="alarmlevel" type="java.lang.String"/>
+<property column="CRTSTOCK" length="14" name="crtstock" type="java.lang.Long"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.resource.stkalarmstat.Stkalarmstat1">
+--当"主动放弃"为1时
+select a.* from IM_FX_STKALARMSTAT a ,FX_SW_ORDER b where a.orderid=b.orderid and b.memo LIKE '[主动放弃]%'
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.stkalarmstat.Stkalarmstat2">
+--当"主动放弃"为0时
+select a.*, b.memo
+  from IM_FX_STKALARMSTAT a, FX_SW_ORDER b
+ where (a.orderid = b.orderid and b.memo not LIKE '[主动放弃]%')
+    or (a.orderid = b.orderid and b.memo is null)
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.resource.stkalarmstat.Stkalarmstatshow3">
+<![CDATA[
+select t0.countyid as countyid,
+       t0.mareacode as mareacode,
+       nvl(t1.redalarm, 0) as redalarm,
+       nvl(t2.yelalarm, 0) as yelalarm
+  from (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as ncount
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and w.cityid = :cityid
+           and w.waytype = 'AG'
+           and w.waysubtype in ('PSAL', 'SAGT', 'FD')
+           and s.alarmdate between
+    			to_date(:begindate, 'yyyy-MM-dd hh24:mi:ss') and
+    			to_date(:enddate, 'yyyy-MM-dd hh24:mi:ss')
+        
+         group by w.countyid, w.mareacode) t0,
+       
+       (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as redalarm
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and s.alarmlevel = 'REDALARM'
+           and s.alarmdate between
+    			to_date(:begindate, 'yyyy-MM-dd hh24:mi:ss') and
+    			to_date(:enddate, 'yyyy-MM-dd hh24:mi:ss')
+         group by w.countyid, w.mareacode) t1,
+       
+       (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as yelalarm
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and s.alarmlevel = 'YELALARM'
+           and s.alarmdate between
+    			to_date(:begindate, 'yyyy-MM-dd hh24:mi:ss') and
+    			to_date(:enddate, 'yyyy-MM-dd hh24:mi:ss')
+         group by w.countyid, w.mareacode) t2
+
+ where t0.countyid = t1.countyid(+)
+   and t0.countyid = t2.countyid(+)
+   and t0.mareacode = t1.mareacode(+)
+   and t0.mareacode = t2.mareacode(+)
+]]>
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.stkalarmstat.Stkalarmstatshow4">
+<![CDATA[
+select t0.countyid as countyid,
+       t0.mareacode as mareacode,
+       nvl(t1.redalarm, 0) as redalarm,
+       nvl(t2.yelalarm, 0) as yelalarm
+  from (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as ncount
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and w.cityid = :cityid
+           and w.waytype = 'AG'
+           and w.waysubtype in ('PSAL', 'SAGT', 'FD')
+           and s.alarmdate > to_date(:begindate , 'yyyy-MM-dd hh24:mi:ss')
+        
+         group by w.countyid, w.mareacode) t0,
+       
+       (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as redalarm
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and s.alarmlevel = 'REDALARM'
+           and s.alarmdate > to_date(:begindate , 'yyyy-MM-dd hh24:mi:ss')
+         group by w.countyid, w.mareacode) t1,
+       
+       (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as yelalarm
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and s.alarmlevel = 'YELALARM'
+           and s.alarmdate > to_date(:begindate , 'yyyy-MM-dd hh24:mi:ss')
+         group by w.countyid, w.mareacode) t2
+
+ where t0.countyid = t1.countyid(+)
+   and t0.countyid = t2.countyid(+)
+   and t0.mareacode = t1.mareacode(+)
+   and t0.mareacode = t2.mareacode(+)
+]]>
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.stkalarmstat.Stkalarmstatshow5">
+<![CDATA[
+select t0.countyid as countyid,
+       t0.mareacode as mareacode,
+       nvl(t1.redalarm, 0) as redalarm,
+       nvl(t2.yelalarm, 0) as yelalarm
+  from (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as ncount
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and w.cityid = :cityid
+           and w.waytype = 'AG'
+           and w.waysubtype in ('PSAL', 'SAGT', 'FD')
+           and s.alarmdate < to_date(:enddate , 'yyyy-MM-dd hh24:mi:ss')
+        
+         group by w.countyid, w.mareacode) t0,
+       
+       (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as redalarm
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and s.alarmlevel = 'REDALARM'
+           and s.alarmdate < to_date(:enddate , 'yyyy-MM-dd hh24:mi:ss')
+         group by w.countyid, w.mareacode) t1,
+       
+       (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as yelalarm
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and s.alarmlevel = 'YELALARM'
+           and s.alarmdate < to_date(:enddate , 'yyyy-MM-dd hh24:mi:ss')
+         group by w.countyid, w.mareacode) t2
+
+ where t0.countyid = t1.countyid(+)
+   and t0.countyid = t2.countyid(+)
+   and t0.mareacode = t1.mareacode(+)
+   and t0.mareacode = t2.mareacode(+)
+]]>
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.resource.stkalarmstat.Stkalarmstatshow6">
+<![CDATA[
+select t0.countyid as countyid,
+       t0.mareacode as mareacode,
+       nvl(t1.redalarm, 0) as redalarm,
+       nvl(t2.yelalarm, 0) as yelalarm
+  from (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as ncount
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and w.cityid = :cityid
+           and w.waytype = 'AG'
+           and w.waysubtype in ('PSAL', 'SAGT', 'FD')
+        
+         group by w.countyid, w.mareacode) t0,
+       
+       (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as redalarm
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and s.alarmlevel = 'REDALARM'
+         group by w.countyid, w.mareacode) t1,
+       
+       (select w.countyid as countyid,
+               w.mareacode as mareacode,
+               count(*) as yelalarm
+          from CH_PW_WAY w, IM_FX_STKALARMSTAT s
+         where w.wayid = s.wayid
+           and s.alarmlevel = 'YELALARM'
+         group by w.countyid, w.mareacode) t2
+
+ where t0.countyid = t1.countyid(+)
+   and t0.countyid = t2.countyid(+)
+   and t0.mareacode = t1.mareacode(+)
+   and t0.mareacode = t2.mareacode(+)
+]]>
+</sql-query>
+</hibernate-mapping>

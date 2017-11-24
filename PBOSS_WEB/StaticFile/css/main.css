@@ -1,0 +1,436 @@
+body {
+	margin: 0; /* 最好将 body 元素的边距和填充设置为 0 以覆盖不同的浏览器默认值 */
+	padding: 0;
+	background-image: url(/images/img/headerbj.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+	width: 100%;
+}
+.divspan {
+	width:910px;
+	position:relative;
+	clear:both;
+	margin:0 auto 0 auto;
+}
+.module {
+	height: 290px;
+	width: 275px;
+	float: left;
+	margin-right: 12px;
+	border: 1px solid #c2dbe2;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+/*退出区域样式*/
+
+.heade{
+	padding-top: 5px;
+	font-size: 12px;
+}
+.heade div {
+	margin-right: 20px;
+	float: right;
+}
+/*退出样式*/
+.quitbotton {
+	background-image: url(/images/img/quit.gif);
+	background-repeat: no-repeat;
+	height: 15px;
+	width: 52px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #FFF;
+	padding-top: 2px;
+	text-align: center;
+}
+/*Head 菜单*/
+#con {
+	height: 20px;
+	width: 910px;
+	left:0;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+}
+
+#con ul {
+	padding: 0px;
+		margin: 0px;
+	float:left;
+	width:100%;
+}
+#con li {
+	list-style-type: none;
+	float: left;
+	padding: 0px;
+}
+#con li a {
+	display: block;
+	text-decoration: none;
+	line-height: 28px;
+	margin: 0px;
+	padding: 0px;
+}
+.tagContent {
+	text-align:center;
+	_padding-left:25px;
+	padding-right: 25px;
+	padding-bottom: 0;
+	padding-left: 25px;
+	font-size: 12px;
+	clear: both;
+	vertical-align: middle;
+}
+.sub {
+	font-size: 12px;
+	list-style-position: outside;
+	list-style-type: circle;
+}
+.sub li {
+	color:#0574ac;
+	font-size: 12px;
+	font-weight: normal;
+	list-style-position: outside;
+	list-style-type: circle;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-right: 15px;
+	margin-bottom: 0px;
+	margin-left: 15px;
+	}
+.sub li a {
+	padding:0 18px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #0574ac;
+	list-style-type: circle;
+}
+.tagContent div {
+	display: none;
+	text-align: center;
+}
+.selectedTag {
+	background-position: left top;
+	text-align: center;
+}
+.selectedTag a {
+	color:#000;
+	background-image: url(/images/img/on.jpg);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 33px;
+	width: 103px;
+	text-align: center;
+}
+.normalTag {
+	font-size: 12px;
+	font-weight: bold;
+	color: #000;
+	background-position: center bottom;
+	text-align: center;
+}
+.normalTag a {
+	color:#FFF;
+	font-size: 12px;
+	background-image: url(/images/img/off.jpg);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	height: 33px;
+	width: 103px;
+	text-align: center;
+}
+.emptyTag {
+	width:20px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+}
+/**Head 菜单 结束*/
+/** 左边菜单选择区 */
+.framecontent {
+	margin: 8px;
+}
+.framecontent table{
+	border-collapse:inherit;
+}
+.framecontent table td{
+	padding:4px;
+	padding-right:0px;
+}
+.frameline {
+	border: 1px solid #c2dbe2;
+}
+.framesubnavbj {
+	background-image: url(/images/img/subnavbj.gif);
+	background-repeat: repeat-x;
+	height: 29px;
+	width: 100%;
+}
+.frametitle {
+	font-size: 12px;
+	font-weight: bold;
+	color: #006093;
+	float: left;
+	margin-left: 8px;
+	margin-top: 8px;
+}
+.sub_frametitle  {/*菜单区二级菜单名*/
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	background-image: url(/images/img/list4bj.gif);
+	background-repeat: no-repeat;
+	height: 38px;
+	padding-top: 16px;
+	padding-left: 38px;
+	text-align: left;
+}
+
+.sub_framelist2 {/*二级菜单名*/
+	font-size: 12px;
+	font-weight: normal;
+	color: #0873ab;
+	margin-left: 16px;
+	text-indent: 10;
+	background-repeat: no-repeat;
+	list-style-position: outside;
+	list-style-type: circle;
+	line-height: 24px;
+	text-align: left;
+	width: 150px;
+}
+
+/** 左边菜单区结束*/
+/**底部样式*/
+.bottomtitle {
+	padding-top:5px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+}
+/*超链接样式*/
+a.a1:link,a.a1:visited{
+	color:#000;
+	text-decoration:none;
+} 
+a.a1:hover,a.a1:active{
+	color:#FF0608;
+	text-decoration:none;
+} 
+a.a2:link,a.a2:visited{
+	color:#666;
+	text-decoration:none;
+} 
+a.a2:hover,a.a2:active{
+	color:#FF5E01;
+	text-decoration:none;
+} 
+a.a3:link,a.a3:visited{
+	color:#FF5E01;
+	text-decoration:underline;
+} 
+a.a3:hover,a.a3:active{
+	color:#999;
+	text-decoration:underline;
+} 
+a.a4:link,a.a4:visited{
+	color:#005AA2;
+	text-decoration:none;
+} 
+a.a4:hover,a.a4:active{
+	color:#FF5E01;
+	text-decoration:none;
+} 
+a.a5:link,a.a5:visited{
+	color:#FFF;
+	text-decoration:none;
+} 
+a.a5:hover,a.a5:active{
+	color:#F60;
+	text-decoration:none;
+} 
+a.a6:link,a.a6:visited{
+	color:#0873AB;
+	text-decoration:none;
+} 
+a.a6:hover,a.a6:active{
+	color:#F60;
+	text-decoration:none;
+} 
+a.a6_on:link,a.a6_on:visited{
+	color:#F60;
+	text-decoration:none;
+} 
+a.a6_on:hover,a.a6_on:active{
+	color:#F60;
+	text-decoration:none;
+} 
+
+.flaotLeft {
+	float:left;
+}
+.flaotRight {
+	float:right;
+}
+.paddingBtn {
+	margin-bottom:10px;
+}
+.paddingTop {
+	padding-top:10px;
+}
+.menu{
+	width: 188px;
+	float: left;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 12px;
+	
+}
+.context {
+	float: left;
+	width: 700px !important;
+	width: 710px;
+	margin: 0px;
+	margin-right: 0px !important;
+	margin-right: -10px;
+	padding: 0px;
+	text-align:left;
+}
+.frameMain{
+	float: left;
+	width: 690px;
+	margin: 0px;
+	padding: 0px;
+}
+/*三级菜单*/
+.menw3table {
+	color: #0873ab;
+	width: 180px;
+	border: 1px solid #77a0ab;
+	background-color: #edfbfe;
+	z-index:1;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display:none;
+}
+.menw3table td {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #77a0ab;
+	list-style-type: none;
+	text-align:left;
+	padding:5px;
+	padding-left:20px;
+}
+.menw3table a:link,.menw3table a:visited{
+	text-decoration:none;
+	color: #0873ab;
+} 
+.menw3table a:hover,.menw3table a:active{
+	text-decoration:none;
+	color: #F30;
+} 
+
+
+/*font color*/
+
+.font_white {
+	color: #FFF;
+}
+.font_red {
+	color: #F60;
+}
+.font_lightBlue {
+	color: #0873ab;
+}
+
+.font_orange {
+	color: #ff8400;
+}
+
+/*location 浅蓝加粗效果*/
+.font_breadcrumbtitle {
+	font-size: 12px;
+	font-weight: bold;
+	color: #0065cc;
+	float: left;
+	padding-top: 6px;
+	padding-right: 10px;
+}
+
+.font_breadcrumb {
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	float: left;
+	padding-top: 6px;
+}
+
+
+.subTitle {
+	font-size: 12px;
+	font-weight: bold;
+	color: #0073c8;
+	height: 25px;
+	padding-top: 5px;
+	padding-left: 8px;
+	text-align: left;
+}
+
+.tableTitle {
+	font-size: 12px;
+	font-weight: normal;
+	color: #628bb1;
+	text-indent: 15px;
+}
+
+.tableMark {
+	font-size: 12px;
+	font-weight: normal;
+	color: #ff8400;
+}
+/**酬金报表*/
+.divTitleName{
+	width:100px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #628bb1;
+	text-indent: 15px;
+	float:left;
+}
+
+/**酬金报表*/
+.divBBCTitleName{
+	width:180px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #628bb1;
+	text-indent: 15px;
+	float:left;
+}
+.divTitleSpan{
+	width:10px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #628bb1;
+	float:left;
+	text-align:center;
+}
+
+.divTitleContext{
+	width:180px;
+	font-size: 12px;
+	float:left;
+	text-align:center;
+	color: #628bb1;
+}

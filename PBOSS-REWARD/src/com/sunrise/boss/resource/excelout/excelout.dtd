@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+************************************************************
+该dtd文件用于说明excelout.xml文件的配置方式
+
+excelout-config为文档元素,含有最少一个entity子元素
+************************************************************
+-->
+<!ELEMENT excelout-config (entity+)>
+
+<!--
+***********************************************************
+ entity元素指定一个要导出数据的VO(对于多表查询的时候,因为有多个VO,所以
+ 需要使用复杂查询的方式,建立一个虚拟VO).
+ entity元素的name属性是必须的,name的值应为VO的全类名,以保持唯一;entiy元素含有
+ delegate,formname,resbundle,outfilename,fields子元素,
+ 除了delegate元素外,其它的子元素必须要依声明的顺序存在.
+***********************************************************
+-->
+<!ELEMENT entity (delegate*,formname,resbundle,outfilename,fields)>
+<!ATTLIST entity name CDATA #REQUIRED>
+
+<!--
+***********************************************************
+ delegate元素指定调用其方法获得查询数据及其记录数的代理类,该元素不是必需
+ 的,如果在excelout.xml文件没有指定,则程序中会使用
+ "com.sunrise.boss.delegate.common.CommonDelegate"作为元素内容;
+ 
+ delegate元素含有query,count两属性,query属性指定delegate类中用以获得
+ 查询数据的查询方法的名称,如果没有指定该属性的值程序中默认使用"doQuery"作为方法名;
+ count属性指定delegate类中用以获得符合导出条件的 记录总数的方法名称,
+ 如果没有指定该属性的值,程序中默认使用"doCount"作为方法名.
+***********************************************************
+-->
+<!ELEMENT delegate (#PCDATA)>
+<!ATTLIST delegate 
+	query CDATA #IMPLIED
+	count CDATA #IMPLIED
+>
+
+<!--
+***********************************************************
+ 元素formname指定进行查询操作的action对应的form类的全类名.
+ 该元素是必需的
+***********************************************************
+-->
+<!ELEMENT formname (#PCDATA)>
+
+<!--
+***********************************************************
+ 元素resbundle指定查询页面上显示的中文字段标题所对应的资源文件
+  元素的内容为在resmanage-struts-config.xml文件中声明的message-resources
+  元素的属性key的值;
+  
+ path属性指定资源文件的路径名.
+ 
+ 注意:页面上中文标题使用<bean:message bundle="key" key="fieldName"/>的方式
+ 即资源文件中,中文标题内容对应的key应与vo对应的字段名一致,避免导出文件中的中文标题
+ 与查询页面的中文标题不一致.
+***********************************************************
+-->
+<!ELEMENT resbundle (#PCDATA)>
+<!ATTLIST resbundle path CDATA #REQUIRED>
+
+<!--
+***********************************************************
+ 指定导出文件的名称
+***********************************************************
+-->
+<!ELEMENT outfilename (#PCDATA)>
+
+<!--
+***********************************************************
+ 指定VO的所有需要导出的字段,最少含有一个字段
+***********************************************************
+-->
+<!ELEMENT fields (field+)>
+
+<!--
+***********************************************************
+ 指定需要导出的VO的单个字段,含有子元素definition,该子元素是可选的.
+ 
+ name属性指定字段的名称(与VO里面定义一致),covertvalue属性指定该
+ 字段值在导出的时候是否需要进行转换,(譬如:套卡查询中,price字段导出
+ 的值为price/100),该属性的值只能是 字段名(+|-|*|/)数字的形式,若
+ 有特殊的实现,可以提供实现Excelout接口的实现类,实现接口的geValue
+ 方法.
+***********************************************************
+-->
+<!ELEMENT field (definition*)>
+<!ATTLIST field 
+	name CDATA #REQUIRED
+	covertvalue CDATA #IMPLIED
+>
+
+<!--
+***********************************************************
+ 指定导出字段进行code2name翻译时用到的definition属性的值.
+ 该元素可包含字符数据或case子元素.
+ 
+ 若包含字符数据,则该字符数据为definition的值[该值有四种选择:
+ 系统参数($开头),配置方式(#开头),实现Code2name接口类的类short名,
+ 实现Excelout接口的类short名(以*开头)];
+ 
+ 若包含case子元素,则definition的值由case元素的内容决定,此时,
+ definition元素应含有属性dependent,指定definition的值依赖于哪
+ 个字段(同一VO的字段)譬如:台帐查询中,typeid字段翻译所用到的definition的
+ 值依赖于sheetrestype字段的值不同而不同.
+***********************************************************
+-->
+<!ELEMENT definition (#PCDATA|case)*>
+<!ATTLIST definition dependent CDATA #IMPLIED>
+
+<!--
+***********************************************************
+case元素内容指定definition的值,该值有四种选择:
+ 系统参数($开头),配置方式(#开头),实现Code2name接口类的类short名,
+ 实现Excelout接口类的类short名(以*开头).
+ 
+ 该元素含有属性oprtype,value,这些属性是必需的.
+ oprtype属性指定依赖字段要进行的比较操作(只支持==,!=,>,<,>=,<=),
+ value属性指定要进行比较操作的右操作符,依赖字段
+ 的值为左操作符.如台帐查询中,oprtype为"==",value为0时,
+ 表示如果sheetrestype==0为true时,则definition的值为该
+ case元素的内容.
+***********************************************************
+-->
+<!ELEMENT case (#PCDATA)>
+<!ATTLIST case 
+	oprtype CDATA #REQUIRED
+	value CDATA #REQUIRED
+>
+<!--
+end of excelout.dtd
+-->

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.disintegrallog.persistent.DisintegrallogVO" table="CH_ADT_DISINTEGRALLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_ADT_DISINTEGRALLOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="REGION" length="10" name="region" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="REWARDTYPE" length="5" name="rewardtype" type="java.lang.Integer"/>
+<property column="SEQ" length="14" name="seq" type="java.lang.Long"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="CALMONTH" length="8" name="calmonth" type="java.lang.String"/>
+<property column="INTEGRALTYPE" length="2" name="integraltype" type="java.lang.Short"/>
+<property column="INTEGRALNUM" length="10" name="integralnum" type="java.lang.Long"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="opncodeapplyreq">
+		<xs:annotation>
+			<xs:documentation>新业务编码申请请求信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="reqheader" type="reqheader" />
+				<xs:element name="reqbody">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="id">
+								<xs:annotation>
+									<xs:documentation>唯一ID</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:int" name="cityid">
+								<xs:annotation>
+									<xs:documentation>区域编码,如:769/766等
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:string" name="parentid">
+								<xs:annotation>
+									<xs:documentation>所属第四级业务编码</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:string" name="opnname">
+								<xs:annotation>
+									<xs:documentation>业务名称</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:string" name="busibelong">
+								<xs:annotation>
+									<xs:documentation>
+										业务归属:[SERV:计件.服务业务],[CARD:计件.套卡业务],[DATA:创薪联盟业务](其它业务新增先不在此接口自动新增)
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:string" name="startdate">
+								<xs:annotation>
+									<xs:documentation>生效时间YYYYMMDD</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:string" name="enddate">
+								<xs:annotation>
+									<xs:documentation>失效时间YYYYMMDD</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="opncodeapplyrsp">
+		<xs:annotation>
+			<xs:documentation>新业务编码申请响应信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rspheader" type="rspheader"></xs:element>
+				<xs:element name="rspbody">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="id">
+								<xs:annotation>
+									<xs:documentation>唯一ID</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:int" name="state">
+								<xs:annotation>
+									<xs:documentation>状态:[0:成功],[1:失败](失败,后续值为空,需要重新调接口)
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:string" name="opnid" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>业务编码，如果业务失败则为空
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="xs:string" name="parentid">
+								<xs:annotation>
+									<xs:documentation>所属第四级业务编码</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:complexType name="reqheader">
+		<xs:sequence>
+			<xs:element type="xs:string" name="platform">
+				<xs:annotation>
+					<xs:documentation>业务平台来源</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:string" name="process_code">
+				<xs:annotation>
+					<xs:documentation>业务标识</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:string" name="req_seq">
+				<xs:annotation>
+					<xs:documentation>请求流水</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:string" name="req_time">
+				<xs:annotation>
+					<xs:documentation>请求时间,格式yyyymmddhh24miss
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:int" name="testflag" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>测试标识：1表示测试，0或者不传表示生产
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:string" name="verify_code" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>验证码 保证双方通信安全性（预留空）</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rspheader">
+		<xs:sequence>
+			<xs:element type="xs:string" name="platform">
+				<xs:annotation>
+					<xs:documentation>业务平台来源</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:string" name="process_code">
+				<xs:annotation>
+					<xs:documentation>业务标识</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:string" name="req_seq">
+				<xs:annotation>
+					<xs:documentation>请求流水</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:string" name="rsp_seq">
+				<xs:annotation>
+					<xs:documentation>响应流水</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:string" name="rsp_time">
+				<xs:annotation>
+					<xs:documentation>响应时间,格式yyyymmddhh24miss
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="retinfo">
+				<xs:annotation>
+					<xs:documentation>返回结果</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="retcode" type="xs:int">
+							<xs:annotation>
+								<xs:documentation>返回码</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="retmsg" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>返回消息</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

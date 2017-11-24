@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.rewardpoolr.persistent.RewardpoolrVO" table="CH_PW_REWARDPOOLR">
+<composite-id>
+<key-property name="region" column="REGION" type="java.lang.String" length="10"/>
+<key-property name="rewardtype" column="REWARDTYPE" type="java.lang.Integer" length="5"/>
+</composite-id>
+<property name="slv" column="SLV" type="java.lang.String" length="40" not-null="true"/>
+<property name="startdate" column="STARTDATE" type="java.util.Date" length="7"/>
+<property name="stopdate" column="STOPDATE" type="java.util.Date" length="7"/>
+<property name="memo" column="MEMO" type="java.lang.String" length="512"/>
+<property name="proportion" column="PROPORTION" type="java.lang.String" length="15"/>
+<property name="cycle" column="CYCLE" type="java.lang.String" length="10"/>
+</class>
+</hibernate-mapping>

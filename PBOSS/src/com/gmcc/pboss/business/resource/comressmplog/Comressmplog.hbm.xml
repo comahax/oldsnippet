@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.comressmplog.ComressmplogVO" table="IM_FX_COMRESSMPLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">IM_FX_COMRESSMPLOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE2" length="16" name="oprcode2" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="COMRESID" length="32" name="comresid" type="java.lang.String"/>
+<property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+<property column="BATCHNO" length="30" name="batchno" type="java.lang.String"/>
+<property column="COMSTATE" length="3" name="comstate" type="java.lang.Short"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="STARTTIME" length="7" name="starttime" type="java.util.Date"/>
+<property column="VALIDPERIOD" length="7" name="validperiod" type="java.util.Date"/>
+<property column="COMKEEP" length="7" name="comkeep" type="java.util.Date"/>
+<property column="COMDISC" length="14" name="comdisc" type="java.lang.Long"/>
+<property column="PRICE" length="14" name="price" type="java.lang.Long"/>
+<property column="COMACTIVE" length="7" name="comactive" type="java.util.Date"/>
+<property column="COMSOURCE" length="8" name="comsource" type="java.lang.Integer"/>
+<property column="STOCKPRICE" length="14" name="stockprice" type="java.lang.Long"/>
+<property column="SIMPRICE" length="14" name="simprice" type="java.lang.Long"/>
+<property column="ISOPEN" length="3" name="isopen" type="java.lang.Short"/>
+<property column="ICCID" length="21" name="iccid" type="java.lang.String"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="BOXNUM" length="100" name="boxnum" type="java.lang.String"/>
+<property column="ENTERTIME" length="7" name="entertime" type="java.util.Date"/>
+<property column="NUMBERTYPE" length="10" name="numbertype" type="java.lang.String"/>
+<property column="INSIDESEQ" length="8" name="insideseq" type="java.lang.Integer"/>
+<property column="SALETIME" length="7" name="saletime" type="java.util.Date"/>
+<!--
+<property column="RESUSE" length="20" name="resuse" type="java.lang.String"/>
+<property column="STORAREA" length="10" name="storarea" type="java.lang.String"/>
+  -->
+</class>
+</hibernate-mapping>

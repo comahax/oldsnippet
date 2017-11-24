@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.resale2.persistent.Resale2VO" table="IM_PR_COMRESSMP">
+<id name="opntype" column="OPNTYPE" type="java.lang.String" length="18">
+<generator class="assigned"/>
+</id>
+</class>
+<sql-query name="queryOpnid2">
+		<return
+			class="com.sunrise.boss.business.cms.resale2.persistent.Resale2VO" />
+	Select OPNID as opntype,comresid
+	from CH_ADT_BUSITOSMP a, im_pr_comressmp b, im_pr_com c
+	where  b.comid=c.comid and a.Comclassid=c.Comtype and a.Comprice=b.price and b.comresid =:comresid
+</sql-query>
+</hibernate-mapping>

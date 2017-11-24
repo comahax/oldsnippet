@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.assess.persistent.AssessVO" table="CH_PW_ASSESS">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_PW_ASSESS_SEQ</param>
+	</generator>
+</id>
+<property column="WAYID" length="20" name="wayid" type="java.lang.String"/>
+<property column="ASSESSTYPE" length="22" name="assesstype" type="java.lang.Long"/>
+<property column="VALUE" length="10" name="value" type="java.lang.Double"/>
+<property column="REMARK" length="256" name="remark" type="java.lang.String"/>
+<property column="OPERCODE" length="20" name="opercode" type="java.lang.String"/>
+<property column="OPERTYPE" length="1" name="opertype" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="CALCMONTH" length="6" name="calcmonth" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

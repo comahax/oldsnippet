@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.vrealtimeamt.VrealtimeamtVO" table="FX_SW_VREALTIMEAMT">
+<composite-id>
+<key-property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<key-property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+</composite-id>
+<property column="TOTAL" length="14" name="total" type="java.lang.Long"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="RESTYPE" length="32" name="restype" type="java.lang.String"/>
+</class>
+<sql-query name="vrealtimeamt.with.way.djuge">
+ <return class="com.gmcc.pboss.business.sales.vrealtimeamt.VrealtimeamtVO" />
+ SELECT W.COUNTYID,
+       W.SVCCODE,
+       W.MAREACODE,
+       W.STARLEVEL,
+       R.*,
+       W.WAYNAME,
+       DECODE(R.BRAND,'AllBrand',(SELECT SUM(B.ORDERAMT)
+          FROM FX_SW_ORDER A,
+               FX_SW_ORDERCOMCATE B,
+               (SELECT DISTINCT COMCATEGORY, RESTYPE, BRAND
+                  FROM IM_PR_COMCATEGORYRELA) C
+         WHERE A.ORDERID = B.ORDERID
+           AND B.COMCATEGORY = C.COMCATEGORY
+           AND A.WAYID = R.WAYID
+           AND A.ORDERSTATE NOT IN ('CANCEL', 'FINISHED')
+           AND B.ORDERCOMTYPE = 'CUSTORDER'
+           AND C.RESTYPE = 'COMRESSMP'),
+           
+           (SELECT SUM(B.ORDERAMT)
+          FROM FX_SW_ORDER A,
+               FX_SW_ORDERCOMCATE B,
+               (SELECT DISTINCT COMCATEGORY, RESTYPE, BRAND
+                  FROM IM_PR_COMCATEGORYRELA) C
+         WHERE A.ORDERID = B.ORDERID
+           AND B.COMCATEGORY = C.COMCATEGORY
+           AND A.WAYID = R.WAYID
+           AND A.ORDERSTATE NOT IN ('CANCEL', 'FINISHED')
+           AND B.ORDERCOMTYPE = 'CUSTORDER'
+           AND C.RESTYPE = 'COMRESSMP'
+           AND C.BRAND = R.BRAND)
+           ) ORDERDSTOCK
+  FROM FX_SW_REALTIMEAMT R, CH_PW_WAY W
+ WHERE R.WAYID = W.WAYID
+</sql-query>
+<sql-query name="vrealtimeamt.with.way.nodjuge">
+ <return class="com.gmcc.pboss.business.sales.vrealtimeamt.VrealtimeamtVO" />
+ 	SELECT W.COUNTYID,
+       W.SVCCODE,
+       W.MAREACODE,
+       W.STARLEVEL,
+       R.*,
+       W.WAYNAME,
+       (SELECT SUM(B.ORDERAMT)
+          FROM FX_SW_ORDER A,
+               FX_SW_ORDERCOMCATE B,
+               (SELECT DISTINCT COMCATEGORY, RESTYPE, BRAND
+                  FROM IM_PR_COMCATEGORYRELA) C
+         WHERE A.ORDERID = B.ORDERID
+           AND B.COMCATEGORY = C.COMCATEGORY
+           AND A.WAYID = R.WAYID
+           AND A.ORDERSTATE NOT IN ('CANCEL', 'FINISHED')
+           AND B.ORDERCOMTYPE = 'CUSTORDER'
+           AND C.RESTYPE = 'COMRESSMP') ORDERDSTOCK
+  FROM FX_SW_REALTIMEAMT R, CH_PW_WAY W
+ WHERE R.WAYID = W.WAYID
+</sql-query>
+<sql-query name="vrealtimeamtQuery">
+ <return class="com.gmcc.pboss.business.sales.vrealtimeamt.VrealtimeamtVO" />
+ SELECT ROWNUM as TOTAL,A.COUNTYID,A.SVCCODE,A.MAREACODE,A.WAYID,A.STARLEVEL,B.RESTYPE,B.BRAND,B.COMCATEGORY  FROM CH_PW_WAY A,
+       (SELECT DISTINCT WAYID, RESTYPE, BRAND, COMCATEGORY
+          FROM (SELECT DISTINCT A.WAYID       AS WAYID,
+                                C.RESTYPE     AS RESTYPE,
+                                C.BRAND       AS BRAND,
+                                B.COMCATEGORY AS COMCATEGORY
+                  FROM FX_SW_ORDER A,
+                       FX_SW_ORDERCOMCATE B,
+                       (SELECT DISTINCT RESTYPE, BRAND, COMCATEGORY
+                          FROM IM_PR_COMCATEGORYRELA) C
+                 WHERE A.ORDERID = B.ORDERID
+                   AND B.COMCATEGORY = C.COMCATEGORY
+                   AND TO_CHAR(A.CREATETIME, 'YYYYMMDD') =
+                       TO_CHAR(SYSDATE, 'YYYYMMDD')
+                   AND A.ORDERSTATE &lt;&gt; 'CANCEL'
+                UNION
+                SELECT DISTINCT A.WAYID       AS WAYID,
+                                C.RESTYPE     AS RESTYPE,
+                                C.BRAND       AS BRAND,
+                                B.COMCATEGORY AS COMCATEGORY
+                  FROM FX_SW_ORDER A,
+                       FX_SW_ORDERCOMCATE B,
+                       (SELECT DISTINCT RESTYPE, BRAND, COMCATEGORY
+                          FROM IM_PR_COMCATEGORYRELA) C
+                 WHERE A.ORDERID = B.ORDERID
+                   AND B.COMCATEGORY = C.COMCATEGORY
+                   AND TO_CHAR(A.CREATETIME, 'YYYYMM') =
+                       TO_CHAR(SYSDATE, 'YYYYMM')
+                   AND A.ORDERSTATE &lt;&gt; 'CANCEL'
+                UNION
+                SELECT DISTINCT A.WAYID       AS WAYID,
+                                C.RESTYPE     AS RESTYPE,
+                                C.BRAND       AS BRAND,
+                                B.COMCATEGORY AS COMCATEGORY
+                  FROM FX_SW_ORDER A,
+                       FX_SW_ORDERCOMCATE B,
+                       (SELECT DISTINCT RESTYPE, BRAND, COMCATEGORY
+                          FROM IM_PR_COMCATEGORYRELA) C
+                 WHERE A.ORDERID = B.ORDERID
+                   AND B.COMCATEGORY = C.COMCATEGORY
+                   AND A.ORDERSTATE NOT IN ('CANCEL', 'FINISHED')
+                UNION
+                SELECT DISTINCT WAYID, RESTYPE, BRAND, COMCATEGORY
+                  FROM FX_SW_PARTNERRES
+                 WHERE ISACTIVE = 0)) B
+ WHERE A.WAYID = B.WAYID
+</sql-query>
+<!-- 当月订购量 -->
+<sql-query name="vrealtimeamtMonthBook">
+	 <return-scalar column="val" type="java.lang.Long"/>
+	SELECT NVL(SUM(B.ORDERAMT),0) AS val FROM FX_SW_ORDER A, FX_SW_ORDERCOMCATE B
+	 WHERE A.ORDERID = B.ORDERID
+	 AND TO_CHAR(A.CREATETIME, 'YYYYMM') = TO_CHAR(SYSDATE, 'YYYYMM')
+	 AND A.ORDERSTATE &lt;&gt; 'CANCEL'
+	 AND A.WAYID = :WAYID
+	 AND B.COMCATEGORY = :COMCATEGORY
+</sql-query>
+<!-- 当天订购量 -->
+<sql-query name="vrealtimeamtTodayBook">
+	 <return-scalar column="val" type="java.lang.Long"/>
+	SELECT NVL(SUM(B.ORDERAMT),0) AS val FROM FX_SW_ORDER A, FX_SW_ORDERCOMCATE B
+	 WHERE A.ORDERID = B.ORDERID
+	 AND TO_CHAR(A.CREATETIME, 'YYYYMMDD') = TO_CHAR(SYSDATE, 'YYYYMMDD')
+	 AND A.ORDERSTATE &lt;&gt; 'CANCEL'
+	 AND A.WAYID = :WAYID
+	 AND B.COMCATEGORY = :COMCATEGORY
+</sql-query>
+<!-- 库存量 -->
+<sql-query name="vrealtimeamtGoodsStore">
+	<return-scalar column="val" type="java.lang.Long"/>
+	SELECT NVL(COUNT(*),0) AS val FROM FX_SW_PARTNERRES WHERE WAYID = :WAYID AND COMCATEGORY = :COMCATEGORY AND ISACTIVE = 0
+</sql-query>
+<!-- 在订库存量 -->
+<sql-query name="vrealtimeamtPresaleGoodsStore">
+	 <return-scalar column="val" type="java.lang.Long"/>
+	SELECT NVL(SUM(B.ORDERAMT),0) AS val FROM FX_SW_ORDER A, FX_SW_ORDERCOMCATE B
+	 WHERE A.ORDERID = B.ORDERID
+	 AND A.ORDERSTATE NOT IN('CANCEL', 'FINISHED')
+	 AND A.WAYID = :WAYID
+	 AND B.COMCATEGORY = :COMCATEGORY
+</sql-query>
+</hibernate-mapping>

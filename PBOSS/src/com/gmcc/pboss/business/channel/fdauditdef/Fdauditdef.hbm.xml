@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.fdauditdef.FdauditdefVO" table="CH_PW_FDAUDITDEF">
+<composite-id>
+<key-property column="Field" length="32" name="field" type="java.lang.String"/>
+<key-property column="Tablename" length="32" name="tablename" type="java.lang.String"/>
+<key-property column="typename" length="32" name="typename" type="java.lang.String"/>
+</composite-id>
+<property column="tablechname" length="64" name="tablechname" not-null="true" type="java.lang.String"/>
+<property column="typechname" length="64" name="typechname" not-null="true" type="java.lang.String"/>
+<property column="fieldchname" length="64" name="fieldchname" not-null="true" type="java.lang.String"/>
+<property column="Fieldtype" length="2" name="fieldtype" type="java.lang.Short"/>
+<property column="Pkname" length="64" name="pkname" type="java.lang.String"/>
+<property column="pktype" length="2" name="pktype" type="java.lang.Short"/>
+<property column="Pkname2" length="64" name="pkname2" type="java.lang.String"/>
+<property column="Pktype2" length="2" name="pktype2" type="java.lang.Short"/>
+<property column="State" length="2" name="state" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

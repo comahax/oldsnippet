@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<schema-selection match-schema="BASESYS" match-catalog="" />
+
+<type-mapping>
+	<!-- ID标识，不明白为什么要用DECIMAL 
+	<sql-type jdbc-type="DECIMAL" hibernate-type="java.lang.Long"
+		precision="20" not-null="true"/>
+	-->
+	<sql-type jdbc-type="NUMERIC" precision="20"
+		hibernate-type="java.lang.Long" not-null="true"/>
+	<sql-type jdbc-type="NUMERIC" not-null="false"
+		hibernate-type="double" />
+	<sql-type jdbc-type="VARCHAR" hibernate-type="string" />
+	<sql-type jdbc-type="DATE" hibernate-type="timestamp" />
+</type-mapping>
+
+<table-filter match-schema="BASESYS" match-name="TBLUSER" />
+
+<table schema="BASESYS" name="TBLUSER" class="com.gmcc.pboss.user.model.User">
+	<!-- 
+		<meta attribute="extends">com.sinosoft.cpc.common.BaseMain</meta>		
+	-->
+		<primary-key>
+			<!-- setting up a specific id generator for a table -->
+			<generator class="sequence">
+				<param name="sequence">SEQ_USER_ID</param>
+			</generator>
+			<key-column name="ID" />
+		</primary-key>
+</table>
+</hibernate-reverse-engineering>

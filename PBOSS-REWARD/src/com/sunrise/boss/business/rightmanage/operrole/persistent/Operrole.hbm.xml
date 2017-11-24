@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.rightmanage.operrole.persistent.OperroleVO" table="SA_SR_OPERROLE">
+<composite-id>
+<key-property name="operid" column="OPERID" type="string" length="16"/>
+<key-property name="roleid" column="ROLEID" type="string" length="16"/>
+<key-property name="status" column="STATUS" type="byte" length="1"/>
+<key-property name="statusdate" column="STATUSDATE" type="date" length="7"/>
+</composite-id>
+<property name="createdate" column="CREATEDATE" type="date" length="7"/>
+</class>
+</hibernate-mapping>

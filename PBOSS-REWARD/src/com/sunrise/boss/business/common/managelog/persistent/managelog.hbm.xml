@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.common.managelog.persistent.ManageLogVO" table="IB_WL_MAGOPRLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+<generator class="sequence"> 
+<param name="sequence">ib_wl_magoprlog_seq</param> 
+</generator> 
+</id> 
+
+<property name="oprtime" column="OPRTIME" type="java.util.Date" length="7" not-null="true"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="16" not-null="true"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="64" not-null="true"/>
+<property name="opraction" column="OPRACTION" type="java.lang.String" length="64" not-null="true"/>
+<!--property name="oprby" column="OPRBY" type="java.lang.String" length="256"/-->
+<property name="oprcon1" column="OPRCON1" type="java.lang.String" length="256" not-null="true"/>
+<property name="oprcon2" column="OPRCON2" type="java.lang.String" length="256" not-null="true"/>
+<property name="oprstate" column="OPRSTATE" type="java.lang.Integer" length="3" not-null="true"/>
+</class>
+</hibernate-mapping>

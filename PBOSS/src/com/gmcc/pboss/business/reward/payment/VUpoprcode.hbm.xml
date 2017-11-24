@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.payment.VUpoprcodeVO" table="VCH_CW_VUPOPRCODE">
+    <id column="OPERID" length="16" name="operid" type="java.lang.String" />
+    <property column="OPERNAME" length="64" name="opername" type="java.lang.String"/>
+</class>
+
+<sql-query name="com.gmcc.pboss.business.reward.payment.doQueryOprcodeBySql">
+    <return class="com.gmcc.pboss.business.reward.payment.VUpoprcodeVO"></return>
+SELECT DISTINCT O.OPERID, O.OPERNAME
+  FROM SA_SO_OPERATOR O, CH_CW_PAYMENT P
+ WHERE O.OPERID = P.UPOPRCODE
+   AND O.STATUS = '1'
+ ORDER BY O.OPERID  
+</sql-query>
+
+</hibernate-mapping>

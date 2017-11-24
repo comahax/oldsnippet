@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 需要从数据库中加载的固定参数标识 -->
+<GROUPID>
+	<!-- 渠道相关 Begin-->
+		<VALUE>
+			<NAME>CH_FORMTYPE</NAME>
+			<DESC>经营业态</DESC>
+		</VALUE>
+		<VALUE>
+			<NAME>CH_CATETYPE</NAME>
+			<DESC>连锁性质</DESC>
+		</VALUE>
+		<VALUE>
+			<NAME>CH_VALIDFLAG</NAME>
+			<DESC>卡类购销划扣银行状态</DESC>
+		</VALUE>
+	<!-- 渠道相关 End -->
+	
+	<!-- 人员相关 begin  -->
+		<VALUE>
+			<NAME>CH_EDULEVEL</NAME>
+			<DESC>文化程度</DESC>
+		</VALUE>
+		<VALUE>
+			<NAME>CH_EMPLOYTYPE</NAME>
+			<DESC>用工性质</DESC>
+		</VALUE>
+		<VALUE>
+			<NAME>CH_CONTACTTYPE</NAME>
+			<DESC>劳务关系</DESC>
+		</VALUE>
+		<VALUE>
+			<NAME>CH_EMPSTATUS</NAME>
+			<DESC>用工状态</DESC>
+		</VALUE>
+		<VALUE>
+			<NAME>CH_SEX</NAME>
+			<DESC>性别</DESC>
+		</VALUE>
+	<!-- 人员相关 end  -->
+	
+	<!-- 酬金相关 Begin -->
+	<VALUE>
+		<NAME>CH_REWARDTYPE</NAME>
+		<DESC>社会渠道酬金类型</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>CH_BBCREWARDTYPE</NAME>
+		<DESC>社会渠道酬金类型</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>CH_ACCTYPE</NAME>
+		<DESC>计酬方式</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>CH_BSACCTYPE</NAME>
+		<DESC>计酬方式</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>CH_REWARDLOCALTYPE</NAME>
+		<DESC>本地酬金类型</DESC>
+	</VALUE>
+	<!-- 酬金相关 End -->
+	
+	<!-- 沟通相关 Begin-->
+	<VALUE>
+		<NAME>CH_ADVINFOTYPE</NAME>
+		<DESC>公告信息类型</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>CH_ADVINFODESTTYPE</NAME>
+		<DESC>公告发布对象类型</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>CH_STARLEVEL</NAME>
+		<DESC>渠道星级</DESC>
+	</VALUE>
+	<!-- 沟通相关 End-->
+	
+	<!-- 分销类相关 Begin -->
+	<VALUE>
+		<NAME>FX_SMPBRAND</NAME>
+		<DESC>分销套卡品牌</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>FX_ORDERFSTATE</NAME>
+		<DESC>分销订单状态</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>FX_ORDERAVE</NAME>
+		<DESC>分销订购途径</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>FX_DELITYPE</NAME>
+		<DESC>送货方式</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>FX_PAYTYPE</NAME>
+		<DESC>缴费方式</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>FX_SIGNSTATE</NAME>
+		<DESC>签收状态</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>FX_DISFORMSTATE</NAME>
+		<DESC>配送单状态</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>FX_SUMSTATE</NAME>
+		<DESC>垫资汇总单状态</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>FX_ORDERCOMTYPE</NAME>
+		<DESC>订单订购类型</DESC>
+	</VALUE>
+	<!-- 分销类相关 End -->
+	<!-- 登陆方式 -->
+	<VALUE>
+		<NAME>WEB_AUTHTYPE</NAME>
+		<DESC>登陆方式</DESC>
+	</VALUE>
+	<!-- 品牌 -->
+	<VALUE>
+		<NAME>CH_SIMBRAND</NAME>
+		<DESC>品牌固定参数：神州行，全球通，动感地带，其他</DESC>
+	</VALUE>
+	<!-- 套卡类型 -->
+	<VALUE>
+		<NAME>IM_COMCLASS</NAME>
+		<DESC>套卡类别</DESC>
+	</VALUE>
+	<!-- 套卡登记标识 -->
+	<VALUE>
+		<NAME>CH_MFLAG</NAME>
+		<DESC>套卡登记标识</DESC>
+	</VALUE>
+	<!-- 酬金类型 -->
+	<VALUE>
+		<NAME>CH_REWARD_TYPE</NAME>
+		<DESC>酬金类型</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>IM_COMTYPE</NAME>
+		<DESC>商品类型</DESC>
+	</VALUE>
+	<VALUE>
+		<NAME>CH_EMPATTR2</NAME>
+		<DESC>推广专员-成员属性</DESC>
+	</VALUE>
+</GROUPID>

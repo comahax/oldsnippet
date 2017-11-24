@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="missioner" namespace="/missioner" extends="default">
+
+		<action name="recommendSuccess" class="recommendSuccessAction" method="doList">
+			<result name="missioner">/missioner/recommend/success/listMissioner.jsp</result>
+			<result name="agency">/missioner/recommend/success/listAgency.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>		
+		<action name="listMissioner" class="recommendSuccessAction" method="doListMissioner"/>
+		<action name="listAgency" class="recommendSuccessAction" method="doListAgency"/>
+		
+		<action name="recommendFail" class="unvrcfaildayAction" method="doList">
+			<result name="missioner">/missioner/recommend/unvrcfailday/listMissioner.jsp</result>
+			<result name="agency">/missioner/recommend/unvrcfailday/listAgency.jsp</result>
+		</action>
+		<action name="unvrcfaildayAjax" class="unvrcfaildayAction" method="doAjax" />
+		
+		<action name="realtimesuccList" class="realtimesuccAction" method="doList">
+			<result name="list">/missioner/realtimeaccounting/listRealtimesucc.jsp</result>
+		</action>
+		<action name="realtimesuccAjax" class="realtimesuccAction" method="doAjax" />
+		<action name="realtimefailList" class="realtimefailAction" method="doList">
+			<result name="list">/missioner/realtimeaccounting/listRealtimefail.jsp</result>
+		</action>
+		<action name="realtimefailAjax" class="realtimefailAction" method="doAjax" />
+	</package>
+</struts>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.feediscmolog.persistent.FeediscmologVO" table="PC_PS_FEEDISCMOLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">PC_PS_FEEDISCMOLOG_SEQ</param>
+	</generator>
+</id>
+<property name="optime" column="OPTIME" type="java.util.Date" length="7" not-null="true"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="15" not-null="true"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="8" not-null="true"/>
+<property name="success" column="SUCCESS" type="java.lang.String" length="8"/>
+<property name="discid" column="DISCID" type="java.lang.Long" length="14"/>
+<property name="yxplanid" column="YXPLANID" type="java.lang.Long" length="14"/>
+<property name="disctype" column="DISCTYPE" type="java.lang.Short" length="2"/>
+<property name="discvalue" column="DISCVALUE" type="java.lang.Double" length="14"/>
+<property name="presentprio" column="PRESENTPRIO" type="java.lang.Integer" length="6"/>
+<property name="presentbalanceflag" column="PRESENTBALANCEFLAG" type="java.lang.Byte" length="1"/>
+<property name="discbill" column="DISCBILL" type="java.lang.String" length="2000"/>
+<property name="excludebill" column="EXCLUDEBILL" type="java.lang.String" length="2000"/>
+</class>
+</hibernate-mapping>

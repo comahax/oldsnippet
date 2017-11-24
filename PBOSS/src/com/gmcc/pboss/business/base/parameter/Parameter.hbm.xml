@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.parameter.ParameterVO" table="SA_DB_PARAMETER">
+	<id column="PARAMID" length="32" name="paramid" type="java.lang.String" />
+	<property column="PARAMNAME" length="64" name="paramname" type="java.lang.String"/>
+	<property column="DATATYPE" length="16" name="datatype" type="java.lang.String"/>
+	<property column="MANAGEABLE" length="1" name="manageable" type="java.lang.Short"/>
+	<property column="MNGLEVEL" length="16" name="mnglevel" type="java.lang.String"/>
+	<property column="PARAMTYPE" length="16" name="paramtype" type="java.lang.String"/>
+	<property column="CREATEDATE" length="16" name="createdate" type="java.util.Date"/>
+	<property column="STATUS" length="1" name="status" type="java.lang.Short"/>
+	<property column="STATUSDATE" length="6" name="statusdate" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

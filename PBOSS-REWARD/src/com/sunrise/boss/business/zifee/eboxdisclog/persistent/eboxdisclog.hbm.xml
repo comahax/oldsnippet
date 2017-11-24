@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.eboxdisclog.persistent.EboxdisclogVO" table="PC_PS_EBOXDISCLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">PC_PS_EBOXDISCLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.sql.Timestamp"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="EBOXDISCID" length="10" name="eboxdiscid" type="java.lang.Long"/>
+<property column="EBOXUNITID" length="14" name="eboxunitid" type="java.lang.Long"/>
+<property column="INPLANID" length="14" name="inplanid" type="java.lang.Long"/>
+<property column="EFFECTIVETYPE" length="32" name="effectivetype" type="java.lang.String"/>
+<property column="EFFECTIVEDATE" length="7" name="effectivedate" type="java.util.Date"/>
+<property column="EFFECTIVEINTERVAL" length="5" name="effectiveinterval" type="java.lang.Integer"/>
+<property column="ISPOSTPONE" length="1" name="ispostpone" type="java.lang.Byte"/>
+<property column="PAYTIMES" length="5" name="paytimes" type="java.lang.Integer"/>
+<property column="AMOUNT" length="16" name="amount" type="java.lang.Long"/>
+<property column="ENTERUNITDETFLAG" length="1" name="enterunitdetflag" type="java.lang.Byte"/>
+<property column="DISCTYPE" length="32" name="disctype" type="java.lang.String"/>
+<property column="ROLLOVERTYPE" length="32" name="rollovertype" type="java.lang.String"/>
+<property column="EFFECTIVECYCLES" length="5" name="effectivecycles" type="java.lang.Integer"/>
+<property column="EXPIREDCYCLES" length="5" name="expiredcycles" type="java.lang.Integer"/>
+<property column="EXPIREDDATE" length="7" name="expireddate" type="java.util.Date"/>
+<property column="ISPRESENT" length="1" name="ispresent" type="java.lang.Byte"/>
+<property column="PRESENTTYPE" length="16" name="presenttype" type="java.lang.String"/>
+<property column="RELADISCID" length="10" name="reladiscid" type="java.lang.Long"/>
+<property column="AFFIXID" length="16" name="affixid" type="java.lang.String"/>
+<property column="FEESOURCETYPE" length="16" name="feesourcetype" type="java.lang.String"/>
+<property column="FEESOURCEID" length="14" name="feesourceid" type="java.lang.Long"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"/>
+<property column="YXPLANID" length="14" name="yxplanid" type="java.lang.Long"/>
+<property column="PAYINTERVAL" length="5" name="payinterval" type="java.lang.Integer"/>
+<property column="VALIDITY" length="4" name="validity" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

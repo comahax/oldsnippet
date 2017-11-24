@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.common.prodinfo.persistent.ProdInfoVO" table="IB_CB_PRODINFO">
+		<composite-id>
+            <key-property name="prodid" type="java.lang.String">
+                <column name="PRODID" precision="16" scale="0" />
+            </key-property>
+            <key-property name="brand" type="java.lang.String">
+                <column name="BRAND" precision="32" scale="0" />
+            </key-property>
+   
+        </composite-id>
+
+		<property name="prodname" column="PRODNAME" type="java.lang.String" length="32"/>
+		<property name="cardtype" column="CARDTYPE" type="java.lang.String" length="16"/>
+		<property name="paytype" column="PAYTYPE" type="java.lang.String" length="16"/>
+		<property name="xzmode" column="XZMODE" type="java.lang.Short" length="2"/>
+		<property name="memo" column="MEMO" type="java.lang.String" length="255"/>
+		</class>
+</hibernate-mapping>

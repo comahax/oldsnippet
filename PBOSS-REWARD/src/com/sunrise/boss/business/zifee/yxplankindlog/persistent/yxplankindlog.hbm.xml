@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.yxplankindlog.persistent.YxPlanKindlogVO" table="PC_PS_YXPLANKINLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">PC_PS_YXPLANKINLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.sql.Timestamp"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="YXPLANKINDID" length="10" name="yxplankindid" type="java.lang.Long"/>
+<property column="YXPLANKINDNAME" length="30" name="yxplankindname" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

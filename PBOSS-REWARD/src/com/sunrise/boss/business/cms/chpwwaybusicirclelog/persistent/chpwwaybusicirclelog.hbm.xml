@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chpwwaybusicirclelog.persistent.ChPwWaybusicirclelogVO" table="CH_PW_WAYBUSICIRCLELOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_PW_WAYBUSICIRCLELOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="BUSCNO" length="18" name="buscno" type="java.lang.String"/>
+<property column="WAYMOD" length="6" name="waymod" type="java.lang.Float"/>
+<property column="REWARDKIND" length="2" name="rewardkind" type="java.lang.Short"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="WAYATTR" length="2" name="wayattr" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

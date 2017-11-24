@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="/RolerightForm" type="com.sunrise.boss.ui.rightmanage.roleright.RolerightForm"/>
+		<form-bean name="/BatchinRolerightForm" type="com.sunrise.boss.ui.rightmanage.roleright.batchin.BatchinRolerightForm"/>
+		<form-bean name="/OperrightForm" type="com.sunrise.boss.ui.rightmanage.operright.OperrightForm"/>
+		<form-bean name="/BatchinOperrightForm" type="com.sunrise.boss.ui.rightmanage.operright.batchin.BatchinOperrightForm"/>
+		<form-bean name="/OperroleForm" type="com.sunrise.boss.ui.rightmanage.operrole.OperroleForm"/>
+		<form-bean name="/BatchinOperroleForm" type="com.sunrise.boss.ui.rightmanage.operrole.batchin.BatchinOperroleForm"/>
+		<form-bean name="/RoleForm" type="com.sunrise.boss.ui.rightmanage.role.RoleForm"/>
+		<form-bean name="/OperatorForm" type="com.sunrise.boss.ui.rightmanage.operator.OperatorForm"/>
+		<form-bean name="/RightitemForm" type="com.sunrise.boss.ui.rightmanage.rightitem.RightitemForm"/>
+		<form-bean name="/BatchinRightitemForm" type="com.sunrise.boss.ui.rightmanage.rightitem.batchin.BatchinRightitemForm"/>
+	</form-beans>
+	<action-mappings>
+		<action name="/RolerightForm" path="/roleright" scope="request" type="com.sunrise.boss.ui.rightmanage.roleright.RolerightAction">
+			<forward name="list" path="/rightmanage/roleright/list.jsp"/>
+			<forward name="content" path="/rightmanage/roleright/content.jsp"></forward>
+		</action>
+		<action name="/BatchinRolerightForm" path="/batchinroleright" scope="request" type="com.sunrise.boss.ui.rightmanage.roleright.batchin.BatchinRolerightAction">
+			<forward name="success" path="/rightmanage/roleright/batchin/batchin.jsp"/>	
+			<forward name="error" path="/rightmanage/roleright/batchin/batchin.jsp"/>
+		</action>
+		<action name="/BatchinRolerightForm" path="/rolerightbatchtask" scope="request" type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/rightmanage/roleright/batchin/batchin.jsp"/>
+			<forward name="error" path="/rightmanage/roleright/batchin/batchin.jsp"/>
+		</action>
+		
+		<action name="/OperrightForm" path="/operright" scope="request" type="com.sunrise.boss.ui.rightmanage.operright.OperrightAction">
+			<forward name="list" path="/rightmanage/operright/list.jsp"/>
+			<forward name="content" path="/rightmanage/operright/content.jsp"></forward>
+		</action>
+		<action name="/BatchinOperrightForm" path="/batchinoperright" scope="request" type="com.sunrise.boss.ui.rightmanage.operright.batchin.BatchinOperrightAction">
+			<forward name="success" path="/rightmanage/operright/batchin/batchin.jsp"/>
+			<forward name="error" path="/rightmanage/operright/batchin/batchin.jsp"/>
+		</action>
+		<action name="/BatchinOperrightForm" path="/operrightbatchtask" scope="request" type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/rightmanage/operright/batchin/batchin.jsp"/>
+			<forward name="error" path="/rightmanage/operright/batchin/batchin.jsp"/>
+		</action>
+		<action name="/OperroleForm" path="/operrole" scope="request" type="com.sunrise.boss.ui.rightmanage.operrole.OperroleAction">
+			<forward name="list" path="/rightmanage/operrole/list.jsp"/>
+			<forward name="content" path="/rightmanage/operrole/content.jsp"></forward>
+		</action>
+		<action name="/BatchinOperroleForm" path="/batchinoperrole" scope="request" type="com.sunrise.boss.ui.rightmanage.operrole.batchin.BatchinOperroleAction">
+			<forward name="success" path="/rightmanage/operrole/batchin/batchin.jsp"/>
+			<forward name="error" path="/rightmanage/operrole/batchin/batchin.jsp"/>
+		</action>
+		<action name="/BatchinOperroleForm" path="/operrolebatchtask" scope="request" type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/rightmanage/operrole/batchin/batchin.jsp"/>
+			<forward name="error" path="/rightmanage/operrole/batchin/batchin.jsp"/>
+		</action>
+		<action name="/RoleForm" path="/role" scope="request" type="com.sunrise.boss.ui.rightmanage.role.RoleAction">
+			<forward name="list" path="/rightmanage/role/list.jsp"/>
+			<forward name="content" path="/rightmanage/role/content.jsp"></forward>
+		</action>
+		<action name="/OperatorForm" path="/operator" scope="request" type="com.sunrise.boss.ui.rightmanage.operator.OperatorAction">
+			<forward name="list" path="/rightmanage/operator/list.jsp"/>
+			<forward name="content" path="/rightmanage/operator/content.jsp"></forward>
+		</action>
+		<action name="/RightitemForm" path="/rightitem" scope="request" type="com.sunrise.boss.ui.rightmanage.rightitem.RightitemAction">
+			<forward name="list" path="/rightmanage/rightitem/list.jsp"/>
+			<forward name="content" path="/rightmanage/rightitem/content.jsp"></forward>
+		</action>
+		<action name="/BatchinRightitemForm" path="/batchinrightitem" scope="request" type="com.sunrise.boss.ui.rightmanage.rightitem.batchin.BatchinRightitemAction">
+			<forward name="success" path="/rightmanage/rightitem/batchin/batchin.jsp"/>
+			<forward name="error" path="/rightmanage/rightitem/batchin/batchin.jsp"/>
+		</action>
+		<action name="/BatchinRightitemForm" path="/rightitembatchtask" scope="request" type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/rightmanage/rightitem/batchin/batchin.jsp"/>
+			<forward name="error" path="/rightmanage/rightitem/batchin/batchin.jsp"/>
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="com.sunrise.boss.resource.i18n.rightmanage.operright.Operright" key="operright" null="false"/>
+	<message-resources parameter="com.sunrise.boss.resource.i18n.rightmanage.roleright.Roleright" key="roleright" null="false"/>
+	<message-resources parameter="com.sunrise.boss.resource.i18n.rightmanage.operrole.Operrole" key="operrole" null="false"/>
+	<message-resources parameter="com.sunrise.boss.resource.i18n.rightmanage.role.Role" key="role" null="false"/>
+	<message-resources parameter="com.sunrise.boss.resource.i18n.rightmanage.operator.Operator" key="operator" null="false"/>
+	<message-resources parameter="com.sunrise.boss.resource.i18n.rightmanage.rightitem.Rightitem" key="rightitem" null="false"/>
+</struts-config>

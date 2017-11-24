@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.svwaycnstr.SvwaycnstrVO" table="CH_PW_SVWAYCNSTR">
+<id column="WAYID" length="18" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CNTSTARTTIME" length="7" name="cntstarttime" type="java.util.Date"/>
+<property column="RUNSTATUS" length="2" name="runstatus" type="java.lang.Short"/>
+<property column="COMPLETETIME" length="7" name="completetime" type="java.util.Date"/>
+<property column="RUNTIME" length="7" name="runtime" type="java.util.Date"/>
+<property column="CLOSESTARTTIME" length="7" name="closestarttime" type="java.util.Date"/>
+<property column="CLOSESTOPTIME" length="7" name="closestoptime" type="java.util.Date"/>
+<property column="CLOSETIME" length="7" name="closetime" type="java.util.Date"/>
+<property column="STAFFSTD" length="6" name="staffstd" type="java.lang.Integer"/>
+<property column="CNTAREA" length="10" name="cntarea" type="java.lang.Long"/>
+<property column="BIZAREA" length="10" name="bizarea" type="java.lang.Long"/>
+<property column="DOORAREA" length="10" name="doorarea" type="java.lang.Long"/>
+<property column="WINDOWAREA" length="10" name="windowarea" type="java.lang.Long"/>
+<property column="SEATNUM" length="6" name="seatnum" type="java.lang.Integer"/>
+<property column="ACTSEATNUM" length="6" name="actseatnum" type="java.lang.Integer"/>
+<property column="FLEXSEATNUM" length="6" name="flexseatnum" type="java.lang.Integer"/>
+<property column="CNTCONTRACTPATH" length="255" name="cntcontractpath" type="java.lang.String"/>
+<property column="DATATABLEPATH" length="255" name="datatablepath" type="java.lang.String"/>
+<property column="DATAAREA" length="10" name="dataarea" type="java.lang.Long"/>
+<property column="DATANUM" length="16" name="datanum" type="java.lang.Double"/>
+<property column="DATACOST" length="16" name="datacost" type="java.lang.Double"/>
+<property column="SIGNCOST" length="16" name="signcost" type="java.lang.Double"/>
+<property column="SIGNAREA" length="10" name="signarea" type="java.lang.Long"/>
+<property column="BACKAREA" length="10" name="backarea" type="java.lang.Long"/>
+<property column="BACKCOST" length="16" name="backcost" type="java.lang.Double"/>
+<property column="LAMPCOST" length="16" name="lampcost" type="java.lang.Double"/>
+<property column="VICOST" length="16" name="vicost" type="java.lang.Double"/>
+<property column="WAYTYPE" length="4" name="waytype" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

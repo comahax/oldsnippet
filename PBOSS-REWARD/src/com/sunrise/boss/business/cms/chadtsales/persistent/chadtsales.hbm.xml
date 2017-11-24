@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtsales.persistent.ChAdtSalesVO" table="CH_ADT_SALES">
+<composite-id>
+	<key-property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+	<key-property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+	<key-property column="WAYATTR" length="2" name="wayattr" type="java.lang.String"/>
+	<key-property column="SALES" length="10" name="sales" type="java.lang.Long"/>
+</composite-id>
+<property column="REWARDSTD" length="16" name="rewardstd" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

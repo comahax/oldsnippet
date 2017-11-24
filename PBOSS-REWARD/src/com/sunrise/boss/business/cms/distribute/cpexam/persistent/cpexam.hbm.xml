@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.distribute.cpexam.persistent.CpexamVO" table="CH_DST_CPEXAM">
+<id column="EXAMID" name="examid" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_DST_CPEXAM_SEQ</param>
+	</generator>
+</id>
+<property column="COOPERAUID" length="50" name="cooperauid" not-null="true" type="java.lang.String"/>
+<property column="COMTYPE" length="6" name="comtype" not-null="true" type="java.lang.Long"/>
+<property column="EXAMTYPE" length="3" name="examtype" not-null="true" type="java.lang.Short"/>
+<property column="EXAMRESULT" length="16" name="examresult" not-null="true" type="java.lang.Double"/>
+<property column="BASENUM" length="6" name="basenum" not-null="true" type="java.lang.Long"/>
+<property column="REALNUM" length="6" name="realnum" not-null="true" type="java.lang.Long"/>
+</class>
+</hibernate-mapping>

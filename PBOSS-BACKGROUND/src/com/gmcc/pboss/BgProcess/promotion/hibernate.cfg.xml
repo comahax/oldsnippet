@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="connection.pool_size">5</property>
+		<property name="show_sql">true</property>
+		<property name="hibernate.current_session_context_class">com.sunrise.jop.common.spring.JopSessionContext</property>
+		
+		<mapping resource="com/gmcc/pboss/business/promotion/daemon/Daemon.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/daemonreg/Daemonreg.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/elmttmpl/Elmttmpl.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/elmtinst/Elmtinst.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/incqttdtl/Incqttdtl.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/ruleitem/Ruleitem.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnptnr/Ppzlnptnr.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnres/Ppzlnres.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlncom/Ppzlncom.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnrule/Ppzlnrule.hbm.xml"/>
+		
+		<mapping resource="com/gmcc/pboss/business/promotion/presentinga/Presentinga.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/presentingb/Presentingb.hbm.xml"/>
+		
+		<mapping resource="com/gmcc/pboss/business/promotion/presentingdtl/Presentingdtl.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/tieinsale/Tieinsale.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/pquantity/Pquantity.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/spproposal/Spproposal.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/promotingwayid/Promotingwayid.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/rewarddetail/Rewarddetail.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/rewardstd/Rewardstd.hbm.xml"/>
+		
+		<!-- 商圈管理 -->
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicircle/Waybusicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicirclelog/Waybusicirclelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicircle/Busicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicirclelog/Busicirclelog.hbm.xml" />
+
+	</session-factory>
+	
+</hibernate-configuration>

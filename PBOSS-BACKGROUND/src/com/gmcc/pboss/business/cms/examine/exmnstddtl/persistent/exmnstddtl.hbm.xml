@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.cms.examine.exmnstddtl.persistent.ExmnstddtlVO" table="CH_PW_EXMNSTDDTL">
+<composite-id>
+<key-property column="EXMNID" length="6" name="exmnid" type="java.lang.Integer"/>
+<key-property column="EXMNPERIOD" length="6" name="exmnperiod" type="java.lang.String"/>
+<key-property column="EXMNSTDID" length="6" name="exmnstdid" type="java.lang.Integer"/>
+<key-property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+</composite-id>
+<property column="EXMNNAME" length="50" name="exmnname" type="java.lang.String"/>
+<property column="EXMNSTDNAME" length="50" name="exmnstdname" type="java.lang.String"/>
+<property column="EXMNMARK" length="10" name="exmnmark" type="java.lang.Double"/>
+</class>
+<!-- 
+iv.	根据“渠道代码[WAYID]”、“考核标识[EXMNID]”、“考核周期[EXMNPERIOD]”分组汇总“考核项得分明细[CH_KH_EXMNSTDDTL]”表
+ -->
+<sql-query name="com.gmcc.pboss.business.cms.examine.exmnstddtl.persistent.sumQuery">
+select sum(EXMNMARK) SCORE 
+from CH_PW_EXMNSTDDTL
+where wayid =:wayid
+and  exmnid =:exmnid
+and exmnperiod =:exmnperiod
+</sql-query>
+</hibernate-mapping>

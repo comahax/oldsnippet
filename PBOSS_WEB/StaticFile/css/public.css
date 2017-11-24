@@ -1,0 +1,199 @@
+@CHARSET "GBK";
+
+/* 初始化样式
+=========================================================================
+textarea,th, td,button{ margin:0; padding:0; }
+table{ border-collapse:collapse;}
+th, td,button{font-size:12px;}
+button{ vertical-align:middle;  }
+input,button{ cursor:pointer}
+ */
+h1, h2, h3, h4, h5, h6, input, textarea,th, td,button,iframe { margin:0; padding:0; }
+h1, h2, h3, h4, h5, h6,th, td,button,select,input,textarea{font-size:12px;}
+table{ border-collapse:collapse;}
+button{ vertical-align:middle;  }
+a,input,textarea,button{ cursor:pointer}
+a{ color:#4B4B4B; text-decoration:none}
+image{cursor:hand;}
+a:hover{ text-decoration:underline}
+/* 浮动和隐藏样式 相对定位钩子
+========================================================================== */
+.hide{ display:none}
+.fl{ float:left}
+.fr{ float:right} 
+.o_hidden{ overflow:hidden}
+.posit{ position:relative;}
+/* 头部样式
+========================================================================== */
+.header{margin-bottom:1em}
+.headerswf{ margin-bottom:5px;}
+.gmcclogo{ width:135px; height:54px; overflow:hidden;}
+.bar{ width:783px; position:relative; }
+.bar_left{ width:418px; white-space:nowrap; overflow:hidden;text-align:right; padding:3px 5px 0 0;color:#759BBA; }
+.bar_right{ width:360px; overflow:hidden}
+/* 头部-快捷入口
+========================================================================== */
+.bar_right a{ float:left; margin-right:4px; background:url(/images/imgSprite_02.gif) no-repeat}
+.bar_right a.cn_en,.bar_right a.cn_en_02{ width:66px; height:17px; margin-right:0;background:url(/images/imgSprite.gif) no-repeat -128px -64px;text-indent:-999em; overflow:hidden; }
+.bar_right a.cn_en_02{background:url(/images/imgSprite.gif) no-repeat -196px -64px; float:right}
+.bar_right a span{ float:left;height:17px; line-height:17px; padding:0 10px; color:#555;background:url(/images/imgSprite_03.gif) no-repeat right 0; cursor:pointer}
+.bar_right a:hover{ text-decoration:none}
+/*文字样式
+===========================================================================*/
+.red_01{ color:#FF5900;}
+.green{ color:#029C00;}
+.blue_01{ color:#628BB1;}
+/* 文字对齐样式
+===========================================================================*/
+.textLeft{ text-align:left}
+.textRight{ text-align:right}
+.textCenter{ text-align:center}
+
+
+/* 温馨提醒
+====================================================== */
+.column{ clear:both;margin-bottom:1em;}   
+.column h2{ padding:0 0.5em 0 1em; 
+height:24px; line-height:24px; 
+background:#EEF6FB; color:#0167B2; 
+border-bottom:1px solid #AABDD1}                     
+.reminder{ margin:1em 1.5em 0; line-height:0.8em; }
+/* 下拉框样式 color: #666666;
+===========================================================================*/
+.select_L {
+	background-color: #FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	width: 40px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.select_2L {
+	background-color: #FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	width: 80px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.select_3L {
+	background-color: #FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	width: 120px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.select_4L {
+	background-color: #FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	width: 200px;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+/* 输入框样式
+====================================================== */
+.text_01,.text_02,.text_01_02,.text_02_02{ width:125px; padding:1px 3px;border:1px solid #C1D1D9}
+.text_02,.text_02_02{ width:250px;}
+select.text_01{ width:136px; padding:0}
+.textarea_00{padding:3px 0 3px 3px;border:1px solid #C1D1D9}
+.textarea_01,.textarea_01_02{ width:405px; height:80px; padding:3px 0 3px 3px;border:1px solid #C1D1D9}
+.text_01_02,.text_02_02,.textarea_01_02{ border:1px solid #41B7EC; background:#EDF9FF}
+
+/* 公用按钮样式
+=========================================================================== */
+.btn_blue,.btn_blue_75,.btn_blue_02,.btn_blue_75_02,a.btn_blue_02,a.btn_blue_75_02,a.btn_blue,a.btn_blue_75{ 
+border:1px solid #0EA2F3;height:21px;
+line-height:19px;text-align:center;
+color:#333;background:#fff url(/images/bg_btn_blue.gif) repeat-x 0 0; }
+.btn_blue_75,.btn_blue_75_02{ width:50px;}
+.btn_blue_02,.btn_blue_75_02{ background-position:0 -23px; }
+a.btn_blue:hover,a.btn_blue_75:hover,a.btn_blue_02:hover,a.btn_blue_75_02:hover{background-position:0 -22px; text-decoration:none}
+a.btn_blue,a.btn_blue_75,a.btn_blue_02,a.btn_blue_75_02{ float:left; display:inline; margin-top:-6px; font-size:12px;}
+/* 公用表格样式
+=========================================================================== */
+.tb02 tr td{ border:1px solid #bcd2e9; line-height:24px; padding:3px 5px}
+.tb03 tr td{ border:0px solid #bcd2e9; line-height:24px; padding:3px 5px}
+
+.tb_comn tr td{
+	border:1px solid #bcd2e9; 
+	color:#666;line-height:24px;
+	padding:0 5px;
+	text-align:center;
+}
+.tb_comn thead tr td{ 
+	border:1px solid #bcd2e9;
+	background:#D6EFFD; 
+	color:#427BA6; 
+	text-align:center
+}
+.tb_comn td.td_03{
+	border:1px solid #bcd2e9;
+	background:#9BD4F4;
+	font-weight:bold;
+}
+
+/*自定样式 表格效果
+=========================================================================== */
+.desc{ background:#D6EFFD;}
+
+/*
+翻页表格
+*/
+.page_table {
+	width:100%;
+	font-size:12px;
+	color:#000;
+	margin-top:5px;border:#000 solid 0px;
+}
+.page_table tr {
+	height:20px;
+}
+.page_table td {
+	padding-top:0px;
+	padding-bottom:0px;
+	height:25px;
+}
+/*注册页面统一控制*/
+.registryable {
+	font-size: 12px;
+	font-weight: normal;
+	list-style-type: none;
+	list-style-position: inside;
+	padding: 0px;
+	width: 95%;
+	line-height: 25px;
+	text-align:left;
+}
+/**公告表标题*/
+.advTitle{
+	font-size: 12px;
+	line-height: 18px;
+	padding: 5px;
+}

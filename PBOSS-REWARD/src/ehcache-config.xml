@@ -1,0 +1,17 @@
+<ehcache>
+    <defaultCache
+        maxElementsInMemory="10000"
+        eternal="false"
+        overflowToDisk="false"
+        timeToIdleSeconds="120"
+        timeToLiveSeconds="120"
+        diskPersistent="false"
+        diskExpiryThreadIntervalSeconds="120"
+        />
+        
+     <cache name="dictcache"
+           maxElementsInMemory="40000"
+           eternal="true"
+           overflowToDisk="false"
+           />
+</ehcache>

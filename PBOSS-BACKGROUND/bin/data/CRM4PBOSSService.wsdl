@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.gmcc.net/ngcrm/pboss/CRM4PBOSSService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CRM4PBOSSService" targetNamespace="http://www.gmcc.net/ngcrm/pboss/CRM4PBOSSService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.gmcc.net/ngcrm/pboss/CRM4PBOSSService/">
+	    <xsd:element name="MsgReqHeader">
+	    	<xsd:annotation>
+				<xsd:documentation>soap请求头</xsd:documentation>
+			</xsd:annotation>
+			
+			<xsd:complexType>
+		      	<xsd:sequence>
+		      		<xsd:element name="platform_src" type="xsd:string" maxOccurs="1" minOccurs="1">
+		      			<xsd:annotation>
+		      				<xsd:documentation>来源平台，默认PBOSS</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="process_code" type="xsd:string" maxOccurs="1" minOccurs="1">
+		      			<xsd:annotation>
+		      				<xsd:documentation>本次调用接口的业务标识</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="verify_code" type="xsd:string" maxOccurs="1" minOccurs="0">
+		      			<xsd:annotation>
+		      				<xsd:documentation>验证码，预留</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="req_time" type="xsd:dateTime" maxOccurs="1" minOccurs="1">
+		      			<xsd:annotation>
+		      				<xsd:documentation>请求时间，格式YYYYMMDDHH24MISS</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="req_seq" type="xsd:string" maxOccurs="1" minOccurs="0">
+		      			<xsd:annotation>
+		      				<xsd:documentation>本次调用请求流水，由调用方生成，预留</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="unicontact" type="xsd:string" maxOccurs="1" minOccurs="0">
+		      			<xsd:annotation>
+		      				<xsd:documentation>统一接触，预留</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="testflag" type="xsd:boolean" maxOccurs="1" minOccurs="0">
+		      			<xsd:annotation>
+		      				<xsd:documentation>1标示测试，0或者不传标示生产，预留</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="route" type="xsd:string" maxOccurs="1" minOccurs="1">
+		      			<xsd:annotation>
+		      				<xsd:documentation>区号</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+			      	<xsd:element name="channelinfo" maxOccurs="1" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>渠道信息</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="operatorid" type="xsd:string" maxOccurs="1" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>操作员</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="channelid" type="xsd:string" maxOccurs="1" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>渠道ID</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+		      	</xsd:sequence>
+	     	</xsd:complexType>
+	    </xsd:element>
+	
+		<xsd:element name="MsgRspHeader">
+			<xsd:annotation>
+				<xsd:documentation>soap应答头</xsd:documentation>
+			</xsd:annotation>
+			
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element name="platform_src" type="xsd:string" maxOccurs="1" minOccurs="1">
+		      			<xsd:annotation>
+		      				<xsd:documentation>来源平台，默认PBOSS</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="process_code" type="xsd:string" maxOccurs="1" minOccurs="1">
+		      			<xsd:annotation>
+		      				<xsd:documentation>本次调用接口的业务标识</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="verify_code" type="xsd:string" maxOccurs="1" minOccurs="0">
+		      			<xsd:annotation>
+		      				<xsd:documentation>验证码，预留</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+		      		<xsd:element name="resp_time" type="xsd:dateTime" maxOccurs="1" minOccurs="1">
+		      			<xsd:annotation>
+		      				<xsd:documentation>应答时间，格式YYYYMMDDHH24MISS</xsd:documentation>
+		      			</xsd:annotation>
+		      		</xsd:element>
+					<xsd:element name="sequence" maxOccurs="1" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="req_seq" type="xsd:string" fixed="32" maxOccurs="1" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>请求流水</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="operation_seq" type="xsd:string" fixed="32" maxOccurs="1" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>业务流水</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="retinfo" maxOccurs="1" minOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>返回结果信息</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="retcode" type="xsd:int" maxOccurs="1" minOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>返回码</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="rettype" type="xsd:int" maxOccurs="1" minOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>返回码类型</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="retmsg" type="xsd:string" maxOccurs="1" minOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>返回消息</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+      
+		<xsd:element name="waynetsynReq">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_001 渠道服务功能定制/退订接口请求</xsd:documentation>
+			</xsd:annotation>
+		  	<xsd:complexType>
+		  		<xsd:sequence>
+		  			<xsd:element ref="tns:MsgReqHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="mobileinfolist" maxOccurs="1" minOccurs="1">
+		  							<xsd:annotation>
+					  					<xsd:documentation>待处理号码信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="mobileinfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>待处理号码信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="mobile" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="opract" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+		  		</xsd:sequence>
+		  	</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="waynetsynRsp">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_001 渠道服务功能定制/退订接口响应</xsd:documentation>
+			</xsd:annotation>
+		  	<xsd:complexType>
+		  		<xsd:sequence>
+		  			<xsd:element ref="tns:MsgRspHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="mobileinfolist" maxOccurs="1" minOccurs="0">
+		  							<xsd:annotation>
+					  					<xsd:documentation>处理结果信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="mobileinfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>处理结果信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="mobile" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="isopen" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+		  		</xsd:sequence>
+		  	</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="orderinReq">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_002 订单入账请求</xsd:documentation>
+			</xsd:annotation>
+		  	<xsd:complexType>
+		  		<xsd:sequence>
+		  			<xsd:element ref="tns:MsgReqHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="paytypeinfolist" maxOccurs="1" minOccurs="1">
+		  							<xsd:annotation>
+					  					<xsd:documentation>收费方式信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="paytypeinfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>收费方式信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="paytype" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="actamt" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="posstream" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  						<xsd:element name="sumamt" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+		  						<xsd:element name="orderid" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+		  						<xsd:element name="orderdetlist" maxOccurs="1" minOccurs="1">
+		  							<xsd:annotation>
+					  					<xsd:documentation>订单内容列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="orderdet" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>订单内容</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="ordercomtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="comcategory" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="restype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="comid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="comresid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="brand" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="wayid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="comprice" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="actprice" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+		  		</xsd:sequence>
+		  	</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="orderinRsp">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_002 订单入账响应</xsd:documentation>
+			</xsd:annotation>
+			
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element ref="tns:MsgRspHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="orderid" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+								<xsd:element name="bossworkfid" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+							</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="orderuninReq">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_003 订单退入账请求</xsd:documentation>
+			</xsd:annotation>
+		  	<xsd:complexType>
+		  		<xsd:sequence>
+		  			<xsd:element ref="tns:MsgReqHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="paytypeinfolist" maxOccurs="1" minOccurs="1">
+		  							<xsd:annotation>
+					  					<xsd:documentation>收费方式信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="paytypeinfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>收费方式信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="paytype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="actamt" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="posstream" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  						<xsd:element name="sumamt" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+		  						<xsd:element name="orderid" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+		  						<xsd:element name="orderdetlist" maxOccurs="1" minOccurs="1">
+		  							<xsd:annotation>
+					  					<xsd:documentation>订单内容列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="orderdet" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>订单内容</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="ordercomtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="comcategory" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="restype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="comid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="comresid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="brand" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="wayid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="comprice" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  									<xsd:element name="actprice" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  						<xsd:element name="orderid" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+		  						<xsd:element name="bossworkfid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+		  		</xsd:sequence>
+		  	</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="orderuninRsp">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_003 订单退入账响应</xsd:documentation>
+			</xsd:annotation>
+			
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element ref="tns:MsgRspHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+								<xsd:element name="bossworkfid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+							</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="empsynReq">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_004 人员资料同步请求</xsd:documentation>
+			</xsd:annotation>
+		  	<xsd:complexType>
+		  		<xsd:sequence>
+		  			<xsd:element ref="tns:MsgReqHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="empinfolist" maxOccurs="1" minOccurs="1">
+		  							<xsd:annotation>
+					  					<xsd:documentation>人员信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="empinfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>人员信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+														<xsd:element name="oprtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="employeeid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="oprcode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="employeename" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="birthday" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="sex" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="edulevel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="nativehome" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="polivisage" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="department" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="servoffice" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="station" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="joblevel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="intime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="worktime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="hereworktime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="employtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="company" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="telephone" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="officetel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="outtime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="outresult" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="homeaddr" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="cardid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="wayid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="waytype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="pvtemail" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="ofcphone" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="ofcemail" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="speciality" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="cityid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="countyid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="svccode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="posittype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="contacttype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="empstatus" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="actbank" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="actno" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="actname" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="actpid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="bail" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="gradschool" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="gradtime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="ismarried" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="outreason" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="trainlevel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="hobby" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="character" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="asses" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="workhistry" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="prizeorpunish" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="empass" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="right" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="isnet" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="netpass" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="isopen" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="selectmobile" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="subname" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="regdate" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="empattr" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="empattrmemo" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="istenseed" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="isinternal" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+		  		</xsd:sequence>
+		  	</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="empsynRsp">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_004 人员资料同步响应</xsd:documentation>
+			</xsd:annotation>
+			
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element ref="tns:MsgRspHeader" maxOccurs="1" minOccurs="1"/>
+					<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="empinfolist" maxOccurs="1" minOccurs="0">
+		  							<xsd:annotation>
+					  					<xsd:documentation>处理结果信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="empinfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>处理结果信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="employeeid" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="synstate" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="synmemo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="waysynReq">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_005 渠道资料同步请求</xsd:documentation>
+			</xsd:annotation>
+		  	<xsd:complexType>
+		  		<xsd:sequence>
+		  			<xsd:element ref="tns:MsgReqHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="wayinfolist" maxOccurs="1" minOccurs="1">
+		  							<xsd:annotation>
+					  					<xsd:documentation>渠道资料信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="wayinfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>渠道资料信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="oprtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="wayid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="shortname" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="svbrchcode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="svccode" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+														<xsd:element name="mareacode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="buztypecode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="adtypecode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="address" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="logiscode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="latitude" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="longtitude" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="adacode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="waymagcode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="catetype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="formtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="starttime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="buzarea" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="mainlayer" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="sublayer" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="buzphoneno" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="wayname" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="cooperator" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="waytype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="waysubtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="custtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="upperwayid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="busicode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="countyid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="cityid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="centerid" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="citylevel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="waylevel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="bchlevel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="function" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="miscode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="createtime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="disabletime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="waystate" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="runbyself" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="depotdet" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="isshare" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="alarmbizamount" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="prtsource" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="isconnected" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="connecttype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="runmode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="iscoreway" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="starlevel" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="pt" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="chainhead" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="signstatus" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="empnumber" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="magnumber" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="terminumber" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="updatedate" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="isstraitprd" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="taxtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="istietong" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="rivltype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="iskzcz" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="distype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="calcumode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="uniformtime" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="checked" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="buzmanager" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="subrunmode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+		  		</xsd:sequence>
+		  	</xsd:complexType>
+		</xsd:element>
+		
+		<xsd:element name="waysynRsp">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_005 渠道资料同步响应</xsd:documentation>
+			</xsd:annotation>
+			
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element ref="tns:MsgRspHeader" maxOccurs="1" minOccurs="1"/>
+					<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="wayinfolist" maxOccurs="1" minOccurs="0">
+		  							<xsd:annotation>
+					  					<xsd:documentation>处理结果信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="wayinfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>处理结果信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="wayid" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="synstate" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="synmemo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+		<xsd:element name="resparamsynReq">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_006资源入库参数同步接口</xsd:documentation>
+			</xsd:annotation>
+		  	<xsd:complexType>
+		  		<xsd:sequence>
+		  			<xsd:element ref="tns:MsgReqHeader" maxOccurs="1" minOccurs="1"/>
+		  			<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="paramlist" maxOccurs="1" minOccurs="1">
+		  							<xsd:annotation>
+					  					<xsd:documentation>待处理号码信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="paraminfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>待处理号码信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="oprtype" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+														<xsd:element name="id" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+														<xsd:element name="cityid" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+														<xsd:element name="restype" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+														<xsd:element name="receiveway" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+														
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+		  		</xsd:sequence>
+		  	</xsd:complexType>
+		</xsd:element>
+		<xsd:element name="resparamsynRsp">
+			<xsd:annotation>
+				<xsd:documentation>PBOSS_IM_006资源入库参数同步接口响应</xsd:documentation>
+			</xsd:annotation>
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element ref="tns:MsgRspHeader" maxOccurs="1" minOccurs="1"/>
+					<xsd:element name="MsgBody" maxOccurs="1" minOccurs="1">
+		  				<xsd:complexType>
+		  					<xsd:sequence>
+		  						<xsd:element name="paramlist" maxOccurs="1" minOccurs="0">
+		  							<xsd:annotation>
+					  					<xsd:documentation>处理结果信息列表</xsd:documentation>
+					  				</xsd:annotation>
+					  				<xsd:complexType>
+					  					<xsd:sequence>
+					  						<xsd:element name="paraminfo" maxOccurs="unbounded" minOccurs="1">
+					  							<xsd:annotation>
+					  								<xsd:documentation>处理结果信息</xsd:documentation>
+					  							</xsd:annotation>
+					  							<xsd:complexType>
+					  								<xsd:sequence>
+					  									<xsd:element name="id" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="synstate" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  									<xsd:element name="synmemo" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+					  								</xsd:sequence>
+					  							</xsd:complexType>
+					  						</xsd:element>
+					  					</xsd:sequence>
+					  				</xsd:complexType>
+		  						</xsd:element>
+		  					</xsd:sequence>
+		  				</xsd:complexType>
+		  			</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+    
+     </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="waynetsynReq">
+    <wsdl:part name="req" element="tns:waynetsynReq"/>
+  </wsdl:message>
+  <wsdl:message name="waynetsynRsp">
+    <wsdl:part name="rsp" element="tns:waynetsynRsp"/>
+  </wsdl:message>
+  <wsdl:message name="orderinReq">
+  	<wsdl:part name="req" element="tns:orderinReq"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderinRsp">
+  	<wsdl:part name="rsp" element="tns:orderinRsp"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderuninReq">
+  	<wsdl:part name="req" element="tns:orderuninReq"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderuninRsp">
+  	<wsdl:part name="rsp" element="tns:orderuninRsp"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="empsynReq">
+  	<wsdl:part name="req" element="tns:empsynReq"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="empsynRsp">
+  	<wsdl:part name="rsp" element="tns:empsynRsp"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="waysynReq">
+  	<wsdl:part name="req" element="tns:waysynReq"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="waysynRsp">
+  	<wsdl:part name="rsp" element="tns:waysynRsp"></wsdl:part>
+  </wsdl:message>
+
+  <wsdl:message name="resparamsynReq">
+  	<wsdl:part name="req" element="tns:resparamsynReq"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resparamsynRsp">
+  	<wsdl:part name="rsp" element="tns:resparamsynRsp"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CRM4PBOSSService">
+    <wsdl:operation name="waynetsyn">
+    	<wsdl:documentation>PBOSS_IM_001 渠道服务功能定制/退订接口</wsdl:documentation>
+      	<wsdl:input message="tns:waynetsynReq"/>
+      	<wsdl:output message="tns:waynetsynRsp"/>
+    </wsdl:operation>
+    <wsdl:operation name="orderin">
+    	<wsdl:documentation>PBOSS_IM_002 订单入账</wsdl:documentation>
+    	<wsdl:input message="tns:orderinReq"></wsdl:input>
+    	<wsdl:output message="tns:orderinRsp"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="orderunin">
+    	<wsdl:documentation>PBOSS_IM_003订单退入账</wsdl:documentation>
+    	<wsdl:input message="tns:orderuninReq"></wsdl:input>
+    	<wsdl:output message="tns:orderuninRsp"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="empsyn">
+    	<wsdl:documentation>PBOSS_IM_004人员资料同步</wsdl:documentation>
+    	<wsdl:input message="tns:empsynReq"></wsdl:input>
+    	<wsdl:output message="tns:empsynRsp"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="waysyn">
+    	<wsdl:documentation>PBOSS_IM_005渠道资料同步</wsdl:documentation>
+    	<wsdl:input message="tns:waysynReq"></wsdl:input>
+    	<wsdl:output message="tns:waysynRsp"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resparamsyn">
+    	<wsdl:documentation>PBOSS_IM_006资源入库参数同步接口</wsdl:documentation>
+    	<wsdl:input message="tns:resparamsynReq"></wsdl:input>
+    	<wsdl:output message="tns:resparamsynRsp"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="CRM4PBOSSServiceSOAP"
+  	type="tns:CRM4PBOSSService">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="waynetsyn">
+  		<soap:operation />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="orderin">
+  		<soap:operation />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="orderunin">
+  		<soap:operation />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="empsyn">
+  		<soap:operation />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="waysyn">
+  		<soap:operation />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="resparamsyn">
+  		<soap:operation />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	
+  </wsdl:binding>
+
+  <wsdl:service name="CRM4PBOSSService">
+    <wsdl:port binding="tns:CRM4PBOSSServiceSOAP" name="CRM4PBOSSServiceSOAP">
+      <soap:address location="http://www.gmcc.net/ngcrm/pboss"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

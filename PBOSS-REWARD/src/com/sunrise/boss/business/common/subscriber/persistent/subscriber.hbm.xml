@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.common.subscriber.persistent.SubscriberVO" table="CM_SUBS_SUBSCRIBER">
+<id name="subsid" column="SUBSID" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property name="region" column="REGION" type="java.lang.Integer" length="14" not-null="true"/>
+<property name="custid" column="CUSTID" type="java.lang.Long" length="14"/>
+<property name="userid" column="USERID" type="java.lang.Long" length="14"/>
+<property name="subsname" column="SUBSNAME" type="java.lang.String" length="128"/>
+<property name="acctid" column="ACCTID" type="java.lang.Long" length="14" not-null="true"/>
+<property name="servnumber" column="SERVNUMBER" type="java.lang.String" length="20" not-null="true"/>
+<property name="issingle" column="ISSINGLE" type="java.lang.Byte" length="1"/>
+<property name="status" column="STATUS" type="java.lang.String" length="8" not-null="true"/>
+<property name="statusdate" column="STATUSDATE" type="java.sql.Date" length="7"/>
+<property name="creditstatus" column="CREDITSTATUS" type="java.lang.String" length="16"/>
+<property name="areaid" column="AREAID" type="java.lang.String" length="32"/>
+<property name="stopkey" column="STOPKEY" type="java.lang.String" length="8"/>
+<property name="startdate" column="STARTDATE" type="java.sql.Date" length="7"/>
+<property name="mobiltype" column="MOBILETYPE" type="java.lang.String" length="16"/>
+<property name="paymode" column="PAYMODE" type="java.lang.String" length="16"/>
+<property name="urgetype" column="URGETYPE" type="java.lang.String" length="16"/>
+<!-- add by xiefufeng -->
+<property name="brand" column="BRAND" type="java.lang.String" length="16"/>
+<property name="proid" column="PRODID" type="java.lang.String" length="32"/>
+<!-- add by xiefufeng -->
+
+<!-- add by mys -->
+<property name="ownerorgid" column="OWNERORGID" type="java.lang.String" length="32"/>
+<!-- add by mys -->
+
+<!-- add by wangguangying -->
+<property name="settleday" column="SETTLEDAY" type="java.lang.Short" length="2"/>
+<property name="invaliddate" column="INVALIDDATE" type="java.util.Date" length="7"/>
+<!-- add by wangguangying -->
+</class>
+<sql-query name="getvalidsubsid">	
+	<![CDATA[
+	select subs.SubsID as val  from cm_subs_subscriber subs  where subs.STARTDATE <= :end_validbill and (subs.INVALIDDATE is null or subs.INVALIDDATE > :start_validbill) and (subs.INVALIDDATE is null or subs.STARTDATE < subs.INVALIDDATE) and subs.PRODID not in ( '9', '10', '13', '19', '101', '102', '109', '114', '113', '119', '201', '202', '203', '204', '502', '106', '1005' ) and (subs.status = 'US10' or subs.status = 'US30' or subs.status = 'US22' or subs.status = 'US531' or subs.status = 'US532' or ((subs.status = 'US20' or subs.status = 'US27') and subs.STATUSDATE between :start_validbill  and :end_validbill))  and subs.ServNumber =  :servnumber and rownum <=1
+	]]>
+</sql-query>
+</hibernate-mapping>

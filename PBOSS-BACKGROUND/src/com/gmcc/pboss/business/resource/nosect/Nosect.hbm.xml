@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.nosect.NosectVO" table="IM_PR_NOSECT">
+<id column="NOSECTID" length="8" name="nosectid" type="java.lang.Integer">
+<generator class="assigned"/>
+</id>
+<property column="STARTTIME" length="7" name="starttime" type="java.util.Date"/>
+<property column="INTIME" length="7" name="intime" type="java.util.Date"/>
+<property column="BEGINNO" length="20" name="beginno" type="java.lang.String"/>
+<property column="ENDNO" length="20" name="endno" type="java.lang.String"/>
+<property column="NOSECTSTATE" length="3" name="nosectstate" type="java.lang.Short"/>
+<property column="IMSISECTID" length="8" name="imsisectid" type="java.lang.Integer"/>
+<property column="NOGROUPID" length="8" name="nogroupid" type="java.lang.Integer"/>
+<property column="SCPID" length="8" name="scpid" type="java.lang.Integer"/>
+<property column="BOSSAREA" length="14" name="bossarea" type="java.lang.String"/>
+<property column="ORIGINBRANDID" length="32" name="originbrandid" type="java.lang.String"/>
+<property column="VPMNID" length="8" name="vpmnid" type="java.lang.Integer"/>
+<property column="PLATFORMTYPE" length="16" name="platformtype" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

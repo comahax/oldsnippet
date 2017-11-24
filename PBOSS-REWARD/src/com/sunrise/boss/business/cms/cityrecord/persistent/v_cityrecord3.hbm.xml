@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.cityrecord.persistent.VCityrecord3VO" table="CH_ADT_CITYRECORD">
+<id column="RECORDID" name="recordid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_ADT_CITYRECORD_SEQ</param>
+	</generator>
+</id>
+<property column="ISFLAG" length="3" name="isflag" type="java.lang.Short"/>
+<property column="SYSTEMFLAG" length="3" name="systemflag" type="java.lang.Short"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="MOBILE" length="32" name="mobile" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="PAYSUM" length="22" name="paysum" type="java.lang.Double"/>
+<property column="PAYMONEY" length="22" name="paymoney" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

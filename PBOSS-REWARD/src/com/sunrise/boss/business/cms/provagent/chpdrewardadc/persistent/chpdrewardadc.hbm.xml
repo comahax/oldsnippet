@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdrewardadc.persistent.ChPdRewardadcVO" table="CH_PD_REWARDADC">
+<id column="REWARDID" name="rewardid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="PROVAGENTID" length="15" name="provagentid" type="java.lang.String"/>
+<property column="PRODID" length="15" name="prodid" type="java.lang.String"/>
+<property column="CUSTID" length="15" name="custid" type="java.lang.String"/>
+<property column="CUSTNAME" length="50" name="custname" type="java.lang.String"/>
+<property column="PRODNO" length="18" name="prodno" type="java.lang.String"/>
+<property column="REWARDMONEY" length="15" name="rewardmoney" type="java.lang.Double"/>
+<property column="PHASE" length="3" name="phase" type="java.lang.Short"/>
+<property column="SUPPLEMONEY" length="15" name="supplemoney" type="java.lang.Double"/>
+<property column="RPMONEY" length="15" name="rpmoney" type="java.lang.Double"/>
+<property column="INBOSSMONTH" length="8" name="inbossmonth" type="java.lang.String"/>
+<property column="REWARDMONTH" length="8" name="rewardmonth" type="java.lang.String"/>
+<property column="REASON" length="256" name="reason" type="java.lang.String"/> 
+<property column="VERSION" length="10" name="version" type="java.lang.String"/>
+<property column="RULEDESC" length="256" name="ruledesc" type="java.lang.String"/>
+<property column="ISRELEASEADC" length="1" name="isreleaseadc" type="java.lang.Byte"/>
+</class>
+ 
+<sql-query name="boss.business.cms.provagent.rewardadc">
+	<return class=" com.sunrise.boss.business.cms.provagent.chpdrewardadc.persistent.ChPdRewardadcVO"/> 
+	
+select     
+a.REWARDID,
+a.CITYID,
+a.PROVAGENTID,
+a.PRODNO,
+a.PRODID,
+a.CUSTID,
+a.CUSTNAME,
+a.PHASE,
+a.REWARDMONTH,
+a.REWARDMONEY,
+a.RPMONEY,
+a.SUPPLEMONEY,
+a.INBOSSMONTH, 
+a.VERSION,
+a.REASON,
+a.RULEDESC,
+a.ISRELEASEADC  
+from  CH_PD_REWARDADC  a 
+order by a.REWARDMONTH desc,a.REWARDID asc
+      
+</sql-query>
+</hibernate-mapping>

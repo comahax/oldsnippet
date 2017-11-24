@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- Opnacctmap真实VO -->
+<class name="com.sunrise.boss.business.cms.bbc.opnacctmap.persistent.OpnacctmapVO" table="CH_BBC_OPNACCTMAP">
+<composite-id>
+	<key-property name="opnid" column="OPNID" length="18" type="java.lang.String" />
+	<key-property name="acctid" column="ACCTID" length="14" type="java.lang.Long" />
+</composite-id>
+</class>
+</hibernate-mapping>

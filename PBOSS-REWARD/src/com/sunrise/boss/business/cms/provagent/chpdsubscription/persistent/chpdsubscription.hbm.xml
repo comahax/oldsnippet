@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdsubscription.persistent.ChPdSubscriptionVO" table="CH_PD_SUBSCRIPTION">
+<id column="PRODNO" length="18" name="prodno" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="PROVAGENTID" length="15" name="provagentid" type="java.lang.String"/>
+<property column="CUSTID" length="15" name="custid" type="java.lang.String"/>
+<property column="CUSTNAME" length="5" name="custname" type="java.lang.String"/>
+<property column="PRODID" length="15" name="prodid" type="java.lang.String"/>
+<property column="INBOSSTIME" length="7" name="inbosstime" type="java.util.Date"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="SALESI" length="15" name="salesi" type="java.lang.String"/>
+<property column="SERVSI" length="15" name="servsi" type="java.lang.String"/>
+<property column="AGENTEEID" length="15" name="agenteeid" type="java.lang.String"/>
+<property column="COOPERTYPE" length="1" name="coopertype" type="java.lang.Byte"/>
+<property column="INCOMSTIME" length="7" name="incomstime" type="java.util.Date"/>
+<property column="VALIDATION" length="1" name="validation" type="java.lang.Byte"/>
+<property column="ORIGIN" length="1" name="origin" type="java.lang.Byte"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.yxplan.persistent.YxplanVO" table="CH_BBC_YXPLAN">
+<composite-id>
+<key-property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<key-property name="yxplanid" column="YXPLANID" type="java.lang.Long" length="14"/>
+</composite-id>
+<property name="wrapfee" column="WRAPFEE" type="java.lang.Double" length="10"/>
+<property name="cityid" column="CITYID" type="java.lang.String" length="4"/>
+</class>
+<sql-query name="queryYxplanBBC">
+	<return class="com.sunrise.boss.business.cms.bbc.yxplan.persistent.YxplanVO"/>  
+		select a.opnid,a.yxplanid,a.wrapfee,a.cityid,b.name as opnname,c.yxplanname 
+  from ch_bbc_yxplan    a,
+       ch_bbc_operation b,
+       common.pc_ps_yxplan c
+ where a.opnid = b.opnid
+   and a.yxplanid = c.yxplanid
+   and (a.opnid =:opnid or a.yxplanid =:yxplanid or
+       c.yxplanname like :yxplanname or b.name like :opnname) 
+</sql-query>
+</hibernate-mapping>

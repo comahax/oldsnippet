@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.chzjtylocalperconfigdetail.persistent.ChZjtyLocalperconfigdetailVO" table="CH_ZJTY_LOCALPERCONFIGDETAIL">
+<id column="RECID" name="recid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CHZJTYLOCALPERCONFIGDETAIL_SEQ</param>
+</generator>
+</id>
+<property column="UPPERWAYNAME" length="256" name="upperwayname" type="java.lang.String"/>
+<property column="CITYID" length="10" name="cityid" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="ZJTYPERSONNAME" length="18" name="zjtypersonname" type="java.lang.String"/>
+<property column="STATION" length="18" name="station" type="java.lang.String"/>
+<property column="OPRCODE" length="18" name="oprcode" type="java.lang.String"/>
+<property column="REGDATE" length="7" name="regdate" type="java.util.Date"/>
+<property column="CERTIFICATION" length="256" name="certification" type="java.lang.String"/>
+<property column="TEL" length="14" name="tel" type="java.lang.Long"/>
+<property column="REWARDREPORTTIME" length="10" name="rewardreporttime" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

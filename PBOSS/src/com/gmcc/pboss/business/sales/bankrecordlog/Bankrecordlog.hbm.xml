@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.bankrecordlog.BankrecordlogVO" table="FX_SW_BANKRECORDLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_BANKRECORDLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="DEDUCTID" length="14" name="deductid" type="java.lang.Long"/>
+<property column="ORAFILEID" length="32" name="orafileid" type="java.lang.String"/>
+<property column="ACCOUNT" length="64" name="account" type="java.lang.String"/>
+<property column="ACCOUNTNAME" length="64" name="accountname" type="java.lang.String"/>
+<property column="AMOUNT" length="16" name="amount" type="java.lang.Double"/>
+<property column="COMPLETETIME" length="7" name="completetime" type="java.util.Date"/>
+<property column="CREATDATE" length="7" name="creatdate" type="java.util.Date"/>
+<property column="SHOPNUM" length="32" name="shopnum" type="java.lang.String"/>
+<property column="CUSTUSERID" length="32" name="custuserid" type="java.lang.String"/>
+<property column="RETCODE" length="16" name="retcode" type="java.lang.String"/>
+<property column="ERRMSG" length="512" name="errmsg" type="java.lang.String"/>
+<property column="REMARK" length="512" name="remark" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="RECORDINFO" length="512" name="recordinfo" type="java.lang.String"/>
+<property column="RECORDSTATE" length="2" name="recordstate" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

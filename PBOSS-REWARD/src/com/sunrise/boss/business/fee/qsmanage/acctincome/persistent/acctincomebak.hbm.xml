@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.fee.qsmanage.acctincome.persistent.AcctIncomeBakVO"
+		table="IB_PA_ACCTINCOME_1">
+		<id name="acctid" type="java.lang.Long">
+			<column name="ACCTID" precision="14" scale="0" />
+			<generator class="assigned">
+			</generator>
+		</id>
+		<property name="acctcode" type="java.lang.String">
+            <column name="ACCTCODE" length="32" />
+        </property>
+        <property name="acctcodename" type="java.lang.String">
+            <column name="ACCTCODENAME" length="128" />
+        </property>
+        <property name="type" type="java.lang.Short">
+        	<column name="TYPE" precision="3" scale="0"></column>
+        </property>
+        <property name="isresolution" type="java.lang.Short">
+        	<column name="ISRESOLUTION" precision="3" scale="0"></column>
+        </property>
+        <property name="descri" type="java.lang.String">
+            <column name="DESCRI" length="511" />
+        </property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.service.persistent.ServiceVO" table="CH_BBC_SERVICE">
+<id column="OPNID" name="opnid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="BASEREWARDSTD" length="8" name="baserewardstd" type="java.lang.Float"/>
+<property column="BONUSREWARDSTD" length="8" name="bonusrewardstd" type="java.lang.Float"/>
+</class>
+</hibernate-mapping>

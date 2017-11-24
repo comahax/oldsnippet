@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.rulemodelog.persistent.RulemodelogVO" table="CH_ADT_RULEMODELOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_ADT_RULEMODELOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="RULEMODEID" length="8" name="rulemodeid" type="java.lang.Integer"/>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="RULEMODENAME" length="250" name="rulemodename" type="java.lang.String"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="REMARK" length="500" name="remark" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

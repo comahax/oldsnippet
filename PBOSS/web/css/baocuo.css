@@ -1,0 +1,44 @@
+.bao {
+	background-image: url(../images/image_baocuo/baocuo3.gif);
+	background-repeat: no-repeat;
+	height: 119px;
+	width: 138px;
+	float: left;
+}
+.baocuo_right {
+	float: right;
+}
+
+.baocuo_dazi {
+	font-size: 14px;
+	font-weight: bold;
+	color: #C30507;
+	margin-left: 15px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a:link,a:visited{color:#00f; text-decoration:none;} 
+a:hover,a:active{color:#000; text-decoration:none;} 
+a.a1:link,a.a1:visited{color:#494848; text-decoration:none;} 
+a.a1:hover,a.a1:active{text-decoration:none;}
+
+.baocuo_xiaozi {
+	font-size: 12px;
+	font-weight: normal;
+	color: #3366FF;
+	margin-left: 15px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.baocuo_huiz {
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	margin-left: 15px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}

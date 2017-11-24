@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.resoperator.ResoperatorVO" table="IM_FX_RESOPERATOR">
+<id column="WAYID" length="18" name="wayid" type="java.lang.String"> 
+</id>
+<property column="CITYID" length="10" name="cityid" type="java.lang.String"/>
+<property column="OPERID" length="16" name="operid" type="java.lang.String"/>
+</class>
+<sql-query name="resoperatorVOList"> 
+<return class="com.gmcc.pboss.business.resource.resoperator.ResoperatorVO"/>
+select a.wayname,b.wayid,b.operid from CH_PW_WAY a,IM_FX_RESOPERATOR b  where a.wayid = b.wayid
+</sql-query>
+
+</hibernate-mapping>

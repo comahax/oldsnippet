@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.iodaudit.persistent.IodauditVO" table="CH_PW_IODAUDIT">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="ADTCONTENT" length="255" name="adtcontent" type="java.lang.String"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="IODTIME" length="7" name="iodtime" type="java.util.Date"/>
+<property column="SUCESS" length="1" name="sucess" type="java.lang.Byte"/>
+<property column="OFFICETEL" length="18" name="officetel" type="java.lang.String"/>
+<property column="ADTCODE" length="1" name="adtcode" type="java.lang.Byte"/>
+<property column="ADTREMARK" length="60" name="adtremark" type="java.lang.String"/>
+<property column="COMPARE" length="3" name="compare" type="java.lang.Byte"/>
+<property column="OPNID" length="20" name="opnid" type="java.lang.String"/>
+<property column="MENDFLAG" length="2" name="mendflag" type="java.lang.Byte"/>
+<property column="MENDTIME" length="7" name="mendtime" type="java.util.Date"/>
+<property column="ADDTIME" length="7" name="addtime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

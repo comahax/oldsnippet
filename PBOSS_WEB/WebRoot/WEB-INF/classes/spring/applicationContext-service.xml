@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	default-autowire="byName" default-lazy-init="true">
+	
+	<!-- 通用数据库LOG AOP Bean 
+	非单例模式
+	-->
+	<bean id="businessLogAdvisor" class="com.gmcc.pboss.common.businesslog.BusinessLogAdvisor" scope="prototype"/>
+	<!-- AOP注入 
+	autoSaveLog
+	-->
+	<aop:config>
+		<aop:aspect ref="businessLogAdvisor">
+		<!-- 注入所有DAO的save(插入方法) -->
+			<aop:after-returning method="autoSaveLog" pointcut="execution(* *..*DaoHibernate.save(..))" returning="retVal"/>
+			<aop:after-returning method="autoUpdateLog" pointcut="execution(* *..*DaoHibernate.update(..))"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- 相关Service 
+	使用非单例模式
+	-->
+	<bean id="nosectService" class="com.gmcc.pboss.common.nosect.service.impl.NosectServiceImpl" scope="prototype">
+		<property name="dao" ref="nosectDao" />
+	</bean>
+	<!-- 短信相关Service 
+	使用非单例模式
+	-->
+	<bean id="smsService" class="com.gmcc.pboss.common.sms.service.impl.SMSService" scope="prototype">
+	</bean>
+	
+	<!-- 代码反射 -->
+	<bean id="codeServiceTarget" class="com.gmcc.pboss.common.service.impl.CodeServiceImpl" >
+	</bean>
+	<!-- 暂不使用服务器缓存 -->
+	<bean id="codeService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces"><value>com.gmcc.pboss.common.service.CodeService</value></property>
+		<property name="target"><ref local="codeServiceTarget"/></property>
+	</bean>
+	<!-- 代码反射 -->
+	
+	<!-- 固定参数加载 Service -->
+	<bean id="constantService" class="com.gmcc.pboss.common.constant.service.impl.ConstantServiceImpl" init-method="init" destroy-method="clear">
+		<property name="dao" ref="constantDao" />
+	</bean>
+	
+	<!-- 用户登录相关Service,
+	使用非单例模式 -->
+	<bean id="memberService" class="com.gmcc.pboss.member.service.MemberService" scope="prototype">
+		<property name="dao" ref="memberDao" />
+		<property name="channelDao" ref="channelDao" />
+		<property name="ibGlSysparamDao" ref="ibGlSysparamDao" />
+		<!-- 固定密码登录时需要查询人员扩展表  -->
+		<property name="employeeextendDao" ref="employeeextendDao"/>
+		<property name="chSmsSmstmplDao" ref="chSmsSmstmplDao" />
+		<property name="chSmsWaitreqDao" ref="chSmsWaitreqDao" />
+		<!-- 省市管理员人员扩展表查询 -->
+		<property name="provincecityadminDao" ref="provincecityadminDao" />
+	</bean>
+	<!-- 延迟加载合作商信息、上级渠道经理信息、菜单栏 -->
+	<bean id="delayLoadService" class="com.gmcc.pboss.member.service.DelayLoadServiceImpl">
+		<property name="memberDao" ref="memberDao" />
+		<property name="chDstCooperatorService" ref="chDstCooperatorService"/>
+		<property name="saDbWebfunctionitemService" ref="saDbWebfunctionitemService"/>
+	</bean>
+
+	<!-- 月度套卡激活登记明细查询 -->
+	<bean id="regactInfoService" class="com.gmcc.pboss.biz.info.regactInfo.service.impl.RegactInfoServiceImpl">
+		<property name="dao" ref="regactInfoDao" />
+	</bean>
+	<!-- 月度套卡激活量统计查询 -->
+	<bean id="regactStatisticsService" class="com.gmcc.pboss.biz.info.regactInfo.service.impl.RegactStatisticsServiceImpl">
+		<property name="regactStatisticsDao" ref="regactStatisticsDao" />
+	</bean>
+	<!-- 商品订购历史查询 -->
+	<bean id="salesHistoryService" class="com.gmcc.pboss.biz.info.salesRpt.service.impl.SalesHistoryServiceImpl">
+		<property name="dao" ref="salesHistoryDao" />
+	</bean>
+	<!-- 订单信息查询 -->
+	<bean id="salesOrderService" class="com.gmcc.pboss.biz.info.salesRpt.service.impl.SalesOrderServiceImpl">
+		<property name="dao" ref="salesOrderDao" />
+	</bean>
+	<!-- 订单明细查询 -->
+	<bean id="orderDtlService" class="com.gmcc.pboss.biz.info.salesRpt.service.impl.OrderDtlServiceImpl">
+		<property name="dao" ref="orderDtlDao2" />
+	</bean>
+	<!-- 配送商管理查询 -->
+	<bean id="deliveryService" class="com.gmcc.pboss.biz.info.delivery.service.impl.DeliveryServiceImpl">
+		<property name="dao" ref="deliveryDao" />
+		<property name="fxSwSmsconfirmDao" ref="fxSwSmsconfirmDao" />
+		<property name="ibGlSysparamDao" ref="ibGlSysparamDao" />
+		<property name="chSmsSmstmplDao" ref="chSmsSmstmplDao" />
+		<property name="chSmsWaitreqDao" ref="chSmsWaitreqDao" />
+		<property name="salesOrderDao" ref="salesOrderDao"/>
+	</bean>
+	<!-- 配送单批量处理 -->
+	<bean id="batchDeliveryService" class="com.gmcc.pboss.biz.info.delivery.service.impl.BatchDeliveryServiceImpl">
+		<property name="deliveryDao" ref="deliveryDao" />
+		<property name="fxSwSmsconfirmDao" ref="fxSwSmsconfirmDao" />
+		<property name="ibGlSysparamDao" ref="ibGlSysparamDao" />
+		<property name="chSmsSmstmplDao" ref="chSmsSmstmplDao" />
+		<property name="chSmsWaitreqDao" ref="chSmsWaitreqDao" />
+		<property name="salesOrderDao" ref="salesOrderDao"/>
+	</bean>
+	<!-- 垫资单管理 -->
+	<bean id="adpaysumService" class="com.gmcc.pboss.biz.info.adpay.service.impl.AdpaysumServiceImpl">
+		<property name="dao" ref="adpaysumDao" />
+		<property name="bankdeductDao" ref="bankdeductDao" />
+		<property name="wayAccountDao" ref="wayAccountDao"/>
+		<property name="bankshopDao" ref="bankshopDao"/>
+	</bean>
+	<bean id="adpaydtlService" class="com.gmcc.pboss.biz.info.adpay.service.impl.AdpaydtlServiceImpl">
+		<property name="dao" ref="orderDtlDao" />
+	</bean>
+	
+	<!-- 社会酬金相关Service -->
+	<bean id="operationService" class="com.gmcc.pboss.biz.info.reward.service.impl.OperationServiceImpl" init-method="init" destroy-method="clear">
+		<property name="dao" ref="operationDao" />
+	</bean>
+
+	<bean id="rewardRecordService" class="com.gmcc.pboss.biz.info.reward.service.impl.RewardRecordServiceImpl">
+		<property name="dao" ref="rewardRecordDao" />
+		<property name="operationService" ref="operationService" />
+		<property name="rewardConfService" ref="rewardConfService" />
+	</bean>
+	<!-- 月产生报表_社会渠道 -->
+	<bean id="rewardGenService" class="com.gmcc.pboss.biz.info.reward.service.impl.RewardGenServiceImpl">
+		<property name="dao" ref="rewardRecordDao" />
+		<property name="operationService" ref="operationService" />
+		<property name="rewardConfService" ref="rewardConfService" />
+	</bean>
+	
+	<!-- 酬金余额查询 -->
+	<bean id="rewardBalanceService" class="com.gmcc.pboss.biz.info.reward.service.impl.RewardBalanceServiceImpl">
+		<property name="dao" ref="rewardRecordDao" />
+		<property name="operationService" ref="operationService" />
+		<property name="rewardConfService" ref="rewardConfService" />
+	</bean>
+
+	<bean id="rewardTotalService" class="com.gmcc.pboss.biz.info.reward.service.impl.RewardTotalServiceImpl">
+		<property name="dao" ref="rewardTotalDao" />
+		<property name="rewardConfService" ref="rewardConfService" />
+	</bean>
+
+	<bean id="failService" class="com.gmcc.pboss.biz.info.reward.service.impl.FailServiceImpl">
+		<property name="daos">
+			<map key-type="java.lang.String">
+				<entry key="0" value-ref="saleFailDao" />
+				<entry key="1" value-ref="simFailDao" />
+				<entry key="2" value-ref="jmjtFailDao" />
+				<entry key="5" value-ref="bossFailDao" />
+				<entry key="6" value-ref="bossJlFailDao" />
+			</map>
+		</property>
+		<property name="adtService" ref="adtService" />
+		<property name="operationService" ref="operationService" />
+	</bean>
+
+	<!-- 酬金结算月是否出账Service -->
+	<bean id="rewardConfService" class="com.gmcc.pboss.biz.info.reward.service.impl.RewardConfServiceImpl">
+		<property name="rewardConfDao" ref="rewardConfDao" />
+	</bean>
+
+	<!-- 本地酬金Service -->
+	<bean id="rewardLocalService" class="com.gmcc.pboss.biz.info.reward.service.impl.RewardLocalServiceImpl">
+		<property name="dao" ref="rewardLocalDao" />
+	</bean>
+
+	<!-- 网站酬金相关Service -->
+	<bean id="bbcOperationService" class="com.gmcc.pboss.biz.info.reward.service.impl.BbcOperationServiceImpl" init-method="init" destroy-method="clear">
+		<property name="dao" ref="bbcOperationDao" />
+	</bean>
+
+	<!-- 酬金明细-网站渠道 -->
+	<bean id="bbcRewardRecordService" class="com.gmcc.pboss.biz.info.reward.service.impl.BbcRewardRecordServiceImpl">
+		<property name="dao" ref="bbcRewardRecordDao" />
+		<property name="bbcOperationService" ref="bbcOperationService" />
+		<property name="rewardConfService" ref="rewardConfService" />
+	</bean>
+	<!-- 月产生报表_网站渠道(汇总-酬金明细/网站渠道)-->
+	<bean id="bbcRewardGenService" class="com.gmcc.pboss.biz.info.reward.service.impl.BbcRewardGenServiceImpl">
+		<property name="dao" ref="bbcRewardRecordDao" />
+		<property name="bbcOperationService" ref="bbcOperationService" />
+		<property name="rewardConfService" ref="rewardConfService" />
+	</bean>
+
+	<bean id="bbcRewardTotalService" class="com.gmcc.pboss.biz.info.reward.service.impl.BbcRewardTotalServiceImpl">
+		<property name="dao" ref="bbcRewardTotalDao" />
+		<property name="rewardConfService" ref="rewardConfService" />
+	</bean>
+
+	<bean id="bbcFailService" class="com.gmcc.pboss.biz.info.reward.service.impl.BbcFailServiceImpl">
+		<property name="daos">
+			<map key-type="java.lang.String">
+				<entry key="9" value-ref="bbcSellFailDao" />
+				<entry key="10" value-ref="bbcSeleGflDao" />
+				<entry key="11" value-ref="bbcWebFailDao" />
+				<entry key="12" value-ref="bbcWebeGflDao" />
+				<entry key="13" value-ref="bbcE100FailDao" />
+				<entry key="14" value-ref="bbcE100eGflDao" />
+			</map>
+		</property>
+		<property name="adtService" ref="adtService" />
+		<property name="operationService" ref="bbcOperationService" />
+	</bean>
+
+	<!-- 考核相关Service -->
+	<bean id="chPwExmnRsltService" class="com.gmcc.pboss.biz.info.examine.service.impl.ChPwExmnRsltServiceImpl">
+		<property name="dao" ref="chPwExmnRsltDao" />
+	</bean>
+
+	<!-- 网点相关Service 
+	非单例模式
+	-->
+	<bean id="nodeInfoService" class="com.gmcc.pboss.biz.info.node.service.impl.NodeInfoServiceImpl" scope="prototype">
+		<property name="dao" ref="nodeInfoDao" />
+	</bean>
+
+	<bean id="wayApplyService" class="com.gmcc.pboss.biz.basic.node.service.impl.WayApplyServiceImpl">
+		<property name="dao" ref="wayApplyDao" />
+	</bean>
+
+	<!-- 失败原因Service -->
+	<bean id="adtService" class="com.gmcc.pboss.biz.info.reward.service.impl.AdtServiceImpl" init-method="init" destroy-method="clear">
+		<property name="dao" ref="adtCodeDao" />
+	</bean>
+	
+	<!-- 商品种类Service -->
+	<bean id="dictItemService" class="com.gmcc.pboss.biz.basic.dictItem.service.impl.DictItemServiceImpl" init-method="init" destroy-method="clear">
+		<property name="dao" ref="dictItemDao" />
+	</bean>
+	
+	<!-- 卡类购销划扣银行标识Service -->
+	<bean id="dbBankService" class="com.gmcc.pboss.biz.info.node.service.impl.DbBankServiceImpl" init-method="init" destroy-method="clear">
+		<property name="dao" ref="dbBankDao" />
+	</bean>
+	<!-- 商品申购Service -->
+	<bean id="goodsRemote" class="com.gmcc.pboss.biz.basic.goods.service.impl.GoodsRemoteImpl">
+	</bean>
+	
+	<!-- 店员管理员Service 
+	非单例
+	-->
+	<bean id="employeeApplyService" class="com.gmcc.pboss.member.service.impl.EmployeeApplyServiceImpl" scope="prototype">
+		<property name="dao" ref="employeeApplyDao" />
+	</bean>
+	
+	<!-- 沟通平台公告/业务/知识库Service -->
+	<bean id="communicatePlateauService" class="com.gmcc.pboss.biz.communi.service.impl.CommunicatePlateauServiceImpl" 
+		  init-method="init" destroy-method="clear">
+		<property name="dao" ref="communicatePlateauDao"/>
+		<property name="chPwRcvobjDao" ref="chPwRcvobjDao"/>
+		<property name="replyDao" ref="replyDao"></property>
+		<property name="ibGlSysparamService" ref="ibGlSysparamService"/>
+	</bean>
+	<!-- 公告图片下载定期服务 -->
+	<bean id="communicatePublicService" class="com.gmcc.pboss.biz.communi.service.impl.CommunicatePublicServiceImpl"
+	init-method="init" destroy-method="clear" >
+		<property name="dao" ref="communicatePlateauDao"/>
+	</bean>
+	<!-- 沟通平台在线问答Service -->
+	<bean id="communicateInterlocutionService" class="com.gmcc.pboss.biz.communi.service.impl.CommunicateInterlocutionServiceImpl">
+		<property name="dao" ref="communicateInterlocutionDao"></property>
+	</bean>
+	<!-- 公告回复信息Service -->
+	<bean id="communicateReplyService" class="com.gmcc.pboss.biz.communi.service.impl.CommunicateReplyServiceImpl">
+		<property name="dao" ref="replyDao"/>
+	</bean>
+	<!-- 沟通平台_首页 -->
+	<bean id="indexService" class="com.gmcc.pboss.biz.index.service.impl.IndexServiceImpl">
+		<property name="dao" ref="communicatePlateauDao"/>
+		<property name="ibGlSysparamService" ref="ibGlSysparamService"/>
+	</bean>
+	
+	<!-- 商品订购提取公共参数Service(用Service操作，避免Action直接操作DAO) -->
+	<bean id="ibGlSysparamService" class="com.gmcc.pboss.biz.basic.goods.service.impl.IbGlSysparamServiceImpl">
+		<property name="dao" ref="ibGlSysparamDao"/>
+	</bean>
+	
+	<!-- 订购次数信息查询 -->
+	<bean id="orderTimesService" class="com.gmcc.pboss.biz.info.salesRpt.service.impl.OrderTimesServiceImpl" >
+		<property name="orderTimesDao" ref="orderTimesDao"/>
+		<property name="salesOrderDao" ref="salesOrderDao"/>
+	</bean>
+	<!-- 分销合作商查询 -->
+	<bean id="chDstCooperatorService" class="com.gmcc.pboss.biz.info.node.service.impl.ChDstCooperatorServiceImpl">
+		<property name="chDstCooperatorDao" ref="chDstCooperatorDao"/>
+	</bean>
+	
+	<!-- 操作员、工号信息查询：用于用户信息展示中渠道经理查询 
+	<bean id="operatorService" class="com.gmcc.pboss.biz.info.node.service.impl.SaSoOperatorServiceImpl">
+		<property name="wayDao" ref="wayDao"/>
+		<property name="operatorDao" ref="operatorDao"/>
+	</bean>-->
+	<!-- 人员扩展表查询 -->
+	<bean id="employeeextendService" class="com.gmcc.pboss.member.extend.service.impl.EmployeeextendServiceImpl">
+		<property name="employeeextendDao" ref="employeeextendDao"></property>
+	</bean>
+	<!-- 经理人员-店员信息查询 -->
+	<bean id="managerMemberService" class="com.gmcc.pboss.manager.service.impl.ManagerMemberServiceImpl">
+		<property name="dao" ref="memberDao"/>
+		<property name="channelDao" ref="channelDao" />
+	</bean>
+	<!-- 经理人员 -网点信息查询 -->
+	<bean id="managerNodeService" class="com.gmcc.pboss.manager.service.impl.ManagerNodeServiceImpl">
+		<!-- HQL查询 -->
+		<property name="wayDao" ref="wayDao"/>
+		<!-- SQL查询 -->
+		<property name="nodeDao" ref="nodeDao"/>
+	</bean>
+	<!-- 经理人员-特定网点店员信息展示 -->
+	<bean id="nodeMemberService" class="com.gmcc.pboss.manager.service.impl.NodeMemberServiceImpl">
+		<property name="dao" ref="memberDao"/>
+	</bean>
+	<!-- 新业务销售汇总查询 -->
+	<bean id="registernewcntService" class="com.gmcc.pboss.biz.info.registernewcnt.service.impl.RegisternewcntServiceImpl">
+		<property name="registernewcntDao" ref="registernewcntDao" />
+	</bean>
+	<bean id="registernewcntdServie" class="com.gmcc.pboss.biz.info.registernewcnt.service.impl.RegisternewServiceImpl">
+		<property name="registernewDao" ref="registernewcntdDao" />
+	</bean>
+	<bean id="registernewmagcntService" class="com.gmcc.pboss.biz.info.registernewmagcnt.service.impl.RegisternewmagcntServiceImpl">
+		<property name="registernewmagcntDao" ref="registernewmagcntDao" />
+	</bean>
+	<bean id="registernewmagcntdServie" class="com.gmcc.pboss.biz.info.registernewmagcnt.service.impl.RegisternewServiceImpl">
+		<property name="registernewDao" ref="registernewmagcntdDao" />
+	</bean>
+	<!-- 销售汇总查询 -->
+	<bean id="salescntService" class="com.gmcc.pboss.biz.info.salescnt.service.impl.SalescntServiceImpl">
+		<property name="salescntDao" ref="salescntDao" />
+	</bean>
+	<bean id="memService" class="com.gmcc.pboss.biz.info.salescnt.service.impl.MemberServiceImpl">
+		<property name="memDao" ref="memDao" />
+	</bean>
+	<!-- 网点弹出框查询 -->
+	<bean id="wayService" class="com.gmcc.pboss.biz.info.way.service.impl.WayServiceImpl">
+		<property name="dao" ref="wayDetailDao" />
+	</bean>
+	<bean id="servcentService" class="com.gmcc.pboss.biz.info.servcent.service.impl.ServcentServiceImpl">
+		<property name="dao" ref="servcentDao" />
+	</bean>
+	<!-- 新业务销售明细查询 -店员店主-->
+	<bean id="registernewService" class="com.gmcc.pboss.biz.info.salesDetail.service.impl.RegisternewServiceImpl">
+		<property name="registernewDao" ref="registernewDao"></property>
+	</bean>
+	<!-- 新业务销售明细查询-经理人员 -->
+	<bean id="magRegisternewService" class="com.gmcc.pboss.biz.info.salesDetail.service.impl.MagRegisternewServiceImpl">
+		<property name="registernewDao" ref="registernewDao"></property>
+	</bean>
+	<!-- 短信业务编码配置表查询-->
+	<bean id="operationsmsService" class="com.gmcc.pboss.biz.info.salesDetail.service.impl.OperationsmsServiceImpl">
+		<property name="operationsmsDao" ref="operationsmsDao"></property>
+	</bean>
+	<!-- 套卡销售明细-店员店主 -->
+	<bean id="registersimService" class="com.gmcc.pboss.biz.info.salesDetail.service.impl.RegistersimServiceImpl">
+		<property name="registersimDao" ref="registersimDao"></property>
+	</bean>
+	<!-- 套卡销售明细-经理人员 -->
+	<bean id="magRegistersimService" class="com.gmcc.pboss.biz.info.salesDetail.service.impl.MagRegistersimServiceImpl">
+		<property name="registersimDao" ref="registersimDao"></property>
+	</bean>
+	<!-- CH_PW_EMPLOYEE表，人员信息查询 -->
+	<bean id="employeeService" class="com.gmcc.pboss.biz.info.salesDetail.service.impl.EmployeeServiceImpl">
+		<property name="employeeDao" ref="employeeDao"/>
+	</bean>
+	<!-- 套卡销售汇总(经理) -->
+	<bean id="cardsTotalService" class="com.gmcc.pboss.biz.info.salesCardsTotal.service.impl.SalesCardsTotalServiceImpl">
+		<property name="salesCardsTotalDao" ref="salesCardsTotalDao"/>
+	</bean>
+	<bean id="totalmagRegistersimService" class="com.gmcc.pboss.biz.info.salesCardsTotal.service.impl.MagRegistersimServiceImpl">
+		<property name="registersimDao" ref="registersimDao"/>
+	</bean>
+	<!-- 套卡销售汇总(店主/店员) -->
+	<bean id="lowcardsTotalService" class="com.gmcc.pboss.biz.info.lowsalesCardsTotal.service.impl.SalesCardsTotalServiceImpl">
+		<property name="salesCardsTotalDao" ref="lowsalesCardsTotalDao"/>
+	</bean>
+	<!-- 经理,店主/店员指向同一个dao -->
+	<bean id="lowRegistersimService" class="com.gmcc.pboss.biz.info.lowsalesCardsTotal.service.impl.MagRegistersimServiceImpl">
+		<property name="registersimDao" ref="lowregistersimDao"/>
+	</bean>
+	<!-- 客户质量发展奖励酬金 -->
+	<bean id="cardrewdetService" class="com.gmcc.pboss.biz.info.rewardcard.service.impl.CardrewdetServiceImpl">
+		<property name="cardrewdetDao" ref="cardrewdetDao"/>
+	</bean>
+	
+	<!-- 推广专员  创新联盟数据业务推荐成功明细查询-->
+	<bean id="rsMissionerService" class="com.gmcc.pboss.biz.info.missioner.recommend.success.service.impl.MissionerServiceImpl">
+		<property name="rsMissionerDao" ref="rsMissionerDao"></property>
+	</bean>
+	<bean id="rsAgencyService" class="com.gmcc.pboss.biz.info.missioner.recommend.success.service.impl.AgencyServiceImpl">
+		<property name="rsAgencyDao" ref="rsAgencyDao"></property>
+	</bean>
+	<!-- 推广专员  创新联盟数据业务推荐失败明细查询-->
+	<bean id="unvrcfaildayService" class="com.gmcc.pboss.biz.info.missioner.recommend.unvrcfailday.service.impl.UnvrcfaildayServiceImpl">
+		<property name="unvrcfaildayDao" ref="unvrcfaildayDao" />
+	</bean>
+	<!-- 推广专员 酬金核算成功记录查询 -->
+	<bean id="realtimesuccService" class="com.gmcc.pboss.biz.info.missioner.realtimeaccounting.succ.service.impl.RealtimesuccServiceImpl">
+		<property name="realtimesuccDao" ref="realtimesuccDao" />
+	</bean>
+	<!-- 推广专员  酬金核算失败记录查询-->
+	<bean id="realtimefailService" class="com.gmcc.pboss.biz.info.missioner.realtimeaccounting.fail.service.impl.RealtimefailServiceImpl">
+		<property name="realtimefailDao" ref="realtimefailDao" />
+	</bean>
+	
+	<!--菜单栏 -->
+	<bean id="saDbWebfunctionitemService" class="com.gmcc.pboss.menu.service.impl.SaDbWebfunctionitemServiceImpl" 
+		init-method="init" destroy-method="clear">
+	<!-- init-method="init" destroy-method="clear" -->
+		<property name="cities">
+			<list>
+				
+				<value>ZS</value>
+				<!-- test
+				<value>GZ</value>
+				<value>SZ</value>
+				<value>ZH</value>
+				<value>DG</value>
+				<value>FS</value>
+				<value>ZS</value>
+				<value>HZ</value>
+				<value>ZQ</value>
+				<value>ST</value>
+				<value>SW</value>
+				<value>CZ</value>
+				<value>JM</value>
+				<value>MM</value>
+				<value>SG</value>
+				<value>YJ</value>
+				<value>ZJ</value>
+				<value>HY</value>
+				<value>MZ</value>
+				<value>QY</value>
+				<value>JY</value>
+				<value>YF</value>-->
+			</list>
+		</property>
+		<property name="ibGlSysparamDao" ref="ibGlSysparamDao" />
+		<property name="saDbWebfunctionitemDao" ref="saDbWebfunctionitemDao"/>
+	</bean>
+	<!-- 酬金汇总结果 -->
+	<bean id="cityrecordService" class="com.gmcc.pboss.biz.info.reward.cityrecord.service.impl.CityrecordServiceImpl">
+		<property name="cityrecordDao" ref="cityrecordDao" />
+		<property name="ibGlSysparamDao" ref="ibGlSysparamDao"/>
+	</bean>
+	<bean id="adjustmentService" class="com.gmcc.pboss.biz.info.reward.adjustment.service.impl.AdjustmentServiceImpl">
+		<property name="adjustmentDao" ref="adjustmentDao" />
+		<property name="ibGlSysparamDao" ref="ibGlSysparamDao"/>
+	</bean>
+	
+	<!-- 终端酬金  终端计酬成功明细-->
+	<bean id="rewardTdSucService" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdsuc.service.imp.RewardTdSucServiceImpl">
+		<property name="rewardTdSucDao" ref="rewardTdSucDao" /> 
+	</bean>
+    <!-- 终端酬金  终端计酬失败明细-->
+	 <bean id="rewardTdFailService" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdfail.service.imp.RewardTdFailServiceImpl">
+		<property name="rewardTdFailDao" ref="rewardTdFailDao" /> 
+	</bean>
+    <!-- 终端酬金  终端计酬成功数据汇总--> 
+	<bean id="rewardTdRecordService" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdrecord.service.imp.RewardTdRecordServiceImpl">
+		<property name="rewardTdRecordDao" ref="rewardTdRecordDao" /> 
+	</bean>
+	<!-- 终端酬金  终端预发计酬成功明细-->
+	<bean id="rewardAdSucService" class="com.gmcc.pboss.biz.info.rewardtd.rewardadsuc.service.imp.RewardAdSucServiceImpl">
+		<property name="rewardAdSucDao" ref="rewardAdSucDao" /> 
+	</bean>
+	 <!-- 终端酬金  终端预发计酬失败明细-->
+	 <bean id="rewardAdFailService" class="com.gmcc.pboss.biz.info.rewardtd.rewardadfail.service.imp.RewardAdFailServiceImpl">
+		<property name="rewardAdFailDao" ref="rewardAdFailDao" /> 
+	</bean>
+	
+	<!-- 酬金类型Service
+	<bean id="saDbDictItemService" class="com.gmcc.pboss.biz.basic.dictItem.service.impl.SaDbDictItemServiceImpl" init-method="init" destroy-method="clear">
+		<property name="dao" ref="saDbDictItemDao" />
+	</bean>
+	 -->
+	   <!-- 业务明细报表（结算月维度） 2014年10月20日-->
+	 <bean id="settlementMonthService" class="com.gmcc.pboss.biz.info.rewardtd.settlementmonth.service.imp.SettlementMonthServiceImpl">
+		<property name="settlementMonthDao" ref="settlementMonthDao" /> 
+	</bean>
+	
+	
+	   <!-- 业务明细报表（结算月维度） 2014年10月20日-->
+	 <bean id="saleMonthService" class="com.gmcc.pboss.biz.info.rewardtd.salemonth.service.imp.SaleMonthServiceImpl">
+		<property name="saleMonthDao" ref="saleMonthDao" /> 
+	</bean>
+	 <!-- 月度应发酬金报表-->
+	  <bean id="monthRemunerationService" class="com.gmcc.pboss.biz.info.rewardtd.monthremuneration.service.imp.MonthRemunerationServiceImpl">
+		<property name="monthRemunerationDao" ref="monthRemunerationDao" /> 
+	</bean>
+	 <!-- 业务办理酬金分期表-->
+	  <bean id="rewardBusinessService" class="com.gmcc.pboss.biz.info.rewardtd.rewardbusiness.service.imp.RewardBusinessServiceImpl">
+		<property name="rewardBusinessDao" ref="rewardBusinessDao" /> 
+	</bean>
+	<!-- 省市管理员人员扩展表查询 -->
+	<bean id="provincecityadminService" class="com.gmcc.pboss.member.extend.service.impl.ProvincecityadminServiceImpl">
+		<property name="provincecityadminDao" ref="provincecityadminDao"></property>
+	</bean>
+	
+	<!-- 酬金一体化报表-->
+	<bean id="paymentService" class="com.gmcc.pboss.biz.info.reward.payment.service.impl.PaymentServiceImpl">
+		<property name="paymentDao" ref="paymentDao"></property>
+	</bean>
+	
+	<!-- 酬金一体化配置-->
+	<bean id="paymentConfigService" class="com.gmcc.pboss.biz.info.reward.payment.service.impl.PaymentConfigServiceImpl">
+		<property name="paymentConfigDao" ref="paymentConfigDao" />
+		<property name="paymentConfiglogDao" ref="paymentConfiglogDao" />
+		<property name="dao" ref="paymentConfigDao" />
+	</bean>
+	
+	<!-- 酬金一体化管理-->
+	<bean id="paymentManageService" class="com.gmcc.pboss.biz.info.reward.payment.service.impl.PaymentManageServiceImpl">
+		<property name="paymentManageDao" ref="paymentManageDao" />
+		<property name="paymentManagelogDao" ref="paymentManagelogDao" />
+		<property name="dao" ref="paymentManageDao" />
+	</bean>
+	
+	<bean id="paymentWayService" class="com.gmcc.pboss.biz.info.reward.payment.service.impl.PaymentWayServiceImpl">
+	    <property name="dao" ref="paymentWayDao" />
+	</bean>
+	
+	<bean id="paymentPayeeService" class="com.gmcc.pboss.biz.info.reward.payment.service.impl.PaymentPayeeServiceImpl">
+	    <property name="dao" ref="paymentPayeeDao" />
+	</bean>
+	
+	<bean id="paymentStypeService" class="com.gmcc.pboss.biz.info.reward.payment.service.impl.PaymentStypeServiceImpl">
+	    <property name="dao" ref="paymentStypeDao" />
+	</bean>
+	<!-- 酬金一体化管理 结束-->
+</beans>

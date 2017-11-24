@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.microarea.MicroareaVO" table="CH_PW_MICROAREA">
+<id column="MACODE" name="macode" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="SVCCODE" length="14" name="svccode" not-null="true" type="java.lang.String"/>
+<property column="MANAME" length="64" name="maname" not-null="true" type="java.lang.String"/>
+<property column="MATYPE" length="3" name="matype" type="java.lang.Short"/>
+<property column="AGENT" length="64" name="agent" type="java.lang.String"/>
+<property column="BILLINGCODE" length="5" name="billingcode" type="java.lang.String"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="LONGITUDE" length="15" name="longitude" type="java.lang.String"/>
+<property column="LATITUDE" length="15" name="latitude" type="java.lang.String"/>
+</class>
+
+<!--查找登录渠道是否有微区域编码 -->
+<sql-query name="boss.cms.microarea.ifHasmacode">
+	<return-scalar type="java.lang.String" column="val"/>
+      select mareacode as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有服务销售中心编码 -->
+<sql-query name="boss.cms.microarea.ifHassvccode">
+	<return-scalar type="java.lang.String" column="val"/>
+      select svccode as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有分公司编码 -->
+<sql-query name="boss.cms.microarea.ifHascountyid">
+	<return-scalar type="java.lang.String" column="val"/>
+      select countyid as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有市公司编码 -->
+<sql-query name="boss.cms.microarea.ifHascityid">
+	<return-scalar type="java.lang.String" column="val"/>
+      select cityid as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+
+<!-- 当登录渠道有微区域编码时,查询 -->
+<sql-query name="boss.cms.microarea.queryAsma">
+	<return class="com.gmcc.pboss.business.channel.microarea.MicroareaVO"/>
+      select * from ch_pw_microarea where macode = (select mareacode from ch_pw_way where wayid = :loginwayid)
+</sql-query>
+<!-- 当登录渠道有服务销售中心编码时,查询 -->
+<sql-query name="boss.cms.microarea.queryAsserv">
+	<return class="com.gmcc.pboss.business.channel.microarea.MicroareaVO"/>
+      select * from ch_pw_microarea where svccode = (select svccode from ch_pw_way where wayid = :loginwayid)
+</sql-query>
+<!-- 当登录渠道有分公司编码时,查询 -->
+<sql-query name="boss.cms.microarea.queryAscounty">
+	<return class="com.gmcc.pboss.business.channel.microarea.MicroareaVO"/>
+      select * from (select * from ch_pw_microarea where svccode in (select svccode from ch_pw_servcent 
+      where countyid = (select countyid from ch_pw_way where wayid = :loginwayid)))
+</sql-query>
+<!-- 当登录渠道有市公司编码时,查询 -->
+<sql-query name="boss.cms.microarea.queryAscity">
+	<return class="com.gmcc.pboss.business.channel.microarea.MicroareaVO"/>
+      select * from ch_pw_microarea where svccode in (select svccode from ch_pw_servcent 
+      where countyid in (select countyid from ch_pw_cntycompany where citycompid
+       = (select cityid from ch_pw_way where wayid = :loginwayid)))
+</sql-query>
+<!-- 当登录渠道省公司时,查询 -->
+<sql-query name="boss.cms.microarea.queryAsprov">
+	<return class="com.gmcc.pboss.business.channel.microarea.MicroareaVO"/>
+      select * from ch_pw_microarea 
+</sql-query>
+<!-- 分公司与微区域联动时用 -->
+<sql-query name="boss.cms.microarea.queryBycountyid">
+<return class="com.gmcc.pboss.business.channel.microarea.MicroareaVO"/>
+select a.* from CH_PW_MICROAREA a, CH_PW_SERVCENT b
+ where a.SVCCODE = b.SVCCODE
+ and b.COUNTYID = :COUNTYID 
+</sql-query>
+
+</hibernate-mapping>

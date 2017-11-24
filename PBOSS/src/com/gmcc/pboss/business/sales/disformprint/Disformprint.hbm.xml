@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.disformprint.DisformprintVO" table="V_FX_SW_DISFORMPRINT">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence"/>
+</id>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="RECEWAYID" length="18" name="recewayid" type="java.lang.String"/>
+<property column="DISCOMCODE" length="18" name="discomcode" type="java.lang.String"/>
+<property column="DISSTATE" length="16" name="disstate" type="java.lang.String"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+<property column="ORDCREATETIME" length="7" name="ordcreatetime" type="java.util.Date"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="ORDERSTATE" length="16" name="orderstate" type="java.lang.String"/>
+</class>
+
+<!-- 关联配送单表和订单表获取配送单数据 -->
+<sql-query name="com.gmcc.pboss.business.sales.disformprint.getDisform4Print">
+	<return class="com.gmcc.pboss.business.sales.disform.DisformVO"></return>
+	select a.RECID as RECID,
+	 a.ORDERID as ORDERID,
+	 a.RECEWAYID as RECEWAYID,
+	 a.RECENAME as RECENAME,
+	 a.RECETEL as RECETEL,
+	 a.RECEADD as RECEADD,
+	 a.DISCOMCODE as DISCOMCODE,
+	 a.CREATETIME as CREATETIME,
+	 a.ARRIVETIME as ARRIVETIME,
+	 a.DISSTATE as DISSTATE,
+	 a.MEMO as MEMO,
+	 a.STORESMAN as STORESMAN,
+	 a.OUTTIME as OUTTIME,
+	 a.LOGISTICSNO as LOGISTICSNO,
+	 b.CREATETIME as ORDCREATETIME,
+	 b.COUNTYID as COUNTYID	 
+	 from FX_SW_DISFORM a, FX_SW_ORDER b
+	 where a.ORDERID = b.ORDERID
+ 	  and b.ORDERSTATE &lt;&gt; 'CANCEL'
+</sql-query>
+<!-- 关联订单资源明细表和套卡资源明细表获取数据 -->
+<sql-query name="com.gmcc.pboss.business.sales.disformprint.getComIcc">
+	<return-scalar column="COMID" type="java.lang.String"/>
+	<return-scalar column="ICCID" type="java.lang.String"/>
+	<return-scalar column="actprice" type="java.lang.Double"/>
+	select b.COMID as COMID, b.ICCID as ICCID, a.ACTPRICE actprice
+	 from FX_SW_ORDERRESDET a, IM_FX_COMRESSMP b
+ 	 where a.COMRESID = b.COMRESID
+ 		and a.BATCHNO = b.BATCHNO
+		and a.COMID = b.COMID
+		and a.RESTYPE = 'COMRESSMP'
+		and a.ORDERID =:ORDERID
+		order by b.ICCID asc	
+</sql-query>
+<!-- 查询订单资源明细表，获取充值卡信息 -->
+<sql-query name="com.gmcc.pboss.business.sales.disformprint.getComCardResid">
+	<return-scalar column="COMID" type="java.lang.String"/>
+	<return-scalar column="COMRESID" type="java.lang.String"/>
+	<return-scalar column="actprice" type="java.lang.Double"/>
+	select t.comid as COMID, t.comresid as COMRESID,t.ACTPRICE actprice
+  	 from FX_SW_ORDERRESDET t
+ 	 where t.restype = 'COMRESCARD'
+   	  and t.orderid = :ORDERID
+ 	 order by t.comresid asc
+</sql-query>
+</hibernate-mapping>

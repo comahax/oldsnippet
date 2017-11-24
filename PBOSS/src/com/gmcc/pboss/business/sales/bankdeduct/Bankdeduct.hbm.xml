@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.bankdeduct.BankdeductVO" table="FX_SW_BANKDEDUCT">
+<id column="DEDUCTID" length="14" name="deductid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_BANKDEDUCT_SEQ</param>
+</generator>
+</id>
+<property column="ORDERID" length="18" name="orderid" not-null="true" type="java.lang.String"/>
+<property column="FORMTYPE" length="3" name="formtype" type="java.lang.Short"/>
+<property column="BANKID" length="16" name="bankid" type="java.lang.String"/>
+<property column="ACCTNUM" length="64" name="acctnum" type="java.lang.String"/>
+<property column="ACCTTYPE" length="3" name="accttype" type="java.lang.Short"/>
+<property column="ACCTNAME" length="64" name="acctname" type="java.lang.String"/>
+<property column="DEDUCTAMT" length="16" name="deductamt" type="java.lang.Double"/>
+<property column="CREATDATE" length="7" name="creatdate" type="java.util.Date"/>
+<property column="STATE" length="16" name="state" type="java.lang.String"/>
+<property column="STATECHGTIME" length="7" name="statechgtime" type="java.util.Date"/>
+<property column="SHOPNUM" length="32" name="shopnum" type="java.lang.String"/>
+<property column="TERMINALNUM" length="32" name="terminalnum" type="java.lang.String"/>
+<property column="RESPCODE" length="16" name="respcode" type="java.lang.String"/>
+<property column="ERRMSG" length="512" name="errmsg" type="java.lang.String"/>
+<property column="CALLNUM" length="11" name="callnum" type="java.lang.String"/>
+<property column="REQSN" length="32" name="reqsn" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

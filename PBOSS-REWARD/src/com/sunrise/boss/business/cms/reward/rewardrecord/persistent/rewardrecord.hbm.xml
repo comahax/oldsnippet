@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.rewardrecord.persistent.RewardrecordVO" table="CH_PW_REWARDRECORD">
+<id name="rewardlistid" column="REWARDLISTID" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property name="operseq" column="OPERSEQ" type="java.lang.Long" length="14"/>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+<property name="wayoprcode" column="WAYOPRCODE" type="java.lang.String" length="18"/>
+<property name="slv" column="SLV" type="java.lang.Short" length="3"/>
+<property name="rewardid" column="REWARDID" type="java.lang.Long" length="14"/>
+<property name="rewardtype" column="REWARDTYPE" type="java.lang.Short" length="3"/>
+<property name="rewardmonth" column="REWARDMONTH" type="java.lang.String" length="6"/>
+<property name="isbudget" column="ISBUDGET" type="java.lang.Short" length="3"/>
+<property name="totalsum" column="TOTALSUM" type="java.lang.Double" length="12"/>
+<property name="paysum" column="PAYSUM" type="java.lang.Double" length="12"/>
+<property name="paymonth1" column="PAYMONTH1" type="java.lang.String" length="6"/>
+<property name="paymoney1" column="PAYMONEY1" type="java.lang.Double" length="12"/>
+<property name="paymonth2" column="PAYMONTH2" type="java.lang.String" length="6"/>
+<property name="paymoney2" column="PAYMONEY2" type="java.lang.Double" length="12"/>
+<property name="paymonth3" column="PAYMONTH3" type="java.lang.String" length="6"/>
+<property name="paymoney3" column="PAYMONEY3" type="java.lang.Double" length="12"/>
+<property name="runtime" column="RUNTIME" type="java.util.Date" length="7"/>
+<property name="acctype" column="acctype" type="java.lang.Short" length="3"/>
+<property name="mobile" column="MOBILE" type="java.lang.String" length="15"/>
+<property name="rewardstd" column="REWARDSTD" type="java.lang.Double" length="16"/>
+<property name="rewardstdnew" column="REWARDSTDNEW" type="java.lang.String" length="256"/>
+<property name="assegrade" column="ASSEGRADE" type="java.lang.Double" length="10"/>
+<property name="opermobile" column="OPERMOBILE" type="java.lang.String" length="15"/>
+<property name="oprtime" column="OPRTIME" type="java.util.Date" length="7"/>
+<property name="busivalue" column="BUSIVALUE" type="java.lang.Double" length="14"/>
+<property name="rewardflag" column="REWARDFLAG" type="java.lang.Short" length="3"/>
+<property name="repairmonth" column="REPAIRMONTH" type="java.lang.String" length="8"/>
+<property name="relateid" column="RELATEID" type="java.lang.Long" length="14"/>
+<property name="batchno" column="BATCHNO" type="java.lang.String" length="18"/>
+<property name="noncyc" column="NONCYC" type="java.lang.Short" length="3"/>
+<property name="ruleid" column="RULEID" type="java.lang.String" length="38"/>  
+<property name="bakinfo" column="BAKINFO" type="java.lang.String" length="18"/>
+<property name="bakinfo2" column="BAKINFO2" type="java.lang.String" length="40"/>
+<property name="bakinfo3" column="BAKINFO3" type="java.lang.Double" length="14"/>
+<property name="wrapfee" column="WRAPFEE" type="java.lang.Double" length="10"/>
+<property name="adjustkind" column="ADJUSTKIND" type="java.lang.String" length="18"/>
+<property name="assegrade2" column="ASSEGRADE2" type="java.lang.Double" length="7"/>
+<property name="adtflag" column="ADTFLAG" type="java.lang.Short" length="2"/>
+<property column="PRODID" length="32" name="prodid" type="java.lang.String"/>
+<property column="BAKINFO4" length="14" name="bakinfo4" type="java.lang.Double"/>
+<property column="BAKINFO5" length="14" name="bakinfo5" type="java.lang.Double"/> 
+<property column="BAKINFO6" length="32" name="bakinfo6" type="java.lang.String"/>
+<property column="BAKINFO7" length="32" name="bakinfo7" type="java.lang.String"/>
+<property column="BAKINFO8" length="32" name="bakinfo8" type="java.lang.String"/>
+<property column="BAKINFO9" length="32" name="bakinfo9" type="java.lang.String"/>
+<property column="BAKINFO10" length="32" name="bakinfo10" type="java.lang.String"/>  
+</class>
+<sql-query name="boss.cms.reward.rewardrecord.NotQueryPaymonth">
+	<return class="com.sunrise.boss.business.cms.reward.rewardrecord.persistent.RewardrecordVO"/>
+      select t.rewardlistid,t.operseq,t.opnid,t.wayid,t.wayoprcode,t.slv,t.rewardid,t.rewardtype,t.rewardmonth,t.isbudget,t.ruleid,
+      t.totalsum,t.paysum,t.paymonth1,t.paymoney1,t.paymonth2,t.paymoney2,t.paymonth3,
+      t.paymoney3,t.runtime,t.acctype,t.mobile,t.rewardstd,t.bakinfo,t.bakinfo2,t.bakinfo3,
+      case when t.acctype = 2 then to_char(t.rewardstd * 100, '990.00') || '%' else to_char(t.rewardstd) end as rewardstdnew
+      ,t.assegrade,t.opermobile,t.oprtime,t.busivalue,t.rewardflag,t.repairmonth,t.relateid,t.batchno,
+      t.noncyc,t.wrapfee,nvl(t.adjustkind, 'Return') adjustkind,assegrade2,adtflag,t.prodid,t.bakinfo4,t.bakinfo5,t.bakinfo6,t.bakinfo7,t.bakinfo8,t.bakinfo9,
+      t.bakinfo10
+       from ch_pw_rewardrecord t,
+       (select wayid,wayname,countyid from ch_pw_way) b
+       where t.wayid = b.wayid(+) and t.isbudget=:isbudget and t.rewardmonth=:rewardmonth 
+</sql-query>
+<sql-query name="boss.cms.reward.rewardrecord.addQueryPaymonth">
+	<return class="com.sunrise.boss.business.cms.reward.rewardrecord.persistent.RewardrecordVO"/>
+      select t.rewardlistid,t.operseq,t.opnid,t.wayid,t.wayoprcode,t.slv,t.rewardid,t.rewardtype,t.rewardmonth,t.isbudget,t.ruleid,
+      t.totalsum,t.paysum,t.paymonth1,t.paymoney1,t.paymonth2,t.paymoney2,t.paymonth3,
+      t.paymoney3,t.runtime,t.acctype,t.mobile,t.rewardstd,t.bakinfo,t.bakinfo2,t.bakinfo3,
+      case when t.acctype = 2 then to_char(t.rewardstd * 100, '990.00') || '%' else to_char(t.rewardstd) end as rewardstdnew
+      ,t.assegrade,t.opermobile,t.oprtime,t.busivalue,t.rewardflag,t.repairmonth,t.relateid,t.batchno,
+      t.noncyc,t.wrapfee,nvl(t.adjustkind, 'Return') adjustkind,assegrade2,adtflag,t.prodid,t.bakinfo4,
+      t.bakinfo5,t.bakinfo6,t.bakinfo7,t.bakinfo8,t.bakinfo9,t.bakinfo10 
+       from ch_pw_rewardrecord t,
+	   (select wayid,wayname,countyid from ch_pw_way) b
+       where t.wayid = b.wayid(+) and (paymonth1=:paymonth or paymonth2=:paymonth  or  paymonth3=:paymonth) 
+       and t.isbudget=:isbudget and t.rewardmonth=:rewardmonth 
+</sql-query>
+<sql-query name="boss.cms.reward.rewardrecord.sqlquery">
+	<return class="com.sunrise.boss.business.cms.reward.rewardrecord.persistent.RewardrecordVO"/>
+SELECT E.REWARDLISTID,E.OPERSEQ,E.OPNID,E.WAYID,E.WAYOPRCODE,E.SLV,E.REWARDID,
+E.REWARDTYPE,
+E.REWARDSTD,E.REWARDMONTH,E.ISBUDGET,E.TOTALSUM,E.PAYSUM,E.PAYMONTH1,E.PAYMONEY1,
+E.PAYMONTH2,E.PAYMONEY2,E.PAYMONTH3,E.PAYMONEY3,E.RUNTIME,E.ACCTYPE,E.MOBILE,
+E.ASSEGRADE,E.OPERMOBILE,E.OPRTIME,E.BUSIVALUE,E.REWARDFLAG,E.REPAIRMONTH,
+E.RELATEID,E.BATCHNO,E.NONCYC,E.BAKINFO,E.ADTREMARK,E.ADTCODE,E.REWARDSTDNEW,
+E.BAKINFO2,E.BAKINFO3,E.SRC,E.RULEID,E.STARTDATE,E.WRAPFEE,
+NVL(E.ADJUSTKIND, 'Return') ADJUSTKIND,E.ADTFLAG,E.ASSEGRADE2 
+ FROM CH_PW_REWARDRECORD E
+</sql-query>
+</hibernate-mapping>

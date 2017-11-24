@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtdictidname.persistent.ChAdtDictidnameVO" table="CH_ADT_DICTIDNAME">
+<composite-id>
+<key-property column="DICTID" length="32" name="dictid" type="java.lang.String"/>
+<key-property column="GROUPID" length="32" name="groupid" type="java.lang.String"/>
+</composite-id>
+<property column="DICTNAME" length="64" name="dictname" type="java.lang.String"/>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+</class>
+	<sql-query name="boss.business.cms.chadtdictidname">
+		   select sa.dictid,
+        sa.dictname as dictitemname,
+        sa.groupid,
+        sa.description,
+        ch.dictname,ch.optime,ch.oprcode
+   from sa_db_dictitem sa
+   left join CH_ADT_DICTIDNAME ch on ch.groupid = sa.groupid
+                                 and ch.dictid = sa.dictid
+	</sql-query>
+
+</hibernate-mapping>

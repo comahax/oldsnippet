@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.empmodel.EmpmodelVO" table="CH_PW_EMPMODEL">
+<id column="EMPMODELID" length="14" name="empmodelid" type="java.lang.Long">
+<!-- 因为二次专员确认接口在插这张表时，需要设定主键值为确认表中的值，所以这里设为 assigned，注意在其它地方新增时，需要自己取得主键的sequence值-->
+<generator class="assigned"/>
+</id>
+<property column="EMPLOYEEID" length="18" name="employeeid" type="java.lang.String"/>
+<property column="MODEL" length="12" name="model" type="java.lang.String"/>
+<property column="STATE" length="3" name="state" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

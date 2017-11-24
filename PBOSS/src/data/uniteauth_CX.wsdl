@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions targetNamespace="http://www.gmcc.net/ngcrm/pboss/uniteauth"
+	xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://www.gmcc.net/ngcrm/pboss/uniteauth" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"
+	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://www.gmcc.net/ngcrm/pboss/uniteauth">
+			<xsd:element name="uniteAuth">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="uniteAuthResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="uniteAuthRequest">
+		<wsdl:part name="parameters" element="tns:uniteAuth" />
+	</wsdl:message>
+	<wsdl:message name="uniteAuthResponse">
+		<wsdl:part name="parameters" element="tns:uniteAuthResponse" />
+	</wsdl:message>
+	<wsdl:portType name="UniteAuthWebServicePortType">
+		<wsdl:operation name="uniteAuth">
+			<wsdl:input name="uniteAuthRequest" message="tns:uniteAuthRequest" />
+			<wsdl:output name="uniteAuthResponse" message="tns:uniteAuthResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="UniteAuthWebServiceHttpBinding" type="tns:UniteAuthWebServicePortType">
+		<wsdlsoap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="uniteAuth">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="uniteAuthRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="uniteAuthResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="UniteAuthWebService">
+		<wsdl:port name="UniteAuthWebServiceHttpPort" binding="tns:UniteAuthWebServiceHttpBinding">
+		<!-- <wsdlsoap:address location="http://localhost:8080/csp/services/bsf/unitAuthService" />  -->
+			<wsdlsoap:address location="http://127.0.0.1:9082/services/UniteAuthService"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

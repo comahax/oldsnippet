@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+    <form-beans>
+        <form-bean name="/resmanage/com/comForm" type="com.sunrise.boss.ui.resmanage.com.ComForm" />
+        <form-bean name="/resmanage/TaskForm" type="com.sunrise.boss.ui.resmanage.task.TaskForm" />
+    </form-beans>
+
+    <global-forwards>
+        <forward name="excelout" path="/commons/excelout.jsp" />
+        <forward name="txtout" path="/commons/txtout.jsp" />
+    </global-forwards>
+
+    <action-mappings>
+    	
+        <action name="/resmanage/TaskForm" path="/resmanage/task" scope="request" type="com.sunrise.boss.ui.resmanage.task.TaskAction">
+            <forward name="list" path="/resmanage/task/list.jsp" />
+            <forward name="down" path="/commons/batch/download.jsp" />
+        </action>
+        <action path="/resmanage/comidtreefilter" name="/resmanage/com/comForm" scope="request" type="com.sunrise.boss.ui.resmanage.common.ComidTreeAction">
+            <forward name="list" path="/resmanage/com/selectcomidtree.jsp" />
+        </action>
+    </action-mappings>
+    <message-resources parameter="com.sunrise.boss.resource.i18n.resmanage.Task" key="task" null="false" />
+    <message-resources parameter="com.sunrise.boss.resource.i18n.resmanage.Com" key="com" null="false" />
+    <message-resources parameter="com.sunrise.boss.resource.i18n.resmanage.comrescard.Comrescard" key="Comrescard" null="false" />
+</struts-config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.cardrewdettotal.CardrewdettotalVO" table="CH_ADT_CARDREWDETTOTAL">
+<id column="rowcountid" length="14" name="rowcountid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="RECHARGEMONTH" length="6" name="rechargemonth" type="java.lang.String"/>
+<property column="ACTIVEMONTH" length="6" name="activemonth" type="java.lang.String"/>
+<property column="REWARDTYPE" length="22" name="rewardtype" type="java.lang.Long"/>
+<property column="REWARDTOTAL" length="16" name="rewardtotal" type="java.lang.Double"/>
+<property column="CMONTH" length="6" name="cmonth" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

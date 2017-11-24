@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.adjustment.persistent.AdjustmentVO" table="CH_ADT_ADJUSTMENT">
+<id column="ID" name="id" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_ADT_ADJUSTMENT_SEQ</param>
+	</generator>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="PAYSUM" length="16" name="paysum" type="java.lang.Double"/>
+<property column="TAXMONEY" length="10" name="taxmoney" type="java.lang.Double"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/>
+<property column="REMARK" length="128" name="remark" type="java.lang.String"/>
+<property column="CONFIRMOPRCODE" length="15" name="confirmoprcode" type="java.lang.String"/>
+<property column="CONFIRMPTIME" length="7" name="confirmptime" type="java.util.Date"/>
+<property column="TAXOPRCODE" length="15" name="taxoprcode" type="java.lang.String"/>
+<property column="TAXOPTIME" length="7" name="taxoptime" type="java.util.Date"/>
+<property column="RPMONEY" length="10" name="rpmoney" type="java.lang.Double"/>
+<property column="FEES" length="10" name="fees" type="java.lang.Double"/>
+<property column="UPPEROPNID" length="18" name="upperopnid" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.agentbchlog.persistent.AgentbchlogVO" table="CH_PW_AGENTBCHLOG">
+    <id column="LOGID" name="logid" type="java.lang.Long">
+		<generator class="sequence">
+			<param name="sequence">CH_PW_AGENTBCHLOG_SEQ</param>
+		</generator>
+	</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="BCHTYPE" length="3" name="bchtype" type="java.lang.Short"/>
+<property column="OWNEDBY" length="100" name="ownedby" type="java.lang.String"/>
+<property column="WAYAREA" length="100" name="wayarea" type="java.lang.String"/>
+<property column="AREAATTR" length="100" name="areaattr" type="java.lang.String"/>
+<property column="OPENTIME" length="7" name="opentime" type="java.util.Date"/>
+<property column="WORKTIME" length="7" name="worktime" type="java.util.Date"/>
+<property column="BUSSUPPLY" length="255" name="bussupply" type="java.lang.String"/>
+<property column="BUSSTATE" length="3" name="busstate" type="java.lang.Short"/>
+<property column="EMPLOYCNT" length="6" name="employcnt" type="java.lang.Integer"/>
+<property column="BOSSOPRCODE" length="10" name="bossoprcode" type="java.lang.String"/>
+<property column="BUSAREA" length="8" name="busarea" type="java.lang.Integer"/>
+<property column="SEATCNT" length="6" name="seatcnt" type="java.lang.Integer"/>
+<property column="ENVMEMO" length="255" name="envmemo" type="java.lang.String"/>
+<property column="BOSSAREA" length="14" name="bossarea" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.et.chetstdreward.persistent.ChEtStdrewardVO" table="CH_ET_STDREWARD">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="sequence"/>
+</id>
+<property column="OPNID" length="32" name="opnid" not-null="true" type="java.lang.String"/>
+<property column="CITYID" length="3" name="cityid" not-null="true" type="java.lang.Short"/>
+<property column="REWARDSTD" length="20" name="rewardstd" type="java.lang.Double"/>
+<property column="INTVMONTH" length="3" name="intvmonth" type="java.lang.Short"/>
+<property column="RULEID" length="64" name="ruleid" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="REWARDID" length="14" name="rewardid" type="java.lang.Long"/>
+<property column="ACCTYPE" length="3" name="acctype" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

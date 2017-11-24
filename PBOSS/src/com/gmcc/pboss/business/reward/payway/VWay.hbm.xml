@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.payway.VWayVO" table="VWAY">
+<id column="WAYID" name="wayid" type="java.lang.String">
+   <generator class="assigned"/>
+</id>
+<property column="CITYID" length="2" name="cityid" type="java.lang.String"/>
+</class>
+
+<sql-query name="com.gmcc.pboss.business.reward.payway.doQueryVWayBySql">
+    <return class="com.gmcc.pboss.business.reward.payway.VWayVO"></return>
+ SELECT P.WAYID
+  FROM CH_PW_WAY P
+ WHERE P.CITYID = 'GD'
+    OR P.CITYID = :cityid
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.reward.payway.doQueryVWayByWayIdSql">
+    <return class="com.gmcc.pboss.business.reward.payway.VWayVO"></return>
+SELECT P.CITYID
+  FROM CH_PW_WAY P
+ WHERE P.WAYID = :wayid
+</sql-query>
+
+</hibernate-mapping>

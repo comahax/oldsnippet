@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	default-autowire="byName" default-lazy-init="true">
+
+	<bean id="parentDao" class="com.gmcc.pboss.common.dao.hibernate.BaseDaoHibernate" abstract="true" >
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="dynamicSessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 手机号码归属地查询
+	非单例模式
+	 -->
+	<bean id="nosectDao" class="com.gmcc.pboss.common.nosect.dao.hibernat.NosetDaoHibernate" parent="parentDao"  scope="prototype"/>
+	
+	<!-- 短信发送 -->
+	<bean id="smsSendDao" class="com.gmcc.pboss.common.sms.dao.hibernate.SMSSendDaoHibernate" parent="parentDao"/>
+	<!-- 用户表DAO
+	
+	非单例模式 -->
+	<bean id="memberDao" class="com.gmcc.pboss.member.dao.MemberDaoHibernate" parent="parentDao"  scope="prototype"/>
+	<!-- 单例模式 -->
+	<bean id="employeeDao" class="com.gmcc.pboss.member.dao.MemberDaoHibernate" parent="parentDao"/>
+
+	<!-- 月度套卡激活登记明细查询相关Dao -->
+	<bean id="regactInfoDao" class="com.gmcc.pboss.biz.info.regactInfo.dao.hibernate.RegactInfoDaoHibernate" parent="parentDao" />
+	
+	<!-- 月度套卡激活量统计查询相关Dao -->
+	<bean id="regactStatisticsDao" class="com.gmcc.pboss.biz.info.regactInfo.dao.hibernate.RegactStatisticsDaoHibernate" autowire="byName" />
+	
+	<!-- 商品订购历史查询 Dao -->
+	<bean id="salesHistoryDao" class="com.gmcc.pboss.biz.info.salesRpt.dao.hibernate.SalesHistoryDaoHibernate" parent="parentDao" />
+	<!-- 商品订购历史查询 Dao -->
+	<bean id="salesOrderDao" class="com.gmcc.pboss.biz.info.salesRpt.dao.hibernate.SalesOrderDaoHibernate" parent="parentDao" />
+	<!-- 商品订购明细查询By HQL Dao -->
+	<bean id="orderDtlDao" class="com.gmcc.pboss.biz.info.salesRpt.dao.hibernate.OrderDtlDaoHibernate" parent="parentDao" />
+	<bean id="orderDtlDao2" class="com.gmcc.pboss.biz.info.salesRpt.dao.hibernate.OrderDtlDaoHibernate" parent="parentDao" />
+	
+	<!-- 订单流程表 -->
+	<bean id="orderProceDao" class="com.gmcc.pboss.biz.info.salesRpt.dao.hibernate.OrderProceDaoHibernate" parent="parentDao" scope="prototype"/>
+	
+	
+	<!-- 配送商管理Dao -->
+	<bean id="deliveryDao" class="com.gmcc.pboss.biz.info.delivery.dao.impl.DeliveryDaoHibernate" parent="parentDao" />
+
+	<!-- 垫资单管理 -->
+	<bean id="adpaysumDao" class="com.gmcc.pboss.biz.info.adpay.dao.impl.AdpaysumDaoHibernate" parent="parentDao" />	
+
+	<!-- 社会酬金相关Dao -->
+	<bean id="operationDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.OperationDaoHibernate" parent="parentDao" />
+	
+	<bean id="rewardRecordDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.RewardRecordDaoHibernate" parent="parentDao" />
+	
+	<bean id="rewardTotalDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.RewardTotalDaoHibernate" parent="parentDao" />
+	<!-- 酬金校验失败信息 -->
+	<bean id="saleFailDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.SaleFailDaoHibernate" parent="parentDao" />
+	<bean id="simFailDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.SimFailDaoHibernate" parent="parentDao" />
+	<bean id="jmjtFailDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.JmjtFailDaoHibernate" parent="parentDao" />
+	<bean id="bossFailDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BossFailDaoHibernate" parent="parentDao" />
+	<bean id="bossJlFailDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BossJlFailDaoHibernate" parent="parentDao" />
+	
+	<!-- 酬金结算月是否出账Dao -->
+	<bean id="rewardConfDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.RewardConfDaoHibernate" parent="parentDao" />
+	
+	<!-- 网站酬金相关Dao -->
+	<bean id="bbcOperationDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcOperationDaoHibernate" parent="parentDao" />
+	
+	<bean id="bbcRewardRecordDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcRewardRecordDaoHibernate" parent="parentDao" />
+
+	<bean id="bbcRewardTotalDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcRewardTotalDaoHibernate" parent="parentDao" />
+	
+	<!-- 本地酬金查询 -->
+	<bean id="rewardLocalDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.RewardLocalDaoHibernate" parent="parentDao" />
+	<!-- 本地酬金标题表查询 -->
+	<bean id="rewardLocalTTLDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.RewardLocalTTLDaoHibernate" parent="parentDao" />
+	<!-- 本地酬金值表查询 -->
+	<bean id="rewardLocalDTLDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.RewardLocalDTLDaoHibernate" parent="parentDao" />
+	
+	<!-- 酬金校验失败信息 -->
+	<bean id="bbcSellFailDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcSellFailDaoHibernate" parent="parentDao" />
+	<bean id="bbcSeleGflDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcSeleGflDaoHibernate" parent="parentDao" />
+	<bean id="bbcWebFailDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcWebFailDaoHibernate" parent="parentDao" />
+	<bean id="bbcWebeGflDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcWebeGflDaoHibernate" parent="parentDao" />
+	<bean id="bbcE100FailDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcE100FailDaoHibernate" parent="parentDao" />
+	<bean id="bbcE100eGflDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.BbcE100eGflDaoHibernate" parent="parentDao" />
+	
+	<!-- 考核相关Dao -->
+	<bean id="chPwExmnRsltDao" class="com.gmcc.pboss.biz.info.examine.dao.hibernate.ChPwExmnRsltDaoHibernate" parent="parentDao" />
+
+	<!-- 网点相关Dao 
+	非单例模式
+	-->
+	<bean id="nodeInfoDao" class="com.gmcc.pboss.biz.info.node.dao.hibernate.NodeInfoDaoHibernate" parent="parentDao" scope="prototype"/>
+	
+	<!-- 网点申请相关Dao -->
+	<bean id="wayApplyDao" class="com.gmcc.pboss.biz.basic.node.dao.hibernate.WayApplyDaoHibernate" parent="parentDao" />
+	
+	<!-- 审核步骤定义DAO 
+	
+	非单例模式-->
+	<bean id="chPwFlownameDao" class="com.gmcc.pboss.biz.basic.node.dao.hibernate.ChPwFlownameDaoHibernate" parent="parentDao" scope="prototype">
+		<!-- <property name="sessionFactory" ref="sessionFactory" />  -->
+	</bean>
+	
+	<!-- 公告信息Dao 
+	非单例模式
+	-->
+	<bean id="chPwAdvinfoDao" class="com.gmcc.pboss.biz.basic.node.dao.hibernate.ChPwAdvinfoDaoHibernate" parent="parentDao" scope="prototype">
+	</bean>
+	
+	<!-- 接收对象表 
+	非单例模式
+	-->
+	<bean id="chPwRcvobjDao" class="com.gmcc.pboss.biz.basic.node.dao.hibernate.ChPwRcvobjDaoHibernate" parent="parentDao" scope="prototype">
+	</bean>
+	
+	<!-- 沟通平台公告/业务/知识库DAO -->
+	<bean id="communicatePlateauDao" class="com.gmcc.pboss.biz.communi.dao.hibernate.CommunicatePlateauDaoHibernate" parent="parentDao"></bean>
+	<!-- 沟通平台在线问答DAO -->
+	<bean id="communicateInterlocutionDao" class="com.gmcc.pboss.biz.communi.dao.hibernate.CommunicateInterlocutionDaoHibernate" parent="parentDao"></bean>
+	<!-- 公告附件Dao -->
+	<bean id="advaffixDao" class="com.gmcc.pboss.biz.communi.dao.hibernate.AdvaffixDaoHibernate" parent="parentDao"></bean>
+	<!-- 回复信息Dao -->
+	<bean id="replyDao" class="com.gmcc.pboss.biz.communi.dao.hibernate.ReplyDaoHibernate" parent="parentDao"></bean>
+	
+	<!-- 渠道DAO 
+	非单例模式
+	-->
+	<bean id="channelDao" class="com.gmcc.pboss.member.dao.ChannelDaoHibernate" parent="parentDao"  scope="prototype"/>
+	<!-- 渠道DAO 经理人员网点信息查询 -->
+	<bean id="nodeDao" class="com.gmcc.pboss.manager.dao.hibernate.NodeDaoHibernate" parent="parentDao"/>
+	<!-- 失败原因DAO -->
+	<bean id="adtCodeDao" class="com.gmcc.pboss.biz.info.reward.dao.hibernate.AdtCodeDaoHibernate" parent="parentDao"/>
+
+	<!-- auditWork DAO 
+	
+	非单例模式
+	-->
+	<bean id="auditWorkDao" class="com.gmcc.pboss.biz.basic.AuditWork.dao.impl.AuditWorkDaoHibernate" parent="parentDao" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 商品种类DAO -->
+	<bean id="dictItemDao" class="com.gmcc.pboss.biz.basic.dictItem.dao.hibernate.DictItemDaoHibernate" parent="parentDao" />
+	
+	<!-- 卡类购销划扣银行标识DAO -->
+	<bean id="dbBankDao" class="com.gmcc.pboss.biz.info.node.dao.hibernate.DbBankDaoHibernate" parent="parentDao" />
+	
+	<!-- 固定参数加载DAO -->
+	<bean id="constantDao" class="com.gmcc.pboss.common.constant.dao.hibernate.ConstantDaoHibernate" parent="parentDao" />
+	<!-- 地市子公司翻译DAO -->
+	<bean id="cntycompanyDao" class="com.gmcc.pboss.common.constant.dao.hibernate.CntycompanyDaoHibernate" parent="parentDao" />
+	
+	<!-- 店员管理DAO 
+	非单例模式
+	-->
+	<bean id="employeeApplyDao" class="com.gmcc.pboss.member.dao.impl.EmployeeApplyDaoHibernate" parent="parentDao" scope="prototype"/>
+	
+	<!-- 店员管理DAO 
+	非单例模式
+	-->
+	<bean id="wayAccountDao" class="com.gmcc.pboss.biz.info.node.dao.hibernate.WayAccountDaoHibernate" parent="parentDao" scope="prototype"/>
+	
+	<!-- 商品订购公共参数DAO 
+	非单例模式-->
+	<bean id="ibGlSysparamDao" class="com.gmcc.pboss.biz.basic.goods.dao.hibernate.IbGlSysparamHibernate" parent="parentDao" scope="prototype"/>
+	
+	<!-- 自动日志记录BEAN
+	非单例模式
+	 -->
+	<bean id="autoLogDao" class="com.gmcc.pboss.common.businesslog.dao.hibernate.AutoLogDaoHibernate" parent="parentDao" scope="prototype"/>
+	<!-- 短信确认 -->
+	<bean id="fxSwSmsconfirmDao" class="com.gmcc.pboss.biz.info.delivery.dao.impl.FxSwSmsconfirmDaoHibernate" parent="parentDao" scope="prototype" />
+	<!-- 短信模板 -->
+	<bean id="chSmsSmstmplDao" class="com.gmcc.pboss.biz.info.delivery.dao.impl.ChSmsSmstmplDaoHibernate" parent="parentDao" scope="prototype" />
+	<!-- 短信通知 -->
+	<bean id="chSmsWaitreqDao" class="com.gmcc.pboss.biz.info.delivery.dao.impl.ChSmsWaitreqDaoHibernate" parent="parentDao" scope="prototype" />
+	
+	<!-- 菜单栏 -->
+	<bean id="saDbWebfunctionitemDao" class="com.gmcc.pboss.menu.dao.hibernate.SaDbWebfunctionitemDaoHibernate" parent="parentDao" scope="prototype"/>
+	<!-- 月最大订购次数约束表 -->
+	<bean id="orderTimesDao" class="com.gmcc.pboss.biz.info.salesRpt.dao.hibernate.OrderTimesDaoHibernate" parent="parentDao" scope="prototype"/>
+	<!-- 分销合作商查询 -->
+	<bean id="chDstCooperatorDao" class="com.gmcc.pboss.biz.info.node.dao.hibernate.ChDstCooperatorDaoHibernate" parent="parentDao" scope="prototype"/>
+	
+	<!-- 渠道信息 -->
+	<bean id="wayDao" class="com.gmcc.pboss.biz.info.node.dao.hibernate.WayDaoHibernate" parent="parentDao" scope="prototype"/>
+	<!-- 工号信息 
+	<bean id="operatorDao" class="com.gmcc.pboss.biz.info.node.dao.hibernate.SaSoOperatorDaoHibernate" parent="parentDao" scope="prototype"/>-->
+	<!-- 人员扩展表 -->
+	<bean id="employeeextendDao" class="com.gmcc.pboss.member.extend.dao.hibernate.EmployeeextendDaoHibernate" parent="parentDao" scope="prototype"/>
+	<!-- 网点查询 -->
+	<bean id="wayDetailDao" class="com.gmcc.pboss.biz.info.way.dao.hibernate.WayDaoHibernate" parent="parentDao" />
+	<!-- 新业务销售汇总查询 -->
+	<bean id="registernewcntDao" class="com.gmcc.pboss.biz.info.registernewcnt.dao.hibernate.RegisternewcntDaoHibernate" parent="parentDao" />
+	<bean id="registernewcntdDao" class="com.gmcc.pboss.biz.info.registernewcnt.dao.hibernate.RegisternewDaoHibernate" parent="parentDao" />
+	<bean id="registernewmagcntDao" class="com.gmcc.pboss.biz.info.registernewmagcnt.dao.hibernate.RegisternewmagcntDaoHibernate" parent="parentDao" />
+	<bean id="registernewmagcntdDao" class="com.gmcc.pboss.biz.info.registernewmagcnt.dao.hibernate.RegisternewDaoHibernate" parent="parentDao" />
+	<!-- 销售汇总查询 -->
+	<bean id="salescntDao" class="com.gmcc.pboss.biz.info.salescnt.dao.hibernate.SalescntDaoHibernate" autowire="byName" />
+	<bean id="memDao" class="com.gmcc.pboss.biz.info.salescnt.dao.hibernate.MemberDaoHibernate" autowire="byName" />
+	<bean id="servcentDao" class="com.gmcc.pboss.biz.info.servcent.dao.hibernate.ServcentDaoHibernate" parent="parentDao" />
+	
+	<!-- 新业务销售明细 -->
+	<bean id="registernewDao" class="com.gmcc.pboss.biz.info.salesDetail.dao.hibernate.RegisternewDaoHibernate" parent="parentDao" scope="prototype"/>
+	<!-- 短信业务编码配置表 -->
+	<bean id="operationsmsDao" class="com.gmcc.pboss.biz.info.salesDetail.dao.hibernate.OperationsmsDaoHinbernate" parent="parentDao" scope="prototype"/>
+	<!-- 套卡销售明细 -->
+	<bean id="registersimDao" class="com.gmcc.pboss.biz.info.salesDetail.dao.hibernate.RegistersimDaoHibernate" parent="parentDao" scope="prototype"/>
+	<!-- 套卡销售汇总(经理) -->
+	<bean id="salesCardsTotalDao" class="com.gmcc.pboss.biz.info.salesCardsTotal.dao.hibernate.SalesCardsTotalDaoHibernate" parent="parentDao" />
+	<!-- 套卡销售汇总(店主/店员) -->
+	<bean id="lowsalesCardsTotalDao" class="com.gmcc.pboss.biz.info.lowsalesCardsTotal.dao.hibernate.SalesCardsTotalDaoHibernate" parent="parentDao" />
+	<!-- 经理,店主/店员公共一个dao 
+	<bean id="registersimDao" class="com.gmcc.pboss.biz.info.salesDetail.dao.hibernate.RegistersimDaoHibernate" parent="parentDao" />
+	-->
+	<bean id="lowregistersimDao" class="com.gmcc.pboss.biz.info.salesDetail.dao.hibernate.RegistersimDaoHibernate" parent="parentDao" />
+	<!-- 客户质量发展奖励酬金 -->
+	<bean id="cardrewdetDao" class="com.gmcc.pboss.biz.info.rewardcard.dao.hibernate.CardrewdetDaoHibernate" parent="parentDao"/>
+	<!-- 酬金汇总结果 -->
+	<bean id="cityrecordDao" class="com.gmcc.pboss.biz.info.reward.cityrecord.dao.hibernate.CityrecordDaoHibernate" parent="parentDao"/>
+    <!-- 税后酬金查询 -->
+	<bean id="adjustmentDao" class="com.gmcc.pboss.biz.info.reward.adjustment.dao.hibernate.AdjustmentDaoHibernate" parent="parentDao"/>
+	<!-- 推广专员  创新联盟数据业务推荐成功明细查询-->
+	<bean id="rsMissionerDao" class="com.gmcc.pboss.biz.info.missioner.recommend.success.dao.hibernate.MissionerDaoHibernate" parent="parentDao"/>
+	<bean id="rsAgencyDao" class="com.gmcc.pboss.biz.info.missioner.recommend.success.dao.hibernate.AgencyDaoHibernate" parent="parentDao" />
+	<!-- 推广专员  创新联盟数据业务推荐失败明细查询-->
+	<bean id="unvrcfaildayDao" class="com.gmcc.pboss.biz.info.missioner.recommend.unvrcfailday.dao.hibernate.UnvrcfaildayDaoHibernate" parent="parentDao" />
+	<!-- 推广专员  酬金核算成功记录查询-->
+	<bean id="realtimesuccDao" class="com.gmcc.pboss.biz.info.missioner.realtimeaccounting.succ.dao.hibernate.RealtimesuccDaoHibernate" parent="parentDao" />
+	<!-- 推广专员  酬金核算失败记录查询-->
+	<bean id="realtimefailDao" class="com.gmcc.pboss.biz.info.missioner.realtimeaccounting.fail.dao.hibernate.RealtimefailDaoHibernate" parent="parentDao" />
+	<!-- 银行划扣 -->
+	<bean id="bankdeductDao" class="com.gmcc.pboss.biz.info.adpay.dao.impl.BankdeductDaoHibernate" parent="parentDao"/>
+	<!-- 银行商户信息 -->
+	<bean id="bankshopDao" class="com.gmcc.pboss.biz.info.adpay.dao.impl.BankshopDaoHibernate" parent="parentDao"/>
+	<!-- 终端酬金  终端计酬成功明细-->
+	<bean id="rewardTdSucDao" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdsuc.dao.hibernate.RewardTdSucDaoHibernate" parent="parentDao"/>
+    <!-- 终端酬金  终端计酬失败明细-->
+	<bean id="rewardTdFailDao" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdfail.dao.hibernate.RewardTdFailDaoHibernate" parent="parentDao"/>
+    <!-- 终端酬金  终端计酬成功数据汇总-->
+    <bean id="rewardTdRecordDao" class="com.gmcc.pboss.biz.info.rewardtd.rewardtdrecord.dao.hibernate.RewardTdRecordDaoHibernate" parent="parentDao"/>
+   	<!-- 终端酬金  终端预发计酬成功明细-->
+	<bean id="rewardAdSucDao" class="com.gmcc.pboss.biz.info.rewardtd.rewardadsuc.dao.hibernate.RewardAdSucDaoHibernate" parent="parentDao"/>
+     <!-- 终端酬金  终端预发计酬失败明细-->
+	<bean id="rewardAdFailDao" class="com.gmcc.pboss.biz.info.rewardtd.rewardadfail.dao.hibernate.RewardAdFailDaoHibernate" parent="parentDao"/>
+    <!-- 酬金类型DAO 
+	<bean id="saDbDictItemDao" class="com.gmcc.pboss.biz.basic.dictItem.dao.hibernate.SaDbDictItemDaoHibernate" parent="parentDao" />
+	  -->
+	  <!-- 业务明细报表（结算月维度） 2014年10月20日-->
+	<bean id="settlementMonthDao" class="com.gmcc.pboss.biz.info.rewardtd.settlementmonth.dao.hibernate.SettlementMonthDaoHibernate" parent="parentDao"/>
+	  <!-- 业务明细报表（销售月维度） 2014年10月20日-->
+	<bean id="saleMonthDao" class="com.gmcc.pboss.biz.info.rewardtd.salemonth.dao.hibernate.SaleMonthDaoHibernate" parent="parentDao"/>
+	 <!-- 月度应发酬金报表-->
+	<bean id="monthRemunerationDao" class="com.gmcc.pboss.biz.info.rewardtd.monthremuneration.dao.hibernate.MonthRemunerationDaoHibernate" parent="parentDao"/>
+	 <!--业务办理酬金分期表-->
+	<bean id="rewardBusinessDao" class="com.gmcc.pboss.biz.info.rewardtd.rewardbusiness.dao.hibernate.RewardBusinessDaoHibernate" parent="parentDao"/>
+	<!-- 省市管理员人员扩展表 -->
+	<bean id="provincecityadminDao" class="com.gmcc.pboss.member.extend.dao.hibernate.ProvincecityadminDaoHibernate" parent="parentDao" scope="prototype"/>	 			 			    
+	<!-- 酬金一体化报表-->
+	<bean id="paymentDao" class="com.gmcc.pboss.biz.info.reward.payment.dao.hibernate.PaymentDaoHibernate" parent="parentDao" scope="prototype"/>	 			 			    
+</beans>

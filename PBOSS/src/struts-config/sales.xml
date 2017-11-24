@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="sales" namespace="/sales" extends="pboss-default">
+		<action name="order_*" class="com.gmcc.pboss.web.sales.order.OrderAction" method="{1}">
+			<result name="list">/sales/order/list.jsp</result>
+            <result name="content">/sales/order/content.jsp</result>
+            <result name="orderlineframe">/sales/orderlineframe.jsp</result>
+            <result name="baseinfo">/sales/order/baseinfo.jsp</result>
+            <result name="applist">/sales/order/applist.jsp</result>
+            <result name="showapplist">/sales/order/showapplist.jsp</result>
+            <result name="appadjlist">/sales/order/appadjlist.jsp</result>
+            <result name="charge">/sales/order/charge.jsp</result>
+            <result name="recorded">/sales/order/recorded.jsp</result>
+            <result name="stockInfo">/sales/order/stockInfo.jsp</result>
+            <result name="bosssupplylist">/sales/order/bosssupplylist.jsp</result>
+            <result name="remove">/sales/order/remove.jsp</result>
+            <result name="nextbatchprocess">/sales/order/nextbatchprocess.jsp</result>
+            <result name="ExcelRes">/sales/order/excelRes.jsp</result>
+        </action>
+        <action name="order_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/order/batchexport.jsp</result>
+            <result name ="error">/sales/order/batchexport.jsp</result>
+       	</action>
+       	<action name="order_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/order/batchexport.jsp</result>
+            <result name ="error">/sales/order/batchexport.jsp</result>
+        </action>
+        <action name="orderlog_*" class="com.gmcc.pboss.web.sales.orderlog.OrderlogAction" method="{1}">
+			<result name="list">/sales/orderlog/list.jsp</result>
+            <result name="content">/sales/orderlog/content.jsp</result>
+        </action>
+        <action name="ordercomcate_*" class="com.gmcc.pboss.web.sales.ordercomcate.OrdercomcateAction" method="{1}">
+			<result name="list">/sales/ordercomcate/list.jsp</result>
+            <result name="content">/sales/ordercomcate/content.jsp</result>
+        </action>
+        <action name="baseorderamt_*" class="com.gmcc.pboss.web.sales.baseorderamt.BaseorderamtAction" method="{1}">
+			<result name="list">/sales/baseorderamt/list.jsp</result>
+            <result name="content">/sales/baseorderamt/content.jsp</result>
+        </action>
+        
+        <action name="comorderstate_*" class="com.gmcc.pboss.web.sales.comorderstate.ComorderstateAction" method="{1}">
+			<result name="list">/sales/comorderstate/list.jsp</result>
+            <result name="content">/sales/comorderstate/content.jsp</result>
+        </action>
+        
+        <!-- 商品销售价格设置 -->
+         <action name="comprice_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/comprice/batchimport.jsp</result>
+            <result name ="error">/sales/comprice/batchimport.jsp</result>
+       	</action>
+       	
+       	  <action name="comprice_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/sales/comprice/batchimport.jsp</result>
+            <result name ="error">/sales/comprice/batchimport.jsp</result>
+        </action>
+       	
+        <action name="comprice_*" class="com.gmcc.pboss.web.sales.comprice.CompriceAction" method="{1}">
+			<result name="list">/sales/comprice/list.jsp</result>
+            <result name="content">/sales/comprice/content.jsp</result>
+        </action>
+        
+        <action name="monorderinfo_*" class="com.gmcc.pboss.web.sales.monorderinfo.MonorderinfoAction" method="{1}">
+			<result name="list">/sales/monorderinfo/list.jsp</result>
+            <result name="content">/sales/monorderinfo/content.jsp</result>
+        </action>
+        
+		<action name="canorderinfo_*" class="com.gmcc.pboss.web.sales.canorderinfo.CanorderinfoAction" method="{1}">
+			<result name="list">/sales/canorderinfo/list.jsp</result>
+			<result name="confirm">/sales/canorderinfo/confirm.jsp</result>
+            <result name="content">/sales/canorderinfo/content.jsp</result>
+        </action>
+        
+         <action name="canorderinfo_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/canorderinfo/batchimport.jsp</result>
+            <result name ="error">/sales/canorderinfo/batchimport.jsp</result>
+       	</action>
+       	<action name="canorderinfo_noticeUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/canorderinfo/batchNotice.jsp</result>
+            <result name ="error">/sales/canorderinfo/batchNotice.jsp</result>
+       	</action>
+       	<action name="canorderinfo_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/sales/canorderinfo/batchimport.jsp</result>
+            <result name ="error">/sales/canorderinfo/batchimport.jsp</result>
+        </action>
+        <action name="canorderinfo_noticeImport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/sales/canorderinfo/batchNotice.jsp</result>
+            <result name ="error">/sales/canorderinfo/batchNotice.jsp</result>
+        </action>
+        
+        
+        
+        <action name="realtimeamt_*" class="com.gmcc.pboss.web.sales.realtimeamt.RealtimeamtAction" method="{1}">
+			<result name="list">/sales/realtimeamt/list.jsp</result>
+            <result name="content">/sales/realtimeamt/content.jsp</result>
+        </action>
+        <!-- 虚表,只供查询用 -->
+        <action name="vrealtimeamt_*" class="com.gmcc.pboss.web.sales.vrealtimeamt.VrealtimeamtAction" method="{1}">
+			<result name="list">/sales/vrealtimeamt/list.jsp</result>
+        </action>
+        <action name="comorder_*" class="com.gmcc.pboss.web.sales.comorder.ComorderAction" method="{1}">
+			<result name="step1">/sales/comorder/step1.jsp</result>
+            <result name="step2">/sales/comorder/step2.jsp</result>
+            <result name="step3">/sales/comorder/step3.jsp</result>
+        </action>
+        
+        <action name="wayassistant_*" class="com.gmcc.pboss.web.sales.wayassistant.WayassistantAction" method="{1}">
+			<result name="list">/sales/wayassistant/list.jsp</result>
+            <result name="content">/sales/wayassistant/content.jsp</result>
+        </action>
+        
+       <action name="wayassistant_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction">
+			<result name="success">/sales/wayassistant/wayassistant_import.jsp</result>
+			<result name="error">/sales/wayassistant/wayassistant_import.jsp</result>
+        </action>
+          <action name="wayassistant_import" class="com.gmcc.pboss.web.sales.wayassistant.WayassistantBatchTaskAction">
+			<result name="success">/sales/wayassistant/wayassistant_import.jsp</result>
+			<result name="error">/sales/wayassistant/wayassistant_import.jsp</result>
+        </action>
+        
+        <action name="orderuplimit_*" class="com.gmcc.pboss.web.sales.orderuplimit.OrderuplimitAction" method="{1}">
+			<result name="list">/sales/orderuplimit/list.jsp</result>
+            <result name="content">/sales/orderuplimit/content.jsp</result>
+            <result name="liststock">/sales/orderuplimit/liststock.jsp</result>
+            <result name="contentstock">/sales/orderuplimit/contentstock.jsp</result>
+            <result name="listforcard">/sales/orderuplimit/listforcard.jsp</result>
+            <result name="contentforcard">/sales/orderuplimit/contentforcard.jsp</result>
+            <result name="listforemptysim">/sales/orderuplimit/listforemptysim.jsp</result>
+            <result name="contentforemptysim">/sales/orderuplimit/contentforemptysim.jsp</result>
+            <result name="toImport">/sales/orderuplimit/batch.jsp</result>
+            <result name="listforemptysimorder">/sales/orderuplimit/listforemptysimorder.jsp</result>
+            <result name="contentforemptysimorder">/sales/orderuplimit/contentforemptysimorder.jsp</result>
+        </action>
+        <!-- 空白SIM卡库存预警设置批量导入-->
+        <action name="orderuplimitupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/sales/orderuplimit/batch.jsp</result>
+   			<result name="error">/sales/orderuplimit/batch.jsp</result>
+		</action>
+        <action name="orderuplimitbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/orderuplimit/batch.jsp</result>
+			<result name="error">/sales/orderuplimit/batch.jsp</result>
+        </action>
+        <!-- 空白SIM卡库存预警设置（渠道）-->
+        <action name="simstockalarm_*" class="com.gmcc.pboss.web.sales.simstockalarm.SimstockalarmAction" method="{1}">
+			<result name="list">/sales/simstockalarm/list.jsp</result>
+            <result name="content">/sales/simstockalarm/content.jsp</result>
+            <result name="toImport">/sales/simstockalarm/batch.jsp</result>
+        </action>
+        <!-- 空白SIM卡库存预警设置（渠道）批量导入-->
+        <action name="simstockalarmupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/sales/simstockalarm/batch.jsp</result>
+   			<result name="error">/sales/simstockalarm/batch.jsp</result>
+		</action>
+        <action name="simstockalarmbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/simstockalarm/batch.jsp</result>
+			<result name="error">/sales/simstockalarm/batch.jsp</result>
+        </action>
+        <action name="monamtchgrule_*" class="com.gmcc.pboss.web.sales.monamtchgrule.MonamtchgruleAction" method="{1}">
+			<result name="list">/sales/monamtchgrule/list.jsp</result>
+            <result name="content">/sales/monamtchgrule/content.jsp</result>
+        </action>
+        <action name="orderstd_*" class="com.gmcc.pboss.web.sales.orderstd.OrderstdAction" method="{1}">
+			<result name="list">/sales/orderstd/list.jsp</result>
+            <result name="content">/sales/orderstd/content.jsp</result>
+        </action>
+        <action name="orderunit_*" class="com.gmcc.pboss.web.sales.orderunit.OrderunitAction" method="{1}">
+			<result name="list">/sales/orderunit/list.jsp</result>
+            <result name="content">/sales/orderunit/content.jsp</result>
+        </action>
+        <action name="orderunitweek_*" class="com.gmcc.pboss.web.sales.orderunitweek.OrderunitweekAction" method="{1}">
+			<result name="list">/sales/orderunitweek/list.jsp</result>
+            <result name="content">/sales/orderunitweek/content.jsp</result>
+        </action>
+		<action name="orderresdet_*" class="com.gmcc.pboss.web.sales.orderresdet.OrderresdetAction" method="{1}">
+			<result name="list">/sales/orderresdet/list.jsp</result>
+            <result name="content">/sales/orderresdet/content.jsp</result>
+            <result name="drawList">/sales/orderresdet/drawlist.jsp</result>
+            <result name="tobatchDraw">/sales/orderresdet/batchDraw.jsp</result>
+            <result name="toSetNumbers">/sales/orderresdet/setNumbers.jsp</result>
+        </action>
+        <action name="alaordercol_*" class="com.gmcc.pboss.web.sales.alaordercol.AlaordercolAction" method="{1}">
+			<result name="list">/sales/alaordercol/list.jsp</result>
+            <result name="content">/sales/alaordercol/content.jsp</result>
+        </action>
+         <action name="alaordercol_excelalaordercol" class="com.gmcc.pboss.web.sales.alaordercol.AlaordercolAction" method="doExcelAlaordercol">
+			<result name="excelalaordercol">/sales/alaordercol/excelalaordercol.jsp</result>
+		</action>
+        
+        <!-- 订单资源批量抽取 -->
+         <action name="orderresdet_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/orderresdet/batchDraw.jsp</result>
+			<result name="error">/sales/orderresdet/batchDraw.jsp</result>
+        </action>
+         <action name="orderresdet_import" class="com.gmcc.pboss.web.sales.orderresdet.OrderresdetBatchTaskAction">
+			<result name="success">/sales/orderresdet/batchDraw.jsp</result>
+			<result name="error">/sales/orderresdet/batchDraw.jsp</result>
+        </action>
+        <action name="orderplan_*" class="com.gmcc.pboss.web.sales.orderplan.OrderplanAction" method="{1}">
+			<result name="list">/sales/orderplan/list.jsp</result>
+            <result name="content">/sales/orderplan/content.jsp</result>
+        </action>
+        <action name="process_*" class="com.gmcc.pboss.web.sales.process.ProcessAction" method="{1}">
+			<result name="list">/sales/process/list.jsp</result>
+            <result name="content">/sales/process/content.jsp</result>
+        </action>
+        <action name="orderflow_*" class="com.gmcc.pboss.web.sales.orderflow.OrderflowAction" method="{1}">
+			<result name="list">/sales/orderflow/list.jsp</result>
+            <result name="content">/sales/orderflow/content.jsp</result>
+        </action>
+        <action name="orderproce_*" class="com.gmcc.pboss.web.sales.orderproce.OrderproceAction" method="{1}">
+			<result name="list">/sales/orderproce/list.jsp</result>
+            <result name="content">/sales/orderproce/content.jsp</result>
+            <result name="listbyflow">/sales/orderproce/listbyflow.jsp</result>
+        </action>
+        
+       <!-- 订单状态统计[套卡] -->
+        <action name="orderstate_*" class="com.gmcc.pboss.web.sales.orderstate.OrderstateAction" method="{1}">
+			<result name="list">/sales/orderstate/list.jsp</result>
+        </action>
+        <!-- 订单状态统计[充值卡] -->
+        <action name="orderstatecom_*" class="com.gmcc.pboss.web.sales.orderstatecom.OrderstatecomAction" method="{1}">
+			<result name="list">/sales/orderstatecom/list.jsp</result>
+		</action>	
+       	<!-- 配送单管理 -->
+        <action name="disform_*" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="{1}">
+			<result name="list">/sales/disform/list.jsp</result>
+            <result name="content">/sales/disform/content.jsp</result>
+            <result name="excelexport">/sales/disform/content1.jsp</result>
+            <result name="print">/sales/disform/print.jsp</result>
+        </action>
+        <action name="disform_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/disform/batch.jsp</result>
+            <result name ="error">/sales/disform/batch.jsp</result>
+       	</action>
+        <action name="disform_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/disform/batch.jsp</result>
+            <result name ="error">/sales/disform/batch.jsp</result>
+        </action>
+		<action name="disform_consignment" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doConsignment">
+			<result name="list">/sales/disform/list.jsp</result>
+		</action>
+		<action name="disform_startdis" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doStartdis">
+			<result name="list">/sales/disform/list.jsp</result>
+		</action>
+		<action name="disform_disover" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doDisover">
+			<result name="list">/sales/disform/list.jsp</result>
+		</action>
+		<action name="disform_comfirmsign" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doComfirmSign">
+			<result name="list">/sales/disform/list.jsp</result>
+		</action>
+		<action name="disform_batchprint" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doBatchPrint">
+			<result name="list">/sales/disform/list.jsp</result>
+		</action>
+		<action name="disform_gather" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doGather">
+			<result name="gather">/sales/disform/gather.jsp</result>
+		</action>
+		<action name="disform_gatherprint" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doGatherPrint">
+			<result name="gather">/sales/disform/gather.jsp</result>
+			<result name="gatherprint">/sales/disform/gatherprint.jsp</result>
+		</action>
+		
+		<action name="disform_disstatelist" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doDisstateList">
+			<result name="disstatelist">/sales/disform/disstatelist.jsp</result>
+		</action>
+		
+		<action name="disform_exceldisstate" class="com.gmcc.pboss.web.sales.disform.DisformAction" method="doExcelDisstate">
+			<result name="exceldisstate">/sales/disform/exceldisstate.jsp</result>
+			<result name="disstatelist">/sales/disform/disstatelist.jsp</result>
+		</action>
+		
+		<!-- 配送单批量补发签收短信 -->
+         <action name="disform_smssignUpload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/disform/batchSMSSign.jsp</result>
+			<result name="error">/sales/disform/batchSMSSign.jsp</result>
+        </action>
+         <action name="disform_smssignImport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/sales/disform/batchSMSSign.jsp</result>
+			<result name="error">//sales/disform/batchSMSSign.jsp</result>
+        </action>
+		
+        <action name="ordertask_*" class="com.gmcc.pboss.web.sales.ordertask.OrdertaskAction" method="{1}">
+			<result name="list">/sales/ordertask/list.jsp</result>
+            <result name="content">/sales/ordertask/content.jsp</result>
+        </action>
+        <action name="partnerres_*" class="com.gmcc.pboss.web.sales.partnerres.PartnerresAction" method="{1}">
+			<result name="list">/sales/partnerres/list.jsp</result>
+            <result name="content">/sales/partnerres/content.jsp</result>
+        </action>
+        <action name="uploadrecorded" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/order/importrecorded.jsp</result>
+			<result name="error">/sales/order/importrecorded.jsp</result>
+        </action>
+        <!-- 订单批量作废 -->
+        <action name="removebath" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/sales/orderremove/removebath.jsp</result>
+			<result name="error">/sales/orderremove/removebath.jsp</result>
+        </action>
+        <action name="uploadremove" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/orderremove/removebath.jsp</result>
+			<result name="error">/sales/orderremove/removebath.jsp</result>
+        </action>
+        <!-- 批量订购 -->
+        <action name="createbath" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/sales/ordercreate/createbath.jsp</result>
+			<result name="error">/sales/ordercreate/createbath.jsp</result>
+        </action>
+        <action name="uploadcreate" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/ordercreate/createbath.jsp</result>
+			<result name="error">/sales/ordercreate/createbath.jsp</result>
+        </action>
+        <action name="importrecorded" class="com.gmcc.pboss.web.sales.order.RecordedBatchTaskAction" >
+			<result name="success">/sales/order/importrecorded.jsp</result>
+			<result name="error">/sales/order/importrecorded.jsp</result>
+        </action>
+        <action name="uploadOrderAudit" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/order/importOrderAudit.jsp</result>
+			<result name="error">/sales/order/importOrderAudit.jsp</result>
+        </action>
+        <action name="importOrderAudit" class="com.gmcc.pboss.web.sales.order.OrderAuditBatchTaskAction" >
+			<result name="success">/sales/order/importOrderAudit.jsp</result>
+			<result name="error">/sales/order/importOrderAudit.jsp</result>
+        </action>
+         <action name="importOrderAudit_*" class="com.gmcc.pboss.web.sales.order.OrderAuditBatchTaskAction" method="{1}">
+			<result name="getparam">/sales/order/importOrderAudit.jsp</result>
+        </action>
+        <action name="importrecordedByBoss" class="com.gmcc.pboss.web.sales.order.RecordedBatchTaskAction">
+			<result name="success">/sales/order/importrecorded.jsp</result>
+			<result name="error">/sales/order/importrecorded.jsp</result>
+        </action>
+         <action name="uploadOrderCharge" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/order/importOrderCharge.jsp</result>
+			<result name="error">/sales/order/importOrderCharge.jsp</result>
+        </action>
+        <action name="importOrderCharge" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/sales/order/importOrderCharge.jsp</result>
+			<result name="error">/sales/order/importOrderCharge.jsp</result>
+        </action>
+        
+         <action name="activerate_*" class="com.gmcc.pboss.web.sales.activerate.ActiverateAction" method="{1}">
+			<result name="list">/sales/activerate/list.jsp</result>
+			<result name="content">/sales/activerate/content.jsp</result>
+        </action>
+        <action name="noactinfo_*" class="com.gmcc.pboss.web.sales.noactinfo.NoactinfoAction" method="{1}">
+			<result name="list">/sales/noactinfo/list.jsp</result>
+			<result name="content">/sales/noactinfo/content.jsp</result>
+        </action>
+         <action name="actrepair_*" class="com.gmcc.pboss.web.sales.actrepair.ActrepairAction" method="{1}">
+			<result name="list">/sales/actrepair/list.jsp</result>
+            <result name="content">/sales/actrepair/content.jsp</result>
+        </action>
+         <action name="actrepairupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/actrepair/actrepairbatch.jsp</result>
+            <result name ="error">/sales/actrepair/actrepairbatch.jsp</result>
+        </action>
+        <action name="actrepairbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/actrepair/actrepairbatch.jsp</result>
+            <result name ="error">/sales/actrepair/actrepairbatch.jsp</result>
+        </action>
+        <!-- 垫资订单 -->
+        <action name="adpaysum_*" class="com.gmcc.pboss.web.sales.adpaysum.AdpaysumAction" method="{1}">
+			<result name ="list">/sales/adpaysum/list.jsp</result>
+			<result name ="detail">/sales/adpaysum/detail.jsp</result>
+        </action>
+        
+        <action name="ordertimes_*" class="com.gmcc.pboss.web.sales.ordertimes.OrdertimesAction" method="{1}">
+			<result name="list">/sales/ordertimes/list.jsp</result>
+			<result name="content">/sales/ordertimes/content.jsp</result>
+			<result name="list2">/sales/ordertimes/list2.jsp</result>
+			<result name="content2">/sales/ordertimes/content2.jsp</result>
+        </action>
+        
+        <!-- 套卡库存预警设置 -->
+         <action name="alarmset_*" class="com.gmcc.pboss.web.sales.alarmset.AlarmSetAction" method="{1}">
+			<result name="list">/sales/alarmset/list.jsp</result>
+			<result name="content">/sales/alarmset/content.jsp</result>
+			<result name="toImport">/sales/alarmset/batch.jsp</result>
+        </action>
+        <action name="stockalarm_*" class="com.gmcc.pboss.web.sales.stockalarm.StockalarmAction" method="{1}">
+			<result name="list">/sales/stockalarm/list.jsp</result>
+			<result name="content">/sales/stockalarm/content.jsp</result>
+			<result name="toImport">/sales/stockalarm/batch.jsp</result>
+        </action>
+        <!-- 套卡库存预警设置批量导入-->
+        <action name="alarmsetupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/sales/alarmset/batch.jsp</result>
+   			<result name="error">/sales/alarmset/batch.jsp</result>
+		</action>
+        <action name="alarmsetbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/alarmset/batch.jsp</result>
+			<result name="error">/sales/alarmset/batch.jsp</result>
+        </action>
+        <!-- 套卡库存预警设置（渠道) 批量导入-->
+        <action name="stockalarmupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/sales/stockalarm/batch.jsp</result>
+   			<result name="error">/sales/stockalarm/batch.jsp</result>
+		</action>
+		
+        <action name="stockalarmbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/stockalarm/batch.jsp</result>
+			<result name="error">/sales/stockalarm/batch.jsp</result>
+        </action>
+        
+        <action name="comdisscale_*" class="com.gmcc.pboss.web.sales.comdisscale.ComdisscaleAction" method="{1}">
+			<result name="list">/sales/comdisscale/list.jsp</result>
+			<result name="content">/sales/comdisscale/content.jsp</result>
+			<result name="import">/sales/comdisscale/batch.jsp</result>			
+        </action>
+        
+         <!-- 限量订购设置 -->
+        <action name="limitset_*" class="com.gmcc.pboss.web.sales.limitset.LimitsetAction" method="{1}">
+			<result name="list">/sales/limitset/list.jsp</result>
+			<result name="content">/sales/limitset/content.jsp</result>
+        </action>
+        
+        <action name="timesect_*" class="com.gmcc.pboss.web.sales.timesect.TimesectAction" method="{1}">
+			<result name="list">/sales/timesect/list.jsp</result>
+			<result name="content">/sales/timesect/content.jsp</result>
+        </action>
+
+        
+        <!-- 费用汇总 -->
+        <action name="chargesum_*" class="com.gmcc.pboss.web.sales.chargesum.ChargesumAction" method="{1}">
+			<result name="list">/sales/chargesum/list.jsp</result>
+        </action>
+        <!-- 资源汇总 -->
+        <action name="ressum_*" class="com.gmcc.pboss.web.sales.ressum.RessumAction" method="{1}">
+			<result name="list">/sales/ressum/list.jsp</result>
+        </action>
+        <action name="audit_*" class="com.gmcc.pboss.web.sales.audit.AuditAction" method="{1}">
+			<result name="list">/sales/audit/list.jsp</result>
+            <result name="content">/sales/audit/content.jsp</result>
+            <result name="audit">/sales/audit/audit.jsp</result>
+            <result name="selectupper">/sales/audit/selectupper.jsp</result>
+        </action>
+        <action name="ordcomlog_*" class="com.gmcc.pboss.web.sales.ordcomlog.OrdcomlogAction" method="{1}">
+			<result name="list">/sales/ordcomlog/list.jsp</result>
+            <result name="content">/sales/ordcomlog/content.jsp</result>
+        </action>
+        <action name="bankshop_*" class="com.gmcc.pboss.web.sales.bankshop.BankshopAction" method="{1}">
+			<result name="list">/sales/bankshop/list.jsp</result>
+			<result name="content">/sales/bankshop/content.jsp</result>
+        </action>
+        <action name="bankdeduct_*" class="com.gmcc.pboss.web.sales.bankdeduct.BankdeductAction" method="{1}">
+			<result name="list">/sales/bankdeduct/list.jsp</result>
+        </action>
+        <action name="waystocksnpt_*" class="com.gmcc.pboss.web.sales.waystocksnpt.WaystocksnptAction" method="{1}">
+			<result name="stocksmplist">/sales/waystocksnpt/stocksmplist.jsp</result>
+			<result name="stockcardlist">/sales/waystocksnpt/stockcardlist.jsp</result>
+			<result name="stockrecordsmp">/sales/waystocksnpt/stockrecordsmp.jsp</result>
+			<result name="stockrecordcard">/sales/waystocksnpt/stockrecordcard.jsp</result>
+			<result name="salesmplist">/sales/waystocksnpt/salesmplist.jsp</result>
+			<result name="salecardlist">/sales/waystocksnpt/salecardlist.jsp</result>
+			<result name="salerecordsmp">/sales/waystocksnpt/salerecordsmp.jsp</result>
+			<result name="salerecordcard">/sales/waystocksnpt/salerecordcard.jsp</result>
+			<result name="activesmplist">/sales/waystocksnpt/activesmplist.jsp</result>
+			<result name="activerecordsmp">/sales/waystocksnpt/activerecordsmp.jsp</result>
+			
+			<result name="salestatistic">/sales/waystocksnpt/salestatistic.jsp</result>
+			<result name="salerecord">/sales/waystocksnpt/salerecord.jsp</result>
+			<result name="usedstatistic">/sales/waystocksnpt/usedstatistic.jsp</result>
+			<result name="usedrecord">/sales/waystocksnpt/usedrecord.jsp</result>
+        </action>
+        <action name="waystockrecord_*" class="com.gmcc.pboss.web.sales.waystockrecord.WaystockrecordAction" method="{1}">
+			<result name="list">/sales/waystockrecord/stockrecordsmp.jsp</result>
+        </action>
+        <!-- 网点库存量明细批量导出 -->
+        <action name="waystockrecord_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/waystockrecord/waystockrecordbatchexport.jsp</result>
+            <result name ="error">/sales/waystockrecord/waystockrecordbatchexport.jsp</result>
+       	</action>
+       	<action name="waystockrecord_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/waystockrecord/waystockrecordbatchexport.jsp</result>
+            <result name ="error">/sales/waystockrecord/waystockrecordbatchexport.jsp</result>
+        </action>
+        <!-- 网点库存量统计批量导出 -->
+        <action name="stocklistsmp_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/waystocksnpt/stocklistsmpbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/stocklistsmpbatchexport.jsp</result>
+       	</action>
+       	<action name="stocklistsmp_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/waystocksnpt/stocklistsmpbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/stocklistsmpbatchexport.jsp</result>
+        </action>
+        <!-- 网点套卡销售量统计批量导出 -->
+        <action name="salesmplist_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/waystocksnpt/salesmplistbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/salesmplistbatchexport.jsp</result>
+       	</action>
+       	<action name="salesmplist_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/waystocksnpt/salesmplistbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/salesmplistbatchexport.jsp</result>
+        </action>
+        <!-- 网点套卡销售量明细批量导出 -->
+        <action name="salerecordsmp_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/waystocksnpt/salerecordsmpbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/salerecordsmpbatchexport.jsp</result>
+       	</action>
+       	<action name="salerecordsmp_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/waystocksnpt/salerecordsmpbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/salerecordsmpbatchexport.jsp</result>
+        </action>
+        <!-- 网点充值卡销售量统计批量导出 -->
+        <action name="salecardlist_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/waystocksnpt/salecardlistbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/salecardlistbatchexport.jsp</result>
+       	</action>
+       	<action name="salecardlist_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/waystocksnpt/salecardlistbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/salecardlistbatchexport.jsp</result>
+        </action>
+        <!-- 网点充值卡销售量明细批量导出 -->
+        <action name="salerecordcard_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/waystocksnpt/salerecordcardbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/salerecordcardbatchexport.jsp</result>
+       	</action>
+       	<action name="salerecordcard_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/waystocksnpt/salerecordcardbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/salerecordcardbatchexport.jsp</result>
+        </action>
+        <!-- 网点套卡激活量统计批量导出 -->
+        <action name="activelistsmp_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/waystocksnpt/activelistsmpbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/activelistsmpbatchexport.jsp</result>
+       	</action>
+       	<action name="activelistsmp_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/waystocksnpt/activelistsmpbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/activelistsmpbatchexport.jsp</result>
+        </action>
+        <!-- 网点套卡激活量明细批量导出 -->
+        <action name="activesmprecord_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/sales/waystocksnpt/activesmprecordbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/activesmprecordbatchexport.jsp</result>
+       	</action>
+       	<action name="activesmprecord_exp" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/sales/waystocksnpt/activesmprecordbatchexport.jsp</result>
+            <result name ="error">/sales/waystocksnpt/activesmprecordbatchexport.jsp</result>
+        </action>
+        
+        <action name="auditdet_*" class="com.gmcc.pboss.web.sales.auditdet.AuditdetAction" method="{1}">
+			<result name="list">/sales/auditdet/list.jsp</result>
+            <result name="content">/sales/auditdet/content.jsp</result>
+        </action>
+        <!-- 营收汇总[星级] 费用汇总[星级]-->						
+		<action name="wayfxsworder_*" class="com.gmcc.pboss.web.sales.wayfxsworder.WayFxSwOrderAction" method="{1}">
+		<result name="list">/sales/wayfxsworder/list.jsp</result>
+		<result name="content">/sales/wayfxsworder/content.jsp</result>
+		</action>
+		<!-- 营收汇总[星级] 资源汇总[星级]-->
+		<action name="orderresdetwayorder_*" class="com.gmcc.pboss.web.sales.orderresdetwayorder.OrderresdetWayOrderAction" method="{1}">
+		<result name="list">/sales/orderresdetwayorder/list.jsp</result>
+		<result name="content">/sales/orderresdetwayorder/content.jsp</result>
+		</action>
+		<!-- 营收明细 -->
+		<action name="orderresdetwayorderdetail_*" class="com.gmcc.pboss.web.sales.orderresdetwayorderdetail.OrderresdetWayOrderDetailAction" method="{1}">
+		<result name="list">/sales/orderresdetwayorderdetail/list.jsp</result>
+		<result name="content">/sales/orderresdetwayorderdetail/content.jsp</result>
+		</action>
+		<!-- 套卡库存预警浮动设置  -->
+        <action name="stockalmfloat_*" class="com.gmcc.pboss.web.sales.stockalmfloat.StockalmfloatAction" method="{1}">
+			<result name="list">/sales/stockalmfloat/list.jsp</result>
+			<result name="content">/sales/stockalmfloat/content.jsp</result>
+			<result name="toImport">/sales/stockalmfloat/batch.jsp</result>
+        </action>
+         <!--  套卡库存预警浮动设置  上传 -->
+        <action name="fxrustockalmfloatupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/sales/stockalmfloat/batch.jsp</result>
+   			<result name="error">/sales/stockalmfloat/batch.jsp</result>
+		</action>
+		<!--  套卡库存预警浮动设置  处理  -->
+		<action name="fxrustockalmfloatbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/stockalmfloat/batch.jsp</result>
+			<result name="error">/sales/stockalmfloat/batch.jsp</result>
+        </action> 
+        <!-- 分公司资源抽取范围设置 -->
+         <action name="extraexent_*" class="com.gmcc.pboss.web.sales.extraexent.ExtraexentAction" method="{1}">
+			<result name="list">/sales/extraexent/list.jsp</result>
+			<result name="content">/sales/extraexent/content.jsp</result>
+        </action>
+        
+        <!-- 虚表，配送单信息统计、打印 -->
+        <action name="disformprint_*" class="com.gmcc.pboss.web.sales.disformprint.DisformprintAction" method="{1}">
+			<result name="list">/sales/disformprint/list.jsp</result>
+        </action>
+        <!-- 待收费订单查询 -->
+        <action name="orderorderproce_*" class="com.gmcc.pboss.web.sales.orderorderproce.OrderOrderproceAction" method="{1}">
+			<result name="list">/sales/orderorderproce/list.jsp</result>
+        </action>
+                       
+          <!-- 合作商销售提醒 -->
+          
+         <action name="salesstd_*" class="com.gmcc.pboss.web.sales.salesstd.SalesstdAction" method="{1}">
+			<result name="list">/sales/salesstd/list.jsp</result>
+			<result name="content">/sales/salesstd/content.jsp</result>
+			<result name="import">/sales/salesstd/batch.jsp</result>
+			<result name="listquery">/sales/salesstdquery/list.jsp</result>
+			<result name="ExportExcel">/sales/salesstdquery/exportexcel.jsp</result>
+			
+        </action>         
+                       
+        <action name="salesstdupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/sales/salesstd/batch.jsp</result>
+   			<result name="error">/sales/salesstd/batch.jsp</result>
+		</action>
+	   <action name="salesstdprocess" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/salesstd/batch.jsp</result>
+			<result name="error">/sales/salesstd/batch.jsp</result>
+        </action>
+        
+        
+        <!-- 商品比例设置 -->
+        <action name="comdisscaleupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/sales/comdisscale/batch.jsp</result>
+   			<result name="error">/sales/comdisscale/batch.jsp</result>
+		</action>
+	   <action name="comdisscaleprocess" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/comdisscale/batch.jsp</result>
+			<result name="error">/sales/comdisscale/batch.jsp</result>
+        </action>
+        
+        
+        
+       <!-- 营销方案关联 --> 
+         <action name="saleplan_*" class="com.gmcc.pboss.web.sales.saleplan.SaleplanAction" method="{1}">
+			<result name="list">/sales/saleplan/list.jsp</result>
+			<result name="content">/sales/saleplan/content.jsp</result>
+        </action>
+        
+        <!-- 配送单超时预警统计表 -->
+        <action name="disoverstat_*" class="com.gmcc.pboss.web.sales.disoverstat.DisoverstatAction" method="{1}">
+			<result name="list">/sales/disoverstat/list.jsp</result>	
+			<result name="showdialog">/sales/disoverstat/showinfo.jsp</result>	
+			<result name="ExportExcel">/sales/disoverstat/exportexcel.jsp</result>
+        </action>
+        
+        <!-- 银行代收交易对账查询  银行代收交易对账汇总 --> 
+        <action name="bankrecordsum_*" class="com.gmcc.pboss.web.sales.bankrecordsum.BankrecordsumAction" method="{1}">
+			<result name="list">/sales/bankrecordsum/list.jsp</result>
+			<result name="content">/sales/bankrecordsum/content.jsp</result>
+        </action>
+        
+        <!-- 银行代收交易对账查询  银行代收交易对账明细 --> 
+        <action name="bankrecord_*" class="com.gmcc.pboss.web.sales.bankrecord.BankrecordAction" method="{1}">
+			<result name="list">/sales/bankrecord/list.jsp</result>
+			<result name="content">/sales/bankrecord/content.jsp</result>
+			<result name="detail">/sales/bankrecord/detail.jsp</result>
+			<result name="retcodeSelect">/sales/bankrecord/retcodeSelect.jsp</result>
+        </action>
+        
+        <!-- 销售进度查询 --> 
+        <action name="sellnotice_*" class="com.gmcc.pboss.web.sales.sellnotice.SellnoticeAction" method="{1}">
+			<result name="wayList">/sales/sellnotice/wayList.jsp</result>
+			<result name="wayMagList">/sales/sellnotice/wayMagList.jsp</result>
+			<result name="mareacodeList">/sales/sellnotice/mareacodeList.jsp</result>
+			<result name="countyList">/sales/sellnotice/countyList.jsp</result>
+			<result name="content">/sales/sellnotice/content.jsp</result>
+        </action>
+        
+          <!-- 配送单物流单号批量录入 -->
+        <action name="logistics_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/disform/batchLogistics.jsp</result>
+			<result name="error">/sales/disform/batchLogistics.jsp</result>
+        </action>
+         <action name="logistics_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name="success">/sales/disform/batchLogistics.jsp</result>
+			<result name="error">/sales/disform/batchLogistics.jsp</result>
+        </action>
+        
+                <!-- 订单批量复核 -->   
+         <action name="orderreview_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/order/orderbatchreview.jsp</result>
+			<result name="error">/sales/order/orderbatchreview.jsp</result>
+        </action>
+         <action name="orderreview_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/order/orderbatchreview.jsp</result>
+			<result name="error">/sales/order/orderbatchreview.jsp</result>
+        </action>
+        
+        <!-- 配送单配送时限设置 -->
+        <action name="disformintervaltime_*" class="com.gmcc.pboss.web.sales.disformintervaltime.DisformintervaltimeAction" method="{1}">
+        	<result name="list">/sales/disformintervaltime/list.jsp</result>
+			<result name="content">/sales/disformintervaltime/content.jsp</result>
+			<result name="batchimport">/sales/disformintervaltime/batchimport.jsp</result>
+			<result name="disformstat">/sales/disformintervaltime/disformstat.jsp</result>
+			<result name="exceldisformstat">/sales/disformintervaltime/exceldisformstat.jsp</result>
+        </action>
+        <action name="disformintervaltime_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction">
+        	<result name="success">/sales/disformintervaltime/batchimport.jsp</result>
+        	<result name="error">/sales/disformintervaltime/batchimport.jsp</result>
+        </action>
+        <action name="disformintervaltime_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+        	<result name="success">/sales/disformintervaltime/batchimport.jsp</result>
+        	<result name="error">/sales/disformintervaltime/batchimport.jsp</result>
+        </action> 
+        <!-- 配送单超时明细 -->
+        <action name="vorderdisdetail_*" class="com.gmcc.pboss.web.sales.vorderdisdetail.VOrderdisdetailAction"  method="{1}">
+        	<result name="list">/sales/vorderdisdetail/list.jsp</result>
+        </action>
+        <!-- 历史激活数据统计查询 -->
+        <action name="hisactivetol_*" class="com.gmcc.pboss.web.sales.hisactivetol.HisactivetolAction"  method="{1}">
+        	<result name="list">/sales/hisactivetol/list.jsp</result>
+        	<result name="showdetail">/sales/hisactivetol/detaillist.jsp</result>
+        	<result name="downshowdetail">/sales/hisactivetol/downdetaillist.jsp</result>
+        </action>
+        <!-- 批量触发划扣结果短信 -->
+           <action name="batchdeduct_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/order/batchdeduct.jsp</result>
+			<result name="error">/sales/order/batchdeduct.jsp</result>
+        </action>
+         <action name="batchdeduct_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/order/batchdeduct.jsp</result>
+			<result name="error">/sales/order/batchdeduct.jsp</result>
+        </action>  
+         <!-- 订单批量数量调整 -->
+         <action name="batchallocate_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/sales/order/orderbatchallocate.jsp</result>
+			<result name="error">/sales/order/orderbatchallocate.jsp</result>
+        </action>
+         <action name="batchallocate_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/sales/order/orderbatchallocate.jsp</result>
+			<result name="error">/sales/order/orderbatchallocate.jsp</result>
+        </action>
+        
+        
+        <!-- 空白SIM卡分配结果 -->
+         <action name="EmptysimdisresAction_*" class="com.gmcc.pboss.web.sales.emptysimdisres.EmptysimdisresAction" method="{1}">
+			<result name="list">/sales/emptysimdisres/list.jsp</result>
+        </action>
+	</package>
+</struts>

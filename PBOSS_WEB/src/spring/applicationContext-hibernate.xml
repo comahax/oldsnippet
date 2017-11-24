@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="parentSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" abstract="true">
+		<property name="jtaTransactionManager" ref="atomikosTransactionManager" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<prop key="hibernate.jdbc.fetch_size">5</prop>
+				<!-- 
+				<prop key="hibernate.connection.pool_size">2</prop>
+				-->
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<!-- 
+				<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+				 -->
+				<prop key="hibernate.transaction.factory_class">com.atomikos.icatch.jta.hibernate3.AtomikosJTATransactionFactory</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 公共库的SessionFactory -->
+	<bean id="commonSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentSessionFactory">
+		<property name="dataSource" ref="commonDataSource" />
+		<property name="mappingResources">
+			<list>
+				<!-- Channel Table -->
+				<value>com/gmcc/pboss/biz/info/node/model/ChPwWay.hbm.xml</value>
+				<value>com/gmcc/pboss/member/model/Channel.hbm.xml</value>
+				
+				<!-- 省市管理员人员表 CH_PW_PROVINCECITYADMIN用同义词同步到公共库-->
+				<value>com/gmcc/pboss/member/extend/model/Provincecityadmin.hbm.xml</value>
+				
+				<!-- 手机号码归属地 -->
+				<value>/com/gmcc/pboss/model/common/ImPrNosect.hbm.xml</value>
+				<!-- Business Code Table -->
+				<value>com/gmcc/pboss/biz/info/reward/model/ChPwOperation.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcOperation.hbm.xml</value>
+				<!-- 商品种类，用同义词同步到公共库 -->
+				<value>com/gmcc/pboss/model/constant/SaDbDictitem.hbm.xml</value>
+				<!-- 卡类购销划扣银行标识表 -->
+				<value>com/gmcc/pboss/model/wayapply/SaDbBank.hbm.xml</value>
+				<!-- 商品种类 分类表，用同义词同步到公共库 -->
+				<value>com/gmcc/pboss/biz/basic/dictItem/model/ImPrComcategoryrela.hbm.xml</value>
+				<!-- Fail Business Code -->
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtAdtcode.hbm.xml</value>
+				<!-- 地市子公司解释表 -->
+				<value>com/gmcc/pboss/model/constant/ChPwCntycompany.hbm.xml</value>
+				<!-- 人员表 移动地市库 
+				<value>com/gmcc/pboss/member/model/ChPwEmployee.hbm.xml</value>
+				-->
+				
+				<!-- 短信下发表
+				<value>com/gmcc/pboss/model/sms/WzSmsSend.hbm.xml</value>
+				 -->
+				 
+				<!-- 以下临时放到公共库 
+				<value>com/gmcc/pboss/biz/info/node/model/ChPwEmployee.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/node/model/ChPwBchcontact.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/node/model/ChPwWayaccount.hbm.xml</value>
+				-->
+				<value>com/gmcc/pboss/model/servcent/ChPwServcent.hbm.xml</value>
+				<!-- 新业务销售明细表  -->
+				<value>com/gmcc/pboss/biz/info/salesDetail/model/ChPwRegisternew.hbm.xml</value>
+				<!-- 套卡销售明细表 -->
+				<value>com/gmcc/pboss/biz/info/salesDetail/model/ChPwRegistersim.hbm.xml</value>
+				<!-- 地市短信业务编码配置信息表 -->
+				<value>com/gmcc/pboss/biz/info/salesDetail/model/ChPwOperationsms.hbm.xml</value>
+				<!-- 银行商户信息表 FX_CH_BANKSHOP -->		
+				<value>com/gmcc/pboss/model/sales/bankshop/FxCbBankshop.hbm.xml</value>
+				<!-- 付款批次表 -->
+				<value>com/gmcc/pboss/model/reward/adjustment/Paymentbatch.hbm.xml</value>
+				
+				<!-- 酬金一体化配置表
+				<value>com/gmcc/pboss/biz/info/reward/payment/model/ChCwConfig.hbm.xml</value> -->
+			</list>    
+		</property>
+	</bean>
+	
+	<!-- 地市级父SessionFactory -->
+	<bean id="parentCitySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentSessionFactory" abstract="true">
+		<property name="mappingResources">
+			<list>
+				<!-- Channel Apply Table -->
+				<!-- 渠道申请表 -->
+				<value>com/gmcc/pboss/model/wayapply/ChPwWayapply.hbm.xml</value>
+				<!-- 渠道表 -->
+				<value>com/gmcc/pboss/member/model/Channel.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/node/model/ChPwWay.hbm.xml</value> 
+				<!-- 人员表 ChPwEmployee用同义词同步到公共库-->
+				<value>com/gmcc/pboss/member/model/ChPwEmployee.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/node/model/ChPwEmployee.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/node/model/ChPwBchcontact.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/node/model/ChPwWayaccount.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/node/model/ChDstCooperator.hbm.xml</value>
+				
+
+				<!-- 商品种类，用同义词同步到公共库 -->
+				<value>com/gmcc/pboss/model/constant/SaDbDictitem.hbm.xml</value>
+				<!-- 商品种类 分类表，用同义词同步到公共库 -->
+				<value>com/gmcc/pboss/biz/basic/dictItem/model/ImPrComcategoryrela.hbm.xml</value>
+				
+				<value>com/gmcc/pboss/biz/info/reward/model/ChPwOperation.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcOperation.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChPwRewardrecord.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChPwRewardtotal.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcRewardrecord.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcRewardtotal.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChCbRewardconf.hbm.xml</value>
+				
+				<value>com/gmcc/pboss/model/examine/ChPwExmnRslt.hbm.xml</value>
+				<value>com/gmcc/pboss/model/examine/ChPwExmnStdDtl.hbm.xml</value> 
+				
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtSalefail.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtSalefailhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtSimfail.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtSimfailhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtJmjtfail.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtJmjtfailhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtBossfail.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtBossfailhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtBossjlfail.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtBossjlfailhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcE100egfl.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcE100egflhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcE100fail.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcE100failhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcSelegfl.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcSelegflhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcSellfail.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcSellfailhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcWebegfl.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcWebegflhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcWebfail.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChBbcWebfailhis.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/model/ChAdtAdtcode.hbm.xml</value>
+				<!-- 月度套卡激活登记明细查询 com.gmcc.pboss.biz.info.regactInfo.model -->
+				<value>com/gmcc/pboss/biz/info/regactInfo/model/FxSnNoactinfo.hbm.xml</value>
+				<!-- 销售报表 -->
+				<value>com/gmcc/pboss/model/sales/FxSwPartnerres.hbm.xml</value>
+				<value>com/gmcc/pboss/model/sales/FxSwOrder.hbm.xml</value>
+				<value>com/gmcc/pboss/model/sales/FxSwOrderresdet.hbm.xml</value>
+				<value>com/gmcc/pboss/model/sales/FxSwOrdercomcate.hbm.xml</value>
+				<!-- 订单日志表，用于记录订单表修改记录 -->
+				<value>com/gmcc/pboss/model/sales/FxSwOrderlog.hbm.xml</value>
+				
+				<!-- 订单流程表 -->
+				<value>com/gmcc/pboss/model/sales/FxRuOrderproce.hbm.xml</value>
+								
+				<!-- 配送商管理 -->
+				<value>com/gmcc/pboss/model/delivery/FxSwDisform.hbm.xml</value>
+				<!-- 垫资单表 -->
+				<value>com/gmcc/pboss/model/adpay/FxSwAdpaysum.hbm.xml</value>
+				<!-- 垫资单明细表 -->
+				<value>com/gmcc/pboss/model/adpay/FxSwAdpaydet.hbm.xml</value>				
+				<!-- com.gmcc.pboss.member.model 店员资料申请表 -->
+				<value>com/gmcc/pboss/model/employee/ChPwEmployeeapply.hbm.xml</value>
+				<value>com/gmcc/pboss/model/auditWork/ChPwAuditwork.hbm.xml</value>
+				<!-- 审核步骤定义表 -->
+				<value>com/gmcc/pboss/model/channel/ChPwFlowname.hbm.xml</value>
+				<!-- 公告信息表 -->
+				<value>com/gmcc/pboss/model/communi/ChPwAdvinfo.hbm.xml</value>
+				<!-- 接受对象表 -->
+				<value>com/gmcc/pboss/model/communi/ChPwRcvobj.hbm.xml</value>
+				<!-- 群组对象表 -->
+				<value>com/gmcc/pboss/model/communi/ChPwAdvgroupobj.hbm.xml</value>
+				<!-- 公告附件表 -->
+				<value>com/gmcc/pboss/model/communi/ChPwAdvaffix.hbm.xml</value>
+				<!-- 回复信息表 -->
+				<value>com/gmcc/pboss/model/communi/ChPwReply.hbm.xml</value>
+				
+				<!-- 短信待处理表 -->
+				<value>com/gmcc/pboss/model/sms/ChSmsWaitreq.hbm.xml</value>
+				
+				<!-- 商品订购公共参数表 -->
+				<value>com/gmcc/pboss/model/constant/IbGlSysparam.hbm.xml</value>
+				<!-- 日志信息表 -->
+				<value>com/gmcc/pboss/model/wayapply/ChPwWayapplylog.hbm.xml</value>
+				<value>com/gmcc/pboss/model/employee/ChPwEmployeeapplylog.hbm.xml</value>
+				<!-- 短信确认 -->
+				<value>com/gmcc/pboss/model/sms/FxSwSmsconfirm.hbm.xml</value>
+				<!-- 短信模板 -->
+				<value>com/gmcc/pboss/model/sms/ChSmsSmstmpl.hbm.xml</value>
+				<!-- 本地酬金主表 -->
+				<value>com/gmcc/pboss/model/reward/rewardlocal/ChPwRewardlocal.hbm.xml</value>
+				<!-- 本地酬金计酬明细表 -->
+				<value>com/gmcc/pboss/model/reward/rewardlocal/ChPwRewardlocaldtl.hbm.xml</value>
+				<!-- 本地酬金字段定义 -->
+				<value>com/gmcc/pboss/model/reward/rewardlocal/ChPwRewardlocaltitle.hbm.xml</value>
+				<!-- 本地酬金值表 -->
+				<value>com/gmcc/pboss/model/reward/rewardlocal/ChPwRewardlocalvalue.hbm.xml</value>
+				
+				<!-- 菜单栏信息 -->
+				<value>com/gmcc/pboss/menu/model/SaDbWebfunctionitem.hbm.xml</value>
+				<!-- 最大订购次数表 -->
+				<value>com/gmcc/pboss/model/sales/FxSwOrdertimes.hbm.xml</value>
+				<!-- 人员扩展表 -->
+				<value>com/gmcc/pboss/member/extend/model/ChPwEmployeeextend.hbm.xml</value>	
+				<value>com/gmcc/pboss/model/servcent/ChPwServcent.hbm.xml</value>
+				<!-- 新业务销售明细表  -->
+				<value>com/gmcc/pboss/biz/info/salesDetail/model/ChPwRegisternew.hbm.xml</value>
+				<!-- 套卡销售明细表 -->
+				<value>com/gmcc/pboss/biz/info/salesDetail/model/ChPwRegistersim.hbm.xml</value>
+				<!-- 地市短信业务编码配置信息表 -->
+				<value>com/gmcc/pboss/biz/info/salesDetail/model/ChPwOperationsms.hbm.xml</value>
+				<!-- 客户质量发展奖励酬金明细表CH_ADT_CARDREWDET(地市库) -->
+				<value>com/gmcc/pboss/model/reward/ChAdtCardrewdet.hbm.xml</value>	
+				<!-- 酬金汇总结果 -->
+				<value>com/gmcc/pboss/model/reward/cityrecord/ChAdtCityRecord.hbm.xml</value>
+				<!-- 税后酬金查询 -->
+				<value>com/gmcc/pboss/model/reward/adjustment/Adjustment.hbm.xml</value>
+				<!-- (RQ_DL_20111102_1733067)在COMS系统上增加查询 创薪联盟业务明细的需求概要设计(中山公司)上载时取消对下面两个下面的注释 -->
+				<!-- 日同步推荐成功数据表(ch_bbc_allsalesday)--> 
+				<value>com/gmcc/pboss/model/reward/allsalesday/ChBbcAllsalesday.hbm.xml</value> 
+				<!-- 日同步推荐失败数据表(CH_BBC_UNVRCFAILDAY) -->
+				<value>com/gmcc/pboss/model/reward/unvrcfailday/ChBbcUnvrcfailday.hbm.xml</value> 
+				<!-- 实时数据校验有效结果表（CH_BBC_REALTIMESUCC) -->
+				<value>com/gmcc/pboss/model/reward/chbbcrealtimesucc/Chbbcrealtimesucc.hbm.xml</value>
+				<!-- 实时数据校验失败结果表（CH_BBC_REALTIMEFAIL) -->
+				<value>com/gmcc/pboss/model/reward/chbbcrealtimefail/Chbbcrealtimefail.hbm.xml</value>
+				<!-- 银行划扣记录表FX_SW_BANKDEDUCT -->
+				<value>com/gmcc/pboss/model/sales/bankdeduct/FxSwBankdeduct.hbm.xml</value>
+				<!-- 银行商户信息表 FX_CH_BANKSHOP 地市库须有别名-->		
+				<value>com/gmcc/pboss/model/sales/bankshop/FxCbBankshop.hbm.xml</value>
+				
+				<!-- 付款数据上传表 -->
+				<value>com/gmcc/pboss/biz/info/reward/payment/model/ChCwPayment.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/payment/model/ChCwPaymentlog.hbm.xml</value>
+				
+				<!-- 酬金一体化配置表 -->
+				<value>com/gmcc/pboss/biz/info/reward/payment/model/ChCwConfig.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/payment/model/ChCwConfiglog.hbm.xml</value>
+				<!-- 酬金一体化管理 弹出表 -->
+				<value>com/gmcc/pboss/biz/info/reward/payment/model/ChCwPayway.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/payment/model/ChCwStype.hbm.xml</value>
+				<value>com/gmcc/pboss/biz/info/reward/payment/model/ChPwWay.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

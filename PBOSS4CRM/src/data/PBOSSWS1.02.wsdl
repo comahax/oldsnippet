@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="PBOSS4CRMService"
+	targetNamespace="http://www.gmcc.net/pboss/PBOSS4CRMService/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://www.gmcc.net/pboss/PBOSS4CRMService/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+	<wsdl:types>
+		<xs:schema attributeFormDefault="unqualified" 
+			elementFormDefault="qualified" 
+			targetNamespace="http://www.gmcc.net/pboss/PBOSS4CRMService/"			
+			xmlns:tns="http://www.gmcc.net/pboss/PBOSS4CRMService/"			
+			xmlns:xs="http://www.w3.org/2001/XMLSchema"	>
+			<xs:element name="msgreqheader">
+				<xs:annotation>
+					<xs:documentation>soap请求头</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="menuid" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>菜单项，外部提供，核对用</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="process_code" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>业务代码，预留</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="verify_code" type="xs:string"	minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>验证码，预留</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="req_time" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>必须填写，格式yyyymmddhh24miss
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="req_seq" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>本次调用请求流水，由调用方生成。</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="unicontact" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>统一接触</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="testflag" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>1标示测试，0或者不传标示生产</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="route">
+							<xs:annotation>
+								<xs:documentation>路由信息</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="route_type" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>路由类型 0：按地市，1：按号码，如果按地市必须填写准确
+												有手机号码的业务都选择1，只有没有号码的业务才选择0，在不确定地市区号的情况下，route_value可传入999
+											</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="route_value" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>路由字段值</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="channelinfo">
+							<xs:annotation>
+								<xs:documentation>渠道信息</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="operatorid" type="xs:string" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>操作员</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="channelid" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>渠道id</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="unitid" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>子渠道id</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="msgrspheader">
+				<xs:annotation>
+					<xs:documentation>soap应答头</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="menuid" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>外围菜单id</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="process_code" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>业务id</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="verify_code" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>验证码</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="resp_time" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>应答时间</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="sequence">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="req_seq" type="xs:string" fixed="32">
+										<xs:annotation>
+											<xs:documentation>请求流水</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="operation_seq" type="xs:string" fixed="32">
+										<xs:annotation>
+											<xs:documentation>业务流水</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="retinfo">
+							<xs:annotation>
+								<xs:documentation>返回结果信息</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="retcode" type="xs:int">
+										<xs:annotation>
+											<xs:documentation>返回码</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="retype" type="xs:int">
+										<xs:annotation>
+											<xs:documentation>返回码类型</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="retmsg" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>返回消息</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="oprsynreq">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_007工号资料更新
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgreqheader" />
+						<xs:element name="msgbody">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="oprinfo">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element minOccurs="0" name="optime" type="xs:string" />
+												<xs:element minOccurs="0" name="oprcode" type="xs:string" />
+												<xs:element name="oprtype" type="xs:string" />
+												<xs:element name="operid" type="xs:string" />
+												<xs:element minOccurs="0" name="region" type="xs:string" />
+												<xs:element minOccurs="0" name="opername" type="xs:string" />
+												<xs:element minOccurs="0" name="password" type="xs:string" />
+												<xs:element minOccurs="0" name="passchgdate" type="xs:string" />
+												<xs:element minOccurs="0" name="opergroup" type="xs:string" />
+												<xs:element minOccurs="0" name="opertype" type="xs:string" />
+												<xs:element minOccurs="0" name="operlevel" type="xs:string" />
+												<xs:element minOccurs="0" name="ismanager" type="xs:string" />
+												<xs:element minOccurs="0" name="contactphone" type="xs:string" />
+												<xs:element minOccurs="0" name="orgid" type="xs:string" />
+												<xs:element minOccurs="0" name="isrestrict" type="xs:string" />
+												<xs:element minOccurs="0" name="starttime" type="xs:string" />
+												<xs:element minOccurs="0" name="endtime" type="xs:string" />
+												<xs:element minOccurs="0" name="enablegprs" type="xs:string" />
+												<xs:element minOccurs="0" name="gprsstarttime" type="xs:string" />
+												<xs:element minOccurs="0" name="gprsendtime" type="xs:string" />
+												<xs:element minOccurs="0" name="ischkmac" type="xs:string" />
+												<xs:element minOccurs="0" name="mac" type="xs:string" />
+												<xs:element minOccurs="0" name="notes" type="xs:string" />
+												<xs:element minOccurs="0" name="createdate" type="xs:string" />
+												<xs:element minOccurs="0" name="status" type="xs:string" />
+												<xs:element minOccurs="0" name="statusdate" type="xs:string" />
+												<xs:element minOccurs="0" name="rele_staff_id" type="xs:string" />
+												<xs:element minOccurs="0" name="start_using_time" type="xs:string" />
+												<xs:element minOccurs="0" name="end_using_time" type="xs:string" />
+												<xs:element minOccurs="0" name="logintype" type="xs:string" />
+												<xs:element minOccurs="0" name="smnotityflag" type="xs:string" />
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="oprsynrsp">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_007工号资料更新
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgrspheader" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="empsynreq">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_008人员资料更新
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgreqheader" />
+						<xs:element name="msgbody">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="empinfo">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="oprtype" type="xs:string" />
+												<xs:element name="employeeid" type="xs:string" />
+												<xs:element name="oprcode" type="xs:string" minOccurs="0" />
+												<xs:element name="employeename" type="xs:string" minOccurs="0" />
+												<xs:element name="birthday" type="xs:string" minOccurs="0" />
+												<xs:element name="sex" type="xs:string" minOccurs="0" />
+												<xs:element name="edulevel" type="xs:string" minOccurs="0" />
+												<xs:element name="nativehome" type="xs:string" minOccurs="0" />
+												<xs:element name="polivisage" type="xs:string" minOccurs="0" />
+												<xs:element name="department" type="xs:string" minOccurs="0" />
+												<xs:element name="servoffice" type="xs:string" minOccurs="0" />
+												<xs:element name="station" type="xs:string" minOccurs="0" />
+												<xs:element name="joblevel" type="xs:string" minOccurs="0" />
+												<xs:element name="intime" type="xs:string" minOccurs="0" />
+												<xs:element name="worktime" type="xs:string" minOccurs="0" />
+												<xs:element name="hereworktime" type="xs:string" minOccurs="0" />
+												<xs:element name="employtype" type="xs:string" minOccurs="0" />
+												<xs:element name="company" type="xs:string" minOccurs="0" />
+												<xs:element name="telephone" type="xs:string" minOccurs="0" />
+												<xs:element name="officetel" type="xs:string" minOccurs="0" />
+												<xs:element name="outtime" type="xs:string" minOccurs="0" />
+												<xs:element name="outresult" type="xs:string" minOccurs="0" />
+												<xs:element name="homeaddr" type="xs:string" minOccurs="0" />
+												<xs:element name="cardid" type="xs:string" minOccurs="0" />
+												<xs:element name="wayid" type="xs:string" minOccurs="0" />
+												<xs:element name="waytype" type="xs:string" minOccurs="0" />
+												<xs:element name="pvtemail" type="xs:string" minOccurs="0" />
+												<xs:element name="ofcphone" type="xs:string" minOccurs="0" />
+												<xs:element name="ofcemail" type="xs:string" minOccurs="0" />
+												<xs:element name="speciality" type="xs:string" minOccurs="0" />
+												<xs:element name="cityid" type="xs:string" minOccurs="0" />
+												<xs:element name="countyid" type="xs:string" minOccurs="0" />
+												<xs:element name="svccode" type="xs:string" minOccurs="0" />
+												<xs:element name="posittype" type="xs:string" minOccurs="0" />
+												<xs:element name="contacttype" type="xs:string" minOccurs="0" />
+												<xs:element name="empstatus" type="xs:string" minOccurs="0" />
+												<xs:element name="actbank" type="xs:string" minOccurs="0" />
+												<xs:element name="actno" type="xs:string" minOccurs="0" />
+												<xs:element name="actname" type="xs:string" minOccurs="0" />
+												<xs:element name="actpid" type="xs:string" minOccurs="0" />
+												<xs:element name="bail" type="xs:string" minOccurs="0" />
+												<xs:element name="gradschool" type="xs:string" minOccurs="0" />
+												<xs:element name="gradtime" type="xs:string" minOccurs="0" />
+												<xs:element name="ismarried" type="xs:string" minOccurs="0" />
+												<xs:element name="outreason" type="xs:string" minOccurs="0" />
+												<xs:element name="trainlevel" type="xs:string" minOccurs="0" />
+												<xs:element name="hobby" type="xs:string" minOccurs="0" />
+												<xs:element name="character" type="xs:string" minOccurs="0" />
+												<xs:element name="asses" type="xs:string" minOccurs="0" />
+												<xs:element name="workhistry" type="xs:string" minOccurs="0" />
+												<xs:element name="prizeorpunish" type="xs:string" minOccurs="0" />
+												<xs:element name="empass" type="xs:string" minOccurs="0" />
+												<xs:element name="right" type="xs:string" minOccurs="0" />
+												<xs:element name="isnet" type="xs:string" minOccurs="0" />
+												<xs:element name="netpass" type="xs:string" minOccurs="0" />
+												<xs:element name="isopen" type="xs:string" minOccurs="0" />
+												<xs:element name="selectmobile" type="xs:string" minOccurs="0" />
+												<xs:element name="subname" type="xs:string" minOccurs="0" />
+												<xs:element name="regdate" type="xs:string" minOccurs="0" />
+												<xs:element name="empattr" type="xs:string" minOccurs="0" />
+												<xs:element name="empattrmemo" type="xs:string" minOccurs="0" />
+												<xs:element name="istenseed" type="xs:string" minOccurs="0" />
+												<xs:element name="isinternal" type="xs:string" minOccurs="0" />
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="empsynrsp">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_008人员资料更新
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgrspheader" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="waysynreq">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_009PBOSS渠道资料更新（全表字段同步）
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgreqheader" />
+						<xs:element name="msgbody">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="wayinfo">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element type="xs:string" name="oprtype" />
+												<xs:element type="xs:string" name="wayid" />
+												<xs:element type="xs:string" name="shortname" minOccurs="0" />
+												<xs:element type="xs:string" name="svbrchcode" minOccurs="0" />
+												<xs:element type="xs:string" name="svccode" minOccurs="0" />
+												<xs:element type="xs:string" name="mareacode" minOccurs="0" />
+												<xs:element type="xs:string" name="buztypecode" minOccurs="0" />
+												<xs:element type="xs:string" name="adtypecode" minOccurs="0" />
+												<xs:element type="xs:string" name="address" minOccurs="0" />
+												<xs:element type="xs:string" name="logiscode" minOccurs="0" />
+												<xs:element type="xs:string" name="latitude" minOccurs="0" />
+												<xs:element type="xs:string" name="longtitude" minOccurs="0" />
+												<xs:element type="xs:string" name="adacode" minOccurs="0" />
+												<xs:element type="xs:string" name="waymagcode" minOccurs="0" />
+												<xs:element type="xs:string" name="catetype" minOccurs="0" />
+												<xs:element type="xs:string" name="formtype" minOccurs="0" />
+												<xs:element type="xs:string" name="starttime" minOccurs="0" />
+												<xs:element type="xs:string" name="buzarea" minOccurs="0" />
+												<xs:element type="xs:string" name="mainlayer" minOccurs="0" />
+												<xs:element type="xs:string" name="sublayer" minOccurs="0" />
+												<xs:element type="xs:string" name="buzphoneno" minOccurs="0" />
+												<xs:element type="xs:string" name="wayname" minOccurs="0" />
+												<xs:element type="xs:string" name="cooperator" minOccurs="0" />
+												<xs:element type="xs:string" name="waytype" minOccurs="0" />
+												<xs:element type="xs:string" name="waysubtype" minOccurs="0" />
+												<xs:element type="xs:string" name="custtype" minOccurs="0" />
+												<xs:element type="xs:string" name="upperwayid" minOccurs="0" />
+												<xs:element type="xs:string" name="busicode" minOccurs="0" />
+												<xs:element type="xs:string" name="countyid" minOccurs="0" />
+												<xs:element type="xs:string" name="cityid" minOccurs="0" />
+												<xs:element type="xs:string" name="centerid" minOccurs="0" />
+												<xs:element type="xs:string" name="citylevel" minOccurs="0" />
+												<xs:element type="xs:string" name="waylevel" minOccurs="0" />
+												<xs:element type="xs:string" name="bchlevel" minOccurs="0" />
+												<xs:element type="xs:string" name="function" minOccurs="0" />
+												<xs:element type="xs:string" name="miscode" minOccurs="0" />
+												<xs:element type="xs:string" name="createtime" minOccurs="0" />
+												<xs:element type="xs:string" name="disabletime" minOccurs="0" />
+												<xs:element type="xs:string" name="waystate" minOccurs="0" />
+												<xs:element type="xs:string" name="runbyself" minOccurs="0" />
+												<xs:element type="xs:string" name="depotdet" minOccurs="0" />
+												<xs:element type="xs:string" name="isshare" minOccurs="0" />
+												<xs:element type="xs:string" name="alarmbizamount" minOccurs="0" />
+												<xs:element type="xs:string" name="prtsource" minOccurs="0" />
+												<xs:element type="xs:string" name="isconnected" minOccurs="0" />
+												<xs:element type="xs:string" name="connecttype" minOccurs="0" />
+												<xs:element type="xs:string" name="runmode" minOccurs="0" />
+												<xs:element type="xs:string" name="iscoreway" minOccurs="0" />
+												<xs:element type="xs:string" name="starlevel" minOccurs="0" />
+												<xs:element type="xs:string" name="pt" minOccurs="0" />
+												<xs:element type="xs:string" name="chainhead" minOccurs="0" />
+												<xs:element type="xs:string" name="signstatus" minOccurs="0" />
+												<xs:element type="xs:string" name="empnumber" minOccurs="0" />
+												<xs:element type="xs:string" name="magnumber" minOccurs="0" />
+												<xs:element type="xs:string" name="terminumber" minOccurs="0" />
+												<xs:element type="xs:string" name="updatedate" minOccurs="0" />
+												<xs:element type="xs:string" name="isstraitprd" minOccurs="0" />
+												<xs:element type="xs:string" name="taxtype" minOccurs="0" />
+												<xs:element type="xs:string" name="istietong" minOccurs="0" />
+												<xs:element type="xs:string" name="rivltype" minOccurs="0" />
+												<xs:element type="xs:string" name="iskzcz" minOccurs="0" />
+												<xs:element type="xs:string" name="distype" minOccurs="0" />
+												<xs:element type="xs:string" name="calcumode" minOccurs="0" />
+												<xs:element type="xs:string" name="uniformtime" minOccurs="0" />
+												<xs:element type="xs:string" name="checked" minOccurs="0" />
+												<xs:element type="xs:string" name="buzmanager" minOccurs="0" />
+												<xs:element type="xs:string" name="subrunmode" minOccurs="0" />
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="waysynrsp">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_009PBOSS渠道资料更新（全表字段同步）
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgrspheader" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="modifypromcomminforeq">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_010 新增注册推广专员信息
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgreqheader" />
+						<xs:element name="msgbody">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="mobileno" type="xs:string" />
+									<xs:element minOccurs="0" name="companycode" type="xs:string" />
+									<xs:element minOccurs="0" name="commissionercode" type="xs:string" />
+									<xs:element name="agentcode" type="xs:string" />
+									<xs:element name="staffname" type="xs:string" />
+									<xs:element name="staffcode" type="xs:string" />
+									<xs:element minOccurs="0" name="personid" type="xs:string" />
+									<xs:element minOccurs="0" name="email" type="xs:string" />
+									<xs:element name="registerdate" type="xs:string" />
+									<xs:element name="enabledate" type="xs:string" />
+									<xs:element name="stopdate" type="xs:string" />
+									<xs:element name="status" type="xs:string" />
+									<xs:element name="oercode" type="xs:string" />
+									<xs:element minOccurs="0" name="istenseed" type="xs:string" />
+									<xs:element minOccurs="0" name="isinternal" type="xs:string" />
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="modifypromcomminforsp">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_010 新增注册推广专员信息
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>Retcode:
+							ret＝0，成功;ret＝1，所属代理商不存在;ret＝2，该号码已经被注册;
+							ret＝3，无法找到相应的推广专员，修改不成功;ret＝111，操作失败
+						</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element ref="tns:msgrspheader" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="returnorderinreq">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_011订单入帐/退入帐处理结果
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgreqheader" />
+						<xs:element name="msgbody">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="busitype" type="xs:string" />
+									<xs:element name="orderid" type="xs:string" />
+									<xs:element minOccurs="0" name="bossworkfid" type="xs:string" />
+									<xs:element name="orderresult" type="xs:string" />
+									<xs:element minOccurs="0" name="orderresultinfo" type="xs:string" />
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="returnorderinrsp">
+				<xs:annotation>
+					<xs:documentation>PBOSS_IM_011订单入帐/退入帐处理结果
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="tns:msgrspheader" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="msgreqheader">
+		<wsdl:part name="header" element="tns:msgreqheader">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="msgrspheader">
+		<wsdl:part name="header" element="tns:msgrspheader" />
+	</wsdl:message>
+	<wsdl:message name="oprsynreq">
+		<wsdl:part name="body" element="tns:oprsynreq" />
+	</wsdl:message>
+	<wsdl:message name="oprsynrsp">
+		<wsdl:part name="body" element="tns:oprsynrsp" />
+	</wsdl:message>
+	<wsdl:message name="empsynreq">
+		<wsdl:part name="body" element="tns:empsynreq" />
+	</wsdl:message>
+	<wsdl:message name="empsynrsp">
+		<wsdl:part name="body" element="tns:empsynrsp" />
+	</wsdl:message>
+	<wsdl:message name="waysynreq">
+		<wsdl:part name="body" element="tns:waysynreq" />
+	</wsdl:message>
+	<wsdl:message name="waysynrsp">
+		<wsdl:part name="body" element="tns:waysynrsp" />
+	</wsdl:message>
+	<wsdl:message name="modifypromcomminforeq">
+		<wsdl:part name="body" element="tns:modifypromcomminforeq" />
+	</wsdl:message>
+	<wsdl:message name="modifypromcomminforsp">
+		<wsdl:part name="body" element="tns:modifypromcomminforsp" />
+	</wsdl:message>
+	<wsdl:message name="returnorderinreq">
+		<wsdl:part name="body" element="tns:returnorderinreq" />
+	</wsdl:message>
+	<wsdl:message name="returnorderinrsp">
+		<wsdl:part name="body" element="tns:returnorderinrsp" />
+	</wsdl:message>
+	<wsdl:portType name="PBOSSServicePort">
+		<wsdl:operation name="oprsyn">
+			<wsdl:documentation>PBOSS_IM_007工号资料更新
+			</wsdl:documentation>
+			<wsdl:input name="oprsynreq" message="tns:oprsynreq" />
+			<wsdl:output name="oprsynrsp" message="tns:oprsynrsp" />
+		</wsdl:operation>
+		<wsdl:operation name="empsyn">
+			<wsdl:documentation>PBOSS_IM_008人员资料更新
+			</wsdl:documentation>
+			<wsdl:input name="empsynreq" message="tns:empsynreq" />
+			<wsdl:output name="empsynrsp" message="tns:empsynrsp" />
+		</wsdl:operation>
+		<wsdl:operation name="waysyn">
+			<wsdl:documentation>PBOSS_IM_009PBOSS渠道资料更新（全表字段同步）
+			</wsdl:documentation>
+			<wsdl:input name="waysynreq" message="tns:waysynreq" />
+			<wsdl:output name="waysynrsp" message="tns:waysynrsp" />
+		</wsdl:operation>
+		<wsdl:operation name="modifypromcomminfo">
+			<wsdl:documentation>PBOSS_IM_010 新增注册推广专员信息
+			</wsdl:documentation>
+			<wsdl:input name="modifypromcomminforeq" message="tns:modifypromcomminforeq" />
+			<wsdl:output name="modifypromcomminforsp" message="tns:modifypromcomminforsp" />
+		</wsdl:operation>
+		<wsdl:operation name="returnorderin">
+			<wsdl:documentation>PBOSS_IM_011订单入帐/退入帐处理结果
+			</wsdl:documentation>
+			<wsdl:input name="returnorderinreq" message="tns:returnorderinreq" />
+			<wsdl:output name="returnorderinrsp" message="tns:returnorderinrsp" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="PBOSSServiceSoapBinding" type="tns:PBOSSServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="oprsyn">
+			<soap:operation soapAction="http://www.gmcc.net/pboss/PBOSS4CRMService/oprsyn"
+				style="document" />
+			<wsdl:input name="oprsynreq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="oprsynrsp">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="empsyn">
+			<soap:operation soapAction="http://www.gmcc.net/pboss/PBOSS4CRMService/empsyn"
+				style="document" />
+			<wsdl:input name="empsynreq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="empsynrsp">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="waysyn">
+			<soap:operation soapAction="http://www.gmcc.net/pboss/PBOSS4CRMService/waysyn"
+				style="document" />
+			<wsdl:input name="waysynreq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="waysynrsp">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="modifypromcomminfo">
+			<soap:operation
+				soapAction="http://www.gmcc.net/pboss/PBOSS4CRMService/modifypromcomminfo"
+				style="document" />
+			<wsdl:input name="modifypromcomminforeq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="modifypromcomminforsp">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="returnorderin">
+			<soap:operation
+				soapAction="http://www.gmcc.net/pboss/PBOSS4CRMService/returnorderin"
+				style="document" />
+			<wsdl:input name="returnorderinreq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="returnorderinrsp">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PBOSS4CRMService">
+		<wsdl:port name="PBOSSServiceSoap" binding="tns:PBOSSServiceSoapBinding">
+			<!--  江门 UAT 
+			 <soap:address location="http://localhost:9081/coms4crm/services/PBOSS4CRMService" />
+			 -->
+			 <soap:address location="http://127.0.0.1:9081/coms4crm/services/PBOSS4CRMService" />
+			<!--
+				本机测试用
+				 <soap:address location="http://127.0.0.1:9083/services/PBOSS4CRMService" />
+			-->
+			<!--
+				测试发布
+				 <soap:address location="http://10.200.51.214:9083/coms4crm/services/PBOSS4CRMService" />
+				/>
+			-->
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

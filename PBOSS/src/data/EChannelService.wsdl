@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:tns="http://boss.huawei.com/webservice/eChannel"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	targetNamespace="http://boss.huawei.com/webservice/eChannel">
+	<types>
+		<xs:schema
+			targetNamespace="http://boss.huawei.com/webservice/eChannel"
+			elementFormDefault="qualified">
+			<xs:include schemaLocation="./EChannel.xsd" />
+		</xs:schema>
+	</types>
+	<message name="EChannelRequest">
+		<part name="EChannelRequestMessage"
+			element="tns:EChannelRequest">
+		</part>
+	</message>
+	<message name="EChannelResult">
+		<part name="EChannelResultMessage"
+			element="tns:EChannelResult">
+		</part>
+	</message>
+	<message name="LongRequest">
+		<part name="LongRequestMessage" element="tns:LongRequest">
+		</part>
+	</message>
+	<message name="LongResult">
+		<part name="LongResultMessage" element="tns:LongResult"></part>
+	</message>
+	<portType name="EChannel">
+		<operation name="EChannel">
+			<input name="request" message="tns:EChannelRequest"></input>
+			<output name="result" message="tns:EChannelResult"></output>
+		</operation>
+		<operation name="Long">
+			<input name="request" message="tns:LongRequest"></input>
+			<output name="result" message="tns:LongResult"></output>
+		</operation>
+	</portType>
+	<binding name="EChannelBinding" type="tns:EChannel">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="EChannel">
+			<soap:operation soapAction="EChannel" style="document" />
+			<input>
+				<soap:body use="literal"
+					namespace="http://bme.huawei.com/EChannel" />
+			</input>
+			<output>
+				<soap:body use="literal"
+					namespace="http://bme.huawei.com/EChannel" />
+			</output>
+		</operation>
+		<operation name="Long">
+			<soap:operation soapAction="Long" style="document" />
+			<input>
+				<soap:body use="literal"
+					namespace="http://bme.huawei.com/Long" />
+			</input>
+			<output>
+				<soap:body use="literal"
+					namespace="http://bme.huawei.com/Long" />
+			</output>
+		</operation>
+	</binding>
+	<service name="EChannelService">
+		<port name="EChannelServicePort"
+			binding="tns:EChannelBinding">
+			<soap:address
+				location="http://10.243.210.120:80/kfif/services/EChannelService" />
+		</port>
+	</service>
+</definitions>
+
+

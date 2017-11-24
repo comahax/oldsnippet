@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.rule.persistent.RuleVO" table="CH_ADT_RULE">
+<id name="ruleid" column="RULEID" type="java.lang.String" length="18">
+<generator class="assigned"/>
+</id>
+<property name="rulename" column="RULENAME" type="java.lang.String" length="60"/>
+<property name="startdate" column="STARTDATE" type="java.util.Date" length="7"/>
+<property name="enddate" column="ENDDATE" type="java.util.Date" length="7"/>
+<property name="remark" column="REMARK" type="java.lang.String" length="200"/>
+<property name="ruletype" column="RULETYPE" type="java.lang.String" length="18"/>
+</class>
+</hibernate-mapping>

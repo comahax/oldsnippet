@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.functionitem.FunctionitemVO" table="SA_DB_FUNCTIONITEM">
+<id column="FUNCID" length="32" name="funcid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="FUNCNAME" length="64" name="funcname" type="java.lang.String"/>
+<property column="PARENTID" length="32" name="parentid" type="java.lang.String"/>
+<property column="GUIOBJECT" length="256" name="guiobject" type="java.lang.String"/>
+<property column="RLTGUIOBJID" length="32" name="rltguiobjid" type="java.lang.String"/>
+<property column="ADDEDINFO" length="32" name="addedinfo" type="java.lang.String"/>
+<property column="TIPTEXT" length="32" name="tiptext" type="java.lang.String"/>
+<property column="SUBSYSTEMID" length="32" name="subsystemid" type="java.lang.String"/>
+<property column="GUITYPE" length="8" name="guitype" type="java.lang.String"/>
+<property column="RECDEFID" length="32" name="recdefid" type="java.lang.String"/>
+<property column="SORTORDER" length="4" name="sortorder" type="java.lang.Short"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+</class>
+<!-- 查询指定用户能够访问的所有模块，以便构造菜单。 todo: 这里暂时用所有模块代替，稍后需要改为按授权情况获取的算法-->
+<!-- select distinct * from sa_db_FunctionItem
+	   where funcID in(
+	 操作员本身具有的操作功能
+	 select functionID from sa_sr_OperFunction where OperID = :operid
+	 union
+	 操作员所在角色对应的业务功能
+	 select ro.functionID from sa_sr_RoleFunction ro,sa_sr_OperRole op
+	 where ro.itemID = op.roleID and op.OperID = :operid
+	 )
+	order by parentID,guiType,sortOrder-->
+	
+<sql-query name="system.functionitem.queryAllAthorizedFunctionitems">
+	select distinct *
+  from sa_db_FunctionItem where STATUS = '1' AND SYSDATE &lt; STATUSDATE
+ start with funcID in (select functionID
+                         from sa_sr_OperFunction
+                        where OperID = :operid
+                        AND STATUS = '1' AND SYSDATE &lt; STATUSDATE
+                       union
+                       select ro.functionID
+                         from sa_sr_RoleFunction ro, sa_sr_OperRole op
+                        where ro.itemID = op.roleID
+                          and op.OperID = :operid
+                          AND op.STATUS = '1'
+                          AND ro.status = '1' AND SYSDATE &lt; ro.statusdate)
+connect by nocycle prior parentid = funcid
+ order by parentID, guiType, sortOrder
+</sql-query>
+<sql-query name="system.functionitem.queryAllAthorizedFunctionitems.test">
+	<!--暂时先全部查出来,以后上了正式环境再改-->
+	select distinct * from sa_db_FunctionItem order by parentID,guiType,sortOrder
+</sql-query>
+
+<!--左侧菜单树所显示的菜单-->
+<sql-query name="system.functionitem.queryAllFunctionByParentId">
+select distinct *
+  from sa_db_FunctionItem where funcid like :funcid and STATUS = '1' AND SYSDATE &lt; STATUSDATE
+ start with funcID in (select functionID
+                         from sa_sr_OperFunction
+                        where OperID = :operid
+                        AND STATUS = '1' AND SYSDATE &lt; STATUSDATE
+                       union
+                       select ro.functionID
+                         from sa_sr_RoleFunction ro, sa_sr_OperRole op
+                        where ro.itemID = op.roleID
+                          and op.OperID = :operid
+                          AND op.STATUS = '1' AND SYSDATE &lt; op.statusdate
+                          AND ro.status = '1' AND SYSDATE &lt; ro.statusdate)
+connect by nocycle prior parentid = funcid
+ order by parentID, guiType, sortOrder
+</sql-query>
+<!-- 查询指定功能菜单及其下所有子功能菜单 暂时没有考虑权限问题-->
+<sql-query name="system.functionitem.queryAllFunctionByParentId.test">
+	select distinct * from sa_db_FunctionItem
+	 start with funcid = :funcid connect by nocycle prior funcid = parentid 
+	order by parentID,guiType,sortOrder
+</sql-query>
+
+<sql-query name="queryFunctionitemTextSQL">
+select *
+  from sa_db_functionitem
+ where funcid in
+       (select distinct (funcid)
+          from sa_db_functionitem item
+         start with item.funcid like :queryText
+                 or item.funcname like :queryText
+        connect by prior item.parentid = item.funcid)
+</sql-query>
+<!-- 根据权限查找top.jsp应该显示的菜单列-->
+<sql-query name="system.functionitem.queryTopMenuTree">
+ select distinct *
+  from sa_db_FunctionItem where STATUS = '1' AND SYSDATE &lt; STATUSDATE AND parentid = :parentid 
+ start with funcID in (select functionID
+                         from sa_sr_OperFunction
+                        where OperID = :operid
+                        AND STATUS = '1' AND SYSDATE &lt; STATUSDATE
+                       union
+                       select ro.functionID
+                         from sa_sr_RoleFunction ro, sa_sr_OperRole op
+                        where ro.itemID = op.roleID
+                          and op.OperID = :operid
+                          AND op.STATUS = '1' AND SYSDATE &lt; op.statusdate
+                          AND ro.status = '1' AND SYSDATE &lt; ro.statusdate)
+ connect by nocycle prior parentid = funcid
+ order by parentID, guiType, sortOrder
+</sql-query>
+<sql-query name="system.functionitem.queryTopMenuTree.test">
+  <!-- 正式环境的时候才使用上面的那句sql -->
+  select distinct * from sa_db_FunctionItem where parentid = :parentid order by parentID, guiType, sortOrder
+</sql-query>
+</hibernate-mapping>

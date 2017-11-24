@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.examine.examine.persistent.ExamineVO" table="CH_PW_EXAMINE">
+<id column="EXMNID" name="exmnid" type="java.lang.Long">
+	<generator class="sequence">
+        <param name="sequence">
+           CH_PW_EXAMINE_SEQ
+        </param>	
+   	</generator>
+</id>
+<property column="EXMNNAME" length="50" name="exmnname" type="java.lang.String"/>
+<property column="STATE" length="32" name="state" type="java.lang.String"/>
+<property column="CITYID" length="2" name="cityid" type="java.lang.String"/>
+<property column="APPLYCITYID" length="128" name="applycityid" type="java.lang.String"/>
+<property column="ADTYPE" length="32" name="adtype" type="java.lang.String"/>
+<property column="STARLEVEL" length="32" name="starlevel" type="java.lang.String"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+<property column="RIGHTS" length="1" name="rights" type="java.lang.String"/>
+</class>
+<sql-query name="queryExamineList">
+<return class="com.sunrise.boss.business.cms.examine.examine.persistent.ExamineVO"/>
+select * from CH_PW_EXAMINE e 
+where 
+ e.cityid=:cityid OR (e.cityid='GD' AND e.applycityid like :skcityid)
+</sql-query>
+<!-- e.adtype like :adtype and e.starlevel like :starlevel and e.state='1' and -->
+</hibernate-mapping>

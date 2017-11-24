@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.chpwempsyn2crm.empsynlog.EmpsynlogVO" table="CH_PW_EMPSYNLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_EMPSYNLOG_SEQ</param>
+</generator>
+</id>
+
+<property column="ITEMID" length="14" name="itemid" type="java.lang.Long"/>
+<property column="EMPLOYEEID" length="15" name="employeeid"  not-null="true"  type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="EMPLOYEENAME" length="30" name="employeename" type="java.lang.String"/>
+<property column="BIRTHDAY" length="7" name="birthday" type="java.util.Date"/>
+<property column="SEX" length="3" name="sex" type="java.lang.Short"/>
+<property column="EDULEVEL" length="3" name="edulevel" type="java.lang.Short"/>
+<property column="NATIVEHOME" length="20" name="nativehome" type="java.lang.String"/>
+<property column="POLIVISAGE" length="3" name="polivisage" type="java.lang.Short"/>
+<property column="DEPARTMENT" length="18" name="department" type="java.lang.String"/>
+<property column="SERVOFFICE" length="18" name="servoffice" type="java.lang.String"/>
+<property column="STATION" length="14" name="station" type="java.lang.Long"/>
+<property column="JOBLEVEL" length="3" name="joblevel" type="java.lang.Short"/>
+<property column="INTIME" length="7" name="intime" type="java.util.Date"/>
+<property column="WORKTIME" length="3" name="worktime" type="java.lang.Short"/>
+<property column="HEREWORKTIME" length="3" name="hereworktime" type="java.lang.Short"/>
+<property column="EMPLOYTYPE" length="3" name="employtype" type="java.lang.Short"/>
+<property column="COMPANY" length="50" name="company" type="java.lang.String"/>
+<property column="TELEPHONE" length="15" name="telephone" type="java.lang.String"/>
+<property column="OFFICETEL" length="12" name="officetel" type="java.lang.String"/>
+<property column="OUTTIME" length="7" name="outtime" type="java.util.Date"/>
+<property column="OUTRESULT" length="255" name="outresult" type="java.lang.String"/>
+<property column="HOMEADDR" length="255" name="homeaddr" type="java.lang.String"/>
+<property column="CARDID" length="18" name="cardid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid"  type="java.lang.String"/>
+<property column="WAYTYPE" length="4" name="waytype" type="java.lang.String"/>
+<property column="PVTEMAIL" length="128" name="pvtemail" type="java.lang.String"/>
+<property column="OFCPHONE" length="64" name="ofcphone" type="java.lang.String"/>
+<property column="OFCEMAIL" length="128" name="ofcemail" type="java.lang.String"/>
+<property column="SPECIALITY" length="16" name="speciality" type="java.lang.String"/>
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="POSITTYPE" length="16" name="posittype" type="java.lang.String"/>
+<property column="CONTACTTYPE" length="2" name="contacttype" type="java.lang.Short"/>
+<property column="EMPSTATUS" length="2" name="empstatus" type="java.lang.Short"/>
+<property column="ACTBANK" length="64" name="actbank" type="java.lang.String"/>
+<property column="ACTNO" length="32" name="actno" type="java.lang.String"/>
+<property column="ACTNAME" length="32" name="actname" type="java.lang.String"/>
+<property column="ACTPID" length="20" name="actpid" type="java.lang.String"/>
+<property column="BAIL" length="12" name="bail" type="java.lang.Double"/>
+<property column="GRADSCHOOL" length="40" name="gradschool" type="java.lang.String"/>
+<property column="GRADTIME" length="7" name="gradtime" type="java.util.Date"/>
+<property column="ISMARRIED" length="2" name="ismarried" type="java.lang.Short"/>
+<property column="OUTREASON" length="2" name="outreason" type="java.lang.Short"/>
+<property column="TRAINLEVEL" length="20" name="trainlevel" type="java.lang.String"/>
+<property column="HOBBY" length="255" name="hobby" type="java.lang.String"/>
+<property column="CHARACTER" length="255" name="character" type="java.lang.String"/>
+<property column="ASSES" length="255" name="asses" type="java.lang.String"/>
+<property column="WORKHISTRY" length="255" name="workhistry" type="java.lang.String"/>
+<property column="PRIZEORPUNISH" length="255" name="prizeorpunish" type="java.lang.String"/>
+<property column="EMPASS" length="20" name="empass" type="java.lang.String"/>
+<property column="RIGHT" length="2" name="right" type="java.lang.Short"/>
+<property column="ISNET" length="2" name="isnet" type="java.lang.Short"/>
+<property column="NETPASS" length="6" name="netpass" type="java.lang.String"/>
+<property column="ISOPEN" length="2" name="isopen" type="java.lang.Short"/>
+<property column="SELECTMOBILE" length="12" name="selectmobile" type="java.lang.String"/>
+<property column="SUBNAME" length="40" name="subname" type="java.lang.String"/>
+<property column="REGDATE" length="7" name="regdate" type="java.util.Date"/>
+<property column="EMPATTR" length="50" name="empattr" type="java.lang.String"/>
+<property column="EMPATTRMEMO" length="512" name="empattrmemo" type="java.lang.String"/>
+<property column="ISTENSEED" length="8" name="istenseed" type="java.lang.Integer"/>
+<property column="ISINTERNAL" length="8" name="isinternal" type="java.lang.Integer"/>
+<property column="OPRACT" length="8" name="opract" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SYNSTATE" length="3" name="synstate" type="java.lang.Short"/>
+<property column="SYNMEMO" length="255" name="synmemo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

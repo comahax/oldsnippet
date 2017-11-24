@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.qsmanage.paramrules.imptabledeta.persistent.ImpTableDetaVO" table="QSCS_RU_IMPTABLEDETA">
+<composite-id>
+	<key-property name="ruleid" type="java.lang.Long">
+		<column name="RULEID" precision="10" scale="0"></column>
+	</key-property>
+	<key-property name="tabcode" type="java.lang.String">
+		<column name="TABCODE" precision="64" scale="0"></column>
+	</key-property>
+</composite-id>
+<property column="TABFOML" length="64" name="tabfoml" type="java.lang.String"/>
+
+<property column="ENTPARAM" length="128" name="entparam" type="java.lang.String"/>
+
+<property column="DAOPARAM" length="128" name="daoparam" type="java.lang.String"/>
+
+<property column="LISTPARAM" length="128" name="listparam" type="java.lang.String"/>
+
+<property column="DELEPARAM" length="128" name="deleparam" type="java.lang.String"/>
+
+<property column="METHODPARAM" length="64" name="methodparam" type="java.lang.String"/>
+
+<property column="ENTFOML" length="128" name="entfoml" type="java.lang.String"/>
+
+<property column="DAOFOML" length="128" name="daofoml" type="java.lang.String"/>
+
+<property column="LISTFOML" length="128" name="listfoml" type="java.lang.String"/>
+
+<property column="DELEFOML" length="128" name="delefoml" type="java.lang.String"/>
+
+<property column="METHODFOML" length="64" name="methodfoml" type="java.lang.String"/>
+
+<property column="MAINFIELD" length="128" name="mainfield" type="java.lang.String"/>
+
+</class>
+</hibernate-mapping>
+	

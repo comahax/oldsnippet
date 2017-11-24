@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.nasrwdtotal.persistent.NasrwdtotalVO" table="CH_BBC_NASRWDTOTAL">
+<id column="TOTALID" name="totalid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="PAYMONEY" length="12" name="paymoney" type="java.lang.Double"/>
+<property column="OSSRC" length="2" name="ossrc" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.wayapply.WayapplyVO" table="CH_PW_WAYAPPLY">
+<id column="APPLYNO" length="14" name="applyno" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="AUDITSTATUS" length="2" name="auditstatus" type="java.lang.Short"/>
+<property column="DESCRIPTION" length="512" name="description" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="WAYSUBTYPE" length="4" name="waysubtype" type="java.lang.String"/>
+<property column="UPPERWAYID" length="18" name="upperwayid" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="PT" length="2" name="pt" type="java.lang.Short"/>
+<property column="WAYSTATE" length="3" name="waystate" type="java.lang.Short"/>
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="ISSTRAITPRD" length="2" name="isstraitprd" type="java.lang.Short"/>
+<property column="ADTYPECODE" length="2" name="adtypecode" type="java.lang.Short"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="FORMTYPE" length="2" name="formtype" type="java.lang.Short"/>
+<property column="STARTTIME" length="7" name="starttime" type="java.util.Date"/>
+<property column="BUZAREA" length="5" name="buzarea" type="java.lang.Integer"/>
+<property column="LOGISCODE" length="18" name="logiscode" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="18" name="waymagcode" type="java.lang.String"/>
+<property column="BCHLEVEL" length="4" name="bchlevel" type="java.lang.String"/>
+<property column="OFFICETEL" length="12" name="officetel" type="java.lang.String"/>
+<property column="ALARMBIZAMOUNT" length="10" name="alarmbizamount" type="java.lang.Long"/>
+<property column="ADDRESS" length="128" name="address" type="java.lang.String"/>
+<property column="LATITUDE" length="15" name="latitude" type="java.lang.String"/>
+<property column="LONGTITUDE" length="15" name="longtitude" type="java.lang.String"/>
+<property column="PRINCIPAL" length="64" name="principal" type="java.lang.String"/>
+<property column="PRINCIPALTEL" length="20" name="principaltel" type="java.lang.String"/>
+<property column="PRINCIPALPHONE" length="20" name="principalphone" type="java.lang.String"/>
+<property column="PRINCIPALEMAIL" length="128" name="principalemail" type="java.lang.String"/>
+<property column="SENDADDR" length="128" name="sendaddr" type="java.lang.String"/>
+<property column="ACCTNO" length="50" name="acctno" type="java.lang.String"/>
+<property column="ACCTNAME" length="128" name="acctname" type="java.lang.String"/>
+<property column="BANKNAME" length="128" name="bankname" type="java.lang.String"/>
+<property column="ACCTFID" length="32" name="acctfid" type="java.lang.String"/>
+<property column="DEACCTNO" length="50" name="deacctno" type="java.lang.String"/>
+<property column="DEACCTNAME" length="128" name="deacctname" type="java.lang.String"/>
+<property column="DEBANKNAME" length="128" name="debankname" type="java.lang.String"/>
+<property column="ACCTTYPE" length="3" name="accttype" type="java.lang.Short"/>
+<property column="INTIME" length="7" name="intime" type="java.util.Date"/>
+<property column="CATETYPE" length="2" name="catetype" type="java.lang.Short"/>
+<property column="CHAINHEAD" length="18" name="chainhead" type="java.lang.String"/>
+<property column="RECPERS" length="32" name="recpers" type="java.lang.String"/>
+<property column="RECCONNTEL" length="15" name="recconntel" type="java.lang.String"/>
+<property column="RECCERTNO" length="20" name="reccertno" type="java.lang.String"/>
+<property column="SIGNSTATUS" length="2" name="signstatus" type="java.lang.Short"/>
+<property column="PROVCODE" length="18" name="provcode" type="java.lang.String"/>
+<property column="BAILTYPE" length="2" name="bailtype" type="java.lang.Short"/>
+<property column="SERVBOUND" length="3" name="servbound" type="java.lang.Short"/>
+<property column="COMPACTNO" length="17" name="compactno" type="java.lang.String"/>
+<property column="COMPACTNAME" length="255" name="compactname" type="java.lang.String"/>
+<property column="BEGINTIME" length="7" name="begintime" type="java.util.Date"/>
+<property column="ENDTIME" length="7" name="endtime" type="java.util.Date"/>
+<property column="SIGNTIME" length="7" name="signtime" type="java.util.Date"/>
+<property column="COMPACTTYPE" length="2" name="compacttype" type="java.lang.Short"/>
+<property column="LICENCENO" length="64" name="licenceno" type="java.lang.String"/>
+<property column="BAIL" length="18" name="bail" type="java.lang.Double"/>
+<property column="BAILLWRLMT" length="16" name="baillwrlmt" type="java.lang.Double"/>
+<property column="LICVALIDATE" length="7" name="licvalidate" type="java.util.Date"/>
+<property column="BAILSTATUS" length="2" name="bailstatus" type="java.lang.Short"/>
+<property column="ISB2M" length="1" name="isb2m" type="java.lang.Byte"/>
+<property column="SMSMOBILENO" length="12" name="smsmobileno" type="java.lang.Long"/>
+<property column="DEBANKID" length="32" name="debankid" type="java.lang.String"/>
+<property column="DESTATE" length="1" name="destate" type="java.lang.Byte"/>
+<property column="CUSTTYPE" length="4" name="custtype" type="java.lang.String"/>
+<property column="ISUNPB" length="1" name="isunpb" type="java.lang.Byte"/>
+<property column="ISTIETONG" length="2" name="istietong" type="java.lang.Short"/>
+<property column="CONNECTTYPE" length="2" name="connecttype" type="java.lang.Long"/>
+<property column="SUBLAYER" length="2" name="sublayer" type="java.lang.Short"/>
+<property column="BUZTYPECODE" length="2" name="buztypecode" type="java.lang.Short"/>
+
+<!-- 新增字段 -->
+<property column="REGID" length="18" name="regid" type="java.lang.String"/>
+<property column="CHECKED" length="3" name="checked" type="java.lang.String"/>
+<property column="ISKZCZ" length="3" name="isKzcz" type="java.lang.Short"/>
+<property column="STARLEV" length="1" name="starlev" type="java.lang.String"/>
+<property column="UNIQUEWAYID" length="30" name="uniquewayid" type="java.lang.String"/>
+<property column="TOWN" length="30" name="town" type="java.lang.String"/>
+<property column="PROVTYPE" length="3" name="provtype" type="java.lang.Short"/>
+<property column="MOBILEMALL" length="3" name="mobilemall" type="java.lang.Short"/>
+<property column="FRONTAREA" length="10" name="frontarea" type="java.lang.Double"/>
+<property column="ISPCONNTYPE" length="3" name="ispconntype" type="java.lang.Short"/>
+<property column="MAINLAYER" length="2" name="mainlayer" type="java.lang.Short"/>
+<property column="BUZPHONENO" length="14" name="buzphoneno" type="java.lang.String"/>
+<property column="COOPERATOR" length="2" name="cooperator" type="java.lang.Short"/>
+<property column="TAXTYPE" length="2" name="taxtype" type="java.lang.Short"/>
+<property column="DISTYPE" length="3" name="distype" type="java.lang.Short"/>
+<property column="LINKMAN" length="64" name="linkman" type="java.lang.String"/>
+<property column="LINKMANTEL" length="20" name="linkmantel" type="java.lang.String"/>
+<property column="LINKMANEMAIL" length="128" name="linkmanemail" type="java.lang.String"/>
+<property column="COMPANY" length="60" name="company" type="java.lang.String"/>
+<property column="COPLEVEL" length="3" name="coplevel" type="java.lang.Short"/>
+<property column="BUSNUM" length="30" name="busnum" type="java.lang.String"/>
+<property column="CERTITYPE" length="3" name="certitype" type="java.lang.Short"/>
+<property column="REGADRESS" length="128" name="regadress" type="java.lang.String"/>
+<property column="REGCAPITAL" length="16" name="regcapital" type="java.lang.Long"/>
+<property column="COMPANYTYPE" length="64" name="companytype" type="java.lang.String"/>
+<property column="BROLE" length="64" name="brole" type="java.lang.String"/>
+<property column="CERTINUM" length="30" name="certinum" type="java.lang.String"/>
+<property column="COPBOUND" length="40" name="copbound" type="java.lang.String"/>
+<property column="RUNAREATYPE" length="2" name="runareatype" type="java.lang.Short"/>
+<property column="CALCUMODE" length="3" name="calcumode" type="java.lang.Short"/>
+<property column="UNIFORMTIME" length="6" name="uniformtime" type="java.lang.String"/>
+<property column="COMEFROM" length="1" name="comefrom" type="java.lang.String"/>
+<property column="COMPACTPATH" length="255" name="compactpath" type="java.lang.String"/>
+<property column="LICENCEPATH" length="255" name="licencepath" type="java.lang.String"/>
+
+<!-- 新增字段    是否TOP网点 -->
+<property column="ISTOP" length="1" name="istop" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

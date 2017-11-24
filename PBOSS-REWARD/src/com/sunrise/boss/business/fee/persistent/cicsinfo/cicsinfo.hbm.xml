@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sunrise.boss.business.fee.persistent.cicsinfo.CicsInfoVO" table="IB_CB_CICSINFO">
+		<id column="REGIONID" name="regionid" type="java.lang.String">
+		</id>
+		<property column="REGIONNAME" length="8" name="regionname" type="java.lang.String"/>
+		<property column="CTGMAIN" length="25" name="ctgmain" type="java.lang.String"/>
+		<property column="CTGSPARE" length="25" name="ctgspare" type="java.lang.String"/>
+		<property column="CTGPORT" length="6" name="ctgport" type="java.lang.Long"/>
+		<property column="CICSMAIN" length="8" name="cicsmain" type="java.lang.String"/>
+		<property column="CICSSPARE" length="8" name="cicsspare" type="java.lang.String"/>
+		<property column="CICSUSER" length="20" name="cicsuser" type="java.lang.String"/>
+		<property column="CICSPWD" length="20" name="cicspwd" type="java.lang.String"/>
+	</class>
+</hibernate-mapping>

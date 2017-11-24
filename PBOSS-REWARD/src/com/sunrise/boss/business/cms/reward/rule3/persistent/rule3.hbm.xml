@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.rule3.persistent.Rule3VO" table="CH_ADT_RULE3">
+<id name="ruleid" column="RULEID" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property name="rulename" column="RULENAME" type="java.lang.String" length="60"/>
+<property name="startdate" column="STARTDATE" type="java.util.Date" length="7"/>
+<property name="enddate" column="ENDDATE" type="java.util.Date" length="7"/>
+<property name="remark" column="REMARK" type="java.lang.String" length="200"/>
+<property name="ruleitemid" column="RULEITEMID" type="java.lang.String" length="18"/>
+<property name="ruleitemname" column="RULEITEMNAME" type="java.lang.String" length="60"/>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+</class>
+<sql-query name="queryRuleIn3Tables">
+		<return
+			class="com.sunrise.boss.business.cms.reward.rule.persistent.RuleVO2" />
+	 select a.ruleid,
+	        a.rulename,
+	        a.startdate,
+	        a.enddate,
+	        a.remark,
+	        b.ruleitemid,
+	        b.ruleitemname,
+	        d.opnid
+     from common.CH_ADT_RULE a,ch_adt_ruleitem b,ch_adt_rulerel c,ch_adt_ruleonbusi d,CH_ADT_RULEMODE e
+     where a.ruleid=c.ruleid and c.ruleitemid=b.ruleitemid and a.ruleid=d.ruleid and c.rulemodeid = e.rulemodeid
+           and SYSDATE between e.STARTDATE and e.ENDDATE 
+</sql-query>
+</hibernate-mapping>

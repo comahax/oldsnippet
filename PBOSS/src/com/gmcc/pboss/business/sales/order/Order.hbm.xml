@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.order.OrderVO" table="FX_SW_ORDER">
+<id column="ORDERID" length="18" name="orderid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="FLOWID" length="14" name="flowid" not-null="true" type="java.lang.Long"/>
+<property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="COOPTYPE" length="16" name="cooptype" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="ORDERAVE" length="16" name="orderave" type="java.lang.String"/>
+<property column="STORAREA" length="16" name="storarea" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="ORDERSTATE" length="16" name="orderstate" type="java.lang.String"/>
+<property column="STATECHGTIME" length="7" name="statechgtime" type="java.util.Date"/>
+<property column="PAYTYPE" length="16" name="paytype" type="java.lang.String"/>
+<property column="DELITYPE" length="16" name="delitype" type="java.lang.String"/>
+<property column="RECAMT" length="16" name="recamt" type="java.lang.Double"/>
+<property column="ACTAMT" length="16" name="actamt" type="java.lang.Double"/>
+<property column="POSSTREAM" length="32" name="posstream" type="java.lang.String"/>
+<property column="BOSSWORKFID" length="32" name="bossworkfid" type="java.lang.String"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+<property column="DISCOMCODE" length="18" name="discomcode" type="java.lang.String"/>
+<property column="PAYTIME" length="7" name="paytime" type="java.util.Date"/>
+<property column="DEDUCTSTATE" length="16" name="deductstate" type="java.lang.String"/>
+<property column="SIGNSTATE" length="16" name="signstate" type="java.lang.String"/>
+<property column="ALARMLEVEL" length="16" name="alarmlevel" type="java.lang.String"/>
+<property column="CONFIRMFLAG" length="3" name="confirmflag" type="java.lang.Integer"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="SIGNTIME" length="7" name="signtime" type="java.util.Date"/>
+<property column="RECORDTIME" length="7" name="recordtime" type="java.util.Date"/>
+<property column="DISOVERTIME" length="7" name="disovertime" type="java.util.Date"/>
+<property column="SIGNTYPE" length="16" name="signtype" type="java.lang.String"/>
+<property column="SMSSIGNNO" length="14" name="smssignno" type="java.lang.String"/>
+<property column="REVIEWSTATE" length="3" name="reviewstate" type="java.lang.Integer"/>
+<property column="ACCEPPRINTAMT" length="3" name="accepprintamt" type="java.lang.Integer"/>
+</class>
+<!-- 根据订单编号查询订单商品种类 (FX_SW_ORDERCOMCATE)，
+	  * 将同商品种类的订购数量进行累加 -->
+<sql-query name="com.gmcc.pboss.business.sales.order.GETORDERINFO">
+select COMCATEGORY,sum(ORDERAMT) NUM from FX_SW_ORDERCOMCATE where ORDERID =:ORDERID group by COMCATEGORY order by COMCATEGORY
+
+</sql-query>
+
+<!-- 垫资订单明细 -->
+<sql-query name="com.gmcc.pboss.business.sales.adpaydet" >
+<return class="com.gmcc.pboss.business.sales.order.OrderVO"/>
+select b.*
+  from FX_SW_ADPAYDET a, FX_SW_ORDER b
+ where (1 = 1)
+   and (a.ORDERID = b.ORDERID)
+   and ((a.SUMID = :sumid))
+</sql-query>
+
+<!-- 套卡统计分公司库存数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.doCommresmpStocksQuery">
+select count(*) num from IM_PR_COMPACK a, IM_FX_COMRESSMP b, CH_PW_WAY c
+ where a.BATCHNO = b.BATCHNO
+ and a.BOXNUM = b.BOXNUM
+ and a.WAYID = c.WAYID
+ and a.PACKSTATE = '1' 
+ and c.COUNTYID = :COUNTYID
+ and a.RESUSE = :RESUSE
+ and a.COMCATEGORY = :COMCATEGORY
+</sql-query>
+<!-- 套卡统计库存数量(审核) -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.doCommresmpStocksQueryByAudit">
+select count(*) num from IM_PR_COMPACK a, IM_FX_COMRESSMP b, CH_PW_WAY c
+ where a.BATCHNO = b.BATCHNO
+ and a.BOXNUM = b.BOXNUM
+ and a.WAYID = c.WAYID
+ and a.PACKSTATE = '1' 
+ and c.SVCCODE =:SVCCODE
+ and a.RESUSE = :RESUSE
+ and a.COMCATEGORY = :COMCATEGORY
+ <!--  and c.COUNTYID = :COUNTYID -->
+</sql-query>
+<!-- 套卡统计已审核资源数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.doCommresmpAuditedsQuery">
+select sum(b.ORDERAMT) num from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b,CH_PW_WAY c
+ where a.ORDERID = b.ORDERID
+ and a.WAYID = c.WAYID
+ and a.ORDERSTATE in ('AUDITED', 'WAITCON', 'CONFIRMED')
+ and c.SVCCODE =:SVCCODE
+ and b.ORDERCOMTYPE = :RESUSE
+ and b.COMCATEGORY = :COMCATEGORY
+ <!-- and a.ORDERSTATE = 'AUDITED' -->
+</sql-query>
+<!-- 充值卡统计分公司库存数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.doComrescardStocksQuery">
+select count(*) num from IM_FX_COMRESCARD a, IM_PR_COMCATEGORYRELA b, CH_PW_WAY c
+ where a.WAYID = c.WAYID
+and a.COMID = b.COMID
+ and a.COMSTATE = '1'
+ and c.COUNTYID = :COUNTYID
+ and b.COMCATEGORY = :COMCATEGORY
+</sql-query>
+<!-- 充值卡统计库存数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.doComrescardStocksQueryByAudit">
+select count(*) num from IM_FX_COMRESCARD a, IM_PR_COMCATEGORYRELA b, CH_PW_WAY c
+ where a.WAYID = c.WAYID
+and a.COMID = b.COMID
+ and a.COMSTATE = '1'
+  and c.SVCCODE =:SVCCODE
+ and b.COMCATEGORY = :COMCATEGORY
+</sql-query>
+
+<!-- 空白SIM卡统计分公司库存数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.doEmptysimStocksQuery">
+select count(*) num from IM_FX_EMPTYSIM a,CH_PW_WAY c
+ where a.WAYID = c.WAYID
+ and a.usestate = '1'
+ and c.COUNTYID =:COUNTYID
+ and b.COMCATEGORY = :COMCATEGORY
+</sql-query>
+<!-- 空白SIM卡统计库存数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.EmptysimorderednotchouquQuery">
+select sum(b.ORDERAMT) num from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b
+ where a.ORDERID = b.ORDERID
+ and a.ORDERSTATE in ('WAITCON','CONFIRMED','ESTABLISH','AUDITED')
+ and a.COUNTYID =:COUNTYID
+ and b.COMCATEGORY = :COMCATEGORY
+</sql-query>
+
+<!-- 充值卡统计已审核资源数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.doComrescardAuditedsQuery">
+select sum(b.ORDERAMT) num from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, CH_PW_WAY c
+ where a.ORDERID = b.ORDERID
+ and a.WAYID = c.WAYID
+ and a.ORDERSTATE in ('AUDITED', 'WAITCON', 'CONFIRMED')
+  and c.SVCCODE =:SVCCODE
+ and b.COMCATEGORY = :COMCATEGORY
+ <!--  and a.ORDERSTATE = 'AUDITED' -->
+</sql-query>
+
+<!-- 套卡统计分公司已订购未抽取资源数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.smporderednotchouquQuery">
+select sum(b.ORDERAMT) num from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b
+ where a.ORDERID = b.ORDERID
+ and a.ORDERSTATE in ('WAITCON','CONFIRMED','ESTABLISH','AUDITED')
+ and b.ORDERCOMTYPE = 'CUSTORDER' 
+ and a.COUNTYID = :COUNTYID
+ and b.COMCATEGORY = :COMCATEGORY
+</sql-query>
+
+<!-- 充值卡统计分公司已订购未抽取资源数量 -->
+<sql-query name="com.gmcc.pboss.business.resource.compack.cardordernotchouquQuery">
+select sum(b.ORDERAMT) num from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b
+ where a.ORDERID = b.ORDERID
+ and a.ORDERSTATE in ('WAITCON','CONFIRMED','ESTABLISH','AUDITED')
+ and a.COUNTYID = :COUNTYID
+ and b.COMCATEGORY = :COMCATEGORY
+</sql-query>
+
+<!-- 统计当天或当月已订购量-->
+<sql-query name="sales.comorder.queryOrderedToday">
+<return-scalar type="java.lang.Long" column="val"/>
+select sum(b.orderamt) as val from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b
+where a.orderid = b.orderid and 
+a.wayid = :wayid and 
+b.comcategory = :comcategory and
+a.createtime &gt;= to_date(:begintime,'yyyy-MM-dd HH24:mi:ss') and
+a.createtime &lt;= to_date(:endtime,'yyyy-MM-dd HH24:mi:ss') and
+a.orderstate &lt;&gt; 'CANCEL'
+</sql-query>
+<!-- 获取审核辅助库存部分信息 -->
+<sql-query name="com.gmcc.pboss.business.sales.order.doGetAuxiliaryInfo.part1">
+select d.dictid brand,nvl(sum(count1),0) countyStock ,nvl(sum(count2),0) wayStock
+	from (
+	 select brand,count(1) count1,0 count2
+	   from ch_pw_way w, IM_FX_COMRESSMP c
+	 where w.wayid = c.wayid
+	   and c.comstate &lt;&gt; 2
+	   and countyid=:countyid
+	 group by c.brand
+	 
+	 union
+	 
+	 select brand, 0 count1,count(1) count2
+	   from FX_SW_PARTNERRES p 
+	   where  p.restype='COMRESSMP' and p.isactive=0 and p.wayid=:wayid
+	   group by p.brand,p.wayid
+	   
+	   ) a ,sa_db_dictitem d where a.brand(+)=d.dictid and d.groupid='FX_SMPBRAND' and d.dictid &lt;&gt; 'AllBrand'
+	   
+	   group by d.dictid
+</sql-query>
+<!-- 获取审核辅助激活率部分信息 -->
+<sql-query name="com.gmcc.pboss.business.sales.order.doGetAuxiliaryInfo.part2">
+select a.stattype,a.rate
+     from IM_FX_ACTALARMSTAT a where a.yearmonth=:yearmonth and a.wayid=:wayid and a.brand=:brand
+</sql-query>
+<!-- 获取在订库存量  (区分品牌)-->
+<sql-query name="com.gmcc.pboss.business.sales.order.doGetOrderingStockAmountWithBrand">
+	<return-scalar column="val" type="java.lang.Long"/>
+	select NVL(sum(b.orderamt),0) val from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, 
+	(select distinct COMCATEGORY, RESTYPE, BRAND from IM_PR_COMCATEGORYRELA) c
+	where a.orderid = b.orderid
+	 and b.comcategory = c.comcategory
+	 and a.wayid = :wayid
+	 and a.orderstate not in('CANCEL', 'FINISHED')
+     and b.ordercomtype = 'CUSTORDER'
+     and c.restype ='COMRESSMP'
+     and c.brand = :brand 
+</sql-query>
+<!-- 获取在订库存量  (不区分品牌) -->
+<sql-query name="com.gmcc.pboss.business.sales.order.doGetOrderingStockAmountNotWithBrand">
+	<return-scalar column="val" type="java.lang.Long"/>
+	select NVL(sum(b.orderamt),0) val from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b, 
+	(select distinct COMCATEGORY, RESTYPE, BRAND from IM_PR_COMCATEGORYRELA) c
+	where a.orderid = b.orderid
+	 and b.comcategory = c.comcategory
+	 and a.wayid = :wayid
+	 and a.orderstate not in('CANCEL', 'FINISHED')
+     and b.ordercomtype = 'CUSTORDER'
+     and c.restype ='COMRESSMP'
+</sql-query>
+<!--在现有对订单表单表查询的基础上，增加对订单商品种类表的(FX_SW_ORDERCOMCATE)的关联，支持对存在的商品种类进行查询。 -->
+<sql-query name="queryOrderWithComcategory">
+	<return class="com.gmcc.pboss.business.sales.order.OrderVO"/>
+	SELECT *
+  	FROM FX_SW_ORDER OD,
+    (SELECT DISTINCT (ORDERID) AS ORDERID2, COMCATEGORY FROM FX_SW_ORDERCOMCATE) CAT
+ 	WHERE OD.ORDERID = CAT.ORDERID2
+</sql-query>
+
+<!-- 根据订单状态、分公司，商品种类统计资源数量 -->
+<sql-query name="com.gmcc.pboss.business.sales.order.doGetOrderResource">
+	<return-scalar column="val" type="java.lang.Long"/>
+	select NVL(sum(b.ORDERAMT),0) val from FX_SW_ORDER a, FX_SW_ORDERCOMCATE b
+  		where a.ORDERID=b.ORDERID
+  		and a.ORDERSTATE in (:ORDERSTATE)
+ 		and a.COUNTYID=:COUNTYID
+  		and b.COMCATEGORY= :COMCATEGORY
+ 	 group by a.COUNTYID, b.COMCATEGORY
+</sql-query>
+
+<!-- 配送单超时预警  -->
+<sql-query
+		name="com.gmcc.pboss.business.sales.order.OrderDisformList">
+		<return-scalar column="countyid" type="java.lang.String"/>
+		<return-scalar column="mareacode" type="java.lang.String"/>
+		<return-scalar column="optime" type="java.util.Date"/>
+		<return-scalar column="orderid" type="java.lang.String"/>
+		select a.COUNTYID as countyid,a.MAREACODE as mareacode,b.OPTIME as optime,a.orderid as orderid  
+			from FX_SW_ORDER a,FX_SW_ORDERLOG b,FX_SW_DISFORM c 
+		where (c.DISSTATE != 'DISOVER' and c.DISSTATE !='CANCEL') 
+			and a.ORDERSTATE='CONFIRMED' 
+			and b.OPRTYPE='update' 
+			and a.CREATETIME>=(TO_DATE(TO_CHAR(sysdate,'dd-MM-yyyy'),'dd-MM-yyyy')-30) 
+			and a.ORDERID = b.ORDERID and b.ORDERID=c.ORDERID			
+			order by a.COUNTYID,a.MAREACODE,b.OPTIME desc
+	</sql-query> 
+	
+	<!-- 导出统计信息  -->
+	<sql-query name="com.gmcc.pboss.business.sales.order.doExcelRes">
+	select FXORDER.*,
+       newt.comcategory,
+       newt.orderamt
+  from FX_SW_ORDER FXORDER,
+       (SELECT orderid,
+               MAX(SYS_CONNECT_BY_PATH(COMCATEGORY, ';')) as COMCATEGORY,
+               MAX(SYS_CONNECT_BY_PATH(orderamt, ';')) orderamt
+          FROM (SELECT fx.orderid,
+                       fx.COMCATEGORY,
+                       fx.orderamt,
+                       rn,
+                       LEAD(rn) OVER(PARTITION BY fx.orderid ORDER BY rn) rn1
+                  FROM (SELECT fx.orderid,
+                               fx.COMCATEGORY,
+                               fx.orderamt,
+                               ROW_NUMBER() OVER(ORDER BY fx.COMCATEGORY) rn
+                          FROM FX_SW_ORDERCOMCATE FX) fx)
+         START WITH rn1 IS NULL
+        CONNECT BY rn1 = PRIOR rn
+         GROUP BY orderid) newt
+
+ where newt.orderid = FXORDER.Orderid
+	</sql-query>
+	
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.persistent.custintmonch.CustIntMonChVO" table="IB_WL_CUSTINTMONCH">
+        <composite-id>
+            <key-property name="custid" type="java.lang.Long">
+                <column name="CUSTID" precision="14" scale="0" />
+            </key-property>
+            <key-property name="billcyc" type="java.lang.Long">
+                <column name="BILLCYC" precision="8" scale="0" />
+            </key-property>
+        </composite-id>
+        <property name="balance" type="java.lang.Long">
+            <column name="BALANCE" precision="10" scale="0" />
+        </property>
+        <property name="increase" type="java.lang.Long">
+            <column name="INCREASE" precision="10" scale="0" />
+        </property>
+        <property name="decrease" type="java.lang.Long">
+            <column name="DECREASE" precision="10" scale="0" />
+        </property>
+        <property name="exchintegral" type="java.lang.Long">
+            <column name="EXCHINTEGRAL" precision="10" scale="0" />
+        </property>
+        <property name="moveint" type="java.lang.Long">
+            <column name="MOVEINT" precision="10" scale="0" />
+        </property>
+        <property name="updatetime" type="java.util.Date">
+            <column name="UPDATETIME" length="7" />
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="STATE" precision="1" scale="0" />
+        </property>
+        <property name="intPreserve1" type="java.lang.Long">
+            <column name="INT_PRESERVE1" precision="10" scale="0" />
+        </property>
+        <property name="intPreserve2" type="java.lang.Long">
+            <column name="INT_PRESERVE2" precision="10" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.rewardreport.persistent.RewardreportVO" table="CH_PW_REWARDREPORT">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_PW_REWARDREPORT_SEQ</param>
+</generator>
+</id>
+<property column="WAYID" length="20" name="wayid" type="java.lang.String"/>
+<property column="NAME" length="20" name="name" type="java.lang.String"/>
+<property column="PIECE" length="10" name="piece" type="java.lang.Double"/>
+<property column="STAR" length="10" name="star" type="java.lang.Double"/>
+<property column="TERMINAL" length="10" name="terminal" type="java.lang.Double"/>
+<property column="COOPERATE" length="10" name="cooperate" type="java.lang.Double"/>
+<property column="ISAFFIRM" length="22" name="isaffirm" type="java.lang.Long"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="SUM" length="10" name="sum" type="java.lang.Double"/>
+<property column="SENDTIME" length="7" name="sendtime" type="java.util.Date"/>
+<property column="PAYMONEY" length="10" name="paymoney" type="java.lang.Double"/>
+<property column="TACCOUNT" length="20" name="taccount" type="java.lang.String"/>
+<property column="PACCOUNT" length="20" name="paccount" type="java.lang.String"/>
+<property column="MEMO" length="200" name="memo" type="java.lang.String"/>
+</class>
+<sql-query name="cms.rewardreport">
+<return class="com.sunrise.boss.business.cms.rewardreport.persistent.RewardreportVO"></return>
+SELECT *
+  FROM CH_PW_REWARDREPORT A
+ WHERE A.WAYID IN (SELECT WAYID FROM CH_PW_WAY WHERE COUNTYID = :COUNTYID)
+</sql-query>
+<sql-query name="cms.rewardreportall">
+<return class="com.sunrise.boss.business.cms.rewardreport.persistent.RewardreportVO"></return>
+SELECT *
+  FROM CH_PW_REWARDREPORT A
+ WHERE A.ISAFFIRM = 1 
+</sql-query>
+<sql-query name="cms.rewardreport.countyall">
+<return class="com.sunrise.boss.business.cms.rewardreport.persistent.RewardreportVO"></return>
+SELECT *
+  FROM CH_PW_REWARDREPORT A
+ WHERE A.WAYID IN (SELECT WAYID FROM CH_PW_WAY WHERE COUNTYID = :COUNTYID)
+       AND A.ISAFFIRM = 1
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,88 @@
+.biaodan_juli {
+	font-family: "ËÎÌå";
+	font-size: 12px;
+	font-weight: normal;
+	color: #747273;
+	width: 100%;
+
+
+	cellpadding="£´"
+; 		margin-top: 10px;
+}
+.biaodan_biaodan_a {
+	width: 120px;
+	border: 1px solid #CCCCCC;
+}
+
+
+.index_main_ye_biaodan_k {
+	background-color: #FFFFFF;
+	border: 1px solid #999999;
+}
+
+.style_input {
+	background-color: #FFFFFF;
+	border: 1px solid #999999;
+}
+
+.style_inputl {
+	background-color: #FFFFFF;
+	border: 1px solid #999999;
+	width:400px;
+}
+
+select {
+	width:152px;
+	height:18px;
+}
+
+.biaodan_biaodan_c {
+	width: 200px;
+	border: 1px solid #999999;
+	text-align: center;
+	background-position: center;
+}
+.page_table {
+	width:98%;
+	font-size:12px;
+	color:#000;
+	margin-top:5px;
+}
+.page_table tr {
+	height:20px;
+}
+.page_table td {
+	padding-top:0px;
+	padding-bottom:0px;
+	height:25px;
+}
+
+.biaodan_biaodan_b {
+	width: 70px;
+}
+
+
+.biaodan_biaodan_e {
+	width: 70px;
+	border: 1px solid #CCCCCC;
+}
+
+.biaodan_biaodan_d {
+
+	width: 149px;
+	border: 1px solid #CCCCCC;
+}
+.biaodan_biaodan_denter {
+	width: 149px;
+	border: 1px solid #949492;
+	height: 18px;
+}
+.biaodan_biaodan_eenter {
+	width: 70px;
+	border: 1px solid #949492;
+	height: 18px;
+}
+.picker_button {
+	text-align:center;color:#092966;font-size:12px;
+	width:30px;height:21px;border:#CDCDCD solid 1px;background:#F1F1F1;
+}

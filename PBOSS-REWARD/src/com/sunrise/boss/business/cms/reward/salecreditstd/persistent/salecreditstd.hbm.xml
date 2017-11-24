@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.salecreditstd.persistent.SalecreditstdVO" table="CH_ADT_SALECREDITSTD">
+<id name="seq" column="SEQ" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_ADT_SALECREDITSTD_SEQ</param>
+	</generator>
+</id>
+<property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+<property column="BUSITYPE" length="22" name="busitype" type="java.lang.Long"/>
+<property column="CREDITSTD" length="10" name="creditstd" type="java.lang.Double"/>
+<property column="LIMITED" length="10" name="limited" type="java.lang.Double"/>
+<property column="UPDATETIME" length="7" name="updatetime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

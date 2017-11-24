@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.simnoactinfo.SimnoactinfoVO" table="FX_SN_SIMNOACTINFO">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SN_SIMNOACTINFO_SEQ</param>
+</generator>
+</id>
+<property column="EMPTYNO" length="15" name="emptyno" type="java.lang.String"/>
+<property column="STATE" length="8" name="state" type="java.lang.String"/>
+<property column="CHANGETIME" length="7" name="changetime" type="java.util.Date"/>
+<property column="CREATTIME" length="7" name="creattime" type="java.util.Date"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

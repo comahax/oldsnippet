@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.bbossway.BbosswayVO" table="CH_PW_BBOSSWAY">
+<id column="WAYID" length="18" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="BBOSSWAYID" length="15" name="bbosswayid" type="java.lang.String"/>
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

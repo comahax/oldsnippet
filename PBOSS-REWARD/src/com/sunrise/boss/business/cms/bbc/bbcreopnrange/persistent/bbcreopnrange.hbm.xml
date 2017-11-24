@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.bbcreopnrange.persistent.BbcReopnrangeVO" table="CH_BBC_REOPNRANGE">
+<id column="RANGEID" name="rangeid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_BBC_REOPNRANGE_SEQ</param>
+</generator>
+</id>
+<property column="OPNBEGIN" length="18" name="opnbegin" type="java.lang.String"/>
+<property column="OPNEND" length="18" name="opnend" type="java.lang.String"/>
+<property column="RESERTYPE" length="3" name="resertype" type="java.lang.Short"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+</class>
+<sql-query name="mmopnrangeValidate">
+Select rangeid, opnbegin, opnend, resertype, opnid from ch_bbc_reopnrange where opnbegin &lt;= :opnid and opnend &gt;= :opnid and resertype = :resertype
+</sql-query>
+<sql-query name="mmopnrangeQuery">
+Select rangeid, opnbegin, opnend, '' as resertype, '' as opnid from ch_bbc_reopnrange where resertype = :resertype
+</sql-query>
+</hibernate-mapping>

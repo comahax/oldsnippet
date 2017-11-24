@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="reward" namespace="/reward" extends="default">
+		<interceptors>
+			<!-- 此酬金拦截器是检查该地市是否允许访问酬金菜单 -->
+			<interceptor name="rewardInterceptor" class="com.gmcc.pboss.common.interceptor.RewardInterceptor"></interceptor>
+			<interceptor-stack name="rewardStack" >
+				<interceptor-ref name="customStack"/>
+				<interceptor-ref name="rewardInterceptor"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="rewardStack" />
+		
+		<global-results>
+			<result name="rewardDisabled" >/message.jsp</result>
+		</global-results>
+		
+		<!-- 酬金明细-》酬金明细查询      社会渠道 -->
+		<action name="rewardRecordQuery" class="rewardRecordAction" method="doList">
+			<result>/info/reward/record.jsp</result>
+		</action>
+		<action name="ajaxQuery" class="rewardRecordAction" method="doQuery" />
+		<action name="exportExcel" class="rewardRecordAction" method="doExportExcel" />
+		<!-- 酬金明细-》酬金明细查询      B2M网站 --> 
+		<action name="bbcrewardRecord" class="bbcRewardRecordAction" method="doList">
+			<result>/info/reward/bbcRecord.jsp</result>
+		</action>
+		<!-- 酬金明细-》酬金明细查询      创新联盟 -->
+		<action name="bbcrewardRecordUNPB" class="bbcRewardRecordAction" method="doList">
+			<result>/info/reward/bbcRecordUNPB.jsp</result>
+		</action>
+		<action name="bbcrewardRecordQuery" class="bbcRewardRecordAction" method="doQuery" />
+		<action name="bbcExportExcel" class="bbcRewardRecordAction" method="doBbcExportExcel"/>
+		<!-- 酬金明细-》酬金校验失败信息查询      社会渠道 -->
+		<action name="rewardVerified" class="rewardVerifiedAction" method="doList">
+			<result>/info/reward/rewardVerified.jsp</result>
+		</action>
+		<action name="rewardVerifiedQuery" class="rewardVerifiedAction" method="doQuery" />
+		<action name="rewardVerifiedExcel" class="rewardVerifiedAction" method="doExcelExport" />
+		<!-- 酬金明细-》酬金校验失败信息查询      B2M网站 -->
+		<action name="bbcRewardVerified" class="bbcRewardVerifiedAction" method="doList">
+			<result>/info/reward/bbcRewardVerified.jsp</result>
+		</action>
+		<action name="bbcrewardVerifiedQuery" class="bbcRewardVerifiedAction" method="doQuery" />
+		<action name="bbcrewardVerifiedExcel" class="bbcRewardVerifiedAction" method="doExcelExport" />
+		
+		<!-- 酬金报表-》月应发酬金报表   -->
+		<action name="rewardTotal" class="rewardTotalAction" method="doList">
+			<!-- 社会渠道网点  -->
+			<result>/info/reward/recordTotleRpt.jsp</result>
+			<!-- B2M网站  -->
+			<result name="BBCPAGE">/info/reward/bbcRecordTotleRpt.jsp</result>
+			<!-- UNPB创新联盟 -->
+			<result name="UNPBPAGE">/info/reward/bbcRecordTotleRptUNPB.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+	
+		<!-- 酬金报表-》月实际支付酬金报表    -->
+		<action name="realPayTotal" class="rewardTotalAction" method="doRPayList">
+			<!-- 社会渠道网点 -->
+			<result>/info/reward/rewardRealPayRpt.jsp</result>
+			<!-- B2M网站 -->
+			<result name="BBCPAGE">/info/reward/bbcRewardRealPayRpt.jsp</result>
+			<!-- UNPB创新联盟 -->
+			<result name="UNPBPAGE">/info/reward/bbcRewardRealPayRptUNPB.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<!-- 酬金报表-》月实际支付酬金报表      社会渠道网点      确认  -->
+		<action name="realPTConfirm" class="rewardTotalAction" method="doPTConfirm">
+			<result>/info/reward/rewardRealPayRpt.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		
+		<!-- 酬金报表-》酬金余额查询      社会渠道网点  -->
+		<action name="realBalance" class="rewardTotalAction" method="doBalance">
+			<result>/info/reward/rewardBalance.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<!-- 本地酬金查询  -->
+		<action name="localReward" class="rewardTotalAction" method="doLocalReward">
+			<result>/info/reward/localReward.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<!-- 本地酬金查询  -->
+		<action name="localRewardDtl" class="rewardTotalAction" method="doLocalRewardDtl">
+			<result>/info/reward/localRewardDtl.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		
+		<!-- 客户质量发展奖励酬金 -->
+		<action name="cardrewdetDetail" class="cardrewdetAction" method="doList">
+			<result>/info/reward/rewardcardDetail.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<action name="ajax_cardrewdetDetail" class="cardrewdetAction" method="doAjax"/>
+		<action name="cardrewdetStat" class="cardrewdetStatAction" method="doList">
+			<result>/info/reward/rewardcardStat.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<action name="ajax_cardrewdetStat" class="cardrewdetStatAction" method="doAjax" />
+		<!-- 酬金汇总结果 -->
+		<action name="cityrecordView" class="cityrecordAction" method="doView">
+			<result>/info/reward/cityrecord/stat.jsp</result>
+		</action> 
+		<action name="cityrecordStat" class="cityrecordAction" method="doStat">
+			<result>/info/reward/cityrecord/stat.jsp</result>
+		</action>
+		<action name="cityrecordList" class="cityrecordAction" method="doList">
+			<result>/info/reward/cityrecord/list.jsp</result>
+		</action>
+		<action name="cityrecordAjax" class="cityrecordAction" method="doAjax" />
+		<!-- 税后酬金查询 -->
+		<action name="adjustmentView" class="adjustmentAction" method="doView">
+			<result>/info/reward/adjustment/adjustmentstat.jsp</result>
+		</action>
+	 
+		<action name="adjustmentStat" class="adjustmentAction" method="doStat">
+			<result>/info/reward/adjustment/adjustmentstat.jsp</result>
+		</action>
+	
+		<action name="adjustmentAjax" class="adjustmentAction" method="doAjax" />
+		<!-- 终端酬金  终端计酬成功明细-->
+		<action name="rewardTdSucStat" class="rewardTdSucAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardtdsuc/rewardtdsucstat.jsp</result>
+		</action>
+		<action name="rewardTdSucAjax" class="rewardTdSucAction" method="doAjax" />
+		<action name="rewardTdSucExcel" class="rewardTdSucAction" method="doExcelExport" />
+	    <!-- 终端酬金  终端计酬失败明细-->
+	    <action name="rewardTdFailStat" class="rewardTdFailAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardtdfail/rewardtdfailstat.jsp</result>
+		</action>
+	    <action name="rewardTdFailAjax" class="rewardTdFailAction" method="doAjax" />
+	    <action name="rewardTdFailExcel" class="rewardTdFailAction" method="doExcelExport" />
+		<!-- 终端酬金  终端计酬成功数据汇总-->
+		<action name="rewardTdRecordStat" class="rewardTdRecordAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardtdrecord/rewardtdrecordstat.jsp</result>
+		</action>	
+		<action name="rewardTdRecordAjax" class="rewardTdRecordAction" method="doAjax" />
+		<action name="rewardTdRecordExcel" class="rewardTdRecordAction" method="doExcelExport" />
+		
+		<!-- 终端酬金  终端预发计酬成功明细-->
+		<action name="rewardAdSucStat" class="rewardAdSucAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardadsuc/rewardadsucstat.jsp</result>
+		</action>
+		<action name="rewardAdSucAjax" class="rewardAdSucAction" method="doAjax" />
+		<action name="rewardAdSucExcel" class="rewardAdSucAction" method="doExcelExport" />
+	     <!-- 终端酬金  终端预发计酬失败明细-->
+	    <action name="rewardAdFailStat" class="rewardAdFailAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardadfail/rewardadfailstat.jsp</result>
+		</action>
+	    <action name="rewardAdFailAjax" class="rewardAdFailAction" method="doAjax" />
+	    <action name="rewardAdFailExcel" class="rewardAdFailAction" method="doExcelExport" />
+		
+		
+		  <!-- 业务明细报表（结算月维度） 2014年10月20日-->
+	    <action name="settlementMonth" class="settlementMonthAction" method="doStat">
+			<result>/info/reward/rewardtd/settlementmonth/settlementmonth.jsp</result>
+		</action>
+	    <action name="settlementMonthAjax" class="settlementMonthAction" method="doAjax" />
+	    <action name="settlementMonthExcel" class="settlementMonthAction" method="doExcelExport" />
+		
+		 <!-- 业务明细报表（销售月维度） 2014年10月20日-->
+	    <action name="saleMonth" class="saleMonthAction" method="doStat">
+			<result>/info/reward/rewardtd/salemonth/salemonth.jsp</result>
+		</action>
+	    <action name="saleMonthAjax" class="saleMonthAction" method="doAjax" />
+	    <action name="saleMonthExcel" class="saleMonthAction" method="doExcelExport" />
+		 <!-- 月度应发酬金报表-->
+	    <action name="monthRemuneration" class="monthRemunerationAction" method="doStat">
+			<result>/info/reward/rewardtd/monthremuneration/monthRemuneration.jsp</result>
+		</action>
+	    <action name="monthRemunerationAjax" class="monthRemunerationAction" method="doAjax">
+	    <result>/info/reward/rewardtd/monthremuneration/monthRemuneration.jsp</result>
+	    </action>
+	    <action name="monthRemunerationExcel" class="monthRemunerationAction" method="doExcelExport">
+	     <result>/info/reward/rewardtd/monthremuneration/exportExcel.jsp</result>
+	    </action>
+		
+		 <!-- 业务办理酬金分期表-->
+	    <action name="rewardBusiness" class="rewardBusinessAction" method="doStat">
+			<result>/info/reward/rewardtd/rewardbusiness/rewardBusiness.jsp</result>
+		</action>
+	    <action name="rewardBusinessAjax" class="rewardBusinessAction" method="doAjax">
+	    <result>/info/reward/rewardtd/rewardbusiness/rewardBusiness.jsp</result>
+	    </action>
+	    <action name="rewardBusinessExcel" class="rewardBusinessAction" method="doExcelExport">
+	     <result>/info/reward/rewardtd/rewardbusiness/exportExcel.jsp</result>
+	    </action>
+	</package>
+</struts>

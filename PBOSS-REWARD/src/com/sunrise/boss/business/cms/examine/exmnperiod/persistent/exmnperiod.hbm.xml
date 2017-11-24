@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.examine.exmnperiod.persistent.ExmnperiodVO" table="CH_PW_EXMNPERIOD">
+<id column="SEQID" name="seqid" type="java.lang.Long">
+	<generator class="sequence">
+        <param name="sequence">
+           CH_PW_EXMNPERIOD_SEQ
+        </param>	
+   	</generator>
+</id>
+<property column="EXMNID" length="6" name="exmnid" type="java.lang.Integer"/>
+<property column="BEGINMONTH" length="2" name="beginmonth" type="java.lang.Short"/>
+<property column="ENDMONTH" length="2" name="endmonth" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

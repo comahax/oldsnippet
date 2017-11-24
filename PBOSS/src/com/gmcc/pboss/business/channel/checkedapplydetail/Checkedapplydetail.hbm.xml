@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO" table="CH_PW_CHECKEDAPPLYDETAIL">
+<id column="SEQ" length="14" name="seq" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_CHECKEDAPPLYDETAIL_SEQ</param>
+</generator>
+</id>
+<property column="APPLYNO" length="14" name="applyno" type="java.lang.Long"/>
+<property column="CITYID" length="3" name="cityid" type="java.lang.String"/>
+<property column="APTIME" length="7" name="aptime" type="java.util.Date"/>
+<property column="OPRCODE" length="30" name="oprcode" type="java.lang.String"/>
+<property column="APPLYTYPE" length="2" name="applytype" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="CHKTYPE" length="2" name="chktype" type="java.lang.String"/>
+<property column="CHGTYPE" length="2" name="chgtype" type="java.lang.String"/>
+<property column="WTYPE" length="3" name="wtype" type="java.lang.String"></property>
+<property column="WAYSTATUS" length="2" name="waystatus" type="java.lang.Short"/>
+<property column="ISFLAG" length="2" name="isflag" type="java.lang.Short"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+</class>
+<sql-query name="queryCheckedapplydetail">
+	<return-scalar column="cityid" type="java.lang.String"/>
+	<return-scalar column="chainhead" type="java.lang.String"/>
+	<return-scalar column="wayname" type="java.lang.String"/>
+	<return-scalar column="address" type="java.lang.String"/>
+	<return-scalar column="buztypecode" type="java.lang.Long"/>
+	<return-scalar column="starlevel" type="java.lang.Long"/>
+	<return-scalar column="istop" type="java.lang.Long"/>
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="chktype" type="java.lang.String"/>
+	<return-scalar column="wtype" type="java.lang.String"/>
+	<return-scalar column="applytype" type="java.lang.String"/>
+	<return-scalar column="status" type="java.lang.String"/>
+	<return-scalar column="applyno" type="java.lang.Long"/>
+	<return-scalar column="aptime" type="java.util.Date"/>
+	<return-scalar column="oprtime" type="java.util.Date"/>
+	<return-scalar column="seq" type="java.lang.Long"/>
+	<return-scalar column="waystatus" type="java.lang.Short"/>
+	select 
+	a.cityid,a.chainhead,a.wayname,a.address,a.buztypecode,a.starlevel,a.istop,
+	b.wayid,b.chktype,b.applytype,c.status,b.wtype,b.applyno,b.aptime,b.oprtime,b.seq,b.waystatus    
+	from ch_pw_way a,ch_pw_checkedapplydetail b , CH_PW_CHECKEDAPPLY c 
+	where a.wayid=b.wayid and b.applyno=c.applyno
+	and (b.chgtype &lt;&gt; 1 or b.chgtype is null) and b.cityid = :cityid
+	order by a.cityid asc 
+</sql-query>
+<!-- 更新查询授权网点申请明细表 -->
+<sql-query name="com.gmcc.pboss.business.channel.checkedapplydetail.QueryInfoForUpdate">
+  <return class="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO"/>
+    select 
+    a.seq,a.cityid,a.wtype,a.wayid,a.chktype,a.oprcode,a.applyno,a.applytype,
+    a.aptime,b.address,b.wayname,b.buztypecode,b.starlevel,
+    b.chainhead
+   from CH_PW_CHECKEDAPPLYDETAIL a,CH_PW_WAY b
+    where a.wayid = b.wayid 
+</sql-query>
+<!-- 新增查询授权网点申请明细表 --> 
+<!-- 有申请单号 -->
+<sql-query name="com.gmcc.pboss.business.channel.checkedapplydetail.QueryNoRightHasAppyno">
+<return class="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO"/>
+ select 
+    a.seq,a.cityid,a.wtype,a.wayid,a.chktype,a.oprcode,a.applyno,a.applytype,
+    a.aptime,a.chgtype,b.address,b.wayname,b.buztypecode,b.starlevel,
+    b.chainhead
+   from CH_PW_CHECKEDAPPLYDETAIL a,CH_PW_WAY b
+    where a.wayid = b.wayid  
+    and a.OPRCODE =:oprcode and APPLYNO =:applyno 
+    order by a.aptime desc
+</sql-query>
+
+<!-- 没有申请单号 -->
+<sql-query name="com.gmcc.pboss.business.channel.checkedapplydetail.QueryNoRightNoAppyno">
+<return class="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO"/>
+ select 
+    a.seq,a.cityid,a.wtype,a.wayid,a.chktype,a.oprcode,a.applyno,a.applytype,
+    a.aptime,a.chgtype,b.address,b.wayname,b.buztypecode,b.starlevel,
+    b.chainhead
+   from CH_PW_CHECKEDAPPLYDETAIL a,CH_PW_WAY b
+    where a.wayid = b.wayid 
+    and a.OPRCODE =:oprcode  and a.APPLYNO is null
+    order by a.aptime desc
+</sql-query>
+
+<!-- 分公司新增查询授权网点申请明细表,有申请单号 -->
+<sql-query name="com.gmcc.pboss.business.channel.checkedapplydetail.QueryNoRightHasAppyno_COUNTY">
+<return class="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO"/>
+ select 
+    a.seq,a.cityid,a.wtype,a.wayid,a.chktype,a.oprcode,a.applyno,a.applytype,
+    a.aptime,a.chgtype,b.address,b.wayname,b.buztypecode,b.starlevel,
+    b.chainhead
+   from CH_PW_CHECKEDAPPLYDETAIL a,CH_PW_WAY b
+    where a.wayid = b.wayid and a.isflag = 0
+    and a.OPRCODE =:oprcode and APPLYNO =:applyno 
+    order by a.aptime desc
+</sql-query>
+
+<!-- 分公司新增查询授权网点申请明细表,没有申请单号 -->
+<sql-query name="com.gmcc.pboss.business.channel.checkedapplydetail.QueryNoRightNoAppyno_COUNTY">
+<return class="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO"/>
+ select 
+    a.seq,a.cityid,a.wtype,a.wayid,a.chktype,a.oprcode,a.applyno,a.applytype,
+    a.aptime,a.chgtype,b.address,b.wayname,b.buztypecode,b.starlevel,
+    b.chainhead
+   from CH_PW_CHECKEDAPPLYDETAIL a,CH_PW_WAY b
+    where a.wayid = b.wayid and a.isflag = 0
+    and a.OPRCODE =:oprcode  and a.APPLYNO is null
+    order by a.aptime desc
+</sql-query>
+
+<!-- 市公司初审人新增查询授权网点申请明细表,有申请单号 -->
+<sql-query name="com.gmcc.pboss.business.channel.checkedapplydetail.QueryNoRightHasAppyno_MIDCITY">
+<return class="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO"/>
+select a.seq,a.cityid,a.wtype,a.wayid,a.chktype,a.oprcode,a.applyno,
+       a.applytype,a.aptime,a.chgtype,b.address,b.wayname,b.buztypecode,
+       b.starlevel,b.chainhead
+  from CH_PW_CHECKEDAPPLYDETAIL a, CH_PW_WAY b, CH_PW_CHECKEDAPPLY c
+ where a.wayid = b.wayid
+   and a.applyno = c.applyno
+   and c.OPRCODE = :oprcode
+   and a.APPLYNO = :applyno
+ order by a.aptime desc
+</sql-query>
+
+<!-- 市公司初审人新增查询授权网点申请明细表,没有申请单号 -->
+<sql-query name="com.gmcc.pboss.business.channel.checkedapplydetail.QueryNoRightNoAppyno_MIDCITY">
+<return class="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO"/>
+select a.seq,a.cityid,a.wtype,a.wayid,a.chktype,a.oprcode,a.applyno,
+       a.applytype,a.aptime,a.chgtype,b.address,b.wayname,b.buztypecode,
+       b.starlevel,b.chainhead
+  from CH_PW_CHECKEDAPPLYDETAIL a, CH_PW_WAY b
+ where a.wayid = b.wayid
+   and (a.OPRCODE = :oprcode or
+       a.OPRCODE in
+       (select oprcode from CH_PW_CHECKEDAPPLY where OPRCODE2 = :oprcode))
+   and ((a.isflag = 1 and a.APPLYNO is null) or
+       (a.isflag = 0 and a.WAYSTATUS = 2))
+ order by a.aptime desc
+</sql-query>
+
+<!-- 新增查询授权网点申请明细表查询申请类型 -->
+<sql-query name="com.gmcc.pboss.business.channel.checkedapplydetail.QueryStatus">
+<return class="com.gmcc.pboss.business.channel.checkedapplydetail.CheckedapplydetailVO"/>
+select * from CH_PW_CHECKEDAPPLYDETAIL where oprcode=:oprcode and applyno is null
+</sql-query>
+
+<!--授权网点申请管理选择申请网点，申请类型为准入申请的时候，查询渠道表限制条件 -->
+<sql-query name="pboss.channel.way.queryWayinfoForapplyway">
+<return class="com.gmcc.pboss.business.channel.way.WayVO"/>
+select a.wayid, a.wayname, a.waystate, a.cityid
+  from ch_pw_way a
+ where (checked = 'N' or checked is null)
+   and not exists
+ (select b.wayid
+          from ch_pw_checkedapplydetail b
+         where a.wayid = b.wayid)
+   and a.waytype = 'AG'
+   and a.waysubtype in ('SAGT', 'PSAL', 'FD', 'FDS', 'VWAY')
+   and a.cityid = :cityid
+union all
+select w.wayid, w.wayname, w.waystate, w.cityid
+  from ch_pw_checkedapplydetail a, ch_pw_way w
+ where (a.waystatus = 3 or a.waystatus = 1)
+   and a.wayid = w.wayid
+</sql-query>
+<!--授权网点申请管理选择申请网点，申请类型为退出申请的时候，查询渠道表的限制条件-->
+<sql-query name="pboss.channel.way.queryWayinfoForExitway">
+select a.wayid, a.wayname, a.waystate, a.cityid
+  from ch_pw_way a
+ where checked = 'Y'
+   and not exists
+ (select b.wayid
+          from ch_pw_checkedapplydetail b
+         where a.wayid = b.wayid)
+   and a.waytype = 'AG'
+   and a.waysubtype in ('SAGT', 'PSAL', 'FD', 'FDS', 'VWAY')
+   and a.cityid = :cityid
+union all
+select w.wayid, w.wayname, w.waystate, w.cityid
+  from ch_pw_checkedapplydetail a, ch_pw_way w
+ where (a.waystatus = 3 or a.waystatus = 1)
+   and a.wayid = w.wayid
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.cms.way.persistent.WayVO" table="CH_PW_WAY">
+<id column="WAYID" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="WAYNAME" length="256" name="wayname"  type="java.lang.String"/>
+<property column="WAYTYPE" length="4" name="waytype"  type="java.lang.String"/>
+<property column="WAYSUBTYPE" length="4" name="waysubtype" type="java.lang.String"/>
+<property column="CUSTTYPE" length="4" name="custtype" type="java.lang.String"/>
+<property column="UPPERWAYID" length="18" name="upperwayid" type="java.lang.String"/>
+<property column="BUSICODE" length="10" name="busicode" type="java.lang.String"/>
+<property column="COUNTYID" length="3" name="countyid" type="java.lang.String"/>
+<property column="CITYID" length="2" name="cityid" type="java.lang.String"/>
+<property column="CENTERID" length="1" name="centerid" type="java.lang.String"/>
+<property column="CITYLEVEL" length="3" name="citylevel" type="java.lang.Short"/>
+<property column="WAYLEVEL" length="3" name="waylevel" type="java.lang.Short"/>
+<property column="BCHLEVEL" length="4" name="bchlevel" type="java.lang.String"/>
+<property column="FUNCTION" length="255" name="function" type="java.lang.String"/>
+<property column="MISCODE" length="12" name="miscode" type="java.lang.String"/>
+<property column="WAYSTATE" length="3" name="waystate" type="java.lang.Short"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="DISABLETIME" length="7" name="disabletime" type="java.util.Date"/>
+<property column="RUNBYSELF" length="4" name="runbyself" type="java.lang.String"/>
+<property column="DEPOTDET" length="20" name="depotdet" type="java.lang.String"/>
+<property column="ISSHARE" length="32" name="isshare" type="java.lang.String"/>
+
+<property column="SHORTNAME" length="32" name="shortname" type="java.lang.String"/>
+<property column="SVBRCHCODE" length="14" name="svbrchcode" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="BUZTYPECODE" length="2" name="buztypecode" type="java.lang.Short"/>
+<property column="ADTYPECODE" length="2" name="adtypecode" type="java.lang.Short"/>
+<property column="ADDRESS" length="128" name="address" type="java.lang.String"/>
+<property column="LOGISCODE" length="18" name="logiscode" type="java.lang.String"/>
+<property column="LATITUDE" length="15" name="latitude" type="java.lang.String"/>
+<property column="LONGTITUDE" length="15" name="longtitude" type="java.lang.String"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="18" name="waymagcode" type="java.lang.String"/>
+<property column="CATETYPE" length="2" name="catetype" type="java.lang.Short"/>
+<property column="FORMTYPE" length="2" name="formtype" type="java.lang.Short"/>
+<property column="STARTTIME" name="starttime" type="java.util.Date"/>
+<property column="BUZAREA" length="5" name="buzarea" type="java.lang.Long"/>
+<property column="MAINLAYER" length="2" name="mainlayer" type="java.lang.Short"/>
+<property column="SUBLAYER" length="2" name="sublayer" type="java.lang.Short"/>
+<property column="BUZPHONENO" length="14" name="buzphoneno" type="java.lang.String"/>
+<property column="COOPERATOR" length="2" name="cooperator" type="java.lang.Short"/>
+<property column="ALARMBIZAMOUNT" length="10" name="alarmbizamount" type="java.lang.Integer"/>
+
+<!-- 提升字段 -->
+<property column="PRTSOURCE" length="2" name="prtsource" type="java.lang.Long"/>
+<property column="ISCONNECTED" length="2" name="isconnected" type="java.lang.Long"/>
+<property column="CONNECTTYPE" length="2" name="connecttype" type="java.lang.Long"/>
+<property column="RUNMODE" length="2" name="runmode" type="java.lang.Long"/>
+<property column="ISCOREWAY" length="2" name="iscoreway" type="java.lang.Long"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Long"/>
+<property column="PT" length="2" name="pt" type="java.lang.Long"/>
+<property column="CHAINHEAD" length="18" name="chainhead" type="java.lang.String"/>
+<property column="SIGNSTATUS" length="2" name="signstatus" type="java.lang.Long"/>
+<property column="EMPNUMBER" length="4" name="empnumber" type="java.lang.Long"/>
+<property column="MAGNUMBER" length="4" name="magnumber" type="java.lang.Long"/>
+<property column="TERMINUMBER" length="4" name="terminumber" type="java.lang.Long"/>
+<property column="UPDATEDATE" name="updatedate" type="java.util.Date"/>
+<property column="ISSTRAITPRD" length="2" name="isstraitprd" type="java.lang.Short"/>
+<property column="TAXTYPE" length="2" name="taxtype" type="java.lang.Short"/>
+</class>
+<sql-query name="getwaybycityid">
+<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>
+select * from ch_pw_way where cityid=:cityid and WAYLEVEL=1
+</sql-query>
+<!-- 检查是否网点渠道 -->
+<sql-query name="checkisnetwork">
+<return-scalar column="counts" type="java.lang.Long"/>
+select count(*) as counts from common.CH_PW_WAY WHERE WAYTYPE='AG' AND WAYSUBTYPE='DIS' and waystate=1 and wayid=:basewayid
+</sql-query>
+<sql-query name="querynetwork">
+<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>
+Select * from common.ch_pw_way 
+where waytype='AG' and (waysubtype= 'PSAL' or waysubtype = 'SAGT') and chainhead=:basewayid and waystate=1
+</sql-query>
+
+<sql-query name="queryUpperWaysAndMeByIdOrName">
+	<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>
+	select *
+	  from (select *
+	          from ch_pw_way way
+	         where way.waystate = :waystate
+	            or way.waystate = 1 and (way.waytype &lt;&gt; 'RIVL'))
+	 start with wayid like :idorname
+	         or wayname like :idorname
+	connect by prior upperwayid = wayid
+</sql-query>
+
+<sql-query name="boss.cms.queryWayByUser">
+	<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>
+      select * from ch_pw_way where waytype='AG' connect by prior wayid=upperwayid start with wayid =:basewayid
+</sql-query>
+
+<sql-query name="boss.cms.queryRvwaycnt">
+	<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>
+      select * from ch_pw_way where 1=1
+</sql-query>
+
+<sql-query name="boss.cms.querySvwayinfo">
+	<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>
+     select * from ch_pw_way where 1=1 connect by prior wayid=upperwayid start with wayid =:basewayid
+</sql-query>
+	
+<sql-query name="boss.cms.queryAllUpperWays">
+	<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>
+     select * from ch_pw_way where 1=1 connect by prior upperwayid=wayid start with wayid =:basewayid
+</sql-query>
+
+<sql-query name="boss.cms.queryUpperWayidNum">
+<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>  
+	select * from ch_pw_way where waytype='ET' and wayid in (select wayid from ch_pw_way start with wayid=:basewayid connect by prior   wayid   = upperwayid) and wayid=:wayid
+</sql-query>
+<sql-query name="boss.cms.querySaleway">
+<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/> 
+select *
+  from ch_pw_way
+ where waytype='AG' and (waysubtype = 'PSAL'
+or waysubtype = 'SAGT' or waysubtype='FD'
+or waysubtype is null or waysubtype = '') 
+ start with wayid = :basewayid
+connect by prior wayid = upperwayid
+</sql-query>
+<sql-query name="boss.cms.querySharedUpperWay">
+	<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>  
+		select * from ch_pw_way where isshare = 1 or wayid =:wayid connect by prior upperwayid = wayid start with wayid=:wayid
+</sql-query>
+<sql-query name="boss.cms.queryAllSubWay">
+	<return class="com.gmcc.pboss.business.cms.way.persistent.WayVO"/>  
+		select * from ch_pw_way connect by prior wayid = upperwayid start with wayid=:basewayid
+</sql-query>
+</hibernate-mapping>

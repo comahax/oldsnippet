@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.waystoreinfo.WaystoreinfoVO" table="CH_PW_WAYSTOREINFO">
+<id column="WAYID" length="18" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="AREA" length="14" name="area" type="java.lang.Double"/>
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="ZQTYPE" length="2" name="zqtype" type="java.lang.Short"/>
+<property column="ZQPIC" length="225" name="zqpic" type="java.lang.String"/>
+<property column="ZQAREA" length="14" name="zqarea" type="java.lang.Double"/>
+<property column="ZQPANEL" length="2" name="zqpanel" type="java.lang.Short"/>
+<property column="ZQCUPBOARD" length="4" name="zqcupboard" type="java.lang.Short"/>
+<property column="ZQCARDS" length="4" name="zqcards" type="java.lang.Short"/>
+<property column="ZQPRICETAG" length="4" name="zqpricetag" type="java.lang.Short"/>
+<property column="ZQRACK" length="4" name="zqrack" type="java.lang.Short"/>
+<property column="ZQINAD" length="2" name="zqinad" type="java.lang.Short"/>
+<property column="ZQOUTAD" length="2" name="zqoutad" type="java.lang.Short"/>
+<property column="ZQHEAD" length="2" name="zqhead" type="java.lang.Short"/>
+<property column="ZQPASTE" length="2" name="zqpaste" type="java.lang.Short"/>
+<property column="ZQTABLECARD" length="4" name="zqtablecard" type="java.lang.Short"/>
+<property column="ZQDECCA" length="4" name="zqdecca" type="java.lang.Short"/>
+<property column="ZQBILL" length="4" name="zqbill" type="java.lang.Short"/>
+<property column="DOORPIC" length="225" name="doorpic" type="java.lang.String"/>
+<property column="DOORTYPE" length="2" name="doortype" type="java.lang.Short"/>
+<property column="OUTWALLAD" length="14" name="outwallad" type="java.lang.Double"/>
+<property column="OUTWALLPIC" length="2" name="outwallpic" type="java.lang.Short"/>
+<property column="TDMONOPOLY" length="2" name="tdmonopoly" type="java.lang.Short"/>
+<property column="BUSIMONOPOLY" length="2" name="busimonopoly" type="java.lang.Short"/>
+<property column="STORECONDUCT" length="4" name="storeconduct" type="java.lang.Short"/>
+<property column="MODULUS" length="4" name="modulus" type="java.lang.Float"/> 
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="ZQPICPATH" length="256" name="zqpicpath" type="java.lang.String"/>
+<property column="DOORPICPATH" length="256" name="doorpicpath" type="java.lang.String"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.channel.waystoreinfoList"> 
+ select b.wayid,b.area,b.cityid,b.zqtype,b.zqpic,b.zqarea,b.zqpanel,b.zqcupboard,b.zqcards,b.zqpricetag,b.zqrack,b.zqinad,b.zqhead,
+ b.zqpaste,b.zqtablecard,b.zqdecca,b.zqbill,b.doorpic,b.doortype,b.outwallad,b.outwallpic,b.tdmonopoly,b.busimonopoly,b.storeconduct,
+ b.modulus,b.createtime, a.wayname,a.latitude,a.longtitude,b.zqpicpath,b.doorpicpath from ch_pw_way a,ch_pw_waystoreinfo b where a.wayid = b.wayid
+</sql-query> 
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.chadtimportrecord.persistent.ChadtimportrecordVO" table="CH_ADT_IMPORTRECORD">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_ADT_IMPORTRECORD_SEQ</param>
+	</generator>
+</id>
+<property column="WAYID" length="20" name="wayid" type="java.lang.String"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="IMPORTTYPE" length="22" name="importtype" type="java.lang.Long"/>
+<property column="RUNTIME" length="7" name="runtime" type="java.util.Date"/>
+<property column="OPERCODE" length="15" name="opercode" type="java.lang.String"/>
+<property column="AMT" length="16" name="amt" type="java.lang.Double"/>
+<property column="ASSEGRADE" length="16" name="assegrade" type="java.lang.Double"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"></property>
+</class>
+</hibernate-mapping>

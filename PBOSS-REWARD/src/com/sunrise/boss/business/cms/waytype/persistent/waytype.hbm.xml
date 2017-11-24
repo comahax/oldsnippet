@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.waytype.persistent.WaytypeVO" table="CH_PW_WAYTYPE">
+<id column="WAYTYPECODE" name="waytypecode" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="WAYTYPENAME" length="32" name="waytypename" not-null="true" type="java.lang.String"/>
+<property column="UPPERCODE" length="4" name="uppercode" type="java.lang.String"/>
+<property column="DESP" length="255" name="desp" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

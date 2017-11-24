@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.rulerellog.persistent.RulerellogVO" table="CH_ADT_RULERELLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_ADT_RULERELLOG_SEQ</param>
+	</generator>
+</id>
+<property name="optime" column="OPTIME" type="java.util.Date" length="7"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="16"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="8"/>
+<property name="success" column="SUCCESS" type="java.lang.String" length="8"/>
+<property name="ruleitemid" column="RULEITEMID" type="java.lang.String" length="18"/>
+<property name="ruleid" column="RULEID" type="java.lang.String" length="18"/>
+<property name="cityid" column="CITYID" type="java.lang.String" length="4"/>
+<property name="state" column="STATE" type="java.lang.Short" length="2"/>
+<property name="isdefault" column="ISDEFAULT" type="java.lang.Short" length="2"/>
+<property name="rulemodeid" column="RULEMODEID" type="java.lang.Long" length="8"/>
+<property name="paramer" column="PARAMER" type="java.lang.String" length="60"/>
+</class>
+</hibernate-mapping>

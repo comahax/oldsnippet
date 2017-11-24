@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.comressmp.ComressmpVO" table="IM_FX_COMRESSMP">
+<composite-id>
+<key-property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+<key-property column="COMRESID" length="32" name="comresid" type="java.lang.String"/>
+</composite-id>
+<property column="BATCHNO" length="30" name="batchno" type="java.lang.String"/>
+<property column="COMSTATE" length="3" name="comstate" not-null="true" type="java.lang.Short"/>
+<property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="STARTTIME" length="7" name="starttime" type="java.util.Date"/>
+<property column="VALIDPERIOD" length="7" name="validperiod" type="java.util.Date"/>
+<property column="COMKEEP" length="7" name="comkeep" type="java.util.Date"/>
+<property column="COMDISC" length="14" name="comdisc" type="java.lang.Long"/>
+<property column="PRICE" length="14" name="price" type="java.lang.Long"/>
+<property column="COMACTIVE" length="7" name="comactive" type="java.util.Date"/>
+<property column="COMSOURCE" length="8" name="comsource" type="java.lang.Integer"/>
+<property column="STOCKPRICE" length="14" name="stockprice" type="java.lang.Long"/>
+<property column="SIMPRICE" length="14" name="simprice" type="java.lang.Long"/>
+<property column="ISOPEN" length="3" name="isopen" type="java.lang.Short"/>
+<property column="ICCID" length="21" name="iccid" type="java.lang.String"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="BOXNUM" length="100" name="boxnum" type="java.lang.String"/>
+<property column="ENTERTIME" length="7" name="entertime" type="java.util.Date"/>
+<property column="NUMBERTYPE" length="10" name="numbertype" type="java.lang.String"/>
+<property column="INSIDESEQ" length="8" name="insideseq" type="java.lang.Integer"/>
+<property column="SALETIME" length="7" name="saletime" type="java.util.Date"/>
+</class>
+
+<!-- 套卡库存统计 -->
+<sql-query name="com.gmcc.pboss.business.resource.comressmp.doStat">
+	select nvl(w.countyid,'其它') countyid,nvl(c.wayid,'其它') wayid,nvl(r.brand,'其它') brand,nvl(r.comcategory,'其它') comcategory ,nvl(c.comstate,'') comstate,count(*) ncount
+	from IM_FX_COMRESSMP c ,IM_PR_COMCATEGORYRELA r,CH_PW_WAY w
+	where c.wayid = w.wayid 
+	      and c.comid = r.comid
+	      and c.comstate != 2
+	group by w.countyid,c.wayid,r.brand,r.comcategory,c.comstate
+	order by w.countyid,c.wayid,r.brand,r.comcategory,c.comstate
+</sql-query>
+
+
+<!-- 	套卡资源排序按类型、批次、包号对套卡资源进行排序 -->
+<sql-query name="com.gmcc.pboss.business.resource.comressmp.queryComressmp">
+<return class="com.gmcc.pboss.business.resource.comressmp.ComressmpVO"></return>
+select a.COMID,
+a.COMRESID,
+a.BATCHNO,
+a.COMSTATE,
+a.WAYID,
+a.OPRCODE,
+a.STARTTIME,
+a.VALIDPERIOD,
+a.COMKEEP,
+a.COMDISC,
+a.PRICE,
+a.COMACTIVE,
+a.COMSOURCE,
+a.STOCKPRICE,
+a.SIMPRICE,
+a.ISOPEN,
+a.ICCID,
+a.BRAND,
+a.BOXNUM,
+a.ENTERTIME,
+a.NUMBERTYPE,
+a.INSIDESEQ,
+a.SALETIME,
+b.comcategory 
+ from IM_FX_COMRESSMP a, IM_PR_COMCATEGORYRELA b
+ where a.WAYID = :WAYID
+ and a.batchno = :BATCHNO
+ and a.COMSTATE in (1,30)
+ and b.comcategory = :COMCATEGORY
+ and a.comid = b.comid
+ order by a.NUMBERTYPE, a.BATCHNO, a.BOXNUM
+
+</sql-query>
+<!-- 统计套卡库存量 CR_SW20100624_1065427-->
+<sql-query name="com.gmcc.pboss.business.resource.comressmp.doStatSMPStock">
+	<return-scalar column="val" type="java.lang.Integer"/>
+	 select count(*) val from IM_FX_COMRESSMP a, CH_PW_WAY b , IM_PR_COMCATEGORYRELA c
+	 where a.wayid = b.wayid
+	 and a.comid = c.comid
+	 and b.countyid = :countyid
+	 and c.comcategory = :comcategory
+	 and a.comstate &lt;&gt; 2
+</sql-query>
+<!-- 按分公司，品牌统计该分公司下所有网点中非"已售"的套卡库存量 -->
+<sql-query name="com.gmcc.pboss.business.resource.comressmp.doStatCountyQty">
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="Qty" type="java.lang.Long"/>
+	select a.countyid, b.brand, count(*) Qty 
+  	from ch_pw_way a, IM_FX_COMRESSMP b 
+ 	where a.wayid = b.wayid 
+   	and b.comstate &lt;&gt; 2 
+ 	group by countyid, brand
+</sql-query>
+<!-- 根据商品批次、包号查询 -->
+<sql-query name="com.gmcc.pboss.business.resource.comressmp.queryByCompack">
+<return class="com.gmcc.pboss.business.resource.comressmp.ComressmpVO"></return>
+select a.COMID,
+a.COMRESID,
+a.BATCHNO,
+a.COMSTATE,
+a.WAYID,
+a.OPRCODE,
+a.STARTTIME,
+a.VALIDPERIOD,
+a.COMKEEP,
+a.COMDISC,
+a.PRICE,
+a.COMACTIVE,
+a.COMSOURCE,
+a.STOCKPRICE,
+a.SIMPRICE,
+a.ISOPEN,
+a.ICCID,
+a.BRAND,
+a.BOXNUM,
+a.ENTERTIME,
+a.NUMBERTYPE,
+a.INSIDESEQ,
+a.SALETIME
+ from IM_FX_COMRESSMP a
+ where a.BATCHNO = :BATCHNO
+ and a.BOXNUM = :BOXNUM
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.comcategoryrela.buyresource">
+	<return-scalar column="cnt1" type="java.lang.Long"/>
+		select NVL(sum(n1),0) cnt1
+		from (select c.COUNTYID, b.COMCATEGORY, count(*) n1
+  				from IM_FX_COMRESSMP a, IM_PR_COMCATEGORYRELA b, CH_PW_WAY c
+ 				where a.COMID = b.COMID
+   					and a.WAYID = c.WAYID
+   					and a.COMSTATE = 1 
+ 					and c.COUNTYID = :COUNTYID1
+   					and b.COMCATEGORY = :COMCATEGORY1
+ 				group by c.COUNTYID, b.COMCATEGORY
+			union 
+			select c.COUNTYID, b.COMCATEGORY, count(*) n1
+  			 	from IM_FX_COMRESCARD a, IM_PR_COMCATEGORYRELA b, CH_PW_WAY c
+ 			 	where a.COMID= b.COMID
+   					and a.WAYID = c.WAYID
+   					and a.COMSTATE = 1 
+  					and c.COUNTYID = :COUNTYID2
+   					and b.COMCATEGORY = :COMCATEGORY2
+ 				group by c.COUNTYID, b.COMCATEGORY) t  
+ 		group by t.COUNTYID, t.COMCATEGORY
+</sql-query>
+<!-- 关联渠道表，获取套卡明细列表  -->
+<sql-query name="com.gmcc.pboss.business.resource.comressmp.doList">
+<return class="com.gmcc.pboss.business.resource.comressmp.ComressmpVO"></return>
+select a.COMID,
+a.COMRESID,
+a.BATCHNO,
+a.COMSTATE,
+a.WAYID,
+a.OPRCODE,
+a.STARTTIME,
+a.VALIDPERIOD,
+a.COMKEEP,
+a.COMDISC,
+a.PRICE,
+a.COMACTIVE,
+a.COMSOURCE,
+a.STOCKPRICE,
+a.SIMPRICE,
+a.ISOPEN,
+a.ICCID,
+a.BRAND,
+a.BOXNUM,
+a.ENTERTIME,
+a.NUMBERTYPE,
+a.INSIDESEQ,
+a.SALETIME,
+w.COUNTYID
+ from IM_FX_COMRESSMP a,CH_PW_WAY w
+ where a.WAYID=w.WAYID
+</sql-query>
+</hibernate-mapping>

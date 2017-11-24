@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.examine.coefficient.persistent.CoefficientVO" table="CH_PW_COEFFICIENT">
+<composite-id>
+<key-property column="EXMNID" length="6" name="exmnid" type="java.lang.Integer"/>
+<key-property column="EXMNPERIOD" length="6" name="exmnperiod" type="java.lang.String"/>
+<key-property column="WAYID" length="32" name="wayid" type="java.lang.String"/>
+</composite-id>
+<property column="COEFFICIENTSUM" length="10" name="coefficientsum" type="java.lang.Double"/>
+<property column="COEFFICIENT" length="10" name="coefficient" type="java.lang.Double"/>
+</class>
+<sql-query name="cofficientQuery">
+<return	class="com.sunrise.boss.business.cms.examine.coefficient.persistent.CoefficientVO" />
+select decode(a.wayid, null, b.wayid, a.wayid) wayid,
+       decode(a.exmnid, null, b.exmnid, a.exmnid) exmnid,
+       decode(a.exmnperiod, null, b.exmnperiod, a.exmnperiod) exmnperiod,
+       nvl(a.coefficient, 0) + nvl(b.coefficient, 0) coefficientsum,
+       nvl(a.coefficient, 0) coefficient
+  from ch_pw_coefficient a
+  full join (select wayid, exmnid, exmnperiod, sum(coefficient) coefficient
+               from ch_pw_coefrevision
+              group by wayid, exmnid, exmnperiod) b on a.exmnid = b.exmnid
+                                                   and a.wayid = b.wayid
+                                       and a.exmnperiod = b.exmnperiod
+</sql-query>
+</hibernate-mapping>
+

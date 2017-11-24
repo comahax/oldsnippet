@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.adpaydet.AdpaydetVO" table="FX_SW_ADPAYDET">
+<composite-id>
+<key-property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+<key-property column="SUMID" length="14" name="sumid" type="java.lang.Long"/>
+</composite-id>
+</class>
+</hibernate-mapping>

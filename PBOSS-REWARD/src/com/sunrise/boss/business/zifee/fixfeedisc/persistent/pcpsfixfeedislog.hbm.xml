@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.fixfeedisc.persistent.PcPsFixfeedislogVO" table="PC_PS_FIXFEEDISLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">PC_PS_FIXFEEDISLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.sql.Timestamp"/>
+<property column="OPRCODE" length="10" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="YXPLANID" length="14" name="yxplanid" type="java.lang.Long"/>
+<property column="FIXFEEDISCID" length="10" name="fixfeediscid" type="java.lang.Long"/>
+<property column="ACCTID" length="14" name="acctid" type="java.lang.Long"/>
+<property column="DISCTYPE" length="1" name="disctype" type="java.lang.Byte"/>
+<property column="RECDISAMT" length="8" name="recdisamt" type="java.lang.Float"/>
+<property column="DISCCOUNT" length="8" name="disccount" type="java.lang.Float"/>
+<property column="DISCCONDITION" length="255" name="disccondition" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

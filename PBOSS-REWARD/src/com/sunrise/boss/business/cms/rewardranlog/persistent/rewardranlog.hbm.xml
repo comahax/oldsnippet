@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.rewardranlog.persistent.RewardranlogVO" table="CH_PW_REWARDRANLOG">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_PW_REWARDRANLOG_SEQ</param>
+</generator>
+</id>
+<property column="WAYID" length="25" name="wayid" type="java.lang.String"/>
+<property column="PACCOUNT" length="25" name="paccount" type="java.lang.String"/>
+<property column="RACCOUNT" length="25" name="raccount" type="java.lang.String"/>
+<property column="REMARK" length="10" name="remark" type="java.lang.Double"/>
+<property column="PTIME" length="7" name="ptime" type="java.util.Date"/>
+<property column="CALCMONTH" length="6" name="calcmonth" type="java.lang.String"/>
+<property column="MEMO" length="200" name="memo" type="java.lang.String"/>
+<property column="OPERCODE" length="20" name="opercode" type="java.lang.String"/>
+<property column="OPERTIME" length="7" name="opertime" type="java.util.Date"/>
+<property column="OPERTYPE" length="1" name="opertype" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

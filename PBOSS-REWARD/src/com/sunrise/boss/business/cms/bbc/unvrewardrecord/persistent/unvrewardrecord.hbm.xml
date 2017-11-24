@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.unvrewardrecord.persistent.UnvRewardrecordVO" table="V_CH_BBC_REWARDRECORD">
+<id column="REWARDLISTID" name="rewardlistid"
+	type="java.lang.Long">
+	<generator class="assigned" />
+</id>
+		
+<property column="OPERSEQ" length="32" name="operseq" type="java.lang.String"/>
+<property column="DATASRC" length="32" name="datasrc" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYOPRCODE" length="18" name="wayoprcode" type="java.lang.String"/>
+<property column="REWARDID" length="14" name="rewardid" type="java.lang.Long"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDSTD" length="14" name="rewardstd" type="java.lang.Double"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="TOTALSUM" length="12" name="totalsum" type="java.lang.Double"/>
+<property column="PAYSUM" length="12" name="paysum" type="java.lang.Double"/>
+<property column="RUNTIME" length="7" name="runtime" type="java.util.Date"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="NONCYC" length="3" name="noncyc" type="java.lang.Short"/>
+<property column="OSSRC" length="2" name="ossrc" type="java.lang.Short"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/>
+</class>
+<sql-query name="unvrewardRecordQuery">
+	<return class="com.sunrise.boss.business.cms.bbc.unvrewardtotal.persistent.UnvRewardrecordVO"/>
+		SELECT r.REWARDLISTID,r.OPERSEQ,r.DATASRC,r.OPNID,r.WAYID,r.WAYOPRCODE,r.REWARDID,r.REWARDTYPE,r.REWARDSTD,r.REWARDMONTH,
+		   r.TOTALSUM, r.PAYSUM, r.RUNTIME, r.OPRTIME, r.NONCYC, r.OSSRC, r.MOBILE, r.BATCHNO, e.telephone
+	  FROM CH_BBC_rewardrecord r,ch_pw_employee e where (r.ossrc = 3 or r.ossrc = 4 or r.ossrc = 5) and r.wayoprcode = e.employeeid
+
+</sql-query>
+</hibernate-mapping>

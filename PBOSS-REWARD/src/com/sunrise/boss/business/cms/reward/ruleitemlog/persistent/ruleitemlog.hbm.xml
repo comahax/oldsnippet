@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.ruleitemlog.persistent.RuleitemlogVO" table="CH_ADT_RULEITEMLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_ADT_RULEITEMLOG_SEQ</param>
+	</generator>
+</id>
+<property name="optime" column="OPTIME" type="java.util.Date" length="7"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="16"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="8"/>
+<property name="success" column="SUCCESS" type="java.lang.String" length="8"/>
+<property name="ruleitemid" column="RULEITEMID" type="java.lang.String" length="18"/>
+<property name="ruleitemname" column="RULEITEMNAME" type="java.lang.String" length="60"/>
+<property name="backruleitemid" column="BACKRULEITEMID" type="java.lang.String" length="18"/>
+<property name="contype" column="CONTYPE" type="java.lang.String" length="10"/>
+<property name="specflag" column="SPECFLAG" type="java.lang.Byte" length="1"/>
+</class>
+</hibernate-mapping>

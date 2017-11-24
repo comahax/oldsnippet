@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtclassplatformtdstd.persistent.ChAdtClassplatformtdstdVO" table="CH_ADT_CLASSPLATFORMTDSTD">
+<id column="SEQ" name="seq" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_ADT_CLASSPLATFORMTDSTD_SEQ</param>
+	</generator>
+</id>
+<property column="COMID" length="36" name="comid" not-null="true" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" not-null="true" type="java.lang.Short"/>
+<property column="ACCTYPE" length="3" name="acctype" type="java.lang.Short"/>
+<property column="SALESLOWER" length="10" name="saleslower" type="java.lang.Long"/>
+<property column="SALESUPPER" length="10" name="salesupper" type="java.lang.Long"/>
+<property column="REWARDSTD" length="10" name="rewardstd" type="java.lang.Double"/>
+<property column="CITYCODE" length="3" name="citycode" not-null="true" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

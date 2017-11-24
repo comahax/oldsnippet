@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.stdrewardbs.persistent.StdrewardbsVO" table="CH_PW_STDREWARDBS">
+<composite-id>
+<key-property name="islimt" column="ISLIMT" type="java.lang.Short" length="3"/>
+<key-property name="region" column="REGION" type="java.lang.String" length="10"/>
+<key-property name="rewardid" column="REWARDID" type="java.lang.Long" length="14"/>
+</composite-id>
+<property name="slv" column="SLV" type="java.lang.String" length="40" not-null="true"/>
+<property name="citystd" column="CITYSTD" type="java.lang.Double" length="14"/>
+<property name="countrystd" column="COUNTRYSTD" type="java.lang.Double" length="14"/>
+<property name="acctype" column="ACCTYPE" type="java.lang.Short" length="3"/>
+<property name="basicsalenum" column="BASICSALENUM" type="java.lang.Long" length="8"/>
+<property name="topsalenum" column="TOPSALENUM" type="java.lang.Long" length="8"/>
+<property name="citystdlow" column="CITYSTDLOW" type="java.lang.Double" length="18"/>
+<property name="countrystdlow" column="COUNTRYSTDLOW" type="java.lang.Double" length="18"/>
+<property name="citystdmid" column="CITYSTDMID" type="java.lang.Double" length="18"/>
+<property name="countrystdmid" column="COUNTRYSTDMID" type="java.lang.Double" length="18"/>
+<property name="citystdtop" column="CITYSTDTOP" type="java.lang.Double" length="18"/>
+<property name="countrystdtop" column="COUNTRYSTDTOP" type="java.lang.Double" length="18"/>
+<property name="ttcitystd" column="TTCITYSTD" type="java.lang.Double" length="18"/>
+<property name="ttcountrystd" column="TTCOUNTRYSTD" type="java.lang.Double" length="18"/>
+<property name="intvmonth" column="INTVMONTH" type="java.lang.Short" length="5"/>
+<property name="citycorelimit" column="CITYCORELIMIT" type="java.lang.Long" length="14"/>
+<property name="cityaccountlimit" column="CITYACCOUNTLIMIT" type="java.lang.Long" length="14"/>
+<property name="countycorelimit" column="COUNTYCORELIMIT" type="java.lang.Long" length="14"/>
+<property name="countyaccountlimit" column="COUNTYACCOUNTLIMIT" type="java.lang.Long" length="14"/>
+</class>
+</hibernate-mapping>

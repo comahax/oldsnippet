@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.dictgroup.DictgroupVO" table="SA_DB_DICTGROUP">
+<id column="GROUPID" length="32" name="groupid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="GROUPNAME" length="64" name="groupname" type="java.lang.String"/>
+<property column="GROUPTYPE" length="32" name="grouptype" type="java.lang.String"/>
+<property column="MANAGABLE" length="1" name="managable" type="java.lang.Byte"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

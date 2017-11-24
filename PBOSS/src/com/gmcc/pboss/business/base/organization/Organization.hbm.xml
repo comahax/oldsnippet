@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.organization.OrganizationVO" table="SA_SO_ORGANIZATION">
+	<id column="ORGID" length="32" name="orgid" type="java.lang.String"/>
+	<property name="region" type="java.lang.Long">
+	    <column name="REGION" precision="5" scale="0" />
+	</property>
+	<property name="orgname" type="java.lang.String">
+	    <column name="ORGNAME" length="64" />
+	</property>
+	<property name="orgtype" type="java.lang.String">
+	    <column name="ORGTYPE" length="32" />
+	</property>
+	<property name="orglevel" type="java.lang.Long">
+	    <column name="ORGLEVEL" precision="2" scale="0" />
+	</property>
+	<property name="isinner" type="java.lang.Long">
+	    <column name="ISINNER" precision="1" scale="0" />
+	</property>
+	<property name="managerid" type="java.lang.String">
+	    <column name="MANAGERID" length="19" />
+	</property>
+	<property name="parentid" type="java.lang.String">
+	    <column name="PARENTID" length="32" />
+	</property>
+	<property name="address" type="java.lang.String">
+	    <column name="ADDRESS" length="64" />
+	</property>
+	<property name="contactman" type="java.lang.String">
+	    <column name="CONTACTMAN" length="64" />
+	</property>
+	<property name="contactphone" type="java.lang.String">
+	    <column name="CONTACTPHONE" length="20" />
+	</property>
+	<property name="openphone" type="java.lang.String">
+	    <column name="OPENPHONE" length="20" />
+	</property>
+	<property name="postcode" type="java.lang.String">
+	    <column name="POSTCODE" length="6" />
+	</property>
+	<property name="email" type="java.lang.String">
+	    <column name="EMAIL" length="64" />
+	</property>
+	<property name="notes" type="java.lang.String">
+	    <column name="NOTES" length="256" />
+	</property>
+	<property name="createdate" type="java.util.Date">
+	    <column name="CREATEDATE" length="7" />
+	</property>
+	<property name="status" type="java.lang.Long">
+	    <column name="STATUS" precision="1" scale="0" />
+	</property>
+	<property name="statusdate" type="java.util.Date">
+	    <column name="STATUSDATE" length="7" />
+	</property>
+</class>
+</hibernate-mapping>

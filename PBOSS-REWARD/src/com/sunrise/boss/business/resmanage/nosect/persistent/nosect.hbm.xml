@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.resmanage.nosect.persistent.NosectVO" table="IM_PR_NOSECT">
+        <id name="nosectid" type="java.lang.Long">
+            <column name="NOSECTID" precision="8" scale="0" />
+        </id>
+        <property name="starttime" type="java.util.Date">
+            <column name="STARTTIME" length="7" />
+        </property>
+        <property name="intime" type="java.util.Date">
+            <column name="INTIME" length="7" />
+        </property>
+        <property name="beginno" type="java.lang.String">
+            <column name="BEGINNO" length="15" />
+        </property>
+        <property name="endno" type="java.lang.String">
+            <column name="ENDNO" length="15" />
+        </property>
+        <property name="nosectstate" type="java.lang.Long">
+            <column name="NOSECTSTATE" precision="3" scale="0" />
+        </property>
+        <property name="imsisectid" type="java.lang.Long">
+            <column name="IMSISECTID" precision="8" scale="0" />
+        </property>
+        <property name="nogroupid" type="java.lang.Long">
+            <column name="NOGROUPID" precision="8" scale="0" />
+        </property>
+        <property name="scpid" type="java.lang.Long">
+            <column name="SCPID" precision="8" scale="0" />
+        </property>
+		<property name="vpmnid" type="java.lang.Long">
+            <column name="VPMNID" precision="8" scale="0" />
+        </property>
+		<property name="originbrandid" type="java.lang.String">
+            <column name="ORIGINBRANDID" precision="32"/>
+        </property>
+		<property name="platformtype" type="java.lang.String">
+            <column name="PLATFORMTYPE" precision="16"/>
+        </property>
+        <property name="bossarea" type="java.lang.String">
+            <column name="BOSSAREA" length="2" />
+        </property>
+    </class>
+    <sql-query name="res.nosect.nosectDuplicateCheck">	
+	select count(*) as val from im_pr_nosect
+	where ((LPAD(beginno,20,'0') >= LPAD(:beginno,20,'0') and LPAD(endno,20,'0') &lt;= LPAD(:endno,20,'0'))
+	or (LPAD(beginno,20,'0') &lt;= LPAD(:beginno,20,'0') and LPAD(endno,20,'0') >= LPAD(:beginno,20,'0'))
+	or (LPAD(beginno,20,'0') &lt;= LPAD(:endno,20,'0') and LPAD(endno,20,'0') >= LPAD(:endno,20,'0')))
+	and  bossarea = :cityid
+	</sql-query>
+	<sql-query name="res.nosect.qryAvlNosect">
+	<![CDATA[
+		select ss.* from (
+		select s.* from im_pr_nosect s
+		where s.beginno <= :endno and s.bossarea = :cityid and s.nosectstate = 1 and length(s.beginno) = :length
+		) ss where ss.endno >= :begno order by ss.beginno asc
+	]]>
+	<return class="com.sunrise.boss.business.resmanage.nosect.persistent.NosectVO"/>
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syscode-config>
+	<!-- 注意：definition的值要唯一，推荐统一用大写字母 -->
+	<!-- 这里的VO实际上要对应数据库里的一张表 --> 
+	<!-- 注意："$" 是固定参数必须的一个定义，不能删除 -->
+	<syscode-dynamic>
+		<definition>$</definition>
+		<value-object>com.gmcc.pboss.business.base.dictitem.DictitemVO</value-object>
+		<code>dictid</code>
+		<name>dictname</name>
+	</syscode-dynamic>
+	
+	
+	<!-- 系统权限管理,勿动勿删 -->
+	<syscode-dynamic>
+		<definition>ROLE</definition>
+		<value-object>com.gmcc.pboss.business.base.role.RoleVO</value-object>
+		<code>roleid</code>
+		<name>rolename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>OPERATOR</definition>
+		<value-object>com.gmcc.pboss.business.base.operator.OperatorVO</value-object>
+		<code>operid</code>
+		<name>opername</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>RIGHTITEM</definition>
+		<value-object>com.gmcc.pboss.business.base.rightitem.RightitemVO</value-object>
+		<code>rightid</code>
+		<name>rightname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>DICTGROUP</definition>
+		<value-object>com.gmcc.pboss.business.base.dictgroup.DictgroupVO</value-object>
+		<code>groupid</code>
+		<name>groupname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>FUNCTIONITEM</definition>
+		<value-object>com.gmcc.pboss.business.base.functionitem.FunctionitemVO</value-object>
+		<code>funcid</code>
+		<name>funcname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>COMSYSTEM</definition>
+		<value-object>
+			com.gmcc.pboss.business.resource.com.ComVO
+		</value-object>
+		<code>comid</code>
+		<name>comname</name>
+	</syscode-dynamic>
+	
+	<!-- 
+		修改了Code2nameDAO的方法,详见该类说明,不能使用jop.web.struts2包来代替
+	 -->
+	
+
+	<syscode-dynamic>
+		<definition>ELMTTMPL</definition>
+		<value-object>com.gmcc.pboss.business.promotion.elmttmpl.ElmttmplVO</value-object>
+		<code>tmplid</code>
+		<name>tmplname</name>
+	</syscode-dynamic>
+	
+	<!-- 考核指标 -->
+	<syscode-dynamic>
+		<definition>EXAMINESTD</definition>
+		<value-object>com.gmcc.pboss.business.examine.examinestd.ExaminestdVO</value-object>
+		<code>exmnstdid</code>
+		<name>exmnstdname</name>
+	</syscode-dynamic>
+
+	<!-- 考核 -->
+	<syscode-dynamic>
+		<definition>EXAMINE</definition>
+		<value-object>com.gmcc.pboss.business.examine.examine.ExamineVO</value-object>
+		<code>exmnid</code>
+		<name>exmnname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>WAYIDINFO</definition>
+		<value-object>com.gmcc.pboss.business.channel.way.WayVO</value-object>
+		<code>wayid</code>
+		<name>wayname</name>
+	</syscode-dynamic>
+	
+	<syscode-dynamic>
+		<definition>EXAMINEINFO</definition>
+		<value-object>com.gmcc.pboss.business.examine.examine.ExamineVO</value-object>
+		<code>exmnid</code>
+		<name>exmnname</name>
+	</syscode-dynamic>
+	
+	<syscode-dynamic>
+		<definition>FX_RU_PROCESS</definition>
+		<value-object>com.gmcc.pboss.business.sales.process.ProcessVO</value-object>
+		<code>processid</code>
+		<name>processname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>Numtypedef</definition>
+		<value-object>com.gmcc.pboss.business.resource.numtypedef.NumtypedefVO</value-object>
+		<code>typeid</code>
+		<name>typename</name>
+	</syscode-dynamic>
+	<!-- 元素实例 -->
+	<syscode-dynamic>
+		<definition>ELETINST</definition>
+		<value-object>com.gmcc.pboss.business.promotion.elmtinst.ElmtinstVO</value-object>
+		<code>instid</code>
+		<name>instname</name>
+	</syscode-dynamic>
+	<!-- 促销方案-->
+	<syscode-dynamic>
+		<definition>SPPROPOSAL</definition>
+		<value-object>com.gmcc.pboss.business.promotion.spproposal.SpproposalVO</value-object>
+		<code>pid</code>
+		<name>pname</name>
+	</syscode-dynamic>
+	
+	<!-- 渠道资料 -->
+	<syscode-dynamic>
+		<definition>WAYTYPE</definition>
+		<value-object>
+			com.gmcc.pboss.business.channel.waytype.WaytypeVO
+		</value-object>
+		<code>waytypecode</code>
+		<name>waytypename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CH_ADIMAREA</definition>
+		<value-object>
+			com.gmcc.pboss.business.channel.adimarea.AdimareaVO
+		</value-object>
+		<code>adacode</code>
+		<name>adaname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>WAY</definition>
+		<value-object>com.gmcc.pboss.business.channel.way.WayVO</value-object>
+		<code>wayid</code>
+		<name>wayname</name>
+	</syscode-dynamic>
+	<syscode-local>
+		<definition>CH_STARTSTATE</definition>
+		<items>
+			<itemvalue code="0">未启用</itemvalue>
+			<itemvalue code="1">已启用</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-dynamic>
+		<definition>MICROAREA</definition>
+		<value-object>com.gmcc.pboss.business.channel.microarea.MicroareaVO</value-object>
+		<code>macode</code>
+		<name>maname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>SERVCENT</definition>
+		<value-object>com.gmcc.pboss.business.channel.servcent.ServcentVO</value-object>
+		<code>svccode</code>
+		<name>svcname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CNTYCOMPANY</definition>
+		<value-object>com.gmcc.pboss.business.channel.cntycompany.CntycompanyVO</value-object>
+		<code>countycompid</code>
+		<name>countycompname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CITYCOMPANY</definition>
+		<value-object>com.gmcc.pboss.business.channel.citycompany.CitycompanyVO</value-object>
+		<code>citycompid</code>
+		<name>citycompname</name>
+	</syscode-dynamic>
+	<!-- 分销管理 -->
+	<syscode-dynamic>
+		<definition>CUSTWAYTYPE</definition>
+		<value-object>
+			com.gmcc.pboss.business.channel.custwaytype.CustwaytypeVO
+		</value-object>
+		<code>custwaytypecode</code>
+		<name>custwaytypename</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>ADIMAREA</definition>
+		<value-object>
+			com.gmcc.pboss.business.channel.adimarea.AdimareaVO
+		</value-object>
+		<code>adacode</code>
+		<name>adaname</name>
+	</syscode-dynamic>
+	
+	<syscode-local>
+		<definition>POSTINFO</definition>
+		<items>
+			<itemvalue code="60">渠道经理</itemvalue>
+			<itemvalue code="64">战略层渠道经理</itemvalue>
+			<itemvalue code="65">紧密层渠道经理</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>OPTYPE</definition>
+		<items>
+			<itemvalue code="INSERT">增加</itemvalue>
+			<itemvalue code="UPDATE">修改</itemvalue>
+			<itemvalue code="DELETE">删除</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>OPTYPE2</definition>
+		<items>
+			<itemvalue code="create">增加</itemvalue>
+			<itemvalue code="update">修改</itemvalue>
+			<itemvalue code="remove">删除</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>SUCCESS</definition>
+		<items>
+			<itemvalue code="success">成功</itemvalue>
+			<itemvalue code="failure">失败</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>STATE</definition>
+		<items>
+			<itemvalue code="1">有效</itemvalue>
+			<itemvalue code="0">无效</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>CH_YESORNO</definition>
+		<items>
+			<itemvalue code="0">否</itemvalue>
+			<itemvalue code="1">是</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>OPERTYPE</definition>
+		<items>
+			<itemvalue code="OPRT10">普通操作员</itemvalue>
+			<itemvalue code="OPRT20">班长</itemvalue>
+			<itemvalue code="OPRT31">大客户省级管理员</itemvalue>
+			<itemvalue code="OPRT32">大客户地市级管理员</itemvalue>
+			<itemvalue code="OPRT33">大客户区县级管理员</itemvalue>
+			<itemvalue code="OPRT34">高级客户经理</itemvalue>
+			<itemvalue code="OPRT35">客户经理</itemvalue>
+			<itemvalue code="OPRT50">积分店员</itemvalue>
+			<itemvalue code="OPRT80">地市计费中心操作员</itemvalue>
+			<itemvalue code="OPRT83">省计费中心操作员</itemvalue>
+			<itemvalue code="OPRT86">华为公司操作员</itemvalue>
+			<itemvalue code="OPRT88">营业厅主任</itemvalue>
+			<itemvalue code="OPRT89">乡镇营业厅</itemvalue>
+			<itemvalue code="OPRT90">渠道经理</itemvalue>
+			<itemvalue code="OPRT91">渠道经理主管</itemvalue>
+			<itemvalue code="OPRT99">自助终端</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>WEEKDAY</definition>
+		<items>
+			<itemvalue code="1">星期日</itemvalue>
+			<itemvalue code="2">星期一</itemvalue>
+			<itemvalue code="3">星期二</itemvalue>
+			<itemvalue code="4">星期三</itemvalue>
+			<itemvalue code="5">星期四</itemvalue>
+			<itemvalue code="6">星期五</itemvalue>
+			<itemvalue code="7">星期六</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>FILTERMODE</definition>
+		<items>
+			<itemvalue code="0">保留</itemvalue>
+			<itemvalue code="1">去除</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<!-- 沟通管理 -->
+	<syscode-local>
+		<definition>SMSNOTIFY</definition>
+		<items>
+			<itemvalue code="1">是</itemvalue>
+			<itemvalue code="0">否</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>NDAPPROVAL</definition>
+		<items>
+			<itemvalue code="1">是</itemvalue>
+			<itemvalue code="0">否</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>WAYSUBTYPE</definition>
+		<items>
+			<itemvalue code="PSAL">指定专营店</itemvalue>
+			<itemvalue code="SAGT">特约代理点</itemvalue>
+			<itemvalue code="FD">FD服务商</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<!-- 分销管理 -->
+	<syscode-local>
+		<definition>ISACHIEVE</definition>
+		<items>
+			<itemvalue code="1">是</itemvalue>
+			<itemvalue code="0">否</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>IM_FXCOMCATEGORY</definition>
+		<items>
+			<itemvalue code="*">*</itemvalue>
+			<itemvalue code="50DG">动感地带50元套卡</itemvalue>
+			<itemvalue code="55DG">动感地带55元套卡</itemvalue>
+			<itemvalue code="100DG">动感地带100元套卡</itemvalue>
+			<itemvalue code="50SZ">神州行50元套卡</itemvalue>
+			<itemvalue code="55SZ">神州行55元套卡</itemvalue>
+			<itemvalue code="100SZ">神州行100元套卡</itemvalue>
+			<itemvalue code="50DZ">大众卡50元套卡</itemvalue>
+			<itemvalue code="55DZ">大众卡55元套卡</itemvalue>
+			<itemvalue code="100DZ">大众卡100元套卡</itemvalue>
+			<itemvalue code="30CZ">充值卡30元</itemvalue>
+			<itemvalue code="50CZ">充值卡50元</itemvalue>
+			<itemvalue code="100CZ">充值卡100元</itemvalue>
+			<itemvalue code="300CZ">充值卡300元</itemvalue>
+		</items>
+	</syscode-local>
+		<syscode-local>
+		<definition>CITYNAME</definition>
+		<items>
+			<itemvalue code="GD">广东</itemvalue>
+			<itemvalue code="GZ">广州</itemvalue>
+			<itemvalue code="SZ">深圳</itemvalue>
+			<itemvalue code="ZH">珠海</itemvalue>
+			<itemvalue code="FS">佛山</itemvalue>
+			<itemvalue code="ST">汕头</itemvalue>
+			<itemvalue code="HZ">惠州</itemvalue>
+			<itemvalue code="ZJ">湛江</itemvalue>
+			<itemvalue code="JM">江门</itemvalue>
+			<itemvalue code="ZQ">肇庆</itemvalue>
+			<itemvalue code="SG">韶关</itemvalue>
+			<itemvalue code="MZ">梅州</itemvalue>
+			<itemvalue code="DG">东莞</itemvalue>
+			<itemvalue code="ZS">中山</itemvalue>
+			<itemvalue code="MM">茂名</itemvalue>
+			<itemvalue code="SW">汕尾</itemvalue>
+			<itemvalue code="CZ">潮州</itemvalue>
+			<itemvalue code="JY">揭阳</itemvalue>
+			<itemvalue code="YJ">阳江</itemvalue>
+			<itemvalue code="QY">清远</itemvalue>
+			<itemvalue code="HY">河源</itemvalue>
+			<itemvalue code="YF">云浮</itemvalue>
+			<itemvalue code="DB_COMMON">省公司</itemvalue>
+		</items>
+	</syscode-local>
+</syscode-config>
+

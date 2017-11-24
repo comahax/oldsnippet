@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.emptysim.EmptysimVO" table="IM_FX_EMPTYSIM">
+<id column="EMPTYNO" length="21" name="emptyno" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CARDMILL" length="6" name="cardmill" type="java.lang.Integer"/>
+<property column="ICCID" length="21" name="iccid" type="java.lang.String"/>
+<property column="PUKNO" length="8" name="pukno" type="java.lang.String"/>
+<property column="BEGINTIME" length="7" name="begintime" type="java.util.Date"/>
+<property column="STOPTIME" length="7" name="stoptime" type="java.util.Date"/>
+<property column="INTIME" length="7" name="intime" not-null="true" type="java.util.Date"/>
+<property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="SIMTYPE" length="6" name="simtype" not-null="true" type="java.lang.Integer"/>
+<property column="USESTATE" length="3" name="usestate" not-null="true" type="java.lang.Short"/>
+<property column="BACKUP" length="3" name="backup" type="java.lang.Short"/>
+<property column="ENTERTIME" length="7" name="entertime" type="java.util.Date"/>
+<property column="APPLYTIME" length="7" name="applytime" type="java.util.Date"/>
+<property column="BOSSSALETIME" length="7" name="bosssaletime" type="java.util.Date"/> 
+<property column="BATCHNO" length="8" name="batchno" type="java.lang.String"/>
+<property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+</class>
+<!-- 关联渠道表，获取空白卡明细列表 -->
+<sql-query name="com.gmcc.pboss.business.resource.emptysim.doList">
+<return class="com.gmcc.pboss.business.resource.emptysim.EmptysimVO"/>
+ select a.EMPTYNO,a.COMID,
+	 a.CARDMILL,
+	 a.ICCID,
+	 a.PUKNO,
+	 a.BEGINTIME,
+	 a.STOPTIME,
+	 a.INTIME,
+	 a.WAYID,
+	 a.SIMTYPE,
+	 a.USESTATE,
+	 a.BACKUP,
+	 a.ENTERTIME,
+	 a.APPLYTIME,
+	 a.BOSSSALETIME, 
+	 a.oprcode,
+	 w.countyid as countyid
+	from IM_FX_EMPTYSIM a,CH_PW_WAY w
+	where a.WAYID=w.WAYID
+</sql-query>
+<!-- 空白SIM卡库存统计 -->
+<sql-query name="com.gmcc.pboss.business.resource.emptysim.doStat"> 
+  select nvl(w.countyid, '其它') countyid,
+       nvl(w.wayid, '其它') wayid, 
+        e.usestate usestate,
+       count(1) ncount
+  from IM_FX_EMPTYSIM e, CH_PW_WAY w
+ where e.usestate &lt;&gt; 2
+   and e.wayid = w.wayid
+ group by w.countyid, w.wayid, e.usestate
+ order by w.countyid, w.wayid, e.usestate
+</sql-query>
+</hibernate-mapping>

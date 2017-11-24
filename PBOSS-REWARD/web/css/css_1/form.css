@@ -1,0 +1,250 @@
+/*====================================================*/
+/*					 顶部客户手机表单  	              */
+/*====================================================*/
+.form_inputsom {
+	width:100%;
+	border-top:#B2B2B2 solid 1px;
+	border-bottom:#B2B2B2 solid 1px;
+	background:#EEEEEE;
+	height:32px;
+	padding-top:6px;
+	padding-left:20px;
+}
+.form_text_mobileNo {
+	width:160px; height:16px;
+	font-size:12px;
+	padding-top:2px;
+	padding-left:2px;
+}
+.form_index_title {
+	border:#000 solid 0px;
+	background:#EEEEEE;
+	font-size:12px;
+	colro:#000983;
+}
+.form_select {
+	width:160px;
+}
+/*====================================================*/
+/*					   业务输入表格                   */
+/*====================================================*/
+.form_table {	
+	width:98%;
+	font-size:12px;
+	color: #2F3732;;
+	border:#CDCDCD solid 1px;
+	border-collapse:collapse;
+	margin-top:10px;
+	margin-bottom:4px;
+}
+.form_table tr {
+	background:expression(this.rowIndex%2==0 ? '#E5F5FA' : '#F7FCFD');
+}
+.form_table td {
+	font-size: 12px;
+	font-weight: normal;
+	color: #2F3732;
+	height: 22px;
+	border:#000 solid 0px;
+	
+	border-right:#CDCDCD inset 1px;
+	border-bottom:#CDCDCD solid 1px;
+	padding:0px 2px 0px 2px;
+	background:#F8F8F8;
+	vertical-align:middle;
+}
+.form_table_left {
+	text-align:left;
+	padding-left:3px;
+	line-height:1.5;
+}
+.form_table_left_bold {
+	text-align:left; 
+	padding-left:3px;
+	line-height:1.5;
+	font-weight:bold;
+}
+.form_table_right {
+	text-align:right;
+	padding-right:40px;
+	padding-left:5px;
+	padding-right:5px;
+}
+.form_table_center {
+	text-align:center;
+	padding-left:5px;
+	padding-right:5px;
+}
+.form_table_pages {
+	text-align:right;
+	height:30px;
+	padding-left:5px;
+	padding-right:50px;
+}
+/*====================================================*/
+/*					   业务输入表单                   */
+/*====================================================*/
+.form_input_1x {
+	width:150px;
+	height:18px;
+	padding-left:2px;
+	padding-top:2px;
+	behavior:expression('url(' + contextPath + '/css/css_1/insertiontable.htc)');
+	background-color: #FFFFFF;
+	
+}
+.form_input_1x_none {
+	width:150px;
+	height:18px;
+	padding-left:2px;
+	padding-top:2px;
+	border:#000 solid 0px;
+	background:;
+}
+select {
+	width:150px;
+	height:2px;
+}
+.form_input_2x {
+	width:300px;
+	height:18px;
+	padding-left:2px;
+	padding-top:2px;
+}
+.form_input_3x {
+	width:450px;
+	height:18px;
+	padding-left:2px;
+	padding-top:2px;
+}
+.form_input_4x {
+	width:600px;
+	height:18px;
+	padding-left:2px;
+	padding-top:2px;
+}
+.form_input_5x {
+	width:730px;
+	height:18px;
+	padding-left:2px;
+	padding-top:2px;
+}
+.form_input_year {
+	width:100px;
+	height:18px;
+	padding-left:2px;
+	padding-top:2px;
+}
+.form_input_point {
+	width:40px;
+	height:18px;
+	padding-left:2px;
+	padding-top:2px;
+}
+.form_select_on {
+
+}
+
+/**********************/
+.form_selects_on {
+	width:160px;
+	font-size:12px;
+}
+.form_selects_off {
+	width:160px;
+	font-size:12px;
+}
+.default_selects_readonly {
+	width:160px;
+	font-size:12px;
+}
+.form_selects_on_2x {
+	width:230px;
+	font-size:12px;
+}
+.form_selects_off_2x {
+	width:230px;
+	font-size:12px;
+}
+.form_selects_on_3x {
+	width:420px;
+	font-size:12px;
+}
+.default_selects_readonly_2x {
+	width:230px;
+	font-size:12px;
+}
+.form_select_title{
+	width:45%;
+}
+.form_selects_y {
+	width:80px;
+}
+.form_selects_m {
+	width:40px;
+}
+.form_input_files {
+	font-size:12px;
+	border:#9EAAB4 solid 1px;
+	background:#fff;
+	height:21px;
+	width:450px;
+	padding-top:3px;
+	padding-left:4px;
+}
+
+.form_textarea_on {
+	width:525px; height:100px;
+	font-size:12px;
+	padding:5px 5px 5px 5px;
+	border:#9EAAB4 solid 1px;
+}
+.form_textarea_on_2 {
+	width:310px; height:60px;
+	font-size:12px;
+	padding:5px 5px 5px 5px;
+	border:#9EAAB4 solid 1px;
+}
+.form_textarea_on_3 {
+	width:525px; height:300px;
+	font-size:12px;
+	padding:5px 5px 5px 5px;
+	border:#9EAAB4 solid 1px;
+}
+.form_textarea_on_4 {
+	width:400px; height:60px;
+	font-size:12px;
+	padding:5px 5px 5px 5px;
+	border:#9EAAB4 solid 1px;
+}
+/*====================================================*/
+/*		       翻页表格类型                   */
+/*====================================================*/
+.page_table {
+	width:98%;
+	font-size:12px;
+	color:#000;
+	margin-top:5px;
+}
+.page_table tr {
+	height:20px;
+}
+.page_table td {
+	padding-top:0px;
+	padding-bottom:0px;
+	height:25px;
+}
+.clickbutton {
+	width:20px;
+	height:18px;
+	border:#999 solid 1px;
+	cursor:hand;
+}
+.multi {
+	width:200px;
+	height:150px;
+	border:#9EAAB4 solid 1px;
+}
+.am {
+	float:left;
+}

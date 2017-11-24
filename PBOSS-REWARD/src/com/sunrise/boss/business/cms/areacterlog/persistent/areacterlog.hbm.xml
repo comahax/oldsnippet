@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.areacterlog.persistent.AreacterlogVO" table="CH_PW_AREACTERLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_PW_AREACTERLOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" not-null="true" type="java.util.Date"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="CENTERID" length="14" name="centerid" type="java.lang.String"/>
+<property column="CENTERNAME" length="64" name="centername" type="java.lang.String"/>
+<property column="AREATYPE" length="4" name="areatype" type="java.lang.Short"/>
+<property column="AGENT" length="64" name="agent" type="java.lang.String"/>
+<property column="BILLINGCODE" length="5" name="billingcode" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

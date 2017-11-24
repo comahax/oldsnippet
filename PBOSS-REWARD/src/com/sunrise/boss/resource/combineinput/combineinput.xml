@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataconfig>
+	
+	<config>
+		<definition>BILLTYPE</definition>
+		<classname>com.sunrise.boss.ui.commons.combineinput.impl.BilltypeSelectsData</classname>
+		<title>选择优惠范围</title>
+		<typename1>帐单类型</typename1>
+		<typename2>帐单科目</typename2>
+		<description>说明：允许“帐单类型”和“帐单科目”自由组合，允许只定义帐单类型或者只定义帐单科目，&lt;br&gt;允许一个帐单类型对应多个帐单科目或者一个帐单科目对应多个帐单类型，先定义的优惠时优先级就越高。</description>
+		<relateflag>true</relateflag>
+		<symbol_mid></symbol_mid>
+		<symbol_tail>;</symbol_tail>
+		<return_page>select</return_page>
+	</config>
+	
+	<config>
+		<definition>REWARDBUSSSELECTS</definition>
+		<classname>com.sunrise.boss.ui.commons.combineinput.impl.RewardBussSelectsData</classname>
+		<title>选择入酬金池业务范围</title>
+		<typename1></typename1>
+		<typename2>可选业务</typename2>
+		<description></description>
+		<relateflag>false</relateflag>
+		<symbol_mid></symbol_mid>
+		<symbol_tail>;</symbol_tail>
+		<return_page>select2</return_page>
+	</config>
+	
+</dataconfig>

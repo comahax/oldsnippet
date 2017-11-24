@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtyfailrecord.persistent.ZjtyFailrecordVO" table="CH_ZJTY_FAILRECORD">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="SRCSEQ" length="15" name="srcseq" type="java.lang.String"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="OPNID" length="32" name="opnid" not-null="true" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="MOBILE" length="11" name="mobile" not-null="true" type="java.lang.String"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="BRAND" length="3" name="brand" type="java.lang.Short"/>
+<property column="CREATTIME" length="7" name="creattime" not-null="true" type="java.util.Date"/>
+<property column="SRC" length="200" name="src" type="java.lang.String"/>
+<property column="RULEID" length="32" name="ruleid" not-null="true" type="java.lang.String"/>
+<property column="RULEITEMID" length="32" name="ruleitemid" not-null="true" type="java.lang.String"/>
+<property column="ADTCODE" length="32" name="adtcode" type="java.lang.String"/>
+<property column="ADTREMARK" length="200" name="adtremark" type="java.lang.String"/>
+<property column="OID" length="32" name="oid" type="java.lang.String"/>
+<property column="NONCYC" length="3" name="noncyc" type="java.lang.Short"/>
+<property column="BATCHNO" length="6" name="batchno" type="java.lang.String"/>
+<property column="CALCOPNID" length="18" name="calcopnid" type="java.lang.String"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="ADTTTIME" length="7" name="adtttime" type="java.util.Date"/>
+<property column="ADTFLAG" length="2" name="adtflag" type="java.lang.Short"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="BAKINFO" length="132" name="bakinfo" type="java.lang.String"/>
+<property column="BAKINFO2" length="132" name="bakinfo2" type="java.lang.String"/>
+<property column="BAKINFO3" length="14" name="bakinfo3" type="java.lang.Double"/>
+<property column="WRAPFEE" length="10" name="wrapfee" type="java.lang.Double"/>
+<property column="PRODID" length="32" name="prodid" type="java.lang.String"/>
+<property column="BAKINFO4" length="14" name="bakinfo4" type="java.lang.Double"/>
+<property column="BAKINFO5" length="14" name="bakinfo5" type="java.lang.Double"/> 
+<property column="BAKINFO6" length="32" name="bakinfo6" type="java.lang.String"/>
+<property column="BAKINFO7" length="32" name="bakinfo7" type="java.lang.String"/>
+<property column="BAKINFO8" length="32" name="bakinfo8" type="java.lang.String"/>
+<property column="BAKINFO9" length="32" name="bakinfo9" type="java.lang.String"/>
+<property column="BAKINFO10" length="32" name="bakinfo10" type="java.lang.String"/>  
+</class>
+</hibernate-mapping>

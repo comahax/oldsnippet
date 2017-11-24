@@ -1,0 +1,28 @@
+PBOSS后台独立程序框架是从PBOSS前台移植过来的。
+做了部分修改。
+1.简化了多数据库操作，后台程序一般只进行单数据库操作
+
+2.框架初始化时使用spring容器2次载入技术：
+	第一次载入为空容器，为sessionFactory注入提供准备
+	第二次载入事务、日志等相关Bean
+	
+3.对于事务管理提供两种可选方式：
+	spring容器管理事务
+	人工管理事务 ：需要在hibernate.cfg.xml上添加一句代码 <property name="hibernate.current_session_context_class">com.sunrise.jop.common.spring.JopSessionContext</property>
+	
+4.提供后台程序基类：BgBase
+	具体用法可以参考com.gmcc.pboss.BgProcess.demo.DemoProcess
+	要求每个独立程序单独使用一个hibernate.cfg.xml文件。
+	个性化配置文件放在conf目录下
+	
+5.提供后台程序基类：MdbgBase
+	具体用法可以参考com.gmcc.pboss.BgProcess.service.sms.BossService
+    不通过设置第一个参数来分地市程序,而通过第一次查询对user的cityid进行赋值,通常只启一个程序就行了,所以参数固定为DB_COMMON
+    日志应该写在BO层,从MdbgBgBase.getLogger获取
+    要求每个独立程序单独使用一个hibernate.cfg.xml文件。
+	个性化配置文件放在conf目录下
+    数据源通过sessionFactory注入,正式环境记得修改application3.xml放开所有sessionFactory
+	<map key-type="java.lang.String">
+		<entry key="ZS" value-ref="sessionFactory_DB_ZS" />
+		...
+	</map>

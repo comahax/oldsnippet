@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.stdreward.persistent.StdrewardVO" table="CH_PW_STDREWARD">
+<id name="rewardid" column="REWARDID" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_PW_STDREWARD_SEQ</param>
+	</generator>
+</id>
+<property name="rewardname" column="REWARDNAME" type="java.lang.String" length="80"/>
+<property name="rewardproj" column="REWARDPROJ" type="java.lang.Short" length="3"/>
+<property name="rewardtype" column="REWARDTYPE" type="java.lang.Short" length="3"/>
+<property name="startdate" column="STARTDATE" type="java.util.Date" length="7"/>
+<property name="stopdate" column="STOPDATE" type="java.util.Date" length="7"/>
+<property name="memo" column="MEMO" type="java.lang.String" length="512"/>
+</class>
+</hibernate-mapping>

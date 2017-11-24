@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="/qsmanage/paramstest/testopr/TestOprForm" type="com.sunrise.boss.ui.qsmanage.paramstest.testopr.TestOprForm"/>
+		<form-bean name="/qsmanage/paramstest/testmobileno/TestMobilenoForm" type="com.sunrise.boss.ui.qsmanage.paramstest.testmobileno.TestMobilenoForm"/>
+		<form-bean name="/qsmanage/paramsmanage/chgreglog/ChgReglogForm" type="com.sunrise.boss.ui.qsmanage.paramsmanage.chgreglog.ChgReglogForm"/>
+		<form-bean name="/qsmanage/paramsmanage/chgreq/ChgReqForm" type="com.sunrise.boss.ui.qsmanage.paramsmanage.chgreq.ChgReqForm"/>
+		<form-bean name="/qsmanage/paramsmanage/chghis/ChgHisForm" type="com.sunrise.boss.ui.qsmanage.paramsmanage.chghis.ChgHisForm"/>
+		<form-bean name="/bcss/syncdata/wydata/WydataForm" type="com.sunrise.boss.ui.bcss.syncdata.wydata.WydataForm"/>
+		<form-bean name="/bcss/syncdata/wydatalog/WydatalogForm" type="com.sunrise.boss.ui.bcss.syncdata.wydatalog.WydatalogForm"/>
+		<form-bean name="/qsmanage/paramsmanage/acctgroup/AcctGroupForm" type="com.sunrise.boss.ui.qsmanage.paramsmanage.acctgroup.AcctGroupForm"/>
+		<form-bean name="/qsmanage/paramsmanage/eboxgroup/EboxGroupForm" type="com.sunrise.boss.ui.qsmanage.paramsmanage.eboxgroup.EboxGroupForm"/>
+		<form-bean name="/qsmanage/paramsmanage/batchparamset/BatchParamSetForm" type="com.sunrise.boss.ui.qsmanage.paramsmanage.batchparamset.BatchParamSetForm"/>
+	</form-beans>
+	<global-forwards>
+		<forward name="excelout" path="/commons/excelout.jsp" />
+		<forward name="txtout" path="/commons/txtout.jsp" />
+	</global-forwards>
+	<action-mappings>
+		<action name="/qsmanage/paramstest/testopr/TestOprForm" path="/qsmanage/paramstest/testopr" scope="request" type="com.sunrise.boss.ui.qsmanage.paramstest.testopr.TestOprAction">
+			<forward name="list" path="/qsmanage/paramstest/testopr/list.jsp"></forward>
+			<forward name="content" path="/qsmanage/paramstest/testopr/content.jsp"></forward>
+		</action>
+		<action name="/qsmanage/paramstest/testmobileno/TestMobilenoForm" path="/qsmanage/paramstest/testmobileno" scope="request" type="com.sunrise.boss.ui.qsmanage.paramstest.testmobileno.TestMobilenoAction">
+			<forward name="list" path="/qsmanage/paramstest/testmobileno/list.jsp"></forward>
+			<forward name="content" path="/qsmanage/paramstest/testmobileno/content.jsp"></forward>
+		</action>
+		<action name="/qsmanage/paramsmanage/chgreglog/ChgReglogForm" path="/qsmanage/paramsmanage/chgreglog" scope="request" type="com.sunrise.boss.ui.qsmanage.paramsmanage.chgreglog.ChgReglogAction">
+			<forward name="list" path="/qsmanage/paramsmanage/chgreglog/list.jsp"></forward>
+		</action>
+		<action name="/qsmanage/paramsmanage/chgreq/ChgReqForm" path="/qsmanage/paramsmanage/chgreq" scope="request" type="com.sunrise.boss.ui.qsmanage.paramsmanage.chgreq.ChgReqAction">
+			<forward name="list" path="/qsmanage/paramsmanage/chgreq/list.jsp"></forward>
+			<forward name="content" path="/qsmanage/paramsmanage/chgreq/content.jsp"></forward>
+			<forward name="batchcontent" path="/qsmanage/paramsmanage/chgreq/batchcontent.jsp"></forward>
+			<forward name="listdeta" path="/qsmanage/paramsmanage/chgreq/listdeta.jsp"></forward>
+			<forward name="listbatch" path="/qsmanage/paramsmanage/chgreq/listbatch.jsp"></forward>
+			<forward name="listbatchdeta" path="/qsmanage/paramsmanage/chgreq/listbatchdeta.jsp"></forward>
+		</action>
+		<action name="/qsmanage/paramsmanage/chghis/ChgHisForm" path="/qsmanage/paramsmanage/chghis" scope="request" type="com.sunrise.boss.ui.qsmanage.paramsmanage.chghis.ChgHisAction">
+			<forward name="list" path="/qsmanage/paramsmanage/chghis/list.jsp"></forward>
+			<forward name="listdeta" path="/qsmanage/paramsmanage/chghis/listdeta.jsp"></forward>
+		</action>
+		<action name="/bcss/syncdata/wydata/WydataForm" path="/bcss/syncdata/wydata" scope="request" type="com.sunrise.boss.ui.bcss.syncdata.wydata.WydataAction">
+			<forward name="list" path="/bcss/syncdata/wydata/list.jsp"></forward>
+		</action>
+		<action name="/bcss/syncdata/wydatalog/WydatalogForm" path="/bcss/syncdata/wydatalog" scope="request" type="com.sunrise.boss.ui.bcss.syncdata.wydatalog.WydatalogAction">
+			<forward name="list" path="/bcss/syncdata/wydatalog/list.jsp"></forward>
+		</action>
+		<action name="/qsmanage/paramsmanage/acctgroup/AcctGroupForm" path="/qsmanage/paramsmanage/acctgroup" scope="request" type="com.sunrise.boss.ui.qsmanage.paramsmanage.acctgroup.AcctGroupAction">
+			<forward name="acct" path="/qsmanage/paramsmanage/acctgroup/acct.jsp"></forward>
+			<forward name="acctset" path="/qsmanage/paramsmanage/acctgroup/acctset.jsp"></forward>
+			<forward name="acctincome" path="/qsmanage/paramsmanage/acctgroup/acctincome.jsp"></forward>
+			<forward name="accttyperel" path="/qsmanage/paramsmanage/acctgroup/accttyperel.jsp"></forward>
+			<forward name="billacct" path="/qsmanage/paramsmanage/acctgroup/billacct.jsp"></forward>
+			<forward name="billacctnew" path="/qsmanage/paramsmanage/acctgroup/billacctnew.jsp"></forward>
+			<forward name="invitemacctnew" path="/qsmanage/paramsmanage/acctgroup/invitemacctnew.jsp"></forward>
+			<forward name="woffrule" path="/qsmanage/paramsmanage/acctgroup/woffrule.jsp"></forward>
+		</action>
+		<action name="/qsmanage/paramsmanage/eboxgroup/EboxGroupForm" path="/qsmanage/paramsmanage/eboxgroup" scope="request" type="com.sunrise.boss.ui.qsmanage.paramsmanage.eboxgroup.EboxGroupAction">
+			<forward name="eboxunit" path="/qsmanage/paramsmanage/eboxgroup/eboxunit.jsp"></forward>
+			<forward name="billeboxnew" path="/qsmanage/paramsmanage/eboxgroup/billeboxnew.jsp"></forward>
+			<forward name="eboxtyperel" path="/qsmanage/paramsmanage/eboxgroup/eboxtyperel.jsp"></forward>
+			<forward name="woffrule" path="/qsmanage/paramsmanage/eboxgroup/woffrule.jsp"></forward>
+		</action>
+		
+		<action name="/qsmanage/paramsmanage/batchparamset/BatchParamSetForm"
+			path="/qsmanage/paramsmanage/batchparamset/upload" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.upload.UploadFileAction">
+			<forward name="success" path="/qsmanage/paramsmanage/batchparamset/batchparamset.jsp" />
+			<forward name="error" path="/qsmanage/paramsmanage/batchparamset/batchparamset.jsp" />
+		</action>
+		<action name="/qsmanage/paramsmanage/batchparamset/BatchParamSetForm"
+			path="/qsmanage/paramsmanage/batchparamset/process" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/qsmanage/paramsmanage/batchparamset/batchparamset.jsp" />
+			<forward name="error" path="/qsmanage/paramsmanage/batchparamset/batchparamset.jsp" />
+		</action>
+		
+		<action name="/qsmanage/paramsmanage/batchparamset/BatchParamSetForm"
+			path="/qsmanage/paramsmanage/paramset" scope="request"
+			type="com.sunrise.boss.ui.qsmanage.paramsmanage.batchparamset.ParamSetAction">
+			<forward name="listdeta" path="/qsmanage/paramsmanage/batchparamset/listdeta.jsp"></forward>
+		</action>
+		
+	</action-mappings>
+	<message-resources parameter="com.sunrise.boss.resource.i18n.qsmanage.paramstest.Testopr" key="testopr" null="false" />
+	<message-resources parameter="com.sunrise.boss.resource.i18n.qsmanage.paramstest.Testmobileno" key="testmobileno" null="false" />
+	<message-resources parameter="com.sunrise.boss.resource.i18n.qsmanage.paramsmanage.ChgReglog" key="chgreglog" null="false" />
+	<message-resources parameter="com.sunrise.boss.resource.i18n.qsmanage.paramsmanage.ChgReq" key="chgreq" null="false" />
+	<message-resources parameter="com.sunrise.boss.resource.i18n.qsmanage.paramsmanage.ChgHis" key="chghis" null="false" />
+	<message-resources parameter="com.sunrise.boss.resource.i18n.bcss.syncdata.Wydata" key="wydata" null="false" />
+	<message-resources parameter="com.sunrise.boss.resource.i18n.bcss.syncdata.Wydatalog" key="wydatalog" null="false" />
+	<message-resources parameter="com.sunrise.boss.resource.i18n.qsmanage.paramsmanage.AcctGroup" key="acctgroup" null="false" />
+	<message-resources parameter="com.sunrise.boss.resource.i18n.qsmanage.paramsmanage.BatchParamSet" key="batchparamset" null="false" />
+	
+</struts-config>
+	

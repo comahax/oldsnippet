@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.areagroupinfo.persistent.AreaGroupInfoVO" table="PC_PS_AREAGRPINF">
+<id column="AREAGROUPID" name="areagroupid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">PC_PS_AREAGROUPINFO_SEQ</param>
+</generator>
+</id>
+<property column="AREATYPE" length="32" name="areatype" type="java.lang.String"/>
+<property column="STATE" length="1" name="state" not-null="true" type="java.lang.Byte"/>
+<property column="REMARK" length="50" name="remark" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

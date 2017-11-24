@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+  <!-- 以下仅供参考 -->
+  <definition name="main" page="/layout/mainLayout.jsp">
+    <put content="深圳移动动感地带客户管理系统" direct="true" name="title" />
+    <put content="/head1.jsp" direct="true" name="header" />
+    <put content="/jsp1.jsp" direct="true" name="menu" />
+    <put content="/body.htm" direct="true" name="body" />
+  </definition>
+ 
+  <definition name="_sheet_content_report" page="/resmanage/oprresmanage/report/sheet.jsp" controllerUrl="/resmanage/oprresmanage/report.do?CMD=SHEETCONTENT">
+  	<put name="wayname" value=""/>
+    <put name="oprtype" value=""/>
+    <put name="name" value=""/>
+    <put name="createtime" value=""/>
+    <put name="sheetid" value=""/>
+    <put name="wayid" value=""/>
+    <put name="memo" value=""/>
+  </definition>
+   <!-- 
+  <definition name="_sheet_head_report" page="/resmanage/oprresmanage/report/head.jsp" controllerUrl="/resmanage/oprresmanage/report.do?CMD=HEAD">
+    <put name="wayname" value=""/>
+    <put name="oprtype" value=""/>
+    <put name="name" value=""/>
+    <put name="createtime" value=""/>
+    <put name="sheetid" value=""/>
+    <put name="wayid" value=""/>
+  </definition>
+  <definition name="_sheet_body_report" page="/resmanage/oprresmanage/report/body.jsp" controllerUrl="/resmanage/oprresmanage/report.do?CMD=BODY">
+  </definition>
+
+  <definition name="_sheet_foot_report" page="/resmanage/oprresmanage/report/foot.jsp" controllerUrl="/resmanage/oprresmanage/report.do?CMD=FOOT">
+    <put name="memo" value=""/>
+  </definition>
+     -->
+  <definition name="_sheet_report" page="/resmanage/oprresmanage/report/report.jsp" controllerUrl="/resmanage/oprresmanage/report.do?CMD=SHEET">
+  	<put name="head" value="" type="definition"/>
+  	<put name="body" value="" type="definition"/>
+  	<put name="foot" value="" type="definition"/>
+  	<put name="content" value="" type="definition"/>
+  </definition>
+  
+   <definition name="_auditsheet_content_report" page="/resmanage/oprresmanage/report/auditsheet.jsp" controllerUrl="/resmanage/oprresmanage/report.do?CMD=AUDITSHEETCONTENT">
+  	<put name="wayname" value=""/>
+    <put name="oprtype" value=""/>
+    <put name="name" value=""/>
+    <put name="createtime" value=""/>
+    <put name="sheetid" value=""/>
+    <put name="wayid" value=""/>
+    <put name="memo" value=""/>
+  </definition>
+ <!-- 
+  <definition name="Workf" path="/customer/query/workf/layout.jsp">
+    <put name="title" value="工单查询" />
+    <put name="selectedIndex" value="0" />
+    <put name="parameterName" value="selected" />
+    <putList name="tabList">
+      <item link="/customer/query/workf/workf.jsp" value="工 单 资 料" />
+      <item link="/customer/query/workf/workfincharge.jsp" value="工单充值明细" />
+      <item link="/customer/query/workf/workfintegral.jsp" value="工单积分明细" />
+      <item link="/customer/query/workf/workfeedeta.jsp" value="工单收费明细" />
+      <item link="/customer/query/workf/workfrelative.jsp" value="工单密友号码" />
+      <item link="/customer/query/workf/workfservfunc.jsp" value="工单服务功能" />
+      <item link="/customer/query/workf/workfservprod.jsp" value="工单服务产品" />
+      <item link="/customer/query/workf/workfservsuit.jsp" value="工单个性化信息" />
+      <item link="/customer/query/workf/workfyxplan.jsp" value="工单营销方案" />
+      <item link="/customer/query/workf/workfcust.jsp" value="工单客户状态明细" />
+      <item link="/customer/query/workf/workfclub.jsp" value="工单社区成员" />
+      <item link="/customer/query/workf/workfeboxunitdet.jsp" value="工单客户帐目明细" />
+      <item link="/customer/query/workf/workfcomsale.jsp" value="工单商品明细" />
+      <item link="/customer/query/workf/workftc.jsp" value="工单套餐变更明细" />
+    </putList>
+  </definition> 
+  --> 
+</tiles-definitions>

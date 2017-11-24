@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.costcard.persistent.CostcardVO" table="CH_PW_COSTCARD">
+<composite-id>
+<key-property name="calcmonth" column="CALCMONTH" type="java.lang.String" length="8"/>
+<key-property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<key-property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+</composite-id>
+<property name="salenum" column="SALENUM" type="java.lang.Integer" length="8"/>
+</class>
+</hibernate-mapping>

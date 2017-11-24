@@ -1,0 +1,98 @@
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<meta name="author" content="www.sunrise.com" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<link href="../../css/css_1/interfacebase.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="../../css/css_1/navigate.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="../../css/css_1/common.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="../..s/css/css_1/form.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="../../css/css_1/button.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="../../css/css_1/table.css" rel="stylesheet" type="text/css"
+	media="all" />
+<script src="../../js/pub/util.js"></script>
+<html>
+	<head>
+		<title>【填写指南】</title>
+	</head>
+
+	<body onload="loadforiframe();">
+		<div class="table_container">
+			<div class="table_div">
+				<table class="top_table">
+					<tr>
+						<td>
+							【填写指南】
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--####################################################################################-->
+			<!--####################################################################################-->
+			<div class="table_div">
+				<table class="form_table">
+					<font color=red>注意事项：</font>
+					<br>
+					1.新增时，必填项都必须按照要求进行填写。
+					<br>
+					2.如果对应编码的记录已存在，则导入时会修改该条记录。修改时可以只填写主键(关键项)和需要修改的属性，
+					未填数据对应的属性将不会被修改。
+					<BR>
+					<font color='blue'>例如：</font>
+					<BR>
+					1)只修改渠道名称，其他属性不修改：
+					<BR>
+					&nbsp;&nbsp;JFJMXXXXX|测试渠道222||||||||||&nbsp;&nbsp;(当然，其他属性如果不变， 也可以不必去掉。)
+					<BR>
+					2)如果要将某个属性清除（即改为空值），可以填写 "空"或"null"，例如，将渠道JFJMXXXXX
+					最后两个属性值修改为空，其他属性不变，例如：
+					<BR>
+					&nbsp;&nbsp;JFJMXXXXX||||||||||空|null<br>
+					<font color='blue'>准备工作:</font> <br>
+					为防止Excel的自动扩展功能影响到所填写的数据，我们需要将Excel的默认设置更改一下(每台电脑上只要设置一次)。<br>
+					打开Excel,工具->选项->编辑,请确保这个红线框住的复选框没有被勾上(默认是勾上的)。<br>
+					<image src="../../images/channel/option.jpg" />					
+					<BR>
+					<font color=blue>操作步骤:</font>
+					<br>
+					第一步:点击相应的批量导入模板进行下载。
+					<image src="../../images/channel/example.jpg" />
+					<br>
+					第二步:把下载的*.xls模板下载到本地。
+					<image src="../../images/channel/save.jpg" />
+					<br>
+					第三步:把数据按所要求的格式填写完全
+					<image src="../../images/channel/putdata.jpg" />
+					<br>
+					之后点击文件->另存为。
+					<image src="../../images/channel/csv.jpg" />
+					<br>
+					遇到警告信息点击是，保存为.csv文件到本地。
+					<br>
+					<image src="../../images/channel/yes.jpg" />
+					<br>
+					第四步：关闭上一步打开的.xls文件，用记事本(推荐Editplus或者UltraEdit)打开保存好的.csv文件，把标题行(第一行)删除掉，然后打开替换窗口,把所有的","号替换为"|"。
+					<br>
+					<image src="../../images/channel/replace.jpg" />
+					<br>
+					完成：把已经改好的文件的.csv文件的后缀名改为.txt文本文件，您就可以使用这个文本文件进行导入了。
+				</table>
+			</div>
+			<div class="table_div">
+				<table class="table_button_list">
+					<tr>
+						<td>
+							<input type="button" class="query" value="后退"
+								onClick="javascript:history.back();" />
+						</td>
+					</tr>
+				</table>
+			</div>
+	</body>
+</html>

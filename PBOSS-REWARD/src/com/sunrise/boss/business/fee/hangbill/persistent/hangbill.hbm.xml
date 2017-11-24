@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sunrise.boss.business.fee.hangbill.persistent.UnwoffcustVO" table="IB_CBB_UNWOFFCUST">
+		<composite-id>
+			<key-property column="ACCTID" length="14" name="acctid" type="java.lang.Long" />
+			<key-property column="EBOXID" length="14" name="eboxid" type="java.lang.Long" />
+			<key-property column="SUBSID" length="14" name="subsid" type="java.lang.Long" />
+			<key-property column="VALIDBILLCYC" length="8" name="validbillcyc" type="java.lang.Integer" />
+		</composite-id>
+		<property column="RECAMT" length="16" name="recamt" type="java.lang.Double" />
+		<property column="PAICLUPAMT" length="16" name="paiclupamt" type="java.lang.Double" />
+		<property column="STATE" length="3" name="state" type="java.lang.Short" />
+	</class>
+
+	<class name="com.sunrise.boss.business.fee.hangbill.persistent.BillcheckVO" table="IB_WL_BILLCHECK">
+
+		<id column="LOGID" name="logid" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">IB_WL_BILLCHECK_SEQ</param>
+			</generator>
+		</id>
+
+		<property column="OPRCODE" length="20" name="oprcode" type="java.lang.String" />
+		<property column="CHECKCODE" length="20" name="checkcode" type="java.lang.String" />
+		<property column="AMT" length="16" name="amt" type="java.lang.Double" />
+		<property column="REASON" length="128" name="reason" type="java.lang.String" />
+		<property column="CHECKRESULT" length="255" name="checkresult" type="java.lang.String" />
+		<property column="CHECKACTION" length="10" name="checkaction" type="java.lang.Long" />
+	</class>
+
+	<class name="com.sunrise.boss.business.fee.hangbill.persistent.HangbillVO" table="IB_CB_HANGBILL">
+		<id column="HANGID" name="hangid" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">IB_CB_HANGBILL_SEQ</param>
+			</generator>
+		</id>
+		<property column="EBOXID" length="14" name="eboxid" not-null="true" type="java.lang.Long" />
+		<property column="SUBSID" length="14" name="subsid" not-null="true" type="java.lang.Long" />
+		<property column="ACCTID" length="14" name="acctid" not-null="true" type="java.lang.Long" />
+		<property column="VALIDBILLCYC" length="8" name="validbillcyc" not-null="true" type="java.lang.Integer" />
+		<property column="HANGSTATE" length="1" name="hangstate" not-null="true" type="java.lang.Integer" />
+		<property column="HANGAMT" length="16" name="hangamt" type="java.lang.Double" />
+		<property column="DISPUTE" length="16" name="dispute" type="java.lang.Double" />
+		<property column="HANGTYPE" length="3" name="hangtype" not-null="true" type="java.lang.Integer" />
+		<property column="HANGOPRCODE" length="15" name="hangoprcode" type="java.lang.String" />
+		<property column="CHECKERCODE" length="15" name="checkercode" type="java.lang.String" />
+		<property column="HANGTIME" length="7" name="hangtime" type="java.sql.Timestamp" />
+		<property column="BACK" length="7" name="back" type="java.util.Date" />
+		<property column="CHECKDECR" length="16" name="checkdecr" type="java.lang.Double" />
+		<property column="UNITE" length="6" name="unite" type="java.lang.String" />
+		<property column="BILLCHECKLOGID" length="14" name="billchecklogid" type="java.lang.Long" />
+		<property column="LRSNCODE" length="10" name="lrsncode" type="java.lang.String" />
+		<property column="SRSNCODE" length="10" name="srsncode" type="java.lang.String" />
+		<property column="ISICP" length="1" name="isicp" type="java.lang.Integer" />
+		<property column="PORTID" length="18" name="portid" type="java.lang.String" />
+		<property column="ICPTYPE" length="10" name="icptype" type="java.lang.String" />
+		<property column="LODGE" length="128" name="lodge" type="java.lang.String" />
+		<property column="ISAWARD" length="3" name="isaward" type="java.lang.Integer" />
+		<property column="MEMO" length="255" name="memo" type="java.lang.String" />
+	</class>
+
+	<class
+		name="com.sunrise.boss.business.fee.hangbill.persistent.WoffCustVO"
+		table="IB_CBB_WOFFCUST">
+		<composite-id>
+			<key-property column="ACCTID" length="14" name="acctid" type="java.lang.Long" />
+			<key-property column="EBOXID" length="14" name="eboxid" type="java.lang.Long" />
+			<key-property column="SUBSID" length="14" name="subsid" type="java.lang.Long" />
+			<key-property column="VALIDBILLCYC" length="8" name="validbillcyc" type="java.lang.Integer" />
+		</composite-id>
+		<property column="RECAMT" length="16" name="recamt" not-null="true" type="java.lang.Double" />
+		<property column="PAICLUPAMT" length="16" name="paiclupamt" not-null="true" type="java.lang.Double" />
+		<property column="STATE" length="3" name="state" not-null="true" type="java.lang.Short" />
+	</class>
+
+	<!--class name="com.sunrise.boss.business.fee.hangbill.persistent.ChkhangadjVO" table="IB_WL_CHKHANGADJ">
+		<id column="LOGDETID" name="logdetid" type="java.lang.Long">
+		<generator class="sequence">
+		<param name="sequence">IB_WL_CHKHANGADJ_SEQ</param>
+		</generator>
+		</id>
+		<property column="BILLCHECKLOGID" length="14" name="billchecklogid" not-null="true" type="java.lang.Long"/>
+		<property column="EBOXID" length="14" name="eboxid" not-null="true" type="java.lang.Long"/>
+		<property column="SUBSID" length="14" name="subsid" not-null="true" type="java.lang.Long"/>
+		<property column="ACCTID" length="14" name="acctid" not-null="true" type="java.lang.Long"/>
+		<property column="VALIDBILLCYC" length="8" name="validbillcyc" not-null="true" type="java.lang.Integer"/>
+		<property column="HANGAMT" length="16" name="hangamt" type="java.lang.Double"/>
+		<property column="HANGOPRCODE" length="15" name="hangoprcode" type="java.lang.String"/>
+		<property column="CHECKERCODE" length="15" name="checkercode" type="java.lang.String"/>
+		<property column="HANGTIME" length="7" name="hangtime" type="java.util.Date"/>
+		<property column="DEALTIME" length="7" name="dealtime" type="java.util.Date"/>
+		<property column="HANGADJTYPE" length="3" name="hangadjtype" type="java.lang.Short"/>
+		<property column="CHECKDECR" length="16" name="checkdecr" type="java.lang.Double"/>
+		<property column="INCDECRID" length="10" name="incdecrid" type="java.lang.Long"/>
+		<property column="LRSNCODE" length="10" name="lrsncode" type="java.lang.String"/>
+		<property column="SRSNCODE" length="10" name="srsncode" type="java.lang.String"/>
+		<property column="ISICP" length="1" name="isicp" type="java.lang.Byte"/>
+		<property column="PORTID" length="18" name="portid" type="java.lang.String"/>
+		<property column="ICPTYPE" length="10" name="icptype" type="java.lang.String"/>
+		<property column="LODGE" length="128" name="lodge" type="java.lang.String"/>
+		<property column="ISAWARD" length="3" name="isaward" type="java.lang.Short"/>
+		</class-->
+
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtyoperation.persistent.ZjtyOperationVO" table="CH_ZJTY_OPERATION">
+<id column="OPNID" name="opnid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="PARENTID" length="18" name="parentid" type="java.lang.String"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"/>
+<property column="STATE" length="2" name="state" type="java.lang.Short"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="ISBUSI" length="1" name="isbusi" type="java.lang.Short"/>
+<property column="OPNLEVEL" length="3" name="opnlevel" type="java.lang.Short"/>
+<property column="BUSIKIND" length="1" name="busikind" type="java.lang.Short"/>
+<property column="BUSIBELONG" length="32" name="busibelong" type="java.lang.String"/>
+</class>
+<!-- 树形结构业务展现 由最下层往最上级找 -->
+<sql-query name="zjty.operation.upSearch">
+<return class="com.sunrise.boss.business.cms.operation.persistent.OperationVO"></return>
+select *
+  from ch_zjty_operation
+ start with opnid = :upperid
+connect by prior parentid = opnid
+</sql-query>  
+<!-- 树形结构业务展现 由最上层往最下层找 -->
+<sql-query name="zjty.operation.downSearch">
+<return class="com.sunrise.boss.business.cms.zjty.zjtyoperation.persistent.ZjtyOperationVO"></return>
+select *
+  from ch_zjty_operation
+ start with parentid = :id
+connect by prior opnid = parentid
+</sql-query>
+<sql-query name="zjty.operation.queryupper">
+<return class="com.sunrise.boss.business.cms.zjty.zjtyoperation.persistent.ZjtyOperationVO"></return>
+select * from (select * from ch_zjty_operation)
+ 	start with OPNID = :id or name like :name
+	connect by prior parentid = opnid
+</sql-query>
+</hibernate-mapping>

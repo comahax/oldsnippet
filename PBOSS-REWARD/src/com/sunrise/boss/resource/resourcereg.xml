@@ -1,0 +1,8 @@
+<resources>
+	<resfilelist>
+		<resfile path="/msg/a.properties" lang="en"/>
+		<resfile path="/msg/b.properties" lang="en"/>
+		<resfile path="/msg/c.properties" lang="en"/>
+		<resfile path="/msg/c.zh-CN.properties" lang="cn"/>
+	</resfilelist>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.monamtchgrule.MonamtchgruleVO" table="FX_RU_MONAMTCHGRULE">
+<id column="RULEID" length="14" name="ruleid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">FX_RU_MONAMTCHGRULE_SEQ</param>
+	</generator>
+</id>
+<property column="CITYID" length="10" name="cityid" not-null="true" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" not-null="true" type="java.lang.Short"/>
+<property column="BRAND" length="16" name="brand" not-null="true" type="java.lang.String"/>
+<property column="ACTRATELOW" length="16" name="actratelow" not-null="true" type="java.lang.Double"/>
+<property column="ACTRATEUP" length="16" name="actrateup" not-null="true" type="java.lang.Double"/>
+<property column="TIMES" length="6" name="times" not-null="true" type="java.lang.Double"/>
+<property column="EFFECTIVE" length="3" name="effective" not-null="true" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

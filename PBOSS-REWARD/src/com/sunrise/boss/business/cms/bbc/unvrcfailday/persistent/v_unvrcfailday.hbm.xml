@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.unvrcfailday.persistent.VUnvrcfaildayVO">
+<id column="FAILID" name="failid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="RCNO" length="15" name="rcno" type="java.lang.String"/>
+<property column="MOBILENO" length="15" name="mobileno" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="OPNNAME" length="30" name="opnname" type="java.lang.String"/>
+<property column="RCMONTH" length="8" name="rcmonth" type="java.lang.String"/>
+<property column="RCDATE" length="7" name="rcdate" type="java.util.Date"/>
+<property column="REASON" length="256" name="reason" type="java.lang.String"/>
+<property column="OSSRC" length="2" name="ossrc" type="java.lang.Short"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="30" name="wayname" type="java.lang.String"/>
+<property column="EMPATTR2" length="3" name="empattr2" type="java.lang.Short"/>
+</class>
+
+<!-- 市公司管理员工号查询逻辑 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.unvrcfailday.queryVUnvrifaildayCityAdmin">
+	<return class="com.sunrise.boss.business.cms.bbc.unvrcfailday.persistent.VUnvrcfaildayVO" />
+(select u.failid,u.rcno,u.mobileno,u.opnid,o.name as opnname,u.rcmonth,u.rcdate,
+        u.reason,u.ossrc,u.wayid,w.wayname,e.empattr2 
+  from CH_BBC_UNVRCFAILDAY u,ch_pw_way w, ch_pw_employee e, ch_bbc_operation o
+ where u.wayid=w.wayid and u.rcno=e.telephone and e.isnet=2 and u.opnid=o.opnid)
+union all
+(select u.failid,u.rcno,u.mobileno,u.opnid,o.name as opnname,u.rcmonth,u.rcdate,
+        u.reason,u.ossrc,u.wayid,w.wayname,e.empattr2 
+  from CH_BBC_UNVRCFAILDAY u,ch_pw_way w, ch_bbc_provemp e, ch_bbc_operation o
+ where u.wayid=w.wayid and u.rcno=e.telephone and e.isnet=2 and u.opnid=o.opnid)
+union all
+(select u.failid,u.rcno,u.mobileno,u.opnid,o.name as opnname,u.rcmonth,u.rcdate,
+        u.reason,u.ossrc,u.wayid,w.wayname,e.empattr2 
+  from CH_BBC_UNVRCFAIL_VIEW u,ch_pw_way w, ch_pw_employee e, ch_bbc_operation o
+ where u.wayid=w.wayid and u.rcno=e.telephone and e.isnet=2 and u.opnid=o.opnid)
+union all
+(select u.failid,u.rcno,u.mobileno,u.opnid,o.name as opnname,u.rcmonth,u.rcdate,
+        u.reason,u.ossrc,u.wayid,w.wayname,e.empattr2 
+  from CH_BBC_UNVRCFAIL_VIEW u,ch_pw_way w, ch_bbc_provemp e, ch_bbc_operation o
+ where u.wayid=w.wayid and u.rcno=e.telephone and e.isnet=2 and u.opnid=o.opnid)
+</sql-query>
+<!-- 分公司公司管理员工号查询逻辑 -->
+<sql-query name="com.sunrise.boss.business.cms.bbc.unvrcfailday.queryVUnvrifaildayCountyAdmin">
+	<return class="com.sunrise.boss.business.cms.bbc.unvrcfailday.persistent.VUnvrcfaildayVO" />
+(select u.failid,u.rcno,u.mobileno,u.opnid,o.name as opnname,u.rcmonth,u.rcdate,
+        u.reason,u.ossrc,u.wayid,w.wayname,e.empattr2 
+  from CH_BBC_UNVRCFAILDAY u,ch_pw_way w, ch_pw_employee e, ch_bbc_operation o
+ where u.wayid=w.wayid and u.rcno=e.telephone and e.isnet=2 and u.opnid=o.opnid
+    and u.wayid in ( select t.wayid from ch_pw_way t start with t.wayid=:wayid connect by prior t.wayid=t.upperwayid))
+union all
+(select u.failid,u.rcno,u.mobileno,u.opnid,o.name as opnname,u.rcmonth,u.rcdate,
+        u.reason,u.ossrc,u.wayid,w.wayname,e.empattr2 
+  from CH_BBC_UNVRCFAIL_VIEW u,ch_pw_way w, ch_pw_employee e, ch_bbc_operation o
+ where u.wayid=w.wayid and u.rcno=e.telephone and e.isnet=2 and u.opnid=o.opnid
+    and u.wayid in ( select t.wayid from ch_pw_way t start with t.wayid=:wayid connect by prior t.wayid=t.upperwayid))
+</sql-query>
+</hibernate-mapping>

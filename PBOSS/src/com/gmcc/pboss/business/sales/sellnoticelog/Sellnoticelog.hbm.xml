@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.sellnoticelog.SellnoticelogVO" table="FX_SW_SELLNOTICELOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_SELLNOTICELOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="SEQID" length="14" name="seqid" type="java.lang.Long"/>
+<property column="COUNTYID" length="28" name="countyid" type="java.lang.String"/>
+<property column="MAREACODE" length="28" name="mareacode" type="java.lang.String"/>
+<property column="SELLTIME" length="20" name="selltime" type="java.lang.String"/>
+<property column="SELLCOUNT" length="14" name="sellcount" type="java.lang.Long"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="WAYID" length="36" name="wayid" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="36" name="waymagcode" type="java.lang.String"/>
+<property column="SALESSTD" length="10" name="salesstd" type="java.lang.Long"/>
+<property column="COMRATE" name="comrate" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

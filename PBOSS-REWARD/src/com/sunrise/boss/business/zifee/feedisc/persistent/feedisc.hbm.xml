@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.feedisc.persistent.FeediscVO" table="PC_PS_FEEDISC">
+<id column="FEEDISCID" name="feediscid" type="java.lang.Long">
+<generator class="sequence">
+				<param name="sequence">PC_PS_FEEDISC_SEQ</param>
+</generator>
+</id>
+<property column="YXPLANID" length="14" name="yxplanid" not-null="true" type="java.lang.Long"/>
+<property column="WRAPOUTRATE" length="10" name="wrapoutrate" type="java.lang.Double"/>
+<property column="WRAPINRATE" length="10" name="wrapinrate" type="java.lang.Double"/>
+<property column="WRAPMINUTE" length="22" name="wrapminute" type="java.lang.Long"/>
+<property column="WRAPFEE" length="10" name="wrapfee" type="java.lang.Double"/>
+<property column="HALFWRAPFEE" length="10" name="halfwrapfee" type="java.lang.Double"/>
+<property column="ACCTID" length="14" name="acctid" type="java.lang.Long"/>
+<property column="AREACODE" length="10" name="areacod" type="java.lang.String"/>
+<property column="AREAGROUPID" length="10" name="areagroupid" type="java.lang.Long"/>
+<property column="DISCCONDITION" length="255" name="disccondition" type="java.lang.String"/>
+<property column="CALLTYPE" length="32" name="calltype" type="java.lang.String"/>
+<property column="BUSYRATE" length="10" name="busyrate" type="java.lang.Double"/>
+<property column="FREERATE" length="10" name="freerate" type="java.lang.Double"/>
+<property column="IPDISC" length="10" name="ipdisc" type="java.lang.Double"/>
+<property column="DISCKIND" length="32" name="disckind" type="java.lang.String"/>
+<property column="DISCSCOPE" length="2" name="discscope" type="java.lang.String"/>
+<property column="LOWMOBILE" length="12" name="lowmobile" type="java.lang.String"/>
+<property column="HIGHMOBILE" length="12" name="highmobile" type="java.lang.String"/>
+<property column="DISCLOCALCODE" length="2" name="disclocalcode" type="java.lang.String"/>
+<property column="DISCDISTRICT" length="3" name="discdistrict" type="java.lang.String"/>
+<property column="WNZJDISCRATE" length="10" name="wnzjdiscrate" type="java.lang.Double"/>
+<property column="WWZJDISCRATE" length="10" name="wwzjdiscrate" type="java.lang.Double"/>
+<property column="WNBJDISCRATE" length="10" name="wnbjdiscrate" type="java.lang.Double"/>
+<property column="WWBJDISCRATE" length="10" name="wwbjdiscrate" type="java.lang.Double"/>
+<property column="RATE" length="3" name="rate" type="java.lang.Float"/>
+<property column="DISCTYPE" length="6" name="disctype" type="java.lang.String"/>
+<property column="DERATECOMM" length="10" name="deratecomm" type="java.lang.Double"/>
+<property column="DERATERENT" length="10" name="deraterent" type="java.lang.Double"/>
+<property column="DERATEFUNC" length="10" name="deratefunc" type="java.lang.Double"/>
+<property column="MINAMT" length="10" name="minamt" type="java.lang.Double"/>
+<property column="MAXAMT" length="10" name="maxamt" type="java.lang.Double"/>
+<property column="BILLTYPE" length="40" name="billtype" type="java.lang.String"/>
+<property column="DISCMINU" length="22" name="discminu" type="java.lang.Long"/>
+<property column="VPMNID" length="12" name="vpmnid" type="java.lang.String"/>
+<property column="SCHEDSENDFLAG" length="1" name="schedsendflag" type="java.lang.Byte"/>
+<property column="CURRBILLCODE" length="8" name="currbillcode" type="java.lang.String"/>
+<property column="PAYBYOTHERSFLAG" length="1" name="paybyothersflag" type="java.lang.Byte"/>
+<property column="DISCNUM" length="22" name="discnum" type="java.lang.Long"/>
+<property column="RATE1" length="10" name="rate1" type="java.lang.Double"/>
+<property column="BEGINNUM1" length="22" name="beginnum1" type="java.lang.Long"/>
+<property column="ENDNUM1" length="22" name="endnum1" type="java.lang.Long"/>
+<property column="RATE2" length="10" name="rate2" type="java.lang.Double"/>
+<property column="BEGINNUM2" length="22" name="beginnum2" type="java.lang.Long"/>
+<property column="ENDNUM2" length="22" name="endnum2" type="java.lang.Long"/>
+<property column="RATE3" length="10" name="rate3" type="java.lang.Double"/>
+<property column="BEGINNUM3" length="22" name="beginnum3" type="java.lang.Long"/>
+<property column="ENDNUM3" length="22" name="endnum3" type="java.lang.Long"/>
+<!-- 新增的分段步长 -->
+<property column="RATE4" length="10" name="rate4" type="java.lang.Double"/>
+<property column="BEGINNUM4" length="22" name="beginnum4" type="java.lang.Long"/>
+<property column="ENDNUM4" length="22" name="endnum4" type="java.lang.Long"/>
+<property column="RATE5" length="10" name="rate5" type="java.lang.Double"/>
+<property column="BEGINNUM5" length="22" name="beginnum5" type="java.lang.Long"/>
+<property column="ENDNUM5" length="22" name="endnum5" type="java.lang.Long"/>
+<property column="RATE6" length="10" name="rate6" type="java.lang.Double"/>
+<property column="BEGINNUM6" length="22" name="beginnum6" type="java.lang.Long"/>
+<property column="ENDNUM6" length="22" name="endnum6" type="java.lang.Long"/>
+
+<property column="RATINGTYPE" length="32" name="ratingtype" type="java.lang.String"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"/>
+
+<property column="BUSITYPE" length="32" name="busitype" type="java.lang.String"/>
+<property column="ACCESSPLATFORM" length="32" name="accessplatform" type="java.lang.String"/>
+<property column="GOTONEUPRATE" length="10" name="gotoneuprate" type="java.lang.Double"/>
+<property column="GOTONEDOWNRATE" length="10" name="gotonedownrate" type="java.lang.Double"/>
+<property column="SMPUPRATE" length="10" name="smpuprate" type="java.lang.Double"/>
+<property column="SMPDOWNRATE" length="10" name="smpdownrate" type="java.lang.Double"/>
+
+<property column="GROUPFREECOUNT" length="8" name="groupfreecount" type="java.lang.Long"/>
+<property column="GROUPFREEFEE" length="10" name="groupfreefee" type="java.lang.Double"/>
+
+<property column="SMSINFOUPLOAD" length="2" name="smsinfoupload" type="java.lang.Long"/>
+</class>
+</hibernate-mapping>

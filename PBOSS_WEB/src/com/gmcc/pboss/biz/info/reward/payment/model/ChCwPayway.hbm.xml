@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.gmcc.pboss.biz.info.reward.payment.model.ChCwPayway" table="CH_CW_PAYWAY">
+       <id column="SEQ" length="14" name="seq" type="java.lang.Long">
+           <generator class="sequence">
+	          <param name="sequence">CH_CW_PAYWAY_SEQ</param>
+           </generator>
+       </id>
+       <property column="PAYWAY" length="128" name="payee" type="java.lang.String"/>
+       <property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+       <property column="CITYID" length="2" name="cityid" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

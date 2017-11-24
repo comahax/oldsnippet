@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.bankrecord.BankrecordVO" table="FX_SW_BANKRECORD">
+<id column="DEDUCTID" length="14" name="deductid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="ORAFILEID" length="32" name="orafileid" type="java.lang.String"/>
+<property column="ACCOUNT" length="64" name="account" type="java.lang.String"/>
+<property column="ACCOUNTNAME" length="64" name="accountname" type="java.lang.String"/>
+<property column="AMOUNT" length="16" name="amount" type="java.lang.Double"/>
+<property column="COMPLETETIME" length="7" name="completetime" type="java.util.Date"/>
+<property column="CREATDATE" length="7" name="creatdate" type="java.util.Date"/>
+<property column="SHOPNUM" length="32" name="shopnum" type="java.lang.String"/>
+<property column="CUSTUSERID" length="32" name="custuserid" type="java.lang.String"/>
+<property column="RETCODE" length="16" name="retcode" type="java.lang.String"/>
+<property column="ERRMSG" length="512" name="errmsg" type="java.lang.String"/>
+<property column="REMARK" length="512" name="remark" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="RECORDINFO" length="512" name="recordinfo" type="java.lang.String"/>
+<property column="RECORDSTATE" length="2" name="recordstate" type="java.lang.Short"/>
+</class>
+
+<!-- 银行代收交易对账明细  -->
+<sql-query
+		name="com.gmcc.pboss.business.sales.bankrecord.detailList">
+		<return-scalar column="a_deductid" type="java.lang.Long"/>
+		<return-scalar column="b_deductid" type="java.lang.Long"/>
+		<return-scalar column="a_shopnum" type="java.lang.String"/>
+		<return-scalar column="b_shopnum" type="java.lang.String"/>
+		
+		<return-scalar column="a_acctnum" type="java.lang.String"/>
+		<return-scalar column="b_account" type="java.lang.String"/>
+		<return-scalar column="a_acctname" type="java.lang.String"/>
+		<return-scalar column="b_accountname" type="java.lang.String"/>
+		
+		<return-scalar column="a_deductamt" type="java.lang.Double"/>
+		<return-scalar column="b_amount" type="java.lang.Double"/>
+		<return-scalar column="a_statechgtime" type="java.util.Date"/>
+		<return-scalar column="b_completetime" type="java.util.Date"/>
+		
+		<return-scalar column="a_respcode" type="java.lang.String"/>
+		<return-scalar column="b_retcode" type="java.lang.String"/>
+		<return-scalar column="a_errmsg" type="java.lang.String"/>
+		<return-scalar column="b_errmsg" type="java.lang.String"/>
+		
+		<return-scalar column="recordstate" type="java.lang.Short"/>
+		<return-scalar column="recordinfo" type="java.lang.String"/>
+		
+		<return-scalar column="orderid" type="java.lang.String"/>
+		
+		select a.deductid a_deductid,b.deductid b_deductid ,
+		a.shopnum a_shopnum,b.shopnum b_shopnum ,
+		a.acctnum a_acctnum,b.account b_account ,
+		a.acctname a_acctname,b.accountname b_accountname ,
+		a.deductamt a_deductamt,b.amount b_amount ,
+		a.statechgtime a_statechgtime,b.completetime b_completetime ,
+		a.respcode a_respcode,b.retcode b_retcode ,
+		a.errmsg a_errmsg,b.errmsg b_errmsg ,
+		b.recordstate ,b.recordinfo ,a.orderid orderid  
+		from fx_sw_bankdeduct a left join fx_sw_bankrecord b 
+		on a.deductid=b.deductid
+		where a.deductid = :deductid
+	</sql-query>
+	
+	
+	<sql-query
+		name="com.gmcc.pboss.business.sales.bankrecord.deductList">
+		<return class="com.gmcc.pboss.business.sales.bankdeduct.BankdeductVO"/>
+		select * from FX_SW_BANKDEDUCT
+		where( state !='PROCOVER'
+		or respcode = '0000' 
+ 		)		
+	</sql-query>	
+	
+	
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.vsimstockalarm.VsimstockalarmVO" table="V_FX_RU_SIMSTOCKALARM">
+<composite-id>
+<key-property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<key-property column="COMCATEGORY" length="50" name="comcategory" type="java.lang.String"/>
+</composite-id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="WAYSTATE" length="3" name="waystate" type="java.lang.Short"/>
+<property column="MAXSTOCK" length="10" name="maxstock" type="java.lang.Long"/>
+<property column="ALARMVALUE" length="256" name="alarmvalue" type="java.lang.String"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.sales.vsimstockalarm.wayQuery">
+<return class="com.gmcc.pboss.business.sales.vsimstockalarm.VsimstockalarmVO"/> 
+SELECT W.COUNTYID,
+       W.WAYID,
+       W.WAYNAME,
+       W.STARLEVEL,
+       W.WAYSTATE,
+       S.COMCATEGORY,
+       S.MAXSTOCK,
+       S.ALARMVALUE
+  FROM FX_RU_SIMSTOCKALARM S, CH_PW_WAY W
+ WHERE S.WAYID = W.WAYID
+</sql-query>
+</hibernate-mapping>

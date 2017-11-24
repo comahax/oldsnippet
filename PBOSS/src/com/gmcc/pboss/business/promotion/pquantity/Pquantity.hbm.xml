@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.promotion.pquantity.PquantityVO" table="CH_CX_PQUANTITY">
+<composite-id>
+<key-property column="PRODID" length="32" name="prodid" type="java.lang.String"/>
+<key-property column="RULEID" length="6" name="ruleid" type="java.lang.Long"/>
+</composite-id>
+<property column="INCAT" length="32" name="incat" type="java.lang.String"/>
+<property column="INCRATIO" length="3" name="incratio" type="java.lang.Float"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.sellnotice.SellnoticeVO" table="FX_SW_SELLNOTICE">
+
+<id column="SEQID" length="14" name="seqid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_SELLNOTICE_SEQ</param>
+</generator>
+</id>
+<property column="COUNTYID" length="28" name="countyid" type="java.lang.String"/>
+<property column="MAREACODE" length="28" name="mareacode" type="java.lang.String"/>
+<property column="SELLTIME" length="20" name="selltime" type="java.lang.String"/>
+<property column="SELLCOUNT" length="14" name="sellcount" type="java.lang.Long"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="WAYID" length="36" name="wayid" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="36" name="waymagcode" type="java.lang.String"/>
+<property column="SALESSTD" length="10" name="salesstd" type="java.lang.Long"/>
+<property column="COMRATE" name="comrate" type="java.lang.Double"/>
+</class>
+
+	<!-- 微区域销售进度查询  -->
+	<sql-query name="com.gmcc.pboss.business.sales.sellnotice.statMareacode">
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="mareacode" type="java.lang.String"/>
+	<return-scalar column="sellcount" type="java.lang.Long"/>
+	<return-scalar column="salesstd" type="java.lang.Long"/>
+	select 
+	countyid,mareacode,sum(sellcount) sellcount ,sum(salesstd) salesstd 
+	from FX_SW_SELLNOTICE group by countyid,mareacode
+	</sql-query>
+	
+	<!-- 分公司销售进度查询  -->
+	<sql-query name="com.gmcc.pboss.business.sales.sellnotice.statcCountyid">
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="sellcount" type="java.lang.Long"/>
+	<return-scalar column="salesstd" type="java.lang.Long"/>
+	select 
+	countyid,sum(sellcount) sellcount ,sum(salesstd) salesstd 
+	from FX_SW_SELLNOTICE group by countyid
+	</sql-query>
+	
+	<!-- 往上找父结点  -->
+	<sql-query name="com.gmcc.pboss.business.sales.sellnotice.getParentWay">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="upperwayid" type="java.lang.String"/>
+	select wayid,upperwayid
+                           from ch_pw_way
+                          where cityid=:cityid 
+                          start with wayid=:wayid 
+                         connect by prior upperwayid = wayid
+                         
+	</sql-query>
+	
+	<!-- 往下找子结点  -->
+	<sql-query name="com.gmcc.pboss.business.sales.sellnotice.getChildrenWay">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="upperwayid" type="java.lang.String"/>
+	select wayid,upperwayid
+                           from ch_pw_way
+                          where cityid=:cityid 
+                          start with wayid=:wayid 
+                         connect by prior wayid  = upperwayid
+                         
+	</sql-query>
+	
+	<!-- 发送分公司主管(统计分公司) -->
+	<sql-query name="com.gmcc.pboss.business.sales.sellnotice.getCountyidStat">
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="sellcount" type="java.lang.Long"/>
+	<return-scalar column="salesstd" type="java.lang.Long"/>
+	select countyid,sum(sellcount) sellcount,sum(salesstd) salesstd 
+	from FX_SW_SELLNOTICE 
+	where selltime=:selltime 
+	group by countyid                         
+	</sql-query>
+	
+	<!-- 发送分公司主管(统计分公司对应微区域) -->
+	<sql-query name="com.gmcc.pboss.business.sales.sellnotice.getMareacodeStat">
+	<return-scalar column="mareacode" type="java.lang.String"/>
+	<return-scalar column="sellcount" type="java.lang.Long"/>
+	<return-scalar column="salesstd" type="java.lang.Long"/>
+	select mareacode,sum(sellcount) sellcount,sum(salesstd) salesstd 
+	from FX_SW_SELLNOTICE 
+	where selltime=:selltime  
+	and countyid=:countyid
+	group by mareacode                        
+	</sql-query>
+
+</hibernate-mapping>

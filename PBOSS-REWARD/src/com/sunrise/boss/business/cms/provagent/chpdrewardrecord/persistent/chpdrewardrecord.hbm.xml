@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.provagent.chpdrewardrecord.persistent.ChPdRewardrecordVO" table="CH_PD_REWARDRECORD">
+<id column="REWARDID" name="rewardid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="PROVAGENTID" length="15" name="provagentid" type="java.lang.String"/>
+<property column="PRODNO" length="18" name="prodno" type="java.lang.String"/>
+<property column="PRODID" length="15" name="prodid" type="java.lang.String"/>
+<property column="PRODNAME" length="30" name="prodname" type="java.lang.String"/>
+<property column="CUSTID" length="15" name="custid" type="java.lang.String"/>
+<property column="CUSTNAME" length="50" name="custname" type="java.lang.String"/>
+<property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<property column="REWARDMONTH" length="8" name="rewardmonth" type="java.lang.String"/>
+<property column="REWARDMONEY" length="15" name="rewardmoney" type="java.lang.Double"/>
+<property column="PHASE" length="3" name="phase" type="java.lang.Short"/>
+<property column="FEEMONTH" length="8" name="feemonth" type="java.lang.String"/>
+<property column="VERSION" length="10" name="version" type="java.lang.String"/>
+<property column="RULEDESC" length="256" name="ruledesc" type="java.lang.String"/>
+<property column="CALTIME" length="7" name="caltime" type="java.util.Date"/>
+<property column="INBOSSMONTH" length="6" name="inbossmonth" type="java.lang.String"/>
+<property column="ADCREWARDID" length="14" name="adcrewardid" type="java.lang.Long"/>
+<property column="RECALMONTH" length="8" name="recalmonth" type="java.lang.String"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

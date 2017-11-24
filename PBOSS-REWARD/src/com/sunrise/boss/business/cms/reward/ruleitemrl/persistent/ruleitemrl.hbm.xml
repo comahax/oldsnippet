@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.ruleitemrl.persistent.RuleitemrlVO" table="CH_ADT_RULEITEMRL">
+<composite-id>
+<key-property name="groupid" column="GROUPID" type="java.lang.Short" length="3"/>
+<key-property name="ruleid" column="RULEID" type="java.lang.String" length="18"/>
+<key-property name="ruleitemid" column="RULEITEMID" type="java.lang.String" length="18"/>
+</composite-id>
+<property name="rltype" column="RLTYPE" type="java.lang.Short" length="3"/>
+<property name="isleader" column="ISLEADER" type="java.lang.Short" length="3"/>
+</class>
+
+<sql-query name="cms.reward.ruleitemrl.queryRuleItemRlMutex">
+	<return-scalar column="ruleitemid" type="java.lang.String"/>
+	select distinct(ruleitemid) 
+	from CH_ADT_RULEITEMRL 
+	where groupid in (
+			select groupid 
+			from CH_ADT_RULEITEMRL 
+			where ruleid=:ruleid 
+			 and rltype=:rltype 
+			 and ruleitemid=:ruleitemid ) 
+	and ruleid=:ruleid
+</sql-query>
+<!-- 查找互斥与捆绑链-->
+<sql-query name="cms.reward.ruleitemrl.queryRuleItemRlTypeChain">
+	<return-scalar column="ruleitemid" type="java.lang.String"/>
+	<return-scalar column="rltype" type="java.lang.Short"/>
+	select distinct(ruleitemid),rltype 
+		from CH_ADT_RULEITEMRL 
+		where  groupid in   
+			(select groupid 
+			from CH_ADT_RULEITEMRL 
+			where ruleitemid in 
+			(select ruleitemid 
+				from CH_ADT_RULEITEMRL 
+				where groupid in(
+					select groupid 
+					from CH_ADT_RULEITEMRL 
+					where ruleitemid in (	
+						select ruleitemid 
+						from CH_ADT_RULEITEMRL 
+						where groupid in ( 
+							select groupid  
+							from CH_ADT_RULEITEMRL  
+							where ruleid=:ruleid 
+							and rltype=:rltype 
+							and ruleitemid=:ruleitemid 
+							) 
+						and ruleid=:ruleid 
+						and rltype=:rltype 
+						) 
+						and ruleid=:ruleid 
+						and rltype=:rltype 
+					) 
+				and ruleid=:ruleid 
+				and rltype=:rltype 
+			) 
+			and ruleid=:ruleid 
+			and rltype=:rltype 
+		) 
+	and ruleid=:ruleid 
+	and rltype=:rltype 
+</sql-query>
+<sql-query name="cms.reward.ruleitemrl.queryRuleItemRlIsleaderChain">
+	<return-scalar column="ruleitemid" type="java.lang.String"/>
+	<return-scalar column="isleader" type="java.lang.Short"/>
+select distinct(ruleitemid),isleader 
+from ch_adt_ruleitemrl 
+where groupid in 
+(select groupid 
+from ch_adt_ruleitemrl 
+where ruleitemid in 
+    (select ruleitemid 
+    from ch_adt_ruleitemrl 
+    where groupid in 
+         (select groupid 
+         from ch_adt_ruleitemrl 
+         where ruleitemid in 
+      (select ruleitemid 
+      from ch_adt_ruleitemrl 
+      where groupid in 
+  (select groupid from ch_adt_ruleitemrl where ruleid=:ruleid and ruleitemid=:ruleitemid and rltype=:rltype and isleader=:isleader) 
+      and ruleid=:ruleid and rltype=:rltype) 
+        and ruleid=:ruleid and rltype=:rltype and isleader=:isleader) 
+   and ruleid=:ruleid and rltype=:rltype) 
+and ruleid=:ruleid and rltype=:rltype and isleader=:isleader) 
+and ruleid=:ruleid and rltype=:rltype 
+</sql-query>
+</hibernate-mapping>

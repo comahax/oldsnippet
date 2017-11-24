@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.dgrealprod.balancetype.persistent.BalanceTypeVO" table="RB_PF_BALANCETYPE">
+<id name="brand" column="BRAND" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property name="eboxunitid1" column="EBOXUNITID1" type="java.lang.Long" length="14"/>
+<property name="eboxunitid2" column="EBOXUNITID2" type="java.lang.Long" length="14"/>
+<property name="eboxunitid3" column="EBOXUNITID3" type="java.lang.Long" length="14"/>
+<property name="eboxunitid4" column="EBOXUNITID4" type="java.lang.Long" length="14"/>
+<property name="eboxunitid5" column="EBOXUNITID5" type="java.lang.Long" length="14"/>
+<property name="eboxunitid6" column="EBOXUNITID6" type="java.lang.Long" length="14"/>
+<property name="eboxunitid7" column="EBOXUNITID7" type="java.lang.Long" length="14"/>
+<property name="eboxunitid8" column="EBOXUNITID8" type="java.lang.Long" length="14"/>
+<property name="balancetype" column="BALANCETYPE" type="java.lang.Integer" length="5"/>
+</class>
+</hibernate-mapping>

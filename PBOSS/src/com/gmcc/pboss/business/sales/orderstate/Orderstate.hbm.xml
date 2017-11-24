@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderstate.OrderstateVO" table="V_CH_ORDERSTATE">
+<id column="CNTID" length="14" name="cntid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="ORDERAVE" length="16" name="orderave" type="java.lang.String"/>
+<property column="ALARMLEVEL" length="16" name="alarmlevel" type="java.lang.String"/>
+<property column="ORDERSTATE" length="16" name="orderstate" type="java.lang.String"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="ORDERCOUNT" length="22" name="ordercount" type="java.lang.Long"/>
+<property column="ORDERAMT" length="22" name="orderamt" type="java.lang.Long"/>
+<!-- <property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/> -->
+</class>
+<sql-query name="sales.orderstate.querystate">
+<return class="com.gmcc.pboss.business.sales.orderstate.OrderstateVO"></return>
+SELECT ROWNUM AS CNTID,COUNTYID,
+       SVCCODE,
+       MAREACODE,
+       STARLEVEL,
+       CREATETIME,
+       ORDERAVE,
+       ALARMLEVEL,
+       ORDERSTATE,
+       BRAND,
+       COMCATEGORY,
+       ORDERCOUNT,
+       ORDERAMT
+  FROM (SELECT C.COUNTYID,
+	       C.SVCCODE,
+	       C.MAREACODE,
+	       C.STARLEVEL,
+	       null as CREATETIME,
+	       A.ORDERAVE,
+	       A.ALARMLEVEL,
+	       A.ORDERSTATE,
+	       D.BRAND,
+	       B.COMCATEGORY,
+	       COUNT(*) AS ORDERCOUNT,
+	       SUM(B.ORDERAMT) AS ORDERAMT
+	  FROM FX_SW_ORDER A,
+	       FX_SW_ORDERCOMCATE B,
+	       CH_PW_WAY C,
+	       (SELECT DISTINCT (COMCATEGORY) AS COMCATEGORY, BRAND
+	          FROM IM_PR_COMCATEGORYRELA
+	         WHERE RESTYPE = 'COMRESSMP') D
+	 WHERE A.ORDERID = B.ORDERID
+	   AND A.WAYID = C.WAYID
+	   AND B.COMCATEGORY = D.COMCATEGORY
+	   AND A.CREATETIME &lt;= :ENDDATE
+	   AND A.CREATETIME &gt;= :STARTDATE
+	 GROUP BY C.COUNTYID,C.SVCCODE,
+	          C.MAREACODE,
+	          C.STARLEVEL,
+	          A.ORDERAVE,
+	          A.ALARMLEVEL,
+	          A.ORDERSTATE,
+	          D.BRAND,
+	          B.COMCATEGORY)           
+</sql-query>
+</hibernate-mapping>

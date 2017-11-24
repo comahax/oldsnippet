@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!--
+			多数据源使使用，需要在J2EE服务器上配置XA数据源--> 
+		<property name="connection.datasource">xa-common-ds</property> 
+		<property name="hibernate.session_factory_name">hibernate_comm</property> 
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+		<!-- WEBSPHERE下部署 -->
+		<!--<property name="transaction.manager_lookup_class">org.hibernate.transaction.WebSphereTransactionManagerLookup</property>-->
+		<!-- JBOSS下部署 -->
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+		<property name="jta.UserTransaction">java:comp/UserTransaction</property>
+		
+		<!-- 解决_sql_查询中文乱码问题 -->
+		<property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="jdbc.batch_size">5</property>
+		<property name="jdbc.fetch_size">5</property>
+		<property name="max_fetch_depth">1</property>
+		<property name="show_sql">false</property>
+
+		<mapping resource="com/gmcc/pboss/business/base/role/Role.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/dictitem/Dictitem.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/dictgroup/Dictgroup.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/parameter/Parameter.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/rolefunction/Rolefunction.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/operator/Operator.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/operrole/Operrole.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/operinfo/Operinfo.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/operright/Operright.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/operfunction/Operfunction.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/organization/Organization.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/rightitem/Rightitem.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/roleright/Roleright.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/functionitem/Functionitem.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/loginlog/Loginlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/limitsms/Limitsms.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/limitsmslog/Limitsmslog.hbm.xml" />
+		
+		<!-- 公共配置表 -->
+		<mapping resource="com/gmcc/pboss/business/base/config/Config.hbm.xml" />
+		
+		<!-- Channel -->
+		<mapping resource="com/gmcc/pboss/business/channel/employee/Employee.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/waybussarea/Waybussarea.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/postinfo/Postinfo.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/way/Way.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waytype/Waytype.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/wayhierarchy/Wayhierarchy.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/custwaytype/Custwaytype.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/areacenter/Areacenter.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/citycompany/Citycompany.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/cntycompany/Cntycompany.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/servcent/Servcent.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/adimarea/Adimarea.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/microarea/Microarea.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/smslog/Smslog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/smsloghis/Smsloghis.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/operationsms/Operationsms.hbm.xml" />
+		
+		<!--系统日志 -->
+		<mapping resource="com/gmcc/pboss/business/base/operatorlog/Operatorlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/rolelog/Rolelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/operrolelog/Operrolelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/functionitemlog/Functionitemlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/rolefunctionlog/Rolefunctionlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/rolerightlog/Rolerightlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/operfunctionlog/Operfunctionlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/operrightlog/Operrightlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/dictitemlog/Dictitemlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/batchlog/Batchlog.hbm.xml" />
+		
+		<!-- 促销管理 -->
+		<mapping resource="com/gmcc/pboss/business/promotion/elmttmpl/Elmttmpl.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/elmttmpllog/Elmttmpllog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/promotion/daemon/Daemon.hbm.xml"/>
+		
+		<!-- 分销管理 -->
+		<mapping resource="com/gmcc/pboss/business/sales/baseorderamt/Baseorderamt.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/comorderstate/Comorderstate.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/comprice/Comprice.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/compricelog/Compricelog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderuplimit/Orderuplimit.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderuplimitlog/Orderuplimitlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/monamtchgrule/Monamtchgrule.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderstd/Orderstd.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderunit/Orderunit.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderunitweek/Orderunitweek.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/process/Process.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderflow/Orderflow.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderproce/Orderproce.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/ordertask/Ordertask.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/comsellmid/Comsellmid.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/limitset/Limitset.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/limitsetlog/Limitsetlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/timesect/Timesect.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/timesectlog/Timesectlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/bankshop/Bankshop.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/bankshoplog/Bankshoplog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/extraexent/Extraexent.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/extraexentlog/Extraexentlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/salesstd/Salesstd.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/salesstdlog/Salesstdlog.hbm.xml"/>
+		
+		<!-- 资源管理 -->
+		<mapping resource="com/gmcc/pboss/business/resource/com/Com.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/bank/Bank.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/comcategoryrela/Comcategoryrela.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/comcategoryrelalog/Comcategoryrelalog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/resloadparamlog/Resloadparamlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/resloadparam/Resloadparam.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/resalarmrule/Resalarmrule.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/resource/resalarmrulelog/Resalarmrulelog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/nosect/Nosect.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/wayrechargeno/Wayrechargeno.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/resource/cityrescode/Cityrescode.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/resource/cityrescodelog/Cityrescodelog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/resource/comcatebrand/Comcatebrand.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/resource/resoperator/Resoperator.hbm.xml"/>
+		
+		<!-- 渠道省公司属性表 -->
+        <mapping resource="com/gmcc/pboss/business/channel/wayprovince/Wayprovince.hbm.xml"/>
+        
+        <!-- 系统登录日志表 -->
+        <mapping resource="com/gmcc/pboss/business/base/dbloginlog/DbLoginlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/saleplan/Saleplan.hbm.xml"/>
+        <mapping resource="com/gmcc/pboss/business/sales/saleplanlog/Saleplanlog.hbm.xml"/>
+        
+        <!-- 授权网点申请管理 -->
+        <mapping resource="com/gmcc/pboss/business/channel/checkedapply/Checkedapply.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/checkedapplydetail/Checkedapplydetail.hbm.xml" />
+		
+		<!-- 商圈管理 -->
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicircle/Waybusicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waybusicirclelog/Waybusicirclelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicircle/Busicircle.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/busicirclelog/Busicirclelog.hbm.xml" />
+		
+		<!-- 酬金负责人资料录入 -->
+		<mapping resource="com/gmcc/pboss/business/base/rewardsendsms/Rewardsendsms.hbm.xml"/>
+		
+		<!-- 门店宣传管理 a-biao:20140417 -->
+		<mapping resource="com/gmcc/pboss/business/channel/waystoreinfo/Waystoreinfo.hbm.xml"/>
+		 
+		<!-- 渠道层级 -->
+		<mapping resource="com/gmcc/pboss/business/channel/property/Property.hbm.xml" />
+		
+		<!-- 沟通管理-省公司公告管理 -->
+		<mapping resource="com/gmcc/pboss/business/communication/chpwcomsadvinfo/ChPwComsadvinfo.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/communication/chpwcomsadvinfolog/ChPwComsadvinfolog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/communication/chpwcomsrcvobj/ChPwComsrcvobj.hbm.xml" />
+		
+		<!-- 全网渠道编码管理 -->
+		<mapping resource="com/gmcc/pboss/business/channel/bbossway/Bbossway.hbm.xml"/>
+		 
+		<!-- 酬金一体化集中管理一期需求 -->
+		 <mapping resource="com/gmcc/pboss/business/reward/ltype/Ltype.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/ltypelog/Ltypelog.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/payway/Payway.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/payway/VPayway.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/payway/VWay.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/paywaylog/Paywaylog.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/rate/Rate.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/ratelog/Ratelog.hbm.xml"/>
+	     <mapping resource="com/gmcc/pboss/business/reward/stype/Stype.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/stypelog/Stypelog.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/stype/Vstype.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/chcwpaymentsend/ChCwPaymentsend.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/chcwemployee/ChCwEmployee.hbm.xml"/>
+	     <mapping resource="com/gmcc/pboss/business/reward/chcwpaymentsend/VChCwPaymentsend.hbm.xml"/>
+	     <!-- 套卡激活 -->
+	     <mapping resource="com/gmcc/pboss/business/reward/setcard/Setcard.hbm.xml"/>
+	     <mapping resource="com/gmcc/pboss/business/reward/setcard/VSetcard.hbm.xml"/>
+	     <mapping resource="com/gmcc/pboss/business/reward/setcardlog/Setcardlog.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

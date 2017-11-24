@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.bondaudit.BondauditVO" table="FX_SW_BONDAUDIT">
+<id column="SEQID" length="14" name="seqid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="FORMID" length="14" name="formid" type="java.lang.Long"/>
+<property column="BONDTYPE" length="16" name="bondtype" type="java.lang.String"/>
+<property column="PRESENTER" length="16" name="presenter" type="java.lang.String"/>
+<property column="SMSNTIME" length="7" name="smsntime" type="java.util.Date"/>
+<property column="AUDITOR" length="16" name="auditor" type="java.lang.String"/>
+<property column="AUDITTIME" length="7" name="audittime" type="java.util.Date"/>
+<property column="OPINION" length="512" name="opinion" type="java.lang.String"/>
+<property column="STATE" length="32" name="state" type="java.lang.String"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

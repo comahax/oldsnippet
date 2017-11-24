@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.comcatebrand.ComcatebrandVO" table="IM_PR_COMCATEBRAND">
+<id column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="PARVALUE" length="16" name="parValue" type="java.lang.Double"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.sales.canorderinfo.doQueryRes2Comcate">
+	<return-scalar column="cityrescode" type="java.lang.String"/>
+	<return-scalar column="comcategory" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	select a.cityrescode as cityrescode,a.comcategory as comcategory,b.brand as brand 
+	from IM_PR_CITYRESCODE a,IM_PR_COMCATEBRAND b
+	where a.comcategory=b.comcategory 
+	and b.comcategory not like '%CZ' 
+	and a.cityid = :cityid
+</sql-query>
+</hibernate-mapping>

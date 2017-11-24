@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.bank.BankVO" table="SA_DB_BANK">
+<id column="BANKID" length="32" name="bankid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="BANKNAME" length="64" name="bankname" type="java.lang.String"/>
+<property column="UNIFORMCODE" length="32" name="uniformcode" type="java.lang.String"/>
+<property column="LINKPHONE" length="20" name="linkphone" type="java.lang.String"/>
+<property column="ADDR" length="64" name="addr" type="java.lang.String"/>
+<property column="CONTAINER" length="1" name="container" type="java.lang.Byte"/>
+<property column="EXCHANGENO" length="32" name="exchangeno" type="java.lang.String"/>
+<property column="BANKLEVEL" length="3" name="banklevel" type="java.lang.Short"/>
+<property column="PARENTID" length="32" name="parentid" type="java.lang.String"/>
+<property column="ORGID" length="32" name="orgid" type="java.lang.String"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+</class>
+<sql-query name="base.bank.querybank">
+<return class="com.gmcc.pboss.business.channel.bank.BankVO"></return>
+select a.*
+  from sa_db_bank a, ch_pw_way b
+ where a.ORGID = b.wayid
+   and b.cityid = :cityid             
+</sql-query>
+</hibernate-mapping>

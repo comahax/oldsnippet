@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 虚拟表, 页面不能对该实体调用CRUD -->
+	<!-- 实时 -->
+	<class name="com.gmcc.pboss.business.resource.wayrcstat.WayrcstatVO"
+		table="V_WAYRCSTAT">
+		<composite-id>
+			<key-property name="wayid"></key-property>
+			<key-property name="brand"></key-property>
+		</composite-id>
+		
+		<property name="countyid"/>
+		<property name="mareacode"/>
+		<property name="wayname"/>
+		<property name="cnt1"/>
+		<property name="cnt2"/>
+		<property name="cnt3"/>
+	</class>
+	<!-- 历史 -->
+	<class name="com.gmcc.pboss.business.resource.wayrcstat.WayrcstatVO2"
+		table="V_WAYRCSTAT">
+		<composite-id>
+			<key-property name="statdate"></key-property>
+			<key-property name="wayid"></key-property>
+			<key-property name="brand"></key-property>
+		</composite-id>
+		
+		<property name="countyid"/>
+		<property name="mareacode"/>
+		<property name="wayname"/>
+
+		<property name="maxstock"/>
+		<property name="redvalue"/>
+		<property name="yelvalue"/>
+		<property name="alarmlevel"/>
+
+		<property name="waymagcode"/>
+		<property name="starlevel"/>
+		
+		<property name="cnt1"/>
+		<property name="cnt2"/>
+		<property name="cnt3"/>
+	</class>
+	
+	<!-- 网点资源信息统计 实时 -->
+	<sql-query
+		name="com.gmcc.pboss.business.resource.wayrcstat.doQueryreal">
+		<return-scalar column="countyid" type="java.lang.String"/>
+		<return-scalar column="wayname" type="java.lang.String"/>
+		<return-scalar column="mareacode" type="java.lang.String"/>
+		<return-scalar column="wayid" type="java.lang.String"/>
+		<return-scalar column="brand" type="java.lang.String"/>
+		<return-scalar column="cnt1" type="java.lang.Long"/>
+		<return-scalar column="cnt2" type="java.lang.Long"/>
+		<return-scalar column="cnt3" type="java.lang.Long"/>
+		
+		<![CDATA[
+		select w.wayid, w.wayname, w.countyid, w.mareacode, s9.brand, s9.cnt1, s9.cnt2, s9.cnt3 from ch_pw_way w,(select nvl(nvl(s1.wayid,s2.wayid),s3.wayid) as wayid,nvl(nvl(s2.brand,s3.brand),s1.brand) brand,nvl(s1.cnt1,0) as cnt1,nvl(s2.cnt2,0) as cnt2,nvl(s3.cnt3,0) as cnt3 from 
+		(select t1.wayid, t2.brand, count(*) as cnt1
+			  from ch_pw_way t1,FX_SW_PARTNERRES t2
+			 where t1.wayid = t2.wayid
+			   and t2.restype='COMRESSMP'
+			   and t2.isactive=0
+			group by t1.wayid, t2.brand
+			) s1 full outer join 
+			
+			-- 领货量
+			(select t1.wayid, t2.brand, count(*) as cnt2
+			  from ch_pw_way t1,FX_SW_PARTNERRES t2
+			 where t1.wayid = t2.wayid
+			   and t2.restype='COMRESSMP'
+			   and to_char(t2.createtime, 'YYYYMMDD') = to_char(sysdate, 'YYYYMMDD')
+			group by t1.wayid, t2.brand
+			) s2 on s1.wayid = s2.wayid and s1.brand=s2.brand
+			
+      		full outer join
+			-- 激活量
+			(
+			select t1.wayid, t2.brand, count(*) as cnt3
+			  from  ch_pw_way t1,FX_SW_PARTNERRES t2
+			 where t1.wayid = t2.wayid
+			   and t2.restype='COMRESSMP'
+			   and t2.isactive='1'
+			   and to_char(t2.createtime, 'YYYYMMDD') = to_char(sysdate, 'YYYYMMDD')
+			   and to_char(t2.acttime, 'YYYYMMDD') = to_char(sysdate, 'YYYYMMDD')
+			group by t1.wayid, t2.brand
+			) s3 on s1.wayid =s2.wayid and s1.brand=s2.brand and s1.wayid =s3.wayid and s2.brand=s3.brand) s9 where w.wayid=s9.wayid
+	]]>
+	</sql-query>
+	
+	<!-- 网点资源信息统计 历史 -->
+	<sql-query
+		name="com.gmcc.pboss.business.resource.wayrcstat.doQueryhistory">
+		<return-scalar column="statdate" type="java.lang.String"/>
+		<return-scalar column="countyid" type="java.lang.String"/>
+		<return-scalar column="mareacode" type="java.lang.String"/>
+		<return-scalar column="wayid" type="java.lang.String"/>
+		<return-scalar column="wayname" type="java.lang.String"/>
+		<return-scalar column="brand" type="java.lang.String"/>
+		<return-scalar column="maxstock" type="java.lang.Long"/>
+		<return-scalar column="redvalue" type="java.lang.Long"/>
+		<return-scalar column="yelvalue" type="java.lang.Long"/>
+		<return-scalar column="alarmlevel" type="java.lang.String"/>
+		<return-scalar column="waymagcode" type="java.lang.String"/>
+		<return-scalar column="starlevel" type="java.lang.Long"/>
+		<return-scalar column="cnt1" type="java.lang.Long"/>
+		<return-scalar column="cnt2" type="java.lang.Long"/>
+		<return-scalar column="cnt3" type="java.lang.Long"/>
+
+		<![CDATA[
+		select  s2.statdate as statdate,
+	            s1.countyid as countyid, 
+		        s1.mareacode as mareacode, 
+		        s2.wayid as wayid, 
+		        s1.wayname as wayname, 
+		        s2.brand as brand, 
+		        s2.maxstock as maxstock,
+		        s2.redvalue as redvalue,
+		        s2.yelvalue as yelvalue,
+		        s2.alarmlevel as alarmlevel,
+		        s1.waymagcode as waymagcode,
+		        s1.starlevel as starlevel,
+		        nvl(s2.kcamount, 0.00) as cnt1, 
+		        nvl(s2.lhamount, 0.00) as cnt2, 
+		        nvl(s2.jhamount, 0.00) as cnt3
+		  from
+		  CH_PW_WAY s1,
+		  IM_FX_RESINFOSTAT s2
+		where s2.wayid = s1.wayid
+	]]>
+	</sql-query>
+	
+</hibernate-mapping>

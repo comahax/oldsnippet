@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.wayfxsworder.WayFxSwOrderVO" table="CH_PW_WAY_FX_SW_ORDER">
+<id column="rowcountid" length="14" name="rowcountid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<!-- 
+<id column="WAYID" length="18" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id> -->
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/> 
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="PAYTYPE" length="16" name="paytype" type="java.lang.String"/>
+<property column="sumrecamt" length="16" name="sumrecamt" type="java.lang.Double"/>
+<property column="sumactamt" length="16" name="sumactamt" type="java.lang.Double"/>
+</class>
+
+<!-- 
+<sql-query name="QueryWayFxSwOrderVO">
+  <return class="com.gmcc.pboss.business.sales.wayfxsworder.WayFxSwOrderVO"/>    
+	select a.COUNTYID, b.SVCCODE, a.MAREACODE, a.STARLEVEL, a.PAYTYPE, sum(a.RECAMT), sum(a.ACTAMT) 
+ from FX_SW_ORDER a, CH_PW_WAY b
+ where a.wayid = b.wayid 
+ group by  a.COUNTYID, b.SVCCODE, a.MAREACODE, a.STARLEVEL, a.PAYTYPE
+ order by a.COUNTYID, b.SVCCODE, a.MAREACODE, a.STARLEVEL, a.PAYTYPE
+
+</sql-query>
+ -->
+ 
+</hibernate-mapping>

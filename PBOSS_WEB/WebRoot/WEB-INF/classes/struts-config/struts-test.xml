@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="test" namespace="/test" extends="default">
+		<action name="List" class="com.gmcc.pboss.test.action.TestAction" method="doList">
+			<result>/test/list.jsp</result>
+		</action>
+		<action name="List" class="com.gmcc.pboss.test.action.TestAction" method="doList">
+			<result>/test/list.jsp</result>
+		</action>
+		
+		<action name="testAjax" class="com.gmcc.pboss.test.action.TestAction" method="doTest">
+			<result>/test/test.jsp</result>
+		</action>
+		
+		<action name="submitAjax" class="com.gmcc.pboss.test.action.TestAction" method="doTAjax">
+			<result>/test/test.jsp</result>
+		</action>
+		<action name="ajaxQuery" class="com.gmcc.pboss.test.action.TestAction" method="doQuery">
+		</action>
+		
+		<action name="testSubmit" class="com.gmcc.pboss.test.action.TestAction" method="doSubmit">
+			<result name="success">/common/template/t_message.jsp</result>
+			<result name="success2">/message.jsp</result>
+			<result name="input">/test/register.jsp</result>
+		</action>
+		
+	</package>
+</struts>

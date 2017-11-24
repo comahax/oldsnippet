@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.chpwwaysyn22crm.waysyn2log.Waysyn2logVO" table="CH_PW_WAYSYN2LOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_WAYSYN2LOG_SEQ</param>
+</generator>
+</id>
+
+<property column="ITEMID" length="14" name="itemid" type="java.lang.Long"/>
+<property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="SHORTNAME" length="32" name="shortname" type="java.lang.String"/>
+<property column="SVBRCHCODE" length="14" name="svbrchcode" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="BUZTYPECODE" length="2" name="buztypecode" type="java.lang.Short"/>
+<property column="ADTYPECODE" length="2" name="adtypecode" type="java.lang.Short"/>
+<property column="ADDRESS" length="128" name="address" type="java.lang.String"/>
+<property column="LOGISCODE" length="18" name="logiscode" type="java.lang.String"/>
+<property column="LATITUDE" length="15" name="latitude" type="java.lang.String"/>
+<property column="LONGTITUDE" length="15" name="longtitude" type="java.lang.String"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="WAYMAGCODE" length="18" name="waymagcode" type="java.lang.String"/>
+<property column="CATETYPE" length="2" name="catetype" type="java.lang.Short"/>
+<property column="FORMTYPE" length="2" name="formtype" type="java.lang.Short"/>
+<property column="STARTTIME" length="7" name="starttime" type="java.util.Date"/>
+<property column="BUZAREA" length="5" name="buzarea" type="java.lang.Integer"/>
+<property column="MAINLAYER" length="2" name="mainlayer" type="java.lang.Short"/>
+<property column="SUBLAYER" length="2" name="sublayer" type="java.lang.Short"/>
+<property column="BUZPHONENO" length="14" name="buzphoneno" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" not-null="true" type="java.lang.String"/>
+<property column="COOPERATOR" length="2" name="cooperator" type="java.lang.Short"/>
+<property column="WAYTYPE" length="4" name="waytype" not-null="true" type="java.lang.String"/>
+<property column="WAYSUBTYPE" length="4" name="waysubtype" type="java.lang.String"/>
+<property column="CUSTTYPE" length="4" name="custtype" type="java.lang.String"/>
+<property column="UPPERWAYID" length="18" name="upperwayid" type="java.lang.String"/>
+<property column="BUSICODE" length="10" name="busicode" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="CENTERID" length="14" name="centerid" type="java.lang.String"/>
+<property column="CITYLEVEL" length="3" name="citylevel" type="java.lang.Short"/>
+<property column="WAYLEVEL" length="3" name="waylevel" type="java.lang.Short"/>
+<property column="BCHLEVEL" length="4" name="bchlevel" type="java.lang.String"/>
+<property column="FUNCTION" length="255" name="function" type="java.lang.String"/>
+<property column="MISCODE" length="12" name="miscode" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="DISABLETIME" length="7" name="disabletime" type="java.util.Date"/>
+<property column="WAYSTATE" length="3" name="waystate" type="java.lang.Short"/>
+<property column="RUNBYSELF" length="4" name="runbyself" type="java.lang.String"/>
+<property column="DEPOTDET" length="20" name="depotdet" type="java.lang.String"/>
+<property column="ISSHARE" length="32" name="isshare" type="java.lang.String"/>
+<property column="ALARMBIZAMOUNT" length="10" name="alarmbizamount" type="java.lang.Long"/>
+<property column="PRTSOURCE" length="2" name="prtsource" type="java.lang.Short"/>
+<property column="ISCONNECTED" length="2" name="isconnected" type="java.lang.Short"/>
+<property column="CONNECTTYPE" length="2" name="connecttype" type="java.lang.Short"/>
+<property column="RUNMODE" length="2" name="runmode" type="java.lang.Short"/>
+<property column="ISCOREWAY" length="2" name="iscoreway" type="java.lang.Short"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="PT" length="2" name="pt" type="java.lang.Short"/>
+<property column="CHAINHEAD" length="18" name="chainhead" type="java.lang.String"/>
+<property column="SIGNSTATUS" length="2" name="signstatus" type="java.lang.Short"/>
+<property column="EMPNUMBER" length="4" name="empnumber" type="java.lang.Short"/>
+<property column="MAGNUMBER" length="4" name="magnumber" type="java.lang.Short"/>
+<property column="TERMINUMBER" length="4" name="terminumber" type="java.lang.Short"/>
+<property column="UPDATEDATE" length="7" name="updatedate" type="java.util.Date"/>
+<property column="ISSTRAITPRD" length="2" name="isstraitprd" type="java.lang.Short"/>
+<property column="TAXTYPE" length="2" name="taxtype" type="java.lang.Short"/>
+<property column="ISTIETONG" length="2" name="istietong" type="java.lang.Short"/>
+<property column="CALCUMODE" length="3" name="calcumode" type="java.lang.Short"/>
+<property column="UNIFORMTIME" length="6" name="uniformtime" type="java.lang.String"/>
+<property column="ISKZCZ" length="3" name="iskzcz" type="java.lang.Short"/>
+<property column="CHECKED" length="3" name="checked" type="java.lang.String"/>
+<property column="DISTYPE" length="3" name="distype" type="java.lang.Short"/>
+<property column="RIVLTYPE" length="3" name="rivltype" type="java.lang.Short"/>
+<property column="OPRTYPE" length="10" name="oprtype" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="OPRACT" length="3" name="opract" type="java.lang.Short"/>
+<property column="SYNSTATE" length="3" name="synstate" type="java.lang.Short"/>
+<property column="SYNMEMO" length="255" name="synmemo" type="java.lang.String"/>
+<property column="BUZMANAGER" length="64" name="buzmanager" type="java.lang.String"/>
+<property column="SUBRUNMODE" length="2" name="subrunmode" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

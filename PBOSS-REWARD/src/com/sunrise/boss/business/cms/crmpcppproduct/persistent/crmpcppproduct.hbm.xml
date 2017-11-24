@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.crmpcppproduct.persistent.CrmPcPpProductVO" table="CRM_PC_PP_PRODUCT">
+<id name="prodid" column="PRODID" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="PRODNAME" length="128" name="prodname" type="java.lang.String"/>
+<property column="CATALOGID" length="32" name="catalogid" not-null="true" type="java.lang.String"/>
+<property column="ISSOLUTION" length="1" name="issolution" not-null="true" type="java.lang.Byte"/>
+<property column="ISOVERREGION" length="1" name="isoverregion" type="java.lang.Byte"/>
+<property column="AVAILABLEDATE" length="7" name="availabledate" not-null="true" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" not-null="true" type="java.util.Date"/>
+<property column="STATUS" length="16" name="status" not-null="true" type="java.lang.String"/>
+<property column="DESCRIPTION" length="256" name="description" type="java.lang.String"/>
+<property column="REGION" length="5" name="region" type="java.lang.Integer"/>
+<property column="ISUPLOAD" length="1" name="isupload" type="java.lang.Byte"/>
+</class>
+</hibernate-mapping>

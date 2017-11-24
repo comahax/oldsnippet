@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.rewardasse.persistent.RewardasseVO" table="CH_PW_REWARDASSE">
+<composite-id>
+<key-property name="assemonth" column="ASSEMONTH" type="java.lang.String" length="6"/>
+<key-property name="rewardtype" column="REWARDTYPE" type="java.lang.Integer" length="5"/>
+<key-property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+</composite-id>
+<property name="assegrade" column="ASSEGRADE" type="java.lang.Float" length="3" not-null="true"/>
+<property name="memo" column="MEMO" type="java.lang.String" length="512"/>
+</class>
+</hibernate-mapping>

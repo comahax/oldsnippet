@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.coststatrelative.persistent.CoststatrelativeVO" table="CH_PW_COSTSTATRELATIVE">
+<composite-id>
+<key-property name="fnlcostitem" column="FNLCOSTITEM" type="java.lang.Short" length="2"/>
+<key-property name="recid" column="RECID" type="java.lang.Long" length="14"/>
+</composite-id>
+<property name="statmode" column="STATMODE" type="java.lang.Short" length="2"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="base" namespace="/base" extends="pboss-default">
+         <action name="dbloginlog_*" class="com.gmcc.pboss.web.base.dbloginlog.DbLoginlogAction" method="{1}">
+			<result name="list">/base/dbloginlog/list.jsp</result>
+        </action>
+        <action name="dictitem_*" class="com.gmcc.pboss.web.base.dictitem.DictitemAction" method="{1}">
+			<result name="list">dictitem/list.jsp</result>
+            <result name="content">dictitem/content.jsp</result>
+        </action>
+        <action name="dictgroup_*" class="com.gmcc.pboss.web.base.dictgroup.DictgroupAction" method="{1}">
+			<result name="list">dictgroup/list.jsp</result>
+            <result name="content">dictgroup/content.jsp</result>
+        </action>
+        <action name="parameter_*" class="com.gmcc.pboss.web.base.parameter.ParameterAction" method="{1}">
+			<result name="list">parameter/list.jsp</result>
+            <result name="content">parameter/content.jsp</result>
+        </action>
+        <action name="rolefunction_*" class="com.gmcc.pboss.web.base.rolefunction.RolefunctionAction" method="{1}">
+			<result name="list">/base/rolefunction/list.jsp</result>
+            <result name="content">/base/rolefunction/content.jsp</result>
+            <result name="batchlist">/base/rolefunction/batchlist.jsp</result>
+            <result name="menutree">/base/rolefunction/menutree.jsp</result>
+        </action>
+        <action name="operinfo_*" class="com.gmcc.pboss.web.base.operinfo.OperinfoAction" method="{1}">
+			<result name="list">/base/operinfo/list.jsp</result>
+            <result name="content">/base/operinfo/content.jsp</result>
+        </action>
+        <action name="operfunction_*" class="com.gmcc.pboss.web.base.operfunction.OperfunctionAction" method="{1}">
+			<result name="list">/base/operfunction/list.jsp</result>
+            <result name="content">/base/operfunction/content.jsp</result>
+            <result name="batchlist">/base/operfunction/batchlist.jsp</result>
+        </action>
+        <action name="organization_*" class="com.gmcc.pboss.web.base.organization.OrganizationAction" method="{1}">
+			<result name="list">/base/organization/list.jsp</result>
+            <result name="content">/base/organization/content.jsp</result>
+        </action>
+        
+        <!-- 工号关系管理 -->
+        <action name="operrole_*" class="com.gmcc.pboss.web.base.operrole.OperroleAction" method="{1}">
+			<result name="list">/base/operrole/list.jsp</result>
+            <result name="content">/base/operrole/content.jsp</result>
+            <result name="batchoperroleset">/base/operrole/batchoperroleset.jsp</result>
+        </action>
+        <action name="operroleupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/base/operrole/batchoperrole.jsp</result>
+   			<result name="error">/base/operrole/batchoperrole.jsp</result>
+		</action>
+		<action name="operrolebatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/base/operrole/batchoperrole.jsp</result>
+            <result name ="error">/base/operrole/batchoperrole.jsp</result>
+		</action>
+		
+        
+        <action name="operright_*" class="com.gmcc.pboss.web.base.operright.OperrightAction" method="{1}">
+			<result name="list">/base/operright/list.jsp</result>
+            <result name="content">/base/operright/content.jsp</result>
+            <result name="batchlist">/base/operright/batchlist.jsp</result>
+        </action>
+        <action name="roleright_*" class="com.gmcc.pboss.web.base.roleright.RolerightAction" method="{1}">
+			<result name="list">/base/roleright/list.jsp</result>
+            <result name="content">/base/roleright/content.jsp</result>
+            <result name="batchlist">/base/roleright/batchlist.jsp</result>
+        </action>
+        <!-- 工号基本管理 -->
+        <action name="operator_*" class="com.gmcc.pboss.web.base.operator.OperatorAction" method="{1}">
+			<result name="list">/base/operator/list.jsp</result>
+            <result name="content">/base/operator/content.jsp</result>
+            <result name="auditRole">/base/operator/auditRoleList.jsp</result>
+            <result name="auditWayRole">/base/operator/auditWayRoleList.jsp</result>
+        </action>
+        <action name="role_*" class="com.gmcc.pboss.web.base.role.RoleAction" method="{1}">
+			<result name="list">/base/role/list.jsp</result>
+            <result name="content">/base/role/content.jsp</result>
+            <result name="rolesetlist">/base/operator/rolesetlist.jsp</result>
+            <result name="roleselect">/base/role/roleselect.jsp</result>
+            <result name="rolequerys">/base/role/rolequerys.jsp</result>
+        </action>
+        <action name="rightitem_*" class="com.gmcc.pboss.web.base.rightitem.RightitemAction" method="{1}">
+			<result name="list">/base/rightitem/list.jsp</result>
+            <result name="content">/base/rightitem/content.jsp</result>
+        </action>
+        
+        <action name="sysparam_*" class="com.gmcc.pboss.web.base.sysparam.SysparamAction" method="{1}">
+			<result name="list">/base/sysparam/list.jsp</result>
+            <result name="content">/base/sysparam/content.jsp</result>
+        </action>
+        
+        <!-- 系统日志 -->
+        <action name="operatorlog_*" class="com.gmcc.pboss.web.base.operatorlog.OperatorlogAction" method="{1}">
+			<result name="list">/base/operatorlog/list.jsp</result>
+        </action>
+        <action name="rolelog_*" class="com.gmcc.pboss.web.base.rolelog.RolelogAction" method="{1}">
+			<result name="list">/base/rolelog/list.jsp</result>
+        </action>
+        <action name="operrolelog_*" class="com.gmcc.pboss.web.base.operrolelog.OperrolelogAction" method="{1}">
+			<result name="list">/base/operrolelog/list.jsp</result>
+        </action>
+        <action name="functionitemlog_*" class="com.gmcc.pboss.web.base.functionitemlog.FunctionitemlogAction" method="{1}">
+			<result name="list">/base/functionitemlog/list.jsp</result>
+        </action>
+        <action name="rolefunctionlog_*" class="com.gmcc.pboss.web.base.rolefunctionlog.RolefunctionlogAction" method="{1}">
+			<result name="list">/base/rolefunctionlog/list.jsp</result>
+        </action>
+        <action name="rolerightlog_*" class="com.gmcc.pboss.web.base.rolerightlog.RolerightlogAction" method="{1}">
+			<result name="list">/base/rolerightlog/list.jsp</result>
+        </action>
+        <action name="operfunctionlog_*" class="com.gmcc.pboss.web.base.operfunctionlog.OperfunctionlogAction" method="{1}">
+			<result name="list">/base/operfunctionlog/list.jsp</result>
+        </action>
+        <action name="operrightlog_*" class="com.gmcc.pboss.web.base.operrightlog.OperrightlogAction" method="{1}">
+			<result name="list">/base/operrightlog/list.jsp</result>
+        </action>
+        <action name="sysparamlog_*" class="com.gmcc.pboss.web.base.sysparamlog.SysparamlogAction" method="{1}">
+			<result name="list">/base/sysparamlog/list.jsp</result>
+        </action>
+        <action name="dictitemlog_*" class="com.gmcc.pboss.web.base.dictitemlog.DictitemlogAction" method="{1}">
+			<result name="list">/base/dictitemlog/list.jsp</result>
+        </action>
+        <action name="batchlog_*" class="com.gmcc.pboss.web.base.batchlog.BatchlogAction" method="{1}">
+			<result name="list">/base/batchlog/list.jsp</result>
+        </action>
+        <action name="smstmpl_*" class="com.gmcc.pboss.web.base.smstmpl.SmstmplAction" method="{1}">
+			<result name="list">/base/smstmpl/list.jsp</result>
+			<result name="content">/base/smstmpl/content.jsp</result>
+        </action>
+        
+        <!-- 动态菜单 --> 
+		<action name="functionitem_*" class="com.gmcc.pboss.web.base.functionitem.FunctionitemAction" method="{1}">
+			<result name="menuTree">/iframe/menutree.jsp</result>
+			<result name="top">/iframe/top.jsp</result>
+			<result name="sontree">/iframe/sontree.jsp</result>
+			<result name="manageList">/base/functionitem/list.jsp</result>
+			<result name="list">/base/functionitem/list.jsp</result>
+			<result name="manageTree">/base/functionitem/tree.jsp</result>
+			<result name="content">/base/functionitem/content.jsp</result>
+			<result name="roleMenuTree">/base/rolefunction/menutree.jsp</result><!-- 角色菜单中的用户角色所拥有的菜单 -->
+        </action>
+        
+        <!-- 网站动态菜单 --> 
+		<action name="webfunctionitem_*" class="com.gmcc.pboss.web.base.webfunctionitem.WebfunctionitemAction" method="{1}">
+			<result name="menuTree">/iframe/menutree.jsp</result>
+			<result name="top">/iframe/top.jsp</result>
+			<result name="sontree">/iframe/sontree.jsp</result>
+			<result name="manageList">/base/webfunctionitem/list.jsp</result>
+			<result name="list">/base/webfunctionitem/list.jsp</result>
+			<result name="manageTree">/base/webfunctionitem/tree.jsp</result>
+			<result name="content">/base/webfunctionitem/content.jsp</result>
+        </action>
+        <!-- 激活量短信下发接收号码设置 -->
+        <action name="batchsmsrc_*" class="com.gmcc.pboss.web.base.batchsmsrc.BatchsmsrcAction" method="{1}">
+			<result name="list">/base/batchsmsrc/list.jsp</result>
+            <result name="content">/base/batchsmsrc/content.jsp</result>
+        </action>
+        <action name="batchsmsrcupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/base/batchsmsrc/import.jsp</result>
+            <result name ="error">/base/batchsmsrc/import.jsp</result>
+        </action>
+        <action name="batchsmsrcimport" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/base/batchsmsrc/import.jsp</result>
+            <result name ="error">/base/batchsmsrc/import.jsp</result>
+        </action>
+        <!-- 短信通知对象管理 -->
+        <action name="smsobject_*" class="com.gmcc.pboss.web.base.smsobject.SmsobjectAction" method="{1}">
+             <result name="list">/base/smsobject/list.jsp</result>
+             <result name="content">/base/smsobject/content.jsp</result>
+        </action>
+        <!-- 短信过滤设置 -->
+        <action name="limitsms_*" class="com.gmcc.pboss.web.base.limitsms.LimitsmsAction" method="{1}">
+        	 <result name="list">/base/limitsms/list.jsp</result>
+             <result name="content">/base/limitsms/content.jsp</result>
+        </action>
+        <!-- 酬金负责人资料录入 -->
+           <action name="rewardsendsms_*" class="com.gmcc.pboss.web.base.rewardsendsms.RewardsendsmsAction" method="{1}">
+        	 <result name="list">/base/rewardsendsms/list.jsp</result>
+             <result name="content">/base/rewardsendsms/content.jsp</result>
+        </action>
+        <!-- 酬金负责人资料录入    批量导入-->
+         <action name="rewardsendsms_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/base/rewardsendsms/batch.jsp</result>
+            <result name ="error">/base/rewardsendsms/batch.jsp</result>
+       	</action>
+       	<action name="rewardsendsms_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name ="success">/base/rewardsendsms/batch.jsp</result>
+            <result name ="error">/base/rewardsendsms/batch.jsp</result>
+        </action>
+	</package>
+</struts>

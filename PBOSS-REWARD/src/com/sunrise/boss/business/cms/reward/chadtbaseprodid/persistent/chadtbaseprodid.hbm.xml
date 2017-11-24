@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.chadtbaseprodid.persistent.ChAdtBaseprodidVO" table="CH_ADT_BASEPRODID">
+<composite-id>
+<key-property column="CITYID" length="2" name="cityid" type="java.lang.String"/>
+<key-property column="PRODID" length="32" name="prodid" type="java.lang.String"/>
+</composite-id>
+<property column="TYPE" length="2" name="type" not-null="true" type="java.lang.String"/>
+<property column="PRODNAME" length="128" name="prodname" type="java.lang.String"/>
+<property column="OPRTYPE" length="2" name="oprtype" not-null="true" type="java.lang.String"/>
+<property column="TERTYPE" length="2" name="tertype" type="java.lang.String"/>
+<property column="WRAPFEE" length="14" name="wrapfee" not-null="true" type="java.lang.Double"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="ADTREMARK" length="64" name="adtremark" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

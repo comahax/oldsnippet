@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+
+	<!-- =======================================================================================================================	 -->
+	<!-- 业务代码缓存-社会渠道 -->
+	<bean id="opnJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="operationService" />
+		<property name="targetMethod" value="refresh" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 每天 1:00 执行 -->
+	<bean id="opnTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="opnJobDetail" />
+		<property name="cronExpression" value="0 0 1 * * ?" />
+	</bean>
+
+	<!-- =======================================================================================================================	 -->
+	<!-- 业务代码缓存-网站渠道-->
+
+	<bean id="bbcOpnJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="bbcOperationService" />
+		<property name="targetMethod" value="refresh" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 每天1:10 执行 -->
+	<bean id="bbcOpnTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="bbcOpnJobDetail" />
+		<property name="cronExpression" value="0 10 1 * * ?" />
+	</bean>
+
+	<!-- =======================================================================================================================	 -->
+	<!-- 酬金失效编码-->
+	<bean id="adtRemarkJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="adtService" />
+		<property name="targetMethod" value="refresh" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 每天 1:15 执行 -->
+	<bean id="adtRemarkTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="adtRemarkJobDetail" />
+		<property name="cronExpression" value="0 15 1 * * ?" />
+	</bean>
+	
+	<!-- =======================================================================================================================	 -->
+	<!-- 商品种类缓存 -->
+	<bean id="dictItemDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="dictItemService" />
+		<property name="targetMethod" value="refresh" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 每天 1:20 执行 -->
+	<bean id="dictItemTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="dictItemDetail" />
+		<property name="cronExpression" value="0 20 1 * * ?" />
+	</bean>
+	
+	<!-- =======================================================================================================================	 -->
+	<!-- 固定参数缓存 -->
+	<bean id="constantDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="constantService" />
+		<property name="targetMethod" value="refresh" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 每天 1:25执行 -->
+	<bean id="constantTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="constantDetail" />
+		<property name="cronExpression" value="0 25 1 * * ?" />
+	</bean>
+	
+	<!-- =======================================================================================================================	 -->
+	<!-- 卡类购销划扣银行标识 -->
+	<bean id="dbBankDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="dbBankService" />
+		<property name="targetMethod" value="refresh" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 每隔 1:35 更新 -->
+	<bean id="dbBankTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="dbBankDetail" />
+		<property name="cronExpression" value="0 35 1 * * ?" />
+	</bean>
+	<!-- =======================================================================================================================	 -->
+	<!-- 沟通管理公共信息缓存 -->
+	<bean id="communiPubInfo" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="communicatePlateauService"/>
+		<property name="targetMethod" value="refresh"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	
+	<!-- 公开信息加载 每隔1.5小时进行更新
+	5400000ms = 5400s = 90分钟
+	-->
+	<bean id="communiPubInfoTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="communiPubInfo"/>
+		<property name="startDelay">
+        	<value>5400000</value>
+    	</property>
+		<property name="repeatInterval">
+        	<value>5400000</value>
+    	</property>
+	</bean>
+	<!-- =======================================================================================================================	 -->
+
+	<!-- =======================================================================================================================	 -->
+	<!-- 沟通管理公告信息缓存 -->
+	<bean id="communicatePublicSchClear" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="communicatePublicService" />
+		<property name="targetMethod" value="clear" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<!-- 每天 1:50 更新 -->
+	<bean id="communicatePublicSchClearTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="communicatePublicSchClear" />
+		<property name="cronExpression" value="0 50 1 * * ?" />
+	</bean>
+	<!-- =======================================================================================================================	 -->
+	
+	<!-- =======================================================================================================================	 -->
+	<!-- 菜单缓存 -->
+	<bean id="menuTreeSchedular" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="saDbWebfunctionitemService" />
+		<property name="targetMethod" value="refresh" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<!-- 公开信息加载 每隔2小时进行更新 
+	设置成10分钟测试-->
+	<bean id="menuTreeTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="menuTreeSchedular"/>
+		<property name="startDelay">
+        	<value>7200000</value>
+    	</property>
+		<property name="repeatInterval">
+        	<value>7200000</value>
+    	</property>
+	</bean>	
+	<!-- =======================================================================================================================	 -->
+		
+	<!-- =======================================================================================================================	 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="opnTrigger" />
+				<ref bean="bbcOpnTrigger" />
+				<ref bean="adtRemarkTrigger" />
+				<ref bean="dictItemTrigger" />
+				<ref bean="communiPubInfoTrigger"/>
+				<ref bean="constantTrigger"/>
+				<ref bean="communicatePublicSchClearTrigger"/>
+				<ref bean="menuTreeTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+	
+</beans>

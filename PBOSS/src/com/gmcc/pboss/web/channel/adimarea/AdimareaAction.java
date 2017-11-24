@@ -1,0 +1,42 @@
+/**
+ * auto-generated code
+ * Tue Jul 07 15:33:22 CST 2009
+ */
+ package com.gmcc.pboss.web.channel.adimarea;
+
+import com.gmcc.pboss.business.channel.adimarea.AdimareaVO ;
+import com.sunrise.jop.ui.struts2.BaseAction ;
+import com.gmcc.pboss.business.channel.adimarea.AdimareaDBParam;
+import com.gmcc.pboss.control.channel.adimarea.Adimarea ;
+
+/**
+ * <p>Title: AdimareaAction </p>;
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2006</p>
+ * <p>Company: sunrise Tech Ltd.</p>
+ * @author Jerimy
+ * @version 1.0
+ */
+public class AdimareaAction extends BaseAction{
+	
+	public AdimareaAction() {
+		super();
+
+		//????????¡¤?¡¤¡§??¡À?????
+		this.setForm(new AdimareaForm());
+		this.setParam(new AdimareaWebParam());
+
+        //???¡§VO?¨¤
+        setClsVO(AdimareaVO.class);
+        //???¡§?¡Â?¨¹??¡Á¨¦?????????????¡Â?¨¹???¨°?¨¨???¡§?????????¡Â?¨¹??¡Á???????
+        this.pkNameArray=new String[]{"adacode"};
+		this.setClsControl(Adimarea.class);
+		this.setClsQueryParam(AdimareaDBParam.class) ;
+
+		/**
+		 * ???????¡§??????????????????BaseAction??CRUD???¨¢?¡Â?????¡§??Delegate????¡ã??¨¦??????¡À????¡§
+		 * this.setClsDelegate(ExampleDelegate.class);
+		 * this.setClsQueryParam(ExampleDBParam.class);
+		 */
+	}
+}

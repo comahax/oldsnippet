@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderlog.OrderlogVO" table="FX_SW_ORDERLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_ORDERLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+<property column="FLOWID" length="14" name="flowid" type="java.lang.Long"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="COOPTYPE" length="16" name="cooptype" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="ORDERAVE" length="16" name="orderave" type="java.lang.String"/>
+<property column="STORAREA" length="16" name="storarea" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="ORDERSTATE" length="16" name="orderstate" type="java.lang.String"/>
+<property column="STATECHGTIME" length="7" name="statechgtime" type="java.util.Date"/>
+<property column="PAYTYPE" length="16" name="paytype" type="java.lang.String"/>
+<property column="DELITYPE" length="16" name="delitype" type="java.lang.String"/>
+<property column="RECAMT" length="16" name="recamt" type="java.lang.Double"/>
+<property column="ACTAMT" length="16" name="actamt" type="java.lang.Double"/>
+<property column="POSSTREAM" length="32" name="posstream" type="java.lang.String"/>
+<property column="BOSSWORKFID" length="32" name="bossworkfid" type="java.lang.String"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+<property column="DISCOMCODE" length="18" name="discomcode" type="java.lang.String"/>
+<property column="PAYTIME" length="7" name="paytime" type="java.util.Date"/>
+<property column="DEDUCTSTATE" length="16" name="deductstate" type="java.lang.String"/>
+<property column="SIGNSTATE" length="16" name="signstate" type="java.lang.String"/>
+<property column="ALARMLEVEL" length="16" name="alarmlevel" type="java.lang.String"/>
+<property column="CONFIRMFLAG" length="3" name="confirmflag" type="java.lang.Short"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="SIGNTIME" length="7" name="signtime" type="java.util.Date"/>
+<property column="RECORDTIME" length="7" name="recordtime" type="java.util.Date"/>
+<property column="DISOVERTIME" length="7" name="disovertime" type="java.util.Date"/>
+<property column="SIGNTYPE" length="16" name="signtype" type="java.lang.String"/>
+<property column="SMSSIGNNO" length="14" name="smssignno" type="java.lang.String"/>
+<property column="REVIEWSTATE" length="2" name="reviewstate" type="java.lang.Short"/>
+<property column="ACCEPPRINTAMT" length="3" name="accepprintamt" type="java.lang.Integer"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.sales.orderlog.orderlogList">
+<return class="com.gmcc.pboss.business.sales.orderlog.OrderlogVO"/>
+  select 
+  LOGID,
+  OPTIME,
+  OPRCODE,
+  OPRTYPE,
+  SUCCESS,
+  ORDERID,
+  FLOWID,
+  WAYID,
+  COUNTYID,
+  COOPTYPE,
+  STARLEVEL,
+  ORDERAVE,
+  STORAREA,
+  CREATETIME,
+  ORDERSTATE,
+  STATECHGTIME,
+  PAYTYPE,
+  DELITYPE,
+  RECAMT,
+  ACTAMT,
+  POSSTREAM,
+  BOSSWORKFID,
+  MEMO,
+  DISCOMCODE,
+  PAYTIME,
+  DEDUCTSTATE,
+  SIGNSTATE,
+  ALARMLEVEL,
+  CONFIRMFLAG,
+  MAREACODE,
+  SIGNTIME,
+  RECORDTIME,
+  DISOVERTIME,
+  SIGNTYPE,
+  SMSSIGNNO,
+  ACCEPPRINTAMT,
+  REVIEWSTATE
+   from FX_SW_ORDERLOG order by optime desc
+</sql-query>
+</hibernate-mapping>

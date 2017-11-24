@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sunrise.boss.business.fee.querybyno.valid.persistent.ValidVO" table="IB_CBA_VALID">
+		<id name="eboxchglogid" type="java.lang.Long">
+		  <column name="EBOXCHGLOGID" precision="14" scale="0" />
+		  <generator class="assigned"/>
+		</id>				
+		<property name="eboxid" type="java.lang.Long">
+            <column name="EBOXID" precision="14" not-null="true" />
+        </property>
+        <property name="sourno" type="java.lang.Long">
+            <column name="SOURNO" precision="14" not-null="true" />
+        </property>
+        <property name="amt" type="java.lang.Double">
+            <column name="AMT" precision="16" not-null="true" />
+        </property>
+		<property name="validday" type="java.lang.Integer">
+            <column name="VALIDDAY" precision="6" scale="0" not-null="true" />
+        </property>
+        <property name="realday" type="java.lang.Integer">
+            <column name="REALDAY" precision="6" scale="0" not-null="true" />
+        </property>
+        <property name="isvalid" type="java.lang.Integer">
+            <column name="ISVALID" precision="6" scale="0"  />
+        </property>
+        <property name="isroll" type="java.lang.Integer">
+            <column name="ISROLL" precision="6" scale="0" />
+        </property>
+        <property name="modifydate" type="java.util.Date">
+            <column name="MODIFYDATE"/>
+        </property>
+        
+	</class>
+</hibernate-mapping>

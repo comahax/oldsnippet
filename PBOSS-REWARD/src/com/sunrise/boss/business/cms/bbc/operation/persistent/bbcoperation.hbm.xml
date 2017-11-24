@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.operation.persistent.BBCoperationVO" table="CH_BBC_OPERATION">
+<id column="OPNID" name="opnid" type="java.lang.String" length="18">
+<generator class="assigned"/>
+</id>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="PARENTID" length="18" name="parentid" type="java.lang.String"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"/>
+<property column="STATE" length="2" name="state" type="java.lang.Short"/>
+<property column="STARTDATE" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" name="enddate" type="java.util.Date"/>
+<property column="ISBUSI" name="isbusi" type="java.lang.Short"/>
+<property column="OPNLEVEL" name="opnlevel" type="java.lang.Short"/>
+<property column="BUSIKIND" name="busikind" type="java.lang.Short"/>
+<property column="BUSIBELONG" name="busibelong" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

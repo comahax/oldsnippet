@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>    
+    <form-beans>  
+    
+    	<form-bean name="psncustomer/uniview/bill/billlist/monthPaymentForm" type="com.sunrise.boss.ui.psncustomer.uniview.bill.billlist.MonthPaymentForm"/>
+        
+    </form-beans>    
+   
+    <action-mappings>        
+    
+    	<action name="psncustomer/uniview/bill/billlist/monthPaymentForm" path="/psncustomer/uniview/bill/billlist/upload" scope="request" 
+				type="com.sunrise.boss.ui.psncustomer.uniview.bill.billlist.upload.MonthPaymentUploadFileAction">
+			<forward name="success" path="/psncustomer/uniview/bill/billlist/batch.jsp" />
+			<forward name="error" path="/psncustomer/uniview/bill/billlist/batch.jsp" />
+		</action>
+		<action name="psncustomer/uniview/bill/billlist/monthPaymentForm" path="/psncustomer/uniview/bill/billlist/processfile/batch" scope="request" 
+			type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/psncustomer/uniview/bill/billlist/batch.jsp" />
+			<forward name="error" path="/psncustomer/uniview/bill/billlist/batch.jsp" />
+		</action>
+    </action-mappings>
+    <message-resources parameter="com.sunrise.boss.resource.i18n.psncustomer.uniview.bill.MonthPayment" key="billlist" null="false"/>
+</struts-config>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.areagroupscale.persistent.AreaGroupScaleVO" table="PC_PS_AREAGRPSCA">
+<composite-id>
+<key-property column="AREACODE" length="10" name="areacode" type="java.lang.String"/>
+<key-property column="AREAGROUPID" length="10" name="areagroupid" type="java.lang.Long"/>
+</composite-id>
+<property column="EFFDATE" length="7" name="effdate" not-null="true" type="java.util.Date"/>
+<property column="EXPDATE" length="7" name="expdate" not-null="true" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="examine" namespace="/examine" extends="pboss-default">
+		<!-- -->
+		<action name="disexamine_*" class="com.gmcc.pboss.web.examine.disexamine.DisexamineAction" method="{1}">
+			<result name="list">/examine/disexamine/list.jsp</result>
+            <result name="content">/examine/disexamine/content.jsp</result> 
+        </action>
+       <!-- 配送商考核 -->
+         <action name="disexamine_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name ="success">/examine/disexamine/import.jsp</result>
+            <result name ="error">/examine/disexamine/import.jsp</result>
+       	</action>
+       	<action name="disexamine_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction" >
+			<result name ="success">/examine/disexamine/import.jsp</result>
+            <result name ="error">/examine/disexamine/import.jsp</result>
+       	</action>
+        
+       
+    </package>
+</struts>

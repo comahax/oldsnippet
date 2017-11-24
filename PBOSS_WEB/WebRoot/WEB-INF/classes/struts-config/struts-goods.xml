@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="goods" namespace="/goods" extends="default">
+		<action name="begin" class="goodsReserveAction" method="doBegin">
+			<result>/basic/goods/goodsReserved.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<!-- 商品售价订购基数查询 -->
+		<action name="getPriceRadix" class="goodsReserveAction" method="doGetPriceRadix">
+		</action>
+		<!-- 增加到购物车 -->
+		<action name="addGoods" class="goodsReserveAction" method="doAddGoods">
+		</action>
+		
+		<!-- 从购物车中删除 -->
+		<action name="delGoods" class="goodsReserveAction" method="doDelGoods">
+		</action>
+		<!-- 资源明细  -->
+		<action name="ajaxQuery" class="goodsReserveAction" method="doQuery">
+			<result name="error">/message.jsp</result>
+		</action>
+		
+		<action name="submit" class="goodsReserveAction" method="doSubmit">
+			<result>/message.jsp</result>
+			<result name="error">/basic/goods/goodsReserved.jsp</result>
+		</action>
+		
+		<!-- 订单明细 -->
+		<action name="goodsDetail" class="goodsReserveAction" method="doCarDetail">
+			<result>/basic/goods/goodsDtl.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+	</package>
+</struts>

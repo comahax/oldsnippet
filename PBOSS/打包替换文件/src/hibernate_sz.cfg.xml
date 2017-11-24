@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+<!--	<property name="hibernate.multi-DB.SingleMappingData">cityHibernate</property>  -->
+	<property name="connection.datasource">xa-sz-ds</property>
+	<property name="hibernate.session_factory_name">hibernate_sz</property>
+	<property name="transaction.manager_lookup_class">org.hibernate.transaction.WebSphereExtendedJTATransactionLookup</property>
+	<property name="jta.UserTransaction">java:comp/UserTransaction</property>
+	<property name ="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>	
+
+	<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+	<property name="jdbc.batch_size">5</property>
+	<property name="jdbc.fetch_size">5</property>
+	<property name="max_fetch_depth">1</property>
+	<property name="show_sql">false</property>
+
+		<mapping resource="com/gmcc/pboss/business/base/sysparam/Sysparam.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/sysparamlog/Sysparamlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/smstmpl/Smstmpl.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/smstmpllog/Smstmpllog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/webfunctionitem/Webfunctionitem.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/base/webfunctionitemlog/Webfunctionitemlog.hbm.xml" />
+
+		<mapping resource="com/gmcc/pboss/business/base/batchsmsrc/Batchsmsrc.hbm.xml" />
+
+
+		<mapping resource="com/gmcc/pboss/business/channel/way/Way.hbm.xml" />
+
+
+		<mapping resource="com/gmcc/pboss/business/resource/comressmp/Comressmp.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/comressmplog/Comressmplog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/comrescard/Comrescard.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/comrescardlog/Comrescardlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/emptysim/Emptysim.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/emptysimlog/Emptysimlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/numtypedeflog/Numtypedeflog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/numtypedef/Numtypedef.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/numsortrulelog/Numsortrulelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/numsortrule/Numsortrule.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/resimport/Resimport.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/compack/Compack.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/compacklog/Compacklog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/discomres/Discomres.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/discomres/VDiscomres.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/resdisform/Resdisform.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/resdisform/productdetail.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/simpleboss/Simpleboss.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/comtreeshow/Comtreeshow.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/orderresstart/Orderresstart.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/resalarminfo/Resalarminfo.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/numtyperule/Numtyperule.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/wayrcstat/Wayrcstat.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/resource/stkalarmstat/Stkalarmstat.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/stkalarmct/Stkalarmct.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/resource/emptysimbad/Emptysimbad.hbm.xml" />
+
+
+		<mapping resource="com/gmcc/pboss/business/promotion/elmtinst/Elmtinst.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/elmtinstlog/Elmtinstlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/spproposal/Spproposal.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/spproposallog/Spproposallog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/rule/Rule.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/rulelog/Rulelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ruleitem/Ruleitem.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlncom/Ppzlncom.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlncomlog/Ppzlncomlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnptnr/Ppzlnptnr.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnptnrlog/Ppzlnptnrlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnres/Ppzlnres.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnreslog/Ppzlnreslog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ruleitemlog/Ruleitemlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnrule/Ppzlnrule.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/ppzlnrulelog/Ppzlnrulelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/rewardstd/Rewardstd.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/rewardstdlog/Rewardstdlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/tieinsale/Tieinsale.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/tieinsalelog/Tieinsalelog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/pquantity/Pquantity.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/pquantitylog/Pquantitylog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/presentinga/Presentinga.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/presentingalog/Presentingalog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/presentingb/Presentingb.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/presentingblog/Presentingblog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/promotion/rewarddetail/Rewarddetail.hbm.xml" />
+
+
+		<mapping resource="com/gmcc/pboss/business/communication/advinfo/Advinfo.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/communication/advaffix/Advaffix.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/communication/advapproval/Advapproval.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/communication/advgroup/Advgroup.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/communication/advgroupobj/Advgroupobj.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/communication/rcvobj/Rcvobj.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/communication/reply/Reply.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/communication/questionnaire/Questionnaire.hbm.xml"/>
+
+
+		<mapping resource="com/gmcc/pboss/business/channel/employeelog/Employeelog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/fdauditdef/Fdauditdef.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/svwaycnstr/Svwaycnstr.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/netsyn/Netsyn.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/netsynlog/Netsynlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/bchcontact/Bchcontact.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/wayaccount/Wayaccount.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waycompact/Waycompact.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/cooperator/Cooperator.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/cooperalog/Cooperalog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/auditwork/Auditwork.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waylog/Waylog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/bchcontlog/Bchcontlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waycompctlog/Waycompctlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/employeeapply/Employeeapply.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/wayapply/Wayapply.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/flowname/Flowname.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/wayacctlog/Wayacctlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waitreq/Waitreq.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/wayapplylog/Wayapplylog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/employeeapplylog/Employeeapplylog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/employee/Employee.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/result/Result.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/waysyn/Waysyn.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/waysynlog/Waysynlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/empmodel/Empmodel.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/empmodellog/Empmodellog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/emodconfirm/Emodconfirm.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/employeeextend/Employeeextend.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/employeeextendlog/Employeeextendlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/channel/empconfirm/Empconfirm.hbm.xml"/>
+
+
+		<mapping resource="com/gmcc/pboss/business/sales/order/Order.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderlog/Orderlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/ordercomcate/Ordercomcate.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/monorderinfo/Monorderinfo.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/realtimeamt/Realtimeamt.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/simstockalarm/Simstockalarm.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/simstockalarmlog/Simstockalarmlog.hbm.xml"/>
+
+
+		<mapping resource="com/gmcc/pboss/business/sales/vrealtimeamt/Vrealtimeamt.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderresdet/Orderresdet.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderpackdet/Orderpackdet.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/wayassistant/Wayassistant.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/orderplan/Orderplan.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/disform/Disform.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/disform/VDisform.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/disform/PDisform.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/disform/SDisform.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/resdetview/Resdetview.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/activerate/Activerate.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/smpextramid/Smpextramid.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/partnerres/Partnerres.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/noactinfo/Noactinfo.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/actrepair/Actrepair.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/incqttdtl/Incqttdtl.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/adpaysum/Adpaysum.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/adpaydet/Adpaydet.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/ordertimes/Ordertimes.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/disform/GDisform.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/stockalarm/Stockalarm.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/vstockalarm/Vstockalarm.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/vsimstockalarm/Vsimstockalarm.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/stockalarmlog/Stockalarmlog.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/alaordercol/Alaordercol.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/smsconfirm/Smsconfirm.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/sales/comdisscale/Comdisscale.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/comdisscalelog/Comdisscalelog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/chargesum/Chargesum.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/ressum/Ressum.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/canorderinfo/Canorderinfo.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/resource/actalarmstat/Actalarmstat.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/audit/Audit.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/auditlog/Auditlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/ordcomlog/Ordcomlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/bankdeduct/Bankdeduct.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/waystocksnpt/Waystocksnpt.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/waystocksnpt/SWaystocksnpt.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/waystocksnpt/RWaystocksnpt.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/waystockrecord/Waystockrecord.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/comrescarddetail/Comrescarddetail.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/comressdetail/Comressdetail.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/activedetail/Activedetail.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/auditdet/Auditdet.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/orderstate/Orderstate.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/orderstatecom/Orderstatecom.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/reward/rewardlocal/Rewardlocal.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/reward/rewardlocaldtl/Rewardlocaldtl.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/reward/rewardlocaltitle/Rewardlocaltitle.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/reward/rewardlocalvalue/Rewardlocalvalue.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/reward/dictparam/Dictparam.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/wayfxsworder/WayFxSwOrder.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/orderresdetwayorder/OrderresdetWayOrder.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/orderresdetwayorderdetail/OrderresdetWayOrderDetail.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/channel/changelog/Changelog.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/stockalmfloat/Stockalmfloat.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/stockalmfloatlog/Stockalmfloatlog.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/resource/phonestate/Phonestate.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/base/smsobject/Smsobject.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/base/smsobjectlog/Smsobjectlog.hbm.xml"/>
+
+        <mapping resource="com/gmcc/pboss/business/sales/wayassistantlog/Wayassistantlog.hbm.xml"/>
+
+
+        <mapping resource="com/gmcc/pboss/business/channel/wayprovincelog/Wayprovincelog.hbm.xml"/>
+
+
+        <mapping resource="com/gmcc/pboss/business/sales/disformprint/Disformprint.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/orderorderproce/OrderOrderproce.hbm.xml"/>
+
+
+
+		<mapping resource="com/gmcc/pboss/business/sales/disoverstat/Disoverstat.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/disoverdetail/Disoverdetail.hbm.xml"/>
+
+
+
+		<mapping resource="com/gmcc/pboss/business/reward/cardrewdet/Cardrewdet.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/reward/cardrewdetlog/Cardrewdetlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/reward/cardrewdettotal/Cardrewdettotal.hbm.xml"/>
+
+
+		<mapping resource="com/gmcc/pboss/business/examine/disexamine/Disexamine.hbm.xml"/>
+
+
+        <mapping resource="com/gmcc/pboss/business/channel/invoice/Invoice.hbm.xml"/>
+
+        <mapping resource="com/gmcc/pboss/business/channel/bondformlog/Bondformlog.hbm.xml"/>  
+
+
+		<mapping resource="com/gmcc/pboss/business/channel/bondform/Bondform.hbm.xml"/> 
+		<mapping resource="com/gmcc/pboss/business/channel/bondaudit/Bondaudit.hbm.xml"/>
+
+
+        <mapping resource="com/gmcc/pboss/business/sales/bankrecord/Bankrecord.hbm.xml"/>
+
+        <mapping resource="com/gmcc/pboss/business/sales/bankrecord/VBankrecord.hbm.xml"/>          
+
+        <mapping resource="com/gmcc/pboss/business/sales/bankrecordlog/Bankrecordlog.hbm.xml"/>        
+
+        <mapping resource="com/gmcc/pboss/business/sales/bankrecordsum/Bankrecordsum.hbm.xml"/>
+
+
+        <mapping resource="com/gmcc/pboss/business/sales/sellnotice/Sellnotice.hbm.xml"/>
+
+
+		<mapping resource="com/gmcc/pboss/business/sales/disformintervaltime/Disformintervaltime.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/sales/disformintervaltimelog/Disformintervaltimelog.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/vorderdisdetail/VOrderdisdetail.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/simrealtimeamt/Simrealtimeamt.hbm.xml"/>
+
+		<mapping resource="com/gmcc/pboss/business/sales/hisactivetol/Hisactivetol.hbm.xml"/>
+
+
+		<mapping resource="com/gmcc/pboss/business/sales/orderresdet/VOrderresdet.hbm.xml"/>
+
+		 <mapping resource="com/gmcc/pboss/business/channel/waystoreinfolog/Waystoreinfolog.hbm.xml"/>
+
+
+ 		<mapping resource="com/gmcc/pboss/business/reward/payment/Payment.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/paymentlog/Paymentlog.hbm.xml"/>
+		<mapping resource="com/gmcc/pboss/business/reward/payment/VPayment.hbm.xml"/>
+    <mapping resource="com/gmcc/pboss/business/reward/payment/VUpoprcode.hbm.xml"/>
+     
+		 <mapping resource="com/gmcc/pboss/business/reward/paymentsc/Paymentsc.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/paymentsc/VPaymentsc.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/paymentsclog/Paymentsclog.hbm.xml"/>
+     
+     <mapping resource="com/gmcc/pboss/business/reward/paydetail/Paydetail.hbm.xml"/>
+		 <mapping resource="com/gmcc/pboss/business/reward/paydetaillog/Paydetaillog.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

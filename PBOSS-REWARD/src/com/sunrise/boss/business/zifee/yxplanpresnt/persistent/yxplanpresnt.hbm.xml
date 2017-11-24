@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.yxplanpresnt.persistent.YxplanpresntVO" table="PC_PS_YXPLANPRESNT">
+<composite-id>
+<key-property name="acctid" column="ACCTID" type="java.lang.Long" length="14"/>
+<key-property name="presentinterval" column="PRESENTINTERVAL" type="java.lang.Integer" length="5"/>
+<key-property name="yxplanid" column="YXPLANID" type="java.lang.Long" length="14"/>
+</composite-id>
+<property name="presentcycles" column="PRESENTCYCLES" type="java.lang.Integer" length="5" not-null="true"/>
+<property name="presentrate" column="PRESENTRATE" type="java.lang.Float" length="8"/>
+<property name="eboxunitid" column="EBOXUNITID" type="java.lang.Long" length="14"/>
+</class>
+</hibernate-mapping>

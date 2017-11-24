@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.alaordercol.AlaordercolVO" table="FX_SW_ALAORDERCOL">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_ALAORDERCOL_SEQ</param>
+</generator>
+</id>
+<property column="COLDATE" length="8" name="coldate" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MACODE" length="14" name="macode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="ALARMLEVEL" length="16" name="alarmlevel" type="java.lang.String"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="AMOUNT" length="10" name="amount" type="java.lang.Long"/>
+<property column="ORDERAMT" length="6" name="orderamt" type="java.lang.Integer"/>
+<property column="CANCELAMT" length="6" name="cancelamt" type="java.lang.Integer"/>
+<property column="OVERAMT" length="6" name="overamt" type="java.lang.Integer"/>
+<property column="UPDATETIME" length="7" name="updatetime" type="java.util.Date"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.sales.alaordercol.groupQuery">
+select countyid,svccode,macode,starlevel,alarmlevel,brand,sum(amount) amount,sum(orderamt) orderamt,sum(cancelamt) cancelamt,sum(overamt) overamt from 
+fx_sw_alaordercol where coldate between :begincoldate and :endcoldate 
+group by countyid,svccode,macode,starlevel,alarmlevel,brand
+</sql-query>
+</hibernate-mapping>

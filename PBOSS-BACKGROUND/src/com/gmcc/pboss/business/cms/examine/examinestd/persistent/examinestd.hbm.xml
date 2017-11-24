@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.gmcc.pboss.business.cms.examine.examinestd.persistent.ExaminestdVO"
+		table="CH_PW_EXAMINESTD">
+		<id column="EXMNSTDID" name="exmnstdid" type="java.lang.Long">
+			<generator class="sequence">
+				<param name="sequence">
+					CH_PW_EXAMINESTD_SEQ
+        </param>
+			</generator>
+		</id>
+		<property column="EXMNSTDNAME" length="50" name="exmnstdname"
+			type="java.lang.String" />
+		<property column="MARKMODE" length="32" name="markmode"
+			type="java.lang.String" />
+		<property column="SYSLOGIC" length="1024" name="syslogic"
+			type="java.lang.String" />
+	</class>
+	<!--
+		根据“考核标识[EXMNID]”从“指标[CH_PW_EXAMINESTD]”和“考核项[CH_PW_EXMNITEM]”
+		表中关联查询出“评分方式[MARKMODE]”为“系统[1]”的考核指标
+	-->
+	<sql-query
+		name="com.gmcc.pboss.business.cms.examine.examinestd.persistent.queryByExmnidAndMarkmode">
+		select i.EXMNID,i.EXMNSCORE,e.EXMNSTDID,e.SYSLOGIC
+		from CH_PW_EXAMINESTD e,CH_PW_EXMNITEM i
+		where e.EXMNSTDID = i.EXMNSTDID
+		and e.MARKMODE = 1
+		and i.EXMNID =:EXMNID 
+</sql-query>
+
+<!-- 
+根据“渠道代码[WAYID]”、“考核标识[EXMNID]”、“考核周期[EXMNPERIOD]”处理年月
+（格式为yyyymm，）、“状态[STATE]”为“已审核[1]”、
+关联查找“考核项评分[CH_PW_ITEMGRADED]”和“考核项[CH_PW_EXMNITEM]”表；
+ -->
+<sql-query name="com.gmcc.pboss.business.cms.examine.examinestd.persistent.query1">
+select distinct i.EXMNID,i.EXMNSTDID,e.ISVOTED,e.EXMNSCORE,i.PENALMARK 
+ from CH_PW_ITEMGRADED i,CH_PW_EXMNITEM e 
+ where i.EXMNID = e.EXMNID  and i.EXMNSTDID = e.EXMNSTDID  
+ and i.STATE = '1'  and i.EXMNID =:EXMNID and i.EXMNPERIOD=:EXMNPERIOD and i.WAYID =:WAYID
+</sql-query>
+</hibernate-mapping>

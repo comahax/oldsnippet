@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.fdauditdef.persistent.FdauditdefVO" table="CH_PW_FDAUDITDEF">
+<composite-id>
+<key-property name="field" column="FIELD" type="string" length="32"/>
+<key-property name="tablename" column="TABLENAME" type="string" length="32"/>
+<key-property name="typename" column="TYPENAME" type="string" length="32"/>
+</composite-id>
+<property name="tablechname" column="TABLECHNAME" type="string" length="64" not-null="true"/>
+<property name="fieldchname" column="FIELDCHNAME" type="string" length="64" not-null="true"/>
+<property name="fieldtype" column="FIELDTYPE" type="short" length="2"/>
+<property name="pkname" column="PKNAME" type="string" length="64"/>
+<property name="pktype" column="PKTYPE" type="short" length="2"/>
+<property name="pkname2" column="PKNAME2" type="string" length="64"/>
+<property name="pktype2" column="PKTYPE2" type="short" length="2"/>
+<property name="typechname" column="TYPECHNAME" type="string" length="64" not-null="true"/>
+<property name="state" column="STATE" type="short" length="2"/>
+</class>
+<sql-query name="cms.fdauditdef.queryalltype">
+<return-scalar column="typechname" type="string"/>
+<return-scalar column="typename" type="string"/>
+select typechname,typename from CH_PW_FDAUDITDEF group by typechname,typename
+</sql-query>
+</hibernate-mapping>

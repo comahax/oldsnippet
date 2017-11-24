@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.directory.persistent.DirectoryVO" table="CH_BBC_DIRECTORY">
+<id column="OPNID" name="opnid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="FIRSTLEVEL" length="32" name="firstlevel" type="java.lang.String"/>
+<property column="SECONDLEVEL" length="32" name="secondlevel" type="java.lang.String"/>
+<property column="THIRDLEVEL" length="32" name="thirdlevel" type="java.lang.String"/>
+<property column="NAME" length="64" name="name" type="java.lang.String"/>
+<property column="SERVICECODE" length="3" name="servicecode" type="java.lang.String"/>
+<property column="REWARD" length="32" name="reward" type="java.lang.String"/>
+<property column="REWARDSTD" length="5" name="rewardstd" type="java.lang.Float"/>
+<property column="RULE" length="1024" name="rule" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

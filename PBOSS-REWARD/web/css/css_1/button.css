@@ -1,0 +1,785 @@
+ /*=====================================================*/
+/*                         所有按钮                    */
+/*=====================================================*/
+.print {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/tijiao.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;
+}
+.button_Help {
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: right;margin-top:-14px; margin-right:30px;
+	border:#000 solid 0px;text-decoration:underline;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;cursor:hand;
+}
+.titleadd {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/images_1/button/titleadd.jpg) no-repeat;
+	width:60px;
+	height:23px;
+	padding-top:3px;
+	padding-left:20px;
+	font-size:12px;
+	color:#2A2A2A;
+	font-weight:450;
+	letter-spacing:2px;
+	position:relative;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=2);
+}
+
+.unify {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+
+.add {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/new.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;
+}
+.save {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/save.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;
+}
+.check {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.cancel {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.close {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/back.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;
+}
+
+
+.addData {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_6.gif) no-repeat;
+	width:100px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:2px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+
+.comfir {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.stop {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.flush {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+
+.submit1 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_4b_blank.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color: #092966;
+	font-weight:450;
+	letter-spacing:1px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+
+.comfir1 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_4b_blank.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color: #092966;
+	font-weight:450;
+	letter-spacing:1px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+
+.submit {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/save.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;
+}
+.withdraw {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.closeall {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+
+.batch {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.delete {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/delete.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;
+}
+.modify {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.search {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.query {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/sousuo.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;
+}
+.insert {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.intotally {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+
+.lastpage {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.nextpage {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+
+.sort {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.return {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.confirm {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.examine {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.back {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/back.gif) no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: left;
+	padding-left: 8px;
+	padding-top: 2px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.print_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.add_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.delete_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.modify_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.search_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.return_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.confirm_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.examine_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.back_blur {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_2.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:5px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.LL {
+	width:18px; 
+	height:18px;
+	background:url(../../images/images_1/button/LL.gif);
+	border:#fff solid 0px;
+	margin:3px 5px 0px 5px;
+	cursor:hand;
+}
+.L {
+	width:18px; 
+	height:18px;
+	background:url(../../images/images_1/button/L.gif);
+	border:#fff solid 0px;
+	margin:3px 5px 0px 5px;
+	cursor:hand;
+}
+.RR {
+	width:18px; 
+	height:18px;
+	background:url(../../images/images_1/button/RR.gif);
+	border:#fff solid 0px;
+	margin:3px 20px 0px 5px;
+	cursor:hand;
+}
+.R {
+	width:18px; 
+	height:18px;
+	background:url(../../images/images_1/button/R.gif);
+	border:#fff solid 0px;
+	margin:3px 5px 0px 5px;
+	cursor:hand;
+}
+.select_LL {
+	width:62px; 
+	height:24px;
+	background:url(../../images/images_1/button/select_LL.jpg);
+	border:#fff solid 0px;
+	margin:5px 10px 5px 10px;
+	cursor:hand;
+}
+.select_L {
+	width:62px; 
+	height:24px;
+	background:url(../../images/images_1/button/select_L.jpg);
+	border:#fff solid 0px;
+	margin:5px 10px 5px 10px;
+	cursor:hand;
+}
+.select_R {
+	width:62px; 
+	height:24px;
+	background:url(../../images/images_1/button/select_R.jpg);
+	border:#fff solid 0px;
+	margin:5px 10px 5px 10px;
+	cursor:hand;
+}
+.select_RR {
+	width:62px; 
+	height:24px;
+	background:url(../../images/images_1/button/select_RR.jpg);
+	border:#fff solid 0px;
+	margin:5px 10px 5px 10px;
+	cursor:hand;
+}
+/*-------------------------------*/
+.button_2 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_2b.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 51px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: center;
+	padding-left: 0px;
+	padding-top: 2px;
+}
+.button_8 {
+	background:url(../../images/btnUnify/button_8X_blank.gif);
+	text-align:center;
+	color:#092966;
+	font-size:12px;
+	width:112px;
+	height:23px;
+	border:#000 solid 0px;
+	padding-top:2px;
+}
+.button_query {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/sousuo.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#092966;
+	font-weight:450;
+	letter-spacing:12px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.button_3 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_3.gif) no-repeat;
+	width:65px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:2px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.button_4 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_4b_blank.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 65px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: center;
+	padding-left: 0px;
+	padding-top: 2px;
+}
+.button_5 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_5.gif) no-repeat;
+	width:77px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:0px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.button_6 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_6b.gif) no-repeat;
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 91px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #092966;
+	float: none;
+	border:#000 solid 0px;
+	text-align: center;
+	padding-left: 0px;
+	padding-top: 2px;
+}
+.button_7 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_7.gif) no-repeat;
+	width:101px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:0px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.button_88 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_8.gif) no-repeat;
+	width:126px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	letter-spacing:2px;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}
+.button_10 {
+	border:#000 solid 0px;
+	cursor:hand;
+	background:url(../../images/btnUnify/button_B_8.gif) no-repeat;
+	width:126px;
+	height:22px;
+	text-align:center;
+	font-size:12px;
+	color:#ffffff;
+	font-weight:450;
+	filter:progid:DXImageTransform.Microsoft.Glow(enabled=false,color=#ffffff,strength=0);
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.ruleitem.persistent.RuleitemVO" table="CH_ADT_RULEITEM">
+<id name="ruleitemid" column="RULEITEMID" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property name="ruleitemname" column="RULEITEMNAME" type="java.lang.String" length="250" not-null="true"/>
+<property name="backruleitemid" column="BACKRULEITEMID" type="java.lang.String" length="18"/>
+<property name="contype" column="CONTYPE" type="java.lang.String" length="10"/>
+<property name="specflag" column="SPECFLAG" type="java.lang.Byte" length="1"/>
+<property name="vcityid" column="VCITYID" type="java.lang.String" length="200"/>
+</class>
+</hibernate-mapping>

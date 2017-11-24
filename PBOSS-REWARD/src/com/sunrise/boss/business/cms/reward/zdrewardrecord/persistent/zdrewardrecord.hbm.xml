@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" table="V_ZDREWARDRECORD">
+<id column="SEQ" name="seq" type="java.lang.Long">
+	<generator class="assigned"/>
+</id>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="MOBILE" length="15" name="mobile" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="RUNTIME" length="7" name="runtime" type="java.util.Date"/>
+<property column="RULEID" length="18" name="ruleid" type="java.lang.String"/>
+<property column="RESULTFLAG" length="15" name="resultflag" type="java.lang.String"/>
+<property column="ADTFLAG" length="2" name="adtflag" type="java.lang.Short"/>
+<property column="ADTCODE" length="200" name="adtcode" type="java.lang.String"/>
+<property column="ADTREMARK" length="800" name="adtremark" type="java.lang.String"/>
+<property column="REWARDTYPE" length="50" name="rewardtype" type="java.lang.String"/>
+<property column="REWARDFLAG" length="3" name="rewardflag" type="java.lang.Short"/>
+<property column="REPAIRMONTH" length="8" name="repairmonth" type="java.lang.String"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/>
+<property column="BAKINFO" length="18" name="bakinfo" type="java.lang.String"/>
+<property column="BAKINFO2" length="40" name="bakinfo2" type="java.lang.String"/>
+<property column="BAKINFO3" length="14" name="bakinfo3" type="java.lang.Double"/>
+<property column="WRAPFEE" length="10" name="wrapfee" type="java.lang.Double"/>
+<property column="NONCYC" length="3" name="noncyc" type="java.lang.Short"/>
+<property column="TOTALSUM" length="22" name="totalsum" type="java.lang.Double"/>
+<property column="PAYSUM" length="22" name="paysum" type="java.lang.Double"/>
+<property column="PAYMONEY1" length="22" name="paymoney1" type="java.lang.Double"/>
+<property column="ASSEGRADE2" length="7" name="assegrade2" type="java.lang.Double"/>
+<property column="PRODID" length="32" name="prodid" type="java.lang.String"/>
+<property column="BAKINFO4" length="14" name="bakinfo4" type="java.lang.Double"/>
+<property column="BAKINFO5" length="14" name="bakinfo5" type="java.lang.Double"/>
+<property column="BAKINFO6" length="32" name="bakinfo6" type="java.lang.String"/>
+<property column="BAKINFO7" length="32" name="bakinfo7" type="java.lang.String"/>
+<property column="BAKINFO8" length="32" name="bakinfo8" type="java.lang.String"/>
+<property column="BAKINFO9" length="32" name="bakinfo9" type="java.lang.String"/>
+<property column="BAKINFO10" length="32" name="bakinfo10" type="java.lang.String"/>
+</class>
+
+<sql-query name="zdrewardrecord.allzdjcreward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, '终端酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, 
+	a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and (a.opnid like '040504%' or a.opnid like '0407%' or a.opnid like '0411%' or a.opnid ='0701010100021') and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'终端酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, 
+	a.bakinfo3, a.wrapfee, a.noncyc, 0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and (a.opnid like '040504%' or a.opnid like '0407%' or a.opnid like '0411%' or a.opnid ='0701010100021') and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.allzdjcreward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, '终端酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, 
+	a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and (a.opnid like '040504%' or a.opnid like '0407%' or a.opnid like '0411%' or a.opnid ='0701010100021')
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'终端酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, 
+	a.bakinfo3, a.wrapfee, a.noncyc, 0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and (a.opnid like '040504%' or a.opnid like '0407%' or a.opnid like '0411%' or a.opnid ='0701010100021')
+</sql-query>
+
+<sql-query name="zdrewardrecord.hyzdjcreward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, (case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) as rewardtype, a.rewardflag, a.repairmonth, a.batchno, 
+	a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and (a.opnid like '0403%' or a.opnid like '04050401%' or a.opnid like '04050402%') and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	(case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, 
+	a.bakinfo3, a.wrapfee, a.noncyc, 0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and (a.opnid like '0403%' or a.opnid like '04050401%' or a.opnid like '04050402%') and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.hyzdjcreward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, (case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) as rewardtype, a.rewardflag, a.repairmonth, a.batchno, 
+	a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and (a.opnid like '0403%' or a.opnid like '04050401%' or a.opnid like '04050402%')
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	(case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, 
+	a.bakinfo3, a.wrapfee, a.noncyc, 0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and (a.opnid like '0403%' or a.opnid like '04050401%' or a.opnid like '04050402%')
+</sql-query>
+
+<sql-query name="zdrewardrecord.lhyzdreward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, (case when a.noncyc = 3 then '服务业务三期酬金' when a.noncyc = 2 then '服务业务二期酬金' 
+	else '服务业务一期酬金' end) as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, 
+	a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and (a.opnid in ('0405040300001', '0405040400001')) and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	(case when a.noncyc = 3 then '服务业务三期酬金' when a.noncyc = 2 then '服务业务二期酬金' 
+	else '服务业务一期酬金' end) as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, 
+	a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and (a.opnid in ('0405040300001', '0405040400001')) and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.lhyzdreward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, (case when a.noncyc = 3 then '服务业务三期酬金' when a.noncyc = 2 then '服务业务二期酬金' 
+	else '服务业务一期酬金' end) as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, 
+	a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and (a.opnid in ('0405040300001', '0405040400001'))
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	(case when a.noncyc = 3 then '服务业务三期酬金' when a.noncyc = 2 then '服务业务二期酬金' 
+	else '服务业务一期酬金' end) as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, 
+	a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and (a.opnid in ('0405040300001', '0405040400001'))
+</sql-query>
+
+<sql-query name="zdrewardrecord.ljzdreward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, (case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) 
+	as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, 
+	a.wrapfee, a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and (a.opnid in ('0405040500001', '0405040600001', '0405040500101', '0405040600101', 
+	   '0405040500004', '0405040600004')) and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	(case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and (a.opnid in ('0405040500001', '0405040600001', '0405040500101', '0405040600101', 
+	   '0405040500004', '0405040600004')) and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.ljzdreward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, (case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) 
+	as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, 
+	a.wrapfee, a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and (a.opnid in ('0405040500001', '0405040600001', '0405040500101', '0405040600101', 
+	   '0405040500004', '0405040600004'))
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	(case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and (a.opnid in ('0405040500001', '0405040600001', '0405040500101', '0405040600101', 
+	   '0405040500004', '0405040600004'))
+</sql-query>
+
+<sql-query name="zdrewardrecord.lptzdreward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, (case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) 
+	as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and (a.opnid in ('0405040500002', '0405040600002', '0405040500003', '0405040600003')) and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	(case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and (a.opnid in ('0405040500002', '0405040600002', '0405040500003', '0405040600003')) and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.lptzdreward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, (case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) 
+	as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and (a.opnid in ('0405040500002', '0405040600002', '0405040500003', '0405040600003'))
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	(case when a.noncyc = 1 then '服务业务基本酬金' else '服务业务考核酬金' end) as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1, 0 as assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and (a.opnid in ('0405040500002', '0405040600002', '0405040500003', '0405040600003'))
+</sql-query>
+
+<sql-query name="zdrewardrecord.newzdreward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'终端酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and a.opnid like '0407%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'终端酬金'  as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and a.opnid like '0407%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.newzdreward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'终端酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth 
+	   and a.opnid like '0407%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'终端酬金'  as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth 
+	   and a.opnid like '0407%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.zdyzqreward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'终端优质渠道半月预发酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid ='0701010100021' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'终端优质渠道半月预发酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid ='0701010100021' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.zdyzqreward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'终端优质渠道半月预发酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid ='0701010100021'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'终端优质渠道半月预发酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid ='0701010100021'
+</sql-query>
+
+<sql-query name="zdrewardrecord.arpureward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'ARPU分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid ='0406000000001' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'ARPU分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid ='0406000000001' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.arpureward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'ARPU分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid ='0406000000001'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'ARPU分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid ='0406000000001'
+</sql-query>
+
+<sql-query name="zdrewardrecord.jdljreward">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'基准价分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid ='0406000000002' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'基准价分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid ='0406000000002' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.jdljreward.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'基准价分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid ='0406000000002'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'基准价分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid ='0406000000002'
+</sql-query>
+
+<sql-query name="zdrewardrecord.g3timefisrt">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'3GTIMES机首期酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110301%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'3GTIMES机首期酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110301%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.g3timefisrt.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'3GTIMES机首期酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110301%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'3GTIMES机首期酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110301%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.g3timearpu">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'3GTIMES机ARPU分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110302%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'3GTIMES机ARPU分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110302%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.g3timearpu.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'3GTIMES机ARPU分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110302%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'3GTIMES机ARPU分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110302%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.g4timezh">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'4GTIMES机转化酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110401%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'4GTIMES机转化酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110401%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.g4timezh.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'4GTIMES机转化酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110401%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'4GTIMES机转化酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110401%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.g4timeph">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'4GTIMES机普惠办理酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110402%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'4GTIMES机普惠办理酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110402%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.g4timeph.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'4GTIMES机普惠办理酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110402%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'4GTIMES机普惠办理酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110402%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.g4notimeph">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'4G非TIMES机普惠办理酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04111402%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'4G非TIMES机普惠办理酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04111402%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.g4notimeph.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'4G非TIMES机普惠办理酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04111402%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'4G非TIMES机普惠办理酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04111402%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.g4notime3in1">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'4G非TIMES机三合一升级酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04111403%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'4G非TIMES机三合一升级酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04111403%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.g4notime3in1.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'4G非TIMES机三合一升级酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04111403%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'4G非TIMES机三合一升级酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04111403%'
+</sql-query>
+
+
+<sql-query name="zdrewardrecord.kuneijizhuanhua">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'库内机转化酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110501%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'库内机转化酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110501%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+<sql-query name="zdrewardrecord.kuneijifencheng">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'库内机分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110502%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'库内机分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110502%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.zidaijizhuanhua">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'自带机转化酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04111501%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'自带机转化酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04111501%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.zidaijifencheng">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'自带机分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04111502%' and nvl(a.noncyc,'1') = :noncyc
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'自带机分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04111502%' and nvl(a.noncyc,'1') = :noncyc
+</sql-query>
+
+<sql-query name="zdrewardrecord.kuneijizhuanhua.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'库内机转化酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110501%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'库内机转化酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110501%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.kuneijifencheng.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'库内机分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04110502%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'库内机分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04110502%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.zidaijizhuanhua.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'自带机转化酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04111501%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'自带机转化酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04111501%'
+</sql-query>
+
+<sql-query name="zdrewardrecord.zidaijifencheng.noqs">
+	<return class="com.sunrise.boss.business.cms.reward.zdrewardrecord.persistent.ZdrewardrecordVO" />
+	select a.rewardlistid as seq, a.rewardmonth as calcmonth, a.opnid, o.name, a.wayid, w.wayname, 
+	a.wayoprcode as oprcode, a.mobile, a.oprtime, a.runtime, a.ruleid, '成功' as resultflag, a.adtflag, 
+	a.adtcode, a.adtremark, 
+	'自带机分成酬金' as rewardtype, a.rewardflag, a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, 
+	a.noncyc, a.totalsum, a.paysum, a.paymoney1, a.assegrade2, a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_REWARDRECORD a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.rewardmonth = :calcmonth  
+	   and a.opnid like '04111502%'
+	union all
+	select a.seq, a.calcmonth, a.opnid, o.name, a.wayid, w.wayname, a.oprcode, a.mobile, a.oprtime, 
+	a.creattime as runtime, a.ruleid, '失败' as resultflag, a.adtflag, a.adtcode, a.adtremark, 
+	'自带机分成酬金' as rewardtype, a.rewardflag, 
+	a.repairmonth, a.batchno, a.bakinfo, a.bakinfo2, a.bakinfo3, a.wrapfee, a.noncyc, 
+	0 as totalsum, 0 as paysum, 0 as paymoney1,  0 as assegrade2,  a.prodid, a.bakinfo4, a.bakinfo5, a.bakinfo6, a.bakinfo7, a.bakinfo8, a.bakinfo9, a.bakinfo10
+	  from CH_ZD_FAIL a, CH_PW_OPERATION o, CH_PW_WAY w
+	 where a.opnid = o.opnid(+) and a.wayid = w.wayid(+) and a.calcmonth = :calcmonth  
+	   and a.opnid like '04111502%'
+</sql-query>
+
+</hibernate-mapping>
+
+

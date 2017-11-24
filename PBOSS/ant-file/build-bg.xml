@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 该ant文件主要用于打包jar文件  (提供给后台程序使用) -->
+<project name="pboss build file" default="to-jar" basedir="..">
+
+	<property name="pboss.lib" value="${basedir}/lib"/>
+	<property name="pboss.src" value="${basedir}/src"/>
+	<property name="pboss.target" value="${basedir}/target-bg"/>
+	<property name="pboss.target.src" value="${pboss.target}/src"/>
+	<property name="pboss.target.classes" value="${pboss.target}/classes"/>
+
+	<property name="jdk.version" value="1.5"/>
+
+
+    <!-- =================================================================== -->
+    <!-- Define the class path                                               -->
+    <!-- =================================================================== -->
+    <path id="pboss.class.path">
+        <fileset dir="${pboss.lib}">
+            <include name="spring/*.jar"/>
+            <include name="commons/commons-beanutils.jar"/>
+        	<include name="commons/commons-lang-2.1.jar"/>
+            <include name="commons/commons-logging.jar"/>
+        	<include name="dom4j/dom4j-1.6.jar"/>
+        	<include name="hibernate3/hibernate3.3.2/*.jar"/>
+        	<include name="oracle/*.jar"/>
+        	<include name="opentool/*.jar"/>
+        	<include name="jop/pboss-bg.jar"/>
+        	<include name="log4j/*.jar"/>
+        	<include name="ehcache/*.jar"/>
+        	<include name="ws/*.jar"/>
+        	<include name="jboss/*.jar"/>
+        </fileset>
+    </path>                                               
+
+    <!-- =================================================================== -->
+    <!-- Clean                                                               -->
+    <!-- =================================================================== -->
+    <target name="clean">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      C L E A N                                    |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>    	
+        <delete dir="${pboss.target}"/>
+    </target>
+
+
+    <!-- =================================================================== -->
+    <!-- Prepares the directory structure                                    -->
+    <!-- =================================================================== -->
+    <target name="prepare" depends="clean">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      P R E P A R E                                |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>    	
+        <mkdir dir="${pboss.target}"/>
+        <mkdir dir="${pboss.target.src}"/>
+    	<mkdir dir="${pboss.target.classes}"/>
+		
+        <copy todir="${pboss.target.src}">
+            <fileset dir="${pboss.src}">
+            	<include name="com/gmcc/pboss/business/**"/>            	
+            	<include name="com/gmcc/pboss/control/**"/>
+            	<include name="com/gmcc/pboss/client/**"/>
+            	
+            	<include name="com/gmcc/pboss/service/result/**"/>
+            	<include name="com/gmcc/pboss/service/send/**"/>
+            	<include name="com/gmcc/pboss/service/exception/**"/>
+            	
+            	<include name="com/gmcc/pboss/web/channel/common/**"/>
+            	<include name="com/gmcc/pboss/common/utils/**"/>
+            	<include name="com/gmcc/pboss/common/PbossConstant.java"/>
+            	<include name="com/gmcc/pboss/common/sms/ComOrderSms.java"/>
+            	
+            	
+            	<include name="com/gmcc/pboss/web/common/webservice/**"/>
+            	
+            	<include name="com/sunrise/jop/common/utils/lang/TimeUtils.java"/>
+            	<include name="com/sunrise/jop/common/utils/lang/PublicUtils.java"/>
+            	<include name="com/sunrise/jop/ui/struts2/WebConstant.java"/>
+            		<include name="com/sunrise/jop/ui/filter/PermissionChecker.java"/>
+            	<include name="com/sunrise/jop/exception/business/SaleException.java"/>
+            	<include name="com/sunrise/jop/common/utils/lang/Code2NameUtils.java"/>
+            
+            	<include name="data/ComOrderSms.properties"/>
+            	<include name="data/exception/SaleException_zh_CN.properties"/>
+            	<include name="data/exception/SaleException.properties"/>
+            	<include name="data/CRMCityPortState.properties" />
+            	<include name="bossconfig.properties"/>
+            	<exclude name="com/gmcc/pboss/common/utils/tools/CacheUtil.java"/>
+				<exclude name="com/gmcc/pboss/common/utils/tools/FileUtil.java"/>
+            	
+            	
+            </fileset>
+        </copy>
+    </target>
+	
+    <!-- =================================================================== -->
+    <!-- Compiles all the Web Site Service classes                           -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="prepare">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      C O M P I L I N G S O U R C E S              |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+        <javac destdir="${pboss.target.classes}" classpathref="pboss.class.path" debug="on" deprecation="on" optimize="off" target="${jdk.version}">
+            <src path="${pboss.target.src}"/>
+        </javac>
+        <copy todir="${pboss.target.classes}">
+            <fileset dir="${pboss.target.src}">
+            	<include name="com/gmcc/pboss/business/**/*.xml"/>
+            	<include name="data/ComOrderSms.properties"/>
+            	<include name="data/exception/SaleException_zh_CN.properties"/>
+            	<include name="data/exception/SaleException.properties"/>
+            	<include name="data/CRMCityPortState.properties" />
+            	<include name="bossconfig.properties"/>
+            </fileset>
+        </copy>
+    </target>
+	
+    <!-- =================================================================== -->
+    <!-- Jar the Web Site Service classes                                    -->
+    <!-- =================================================================== -->
+	<target name="to-jar" depends="compile">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>|      J A R                                        |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+		<jar destfile="${pboss.target}/pboss-jdk${jdk.version}.jar">
+            <fileset dir="${pboss.target.classes}">
+            </fileset>
+		</jar>
+		
+		<zip destfile="${pboss.target}/pboss-jdk${jdk.version}-src.zip">
+            <fileset dir="${pboss.target.src}">
+            </fileset>
+		</zip>
+	</target>
+</project>

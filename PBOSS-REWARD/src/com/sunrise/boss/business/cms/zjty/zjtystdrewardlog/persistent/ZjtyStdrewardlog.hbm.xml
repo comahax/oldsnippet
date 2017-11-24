@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtystdrewardlog.persistent.ZjtyStdrewardlogVO" table="CH_ZJTY_STDREWARDLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_ZJTY_STDREWARDLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="REWARDID" length="14" name="rewardid" type="java.lang.Long"/>
+<property column="REWARDNAME" length="40" name="rewardname" type="java.lang.String"/>
+<property column="REWARDPROJ" length="3" name="rewardproj" type="java.lang.Short"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="STOPDATE" length="7" name="stopdate" type="java.util.Date"/>
+<property column="MEMO" length="512" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

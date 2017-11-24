@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.cityrecord.persistent.VCityrecordVO" table="CH_ADT_CITYRECORD">
+<id column="SEQID" name="seqid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="OPNID1" length="18" name="opnid1" type="java.lang.String"/>
+<property column="OPNID2" length="18" name="opnid2" type="java.lang.String"/>
+<property column="DICTNAME" length="18" name="dictname" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="OPRMONTH" length="6" name="oprmonth" type="java.lang.String"/>
+<property column="ISFLAG" length="3" name="isflag" type="java.lang.Short"/>
+<property column="SUMBUSIVALUE" length="14" name="sumbusivalue" type="java.lang.Double"/>
+<property column="SUMPAYMONEY" length="22" name="sumpaymoney" type="java.lang.Double"/>
+<property column="SUMPAYMONEY1" length="14" name="sumnotconfirmmoney" type="java.lang.Double"/>
+<property column="SUMPAYMONEY0" length="22" name="sumconfirmmoney" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

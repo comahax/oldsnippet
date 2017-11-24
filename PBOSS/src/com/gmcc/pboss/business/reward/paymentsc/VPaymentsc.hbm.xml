@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.paymentsc.VPaymentscVO" table="VCH_SC_PAYMENT">
+    <id column="SEQ" length="14" name="seq" type="java.lang.Long">
+        <generator class="sequence">
+	        <param name="sequence">CH_SC_PAYMENT_SEQ</param>
+        </generator>
+    </id>
+    <property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+    <property column="CALCMONTH" length="6" name="calcmonth" type="java.lang.String"/>
+    <property column="OPTYPE" length="16" name="optype" type="java.lang.String"/>
+    <property column="LTYPE" length="128" name="ltype" type="java.lang.String"/>
+    <property column="STYPE" length="128" name="stype" type="java.lang.String"/>
+    <property column="PAYMONTH" length="6" name="paymonth" type="java.lang.String"/>
+    <property column="PAYSUM" length="18" name="paysum" type="java.lang.Double"/>
+    <property column="NOTE" length="4000" name="note" type="java.lang.String"/>
+    <property column="CHECKEDFLAG" length="32" name="checkedflag" type="java.lang.String"/>
+    <property column="UPOPRCODE" length="15" name="upoprcode" type="java.lang.String"/>
+    <property column="MOBILE" length="20" name="mobile" type="java.lang.String"/>
+    <property column="IMEI" length="15" name="imei" type="java.lang.String"/>
+    <property column="SETTLEPERIODS" length="400" name="settleperiods" type="java.lang.String"/>
+</class>
+
+<!-- query show/export list, PAYMENT_CHK_SWITCH_SC = close -->
+<sql-query name="com.gmcc.pboss.business.reward.paymentsc.doShowQueryBySql">
+    <return class="com.gmcc.pboss.business.reward.paymentsc.VPaymentscVO"></return>
+  SELECT P.SEQ,P.WAYID,P.CALCMONTH,P.PAYMONTH,P.OPTYPE,P.LTYPE,P.STYPE,
+       DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE), 1) NOTE,
+       P.PAYSUM,P.UPOPRCODE,C.CHECKEDFLAG,P.MOBILE,P.IMEI,P.SETTLEPERIODS
+  FROM CH_SC_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE UPPER(C.CITYID) = :cityid AND P.CALCMONTH = C.PAYMONTH
+</sql-query>
+
+<!-- query show/export list, PAYMENT_CHK_SWITCH_SC = open -->
+<sql-query name="com.gmcc.pboss.business.reward.paymentsc.doShowQueryByOprcodeSql">
+    <return class="com.gmcc.pboss.business.reward.paymentsc.VPaymentscVO"></return>
+  SELECT P.SEQ,P.WAYID,P.CALCMONTH,P.PAYMONTH,P.OPTYPE,P.LTYPE,P.STYPE,
+       DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE), 1) NOTE,
+       P.PAYSUM,P.UPOPRCODE,C.CHECKEDFLAG,P.MOBILE,P.IMEI,P.SETTLEPERIODS
+  FROM CH_SC_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE UPPER(C.CITYID) = :cityid AND P.CALCMONTH = C.PAYMONTH
+    AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED')
+  	    OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+</sql-query>
+
+<!-- query sum, PAYMENT_CHK_SWITCH_SC = close -->
+<sql-query name="com.gmcc.pboss.business.reward.paymentsc.doShowQuerySumBySql">
+    <return class="com.gmcc.pboss.business.reward.paymentsc.VPaymentscVO"></return>
+  SELECT P.WAYID,P.CALCMONTH,P.OPTYPE,P.LTYPE,P.STYPE,P.PAYMONTH,P.PAYSUM,P.MOBILE,P.IMEI
+  FROM CH_SC_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE UPPER(C.CITYID) = :cityid 
+     AND P.CALCMONTH = C.PAYMONTH
+</sql-query>
+
+<!-- query sum, PAYMENT_CHK_SWITCH_SC = open -->
+<sql-query name="com.gmcc.pboss.business.reward.paymentsc.doShowQuerySumByOprcodeSql">
+    <return class="com.gmcc.pboss.business.reward.paymentsc.VPaymentscVO"></return>
+  SELECT P.WAYID,P.CALCMONTH,P.PAYMONTH,P.OPTYPE,P.LTYPE,P.STYPE,
+       P.PAYSUM,P.UPOPRCODE,C.CHECKEDFLAG,P.MOBILE,P.IMEI
+  FROM CH_SC_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE UPPER(C.CITYID) = :cityid AND P.CALCMONTH = C.PAYMONTH
+    AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED')
+  	    OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+</sql-query>
+
+<!-- query delete list, PAYMENT_CHK_SWITCH_SC = close,not checked -->
+<sql-query name="com.gmcc.pboss.business.reward.paymentsc.doDeleteQuerySql">
+    <return class="com.gmcc.pboss.business.reward.paymentsc.VPaymentscVO"></return> 
+  SELECT P.SEQ,P.WAYID,P.CALCMONTH,P.PAYMONTH,P.OPTYPE,P.LTYPE,P.STYPE,
+       P.UPOPRCODE,C.CHECKEDFLAG,P.MOBILE,P.IMEI
+  FROM CH_SC_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE UPPER(C.CITYID) = :cityid 
+    AND P.CALCMONTH = C.PAYMONTH
+    AND C.CHECKEDFLAG='UNCHECKED'
+</sql-query>
+
+<!-- query delete list, PAYMENT_CHK_SWITCH_SC = open, not checked -->
+<sql-query name="com.gmcc.pboss.business.reward.paymentsc.doDeleteQueryByOprcodeSql">
+    <return class="com.gmcc.pboss.business.reward.paymentsc.VPaymentscVO"></return>
+  SELECT P.SEQ,P.WAYID,P.CALCMONTH,P.PAYMONTH,P.OPTYPE,P.LTYPE,P.STYPE,
+       P.UPOPRCODE,C.CHECKEDFLAG,P.MOBILE,P.IMEI
+  FROM CH_SC_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE UPPER(C.CITYID) = :cityid 
+    AND P.CALCMONTH = C.PAYMONTH
+    AND C.CHECKEDFLAG='UNCHECKED'
+    AND (P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+</sql-query>
+
+</hibernate-mapping>

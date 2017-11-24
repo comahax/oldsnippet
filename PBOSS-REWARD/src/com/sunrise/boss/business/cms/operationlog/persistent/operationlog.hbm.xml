@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.operationlog.persistent.OperationlogVO" table="CH_PW_OPERATIONLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_PW_OPERATIONLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"/>
+<property column="PARENTID" length="18" name="parentid" type="java.lang.String"/>
+<property column="STATE" length="2" name="state" type="java.lang.Short"/>
+<property column="STARTDATE" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" name="enddate" type="java.util.Date"/>
+<property column="ISBUSI" name="isbusi" type="java.lang.Short"/>
+<property column="OPNLEVEL" name="opnlevel" type="java.lang.Short"/>
+<property column="BUSIKIND" name="busikind" type="java.lang.Short"/>
+<property column="BUSIBELONG" name="busibelong" type="java.lang.String"/>
+<property column="SFLAG" name="sflag" type="java.lang.Short"/>
+<property column="APPROVEID" name="approveid" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

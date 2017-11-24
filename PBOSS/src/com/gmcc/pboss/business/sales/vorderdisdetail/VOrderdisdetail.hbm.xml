@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.vorderdisdetail.VOrderdisdetailVO" table="V_FX_SW_ORDERDISDETAIL">
+<id column="ORDERID" length="18" name="orderid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="RECID" length="14" name="recid" type="java.lang.Long"/>
+<property column="DISOVERTIME" length="7" name="disovertime" type="java.util.Date"/>
+<property column="INTERVALTIME" length="8" name="intervaltime" type="java.lang.String"/>
+</class>
+
+<!-- 配送单超时明细 -->
+<sql-query name="com.gmcc.pboss.business.sales.vorderdisdetail.orderdisdetaillist">
+	<return class="com.gmcc.pboss.business.sales.vorderdisdetail.VOrderdisdetailVO"/>
+select o.orderid,o.countyid,o.mareacode,o.starlevel,d.createtime as createtime,d.recid,o.disovertime,
+       case o.orderstate
+         when 'FINISHED' then
+          round(o.disovertime - d.createtime, 0)
+         else
+          round(sysdate - d.createtime, 0)
+       end intervaltime
+  from fx_sw_order o, fx_sw_disform d, fx_sw_disformintervaltime di
+ where o.orderid = d.orderid and o.confirmflag = 0
+   and o.countyid = di.countyid and o.mareacode = di.mareacode and o.starlevel = di.starlevel
+   and to_number(case o.orderstate
+                   when 'FINISHED' then
+                    round(o.disovertime - d.createtime, 0)
+                   else
+                    round(sysdate - d.createtime, 0)
+                 end) &gt; di.intervaltime
+</sql-query>
+
+
+</hibernate-mapping>

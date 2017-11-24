@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderreq.OrderreqVO" table="FX_SW_ORDERREQ">
+<id column="REQID" length="18" name="reqid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CITYID" length="10" name="cityid" not-null="true" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="MOBILENO" length="12" name="mobileno" type="java.lang.String"/>
+<property column="ORDERAVE" length="16" name="orderave" type="java.lang.String"/>
+<property column="REQTIME" length="7" name="reqtime" type="java.util.Date"/>
+<property column="STATE" length="3" name="state" type="java.lang.Short"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

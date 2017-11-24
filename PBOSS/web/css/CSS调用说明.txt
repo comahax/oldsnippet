@@ -1,0 +1,29 @@
+1.按钮样式: ../css/other.css
+	查询按钮: button_Query
+	新增按钮: button_New
+	删除按钮: button_Delete
+	返回按钮: button_Back
+	保存按钮: button_Save
+	其余2字按钮: button_2
+	其余4字按钮: button_4
+	按钮统一采用 <div class="table_button_list"/> 包住
+	
+2.  Selector 标签按钮的样式统一用"picker_button", 并注意调用标签时代码<input.../>不要换行.
+	如<s:textfield name="form.tmplid" readonly="true" id="elmtinst_save_do_form_tmplid_text" /><input type="button" name="form.tmplid_button" class="picker_button" value="..." 
+					 onclick="javascript:openPicker(this,'#ELMTTMPL','state:1');submitByUrl();" />
+
+3.  如页面有用到<fieldset>标签, 可调用css中的table_container样式:
+	如
+	 <fieldset class="table_container">
+			<legend>Name</legend>
+			<table.....>
+			</table>
+	 </fieldset>
+
+4.	Selector中的样式可用 cssStyle="select" 以对齐输入框	
+
+5.  list页面中显示列表中, 除第一列与最后一列可设置TD长度外, 其余字段请勿限制长度, 以计算表单长度, 不会令表单走位.
+
+
+LiZhaoLiang
+2009-12-15

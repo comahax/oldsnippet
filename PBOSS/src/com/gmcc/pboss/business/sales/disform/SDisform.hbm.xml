@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.disform.SDisformVO" table="S_FX_SW_DISFORM">
+<composite-id>
+<key-property column="COUNTYID" length="16" name="countyid" type="java.lang.String"/>
+<key-property column="SVCCODE" length="18" name="svccode" type="java.lang.String"/>
+<key-property column="DISSTATE" length="18" name="disstate" type="java.lang.String"/>
+<key-property column="MAREACODE" length="18" name="mareacode" type="java.lang.String"/>
+</composite-id>
+<property column="NUM" length="14" name="num" type="java.lang.Long"/>
+<property column="SIGNNUM" length="14" name="signnum" type="java.lang.Long"/>
+<property column="UNSIGNNUM" length="14" name="unsignnum" type="java.lang.Long"/>
+</class>
+<sql-query name="queryDisformState">
+select c.countyid,c.svccode,c.mareacode,a.disstate,count(*) as num 
+from FX_SW_DISFORM a, FX_SW_ORDER b, CH_PW_WAY c
+where a.orderid = b.orderid
+and a.recewayid = c.wayid
+and b.wayid = c.wayid
+and a.createtime &gt;= :begintime
+and a.createtime &lt;= :endtime
+group by c.countyid,c.svccode,c.mareacode,a.disstate
+order by c.countyid,c.svccode,c.mareacode,a.disstate
+</sql-query>
+</hibernate-mapping>

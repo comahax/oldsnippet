@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="rewardlocal" namespace="/rewardlocal" extends="pboss-default">
+		<!-- -->
+		<action name="rewardlocal_*" class="com.gmcc.pboss.web.reward.rewardlocal.RewardlocalAction" method="{1}">
+			<result name="list">/rewardlocal/rewardlocal/list.jsp</result>
+            <result name="content">/rewardlocal/rewardlocal/content.jsp</result>
+            <result name="batch">/rewardlocal/rewardlocal/batch.jsp</result>
+        </action>
+         <action name="rewardlocal_upload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+			<result name="success">/rewardlocal/rewardlocal/batch.jsp</result>
+			<result name="error">/rewardlocal/rewardlocal/batch.jsp</result>
+        </action>
+        <action name="rewardlocal_import" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/rewardlocal/rewardlocal/batch.jsp</result>
+			<result name="error">/rewardlocal/rewardlocal/batch.jsp</result>
+        </action>
+        
+		<action name="rewardlocaldtl_*" class="com.gmcc.pboss.web.reward.rewardlocaldtl.RewardlocaldtlAction" method="{1}">
+			<result name="list">/rewardlocal/rewardlocaldtl/list.jsp</result>
+            <result name="content">/rewardlocal/rewardlocaldtl/content.jsp</result>
+        </action>
+        
+        <action name="rewardlocaltitle_*" class="com.gmcc.pboss.web.reward.rewardlocaltitle.RewardlocaltitleAction" method="{1}">
+			<result name="list">/rewardlocal/rewardlocaltitle/list.jsp</result>
+            <result name="content">/rewardlocal/rewardlocaltitle/content.jsp</result>
+        </action>
+        
+        <action name="rewardlocalvalue_*" class="com.gmcc.pboss.web.reward.rewardlocalvalue.RewardlocalvalueAction" method="{1}">
+			<result name="list">/rewardlocal/rewardlocalvalue/list.jsp</result>
+            <result name="content">/rewardlocal/rewardlocalvalue/content.jsp</result>
+        </action>
+        
+        <action name="rewardlocal_setVisible" class="com.gmcc.pboss.web.reward.rewardlocal.RewardlocalAction" method="doSetVisible">
+			<result>/rewardlocal/rewardlocal/setVisible.jsp</result>
+        </action>
+        
+        <action name="rewardlocal_setVisibleSave" class="com.gmcc.pboss.web.reward.rewardlocal.RewardlocalAction" method="doSetVisibleSave">
+			<result>/rewardlocal/rewardlocal/setVisible.jsp</result>
+        </action>
+    </package>
+   
+    <package name="cardrewdet" namespace="/cardrewdet" extends="pboss-default">
+		<!-- -->
+		<!-- 客户质量发展奖励酬金管理 -->
+		<action name="cardrewdet_*" class="com.gmcc.pboss.web.reward.cardrewdet.CardrewdetAction" method="{1}">
+			<result name="list">/reward/cardrewdet/list.jsp</result>
+            <result name="content">/reward/cardrewdet/content.jsp</result>
+        </action> 
+         <!--  客户质量发展奖励酬金管理  上传 -->
+        <action name="cardrewdetupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/rewards/batch.jsp</result>
+   			<result name="error">/rewards/batch.jsp</result>
+		</action>
+		<!--  客户质量发展奖励酬金管理  处理 -->
+		<action name="cardrewdetbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/rewards/batch.jsp</result>
+			<result name="error">/rewards/batch.jsp</result>
+        </action> 
+        <!-- 新业务登记汇总
+        <action name="regnewwayemptotal_*" class="com.gmcc.pboss.web.reward.regnewwayemptotal.RegNewWayEmpTotalAction" method="{1}">
+			<result name="list">/reward/regnewwayemptotal/list.jsp</result>
+            <result name="content">/reward/regnewwayemptotal/content.jsp</result>
+            <result name="selectlist">/reward/regnewwayemptotal/select.jsp</result>
+        </action> -->
+       
+    </package>
+    <package name="cardrewdettotal" namespace="/cardrewdettotal" extends="pboss-default">
+		<!-- -->
+		<!-- 客户质量发展奖励酬金管理 -->
+		<action name="cardrewdettotal_*" class="com.gmcc.pboss.web.reward.cardrewdettotal.CardrewdettotalAction" method="{1}">
+			<result name="list">/reward/cardrewdettotal/list.jsp</result>
+        </action> 
+       
+    </package>
+    
+    <!--酬金一体化集中管理一期需求 -->
+    <package name="payway" namespace="/payway" extends="pboss-default">
+		<!-- 收款单位资料管理 -->
+		<action name="payway_*" class="com.gmcc.pboss.web.reward.payway.PaywayAction" method="{1}">
+			<result name="list">/rewards/payway/list.jsp</result>
+            <result name="content">/rewards/payway/content.jsp</result>
+        </action> 
+         <!--  收款单位资料管理  上传 -->
+        <action name="paywayupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/rewards/payway/batch.jsp</result>
+   			<result name="error">/rewards/payway/batch.jsp</result>
+		</action>
+		<!--  收款单位资料管理  处理 -->
+		<action name="paywaybatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/rewards/payway/batch.jsp</result>
+			<result name="error">/rewards/payway/batch.jsp</result>
+        </action> 
+    </package>
+    
+    <package name="stype" namespace="/stype" extends="pboss-default">
+		<!-- 地市公司基础资料管理 -->
+		<action name="stype_*" class="com.gmcc.pboss.web.reward.stype.StypeAction" method="{1}">
+			<result name="list">/rewards/stype/list.jsp</result>
+            <result name="content">/rewards/stype/content.jsp</result>
+        </action> 
+         <!--  地市公司基础资料管理  上传 -->
+        <action name="stypeupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/rewards/stype/batch.jsp</result>
+   			<result name="error">/rewards/stype/batch.jsp</result>
+		</action>
+		<!--  地市公司基础资料管理  处理 -->
+		<action name="stypebatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/rewards/stype/batch.jsp</result>
+			<result name="error">/rewards/stype/batch.jsp</result>
+        </action> 
+    </package>
+    
+    <package name="payment" namespace="/payment" extends="pboss-default">
+		<!-- 付款数据上传 -->
+		<action name="payment_*" class="com.gmcc.pboss.web.reward.payment.PaymentAction" method="{1}">
+			<result name="list">/rewards/payment/list.jsp</result>
+            <result name="content">/rewards/payment/content.jsp</result>
+        </action> 
+         <!--  付款数据上传  上传 -->
+        <action name="paymentupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/rewards/payment/batch.jsp</result>
+   			<result name="error">/rewards/payment/batch.jsp</result>
+		</action>
+		<!--  付款数据上传 处理 -->
+		<action name="paymentbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/rewards/payment/batch.jsp</result>
+			<result name="error">/rewards/payment/batch.jsp</result>
+        </action>
+    </package>
+    
+     <package name="paydetail" namespace="/paydetail" extends="pboss-default">
+		<!-- 店补明细上传 -->
+		<action name="paydetail_*" class="com.gmcc.pboss.web.reward.paydetail.PaydetailAction" method="{1}">
+			<result name="list">/rewards/paydetail/list.jsp</result>
+            <result name="content">/rewards/paydetail/content.jsp</result>
+        </action> 
+         <!--  店补明细上传  上传 -->
+        <action name="paydetailupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/rewards/paydetail/batch.jsp</result>
+   			<result name="error">/rewards/paydetail/batch.jsp</result>
+		</action>
+		<!--  店补明细上传 处理 -->
+		<action name="paydetailbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/rewards/paydetail/batch.jsp</result>
+			<result name="error">/rewards/paydetail/batch.jsp</result>
+        </action>
+    </package>
+    
+    <package name="paymentsc" namespace="/paymentsc" extends="pboss-default">
+		<!-- 付款数据（市场部）上传 -->
+		<action name="paymentsc_*" class="com.gmcc.pboss.web.reward.paymentsc.PaymentscAction" method="{1}">
+			<result name="list">/rewards/paymentsc/list.jsp</result>
+            <result name="content">/rewards/paymentsc/content.jsp</result>
+        </action> 
+         <!--  付款数据（市场部）上传  上传 -->
+        <action name="paymentscupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/rewards/paymentsc/batch.jsp</result>
+   			<result name="error">/rewards/paymentsc/batch.jsp</result>
+		</action>
+		<!--  付款数据（市场部）上传 处理 -->
+		<action name="paymentscbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/rewards/paymentsc/batch.jsp</result>
+			<result name="error">/rewards/paymentsc/batch.jsp</result>
+        </action>
+    </package>
+    
+    <package name="setcard" namespace="/setcard" extends="pboss-default">
+		<!-- 套卡激活上传 -->
+		<action name="setcard_*" class="com.gmcc.pboss.web.reward.setcard.SetcardAction" method="{1}">
+			<result name="list">/rewards/setcard/list.jsp</result>
+            <result name="content">/rewards/setcard/content.jsp</result>
+        </action> 
+         <!--  套卡激活上传  上传 -->
+        <action name="setcardupload" class="com.gmcc.pboss.common.batch.upload.UploadFileAction" >
+	        <result name="success">/rewards/setcard/batch.jsp</result>
+   			<result name="error">/rewards/setcard/batch.jsp</result>
+		</action>
+		<!--  套卡激活上传 处理 -->
+		<action name="setcardbatch" class="com.gmcc.pboss.common.batch.processfile.BatchTaskAction">
+			<result name="success">/rewards/setcard/batch.jsp</result>
+			<result name="error">/rewards/setcard/batch.jsp</result>
+        </action> 
+    </package>
+</struts>

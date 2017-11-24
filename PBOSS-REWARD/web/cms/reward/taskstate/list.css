@@ -1,0 +1,238 @@
+.bga {
+	background-attachment: fixed;
+	background: url(../../../images/cms/bga.GIF) no-repeat;
+	height: 604px;
+	width: 757px;
+	float:left;
+}
+
+.weiq {
+	background-attachment: fixed;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 10px;
+	top: 115px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+
+.weiq1 {
+	background-attachment: fixed;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 171px;
+	top: 115px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 13px;
+}
+.weiq2 {
+	background-attachment: fixed;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 475px;
+	top: 115px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiq3{
+	background-attachment: fixed;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 323px;
+	top: 115px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 13px;
+}
+.weiq4 {
+	background-attachment: fixed;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 640px;
+	top: 115px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+
+
+
+.weiq5 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 13px;
+	text-align: center;
+	position: absolute;
+	top: 240px;
+	left: 10px;
+}
+.weiq6 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 13px;
+	text-align: center;
+	position: absolute;
+	top: 285px;
+	left: 171px;
+}
+.weiq7 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 13px;
+	text-align: center;
+	position: absolute;
+	top: 205px;
+	left: 171px;
+}
+.weiq8 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	text-align: center;
+	position: absolute;
+	top: 240px;
+	left: 475px;
+}
+
+
+.weiq9 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	text-align: center;
+	position: absolute;
+	top: 440px;
+	left: 640px;
+}
+.weiq10 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 13px;
+	text-align: center;
+	position: absolute;
+	top: 375px;
+	left: 475px;
+}
+.weiq11 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	text-align: center;
+	position: absolute;
+	top: 440px;
+	left: 475px;
+}
+.weiq12 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	text-align: center;
+	position: absolute;
+	top: 506px;
+	left: 475px;
+}
+.weiq13 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	text-align: center;
+	position: absolute;
+	top: 440px;
+	left: 323px;
+}
+
+.weiq14 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: url(../../../images/cms/weiqi.GIF) no-repeat;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	text-align: center;
+	position: absolute;
+	top: 440px;
+	left: 171px;
+}
+
+
+
+.mcolor0 {	background:url(../../../images/cms/weiqi.GIF);}
+.mcolor3 {	background:url(../../../images/cms/weiqi.GIF);}
+.mcolor1 {	background:url(../../../images/cms/qidz.GIF);}
+.mcolor2 {	background:url(../../../images/cms/yiwc.GIF);}
+.mcolor-1 {	background:url(../../../images/cms/chucu.GIF);}

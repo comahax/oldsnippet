@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.salecredit.persistent.SalecreditVO" table="CH_ADT_SALECREDIT">
+<id column="SEQ" name="seq" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="WAYID" length="20" name="wayid" type="java.lang.String"/>
+<property column="CALCMONTH" length="8" name="calcmonth" type="java.lang.String"/>
+<property column="BUSITYPE" length="22" name="busitype" type="java.lang.Long"/>
+<property column="CREDITACCOUNT" length="10" name="creditaccount" type="java.lang.Double"/>
+<property column="BUSIVALUE" length="10" name="busivalue" type="java.lang.Double"/>
+<property column="CREDITSTD" length="10" name="creditstd" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

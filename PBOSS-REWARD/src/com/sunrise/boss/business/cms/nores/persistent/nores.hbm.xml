@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.nores.persistent.NoresVO" table="IM_PR_NORES">
+<id column="MOBILENO" name="mobileno" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="NOTYPE" length="3" name="notype" not-null="true" type="java.lang.Short"/>
+<property column="ACTIVEIMSI" length="15" name="activeimsi" type="java.lang.String"/>
+<property column="PRODID" length="32" name="prodid" not-null="true" type="java.lang.String"/>
+<property column="STARTTIME" length="7" name="starttime" type="java.util.Date"/>
+<property column="STOPTIME" length="7" name="stoptime" type="java.util.Date"/>
+<property column="SELNOFEE" length="14" name="selnofee" type="java.lang.Long"/>
+<property column="NOSTATE" length="3" name="nostate" not-null="true" type="java.lang.Short"/>
+<property column="NOSECTID" length="8" name="nosectid" not-null="true" type="java.lang.Integer"/>
+<property column="WAYID" length="15" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" not-null="true" type="java.lang.String"/>
+<property column="MOBILETYPE" length="3" name="mobiletype" type="java.lang.Short"/>
+<property column="MEMO" length="255" name="memo" type="java.lang.String"/>
+<property column="NOPROMPT" length="15" name="noprompt" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

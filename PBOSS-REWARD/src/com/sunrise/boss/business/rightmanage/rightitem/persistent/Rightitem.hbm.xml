@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.rightmanage.rightitem.persistent.RightitemVO"
+		table="SA_SR_RIGHTITEM">
+		<id name="rightid" column="RIGHTID" type="string">
+			<generator class="assigned" />
+		</id>
+		<property name="region" column="REGION" type="integer"
+			length="5" />
+		<property name="rightname" column="RIGHTNAME" type="string"
+			length="64" />
+		<property name="rightgroup" column="RIGHTGROUP" type="string"
+			length="32" not-null="true" />
+		<property name="ispublic" column="ISPUBLIC" type="byte"
+			length="1" />
+		<property name="notes" column="NOTES" type="string"
+			length="256" />
+		<property name="orgid" column="ORGID" type="string" length="32" />
+		<property name="operid" column="OPERID" type="string"
+			length="32" />
+		<property name="createdate" column="CREATEDATE" type="date"
+			length="7" />
+		<property name="status" column="STATUS" type="byte" length="1" />
+		<property name="statusdate" column="STATUSDATE" type="date"
+			length="7" />
+	</class>
+</hibernate-mapping>

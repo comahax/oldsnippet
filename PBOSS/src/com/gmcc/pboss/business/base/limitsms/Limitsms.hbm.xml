@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.limitsms.LimitsmsVO" table="CH_CTI_LIMITSMS">
+<id column="SEQ" length="14" name="seq" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_CTI_LIMITSMS_SEQ</param>
+</generator>
+</id>
+<property column="SMS" length="250" name="sms" not-null="true" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

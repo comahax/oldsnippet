@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.unvrewardtotal.persistent.UnvRewardtotalVO" table="V_CH_BBC_REWARDTOTAL">
+<id column="TOTALID" name="totalid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="PAYMONEY" length="12" name="paymoney" type="java.lang.Double"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/>
+
+</class>
+<sql-query name="unvrewardTotalQuery">
+	<return class="com.sunrise.boss.business.cms.bbc.unvrewardtotal.persistent.UnvRewardtotalVO"/>
+	SELECT TOTALID,PAYMONEY,REWARDTYPE,REWARDMONTH,WAYID,BATCHNO
+	  FROM CH_BBC_rewardtotal r
+	 where (r.ossrc = 3 or r.ossrc = 4 or r.ossrc = 5)
+</sql-query>
+</hibernate-mapping>

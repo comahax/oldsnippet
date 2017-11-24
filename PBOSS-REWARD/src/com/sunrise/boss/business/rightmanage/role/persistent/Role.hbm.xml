@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.rightmanage.role.persistent.RoleVO" table="SA_SR_ROLE">
+<id name="roleid" column="ROLEID" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property name="rolename" column="ROLENAME" type="string" length="64"/>
+<property name="ispublic" column="ISPUBLIC" type="byte" length="1"/>
+<property name="operid" column="OPERID" type="string" length="16"/>
+<property name="orgid" column="ORGID" type="string" length="32"/>
+<property name="createdate" column="CREATEDATE" type="date" length="7"/>
+<property name="status" column="STATUS" type="byte" length="1"/>
+<property name="statusdate" column="STATUSDATE" type="date" length="7"/>
+</class>
+<query name="getRolesByWay">		
+	<![CDATA[
+			select distinct r  from RoleVO   r
+			  where ( r.status= 1 and r.orgid = :wayid )
+			   or ( r.status= 1 and r.ispublic = 1  and  r.orgid in 
+			  ( 
+			     select p.parwayid from WayhierarchyVO p
+			     where p.subwayid = :wayid
+			  ) )
+	 ]]>	
+</query>
+</hibernate-mapping>

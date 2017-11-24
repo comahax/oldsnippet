@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.imprcom.persistent.ImPrComVO" table="IM_PR_COM">
+<id column="COMID" name="comid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="COMPRICE" length="14" name="comprice" not-null="true" type="java.lang.Long"/>
+<property column="COMCLASSID" length="6" name="comclassid" not-null="true" type="java.lang.Integer"/>
+<property column="COMTYPE" length="6" name="comtype" not-null="true" type="java.lang.Integer"/>
+<property column="COMFREEZE" length="7" name="comfreeze" type="java.util.Date"/>
+<property column="COMKEEP" length="6" name="comkeep" type="java.lang.Integer"/>
+<property column="COMVALID" length="7" name="comvalid" type="java.util.Date"/>
+<property column="COMNAME" length="128" name="comname" type="java.lang.String"/>
+<property column="COMSOURCE" length="30" name="comsource" type="java.lang.String"/>
+<property column="COLORDES" length="40" name="colordes" type="java.lang.String"/>
+<property column="ACCESSORY" length="40" name="accessory" type="java.lang.String"/>
+<property column="PRESENTDES" length="40" name="presentdes" type="java.lang.String"/>
+<property column="ACTIVE" length="3" name="active" type="java.lang.Short"/>
+<property column="COMLENGTH" length="3" name="comlength" type="java.lang.Short"/>
+<property column="ITEM" length="20" name="item" type="java.lang.String"/>
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="COMCODE" length="40" name="comcode" type="java.lang.String"/>
+<property column="COMSTATE" length="6" name="comstate" type="java.lang.Integer"/>
+<property column="SIMFEE" length="14" name="simfee" type="java.lang.Long"/>
+<property column="CHARGEFEE" length="14" name="chargefee" type="java.lang.Long"/>
+<property column="PROTYPE" length="2" name="protype" type="java.lang.String"/>
+<property column="PROSYSTEM" length="2" name="prosystem" type="java.lang.String"/>
+<property column="RETAILPRICE" length="14" name="retailprice" type="java.lang.Long"/>
+</class>
+</hibernate-mapping>

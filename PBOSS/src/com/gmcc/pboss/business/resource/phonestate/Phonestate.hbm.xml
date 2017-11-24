@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.gmcc.pboss.business.resource.phonestate.PhonestateVO" table="V_PHONESTATE">
+		<id column="COMRESID" length="32" name="comresid"
+			type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property column="COMSTATE" length="3" name="comstate"
+			type="java.lang.Short" />
+		<property column="WAYID" length="18" name="wayid"
+			type="java.lang.String" />
+		<property column="ISACTIVE" length="3" name="isactive"
+			type="java.lang.Short" />
+		<property column="ACTTIME" length="7" name="acttime"
+			type="java.util.Date" />
+		<property column="ORDERID" length="18" name="orderid"
+			type="java.lang.String" />
+		<property column="SALETIME" length="7" name="saletime"
+		    type="java.util.Date" />
+		<property column="RESWAYID" length="18" name="reswayid"
+		    type="java.lang.String"/>	
+
+	</class>
+	<sql-query
+		name="com.gmcc.pboss.business.resource.phonestate.QueryOrderidByComresid">
+		 select b.orderid,b.wayid from fx_sw_order a, fx_sw_orderresdet b where a.orderid = b.orderid 
+		 and b.comresid =:comresid order by a.createtime desc
+	</sql-query> 
+	
+
+</hibernate-mapping>

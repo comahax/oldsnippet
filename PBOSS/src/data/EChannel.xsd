@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:tns="http://boss.huawei.com/webservice/eChannel" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://boss.huawei.com/webservice/eChannel" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="EChannelRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:RequestHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+							<!--接口标识-->
+							<!--操作员-->
+							<xs:element name="operator" type="xs:string"/>
+							<!--操作员渠道-->
+							<xs:element name="unitId" type="xs:string"/>
+							<!--命令字-->
+							<xs:element name="commonId" type="xs:string"/>
+							<!--地区-->
+							<xs:element name="region" type="xs:string"/>
+							<!--请求串-->
+							<xs:element name="requestStr" type="xs:string"/>
+							<!--字段分隔符-->
+							<xs:element name="fieldSpli" type="xs:string" minOccurs="0"/>
+							<!--记录分隔符-->
+							<xs:element name="recordSpli" type="xs:string" minOccurs="0"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EChannelResult">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:ResultHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+							<!--返回结果串-->
+							<xs:element name="commonId" type="xs:string"/>
+							<xs:element name="RESULT" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="ResultHeader">
+		<xs:annotation>
+			<xs:documentation>公共请求消息头</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Interface" type="xs:string">
+				<xs:annotation>
+					<!--命令字-->
+					<xs:documentation>接口标识</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Version" type="xs:string">
+				<xs:annotation>
+					<!--协议版本号-->
+					<xs:documentation>协议版本号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SequenceId" type="xs:string">
+				<xs:annotation>
+					<!--响应流水号与请求流水号相同-->
+					<xs:documentation>响应流水号与请求流水号相同</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResultCode" type="xs:string">
+				<xs:annotation>
+					<!--应答码-->
+					<xs:documentation>应答码</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResultDesc" type="xs:string">
+				<xs:annotation>
+					<!--应答描述-->
+					<xs:documentation>应答描述</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestHeader">
+		<xs:annotation>
+			<xs:documentation>公共应答消息头</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Interface" type="xs:string">
+				<xs:annotation>
+					<!--请求命令字-->
+					<xs:documentation>接口标识</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Version" type="xs:string">
+				<xs:annotation>
+					<!--协议版本号-->
+					<xs:documentation>协议版本号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SequenceId" type="xs:string">
+				<xs:annotation>
+					<!--请求流水号-->
+					<xs:documentation>请求流水号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UserId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>用户名</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Password" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<!--用户密码-password-->
+					<xs:documentation>用户密码</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="LongRequest" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:RequestHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="username" type="xs:string"/>
+							
+							<xs:element name="Password" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	
+	</xs:element>
+		
+    <xs:element name="LongResult" >
+    	<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageHead" type="tns:ResultHeader"/>
+				<xs:element name="MessageBody">
+					<xs:complexType>
+						<xs:all>
+							<!--返回结果串-->
+							<xs:element name="commonId" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+</xs:schema>
+

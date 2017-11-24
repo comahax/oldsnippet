@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.common.customer.persistent.CustomerVO" table="CM_CU_CUSTOMER">
+<id column="CUSTID" name="custid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="REGION" length="5" name="region" not-null="true" type="java.lang.Integer"/>
+<property column="CUSTNAME" length="128" name="custname" type="java.lang.String"/>
+<property column="SHORTNAME" length="32" name="shortname" type="java.lang.String"/>
+<property column="CUSTTYPE" length="32" name="custtype" type="java.lang.String"/>
+<property column="VIPTYPE" length="32" name="viptype" not-null="true" type="java.lang.String"/>
+<property column="FOREIGNER" length="1" name="foreigner" type="java.lang.Byte"/>
+<property column="CUSTCLASS1" length="16" name="custclass1" type="java.lang.String"/>
+<property column="CUSTCLASS2" length="16" name="custclass2" type="java.lang.String"/>
+<property column="NATIONALITY" length="32" name="nationality" type="java.lang.String"/>
+<property column="ADDRESS" length="128" name="address" type="java.lang.String"/>
+<property column="CERTID" length="32" name="certid" type="java.lang.String"/>
+<property column="CERTTYPE" length="32" name="certtype" type="java.lang.String"/>
+<property column="CERTADDR" length="128" name="certaddr" type="java.lang.String"/>
+<property column="LINKMAN" length="64" name="linkman" type="java.lang.String"/>
+<property column="LINKPHONE" length="20" name="linkphone" type="java.lang.String"/>
+<property column="HOMETEL" length="20" name="hometel" type="java.lang.String"/>
+<property column="OFFICETEL" length="20" name="officetel" type="java.lang.String"/>
+<property column="MOBILETEL" length="20" name="mobiletel" type="java.lang.String"/>
+<property column="POSTCODE" length="6" name="postcode" type="java.lang.String"/>
+<property column="LINKADDR" length="128" name="linkaddr" type="java.lang.String"/>
+<property column="EMAIL" length="32" name="email" type="java.lang.String"/>
+<property column="HOMEPAGE" length="64" name="homepage" type="java.lang.String"/>
+<property column="ISMERGEBILL" length="1" name="ismergebill" type="java.lang.Byte"/>
+<property column="ORGID" length="32" name="orgid" type="java.lang.String"/>
+<property column="CREDITLEVEL" length="16" name="creditlevel" type="java.lang.String"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="NOTES" length="256" name="notes" type="java.lang.String"/>
+<property column="STATUS" length="16" name="status" type="java.lang.String"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+<property column="RESPONSECUSTMGR" length="20" name="responsecustmgr" type="java.lang.String"/>
+<property column="CURRENTCUSTMGR" length="20" name="currentcustmgr" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

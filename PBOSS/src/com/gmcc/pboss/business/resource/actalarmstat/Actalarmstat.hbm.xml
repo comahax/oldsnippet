@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.actalarmstat.ActalarmstatVO" table="IM_FX_ACTALARMSTAT">
+<composite-id>
+<key-property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<key-property column="STATTYPE" length="32" name="stattype" type="java.lang.String"/>
+<key-property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<key-property column="YEARMONTH" length="6" name="yearmonth" type="java.lang.String"/>
+</composite-id>
+<property column="LHAMOUNT" length="10" name="lhamount" type="java.lang.Long"/>
+<property column="JHAMOUNT" length="10" name="jhamount" type="java.lang.Long"/>
+<property column="RATE" length="5" name="rate" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

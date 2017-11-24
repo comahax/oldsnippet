@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.vstockalarm.VstockalarmVO" table="V_FX_RU_STOCKALARM">
+<composite-id>
+<key-property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<key-property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+</composite-id>
+<property column="ALARMVALUE" length="256" name="alarmvalue" type="java.lang.String"/>
+<property column="MAXSTOCK" length="10" name="maxstock" type="java.lang.Long"/>
+<property column="UPDATECHANNEL" length="32" name="updatechannel" type="java.lang.String"/>
+<property column="STDVALUE" length="16" name="stdvalue" type="java.lang.Double"/>
+<property column="QUOTIETY" length="16" name="quotiety" type="java.lang.Double"/>
+<property column="AVEACTNUM" length="16" name="aveactnum" type="java.lang.Double"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+<property column="CHGTIME" length="7" name="chgtime" type="java.util.Date"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="WAYSTATE" length="2" name="waystate" type="java.lang.Short"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.sales.vstockalarm.query">
+<return class="com.gmcc.pboss.business.sales.vstockalarm.VstockalarmVO"/>  
+	select s.BRAND,
+       s.WAYID,
+       s.ALARMVALUE,
+       s.MAXSTOCK,
+       s.UPDATECHANNEL,
+       s.STDVALUE,
+       s.QUOTIETY,
+       s.AVEACTNUM,
+       s.MEMO,
+       s.CHGTIME,
+       w.COUNTYID,
+       w.STARLEVEL,
+       w.WAYSTATE
+  from FX_RU_STOCKALARM s, CH_PW_WAY w
+ where s.wayid = w.wayid
+</sql-query>
+</hibernate-mapping>

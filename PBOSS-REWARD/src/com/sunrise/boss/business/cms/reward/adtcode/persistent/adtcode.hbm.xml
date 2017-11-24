@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.adtcode.persistent.AdtcodeVO" table="CH_ADT_ADTCODE">
+<id name="adtcode" column="ADTCODE" type="java.lang.String" length="32">
+	<generator class="assigned"/>
+</id>
+<property name="adtremark" column="ADTREMARK" type="java.lang.String" length="255"/>
+<property name="adttype" column="ADTTYPE" type="java.lang.String" length="32"/>
+<property name="adtprio" column="ADTPRIO" type="java.lang.Short" length="5"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.chzjtyoprtcost.persistent.ChZjtyOprtcostVO" table="CH_ZJTY_OPRTCOST">
+<composite-id>
+<key-property column="CITYLEVEL" length="3" name="citylevel" type="java.lang.Short"/>
+<key-property column="CTYPE" length="3" name="ctype" type="java.lang.Short"/>
+</composite-id>
+<property column="COST" length="16" name="cost" type="java.lang.Double"/>
+<property column="MEMO" length="255" name="memo" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

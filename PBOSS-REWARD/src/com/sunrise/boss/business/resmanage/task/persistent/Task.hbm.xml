@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.resmanage.task.persistent.TaskVO" table="IM_BP_TASK">
+<id name="taskid" column="TASKID" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">IM_BP_TASK_SEQ</param>
+</generator>
+</id>
+<property name="filecode" column="FILECODE" type="java.lang.String" length="20"/>
+<property name="subsystem" column="SUBSYSTEM" type="java.lang.String" length="2" not-null="true"/>
+<property name="taskstate" column="TASKSTATE" type="java.lang.Integer" length="1"/>
+<property name="sysflag" column="SYSFLAG" type="java.lang.Integer" length="2"/>
+<property name="createtime" column="CREATETIME" type="java.util.Date" length="7"/>
+<property name="exectime" column="EXECTIME" type="java.util.Date" length="7"/>
+<property name="endtime" column="ENDTIME" type="java.util.Date" length="7"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="15"/>
+<property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+<property name="taskfilecount" column="TASKFILECOUNT" type="java.lang.Short" length="2"/>
+<property name="totalcount" column="TOTALCOUNT" type="java.lang.Integer" length="7"/>
+<property name="currentcount" column="CURRENTCOUNT" type="java.lang.Integer" length="7"/>
+<property name="successcount" column="SUCCESSCOUNT" type="java.lang.Integer" length="7"/>
+<property name="resultfile" column="RESULTFILE" type="java.lang.String" length="100"/>
+<property name="logfile" column="LOGFILE" type="java.lang.String" length="100"/>
+<property name="memo" column="MEMO" type="java.lang.String" length="200"/>
+</class>
+</hibernate-mapping>

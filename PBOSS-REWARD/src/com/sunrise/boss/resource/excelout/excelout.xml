@@ -1,0 +1,1589 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE excelout-config[
+<!--
+<!DOCTYPE excelout-config SYSTEM "excelout.dtd">
+************************************************************
+该dtd文件用于说明excelout.xml文件的配置方式
+
+excelout-config为文档元素,含有最少一个entity子元素
+************************************************************
+-->
+<!ELEMENT excelout-config (entity+)>
+
+<!--
+***********************************************************
+ entity元素指定一个要导出数据的VO(对于多表查询的时候,因为有多个VO,所以
+ 需要使用复杂查询的方式,建立一个虚拟VO).
+ entity元素的name属性是必须的,name的值应为VO的全类名,以保持唯一;
+ exceloutbean属性指定用于导出操作的bean类全名,该类继承com.sunrise.boss.ui.resmanage.common.excelout.ExceloutBean类,
+ 若没有设置该属性,则程序中默认使用com.sunrise.boss.ui.resmanage.common.excelout.ExceloutBean类.
+ showcount属性指定弹出页面中是否显示总记录数.
+ 
+ entiy元素含有delegate,formname,resbundle,outfilename,fields子元素,
+ 除了delegate、cmmon、listvo元素外,其它的子元素必须要依声明的顺序存在.
+***********************************************************
+-->
+<!ELEMENT entity (delegate*,command*,formname,listvo*,resbundle,outfilename,fields,headtitle*,endtitle*)>
+<!ATTLIST entity 
+			name ID #REQUIRED
+			exceloutbean CDATA #IMPLIED
+			showcount (yes|no) "no"
+>
+
+<!--
+***********************************************************
+ delegate元素指定调用其方法获得查询数据及其记录数的代理类,该元素不是必需
+ 的,如果在excelout.xml文件没有指定,则程序中会使用
+ "com.sunrise.boss.delegate.common.CommonDelegate"作为元素内容;
+ 
+ delegate元素含有query,count两属性,query属性指定delegate类中用以获得
+ 查询数据的查询方法的名称,如果没有指定该属性的值程序中默认使用"doQuery"作为方法名;
+ count属性指定delegate类中用以获得符合导出条件的 记录总数的方法名称,
+ 如果没有指定该属性的值,程序中默认使用"doCount"作为方法名.
+***********************************************************
+-->
+<!ELEMENT delegate (#PCDATA)>
+<!ATTLIST delegate 
+	query CDATA #IMPLIED
+	count CDATA #IMPLIED
+>
+<!--
+***********************************************************
+ 在生成导出文件时,若具体应用需要进行附加的特定操作时,可利用该元素值来区分
+ 特定的应用.譬如:台帐查询导出文件时,需要在文件末尾添加额外的输出字段,重载
+ 了afterWrite方法,该方法中利用common元素的值作为判断依据.
+***********************************************************
+-->
+<!ELEMENT command (#PCDATA)>
+
+<!--
+***********************************************************
+ 元素formname指定进行查询操作的action对应的form类的全类名.
+ 该元素是必需的
+***********************************************************
+-->
+<!ELEMENT formname (#PCDATA)>
+
+<!--
+***********************************************************
+ 元素listvo指定进行查询操作对应的listvo类的全类名.
+ 不指定则会根据VO类名生成符合目前编码规范的ListVO类名
+***********************************************************
+-->
+<!ELEMENT listvo (#PCDATA)>
+
+<!--
+***********************************************************
+ 元素resbundle指定查询页面上显示的中文字段标题所对应的资源文件
+  元素的内容为在resmanage-struts-config.xml文件中声明的message-resources
+  元素的属性key的值;
+  
+ path属性指定资源文件的路径名.
+ 
+ 注意:页面上中文标题使用<bean:message bundle="key" key="fieldName"/>的方式
+ 即资源文件中,中文标题内容对应的key应与vo对应的字段名一致,避免导出文件中的中文标题
+ 与查询页面的中文标题不一致.
+***********************************************************
+-->
+<!ELEMENT resbundle (#PCDATA)>
+<!ATTLIST resbundle path CDATA #REQUIRED>
+
+<!--
+***********************************************************
+ 指定导出文件的名称
+***********************************************************
+-->
+<!ELEMENT outfilename (#PCDATA)>
+
+<!--
+***********************************************************
+ 指定VO的所有需要导出的字段,最少含有一个字段
+***********************************************************
+-->
+<!ELEMENT fields (field+)>
+
+<!--
+***********************************************************
+ 指定需要导出的VO的单个字段,含有子元素definition,该子元素是可选的.
+ 
+ name属性指定字段的名称(与VO里面定义一致).
+ 
+ covertvalue属性指定该字段值在导出的时候是否需要进行转换,(譬如:套卡查询中,price字段导出
+ 的值为price/100),该属性的值只能是 字段名(+|-|*|/)数字的形式,若
+ 有特殊的实现,可以提供实现Excelout接口的实现类,实现接口的geValue
+ 方法.
+ var属性指定值转换时需要赋值的变量(多个变量用逗号分隔),如若covertvalue的值为'price/100+addjust+receivable',
+ 则var的值应为'addjust,receivable',字段price的值默认添加.
+ 
+ format与formattype属性用于定义导出数据的格式,如数字、日期的格式。
+***********************************************************
+-->
+<!ELEMENT field (definition*)>
+<!ATTLIST field 
+	name CDATA #REQUIRED
+	covertvalue CDATA #IMPLIED
+	var CDATA #IMPLIED
+	format (none|STRING|NUMBER|DATE|CODE2NAME) "none"
+	formattype CDATA #IMPLIED
+>
+
+<!--
+***********************************************************
+ 指定导出字段进行code2name翻译时用到的definition属性的值.
+ 该元素可包含字符数据或case子元素.
+ 
+ 若包含字符数据,则该字符数据为definition的值[该值有四种选择:
+ 系统参数($开头),配置方式(#开头),实现Code2name接口类的类short名,
+ 实现Excelout接口的类short名(以*开头)];
+ 
+ 若包含case子元素,则definition的值由case元素的内容决定,此时,
+ definition元素应含有属性dependent,指定definition的值依赖于哪
+ 个字段(同一VO的字段)譬如:台帐查询中,typeid字段翻译所用到的definition的
+ 值依赖于sheetrestype字段的值不同而不同.
+***********************************************************
+-->
+<!ELEMENT definition (#PCDATA|case)*>
+<!ATTLIST definition dependent CDATA #IMPLIED>
+
+<!--
+***********************************************************
+case元素内容指定definition的值,该值有四种选择:
+ 系统参数($开头),配置方式(#开头),实现Code2name接口类的类short名,
+ 实现Excelout接口类的类short名(以*开头).
+ 
+ 该元素含有属性oprtype,value,这些属性是必需的.
+ oprtype属性指定依赖字段要进行的比较操作(只支持==,!=,>,<,>=,<=),
+ value属性指定要进行比较操作的右操作符,依赖字段
+ 的值为左操作符.如台帐查询中,oprtype为"==",value为0时,
+ 表示如果sheetrestype==0为true时,则definition的值为该
+ case元素的内容.
+***********************************************************
+-->
+<!ELEMENT case (#PCDATA)>
+<!ATTLIST case 
+	oprtype CDATA #REQUIRED
+	value CDATA #REQUIRED
+>
+
+<!ELEMENT headtitle (#PCDATA)>
+
+<!ELEMENT endtitle (#PCDATA)>
+<!--
+end of excelout.dtd
+-->
+]>
+
+<excelout-config>
+
+	<entity name="com.sunrise.boss.business.resmanage.reckoning.persistent.ReckoningVO">
+		<delegate>com.sunrise.boss.delegate.resmanage.oprresmanage.reckon.ReckonDelegate</delegate>
+		<command>reckon</command>
+		<formname>com.sunrise.boss.ui.resmanage.oprresmanage.reckon.ReckonForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/OprResManage_zh_CN.properties">oprresmanage</resbundle>
+		<outfilename>服务厅台帐查询数据</outfilename>
+		<fields>
+			<field name="sheettime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="typeid">
+				<definition dependent="sheetrestype">
+					<case oprtype="==" value="0">$IM_SIMTYPE</case>
+					<case oprtype="==" value="1">#VIPCARD</case>
+					<case oprtype="==" value="2">#COMSYSTEM</case>
+					<case oprtype="==" value="3">$IM_SIMTYPE</case>
+				</definition>
+			</field>
+			<field name="sheetid"/>
+			<field name="oprcode">
+				<definition>ResOperator2Name</definition>
+			</field>
+			<field name="resaction">
+				<definition>$IM_RESACTION</definition>
+			</field>
+			<field name="inamount"/>
+			<field name="outamount"/>
+			<field name="totalamount"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+
+
+
+	<entity name="com.sunrise.boss.business.resmanage.wayresstat.persistent.WayresstatVO" exceloutbean="com.sunrise.boss.ui.resmanage.oprresmanage.wayresstat.WayresstatExceloutbean">
+		<command>wayresstat</command>
+		<formname>com.sunrise.boss.ui.resmanage.oprresmanage.wayresstat.WayresstatForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/OprResManage_zh_CN.properties">oprresmanage</resbundle>
+		<outfilename>服务厅库存盘点统计数据</outfilename>
+		<fields>
+			<field name="statdate">
+				<definition>TrantDate</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="typeid">
+				<definition dependent="sheetrestype">
+					<case oprtype="==" value="0">$IM_SIMTYPE</case>
+					<case oprtype="==" value="1">#VIPCARD</case>
+					<case oprtype="==" value="2">#COMSYSTEM</case>
+					<case oprtype="==" value="3">$IM_SIMTYPE</case>
+				</definition>
+			</field>
+			<field name="amount"/>
+			<field name="actualnum"/>
+			<field name="diversitynum"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.release.persistent.ReleaseVO">
+		<formname>com.sunrise.boss.ui.resmanage.release.ReleaseForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Release_zh_CN.properties">release</resbundle>
+		<outfilename>套卡销户处理结果查询</outfilename>
+		<fields>
+			<field name="oid"/>
+			<field name="servnumber"/>
+			<field name="intime"/>
+			<field name="processed">
+				<definition>#PROCESSED</definition>
+			</field>
+			<field name="processdate"/>
+			<field name="operid"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.noimsirela.persistent.NoimsirelaVO" >
+		<delegate>com.sunrise.boss.delegate.resmanage.common.excelout.ExceloutDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.simcard.noimsirela.NoimsirelaForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Noimsirela_zh_CN.properties">noimsirela</resbundle>
+		<outfilename>号码－SIM卡数据对应关系查询数据</outfilename>
+		<fields>
+			<field name="mobileno"/>
+			<field name="imsino"/>
+			<field name="starttime"/>
+			<field name="stoptime" format="DATE" formattype="yyyy-MM-dd"/>
+			<field name="oldmobileno"/>
+			<field name="oldimsino"/>
+			<field name="chgrsn"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.sim.persistent.SimVO">
+		<delegate>com.sunrise.boss.delegate.resmanage.common.excelout.ExceloutDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.simcard.querysimcard.SimForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Sim_zh_CN.properties">Sim</resbundle>
+		<outfilename>SIM卡查询数据</outfilename>
+		<fields>
+			<field name="iccid"/>
+			<field name="cardmill">
+				<definition>$IM_CARDMILL</definition>
+			</field>
+			<field name="pukno"/>
+			<field name="begintime"/>
+			<field name="stoptime"/>
+			<field name="intime"/>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="simtype">
+				<definition>$IM_SIMTYPE</definition>
+			</field>
+			<field name="usestate">
+				<definition>$IM_SIMSTATUS</definition>
+			</field>
+			<field name="capacity"/>
+			<field name="smscapacity"/>
+			<field name="telcapacity"/>
+		</fields>
+	</entity>
+	<entity name="com.sunrise.boss.business.resmanage.groupserial.persistent.GroupserialVO" showcount="no">
+	<delegate>com.sunrise.boss.delegate.resmanage.common.excelout.ExceloutDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.groupserial.GroupserialForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Groupserial_zh_CN.properties">groupserial</resbundle>
+		<outfilename>集团编号查询数据</outfilename>
+		<fields>
+			<field name="groupserial"/>
+			<field name="state">
+				<definition>$IM_GROUPSERIALSTATE</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+		</fields>
+	</entity>
+	<entity name="com.sunrise.boss.business.resmanage.mobilestatuschangelog.persistent.MobileStatusChangeLogVO">
+		<delegate>com.sunrise.boss.delegate.resmanage.mobilestatuschangelog.MobileStatusChangeLogDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.querylog.mobilestatuschangelog.MobileStatusChangeLogForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/MobileStatusChangeLog_zh_CN.properties">MobileStatusChangeLog</resbundle>
+		<outfilename>号码状态变更日志查询数据</outfilename>
+		<fields>
+			<field name="inout"/>
+			<field name="begno"/>
+			<field name="notype">
+				<definition>$IM_NOTYPE</definition>
+			</field>
+			<field name="prodid">
+				<definition>#PRODUCT</definition>
+			</field>
+			<field name="resoprtype">
+				<definition>$CH_RESOPRTYPE</definition>
+			</field>
+			<field name="success">
+				<definition>$IM_YESNO10</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="oldstate">
+				<definition>$IM_CALLSTATE</definition>
+			</field>
+			<field name="newstate">
+				<definition>$IM_CALLSTATE</definition>
+			</field>
+		</fields>
+	</entity>
+	
+	
+	<entity name="com.sunrise.boss.business.resmanage.comressmp.search.persistent.SearchComressmpVO">
+		<delegate>com.sunrise.boss.delegate.resmanage.comressmp.SearchComressmpDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.comressmp.search.SearchComressmpForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Comressmp_zh_CN.properties">comressmp</resbundle>
+		<outfilename>套卡资源查询数据</outfilename>
+		<fields>
+			<field name="comresid"/>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="batchno"/>
+			<field name="comstate">
+				<definition>$IM_COMSTATE</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="price" covertvalue="price/100" />
+			<field name="comdisc" covertvalue="comdisc/100" />
+			<field name="simprice" covertvalue="simprice/100" />
+			<field name="comkeep"/>
+			<field name="comactive"/>
+			<field name="validperiod"/>
+			<field name="starttime"/>
+			<field name="oprcode"/>
+			<field name="mobiletype">
+				<definition>$IM_MOBILETYPE</definition>
+			</field>
+			<field name="noprompt">
+				<definition>$IM_NOPROMPT</definition>
+			</field>
+		</fields>
+	</entity>
+	
+
+	<entity name="com.sunrise.boss.business.resmanage.billuselog.persistent.BilluselogVO">
+		<formname>com.sunrise.boss.ui.resmanage.querylog.billuselog.BilluselogForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Billres_zh_CN.properties">billres</resbundle>
+		<outfilename>票据资源使用情况日志查询数据</outfilename>
+		<fields>
+			<field name="logid"/>
+			<field name="billclass">
+				<definition>#IM_BILLCLASS</definition>
+			</field>
+			<field name="billresid"/>
+			<field name="workfid"/>
+			<field name="dtPrice"/>
+			<field name="oprcode"/>
+			<field name="oprtime"/>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	
+	
+	<entity name="com.sunrise.boss.business.resmanage.recresourcelog.persistent.RecresourcelogVO">
+		<formname>com.sunrise.boss.ui.resmanage.recresourcelog.RecresourcelogForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Recresourcelog_zh_CN.properties">recresourcelog</resbundle>
+		<outfilename>中间渠道资源调拨日志查询数据</outfilename>
+		<fields>
+			<field name="logid"/>
+			<field name="restype">
+				<definition>$IM_RECRESOURCETYPE</definition>
+			</field>
+			<field name="begno"/>
+			<field name="endno"/>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="num"/>
+			<field name="inwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="outwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="oprtime"  />
+			<field name="batchid" />
+			<field name="oprcode" />
+			<field name="oldstate">
+				<definition>$IM_RECSTATE</definition>
+			</field>
+			<field name="newstate">
+				<definition>$IM_RECSTATE</definition>
+			</field>
+			<field name="recdate" />
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.monitorlog.persistent.MonitorlogVO">
+		<formname>com.sunrise.boss.ui.fee.billing.monitorlog.MonitorlogForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/Monitorlog_zh_CN.properties">monitorlog</resbundle>
+		<outfilename>固定费监控日志查询数据</outfilename>
+		<fields>
+			<field name="logid"/>
+			<field name="reqid"/>
+			<field name="quenum"/>
+			<field name="logtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="datademo"/>
+			<field name="dealflag">
+				<definition>$IB_DEALFLAG</definition>
+			</field>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.fixfee.persistent.FixFeeVO">
+		<command>monitorlogdetail</command>
+		<formname>com.sunrise.boss.ui.fee.billing.fixfee.FixFeeForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/FixFee_zh_CN.properties">fixfee</resbundle>
+		<outfilename>固定费结果查询数据</outfilename>
+		<fields>
+			<field name="validbillcyc"/>
+			<field name="mobileno" covertvalue="subsid" var="subsid" format="CODE2NAME" formattype="0">
+				<definition>Subsid2Servnum</definition>
+			</field>
+			<field name="subsid"/>
+			<field name="acctid"/>
+			<field name="acctname" covertvalue="acctid" var="acctid" format="CODE2NAME" formattype="##">
+				<definition>#WOFF-ACCT</definition>
+			</field>
+			<field name="paiclup"/>
+			<field name="adjust"/>
+			<field name="receivable"/>
+			<field name="planlist"/>
+			<field name="rulelist"/>
+			<field name="paicluplist"/>
+			<field name="isaccount">
+				<definition>#FIXFEE_ISACCOUNT</definition>
+			</field>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.monitorlogdetail.persistent.MonitorlogdetailVO">
+		<command>monitorlogdetail</command>
+		<formname>com.sunrise.boss.ui.fee.billing.monitorlog.MonitorlogForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/Monitorlog_zh_CN.properties">monitorlog</resbundle>
+		<outfilename>固定费监控日志明细查询数据</outfilename>
+		<fields>
+			<field name="logdetailid"/>
+			<field name="logid"/>
+			<field name="subsid"/>
+			<field name="servnumber" covertvalue="subsid" var="subsid" format="CODE2NAME" formattype="0">
+				<definition>Subsid2Servnum</definition>
+			</field>
+			<field name="relatable"/>
+			<field name="relaid"/>
+			<field name="errlevel">
+				<definition>$IB_ERRLEVEL</definition>
+			</field>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.ilogcalc.persistent.IlogcalccmpVO" showcount="no">
+		<delegate query="getcmpilogcalc">com.sunrise.boss.delegate.fee.billing.ilogcalc.IlogcalcDelegate</delegate>
+		<formname>com.sunrise.boss.ui.fee.billing.ilogcalc.IlogcalcForm</formname>
+		<listvo>com.sunrise.boss.business.fee.billing.ilogcalc.persistent.IlogcalcListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/Ilogcalc_zh_CN.properties">ilogcalc</resbundle>
+		<outfilename>最近2个月的ILOG规则项汇总比较导出数据</outfilename>
+		<fields>
+			<field name="a_validbillcyc"/>
+			<field name="a_ilogitem"/>
+			<field name="a_sumrecord"/>
+			<field name="a_sumamount" format="NUMBER" formattype="'￥'#,####.00"/>
+			<field name="b_validbillcyc"/>
+			<field name="b_ilogitem"/>
+			<field name="b_sumrecord"/>
+			<field name="b_sumamount" format="NUMBER" formattype="'￥'#,####.00"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.yxplancalc.persistent.YxplancalccmpVO" showcount="no">
+		<delegate query="getcmpyxplancalc">com.sunrise.boss.delegate.fee.billing.yxplancalc.YxplancalcDelegate</delegate>
+		<formname>com.sunrise.boss.ui.fee.billing.yxplancalc.YxplancalcForm</formname>
+		<listvo>com.sunrise.boss.business.fee.billing.yxplancalc.persistent.YxplancalcListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/Yxplancalc_zh_CN.properties">yxplancalc</resbundle>
+		<outfilename>最近2个月的营销方案汇总比较数据</outfilename>
+		<fields>
+			<field name="a_validbillcyc"/>
+			<field name="a_yxplanid"/>
+			<field name="a_sumrecord"/>
+			<field name="a_sumsubs"/>
+			<field name="a_sumamount" format="NUMBER" formattype="'￥'#,####.00"/>
+			<field name="b_validbillcyc"/>
+			<field name="b_yxplanid"/>
+			<field name="b_sumrecord"/>
+			<field name="b_sumsubs"/>
+			<field name="b_sumamount"  format="NUMBER" formattype="'￥'#,####.00"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.calcresult.persistent.CalcresultcmpVO" showcount="no">
+		<delegate query="getcmpcalcresult">com.sunrise.boss.delegate.fee.billing.calcresult.CalcresultDelegate</delegate>
+		<formname>com.sunrise.boss.ui.fee.billing.calcresult.CalcresultForm</formname>
+		<listvo>com.sunrise.boss.business.fee.billing.calcresult.persistent.CalcresultListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/Calcresult_zh_CN.properties">calcresult</resbundle>
+		<outfilename>最近2个月的用户资料汇总比较数据</outfilename>
+		<fields>
+			<field name="a_validbillcyc"/>
+			<field name="a_calctype"/>
+			<field name="a_calcfieldvalue"/>
+			<field name="a_sumsubs"/>
+			<field name="b_validbillcyc"/>
+			<field name="b_calctype"/>
+			<field name="b_calcfieldvalue"/>
+			<field name="b_sumsubs"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.chgnofeelog.persistent.ChgnofeelogVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.querylog.chgnofeelog.ChgnofeelogForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.chgnofeelog.persistent.ChgnofeelogListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Chgnofeelog_zh_CN.properties">chgnofeelog</resbundle>
+		<outfilename>号码特号转存调整日志查询数据</outfilename>
+		<fields>
+			<field name="logid"/>
+			<field name="mobileno"/>
+			<field name="notype">
+				<definition>$IM_NOTYPE</definition>
+			</field>
+			<field name="activeimsi"/>
+			<field name="prodid">
+				<definition>#PRODUCT</definition>
+			</field>
+			<field name="doldselnofee" />
+			<field name="dnewselnofee" />
+			<field name="nostate">
+				<definition>$IM_CALLSTATE</definition>
+			</field>
+			<field name="nosectid"/>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="oprtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.realfeepre.persistent.RealFeePreVO">
+		<formname>com.sunrise.boss.ui.fee.billing.realfeepre.RealFeePreForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/RealFeePre_zh_CN.properties">realfeepre</resbundle>
+		<outfilename>预出月租临时费用查询数据</outfilename>
+		<fields>
+			<field name="id"/>
+			<field name="ruleid"/>
+			<field name="servnumber" covertvalue="subsid" var="subsid" format="CODE2NAME" formattype="0">
+				<definition>Subsid2Servnum</definition>
+			</field>
+			<field name="subsid"/>
+			<field name="acctid">
+				<definition>#WOFF-ACCT</definition>
+			</field>
+			<field name="validbillcyc"/>
+			<field name="lastupdtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="lastupdamt" format="NUMBER" formattype="'￥'#,####.00"/>
+			<field name="acctamt" format="NUMBER" formattype="'￥'#,####.00"/>
+			<field name="state">
+				<definition>$IB_ISPAYED</definition>
+			</field>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.proddays.persistent.ProddaysVO">
+		<formname>com.sunrise.boss.ui.fee.billing.proddays.ProddaysForm</formname>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/Proddays_zh_CN.properties">proddays</resbundle>
+		<outfilename>用户使用天数查询数据</outfilename>
+		<fields>
+			<field name="validbillcyc"/>
+			<field name="subsid"/>
+			<field name="prodid">
+				<definition>#PRODUCT</definition>
+			</field>
+			<field name="prodtype"/>
+			<field name="useddays"/>
+			<field name="stopdays"/>
+			<field name="state">
+				<definition>#PRE_STATE</definition>
+			</field>
+			<field name="isinitstop">
+				<definition>$IBYESNO10</definition>
+			</field>
+			<field name="isshare">
+				<definition>$IBYESNO10</definition>
+			</field>
+			<field name="calbegin" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="calend" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="modtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="curseconds" format="NUMBER" formattype="#,###'秒'"/>
+			<field name="ismainprod">
+				<definition>$IBYESNO10</definition>
+			</field>
+		</fields>
+	</entity>
+	<entity name="com.sunrise.boss.business.resmanage.groupserialopr.persistent.GroupserialoprVO" showcount="no">
+	<formname>com.sunrise.boss.ui.resmanage.querylog.querygroupserialopr.QueryGroupserialoprForm</formname>
+	<listvo>com.sunrise.boss.business.resmanage.groupserialopr.persistent.GroupserialoprListVO</listvo>
+	<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Groupserialopr_zh_CN.properties">groupserialopr</resbundle>
+	<outfilename>集团编号操作日志查询</outfilename>
+		<fields>
+			<field name="logid"/>
+			<field name="restype">
+				<definition>$IM_RESOURCETYPE</definition>
+			</field>
+			<field name="begno"/>
+			<field name="num"/>
+			<field name="reqogid"/>
+			<field name="inwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="outwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="inoprcode"/>
+			<field name="outoprcode"/>
+			<field name="inout" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="batchno"/>
+			<field name="resoprtype">
+				<definition>$CH_RESOPRTYPE</definition>
+			</field>
+			<field name="success">
+				<definition>$IM_YESNO10</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="oldstate">
+				<definition>$IM_SIMSTATUS</definition>
+			</field>
+			<field name="newstate">
+				<definition>$IM_SIMSTATUS</definition>
+			</field>
+			<field name="sendno"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.groupserialreqhis.persistent.GroupserialreqhisVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.querylog.querygroupserialreqhis.QueryGroupserialreqhisForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.groupserialreqhis.persistent.GroupserialreqhisListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Groupserialreqhis_zh_CN.properties">groupserialreqhis</resbundle>
+		<outfilename>集团编号请求历史日志查询</outfilename>
+		<fields>
+			<field name="logid"/>
+			<field name="restype">
+				<definition>$IM_RESOURCETYPE</definition>
+			</field>
+			<field name="begno"/>
+			<field name="endno"/>
+			<field name="comid">
+				<definition>$IM_SIMTYPE</definition>
+			</field>
+			<field name="num"/>
+			<field name="inwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="outwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="creattime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="batchno"/>
+			<field name="resoprtype">
+				<definition>$CH_RESOPRTYPE</definition>
+			</field>
+			<field name="success">
+				<definition>$IM_YESNO10</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="oldstate">
+				<definition>$IM_SIMSTATUS</definition>
+			</field>
+			<field name="newstate">
+				<definition>$IM_SIMSTATUS</definition>
+			</field>
+			<field name="comsource"/>
+			<field name="source"/>
+			<field name="buf"/>
+			<field name="sendno"/>
+		</fields>
+	</entity>
+	
+		<entity name="com.sunrise.boss.business.fee.billing.needredosubs.persistent.NeedredosubsVO" showcount="no">
+		<formname>com.sunrise.boss.ui.fee.billing.needredosubs.NeedredosubsForm</formname>
+		<listvo>com.sunrise.boss.business.fee.billing.needredosubs.persistent.NeedredosubsListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/Needredosubs_zh_CN.properties">needredosubs</resbundle>
+		<outfilename>固定费重跑增量用户查询</outfilename>
+		<fields>
+			<field name="billcyc"/>
+			<field name="subsid"/>
+			<field name="servnumber"/>
+			<field name="state">
+				<definition>#FEE_NEEDREDOSTATE</definition>
+			</field>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.needredosubsfix.persistent.NeedredosubsFixVO" showcount="no">
+		<delegate>com.sunrise.boss.delegate.fee.billing.needredosubs.NeedredosubsFixDelegate</delegate>
+		<formname>com.sunrise.boss.ui.fee.billing.needredosubs.referfixquery.NeedredosubsFixForm</formname>
+		<listvo>com.sunrise.boss.business.fee.billing.needredosubsfix.persistent.NeedredosubsFixListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/NeedredosubsFix_zh_CN.properties">needredosubsfix</resbundle>
+		<outfilename>涉及费用查询</outfilename>
+		<fields>
+			<field name="validbillcyc"/>
+			<field name="subsid"/>
+			<field name="servnumber"/>
+			<field name="acctid"/>
+			<field name="paiclup" format="NUMBER" formattype="#0.00"/>
+			<field name="adjust"  format="NUMBER" formattype="#0.00"/>
+			<field name="receivable"  format="NUMBER" formattype="#0.00"/>
+			<field name="isaccount">
+				<definition>#FIXFEE_ISACCOUNT</definition>
+			</field>
+			<field name="planlist"/>
+			<field name="rulelist"/>
+			<field name="paicluplist"/>	         
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.resetrans.stockchk.persistent.StockchkVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.resetrans.stockchk.StockchkForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.resetrans.stockchk.persistent.StockchkListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/resetrans/Stockchk_zh_CN.properties">stockchk</resbundle>
+		<outfilename>营业厅实物库存盘点查询</outfilename>
+		<fields>			
+			<field name="logid"/>
+			<field name="restype">
+				<definition>$IM_STOCKCHKRESTYPE</definition>
+			</field>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="wayid"/>
+			<field name="chktime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="bossstock"/>
+			<field name="realstock"/>
+			<field name="chkoprcode"/>
+			<field name="diff"/>
+			<field name="memo"/>	
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.resetrans.resinfo.persistent.ResinfoVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.resetrans.resinfo.ResinfoForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.resetrans.resinfo.persistent.ResinfoListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/resetrans/Resinfo_zh_CN.properties">resinfo</resbundle>
+		<outfilename>领用资源明细查询</outfilename>
+		<fields>	
+			<field name="logid"/>
+			<field name="recid"/>
+			<field name="restype">
+				<definition>$IM_ETRANSRESTYPE</definition>
+			</field>
+			<field name="comid">
+				<definition dependent="restype">
+					<case oprtype="==" value="0">$IM_SIMTYPE</case>
+					<case oprtype="==" value="1">$IM_ETRANSRESTYPE</case>
+					<case oprtype="==" value="2">#COMSYSTEM</case>
+					<case oprtype="==" value="3">$IM_SIMTYPE</case>
+				</definition>
+			</field>
+			<field name="comresid"/>
+			<field name="accoprcode"/>
+			<field name="state">
+				<definition dependent="state">
+					<case oprtype="==" value="0">$IM_SIMSTATE</case>
+					<case oprtype="==" value="1">$IM_JFCARDSTATE</case>
+					<case oprtype="==" value="2">$IM_COMSTATE</case>
+					<case oprtype="==" value="3">$IM_SIMSTATE</case>
+				</definition>
+			</field>
+			<field name="price" format="NUMBER" formattype="'￥'#,####.00"/>
+			<field name="rectime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.resetrans.resapply.persistent.ResapplyVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.resetrans.resapply.ResapplyForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.resetrans.resapply.persistent.ResapplyListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/resetrans/Resapply_zh_CN.properties">resapply</resbundle>
+		<outfilename>审批单查询</outfilename>
+		<fields>	
+			<field name="recid"/>
+			<field name="restype">
+				<definition>$IM_ETRANSRESTYPE</definition>
+			</field>
+			<field name="applytype">
+				<definition>$IM_APPLYTYPE</definition>
+			</field>
+			<field name="appoprcode"/>
+			<field name="chkoprcode"/>
+			<field name="accoprcode"/>
+			<field name="createtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="chktime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="acctime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="state">
+				<definition>$IM_APPLYSTATE</definition>
+			</field>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.resetrans.resapplylog.persistent.ResapplylogVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.resetrans.resapplylog.ResapplylogForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.resetrans.resapplylog.persistent.ResapplylogListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/resetrans/Resapplylog_zh_CN.properties">resapplylog</resbundle>
+		<outfilename>审批日志查询数据</outfilename>
+		<fields>	
+			<field name="logid"/>
+			<field name="recid"/>
+			<field name="restype">
+				<definition>$IM_ETRANSRESTYPE</definition>
+			</field>
+			<field name="applytype">
+				<definition>$IM_APPLYTYPE</definition>
+			</field>
+			<field name="appoprcode"/>
+			<field name="chkoprcode"/>
+			<field name="accoprcode"/>
+			<field name="createtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="chktime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="acctime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="state">
+				<definition>$IM_APPLYSTATE</definition>
+			</field>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.resetrans.applyreqhis.persistent.ApplyreqhisVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.resetrans.applyreqhis.ApplyreqhisForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.resetrans.applyreqhis.persistent.ApplyreqhisListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/resetrans/Applyreqhis_zh_CN.properties">applyreqhis</resbundle>
+		<outfilename>审批请求历史日志数据</outfilename>
+		<fields>	
+			<field name="logid"/>
+			<field name="recid"/>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="oprtype">
+				<definition>$IM_APPLYREQTYPE</definition>
+			</field>
+			<field name="restype">
+				<definition>$IM_ETRANSRESTYPE</definition>
+			</field>
+			<field name="comid">
+				<definition dependent="restype">
+					<case oprtype="==" value="0">$IM_SIMTYPE</case>
+					<case oprtype="==" value="1">$IM_ETRANSRESTYPE</case>
+					<case oprtype="==" value="2">#COMSYSTEM</case>
+					<case oprtype="==" value="3">$IM_SIMTYPE</case>
+				</definition>
+			</field>
+			<field name="num"/>
+			<field name="begno"/>
+			<field name="endno"/>
+			<field name="inout" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.resetrans.shift.persistent.EtransShiftVO" showcount="no" exceloutbean="com.sunrise.boss.ui.resmanage.resetrans.shift.EtransShiftBean">
+		<delegate>com.sunrise.boss.delegate.resmanage.resetrans.shift.EtransshiftDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.resetrans.shift.EtransshiftForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.resetrans.shift.persistent.EtransShiftListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/resetrans/Resshift_zh_CN.properties">resshift</resbundle>
+		<outfilename>有价证卡领用交接登记簿</outfilename>
+		<fields>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="discount"/>
+			<field name="salesum"/>
+			<field name="freesalsum"/>
+			<field name="handworksum"/>
+			<field name="remainsum"/>
+			<field name="dis_opercode"/>
+			<field name="back_opercode"/>
+			<field name="signature"/>
+			<field name="office_mgr"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.imsisect.persistent.ImsisectVO" showcount="no" exceloutbean="com.sunrise.boss.ui.resmanage.imsisect.ImsisectExceloutBean" >
+		<delegate>com.sunrise.boss.delegate.resmanage.nores.imsisect.ImsisectDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.imsisect.ImsisectForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.imsisect.persistent.ImsisectListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/ImsiSect_zh_CN.properties">imsisect</resbundle>
+		<outfilename>IMSI段查询数据</outfilename>
+		<fields>
+			<field name="imsisectid"/>
+			<field name="beginimsino"/>
+			<field name="endimsino"/>
+			<field name="imsisectstate">
+				<definition>$IM_USESTATE</definition>
+			</field>
+			<field name="nogroupid"/>
+			<field name="nogroupname">
+				<definition>#IM_NOGROUP</definition>
+			</field>
+			<field name="starttime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="bossarea">
+				<definition>#COMPANYNAME</definition>
+			</field>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.resetrans.elechginout.persistent.ElechginoutVO" showcount="no" exceloutbean="com.sunrise.boss.ui.resmanage.resetrans.elechginout.ElechginoutBean">
+		<delegate>com.sunrise.boss.delegate.resmanage.resetrans.elechginout.ElechginoutDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.resetrans.elechginout.ElechginoutForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.resetrans.elechginout.persistent.ElechginoutListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/resetrans/Elechginout_zh_CN.properties">elechginout</resbundle>
+		<outfilename>服务厅营销有价实物出入库日记账登记簿</outfilename>
+		<fields>
+			<field name="restype">
+				<definition>$IM_ETRANSRESTYPE</definition>
+			</field>
+			<field name="comid">
+				<definition dependent="restype">
+					<case oprtype="==" value="0">$IM_SIMTYPE</case>
+					<case oprtype="==" value="1">$IM_ETRANSRESTYPE</case>
+					<case oprtype="==" value="2">#COMSYSTEM</case>
+					<case oprtype="==" value="3">$IM_SIMTYPE</case>
+				</definition>
+			</field>
+			<field name="oprtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="innum"/>
+			<field name="outnum"/>
+			<field name="leftnum"/>
+			<field name="reskeeper"/>
+			<field name="chkoprcode"/>
+			<field name="managercode"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.zifee.productdiscount.persistent.ProductdiscountVO" showcount="no">
+		<formname>com.sunrise.boss.ui.zifee.productdiscount.ProductdiscountForm</formname>
+		<listvo>com.sunrise.boss.business.zifee.productdiscount.persistent.ProductdiscountListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/zifee/Productdiscount_zh_CN.properties">productdiscount</resbundle>
+		<outfilename>产品优惠比例设置查询</outfilename>
+		<fields>
+			<field name="prodid">
+				<definition>#PRODUCT</definition>
+			</field>
+			<field name="opersymbol"/>
+			<field name="businum"/>
+			<field name="discount" format="NUMBER" formattype="0.00"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.nores.releaseno.persistent.ReleaseNoVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.nores.releaseno.ReleaseNoForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.nores.releaseno.persistent.ReleaseNoListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/ReleaseNo_zh_CN.properties">releaseno</resbundle>
+		<outfilename>号码回收释放查询结果</outfilename>
+		<fields>
+			<field name="servnumber"/>
+			<field name="intime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="processed">
+				<definition>$IM_NORELEASEFLAG</definition>
+			</field>
+			<field name="orgtype">
+				<definition>$IM_NORELEASEORGTYPE</definition>
+			</field>
+			<field name="operid"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.airno.norespool.persistent.NorespoolVO" showcount="no">
+		<delegate>com.sunrise.boss.delegate.resmanage.airno.norespool.NorespoolDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.airno.norespool.NorespoolForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.airno.norespool.persistent.NorespoolListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/airno/Norespool_zh_CN.properties">norespool</resbundle>
+		<outfilename>号码池资源查询结果</outfilename>
+		<fields>
+			<field name="wayid"/>
+			<field name="noclassid">
+				<definition>$IM_AIRNOTYPE</definition>
+			</field>
+			<field name="mobileno"/>
+			<field name="notype">
+				<definition>$IM_NOTYPE</definition>
+			</field>
+			<field name="prodid">
+				<definition>#PRODUCT</definition>
+			</field>
+			<field name="dselnofee" format="NUMBER" formattype="0.00"/>
+			<field name="nostate">
+				<definition>$IM_CALLSTATE</definition>
+			</field>
+			<field name="nosectid"/>
+			<field name="mobiletype">
+				<definition>$IM_MOBILETYPE</definition>
+			</field>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	
+	<entity name="com.sunrise.boss.business.resmanage.airno.norule.persistent.NoruleVO">
+		<formname>com.sunrise.boss.ui.resmanage.airno.norule.NoruleForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.airno.norule.persistent.NoruleListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/airno/Norule_zh_CN.properties">norule</resbundle>
+		<outfilename>号码规则设置</outfilename>
+		<fields>
+			<field name="noclassid">
+				<definition>$IM_AIRNOTYPE</definition>
+			</field>
+			<field name="rulelist"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.airno.putinrule.persistent.PutinruleVO">
+		<formname>com.sunrise.boss.ui.resmanage.airno.putinrule.PutinruleForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.airno.putinrule.persistent.PutinruleListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/airno/Putinrule_zh_CN.properties">putinrule</resbundle>
+		<outfilename>号池投放规则设置</outfilename>
+		<fields>
+			<field name="wayid"/>
+			<field name="noclassid">
+				<definition>$IM_AIRNOTYPE</definition>
+			</field>
+			<field name="cycle"/>
+			<field name="minnum"/>
+			<field name="maxnum"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.airno.agentnopoolrela.persistent.AgentnopoolrelaVO">
+		<formname>com.sunrise.boss.ui.resmanage.airno.agentnopoolrela.AgentnopoolrelaForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.airno.agentnopoolrela.persistent.AgentnopoolrelaListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/airno/Agentnopoolrela_zh_CN.properties">agentnopoolrela</resbundle>
+		<outfilename>代理商-号池关系查询结果</outfilename>
+		<fields>
+			<field name="agentid"/>
+			<field name="nopool"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.airno.simagentrela.persistent.SimagentrelaVO">
+		<formname>com.sunrise.boss.ui.resmanage.airno.simagentrela.SimagentrelaForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.airno.simagentrela.persistent.SimagentrelaListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/airno/Emptysimagentrela_zh_CN.properties">emptysimagentrela</resbundle>
+		<outfilename>空中选号空白SIM卡查询</outfilename>
+		<fields>
+			<field name="iccid"/>
+			<field name="agentid"/>
+			<field name="simtype">
+				<definition>$IM_SIMTYPE</definition>
+			</field>
+			<field name="state">
+				<definition>$IM_EMPTYSIMSTATUS</definition>
+			</field>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.cms.audit.receivables.persistent.Receivables2VO">
+		<delegate query="doProvinceQuery">com.sunrise.boss.delegate.cms.audit.receivables.ReceivablesDelegate</delegate>
+		<formname>com.sunrise.boss.ui.cms.audit.receivables.ReceivablesForm</formname>
+		<listvo>com.sunrise.boss.business.cms.audit.receivables.persistent.ReceivablesListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/cms/audit/Receivables_zh_CN.properties">receivables</resbundle>
+		<outfilename>应收汇总查询数据</outfilename>
+		<fields>
+			<field name="cityid">
+				<definition>#CITYIDNUM2NMAME</definition>
+			</field>
+			<field name="ywdate">
+				<definition>#AUDIT_TJ</definition>
+			</field>
+			<field name="money" format="NUMBER" formattype="0.00"/>
+			<field name="pos" format="NUMBER" formattype="0.00"/>
+			<field name="tcheck" format="NUMBER" formattype="0.00"/>
+			<field name="elsecharge" format="NUMBER" formattype="0.00"/>
+			<field name="sumcharge" format="NUMBER" formattype="0.00"/>
+			<field name="auditinfo"/>
+		</fields>
+		<headtitle><![CDATA[应收汇总查询数据<table><tr><td>查询地市:</td><td>{cityname}</td><td></td>><td>业务发生日期:</td><td>{_snl_ywdate}-{_snm_ywdate}</td></tr></table>]]></headtitle>
+		<endtitle><![CDATA[<tr><td>导出工号:</td><td>{USER.opercode}</td><td></td><td>导出日期:</td><td>{today}</td></tr>]]></endtitle>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.cms.audit.inputremit.persistent.Inputremit2VO">
+		<delegate query="doProvinceQuery">com.sunrise.boss.delegate.cms.audit.inputremit.InputremitDelegate</delegate>
+		<formname>com.sunrise.boss.ui.cms.audit.inputremit.InputremitForm</formname>
+		<listvo>com.sunrise.boss.business.cms.audit.inputremit.persistent.InputremitListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/cms/audit/Inputremit_zh_CN.properties">inputremit</resbundle>
+		<outfilename>实缴款汇总查询数据</outfilename>
+		<fields>
+			<field name="cityid">
+				<definition>#CITYIDNUM2NMAME</definition>
+			</field>
+			<field name="ywdate">
+				<definition>#AUDIT_TJ</definition>
+			</field>
+			<field name="money" format="NUMBER" formattype="0.00"/>
+			<field name="adjustmoney" format="NUMBER" formattype="0.00"/>
+			<field name="pos" format="NUMBER" formattype="0.00"/>
+			<field name="adjustpos" format="NUMBER" formattype="0.00"/>
+			<field name="tcheck" format="NUMBER" formattype="0.00"/>
+			<field name="adjusttcheck" format="NUMBER" formattype="0.00"/>
+			<field name="elsecharge" format="NUMBER" formattype="0.00"/>
+			<field name="adjustelsecharge" format="NUMBER" formattype="0.00"/>
+			<field name="sumcharge" format="NUMBER" formattype="0.00"/>
+			<field name="auditinfo"/>
+		</fields>
+		<headtitle><![CDATA[实缴款汇总查询数据<table><tr><td>查询地市:</td><td>{cityname}</td><td></td>><td>业务发生日期:</td><td>{_snl_ywdate}-{_snm_ywdate}</td></tr></table>]]></headtitle>
+		<endtitle><![CDATA[<tr><td>导出工号:</td><td>{USER.opercode}</td><td></td><td>导出日期:</td><td>{today}</td></tr>]]></endtitle>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.cms.audit.bankincome.persistent.Bankincome2VO">
+		<delegate query="doProvinceQuery">com.sunrise.boss.delegate.cms.audit.bankincome.BankIncomeDelegate</delegate>
+		<formname>com.sunrise.boss.ui.cms.audit.bankincome.StatBankIncomeForm</formname>
+		<listvo>com.sunrise.boss.business.cms.audit.bankincome.control.BankIncomeDTO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/cms/audit/BankIncome_zh_CN.properties">bankincome</resbundle>
+		<outfilename>进帐汇总查询数据</outfilename>
+		<fields>
+			<field name="cityid">
+				<definition>#CITYIDNUM2NMAME</definition>
+			</field>
+			<field name="bankid">
+				<definition>#AUDIT_BANK</definition>
+			</field>
+			<field name="accuntdate"/>
+			<field name="cash" format="NUMBER" formattype="0.00"/>
+			<field name="checkput" format="NUMBER" formattype="0.00"/>
+			<field name="pos" format="NUMBER" formattype="0.00"/>
+			<field name="other" format="NUMBER" formattype="0.00"/>
+			<field name="total" format="NUMBER" formattype="0.00"/>
+			<field name="auditinfo"/>
+		</fields>
+		<headtitle><![CDATA[进帐汇总查询数据<table><tr><td>查询地市:</td><td>{cityname}</td><td></td>><td>{datewayname}:</td><td>{minaccountdate}-{maxaccountdate}</td></tr></table>]]></headtitle>
+		<endtitle><![CDATA[<tr><td>导出工号:</td><td>{USER.opercode}</td><td></td><td>导出日期:</td><td>{today}</td></tr>]]></endtitle>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.cms.audit.ovntmoney.persistent.Ovntmoney2VO">
+		<delegate query="doProvinceQuery">com.sunrise.boss.delegate.cms.audit.ovntmoney.OvntmoneyDelegate</delegate>
+		<formname>com.sunrise.boss.ui.cms.audit.ovntmoney.OvntmoneyForm</formname>
+		<listvo>com.sunrise.boss.business.cms.audit.ovntmoney.persistent.OvntmoneyListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/cms/audit/Ovntmoney_zh_CN.properties">ovntmoney</resbundle>
+		<outfilename>过夜资金查询数据</outfilename>
+		<fields>
+			<field name="cityid">
+				<definition>#CITYIDNUM2NMAME</definition>
+			</field>
+			<field name="ywdate">
+				<definition>#AUDIT_TJ</definition>
+			</field>
+			<field name="sumsendfee" format="NUMBER" formattype="0.00"/>
+			<field name="auditinfo"/>
+		</fields>
+		<headtitle><![CDATA[过夜资金查询数据<table><tr><td>查询地市:</td><td>{cityname}</td><td></td>><td>业务发生日期:</td><td>{_se_ywdate}</td></tr></table>]]></headtitle>
+		<endtitle><![CDATA[<tr><td>导出工号:</td><td>{USER.opercode}</td><td></td><td>导出日期:</td><td>{today}</td></tr>]]></endtitle>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.echarge.persistent.EchargeVO" showcount="no">
+		<formname>com.sunrise.boss.ui.resmanage.echarge.EchargeForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.echarge.persistent.EchargeListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/echarge/Echarge_zh_CN.properties">echarge</resbundle>
+		<outfilename>已售电子充值券包充值卡查询结果</outfilename>
+		<fields>
+			<field name="cardno"/>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="price" covertvalue="price/100" />
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="cardstate">
+				<definition>$IM_ECHARGESTATE</definition>
+			</field>
+			<field name="packid"/>
+			<field name="batchno"/>
+			<field name="oprcode"/>
+			<field name="starttime" format="DATE" formattype="yyyy-MM-dd"/>
+			<field name="comactive" format="DATE" formattype="yyyy-MM-dd"/>
+			<field name="validday"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.echarge.echargeopr.persistent.EchargeoprlogVO" showcount="no">
+	<formname>com.sunrise.boss.ui.resmanage.querylog.queryechargeoprlog.QueryEchargeoprlogForm</formname>
+	<listvo>com.sunrise.boss.business.resmanage.echarge.echargeopr.persistent.EchargeoprlogListVO</listvo>
+	<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Resourcelog_zh_CN.properties">res</resbundle>
+	<outfilename>已售电子充值券包充值卡操作日志查询结果</outfilename>
+		<fields>
+			<field name="logid"/>
+			<field name="begno"/>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="num"/>
+			<field name="reqogid"/>
+			<field name="resoprtype">
+				<definition>$CH_RESOPRTYPE</definition>
+			</field>
+			<field name="inwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="outwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="oldstate">
+				<definition>$IM_ECHARGESTATE</definition>
+			</field>
+			<field name="newstate">
+				<definition>$IM_ECHARGESTATE</definition>
+			</field>
+			<field name="inoprcode"/>
+			<field name="outoprcode"/>
+			<field name="inout" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="success">
+				<definition>$IM_YESNO10</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="batchno"/>
+			<field name="comsource"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.echarge.echargereqhis.persistent.EchargereqhisVO" showcount="no">
+	<formname>com.sunrise.boss.ui.resmanage.querylog.queryechargereqhis.QueryEchargereqhisForm</formname>
+	<listvo>com.sunrise.boss.business.resmanage.echarge.echargereqhis.persistent.EchargereqhisListVO</listvo>
+	<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/echarge/Echargereqhis_zh_CN.properties">echargereqhis</resbundle>
+	<outfilename>已售电子充值券包充值卡请求历史日志查询结果</outfilename>
+		<fields>
+			<field name="logid"/>
+			<field name="begno"/>
+			<field name="endno"/>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="num"/>
+			<field name="resoprtype">
+				<definition>$CH_RESOPRTYPE</definition>
+			</field>
+			<field name="inwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="outwayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="oldstate">
+				<definition>$IM_ECHARGESTATE</definition>
+			</field>
+			<field name="newstate">
+				<definition>$IM_ECHARGESTATE</definition>
+			</field>
+			<field name="creattime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="batchno"/>
+			<field name="success">
+				<definition>$IM_YESNO10</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="comsource"/>
+			<field name="source"/>
+			<field name="buf"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.simcard.noemptysimrela.persistent.NoemptysimrelaVO" showcount="no">
+		<delegate>com.sunrise.boss.delegate.resmanage.simcard.noemptysimrela.NoemptysimrelaDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.simcard.noemptysimrela.NoemptysimrelaForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.simcard.noemptysimrela.persistent.NoemptysimrelaListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Noemptysimrela_zh_CN.properties">noemptysimrela</resbundle>
+		<outfilename>号码－空白卡数据对应关系</outfilename>
+		<fields>
+			<field name="mobileno"/>
+			<field name="emptyno"/>
+			<field name="iccid"/>
+			<field name="begintime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="stoptime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.vipcard.persistent.VipcardVO" showcount="no">
+		<delegate>com.sunrise.boss.delegate.resmanage.vipcard.VipcardDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.vipcard.search.SearchVipcardForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.vipcard.persistent.VipcardListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Vipcard_zh_CN.properties">vipcard</resbundle>
+		<outfilename>积分卡查询数据</outfilename>
+		<fields>
+			<field name="vipcardno"/>
+			<field name="cardstate">
+				<definition>$IM_JFCARDSTATE</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="begintime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="endtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.fee.billing.prefixfeeresultquery.persistent.PrefixfeeresultqueryVO" showcount="no">
+		<delegate>com.sunrise.boss.delegate.fee.billing.fixfee.FixFeeDelegate</delegate>
+		<formname>com.sunrise.boss.ui.fee.billing.fixfee.FixFeeForm</formname>
+		<listvo>com.sunrise.boss.business.fee.billing.prefixfeeresultquery.persistent.PrefixfeeresultqueryListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/PreFixFeeResultQuery_zh_CN.properties">prefixfeeresultquery</resbundle>
+		<outfilename>预出固定费结果查询</outfilename>
+		<fields>
+			<field name="servnumber"/>
+			<field name="subsid"/>
+			<field name="validbillcyc"/>
+			<field name="acctid">
+				<definition>#WOFF-ACCT</definition>
+			</field>
+			<field name="paiclup" format="NUMBER" formattype="0.00"/>
+			<field name="adjust" format="NUMBER" formattype="0.00"/>
+			<field name="receivable" format="NUMBER" formattype="0.00"/>
+			<field name="isaccount">
+				<definition>#FIXFEE_ISACCOUNT</definition>
+			</field>
+			<field name="planlist"/>
+			<field name="rulelist"/>
+			<field name="paicluplist"/>
+			<field name="ispayed">
+				<definition>$IB_ISPAYED</definition>
+			</field>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.nores.persistent.NoresVO" showcount="no">
+		<delegate>com.sunrise.boss.delegate.resmanage.nores.NoresDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.nores.NoresForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.nores.persistent.NoresListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Nores_zh_CN.properties">nores</resbundle>
+		<outfilename>号码查询数据</outfilename>
+		<fields>
+			<field name="mobileno"/>
+			<field name="notype">
+				<definition>$IM_NOTYPE</definition>
+			</field>
+			<field name="activeimsi"/>
+			<field name="prodid">
+				<definition>#PRODUCT</definition>
+			</field>
+			<field name="starttime" format="DATE" formattype="yyyy-MM-dd"/>
+			<field name="stoptime" format="DATE" formattype="yyyy-MM-dd"/>
+			<field name="dselnofee" format="NUMBER" formattype="0.00"/>
+			<field name="nostate">
+				<definition>$IM_CALLSTATE</definition>
+			</field>
+			<field name="nosectid"/>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="mobiletype">
+				<definition>$IM_MOBILETYPE</definition>
+			</field>
+			<field name="noprompt">
+				<definition>$IM_NOPROMPT</definition>
+			</field>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	
+	<entity name="com.sunrise.boss.business.fee.billing.netagediscount.persistent.NetagediscountVO" showcount="no">
+		<formname>com.sunrise.boss.ui.fee.billing.netagediscount.NetagediscountForm</formname>
+		<listvo>com.sunrise.boss.business.fee.billing.netagediscount.persistent.NetagediscountListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/fee/billing/Netagediscount_zh_CN.properties">netagediscount</resbundle>
+		<outfilename>8＋1的套餐网龄折扣</outfilename>
+		<fields>
+			<field name="yxplanid">
+				<definition>#ZIFEE-YXPLAN</definition>
+			</field>
+			<field name="netagebegin"/>
+			<field name="netageend"/>
+			<field name="discount"/>
+			<field name="begintime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="endtime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="discountdemo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.nores.querynoresinsharedway.persistent.QuerynoresinsharedwayVO" showcount="no">
+		<delegate query="doQueryNoresInSharedWay">com.sunrise.boss.delegate.resmanage.nores.querynoresinsharedway.NoresInSharedWayDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.nores.querynoresinsharedway.QueryNoresInSharedWayForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.nores.persistent.NoresListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Nores_zh_CN.properties">nores</resbundle>
+		<outfilename>渠道可用号码查询数据</outfilename>
+		<fields>
+			<field name="mobileno"/>
+			<field name="notype">
+				<definition>$IM_NOTYPE</definition>
+			</field>
+			<field name="activeimsi"/>
+			<field name="prodid">
+				<definition>#PRODUCT</definition>
+			</field>
+			<field name="starttime" format="DATE" formattype="yyyy-MM-dd"/>
+			<field name="stoptime" format="DATE" formattype="yyyy-MM-dd"/>
+			<field name="dselnofee" format="NUMBER" formattype="0.00"/>
+			<field name="nostate">
+				<definition>$IM_CALLSTATE</definition>
+			</field>
+			<field name="nosectid"/>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="oprcode"/>
+			<field name="mobiletype">
+				<definition>$IM_MOBILETYPE</definition>
+			</field>
+			<field name="noprompt">
+				<definition>$IM_NOPROMPT</definition>
+			</field>
+			<field name="memo"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.comrescard.persistent.ComrescardVO" showcount="no">
+		<delegate>com.sunrise.boss.delegate.resmanage.comrescard.ComrescardDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.comrescard.ComrescardForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.comrescard.persistent.ComrescardListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/comrescard/Comrescard_zh_CN.properties">Comrescard</resbundle>
+		<outfilename>充值卡查询数据</outfilename>
+		<fields>
+			<field name="comresid"/>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="batchno"/>
+			<field name="oprcode"/>
+			<field name="comstate">
+				<definition>$IM_COMSTATE</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="comdisc" covertvalue="comdisc/100" />
+			<field name="price" covertvalue="price/100" />
+			<field name="comkeep" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="comactive" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="validperiod" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="starttime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+		</fields>
+	</entity>
+	
+	
+	<entity name="com.sunrise.boss.business.resmanage.comresphone.persistent.ComresphoneVO">
+		<delegate>com.sunrise.boss.delegate.resmanage.comresphone.ComresphoneDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.comresphone.search.SearchComresphoneForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.comresphone.persistent.ComresphoneListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Comresphone_zh_CN.properties">comresphone</resbundle>
+		<outfilename>终端设备资源查询数据</outfilename>
+		<fields>
+			<field name="comresid"/>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="batchno"/>
+			<field name="starttime" format="DATE" formattype="yyyy-MM-dd HH:mm:ss"/>
+			<field name="comstate">
+				<definition>$IM_COMSTATE</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="price" covertvalue="price/100" />
+			<field name="comdisc" covertvalue="comdisc/100" />
+			<field name="comsource">
+				<definition>$IM_SUPPLYWAY</definition>
+			</field>
+			<field name="imei"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.gifres.persistent.GifresVO">
+		<delegate>com.sunrise.boss.delegate.resmanage.gifres.GifresDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.gifres.search.SearchGifresForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.gifres.persistent.GifresListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Gifres_zh_CN.properties">gifres</resbundle>
+		<outfilename>礼品查询数据</outfilename>
+		<fields>
+			<field name="invresid"/>
+			<field name="invresiddis">
+				<definition>#GIFTID</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="intime" covertvalue="intime/100" />
+			<field name="num1"/>
+			<field name="num2"/>
+			<field name="usestate"/>
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.othercomres.persistent.OthercomresVO">
+		<delegate>com.sunrise.boss.delegate.resmanage.othercomres.OthercomresDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.othercomres.common.CommonOthercomresForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.othercomres.persistent.OthercomresListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Comresphone_zh_CN.properties">comresphone</resbundle>
+		<outfilename>商品扩展资源查询数据</outfilename>
+		<fields>
+			<field name="comresid"/>
+			<field name="comid">
+				<definition>#COMSYSTEM</definition>
+			</field>
+			<field name="batchno"/>
+			<field name="comstate">
+				<definition>$IM_COMSTATE</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="price" covertvalue="price/100" />
+			<field name="comdisc" covertvalue="comdisc/100" />
+		</fields>
+	</entity>
+	
+	<entity name="com.sunrise.boss.business.resmanage.billres.persistent.BillresVO">
+		<delegate>com.sunrise.boss.delegate.resmanage.billres.BillresDelegate</delegate>
+		<formname>com.sunrise.boss.ui.resmanage.billres.BillresForm</formname>
+		<listvo>com.sunrise.boss.business.resmanage.billres.persistent.BillresListVO</listvo>
+		<resbundle path="/com/sunrise/boss/resource/i18n/resmanage/Billres_zh_CN.properties">billres</resbundle>
+		<outfilename>票据资源查询数据</outfilename>
+		<fields>
+			<field name="billresid"/>
+			<field name="billclass">
+				<definition>#IM_BILLCLASS</definition>
+			</field>
+			<field name="billtype">
+				<definition>$IM_BILLTYPE</definition>
+			</field>
+			<field name="billstate">
+				<definition>$IM_BILLSTATE</definition>
+			</field>
+			<field name="wayid">
+				<definition>#WAY</definition>
+			</field>
+			<field name="billsect"/>
+			<field name="price" covertvalue="price/100" />
+		</fields>
+	</entity>
+	
+</excelout-config>

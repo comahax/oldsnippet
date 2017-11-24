@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.distribute.cpexamhistory.persistent.CpexamhistoryVO" table="CH_DST_CPEXAMHISTORY">
+<id column="COOPERAUID" name="cooperauid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property name="cooperaname" column="COOPERANAME" type="java.lang.String" length="128"/>
+<property name="smsmobileno" column="SMSMOBILENO" type="java.lang.String" length="12"/>
+<property name="cooperalevel" column="COOPERALEVEL" type="java.lang.String" length="5"/>
+<property name="fxtype" column="FXTYPE" type="java.lang.Short" length="3"/>
+<property name="comtype" column="COMTYPE" type="java.lang.Integer" length="6"/>
+<property name="examtype" column="EXAMTYPE" type="java.lang.Short" length="3"/>
+<property name="examresult" column="EXAMRESULT" type="java.lang.Double" length="16"/>
+<property name="basenum" column="BASENUM" type="java.lang.Integer" length="6"/>
+<property name="realnum" column="REALNUM" type="java.lang.Integer" length="6"/>
+<property name="odrdablenum" column="ODRDABLENUM" type="java.lang.Integer" length="6"/>
+<property name="optime" column="OPTIME" type="java.util.Date" length="7"/>
+</class>
+
+<sql-query name="boss.cms.queryHistoryCooperatorAssessResult" >	
+	<return class="com.sunrise.boss.business.cms.distribute.dstasresult.persistent.DstasresultVO" entity-name="dstVO" alias="dstVO">				
+	</return>			
+		  select * from 
+		  (
+			  select distinct cqe.*,0 ODRDABLENUM
+			  from 
+			  (
+			      select cq.*, e.comtype,e.examtype,e.examresult, e.basenum, e.realnum, e.optime from 
+			      (
+			      select c.cooperauid, c.cooperaname, c.smsmobileno , q.cooperalevel,q.fxtype from CH_DST_COOPERATOR c 
+			      left join  CH_DST_CPRIGHT q  on c.cooperauid = q.cooperauid
+			      ) cq 
+			      left join CH_DST_CPEXAMLOG e on cq.cooperauid = e.cooperauid      
+			  ) cqe, im_pr_com com
+			  , CH_DST_COMSALERL crl
+			  where crl.fxtype = cqe.fxtype and crl.cooperalevel = cqe.cooperalevel 
+			  and cqe.comtype = com.comtype and crl.comid = com.comid  
+		  ) tt		  	 	  
+</sql-query>
+
+<sql-query name="boss.cms.getHistoryCooperatorExamResult">
+	<return-scalar type="java.lang.Integer" column="val"/>
+	select decode(cqe.fxtype, 1, decode( sign(cqe.EXAMRESULT - crl.minactive ) , 1, cqe.basenum,0,cqe.basenum, 0), cqe.basenum - cqe.realnum) val 
+    from 
+    (
+        select cq.*, e.comtype,e.examtype,e.examresult, e.basenum, e.realnum  from 
+        (
+        select c.cooperauid, c.cooperaname, c.smsmobileno , q.cooperalevel,q.fxtype from CH_DST_COOPERATOR c 
+        left join  CH_DST_CPRIGHT q  on c.cooperauid = q.cooperauid
+        ) cq 
+        left join CH_DST_CPEXAMLOG e on cq.cooperauid = e.cooperauid      
+    ) cqe, 
+    im_pr_com com, 
+    CH_DST_COMSALERL crl
+    where crl.fxtype = cqe.fxtype and crl.cooperalevel = cqe.cooperalevel 
+    and cqe.comtype = com.comtype and crl.comid = com.comid
+    and cqe.cooperauid = :cooperauid  and rownum &lt; 2
+</sql-query>
+</hibernate-mapping>

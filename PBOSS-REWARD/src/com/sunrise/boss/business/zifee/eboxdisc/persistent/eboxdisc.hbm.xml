@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.eboxdisc.persistent.EboxdiscVO" table="PC_PS_EBOXDISC">
+<composite-id>
+<key-property column="EBOXDISCID" length="10" name="eboxdiscid" type="java.lang.Long"/>
+<key-property column="YXPLANID" length="14" name="yxplanid" type="java.lang.Long"/>
+</composite-id>
+<property column="EBOXUNITID" length="14" name="eboxunitid" type="java.lang.Long"/>
+<property column="INPLANID" length="14" name="inplanid" type="java.lang.Long"/>
+<property column="EFFECTIVETYPE" length="32" name="effectivetype" type="java.lang.String"/>
+<property column="EFFECTIVEDATE" length="7" name="effectivedate" type="java.util.Date"/>
+<property column="EFFECTIVEINTERVAL" length="5" name="effectiveinterval" type="java.lang.Integer"/>
+<property column="ISPOSTPONE" length="1" name="ispostpone" type="java.lang.Byte"/>
+<property column="PAYTIMES" length="5" name="paytimes" type="java.lang.Integer"/>
+<property column="AMOUNT" length="16" name="amount" type="java.lang.Long"/>
+<property column="ENTERUNITDETFLAG" length="1" name="enterunitdetflag" type="java.lang.Byte"/>
+<property column="DISCTYPE" length="32" name="disctype" type="java.lang.String"/>
+<property column="ROLLOVERTYPE" length="32" name="rollovertype" type="java.lang.String"/>
+<property column="EXPIREDCYCLES" length="5" name="expiredcycles" type="java.lang.Integer"/>
+<property column="EXPIREDDATE" length="7" name="expireddate" type="java.util.Date"/>
+<property column="REMARK" length="255" name="remark" type="java.lang.String"/>
+<property column="ISPRESENT" length="1" name="ispresent" type="java.lang.Byte"/>
+<property column="EFFECTIVECYCLES" length="5" name="effectivecycles" type="java.lang.Integer"/>
+<property column="PRESENTTYPE" length="16" name="presenttype" type="java.lang.String"/>
+<property column="RELADISCID" length="10" name="reladiscid" type="java.lang.Long"/>
+<property column="AFFIXID" length="16" name="affixid" type="java.lang.String"/>
+<property column="FEESOURCETYPE" length="16" name="feesourcetype" type="java.lang.String"/>
+<property column="FEESOURCEID" length="14" name="feesourceid" type="java.lang.Long"/>
+<property column="PAYINTERVAL" length="5" name="payinterval" type="java.lang.Integer"/>
+<property column="VALIDITY" length="4" name="validity" type="java.lang.Integer"/>
+
+<property column="PESENTEBOXUNITID" length="14" name="pesenteboxunitid" type="java.lang.Long"/>
+</class>
+
+<sql-query name="batchQuery">
+		<return
+			class="com.sunrise.boss.business.zifee.eboxdisc.persistent.EboxdiscVO"
+			entity-name="eboxdiscVO" alias="eboxdiscVO">
+		</return>
+		select e.eboxdiscid , e.yxplanid , e.eboxunitid ,
+		e.inplanid , e.effectivetype , e.effectivedate , e.effectiveinterval , e.ispostpone ,
+		e.paytimes , e.amount , e.enterunitdetflag , e.disctype , e.rollovertype
+		, e.expiredcycles , e.expireddate , e.remark , e.ispresent ,
+		e.effectivecycles , e.presenttype , e.reladiscid , e.affixid , e.feesourcetype
+		, e.feesourceid , e.payinterval , e.validity  from PC_PS_EBOXDISC e
+	</sql-query>
+</hibernate-mapping>

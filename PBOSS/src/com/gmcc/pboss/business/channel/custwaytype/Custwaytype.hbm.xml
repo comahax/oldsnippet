@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.custwaytype.CustwaytypeVO" table="CH_PW_CUSTWAYTYPE">
+<composite-id>
+<key-property column="CITYCOMPID" length="2" name="citycompid" type="java.lang.String"/>
+<key-property column="CUSTWAYTYPECODE" length="4" name="custwaytypecode" type="java.lang.String"/>
+</composite-id>
+<property column="CUSTWAYTYPENAME" length="64" name="custwaytypename" type="java.lang.String"/>
+<property column="NOTUSEBYSUB" length="1" name="notusebysub" type="java.lang.Byte"/>
+<property column="DESCRIPTION" length="255" name="description" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.monitor.persistent.MonitorVO" table="CH_ADT_MONITOR">
+<id column="ABATCHNO" name="abatchno" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="UPPEROPNID" length="18" name="upperopnid" type="java.lang.String"/>
+<property column="LASTDATE" length="7" name="lastdate" type="java.util.Date"/>
+<property column="STATUS" length="3" name="status" type="java.lang.Short"/>
+<property column="CONOPRCODE" length="15" name="conoprcode" type="java.lang.String"/>
+<property column="CONOPTIME" length="7" name="conoptime" type="java.util.Date"/>
+<property column="PAYMONTH" length="6" name="paymonth" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

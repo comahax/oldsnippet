@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.vchpwoperation.persistent.VChPwOperationVO">
+<id column="OPNID5" name="opnid5" type="java.lang.String">
+<generator class="sequence"/>
+</id>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="NAME2" length="50" name="name2" type="java.lang.String"/>
+<property column="NAME5" length="50" name="name5" type="java.lang.String"/>
+<property column="OPNID2" length="18" name="opnid2" type="java.lang.String"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="BUSIBELONG" length="32" name="busibelong" type="java.lang.String"/>
+</class>
+<sql-query name="cms.operation.querybusibelong"> 
+<return class="com.sunrise.boss.business.cms.vchpwoperation.persistent.VChPwOperationVO"></return> 
+select o1.opnid,o1.name,o2.opnid opnid2,o2.name name2, o5.opnid opnid5,o5.name name5, o5.startdate,o5.enddate,o5.busibelong from  
+ch_pw_operation o1, 
+ch_pw_operation o2, 
+ch_pw_operation o3, 
+ch_pw_operation o4, 
+ch_pw_operation o5 
+where o1.opnlevel=1 and o2.opnlevel=2 and o3.opnlevel=3 and o4.opnlevel=4 and o5.opnlevel=5 
+and o5.parentid=o4.opnid and o4.parentid=o3.opnid and o3.parentid=o2.opnid and o2.parentid=o1.opnid and o5.isbusi=1
+order by opnid2,opnid5
+</sql-query>
+</hibernate-mapping>

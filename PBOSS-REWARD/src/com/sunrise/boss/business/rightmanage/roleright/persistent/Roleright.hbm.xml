@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.rightmanage.roleright.persistent.RolerightVO"
+		table="SA_SR_ROLERIGHT">
+		<composite-id>
+			<key-property name="itemid" column="ITEMID" type="string"
+				length="32" />
+			<key-property name="rightid" column="RIGHTID" type="string"
+				length="32" />
+		</composite-id>
+		<property name="createdate" column="CREATEDATE" type="java.util.Date"
+			length="7" />
+		<property name="status" column="STATUS" type="byte" length="1" />
+		<property name="statusdate" column="STATUSDATE" type="java.util.Date"
+			length="7" />
+	</class>
+</hibernate-mapping>

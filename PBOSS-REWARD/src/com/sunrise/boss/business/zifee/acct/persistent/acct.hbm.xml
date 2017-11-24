@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.zifee.acct.persistent.AcctVO" table="IB_PF_ACCT">
+<id column="ACCTID" name="acctid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="ACCTNAME" length="128" name="acctname" type="java.lang.String"/>
+<property column="ACCTTYPE" length="3" name="accttype" type="java.lang.Short"/>
+<property column="ACCTSTATE" length="3" name="acctstate" type="java.lang.Short"/>
+<property column="STARTTIME" length="7" name="starttime" type="java.util.Date"/>
+<property column="STOPTIME" length="7" name="stoptime" type="java.util.Date"/>
+<property column="ACCTLEVLE" length="3" name="acctlevle" type="java.lang.Short"/>
+<property column="CANHANG" length="1" name="canhang" not-null="true" type="java.lang.Byte"/>
+<property column="WOFFPRI" length="10" name="woffpri" type="java.lang.Long"/>
+<property column="CANINC" length="1" name="caninc" type="java.lang.Byte"/>
+<property column="ISCOMMON" length="1" name="iscommon" type="java.lang.Byte"/>
+</class>
+</hibernate-mapping>

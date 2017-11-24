@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="http://www.gmcc.net/ngcrm/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.gmcc.net/ngcrm/" name="ngcrmInterface">
+	<wsdl:types>
+		<xsd:schema xmlns:ns1="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.gmcc.net/ngcrm/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+			<xsd:element name="msgreqheader">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="menuid" type="xsd:string" minOccurs="0"></xsd:element>
+						<xsd:element name="process_code" type="xsd:string"></xsd:element>
+						<xsd:element name="verify_code" type="xsd:string" minOccurs="0"></xsd:element>
+						<xsd:element name="req_time" type="xsd:string"></xsd:element>
+						<xsd:element name="req_seq" type="xsd:string"></xsd:element>
+						<xsd:element name="unicontact" type="xsd:string" minOccurs="0"></xsd:element>
+						<xsd:element name="testflag" type="xsd:string" minOccurs="0"></xsd:element>
+						<xsd:element name="route">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="route_type" type="xsd:string"></xsd:element>
+									<xsd:element name="route_value" type="xsd:string"></xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="channelinfo">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="operatorid" type="xsd:string" minOccurs="0"></xsd:element>
+									<xsd:element name="channelid" type="xsd:string"></xsd:element>
+									<xsd:element name="unitid" type="xsd:string"></xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="msgrspheader">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="menuid" type="xsd:string" minOccurs="0"></xsd:element>
+						<xsd:element name="process_code" type="xsd:string"></xsd:element>
+						<xsd:element name="verify_code" type="xsd:string"></xsd:element>
+						<xsd:element name="resp_time" type="xsd:string"></xsd:element>
+						<xsd:element name="sequence">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="req_seq" type="xsd:string" fixed="32"></xsd:element>
+									<xsd:element name="operation_seq" type="xsd:string" fixed="32"></xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="retinfo">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="retcode" type="xsd:int"></xsd:element>
+									<xsd:element name="retype" type="xsd:int"></xsd:element>
+									<xsd:element name="retmsg" type="xsd:string"></xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="norsp">
+				<xsd:complexType/>
+			</xsd:element>
+			<xsd:element name="waynetsynreq">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader"/>
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="mobileinfo">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="mobile" type="xsd:string"/>
+												<xsd:element name="opract" type="xsd:string"/>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="waynetsynrsp">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="orderinreq">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader"/>
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="paytypeinfolist">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="paytypeinfo" maxOccurs="unbounded">
+													<xsd:complexType>
+														<xsd:sequence>
+															<xsd:element name="paytype"/>
+															<xsd:element name="actamt"/>
+															<xsd:element name="posstream" minOccurs="0"/>
+														</xsd:sequence>
+													</xsd:complexType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="sumamt" minOccurs="0"/>
+									<xsd:element name="orderid"/>
+									<xsd:element name="orderdetlist">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="orderdet" maxOccurs="unbounded">
+													<xsd:complexType>
+														<xsd:sequence>
+															<xsd:element name="ordercomtype" minOccurs="0"/>
+															<xsd:element name="restype" minOccurs="0"/>
+															<xsd:element name="comid"/>
+															<xsd:element name="comresid"/>
+															<xsd:element name="wayid" minOccurs="0"/>
+															<xsd:element name="comprice"/>
+															<xsd:element name="actprice"/>
+														</xsd:sequence>
+													</xsd:complexType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="orderinrsp">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="orderuninreq">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader"/>
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="paytypeinfolist">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="paytypeinfo" maxOccurs="unbounded">
+													<xsd:complexType>
+														<xsd:sequence>
+															<xsd:element name="paytype" minOccurs="0"/>
+															<xsd:element name="actamt" minOccurs="0"/>
+															<xsd:element name="posstream" minOccurs="0"/>
+														</xsd:sequence>
+													</xsd:complexType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="sumamt" minOccurs="0"/>
+									<xsd:element name="orderid"/>
+									<xsd:element name="bossworkfid" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="orderuninrsp">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="resparamsynreq">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader"/>
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="paramlist">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="paraminfo" maxOccurs="unbounded">
+													<xsd:complexType>
+														<xsd:sequence>
+															<xsd:element name="oprtype" minOccurs="0"/>
+															<xsd:element name="id"/>
+															<xsd:element name="cityid"/>
+															<xsd:element name="restype"/>
+															<xsd:element name="receiveway"/>
+														</xsd:sequence>
+													</xsd:complexType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="resparamsynrsp">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="empsynreq">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader"/>
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="empinfo">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="oprtype"/>
+												<xsd:element name="employeeid" minOccurs="0"/>
+												<xsd:element name="oprcode" minOccurs="0"/>
+												<xsd:element name="employeename" minOccurs="0"/>
+												<xsd:element name="birthday" minOccurs="0"/>
+												<xsd:element name="sex" minOccurs="0"/>
+												<xsd:element name="edulevel" minOccurs="0"/>
+												<xsd:element name="nativehome" minOccurs="0"/>
+												<xsd:element name="polivisage" minOccurs="0"/>
+												<xsd:element name="department" minOccurs="0"/>
+												<xsd:element name="servoffice" minOccurs="0"/>
+												<xsd:element name="station" minOccurs="0"/>
+												<xsd:element name="joblevel" minOccurs="0"/>
+												<xsd:element name="intime" minOccurs="0"/>
+												<xsd:element name="worktime" minOccurs="0"/>
+												<xsd:element name="hereworktime" minOccurs="0"/>
+												<xsd:element name="employtype" minOccurs="0"/>
+												<xsd:element name="company" minOccurs="0"/>
+												<xsd:element name="telephone" minOccurs="0"/>
+												<xsd:element name="officetel" minOccurs="0"/>
+												<xsd:element name="outtime" minOccurs="0"/>
+												<xsd:element name="outresult" minOccurs="0"/>
+												<xsd:element name="homeaddr" minOccurs="0"/>
+												<xsd:element name="cardid" minOccurs="0"/>
+												<xsd:element name="wayid" minOccurs="0"/>
+												<xsd:element name="waytype" minOccurs="0"/>
+												<xsd:element name="pvtemail" minOccurs="0"/>
+												<xsd:element name="ofcphone" minOccurs="0"/>
+												<xsd:element name="ofcemail" minOccurs="0"/>
+												<xsd:element name="speciality" minOccurs="0"/>
+												<xsd:element name="cityid" minOccurs="0"/>
+												<xsd:element name="countyid" minOccurs="0"/>
+												<xsd:element name="svccode" minOccurs="0"/>
+												<xsd:element name="posittype" minOccurs="0"/>
+												<xsd:element name="contacttype" minOccurs="0"/>
+												<xsd:element name="empstatus" minOccurs="0"/>
+												<xsd:element name="actbank" minOccurs="0"/>
+												<xsd:element name="actno" minOccurs="0"/>
+												<xsd:element name="actname" minOccurs="0"/>
+												<xsd:element name="actpid" minOccurs="0"/>
+												<xsd:element name="bail" minOccurs="0"/>
+												<xsd:element name="gradschool" minOccurs="0"/>
+												<xsd:element name="gradtime" minOccurs="0"/>
+												<xsd:element name="ismarried" minOccurs="0"/>
+												<xsd:element name="outreason" minOccurs="0"/>
+												<xsd:element name="trainlevel" minOccurs="0"/>
+												<xsd:element name="hobby" minOccurs="0"/>
+												<xsd:element name="character" minOccurs="0"/>
+												<xsd:element name="asses" minOccurs="0"/>
+												<xsd:element name="workhistry" minOccurs="0"/>
+												<xsd:element name="prizeorpunish" minOccurs="0"/>
+												<xsd:element name="empass" minOccurs="0"/>
+												<xsd:element name="right" minOccurs="0"/>
+												<xsd:element name="isnet" minOccurs="0"/>
+												<xsd:element name="netpass" minOccurs="0"/>
+												<xsd:element name="isopen" minOccurs="0"/>
+												<xsd:element name="selectmobile" minOccurs="0"/>
+												<xsd:element name="subname" minOccurs="0"/>
+												<xsd:element name="regdate" minOccurs="0"/>
+												<xsd:element name="empattr" minOccurs="0"/>
+												<xsd:element name="empattrmemo" minOccurs="0"/>
+												<xsd:element name="istenseed" minOccurs="0"/>
+												<xsd:element name="isinternal" minOccurs="0"/>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="empsynrsp">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="waysynreq">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader"/>
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="wayinfo">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="oprtype"/>
+												<xsd:element name="wayid" minOccurs="0"/>
+												<xsd:element name="shortname" minOccurs="0"/>
+												<xsd:element name="svbrchcode" minOccurs="0"/>
+												<xsd:element name="svccode" minOccurs="0"/>
+												<xsd:element name="mareacode" minOccurs="0"/>
+												<xsd:element name="buztypecode" minOccurs="0"/>
+												<xsd:element name="adtypecode" minOccurs="0"/>
+												<xsd:element name="address" minOccurs="0"/>
+												<xsd:element name="logiscode" minOccurs="0"/>
+												<xsd:element name="latitude" minOccurs="0"/>
+												<xsd:element name="longtitude" minOccurs="0"/>
+												<xsd:element name="adacode" minOccurs="0"/>
+												<xsd:element name="waymagcode" minOccurs="0"/>
+												<xsd:element name="catetype" minOccurs="0"/>
+												<xsd:element name="formtype" minOccurs="0"/>
+												<xsd:element name="starttime" minOccurs="0"/>
+												<xsd:element name="buzarea" minOccurs="0"/>
+												<xsd:element name="mainlayer" minOccurs="0"/>
+												<xsd:element name="sublayer" minOccurs="0"/>
+												<xsd:element name="buzphoneno" minOccurs="0"/>
+												<xsd:element name="wayname" minOccurs="0"/>
+												<xsd:element name="cooperator" minOccurs="0"/>
+												<xsd:element name="waytype" minOccurs="0"/>
+												<xsd:element name="waysubtype" minOccurs="0"/>
+												<xsd:element name="custtype" minOccurs="0"/>
+												<xsd:element name="upperwayid" minOccurs="0"/>
+												<xsd:element name="busicode" minOccurs="0"/>
+												<xsd:element name="countyid" minOccurs="0"/>
+												<xsd:element name="cityid" minOccurs="0"/>
+												<xsd:element name="centerid" minOccurs="0"/>
+												<xsd:element name="citylevel" minOccurs="0"/>
+												<xsd:element name="waylevel" minOccurs="0"/>
+												<xsd:element name="bchlevel" minOccurs="0"/>
+												<xsd:element name="function" minOccurs="0"/>
+												<xsd:element name="miscode" minOccurs="0"/>
+												<xsd:element name="createtime" minOccurs="0"/>
+												<xsd:element name="disabletime" minOccurs="0"/>
+												<xsd:element name="waystate" minOccurs="0"/>
+												<xsd:element name="runbyself" minOccurs="0"/>
+												<xsd:element name="depotdet" minOccurs="0"/>
+												<xsd:element name="isshare" minOccurs="0"/>
+												<xsd:element name="alarmbizamount" minOccurs="0"/>
+												<xsd:element name="prtsource" minOccurs="0"/>
+												<xsd:element name="isconnected" minOccurs="0"/>
+												<xsd:element name="connecttype" minOccurs="0"/>
+												<xsd:element name="runmode" minOccurs="0"/>
+												<xsd:element name="iscoreway" minOccurs="0"/>
+												<xsd:element name="starlevel" minOccurs="0"/>
+												<xsd:element name="pt" minOccurs="0"/>
+												<xsd:element name="chainhead" minOccurs="0"/>
+												<xsd:element name="signstatus" minOccurs="0"/>
+												<xsd:element name="empnumber" minOccurs="0"/>
+												<xsd:element name="magnumber" minOccurs="0"/>
+												<xsd:element name="terminumber" minOccurs="0"/>
+												<xsd:element name="updatedate" minOccurs="0"/>
+												<xsd:element name="isstraitprd" minOccurs="0"/>
+												<xsd:element name="taxtype" minOccurs="0"/>
+												<xsd:element name="istietong" minOccurs="0"/>
+												<xsd:element name="rivltype" minOccurs="0"/>
+												<xsd:element name="iskzcz" minOccurs="0"/>
+												<xsd:element name="distype" minOccurs="0"/>
+												<xsd:element name="calcumode" minOccurs="0"/>
+												<xsd:element name="uniformtime" minOccurs="0"/>
+												<xsd:element name="checked" minOccurs="0"/>
+												<xsd:element name="buzmanager" minOccurs="0"/>
+												<xsd:element name="subrunmode" minOccurs="0"/>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="waysynrsp">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="cooperatorsynreq">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgreqheader"/>
+						<xsd:element name="msgbody">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="estinfo">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="oprtype"/>
+												<xsd:element name="cooperauid" minOccurs="0"/>
+												<xsd:element name="cooperaname" minOccurs="0"/>
+												<xsd:element name="cpabbrname" minOccurs="0"/>
+												<xsd:element name="cocheckname" minOccurs="0"/>
+												<xsd:element name="cooperadel" minOccurs="0"/>
+												<xsd:element name="postaddr" minOccurs="0"/>
+												<xsd:element name="zipcode" minOccurs="0"/>
+												<xsd:element name="conntel" minOccurs="0"/>
+												<xsd:element name="connfaxno" minOccurs="0"/>
+												<xsd:element name="usremail" minOccurs="0"/>
+												<xsd:element name="area" minOccurs="0"/>
+												<xsd:element name="licenceid" minOccurs="0"/>
+												<xsd:element name="licvalidate" minOccurs="0"/>
+												<xsd:element name="connpers" minOccurs="0"/>
+												<xsd:element name="busconntel" minOccurs="0"/>
+												<xsd:element name="sendaddr" minOccurs="0"/>
+												<xsd:element name="recpers" minOccurs="0"/>
+												<xsd:element name="recconntel" minOccurs="0"/>
+												<xsd:element name="reccertno" minOccurs="0"/>
+												<xsd:element name="smsmobileno" minOccurs="0"/>
+												<xsd:element name="bankname" minOccurs="0"/>
+												<xsd:element name="acctno" minOccurs="0"/>
+												<xsd:element name="districtid" minOccurs="0"/>
+												<xsd:element name="intime" minOccurs="0"/>
+												<xsd:element name="custmanager" minOccurs="0"/>
+												<xsd:element name="starttime" minOccurs="0"/>
+												<xsd:element name="servpwd" minOccurs="0"/>
+												<xsd:element name="state" minOccurs="0"/>
+												<xsd:element name="oldcoopera" minOccurs="0"/>
+												<xsd:element name="memo" minOccurs="0"/>
+												<xsd:element name="servman" minOccurs="0"/>
+												<xsd:element name="baillwrlmt" minOccurs="0"/>
+												<xsd:element name="waysubtype" minOccurs="0"/>
+												<xsd:element name="cityid" minOccurs="0"/>
+												<xsd:element name="countyid" minOccurs="0"/>
+												<xsd:element name="svccode" minOccurs="0"/>
+												<xsd:element name="mareacode" minOccurs="0"/>
+												<xsd:element name="cashdeposit" minOccurs="0"/>
+												<xsd:element name="cdradix" minOccurs="0"/>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="cooperatorsynrsp">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="tns:msgrspheader"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="msgreqheader">
+		<wsdl:part name="header" element="tns:msgreqheader">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="msgrspheader">
+		<wsdl:part name="header" element="tns:msgrspheader"/>
+	</wsdl:message>
+	<wsdl:message name="norsp">
+		<wsdl:part name="body" element="tns:norsp"/>
+	</wsdl:message>
+	<wsdl:message name="waynetsynreq">
+		<wsdl:part name="body" element="tns:waynetsynreq"/>
+	</wsdl:message>
+	<wsdl:message name="waynetsynrsp">
+		<wsdl:part name="body" element="tns:waynetsynrsp"/>
+	</wsdl:message>
+	<wsdl:message name="orderinreq">
+		<wsdl:part name="body" element="tns:orderinreq"/>
+	</wsdl:message>
+	<wsdl:message name="orderinrsp">
+		<wsdl:part name="body" element="tns:orderinrsp"/>
+	</wsdl:message>
+	<wsdl:message name="orderuninreq">
+		<wsdl:part name="body" element="tns:orderuninreq"/>
+	</wsdl:message>
+	<wsdl:message name="orderuninrsp">
+		<wsdl:part name="body" element="tns:orderuninrsp"/>
+	</wsdl:message>
+	<wsdl:message name="resparamsynreq">
+		<wsdl:part name="body" element="tns:resparamsynreq"/>
+	</wsdl:message>
+	<wsdl:message name="resparamsynrsp">
+		<wsdl:part name="body" element="tns:resparamsynrsp"/>
+	</wsdl:message>
+	<wsdl:message name="empsynreq">
+		<wsdl:part name="body" element="tns:empsynreq"/>
+	</wsdl:message>
+	<wsdl:message name="empsynrsp">
+		<wsdl:part name="body" element="tns:empsynrsp"/>
+	</wsdl:message>
+	<wsdl:message name="waysynreq">
+		<wsdl:part name="body" element="tns:waysynreq"/>
+	</wsdl:message>
+	<wsdl:message name="waysynrsp">
+		<wsdl:part name="body" element="tns:waysynrsp"/>
+	</wsdl:message>
+	<wsdl:message name="cooperatorsynreq">
+		<wsdl:part name="body" element="tns:cooperatorsynreq"/>
+	</wsdl:message>
+	<wsdl:message name="cooperatorsynrsp">
+		<wsdl:part name="body" element="tns:cooperatorsynrsp"/>
+	</wsdl:message>
+	<wsdl:portType name="GDProdPort">
+		<wsdl:operation name="waynetsyn">
+			<wsdl:documentation>PBOSS_IM_001</wsdl:documentation>
+			<wsdl:input message="tns:waynetsynreq"/>
+			<wsdl:output message="tns:waynetsynrsp"/>
+		</wsdl:operation>
+		<wsdl:operation name="orderin">
+			<wsdl:documentation>PBOSS_IM_002</wsdl:documentation>
+			<wsdl:input message="tns:orderinreq"/>
+			<wsdl:output message="tns:orderinrsp"/>
+		</wsdl:operation>
+		<wsdl:operation name="orderunin">
+			<wsdl:documentation>PBOSS_IM_003</wsdl:documentation>
+			<wsdl:input message="tns:orderuninreq"/>
+			<wsdl:output message="tns:orderuninrsp"/>
+		</wsdl:operation>
+		<wsdl:operation name="resparamsyn">
+			<wsdl:documentation>PBOSS_IM_004</wsdl:documentation>
+			<wsdl:input message="tns:resparamsynreq"/>
+			<wsdl:output message="tns:resparamsynrsp"/>
+		</wsdl:operation>
+		<wsdl:operation name="empsyn">
+			<wsdl:documentation>PBOSS_IM_005</wsdl:documentation>
+			<wsdl:input message="tns:empsynreq"/>
+			<wsdl:output message="tns:empsynrsp"/>
+		</wsdl:operation>
+		<wsdl:operation name="waysyn">
+			<wsdl:documentation>PBOSS_IM_006PBOSS</wsdl:documentation>
+			<wsdl:input message="tns:waysynreq"/>
+			<wsdl:output message="tns:waysynrsp"/>
+		</wsdl:operation>
+		<wsdl:operation name="cooperatorsyn">
+			<wsdl:documentation>PBOSS_IM_012PBOSS</wsdl:documentation>
+			<wsdl:input message="tns:cooperatorsynreq"/>
+			<wsdl:output message="tns:cooperatorsynrsp"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="GDProdSOAP" type="tns:GDProdPort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="waynetsyn">
+			<soap:operation soapAction="http://www.gmcc.net/ngcrm/waynetsyn"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="orderin">
+			<soap:operation soapAction="http://www.gmcc.net/ngcrm/orderin"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="orderunin">
+			<soap:operation soapAction="http://www.gmcc.net/ngcrm/orderunin"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="resparamsyn">
+			<soap:operation soapAction="http://www.gmcc.net/ngcrm/resparamsyn"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="empsyn">
+			<soap:operation soapAction="http://www.gmcc.net/ngcrm/empsyn"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="waysyn">
+			<soap:operation soapAction="http://www.gmcc.net/ngcrm/waysyn"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="cooperatorsyn">
+			<soap:operation soapAction="http://www.gmcc.net/ngcrm/cooperatorsyn"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="GDProdServ">
+		<wsdl:port name="GDProdSOAP" binding="tns:GDProdSOAP">
+			<soap:address location="http://10.252.17.240:180/nginterface_coms/services/GDProdServ"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.integral.custinte.persistent.VCustInteVO" 
+    		table="V_IB_CU_CUSTINTEGRAL">
+        <id name="id" type="java.lang.String">
+			<column name="ID" />
+		</id>
+		<property name="custid" type="java.lang.Long">
+			<column name="CUSTID" precision="10" scale="0" />
+		</property>
+		<property name="integralcyc" type="java.lang.Long">
+			<column name="INTEGRALCYC" precision="8" scale="0" />
+		</property>		
+        
+        <property name="integral" type="java.lang.Long">
+            <column name="INTEGRAL" precision="10" scale="0" />
+        </property>
+        <property name="availintegral" type="java.lang.Long">
+            <column name="AVAILINTEGRAL" precision="10" scale="0" />
+        </property>
+        <property name="moveint" type="java.lang.Long">
+            <column name="MOVEINT" precision="10" scale="0" />
+        </property>
+        <property name="competencyinte" type="java.lang.Long">
+            <column name="COMPETENCYINTE" precision="10" scale="0" />
+        </property>
+        <property name="saleint" type="java.lang.Long">
+            <column name="SALEINT" precision="11" scale="0" />
+        </property>
+        <property name="starttime" type="java.util.Date">
+            <column name="STARTTIME" length="7" />
+        </property>
+        <property name="stoptime" type="java.util.Date">
+            <column name="STOPTIME" length="7" />
+        </property>
+        <property name="updatetime" type="java.util.Date">
+            <column name="UPDATETIME" length="7" />
+        </property>
+        
+
+    </class>
+    <sql-query name="boss.fee.integral.query2inte">
+		<return
+			class="com.sunrise.boss.business.fee.integral.custinte.persistent.VCustInteVO"
+			entity-name="vciVO" alias="vciVO">
+		</return>
+		select this.custid || ',' || this.integralcyc id,
+		this.custid, this.integralcyc,this.integral, this.availintegral,
+		trunc(this.integral-SUM(DECODE(deta.jftype,3,deta.value,0))) competencyinte,
+		this.moveint, this.saleint,this.starttime,this.stoptime,this.updatetime
+		from IB_CU_CUSTINTEGRAL this, IB_CU_CustIntDeta deta where
+		trunc(deta.validbillcyc/10000) = this.INTEGRALCYC
+		and this.custid = deta.custid 
+		group by this.custid || ',' || this.integralcyc,this.custid, this.integralcyc,this.integral, 
+		this.availintegral,this.moveint, this.saleint,this.starttime,this.stoptime,this.updatetime
+	</sql-query>
+    
+    
+    
+</hibernate-mapping>

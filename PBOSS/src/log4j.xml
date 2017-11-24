@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+
+	<!-- pboss file -->
+	<appender name="PBOSS_FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/waslog/pboss/log/pboss.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="50MB" />
+		<param name="MaxBackupIndex" value="9" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n" />
+		</layout>
+	</appender>
+
+	<!-- monitor file -->
+	<appender name="MONITOR_FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/waslog/pboss/log/monitor.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="50MB" />
+		<param name="MaxBackupIndex" value="9" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n" />
+		</layout>
+	</appender>
+
+	<!-- login info -->
+	<appender name="LOGIN_FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/waslog/pboss/log/login.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="50MB" />
+		<param name="MaxBackupIndex" value="2" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n" />
+		</layout>
+	</appender>
+
+	<!-- other file -->
+	<appender name="OTHER_FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/waslog/pboss/log/other.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="50MB" />
+		<param name="MaxBackupIndex" value="9" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n" />
+		</layout>
+	</appender>
+
+	<!-- console -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="INFO" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c{1}] - %m%n" />
+		</layout>
+	</appender>
+
+
+	<!-- ================ -->
+	<!-- Limit categories -->
+	<!-- ================ -->
+	<category name="org.apache.struts2">
+		<priority value="WARN" />
+		<appender-ref ref="OTHER_FILE" />
+	</category>
+	<category name="org.springframework">
+		<priority value="WARN" />
+		<appender-ref ref="OTHER_FILE" />
+	</category>
+	<category name="org.hibernate">
+		<priority value="WARN" />
+		<appender-ref ref="OTHER_FILE" />
+	</category>
+	<category name="com.opensymphony.xwork2">
+		<priority value="WARN" />
+		<appender-ref ref="OTHER_FILE" />
+	</category>
+
+	<category name="com.gmcc">
+		<priority value="INFO" />
+		<appender-ref ref="PBOSS_FILE" />
+		<appender-ref ref="CONSOLE" />
+	</category>
+	<category name="com.sunrise">
+		<priority value="INFO" />
+		<appender-ref ref="PBOSS_FILE" />
+		<appender-ref ref="CONSOLE" />
+	</category>
+	<category name="com.sunrise.jop.ui.quartz"  additivity="false">
+		<priority value="INFO" />
+		<appender-ref ref="MONITOR_FILE" />
+	</category>
+	<category name="com.gmcc._login" additivity="false">
+		<priority value="INFO"/>
+		<appender-ref ref="LOGIN_FILE"/>
+	</category>
+	<!-- ======================= -->
+	<!-- Setup the Root category -->
+	<!-- ======================= -->
+
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="OTHER_FILE" />
+	</root>
+</log4j:configuration>

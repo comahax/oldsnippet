@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.base.functionitemlog.FunctionitemlogVO" table="SA_DB_FUNCTIONITEMLOG">
+<id column="LOGID" length="14" name="logid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">SA_DB_FUNCTIONITEMLOG_SEQ</param>
+</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property column="FUNCID" length="32" name="funcid" type="java.lang.String"/>
+<property column="FUNCNAME" length="32" name="funcname" type="java.lang.String"/>
+<property column="PARENTID" length="32" name="parentid" type="java.lang.String"/>
+<property column="GUIOBJECT" length="256" name="guiobject" type="java.lang.String"/>
+<property column="RLTGUIOBJID" length="32" name="rltguiobjid" type="java.lang.String"/>
+<property column="ADDEDINFO" length="32" name="addedinfo" type="java.lang.String"/>
+<property column="TIPTEXT" length="32" name="tiptext" type="java.lang.String"/>
+<property column="SUBSYSTEMID" length="32" name="subsystemid" type="java.lang.String"/>
+<property column="GUITYPE" length="16" name="guitype" type="java.lang.String"/>
+<property column="RECDEFID" length="32" name="recdefid" type="java.lang.String"/>
+<property column="SORTORDER" length="4" name="sortorder" type="java.lang.Short"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

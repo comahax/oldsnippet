@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.fee.hangbill.persistent.WoffCusthisVO"
+		table="IB_CBB_WOFFCUST_HIS">
+		<composite-id>
+			<key-property column="ACCTID" length="14" name="acctid" type="java.lang.Long" />
+			<key-property column="EBOXID" length="14" name="eboxid" type="java.lang.Long" />
+			<key-property column="SUBSID" length="14" name="subsid" type="java.lang.Long" />
+			<key-property column="VALIDBILLCYC" length="8" name="validbillcyc" type="java.lang.Integer" />
+		</composite-id>
+		<property column="RECAMT" length="16" name="recamt" not-null="true" type="java.lang.Double" />
+		<property column="PAICLUPAMT" length="16" name="paiclupamt" not-null="true" type="java.lang.Double" />
+		<property column="STATE" length="3" name="state" not-null="true" type="java.lang.Short" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.result.ResultVO" table="CH_SMS_RESULT">
+<id column="STREAMNO" length="15" name="streamno" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="SMSTYPE" length="3" name="smstype" type="java.lang.Short"/>
+<property column="AREACODE" length="3" name="areacode" type="java.lang.String"/>
+<property column="CREATTIME" length="7" name="creattime" type="java.util.Date"/>
+<property column="DEALTIME" length="7" name="dealtime" type="java.util.Date"/>
+<property column="MESSAGE" length="255" name="message" type="java.lang.String"/>
+<property column="SENDNO" length="20" name="sendno" type="java.lang.String"/>
+<property column="RECNO" length="20" name="recno" type="java.lang.String"/>
+<property column="DEALCOUNT" length="3" name="dealcount" type="java.lang.Short"/>
+<property column="ISSUCCESS" length="3" name="issuccess" type="java.lang.Short"/>
+<property column="RESULTCODE" length="3" name="resultcode" type="java.lang.String"/>
+<property column="RESULTDESC" length="255" name="resultdesc" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

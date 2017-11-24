@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.wayassistant.WayassistantVO" table="FX_RU_WAYASSISTANT">
+<id column="WAYID" length="18" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CANORDER" length="3" name="canorder" type="java.lang.Short"/>
+<property column="PRINTINVOICE" length="3" name="printinvoice" type="java.lang.Short"/>
+<property column="PAYTYPE" length="16" name="paytype" type="java.lang.String"/>
+<property column="DELITYPE" length="16" name="delitype" type="java.lang.String"/>
+<property column="ORDERBETTERNO" length="3" name="orderbetterno" type="java.lang.Short"/>
+</class>
+<!-- 关联渠道表CH_PW_WAY,根据FX_RU_WAYASSISTANT的canorder=1,返回所有渠道信息 -->
+<sql-query name="com.gmcc.pboss.business.sales.wayassistant.WayassistantVO.doQueryCanorder">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="cityid" type="java.lang.String"/>
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="starlevel" type="java.lang.Long"/>
+	select w.wayid as wayid, w.cityid as cityid, w.countyid as countyid, w.starlevel as starlevel
+	 from ch_pw_way w, fx_ru_wayassistant a
+	 where w.wayid=a.wayid and a.canorder=1
+</sql-query>
+<!-- 套卡库存统计 -->
+<sql-query name="com.gmcc.pboss.business.sales.salesstdquery.doListQuery">
+select a.CITYID,
+       a.COUNTYID,
+       a.MAREACODE,
+       a.STARLEVEL,
+       b.WAYID,
+       b.WAYNAME,
+       a.SALESSTD
+  from FX_RU_SALESSTD a, CH_PW_WAY b,FX_RU_WAYASSISTANT c
+ where a.CITYID = b.CITYID
+   and a.COUNTYID = b.COUNTYID
+   and a.MAREACODE = b.MAREACODE
+   and a.STARLEVEL = b.STARLEVEL
+   and b.WAYID = c.WAYID
+  order by b.WAYID asc
+</sql-query>
+
+</hibernate-mapping>

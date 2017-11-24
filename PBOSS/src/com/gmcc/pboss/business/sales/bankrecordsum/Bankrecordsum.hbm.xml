@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.bankrecordsum.BankrecordsumVO" table="FX_SW_BANKRECORDSUM">
+<id column="SEQID" length="14" name="seqid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_BANKRECORDSUM_SEQ</param>
+</generator>
+</id>
+<property column="SUCCESSCOUNT" length="16" name="successcount" type="java.lang.Long"/>
+<property column="FAILURECOUNT" length="16" name="failurecount" type="java.lang.Long"/>
+<property column="AMTERRCOUNT" length="16" name="amterrcount" type="java.lang.Long"/>
+<property column="LOCALAMT" length="16" name="localamt" type="java.lang.Double"/>
+<property column="BANKAMT" length="16" name="bankamt" type="java.lang.Double"/>
+<property column="RECORDATE" length="7" name="recordate" type="java.util.Date"/>
+<property column="CREATDATE" length="7" name="creatdate" type="java.util.Date"/>
+</class>
+</hibernate-mapping>

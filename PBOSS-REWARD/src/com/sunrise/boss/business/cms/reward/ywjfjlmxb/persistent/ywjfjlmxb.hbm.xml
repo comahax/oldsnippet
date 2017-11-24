@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.ywjfjlmxb.persistent.YwjfjlmxbVO" table="YWJFJLMXB">
+<composite-id>
+<key-property column="WAYID" name="wayid" type="java.lang.String"/>
+<key-property column="FLAG" length="10" name="flag" type="java.lang.String"/>
+<key-property column="BUSIVALUE" length="10" name="busivalue" type="java.lang.Double"/>
+</composite-id>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="CALCMONTH" length="6" name="calcmonth" type="java.lang.String"/>
+<property column="CREDITACCOUNT" length="10" name="creditaccount" type="java.lang.Double"/>
+<property column="CREDITSTD" length="10" name="creditstd" type="java.lang.Double"/>
+</class>
+<sql-query name="boss.cms.ywjfjlmxb">
+	<return  class="com.sunrise.boss.business.cms.reward.ywjfjlmxb.persistent.YwjfjlmxbVO"/>
+    select way.wayid,      
+       way.wayname,
+       way.STARLEVEL,
+       c.calcmonth,
+       c.FLAG,
+       c.BUSIVALUE,
+       c.CREDITSTD,  
+       c.CREDITACCOUNT
+from   ch_pw_waysnpt way,
+       CH_ADT_SALECREDIT c
+where  way.cityid =:cityid
+   and way.SNPTTYPE = 1
+   and way.waytype = 'AG'
+   and way.waysubtype &lt;&gt; 'ZJTY' 
+   and way.wayid=c.wayid
+   and c.calcmonth=:calcmonth
+   and c.calcmonth=way.calcmonth
+order by wayid
+</sql-query>
+<sql-query name="boss.cms.ywjfjlmxbbywayid">
+	<return class="com.sunrise.boss.business.cms.reward.ywjfjlmxb.persistent.YwjfjlmxbVO"/>
+         select way.wayid,      
+       way.wayname,
+       way.STARLEVEL,
+       c.calcmonth,
+       c.FLAG,
+       c.BUSIVALUE,
+       c.CREDITSTD,  
+       c.CREDITACCOUNT
+from   ch_pw_waysnpt way,
+       CH_ADT_SALECREDIT c
+where  way.cityid =:cityid
+   and way.SNPTTYPE = 1
+   and way.waytype = 'AG'
+   and way.waysubtype &lt;&gt; 'ZJTY' 
+   and way.wayid=c.wayid
+   and c.calcmonth=:calcmonth
+   and c.calcmonth=way.calcmonth
+   and c.wayid=:wayid
+order by wayid
+</sql-query>
+</hibernate-mapping>

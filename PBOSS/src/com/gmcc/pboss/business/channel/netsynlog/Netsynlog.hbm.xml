@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.netsynlog.NetsynlogVO" table="CH_PW_NETSYNLOG">
+<id column="ITEMID" length="14" name="itemid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="MOBILE" length="12" name="mobile" type="java.lang.String"/>
+<property column="OPRACT" length="3" name="opract" type="java.lang.Short"/>
+<property column="SYNSTATE" length="3" name="synstate" type="java.lang.Short"/>
+<property column="SYNMEMO" length="255" name="synmemo" type="java.lang.String"/>
+<property column="ISOPEN" length="2" name="isopen" type="java.lang.Short"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 登录登出
+	<package name="loginlogout" namespace="/service" extends="default">
+		<action name="Login" class="memberAction" method="doLogin" />
+		<action name="Logout" class="memberAction" method="doLogout">
+			<result name="success" type="redirect">/</result>
+		</action>
+	</package>
+	 -->
+	<!-- 店员 -->
+	<package name="assistant" namespace="/assistant" extends="default">
+		<action name="List" class="memberAction" method="doList">
+			<result>/basic/assistant/list.jsp</result>
+		</action>
+		<action name="Load" class="memberAction" method="doLoad">
+			<result name="success">/basic/assistant/info.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		<action name="Join" class="memberAction" method="doJoin">
+			<result>/basic/assistant/info.jsp</result>
+		</action>
+		
+		<action name="Submit" class="memberAction" method="doSubmit">
+			<result name="success">/message.jsp</result>
+			<result name="input">/basic/assistant/info.jsp</result>
+			<result name="error" type="redirect">List.do</result>
+		</action>
+		
+		<action name="Quit" class="memberAction" method="doLoad">
+			<result>/basic/assistant/quit.jsp</result>
+		</action>
+		
+		<action name="doQuit" class="memberAction" method="doQuit">
+			<result name="success">/message.jsp</result>
+			<result name="input">/basic/assistant/quit.jsp</result>
+			<result name="error" type="redirect">List.do</result>
+		</action>
+		<action name="AjaxList" class="memberAction" method="doAjaxList" />
+	</package>
+</struts>

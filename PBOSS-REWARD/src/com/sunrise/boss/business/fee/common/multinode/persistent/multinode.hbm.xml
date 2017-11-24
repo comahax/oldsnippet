@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.common.multinode.persistent.MultiNodeVO" table="IM_NOSECT_OCENODE">
+<id name="multinodeid" column="id" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property name="beginno" column="beginno" type="java.lang.String" />
+<property name="endno" column="endno" type="java.lang.String" />
+<property name="areacode" column="areacode" type="java.lang.String" />
+<property name="nodeid" column="nodeid" type="java.lang.String"/>
+
+<property name="starttime" column="starttime" type="java.util.Date" />
+<property name="intime" column="intime" type="java.util.Date" />
+<property name="nosectstate" column="nosectstate" type="java.lang.Short"/>
+
+</class>
+</hibernate-mapping>

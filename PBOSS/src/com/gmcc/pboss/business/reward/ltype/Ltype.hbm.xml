@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.ltype.LtypeVO" table="CH_CW_LTYPE">
+<id column="SEQ" length="14" name="seq" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_CW_LTYPE_SEQ</param>
+</generator>
+</id>
+<property column="OPTYPE" length="16" name="optype" type="java.lang.String"/>
+<property column="LTYPE" length="128" name="ltype" type="java.lang.String"/>
+<property column="CITYID" length="2" name="cityid" type="java.lang.String"/>
+</class>
+
+<sql-query name="com.gmcc.pboss.business.reward.ltype.doQueryBySql">
+select l.optype,l.ltype,s.stype from ch_cw_ltype l ,ch_cw_stype s where l.ltype=s.ltype
+</sql-query>
+</hibernate-mapping>

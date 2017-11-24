@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.comprice.CompriceVO" table="FX_RU_COMPRICE">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_RU_COMPRICE_SEQ</param>
+</generator>
+</id>
+<property column="CITYID" length="10" name="cityid" not-null="true" type="java.lang.String"/>
+<property column="COUNTYID" length="14" name="countyid" not-null="true" type="java.lang.String"/>
+<property column="COOPTYPE" length="16" name="cooptype" not-null="true" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" not-null="true" type="java.lang.String"/>
+<property column="PRICEDIFTYPE" length="16" name="pricediftype" not-null="true" type="java.lang.String"/>
+<property column="PRICE1" length="16" name="price1" not-null="true" type="java.lang.Double"/>
+<property column="PRICE2" length="16" name="price2" type="java.lang.Double"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+</class>
+</hibernate-mapping>

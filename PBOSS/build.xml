@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<project name="pboss" default="generWar" basedir=".">
+	<echo message="Java Version: ${ant.java.version}"/>
+	
+	<property name="pboss.lib" value="${basedir}/lib"/>
+	<property name="pboss.src" value="${basedir}/src"/>
+	<property name="pboss.webRoot" value="${basedir}/web"/>
+	<property name="pboss.target" value="${basedir}/target"/>
+	<property name="pboss.target.lib" value="${pboss.target}/lib"/>
+	<property name="pboss.target.src" value="${pboss.target}/src"/>
+	<property name="pboss.target.classes" value="${pboss.target}/classes"/>
+	
+	<!--定义CLASSPACH,编译时用到你外部加入的包-->
+	<path id="pboss.class.path">
+        <fileset dir="${pboss.lib}">
+        	<include name="projectNeed/*.jar"/>
+        	<include name="forCompile/*.jar"/>
+        </fileset>
+    </path>
+
+	<!--初始化准备工作-->
+	<target name="prepare" description="初始化准备工作">
+		<echo message="初始化准备工作..." />
+		
+		<echo message="获取当前日期 ..." />
+		<tstamp>
+			<format property="TODAY" pattern="yyyyMMddHH" />
+		</tstamp>
+		
+		<echo message="TODAY = ${TODAY}" />
+		<echo message="basedir = ${basedir}" />
+		<echo message="pboss.lib = ${pboss.lib}" />
+		<echo message="pboss.src = ${pboss.src}" />
+		<echo message="pboss.webRoot = ${pboss.webRoot}" />
+		<echo message="pboss.target = ${pboss.target}" />
+		<echo message="pboss.target.lib = ${pboss.target.lib}" />
+		<echo message="pboss.target.src = ${pboss.target.src}" />
+		<echo message="pboss.target.classes = ${pboss.target.classes}" />
+		
+		<echo message="删除已存在WAR包：${pboss.target}/${ant.project.name}_${TODAY}.war ..." />
+		<delete file="${pboss.target}/${ant.project.name}_${TODAY}.war" />
+		
+		<echo message="删除打包目录..." />
+		<!-- <delete dir="${pboss.target}"/> -->
+		<delete dir="${pboss.target.src}" />
+		<delete dir="${pboss.target.classes}" />
+		
+		<echo message="创建打包目录..." />
+		<mkdir dir="${pboss.target}" />
+		<mkdir dir="${pboss.target.src}" />
+		<mkdir dir="${pboss.target.classes}" />
+		
+		<echo message="复制源码到打包目录..." />
+		<copy todir="${pboss.target.src}">
+			 <fileset dir="${pboss.src}"></fileset>
+		</copy>
+	</target>
+
+	<!--编译java源文件   fork="yes" executable="" compiler="javac1.5" -->
+	<target name="compile" depends="prepare" description="编译">
+		<echo message="编译文件..." />
+		<javac fork="true" memoryinitialsize="128m" memorymaximumsize="256m" srcdir="${pboss.target.src}" destdir="${pboss.target.classes}" includeantruntime="false">
+			<classpath refid="pboss.class.path" />
+			<compilerarg line="-encoding GBK" />
+		</javac>
+		
+		<echo message="复制配置文件到编译目录..." />
+		<copy todir="${pboss.target.classes}">
+			<fileset dir="${pboss.target.src}" excludes="**/*.java"/>
+		</copy>
+	</target>
+
+	<!--打成WAR包-->
+	<target name="generWar" depends="compile" description="打包">
+		<echo message="开始打成WAR包..." />
+		<war destfile="${pboss.target}/${ant.project.name}_${TODAY}.war"
+			webxml="${pboss.webRoot}/WEB-INF/web.xml">
+			<fileset dir="${pboss.webRoot}">
+                <exclude name="**/classes/**"/>
+                <exclude name="**/lib/**"/>
+            </fileset>
+			<lib dir="${pboss.lib}/projectNeed" />
+			<classes dir="${pboss.target.classes}" />
+		</war>
+	</target>
+</project>

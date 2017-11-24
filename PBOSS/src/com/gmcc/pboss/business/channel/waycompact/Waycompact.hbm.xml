@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.channel.waycompact.WaycompactVO" table="CH_PW_WAYCOMPACT">
+<id column="WAYID" length="18" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="COMPACTNO" length="40" name="compactno" type="java.lang.String"/>
+<property column="COMPACTNAME" length="255" name="compactname" type="java.lang.String"/>
+<property column="BEGINTIME" length="7" name="begintime" type="java.util.Date"/>
+<property column="ENDTIME" length="7" name="endtime" type="java.util.Date"/>
+<property column="SIGNTIME" length="7" name="signtime" type="java.util.Date"/>
+<property column="COPTYPE" length="3" name="coptype" type="java.lang.Short"/>
+<property column="COPBOUND" length="40" name="copbound" type="java.lang.String"/>
+<property column="RECOMRULE" length="255" name="recomrule" type="java.lang.String"/>
+<property column="COMPACT" length="4000" name="compact" type="java.lang.String"/>
+<property column="COMPACTTYPE" length="2" name="compacttype" type="java.lang.Short"/>
+<property column="COMPACTPATH" length="255" name="compactpath" type="java.lang.String"/>
+<property column="LICENCENO" length="64" name="licenceno" type="java.lang.String"/>
+<property column="LICENCEPATH" length="255" name="licencepath" type="java.lang.String"/>
+<property column="RUNAREATYPE" length="2" name="runareatype" type="java.lang.Short"/>
+<property column="PRINCIPAL" length="64" name="principal" type="java.lang.String"/>
+<property column="BAIL" length="18" name="bail" type="java.lang.Double"/>
+<property column="BAILSTATUS" length="2" name="bailstatus" type="java.lang.Short"/>
+<property column="ISB2M" length="1" name="isb2m" type="java.lang.Byte"/>
+<property column="ISUNPB" length="1" name="isunpb" type="java.lang.Byte"/>
+<!-- <property column="CALCUMODE" length="3" name="calcumode" type="java.lang.Short"/>
+<property column="UNIFORMTIME" length="6" name="uniformtime" type="java.lang.String"/> -->
+</class>
+</hibernate-mapping>

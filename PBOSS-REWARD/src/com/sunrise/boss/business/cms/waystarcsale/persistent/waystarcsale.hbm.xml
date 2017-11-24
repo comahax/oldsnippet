@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.waystarcsale.persistent.WaystarcsaleVO" table="CH_PW_WAYSTARCSALE">
+<composite-id>
+<key-property column="CITYID" length="18" name="cityid" type="java.lang.String"/>
+<key-property column="SLV" length="3" name="slv" type="java.lang.Short"/>
+</composite-id>
+<property column="BUSITYPE" length="18" name="busitype" type="java.lang.String"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

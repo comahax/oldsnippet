@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+  		
+	<!-- 公共库的数据源配置 -->
+	<bean id="commonDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/common" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+
+	<!-- 地市库  -->
+	<!-- ZS 中山  -->
+	<bean id="zsDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/zs" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="zsSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="zsDataSource" />
+	</bean>
+	
+	<!-- GZ广州 -->
+	<bean id="gzDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/gz" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="gzSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="gzDataSource" />
+	</bean>
+	
+	<!-- QY清远 -->
+	<bean id="qyDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/qy" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="qySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="qyDataSource" />
+	</bean>
+	
+	<!-- SW汕尾 -->
+	<bean id="swDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/sw" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="swSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="swDataSource" />
+	</bean>
+	
+	<!-- ZH珠海 -->
+	<bean id="zhDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/zh" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="zhSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="zhDataSource" />
+	</bean>
+	
+	<!-- SZ深圳-->
+	<bean id="szDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/sz" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="szSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="szDataSource" />
+	</bean>	
+		
+	<!-- DG东莞 -->
+	<bean id="dgDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/dg" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>	
+	<bean id="dgSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="dgDataSource" />
+	</bean>	
+	
+	<!-- FS佛山 -->
+	<bean id="fsDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/fs" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="fsSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="fsDataSource" />
+	</bean>	
+	
+	<!-- HZ惠州 -->
+	<bean id="hzDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/hz" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="hzSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="hzDataSource" />
+	</bean>	
+	
+	<!-- ZQ肇庆 -->
+	<bean id="zqDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/zq" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="zqSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="zqDataSource" />
+	</bean>	
+	
+	<!-- ST汕头 -->
+	<bean id="stDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/st" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="stSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="stDataSource" />
+	</bean>	
+	
+	<!-- CZ潮州 -->
+	<bean id="czDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/cz" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="czSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="czDataSource" />
+	</bean>	
+	
+	<!-- JM江门 -->
+	<bean id="jmDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/jm" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="jmSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="jmDataSource" />
+	</bean>	
+	
+	<!-- MM茂名 -->
+	<bean id="mmDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/mm" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="mmSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="mmDataSource" />
+	</bean>	
+	
+	<!-- SG韶关 -->
+	<bean id="sgDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/sg" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="sgSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="sgDataSource" />
+	</bean>	
+		
+	<!-- YJ阳江 -->
+	<bean id="yjDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/yj" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="yjSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="yjDataSource" />
+	</bean>	
+	
+	<!-- ZJ湛江 -->
+	<bean id="zjDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/zj" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="zjSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="zjDataSource" />
+	</bean>	
+	
+	<!-- HY河源 -->
+	<bean id="hyDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/hy" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="hySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="hyDataSource" />
+	</bean>	
+	
+	<!-- MZ梅州 -->
+	<bean id="mzDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/mz" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="mzSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="mzDataSource" />
+	</bean>	
+	
+	<!-- JY揭阳 -->
+	<bean id="jyDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/jy" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="jySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="jyDataSource" />
+	</bean>	
+	
+	<!-- YF云浮-->
+	<bean id="yfDataSource" class="com.gmcc.pboss.common.bean.SecurityDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="oracle/yf" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="15" />
+		<property name="borrowConnectionTimeout" value="30" />
+	</bean>
+	<bean id="yfSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" parent="parentCitySessionFactory">
+		<property name="dataSource" ref="yfDataSource" />
+	</bean>		
+	
+	<!-- SessionFactory装饰对象 -->
+	<bean id="sessionFactory" class="com.gmcc.pboss.common.support.DynamicSessionFactoryProxyBean">
+		<property name="defaultSessionFactory" ref="commonSessionFactory" />
+		<property name="targetSessionFactorys">
+		<!-- key 为地市标识cityid, value 为对应的SessionFactory -->
+			<map key-type="java.lang.String">
+				<entry key="GZ" value-ref="gzSessionFactory" />
+				<entry key="SZ" value-ref="szSessionFactory" />
+				<entry key="ZH" value-ref="zhSessionFactory" />
+				<entry key="DG" value-ref="dgSessionFactory" />
+				<entry key="FS" value-ref="fsSessionFactory" />				
+				<entry key="ZS" value-ref="zsSessionFactory" />
+				<entry key="HZ" value-ref="hzSessionFactory" />
+				<entry key="ZQ" value-ref="zqSessionFactory" />
+				<entry key="ST" value-ref="stSessionFactory" />
+				<entry key="SW" value-ref="swSessionFactory" />				
+				<entry key="CZ" value-ref="czSessionFactory" />
+				<entry key="JM" value-ref="jmSessionFactory" />				
+				<entry key="MM" value-ref="mmSessionFactory" />
+				<entry key="SG" value-ref="sgSessionFactory" />
+				<entry key="YJ" value-ref="yjSessionFactory" />
+				<entry key="ZJ" value-ref="zjSessionFactory" />
+				<entry key="HY" value-ref="hySessionFactory" />
+				<entry key="MZ" value-ref="mzSessionFactory" />
+				<entry key="QY" value-ref="qySessionFactory" />
+				<entry key="JY" value-ref="jySessionFactory" />
+				<entry key="YF" value-ref="yfSessionFactory" />					
+			</map>
+		</property>
+	</bean>
+</beans>

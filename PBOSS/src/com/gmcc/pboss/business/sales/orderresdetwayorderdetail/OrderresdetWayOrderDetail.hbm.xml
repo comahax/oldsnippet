@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.orderresdetwayorderdetail.OrderresdetWayOrderDetailVO" table="V_ORDERRESDET_WAY_ORDER">
+<id column="rowcountid" length="14" name="rowcountid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="SVCCODE" length="14" name="svccode" type="java.lang.String"/>
+<property column="MAREACODE" length="14" name="mareacode" type="java.lang.String"/>
+<property column="STARLEVEL" length="2" name="starlevel" type="java.lang.Short"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+<property column="COMPRICE" length="16" name="comprice" type="java.lang.Double"/>
+<property column="ACTPRICE" length="16" name="actprice" type="java.lang.Double"/>
+<property column="COUNTVALUE" length="16" name="countvalue" type="java.lang.Long"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.persistent.eboxchglog.EboxChgLogVO" table="IB_WL_EBOXCHGLOG">
+        <id name="logid" type="java.lang.Long">
+            <column name="LOGID" precision="14" scale="0" />
+            <generator class="sequence">
+            	<param name="sequence">IB_WL_EBOXCHGLOG_SEQ</param>
+            </generator>
+        </id>
+        <property name="eboxid" type="java.lang.Long">
+            <column name="EBOXID" precision="14" scale="0" not-null="true" />
+        </property>
+        <property name="eboxunitid" type="java.lang.Long">
+            <column name="EBOXUNITID" precision="14" scale="0" not-null="true" />
+        </property>
+        <property name="eboxunitdetid" type="java.lang.Long">
+            <column name="EBOXUNITDETID" precision="14" scale="0" not-null="true" />
+        </property>
+        <property name="beforechgamt" type="java.lang.Double">
+            <column name="BEFORECHGAMT" precision="16" />
+        </property>
+        <property name="afterchgamt" type="java.lang.Double">
+            <column name="AFTERCHGAMT" precision="16" />
+        </property>
+        <property name="opercode" type="java.lang.String">
+            <column name="OPERCODE" length="15" />
+        </property>
+        <property name="reason" type="java.lang.String">
+            <column name="REASON" length="64" />
+        </property>
+        <property name="reason2" type="java.lang.String">
+            <column name="REASON2" length="64" />
+        </property>
+        <property name="chgtime" type="java.util.Date">
+            <column name="CHGTIME" length="7" />
+        </property>
+        <property name="source" type="java.lang.String">
+            <column name="SOURCE" />
+        </property>
+        <property name="yxplanid" type="java.lang.Long">
+            <column name="YXPLANID" precision="14" scale="0" />
+        </property>
+    </class>
+    
+    
+<sql-query name="queryEboxchglog">
+	<return class="com.sunrise.boss.business.fee.persistent.eboxchglog.EboxChgLogVO"/>
+	select * from IB_WL_EBOXCHGLOG where afterchgamt>beforechgamt  
+</sql-query>
+
+    
+</hibernate-mapping>

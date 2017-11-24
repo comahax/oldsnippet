@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="salesRpt" namespace="/salesRpt" extends="default">
+		<action name="query" class="salesHistoryAction" method="doList">
+			<result>/info/salesRpt/salesHsty.jsp</result>
+		</action>
+		
+		<action name="ajaxQuery" class="salesHistoryAction" method="doQuery">
+		</action>
+	</package>
+	
+	<package name="salesOrder" namespace="/salesOrder" extends="default">
+		<!-- 订单查询 -->
+		<action name="query" class="salesOrderAction" method="doList">
+			<result>/info/salesRpt/salesOdr.jsp</result>
+		</action>
+		<!-- 订单查询 -->
+		<action name="ajaxQuery" class="salesOrderAction" method="doQuery">
+		</action>
+		
+		<!-- 订单明细 -->
+		<action name="detail" class="salesOrderAction" method="doLoad">
+			<result>/info/salesRpt/salesDtl.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		
+		<!-- 订购确认 -->
+		<action name="pcnfrmOrder" class="salesOrderAction" method="doCnfmOdr">
+			<result name="success">/openMsg.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		
+		<!-- 放弃订购确认 -->
+		<action name="pcancelOrder" class="salesOrderAction" method="doCancelOdr">
+			<result name="success">/openMsg.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		<!-- 订单明细确认 -->
+		<action name="advDetail" class="salesOrderAction" method="doLoad">
+			<result>/info/salesRpt/orderDtl.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		
+		<!-- 订购确认 -->
+		<action name="cnfrmOrder" class="salesOrderAction" method="doCnfmOdr">
+			<result name="success">/message.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		
+		<!-- 放弃订购确认 -->
+		<action name="cancelOrder" class="salesOrderAction" method="doCancelOdr">
+			<result name="success">/message.jsp</result>
+			<result name="error">/message.jsp</result>
+		</action>
+		
+		<!-- 订购次数查询 -->
+		<action name="orderTimes" class="orderTimesAction" method="countOrders">
+			<result>/info/salesRpt/salesOrderTimes.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		
+		
+		<!-- AJAX加载订购商品种类Comcates列表 -->
+		<action name="ajaxComcateQuery" class="salesOrderAction" method="doComcateQuery">
+		</action>
+
+		<!-- AJAX加载订购资源明细Resdets列表 -->
+		<action name="ajaxResdetsQuery" class="salesOrderAction" method="doResdetsQuery">
+		</action>
+	</package>
+	<!-- 配送商管理 -->
+	<package name="delivery" namespace="/delivery" extends="default">
+		<!-- 订单查询 -->
+		<action name="query" class="deliveryAction" method="doList">
+			<result>/info/delivery/deliveryOdr.jsp</result>
+		</action>
+		<!-- 订单查询 -->
+		<action name="ajaxQuery" class="deliveryAction" method="doQuery">
+		</action>
+		
+		<!-- 批量修改查询 -->
+		<action name="ajaxModify" class="deliveryAction" method="doModify">
+		</action>
+		
+		<!-- 订单明细 -->
+		<action name="detail" class="deliveryAction" method="doLoad">
+			<result>/info/delivery/deliveryDtl.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		
+		<!-- AJAX加载订购资源明细Resdets列表 -->
+		<action name="ajaxResdetsQuery" class="deliveryAction" method="doResdetsQuery">
+		</action>
+		<!-- 导出 -->
+		<action name="exportExcel" class="deliveryAction" method="doExportExcel">
+		</action>
+		
+		<!-- 批量完成配送 -->
+		<action name="toBatchDisover" class="batchDeliveryAction" method="toDisoverView">
+			<result>/info/delivery/batchDisover.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		<action name="batchDisover" class="batchDeliveryAction" method="doDisover">
+			<result>/info/delivery/batchDisover.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		<!-- 批量补发签收短信 -->
+		<action name="toBatchSMSSign" class="batchDeliveryAction" method="toSMSSignView">
+			<result>/info/delivery/batchSMSSign.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		<action name="batchSMSSign" class="batchDeliveryAction" method="doSMSSign">
+			<result>/info/delivery/batchSMSSign.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		<!-- 物流单号批量录入 -->
+		<action name="toBatchLogiMod" class="batchDeliveryAction" method="toBatchLogiView">
+			<result>/info/delivery/batchLogiMod.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		<action name="batchLogiMod" class="batchDeliveryAction" method="doBatchLogiMod">
+			<result>/info/delivery/batchLogiMod.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 垫资单管理 -->
+	<package name="adpay" namespace="/adpay" extends="default">
+		<!-- 垫资单查询 -->
+		<action name="query" class="adpaysumAction" method="doList">
+			<result>/info/adpay/adpaysum.jsp</result>
+		</action>
+		<!-- ajax查询 -->
+		<action name="ajaxQuery" class="adpaysumAction" method="doQuery" />
+		<!-- 明细 -->
+		<action name="detail" class="adpaysumAction" method="doLoad">
+			<result>/info/adpay/adpaydtl.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+		
+		<!-- ajax查询orderDtl -->
+		<action name="ajaxOrderDtl" class="adpaysumAction" method="doOrderDtl" />
+		<!-- 提交 -->
+		<action name="ajaxSubmit" class="adpaysumAction" method="doSubmit" />
+		<!-- 导出excel -->
+		<action name="exportExcel" class="adpaysumAction" method="doExportExcel" />
+	</package>
+	
+	<!-- 销售明细查询 -->
+	<!--<package name="saledetailquery" namespace="/saledetailquery" extends="default">-->
+		<!-- 套卡销售明细查询 -->
+		<!--<action name="cardsaledetailquery" class="cardsaledetailqueryAction" method="doList">
+			<result>/info/saledetailquery/cardsaledetailquery.jsp</result>
+		</action>-->
+		<!-- ajax查询 -->
+		<!--<action name="ajaxQuery" class="adpaysumAction" method="doQuery" />-->
+		<!-- 明细 -->
+		<!--<action name="detail" class="adpaysumAction" method="doLoad">
+			<result>/info/adpay/adpaydtl.jsp</result>
+			<result name="error">/openMsg.jsp</result>
+		</action>
+	</package>-->
+	
+	<!-- 新业务销售管理 -->
+	<package name="registernewcnt" namespace="/registernewcnt" extends="default">
+		<!-- 新业务销售汇总查询 -->
+		<action name="list" class="registernewcntAction" method="doList">
+			<result>/info/registernewcnt/registernewcnt.jsp</result>
+		</action>
+		<!-- ajax查询 -->
+		<action name="ajaxQuery" class="registernewcntAction" method="doQuery">
+		</action>
+		<!-- 导出excel -->
+		<action name="exportExcel" class="registernewcntAction" method="doExportExcel" />
+	</package>
+	<package name="registernewcntd" namespace="/registernewcntd" extends="default">
+		<action name="show" class="registernewcntAction" method="doShow">
+			<result>/info/registernewcnt/registerNewSaleDetail.jsp</result>
+		</action>
+		<!-- ajax查询 -->
+		<action name="regAjax" class="registernewcntAction" method="doQuery2">
+		</action>
+	</package>
+	<!-- 销售管理 -->
+	<package name="salescnt" namespace="/salescnt" extends="default">
+		<!-- 销售汇总查询 -->
+		<action name="list" class="salescntAction" method="doList">
+			<result>/info/salescnt/salescnt.jsp</result>
+		</action>
+		<!-- ajax查询 -->
+		<action name="ajaxQuery" class="salescntAction" method="doQuery">
+		</action>
+	</package>
+	<!-- 网点查询弹出框 -->
+	<package name="way" namespace="/way" extends="default">
+		<action name="list" class="wayAction" method="doList">
+			<result>/info/way/way.jsp</result>
+		</action>
+		
+		<action name="ajaxQuery" class="wayAction" method="doQuery">
+		</action>
+	</package>
+	<!-- 销售服务中心查询弹出框 -->
+	<package name="servcent" namespace="/servcent" extends="default">
+		<action name="list" class="servcentAction" method="doList">
+			<result>/info/servcent/servcent.jsp</result>
+		</action>
+		
+		<action name="ajaxQuery" class="servcentAction" method="doQuery">
+		</action>
+	</package>
+	
+	<!-- 销售明细  -->
+	<package name="salesDetail" namespace="/salesDetail" extends="default">
+		<!-- 新业务销售明细查询 -->
+		<action name="registernewList" class="registernewAction" method="doList">
+			<result>/info/salesDetail/registerNewSaleDetail.jsp</result>
+		</action>
+		<action name="regAjax" class="registernewAction" method="doAjax"/>
+		<!-- 导出Excel -->
+		<action name="exportExcelRegNew" class="registernewAction" method="doExportExcel"/>
+		<!-- 导出txt -->
+		<action name="exportTxtRegNew" class="registernewAction" method="doExportTxt"/>
+		
+		<!-- 套卡销售明细查询 -->
+		<action name="registersimList" class="registersimAction" method="doList">
+			<result>/info/salesDetail/registersimSaleDetail.jsp</result>
+		</action>
+		<action name="regSimAjax" class="registersimAction" method="doAjax"/>
+		<!-- 导出Excel -->
+		<action name="exportExcelRegSim" class="registersimAction" method="doExportExcel"/>
+		<!-- 导出txt -->
+		<action name="exportTxtRegSim" class="registersimAction" method="doExportTxt"/>
+		
+		<!-- 业务编码弹出窗口 -->
+		<action name="opnselect" class="operationsmsAction" method="doOpnSelect">
+			<result>/info/salesDetail/opnselect.jsp</result>
+		</action>
+		<action name="opnAjax" class="operationsmsAction" method="doOpnAjax"/>
+		<!-- 人员信息弹出窗口 -->
+		<action name="employeeSelect" class="employeeAction" method="doListPopupTab">
+			<result>/info/salesDetail/employeeselect.jsp</result>
+		</action>
+		<action name="employeeAjax" class="employeeAction" method="doAjaxPopupTab"/>
+	</package>
+	
+</struts>

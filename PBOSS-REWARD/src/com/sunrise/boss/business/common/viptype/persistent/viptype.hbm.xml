@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.common.viptype.persistent.VipTypeVO" table="SA_DB_VIPTYPE" >
+        <id name="itemid" type="java.lang.String">
+            <column name="ITEMID" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="itemname" type="java.lang.String">
+            <column name="ITEMNAME" length="64" />
+        </property>
+        <property name="sourcetype" type="java.lang.String">
+            <column name="SOURCETYPE" length="16" />
+        </property>
+        <property name="status" type="java.lang.Short">
+            <column name="STATUS" precision="1" scale="0" />
+        </property>
+        <property name="statusdate" type="java.util.Date">
+            <column name="STATUSDATE" length="7" />
+        </property>
+        <property name="typename" type="java.lang.String">
+            <column name="TYPENAME" length="32" />
+        </property>
+        <property name="vipcode" type="java.lang.String">
+            <column name="VIPCODE" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

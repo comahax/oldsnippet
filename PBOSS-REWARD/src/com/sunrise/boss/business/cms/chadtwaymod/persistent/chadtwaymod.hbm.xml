@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtwaymod.persistent.ChAdtWaymodVO" table="CH_ADT_WAYMOD">
+<id column="WAYID" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+<property column="VI" length="3" name="vi" type="java.lang.Float"/>
+<property column="AREA" length="3" name="area" type="java.lang.Float"/>
+<property column="DOORHEAD" length="3" name="doorhead" type="java.lang.Float"/>
+<property column="BACKBOARD" length="3" name="backboard" type="java.lang.Float"/>
+<property column="PROPAGANDA" length="3" name="propaganda" type="java.lang.Float"/>
+</class>
+</hibernate-mapping>

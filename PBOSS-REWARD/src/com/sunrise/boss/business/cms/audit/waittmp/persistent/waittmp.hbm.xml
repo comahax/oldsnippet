@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.audit.waittmp.persistent.WaittmpVO" table="SP_SMS_WAITTMP">
+<id column="STREAMNO" name="streamno" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">SP_SMS_WAITTMP_SEQ</param>
+	</generator>
+</id>
+<property column="SMTYPE" length="3" name="smtype" type="java.lang.Short"/>
+<property column="CREATTIME" length="7" name="creattime" type="java.sql.Timestamp"/>
+<property column="DEALTIME" length="7" name="dealtime" type="java.sql.Timestamp"/>
+<property column="MESSAGE" length="255" name="message" type="java.lang.String"/>
+<property column="SENDNO" length="20" name="sendno" type="java.lang.String"/>
+<property column="RECNO" length="20" name="recno" type="java.lang.String"/>
+<property column="SMPRIOR" length="3" name="smprior" type="java.lang.Short"/>
+<property column="SMSTATU" length="3" name="smstatu" type="java.lang.Short"/>
+<property column="LIMITFLAG" length="3" name="limitflag" type="java.lang.Short"/>
+<property column="SNDTIME" length="255" name="sndtime" type="java.lang.String"/>
+<property column="DEADTIME" length="7" name="deadtime" type="java.sql.Timestamp"/>
+<property column="MAXTIMES" length="3" name="maxtimes" type="java.lang.Short"/>
+<property column="HAVETIMES" length="3" name="havetimes" type="java.lang.Short"/>
+<property column="RESULTCODE" length="3" name="resultcode" type="java.lang.String"/>
+<property column="RESULTDESC" length="255" name="resultdesc" type="java.lang.String"/>
+<property column="PK_TOTAL" length="3" name="pktotal" type="java.lang.Short"/>
+<property column="PK_NUMBER" length="3" name="pknumber" type="java.lang.Short"/>
+<property column="DELAYMIN" length="10" name="delaymin" type="java.lang.Long"/>
+
+</class>
+</hibernate-mapping>

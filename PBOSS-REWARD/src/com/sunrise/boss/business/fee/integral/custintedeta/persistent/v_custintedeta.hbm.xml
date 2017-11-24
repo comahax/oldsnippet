@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.fee.integral.custintedeta.persistent.VCustInteDetaVO"
+		table="V_IB_CU_CUSTINTDETA">
+		<id name="id" type="java.lang.String">
+			<column name="ID" />
+		</id>
+		<property name="userid" type="java.lang.Long">
+			<column name="USERID" precision="10" scale="0" />
+		</property>
+		<property name="validbillcyc" type="java.lang.Long">
+			<column name="VALIDBILLCYC" precision="8" scale="0" />
+		</property>
+		<property name="custid" type="java.lang.Long">
+			<column name="CUSTID" precision="10" scale="0" />
+		</property>
+
+		<property name="value0" type="java.lang.Long">
+			<column name="VALUE0" precision="10" scale="0" />
+		</property>
+		<property name="value1" type="java.lang.Long">
+			<column name="VALUE1" precision="10" scale="0" />
+		</property>
+		<property name="value2" type="java.lang.Long">
+			<column name="VALUE2" precision="10" scale="0" />
+		</property>
+		<property name="value3" type="java.lang.Long">
+			<column name="VALUE3" precision="10" scale="0" />
+		</property>
+		<property name="value5" type="java.lang.Long">
+			<column name="VALUE5" precision="10" scale="0" />
+		</property>
+		<property name="value6" type="java.lang.Long">
+			<column name="VALUE6" precision="10" scale="0" />
+		</property>
+		<property name="sumvalue" type="java.lang.Long">
+			<column name="SUMVALUE" precision="12" scale="0" />
+		</property>
+		
+
+	</class>
+
+	<sql-query name="boss.fee.integral.query2intedeta">
+		<return
+			class="com.sunrise.boss.business.fee.integral.custintedeta.persistent.VCustInteDetaVO"
+			entity-name="vcidVO" alias="vcidVO">
+		</return>
+		select custid || ',' || userid || ',' || validbillcyc id, 
+		custid,userid,validbillcyc,
+		sum(decode(jftype,0,value,0)) value0, sum(decode(jftype,1,value,0)) value1,
+		sum(decode(jftype,2,value,0)) value2, sum(decode(jftype,3,value,0)) value3,
+		sum(decode(jftype,5,value,0)) value5, sum(decode(jftype,6,value,0)) value6, 
+		sum(value) sumvalue from IB_CU_CustIntDeta 
+	 	group by custid || ',' || userid || ',' || validbillcyc,custid,userid,validbillcyc
+	</sql-query>
+</hibernate-mapping>

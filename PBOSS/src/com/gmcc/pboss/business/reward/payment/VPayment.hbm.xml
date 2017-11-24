@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.payment.VPaymentVO" table="VCH_CW_PAYMENT">
+<id column="SEQ" length="14" name="seq" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_CW_PAYMENT_SEQ</param>
+</generator>
+</id>
+<property column="OPTYPE" length="16" name="optype" type="java.lang.String"/>
+<property column="OPMONTH" length="6" name="opmonth" type="java.lang.String"/>
+<property column="PAYMONTH" length="6" name="paymonth" type="java.lang.String"/>
+<property column="STYPE" length="128" name="stype" type="java.lang.String"/>
+<property column="PAYEE" length="128" name="payee" type="java.lang.String"/>
+<property column="PAYSUM" length="18" name="paysum" type="java.lang.Double"/>
+<property column="REWARDSTD" length="4000" name="rewardstd" type="java.lang.String"/>
+<property column="RULE" length="4000" name="rule" type="java.lang.String"/>
+<property column="DEDUCTION" length="4000" name="deduction" type="java.lang.String"/>
+<property column="BATCH" length="128" name="batch" type="java.lang.String"/>
+<property column="NOTE" length="4000" name="note" type="java.lang.String"/>
+<property column="LTYPE" length="128" name="ltype" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="BANK" length="256" name="bank" type="java.lang.String"/>
+<property column="DEPOSITBANK" length="256" name="depositbank" type="java.lang.String"/>
+<property column="ACCOUNT" length="64" name="account" type="java.lang.String"/>
+<property column="BILLNUMBER" length="80" name="billnumber" type="java.lang.String"/>
+<property column="COUNTYID" length="32" name="countyid" type="java.lang.String"/>
+<property column="PUBPRI" length="4" name="pubpri" type="java.lang.String"/>
+<property column="RATE" length="7" name="rate" type="java.lang.Float"/>
+<property column="UPOPRCODE" length="15" name="upoprcode" type="java.lang.String"/>
+<property column="CHECKEDFLAG" length="32" name="checkedflag" type="java.lang.String"/>
+<property column="CALCMONTH" length="6" name="calcmonth" type="java.lang.String"/>
+<property column="SENDSTATE" length="4" name="sendstate" type="java.lang.String"/>
+<property column="BKACTNAME" length="256" name="bkactname" type="java.lang.String"/>
+</class>
+
+<!-- query show list, PAYMENT_CHK_SWITCH = close -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doShowQueryBySql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+       P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NOT NULL 
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+  UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+       P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME
+  FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH) A
+    LEFT JOIN (SELECT LTYPE, STYPE
+               FROM CH_CW_STYPE
+              WHERE CITYID = :cityid
+                 OR CITYID = 'GD') S
+      ON A.STYPE = S.STYPE
+)
+</sql-query>
+
+<!-- query show list, PAYMENT_CHK_SWITCH = open -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doShowQueryByOprcodeSql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT DISTINCT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+         P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+         P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+         P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NOT NULL 
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+      AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED')
+  	    OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+  UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT DISTINCT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+         P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+         P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+         P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL 
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+      AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED')
+  	    OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL) ) A
+    LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+               WHERE CITYID = :cityid OR CITYID = 'GD') S
+      ON A.STYPE = S.STYPE
+ )
+</sql-query>
+
+<!-- query export excel, PAYMENT_CHK_SWITCH = close -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doExportQueryBySql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+       P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME,
+       '' OPMONTH,'' REWARDSTD,'' RULE,'' DEDUCTION,'' WAYID,0 RATE
+  FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE P.LTYPE IS NOT NULL
+    AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+  UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+       P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME,
+       '' OPMONTH,'' REWARDSTD,'' RULE,'' DEDUCTION,'' WAYID,0 RATE
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH) A
+    LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+              WHERE CITYID = :cityid OR CITYID = 'GD') S
+      ON A.STYPE = S.STYPE
+)
+</sql-query>
+
+<!-- query export excel, PAYMENT_CHK_SWITCH = open -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doExportQueryByOprcodeSql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+         P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+         P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+         P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME,
+         '' OPMONTH,'' REWARDSTD,'' RULE,'' DEDUCTION,'' WAYID,0 RATE
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NOT NULL 
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+      AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED') 
+        OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+  UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT DISTINCT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+         P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+         P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+         P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME,
+         '' OPMONTH,'' REWARDSTD,'' RULE,'' DEDUCTION,'' WAYID,0 RATE
+    FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL 
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+      AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED')
+        OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL) ) A
+    LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+               WHERE CITYID = :cityid OR CITYID = 'GD') S
+     ON A.STYPE = S.STYPE
+ )
+</sql-query>
+
+<!-- query show Sum list, PAYMENT_CHK_SWITCH = close -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doShowQuerySumBySql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.SEQ,P.BATCH,P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH
+  FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE P.LTYPE IS NOT NULL 
+    AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH=C.PAYMONTH
+UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT DISTINCT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.SEQ,P.BATCH,P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH) A
+    LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+              WHERE CITYID = :cityid OR CITYID = 'GD') S
+      ON A.STYPE = S.STYPE
+)
+</sql-query>
+
+<!-- query show Sum list, PAYMENT_CHK_SWITCH = open -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doShowQuerySumByOprcodeSql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.SEQ,P.BATCH,P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH
+    FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NOT NULL 
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+  	  AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED')
+        OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+  UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+         P.SEQ,P.BATCH,P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH
+    FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL 
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+      AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED')
+        OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL) ) A
+    LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+               WHERE CITYID = :cityid OR CITYID = 'GD') S
+     ON A.STYPE = S.STYPE
+ )
+</sql-query>
+
+<!-- query send list, PAYMENT_CHK_SWITCH = close, not sent -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doSendQuerySql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+       P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME
+  FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+  WHERE P.LTYPE IS NOT NULL
+    AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+    AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+       P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME
+    FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL 
+      AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH) A
+    LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+              WHERE CITYID = :cityid OR CITYID = 'GD') S
+      ON A.STYPE = S.STYPE
+)
+</sql-query>
+
+<!-- query send list, PAYMENT_CHK_SWITCH = open, not sent -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doSendQueryByOprcodeSql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+       P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME
+    FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+  	WHERE P.LTYPE IS NOT NULL
+  	  AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+      AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED') 
+        OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+  UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.PAYSUM,
+       P.BATCH,DBMS_LOB.SUBSTR(P.NOTE, DBMS_LOB.GETLENGTH(P.NOTE),1) NOTE,
+       P.SEQ,P.BANK,P.DEPOSITBANK,P.ACCOUNT,P.BILLNUMBER,P.COUNTYID,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.CALCMONTH,P.SENDSTATE,P.BKACTNAME
+    FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL
+      AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+      AND UPPER(C.CITYID) = :cityid AND P.PAYMONTH = C.PAYMONTH
+      AND ((P.UPOPRCODE != :oprcode AND P.UPOPRCODE IS NOT NULL AND C.CHECKEDFLAG='CHECKED') 
+        OR P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL) ) A
+    LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+               WHERE CITYID = :cityid OR CITYID = 'GD') S
+     ON A.STYPE = S.STYPE
+ )
+</sql-query>
+
+<!-- query delete list, PAYMENT_CHK_SWITCH = close, not sent ,not checked -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doDeleteQuerySql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.SEQ,P.BATCH,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.SENDSTATE,P.CALCMONTH
+  FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE P.LTYPE IS NOT NULL
+    AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL) 
+    AND UPPER(C.CITYID) = :cityid
+  	AND C.CHECKEDFLAG='UNCHECKED' AND P.PAYMONTH = C.PAYMONTH
+  UNION
+  SELECT S.LTYPE,A.* FROM (
+     SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.SEQ,P.BATCH,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.SENDSTATE,P.CALCMONTH
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL
+      AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+      AND UPPER(C.CITYID) = :cityid 
+      AND C.CHECKEDFLAG='UNCHECKED' AND P.PAYMONTH = C.PAYMONTH) A
+    LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+               WHERE CITYID = :cityid OR CITYID = 'GD') S
+      ON A.STYPE = S.STYPE
+)
+</sql-query>
+
+<!-- query delete list, PAYMENT_CHK_SWITCH = open, not sent ,not checked -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doDeleteQueryByOprcodeSql">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT * FROM (
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.SEQ,P.BATCH,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.SENDSTATE,P.CALCMONTH
+  FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+  WHERE P.LTYPE IS NOT NULL
+    AND (P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+    AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL) 
+    AND UPPER(C.CITYID) = :cityid
+  	AND C.CHECKEDFLAG='UNCHECKED' AND P.PAYMONTH = C.PAYMONTH
+  UNION
+  SELECT S.LTYPE,A.* FROM (
+    SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.SEQ,P.BATCH,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.SENDSTATE,P.CALCMONTH 
+    FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL
+      AND (P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+      AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+      AND UPPER(C.CITYID) = :cityid 
+      AND C.CHECKEDFLAG='UNCHECKED' AND P.PAYMONTH = C.PAYMONTH) A
+     LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+               WHERE CITYID = :cityid OR CITYID = 'GD') S
+     ON A.STYPE = S.STYPE
+)
+</sql-query>
+
+<!-- query delete list, PAYMENT_CHK_SWITCH = close, not sent ,not checked -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doDeleteQuerySqlFromLtyle">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.SEQ,P.BATCH,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.SENDSTATE,P.CALCMONTH
+  FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+  WHERE P.LTYPE IS NOT NULL
+    AND UPPER(C.CITYID) = :cityid 
+    AND C.CHECKEDFLAG='UNCHECKED' 
+    AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+    AND P.PAYMONTH = C.PAYMONTH
+</sql-query>
+
+<!-- query delete list, PAYMENT_CHK_SWITCH = close, not sent ,not checked -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doDeleteQuerySqlFromStyle">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT S.LTYPE,A.* FROM (
+  SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.SEQ,P.BATCH,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.SENDSTATE,P.CALCMONTH
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL
+      AND UPPER(C.CITYID) = :cityid 
+      AND C.CHECKEDFLAG='UNCHECKED' 
+      AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+      AND P.PAYMONTH = C.PAYMONTH) A
+   LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+               WHERE CITYID = :cityid OR CITYID = 'GD') S
+     ON A.STYPE = S.STYPE
+</sql-query>
+
+<!-- query delete list, PAYMENT_CHK_SWITCH = open, not sent ,not checked and ltyle is not null -->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doDeleteQueryByOprcodeSqlFromLtyle">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+  SELECT P.LTYPE,P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.SEQ,P.BATCH,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.SENDSTATE,P.CALCMONTH
+	FROM CH_CW_PAYMENT P,CH_CW_CITYCHECK C
+	WHERE P.LTYPE IS NOT NULL
+	  AND UPPER(C.CITYID) = :cityid
+      AND C.CHECKEDFLAG='UNCHECKED'
+      AND (P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+      AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+      AND P.PAYMONTH = C.PAYMONTH
+</sql-query>
+
+<!-- query delete list, PAYMENT_CHK_SWITCH = open, not sent ,not checked and ltyle is null-->
+<sql-query name="com.gmcc.pboss.business.reward.payment.doDeleteQueryByOprcodeSqlFromStyle">
+    <return class="com.gmcc.pboss.business.reward.payment.VPaymentVO"></return>
+SELECT S.LTYPE,A.* FROM (
+  SELECT P.OPTYPE,P.PAYMONTH,P.STYPE,P.PAYEE,P.SEQ,P.BATCH,
+       P.PUBPRI,P.UPOPRCODE,C.CHECKEDFLAG,P.SENDSTATE,P.CALCMONTH
+    FROM CH_CW_PAYMENT P, CH_CW_CITYCHECK C
+    WHERE P.LTYPE IS NULL
+      AND UPPER(C.CITYID) = :cityid
+      AND C.CHECKEDFLAG='UNCHECKED'
+      AND (P.UPOPRCODE = :oprcode OR P.UPOPRCODE IS NULL)
+      AND (P.SENDSTATE != 'SENT' OR P.SENDSTATE IS NULL)
+      AND P.PAYMONTH = C.PAYMONTH) A
+   LEFT JOIN (SELECT LTYPE, STYPE FROM CH_CW_STYPE
+               WHERE CITYID = :cityid OR CITYID = 'GD') S
+     ON A.STYPE = S.STYPE
+</sql-query>
+
+</hibernate-mapping>

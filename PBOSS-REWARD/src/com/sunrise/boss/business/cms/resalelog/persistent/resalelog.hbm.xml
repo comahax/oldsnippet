@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.resalelog.persistent.ResalelogVO" table="CH_PW_RESALELOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+<generator class="sequence">
+		<param name="sequence">CH_PW_RESALELOG_SEQ</param>
+	</generator>
+</id>
+<property name="optime" column="OPTIME" type="java.util.Date" length="7"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="16"/>
+<property name="oprtype" column="OPRTYPE" type="java.lang.String" length="8"/>
+<property name="itemid" column="ITEMID" type="java.lang.Long" length="14"/>
+<property name="wayid" column="WAYID" type="java.lang.String" length="18"/>
+<property name="mobile" column="MOBILE" type="java.lang.String" length="12"/>
+<property name="countyid" column="COUNTYID" type="java.lang.String" length="14"/>
+<property name="brand" column="BRAND" type="java.lang.Long" length="22"/>
+<property name="daytime" column="DAYTIME" type="java.util.Date" length="7"/>
+</class>
+</hibernate-mapping>

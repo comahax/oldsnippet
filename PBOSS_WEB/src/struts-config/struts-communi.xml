@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="communi" namespace="/communi" extends="default">
+		<action name="queryInfos" class="communicatePlateauAction" method="doQueryInfos"></action>
+		<!-- 待办业务 -->
+		<action name="pendingRequestList" class="communicatePlateauAction" method="doPendingRequestList">
+			<result>/communi/pendingRequest/pendingRequestInfos.jsp</result>
+		</action>
+		<!-- 业务 -->
+		<action name="operationList" class="communicatePlateauAction" method="doOperationList">
+			<result>/communi/operation/operationInfos.jsp</result>
+		</action>
+		<!-- 公告 -->
+		<action name="afficheList" class="communicatePlateauAction" method="doAffcheList">
+			<result>/communi/affiche/afficheInfos.jsp</result>
+		</action>
+		<!-- 知识库 -->
+		<action name="knowledgeList" class="communicatePlateauAction" method="doKnowledgeList">
+			<result>/communi/knowledge/knowledgeInfos.jsp</result>
+		</action>
+		
+		<!-- 待办任务查看 -->
+		<action name="readPendingTask" class="communicatePlateauAction" method="doReadPendingTask"></action>
+		
+		<!-- 待办任务完成 -->
+		<action name="finishPendingTask" class="communicatePlateauAction" method="doFinishPendingTask"></action>
+		
+		<!-- 公告查看 -->
+		<action name="showAffiche" class="communicatePlateauAction" method="doShowInfo">
+			<result>/communi/affiche/showAffBiz.jsp</result>
+		</action>
+		<action name="showReplyInfo" class="communicateReplyAction" method="doReplyQuery"></action>
+		<!-- 公告回复 -->
+		<action name="reply" class="communicatePlateauAction" method="doReplay"></action>
+		<!-- 公告阅读 -->
+		<action name="read" class="communicatePlateauAction" method="doRead"></action>
+		<!-- 知识库查看 -->
+		<action name="showKnowledge" class="communicatePlateauAction" method="doShowInfo">
+			<result>/communi/knowledge/showKnowledge.jsp</result>
+		</action>
+		<!-- 业务查看 -->
+		<action name="showOperation" class="communicatePlateauAction" method="doShowInfo">
+			<result>/communi/operation/showOperation.jsp</result>
+		</action>
+		<!-- 调查问卷 -->
+		<action name="showQuestionnaire" class="communicatePlateauAction" method="doShowInfo">
+			<result>/communi/questionnaire/showQuestionnaire.jsp</result>
+		</action>
+		<!-- 调查问卷反馈 -->
+		<action name="showQuestionnaireReplyInfo" class="communicateReplyAction" method="doQuestionnaireReplyQuery"></action>
+		<!-- 调查问卷反馈附件下载 -->
+		<action name="questionnaireReplyAffixDownload" class="communicatePlateauAction" method="doQuestionnaireReplyAffixDownload"></action>
+		
+		<!-- 查看公开信息 -->
+		<action name="showPublic" class="communicatePlateauAction" method="doShowPublic">
+			<result>/communi/affiche/showPublic.jsp</result>
+		</action>
+		
+		<action name="affixDownload" class="communicatePlateauAction" method="doAffixDownload">
+            <result name="error" >message.jsp</result>
+		</action>
+		
+		<action name="affixPDownload" class="communicatePlateauAction" method="doAffixPDownload">
+            <result name="error" >message.jsp</result>
+		</action>
+		<!-- 
+		<action name="ajaxQuery" class="communicatePlateauAction" method="doQuery">
+			<result></result>
+		</action>
+		 -->
+	</package>
+	<!-- 在线问答 -->
+	<package name="interlocution" namespace="/interlocution" extends="default">
+		<!-- 我的提问查询 -->
+		<action name="queryInfos" class="communicatePlateauAction" method="doMyQuestionQuery"></action>
+		<!-- 提问 -->
+		<action name="question" class="communicatePlateauAction" method="doQuestion">
+			<result>/communi/interlocution/question.jsp</result>
+		</action>
+		<!-- 提问保存 -->
+		<action name="questionSumbit" class="communicatePlateauAction" method="doQuestionSubmit"></action>
+		<!-- 我的提问 -->
+		<action name="myQuestion" class="communicatePlateauAction" method="doMyQuestionList">
+			<result>/communi/interlocution/myQuestion.jsp</result>
+		</action>
+		<!-- 查看提问 -->
+		<action name="showInterlocution" class="communicatePlateauAction" method="doShowInfo">
+			<result>/communi/interlocution/showInterlocution.jsp</result>
+		</action>
+		<!-- 查看提问回复 -->
+		<action name="showReplyInfo" class="communicateReplyAction" method="doReplyQuery"></action>
+		<!-- 回复提问 -->
+		<action name="reply" class="communicatePlateauAction" method="doReplay"></action>
+		<!-- 关闭提问 -->
+		<action name="close" class="communicatePlateauAction" method="doClose"></action>
+	</package>
+	
+
+</struts>

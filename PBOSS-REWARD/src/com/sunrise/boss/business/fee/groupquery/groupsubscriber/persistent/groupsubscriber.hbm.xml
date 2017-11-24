@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.groupquery.groupsubscriber.persistent.GroupSubscriberVO" table="CM_GROUP_SUBSCRIBER">
+        <id name="subsid" type="java.lang.Long">
+            <column name="SUBSID" precision="14" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="region" type="java.lang.Long">
+            <column name="REGION" precision="5" scale="0" />
+        </property>
+        <property name="internalid" type="java.lang.String">
+            <column name="INTERNALID" length="32" />
+        </property>
+        <property name="custid" type="java.lang.Long">
+            <column name="CUSTID" precision="14" scale="0" />
+        </property>
+        <property name="prodid" type="java.lang.String">
+            <column name="PRODID" length="32" />
+        </property>
+        <property name="dependsubsid" type="java.lang.Long">
+            <column name="DEPENDSUBSID" precision="14" scale="0" />
+        </property>
+        <property name="maxmemcount" type="java.lang.Long">
+            <column name="MAXMEMCOUNT" precision="5" scale="0" />
+        </property>
+        <property name="startdate" type="java.util.Date">
+            <column name="STARTDATE" length="7" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="16" />
+        </property>
+        <property name="statusdate" type="java.util.Date">
+            <column name="STATUSDATE" length="7" />
+        </property>
+        <property name="custtype" type="java.lang.Long">
+            <column name="CUSTTYPE" precision="1" scale="0" />
+        </property>
+        <property name="issolution" type="java.lang.Long">
+            <column name="ISSOLUTION" precision="1" scale="0" />
+        </property>
+        <property name="solutionoid" type="java.lang.Long">
+            <column name="SOLUTIONOID" precision="14" scale="0" />
+        </property>
+        <property name="productcode" type="java.lang.String">
+            <column name="PRODUCTCODE" length="32" />
+        </property>
+        <property name="billingnbr" type="java.lang.String">
+            <column name="BILLINGNBR" length="32" />
+        </property>
+        <property name="isintergroup" type="java.lang.Long">
+            <column name="ISINTERGROUP" precision="1" scale="0" />
+        </property>
+        <property name="ismaster" type="java.lang.Long">
+            <column name="ISMASTER" precision="1" scale="0" />
+        </property>
+        <property name="paygroupoid" type="java.lang.Long">
+            <column name="PAYGROUPOID" precision="14" scale="0" />
+        </property>
+        <property name="openordseq" type="java.lang.String">
+            <column name="OPENORDSEQ" length="32" />
+        </property>
+        <property name="interuserid" type="java.lang.String">
+            <column name="INTERUSERID" length="32" />
+        </property>
+        <property name="groupname" type="java.lang.String">
+            <column name="GROUPNAME" length="128" />
+        </property>
+        <property name="acctid" type="java.lang.Long">
+            <column name="ACCTID" precision="14" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

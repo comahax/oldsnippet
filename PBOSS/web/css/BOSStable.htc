@@ -1,0 +1,187 @@
+<public:htc urn="www.microsoft.com">
+<script language="JavaScript">
+	var tblHeader,tblBody,divCmtr,divCntr,tblS,tbtHe = 0,tbtnum =0,tbtline=0;
+	var rgWidths = new Array();
+	var rpWidths = new Array();
+	//alert(element.innerHTML);
+function tableScorll () {
+	if (element.offsetHeight >=330) {
+		tblS = true;
+		element.style.posHeight = 350;
+	}else{
+		tblS = false;
+		element.style.posHeight = element.offsetHeight+18
+	}
+	tblHeader = element.firstChild.cloneNode(false);
+	tblHeader1 = element.firstChild.cloneNode(false);
+  	tblBody   = element.firstChild.cloneNode(false);
+  	divCmtr   = document.createElement("DIV");
+  	divCntr   = document.createElement("DIV");
+  	
+  	
+  	for (var t = 0; t < element.firstChild.rows.length ; t++) {
+  		if (element.firstChild.rows[t].className == "print_table_style_head" || element.firstChild.rows[t].className == "table_style_head") {
+  			if (element.firstChild.rows[t].cells.length > tbtnum) {
+  				tbtnum = element.firstChild.rows[t].cells.length;
+  				tbtline = t;
+  			}
+  		}
+  	}
+	for (var i = 0; i < element.firstChild.rows[tbtline].cells.length; i++)
+	   {
+	      rgWidths[i] = element.firstChild.rows[tbtline].cells[i].offsetWidth;
+	   }
+	var longta = 0;
+	for (i=0;i<rgWidths.length;i++){
+		longta = longta + rgWidths[i];
+		}
+	if (element.firstChild.rows[tbtline] != null) {
+		for (var i = 0; i < element.firstChild.rows[tbtline].cells.length; i++)
+			   {
+			      rpWidths[i] = element.firstChild.rows[tbtline].cells[i].offsetWidth;
+			   }
+	}   
+	//alert(rgWidths.length);
+	var tbdyHeader = document.createElement("TBODY");
+	tblHeader.appendChild(tbdyHeader);
+	tbdyHeader.appendChild(element.firstChild.rows[tbtline].cloneNode(true));
+	for (var i = 0; i < element.firstChild.rows.length; i++)
+	    {
+	    if (element.firstChild.rows[i].className == "table_style_head" || element.firstChild.rows[i].className == "print_table_style_head") {
+	    	var oRow = element.firstChild.rows[i].cloneNode(true);
+	        tbdyHeader.appendChild(oRow);
+	        tbtHe += element.firstChild.rows[i].offsetHeight;
+	    }
+	}	
+	var tbdyBody = document.createElement("TBODY");
+	tblBody.appendChild(tbdyBody);
+	for (var i = 1; i < element.firstChild.rows.length; i++)
+	    {
+	    if (element.firstChild.rows[i].className != "table_style_head" && element.firstChild.rows[i].className != "print_table_style_head") {
+	       var oRow = element.firstChild.rows[i].cloneNode(true);
+	       tbdyBody.appendChild(oRow);
+	       }
+	    }
+	
+	tblBody.style.posWidth = longta+2; 
+	tblBody.style.tableLayout  = "fixed"; 
+	
+	divCntr.style.overflowX = "auto";
+	divCntr.style.overflowY = "auto";
+    divCntr.style.posHeight = element.offsetHeight-tbtHe;
+    divCntr.style.posWidth = element.offsetWidth;
+    divCntr.appendChild(tblBody);
+    
+    tblHeader.style.posWidth = longta+2; 
+	tblHeader.style.tableLayout  = "fixed";
+   	tblHeader.style.posHeight  = tbtHe;
+   	
+   	
+    divCmtr.style.overflow = "hidden";
+    divCmtr.style.posHeight = tbtHe;
+    
+    
+    divCmtr.appendChild(tblHeader);
+    
+  
+    
+    
+    
+ 
+    element.firstChild.removeNode(true);
+    element.appendChild(divCmtr);
+    element.appendChild(divCntr);
+     //alert(tbtnum);
+    	if (tblBody.rows[0] != null) { 
+	     	for (var i = 0; i < rpWidths.length; i++)
+		     {
+		     	  tblBody.rows[0].cells[i].style.posWidth  = rpWidths[i];
+		      } 
+	}
+	
+	var m; 
+	m = 0,mvpd=0;
+	tblHeader.rows[0].style.display = "none";
+	for (var j = 0; j < tblHeader.rows[0].cells.length; j++)
+	   {
+	   	var mvp = tblHeader.rows[0].cells[j].colSpan,mvpwidth=0;
+	   	if (isNaN(mvp)) {
+	   		mvp = 1;
+	   	}
+	   	do { //alert(mvp  + "_" + mvpd + "_" +rgWidths[mvpd]);
+	   		mvpwidth += rgWidths[mvpd];
+	   		mvpd++;
+	   		mvp --;
+	   		
+	   	}while(mvp>0)
+			tblHeader.rows[0].cells[j].style.posWidth = mvpwidth;//alert(mvpwidth);
+			tblHeader.rows[0].cells[j].style.whiteSpace = "nowrap";
+			//tblHeader.rows[0].cells[j].style.color = "#FF0000";
+	   }
+	
+	
+	if (tblBody.rows[0] == null) {
+		var vtr = document.createElement("tr");
+		var vtd = document.createElement("td");
+		vtr.appendChild(vtd);
+		tbdyBody.appendChild(vtr);
+		tblBody.style.posWidth = longta +2 ;
+		element.style.posHeight = 90;
+		divCntr.style.posHeight =40;
+		divCntr.style.background = "#ffffff";
+			if (rpWidths.length == 0) {
+			vtd.colSpan = 10;
+			}else {
+			vtd.colSpan = rpWidths.length;
+			}
+		
+		vtr.className="table_style_content";
+		vtd.style.posHeight = 20;
+	}
+	if (divCntr.scrollHeight > 330){
+    divCmtr.style.posWidth = element.offsetWidth - 16;
+    }else{
+    divCmtr.style.posWidth = element.offsetWidth;
+    }
+	//alert(tblHeader.outerHTML);
+	//alert(tbdyBody.outerHTML);
+	var longta = 0;
+	divCntr.attachEvent("onscroll",bego)
+	rgWidths = null;
+}		
+function bego () {
+	divCmtr.scrollLeft = divCntr.scrollLeft;
+}
+
+
+var myboss,mybosswidtha,mybosswidthb,mybossline=1;
+function MadeTableAuto() {
+mybossline++;
+	if(mybossline%2 == 0) {
+	myboss.childNodes[1].style.posWidth = myboss.offsetWidth;
+	myboss.childNodes[0].style.posWidth = myboss.offsetWidth - 24;
+	
+	if(myboss.childNodes[1].firstChild.offsetWidth < myboss.offsetWidth) {
+		mybosswidthb = myboss.offsetWidth - myboss.childNodes[1].firstChild.offsetWidth;
+		
+		var pbtable = myboss.childNodes[1].firstChild.firstChild.firstChild
+		//pbtable.firstChild.style.posWidth += mybosswidthb;
+		for (m=1;m<pbtable.cells.length-1;m++) {
+			pbtable.childNodes[m].style.posWidth += mybosswidthb/(pbtable.cells.length-2);
+			myboss.childNodes[0].firstChild.firstChild.childNodes[tbtline].childNodes[m].style.posWidth += mybosswidthb/(pbtable.cells.length-2);
+			}
+		//alert(pbtable.cells.length);
+		//myboss.childNodes[1].firstChild.firstChild.firstChild.firstChild.style.posWidth += mybosswidthb;
+		//myboss.childNodes[0].firstChild.firstChild.childNodes[tbtline].firstChild.style.posWidth += mybosswidthb;
+		
+		}
+	}
+}
+
+	myboss = element;
+	mybosswidtha = element.offsetWidth;
+	top.document.body.setAttribute("onresize",MadeTableAuto);
+</script>
+<public:attach event="oncontentready" onevent="tableScorll()" />
+<public:method name="tableScorll" />
+</public:htc>

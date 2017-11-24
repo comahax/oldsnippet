@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.chadtrewardsyninfo.persistent.ChAdtRewardsyninfoVO" table="CH_ADT_REWARDSYNINFO">
+<id column="TASKID" name="taskid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_ADT_REWARDUPLOAD_SEQ</param>
+	</generator>
+</id>
+<property column="REWARDMONTH" length="6" name="rewardmonth" not-null="true" type="java.lang.String"/>
+<property column="SYSTEMFLAG" length="3" name="systemflag" not-null="true" type="java.lang.Short"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="CHAINHEAD" length="18" name="chainhead" type="java.lang.String"/>
+<property column="MOBILE" length="32" name="mobile" type="java.lang.String"/>
+<property column="OPNIDS" length="300" name="opnids" type="java.lang.String"/>
+<property column="TASKSTATE" length="1" name="taskstate" type="java.lang.Byte"/>
+<property column="OPERID" length="16" name="operid" type="java.lang.String"/>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="RESULTFILE" length="200" name="resultfile" type="java.lang.String"/>
+<property column="FINISHTIME" length="7" name="finishtime" type="java.util.Date"/>
+<property column="TOTALCOUNT" length="7" name="totalcount" type="java.lang.Integer"/>
+<property column="SUCCESSSUM" length="16" name="successsum" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

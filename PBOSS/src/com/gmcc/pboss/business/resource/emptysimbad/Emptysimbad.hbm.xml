@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.emptysimbad.EmptysimbadVO" table="IM_FX_EMPTYSIMBAD">
+<id column="EMPTYNO" length="21" name="emptyno" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="COMCATEGORY" length="50" name="comcategory" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+</class>
+<!-- 查询空白SIM卡序列号对应的商品种类 -->
+<sql-query name="com.gmcc.pboss.business.resource.emptysimbad.getcomcategory"> 
+select COMCATEGORY
+  from IM_FX_EMPTYSIM e, IM_PR_COMCATEGORYRELA c
+ where e.comid = c.comid
+   and emptyno = :emptyno
+</sql-query>
+
+<!-- 获取空白SIM卡坏卡数量 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doEmptySimBadCount">
+<return-scalar column="count" type="java.lang.Long"/>
+<return-scalar column="comcategory" type="java.lang.String"/>
+select comcategory, count(*) count
+  from IM_FX_EMPTYSIMBAD
+ where wayid = :wayid
+ group by comcategory
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.employeelogquery.persistent.EmployeelogQueryVO" table="CH_PW_EMPLOYEELOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="OPTIME" length="7" name="optime"  type="java.util.Date"/>
+<property column="OPRCODE2" length="15" name="oprcode2" type="java.lang.String"/>
+<property column="TELEPHONE" length="15" name="telephone" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<!-- <property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/> -->
+<property column="CITYID" length="14" name="cityid" type="java.lang.String"/>
+<property column="REGDATE" length="7" name="regdate" type="java.util.Date"/>
+<property column="EMPSTATUS" length="2" name="empstatus" type="java.lang.Short" />
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

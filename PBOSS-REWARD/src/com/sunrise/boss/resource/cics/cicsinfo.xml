@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<cics-info>
+	 
+	<usedb>true</usedb>
+	<uselocal>true</uselocal>
+	
+	<region id="000" name="TEST" ename="TEST">
+		<ctg-main>tcp://10.200.5.201</ctg-main> <ctg-spare>tcp://10.200.5.201</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>YY01</cics-main> <cics-spare>ZW01</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+	
+	<region id="200" name="广州" ename="GZ">
+		<ctg-main>tcp://10.243.208.66</ctg-main> <ctg-spare>tcp://10.243.208.68</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWGZ01</cics-main> <cics-spare>ZWGZ02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="660" name="汕尾" ename="SW">
+		<ctg-main>tcp://10.243.208.76</ctg-main> <ctg-spare>tcp://10.243.208.74</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWSW01</cics-main> <cics-spare>ZWSW02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="662" name="阳江" ename="YJ">
+		<ctg-main>tcp://10.243.208.74</ctg-main> <ctg-spare>tcp://10.243.208.76</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWYJ01</cics-main> <cics-spare>ZWYJ02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="663" name="揭阳" ename="JY">
+		<ctg-main>tcp://10.243.208.68</ctg-main> <ctg-spare>tcp://10.243.208.66</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWJY01</cics-main> <cics-spare>ZWJY02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="668" name="茂名" ename="MM">
+		<ctg-main>tcp://10.243.208.76</ctg-main> <ctg-spare>tcp://10.243.208.74</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWMM01</cics-main> <cics-spare>ZWMM02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+  <region id="750" name="江门" ename="JM">
+		<ctg-main>tcp://10.243.208.72</ctg-main> <ctg-spare>tcp://10.243.208.70</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWJM01</cics-main> <cics-spare>ZWJM02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+	
+	<region id="751" name="韶关" ename="SG">
+		<ctg-main>tcp://10.243.208.76</ctg-main> <ctg-spare>tcp://10.243.208.74</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWSG01</cics-main> <cics-spare>ZWSG02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="752" name="惠州" ename="HZ">
+		<ctg-main>tcp://10.243.208.68</ctg-main> <ctg-spare>tcp://10.243.208.66</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWHZ01</cics-main> <cics-spare>ZWHZ02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="753" name="梅州" ename="MZ">
+		<ctg-main>tcp://10.243.208.72</ctg-main> <ctg-spare>tcp://10.243.208.70</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWMZ01</cics-main> <cics-spare>ZWMZ02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="754" name="汕头" ename="ST">
+		<ctg-main>tcp://10.243.208.68</ctg-main> <ctg-spare>tcp://10.243.208.66</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWST01</cics-main> <cics-spare>ZWST02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="755" name="深圳" ename="SZ">
+		<ctg-main>tcp://10.243.208.70</ctg-main> <ctg-spare>tcp://10.243.208.72</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWSZ01</cics-main> <cics-spare>ZWSZ02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="756" name="珠海" ename="ZH">
+		<ctg-main>tcp://10.243.208.72</ctg-main> <ctg-spare>tcp://10.243.208.70</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWZH01</cics-main> <cics-spare>ZWZH02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="757" name="佛山" ename="FS">
+		<ctg-main>tcp://10.243.208.76</ctg-main> <ctg-spare>tcp://10.243.208.74</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWFS01</cics-main> <cics-spare>ZWFS02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+	
+	<region id="758" name="肇庆" ename="ZQ">
+		<ctg-main>tcp://10.243.208.68</ctg-main> <ctg-spare>tcp://10.243.208.66</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWZQ01</cics-main> <cics-spare>ZWZQ02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="759" name="湛江" ename="ZJ">
+		<ctg-main>tcp://10.243.208.74</ctg-main> <ctg-spare>tcp://10.243.208.76</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWZJ01</cics-main> <cics-spare>ZWZJ02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="760" name="中山" ename="ZS">
+		<ctg-main>tcp://10.243.208.72</ctg-main> <ctg-spare>tcp://10.243.208.70</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWZS01</cics-main> <cics-spare>ZWZS02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="762" name="河源" ename="HY">
+		<ctg-main>tcp://10.243.208.76</ctg-main> <ctg-spare>tcp://10.243.208.74</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWHY01</cics-main> <cics-spare>ZWHY02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="763" name="清远" ename="QY">
+		<ctg-main>tcp://10.243.208.72</ctg-main> <ctg-spare>tcp://10.243.208.70</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWQY01</cics-main> <cics-spare>ZWQY02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+	
+	<region id="766" name="云浮" ename="YF">
+		<ctg-main>tcp://10.243.208.72</ctg-main> <ctg-spare>tcp://10.243.208.70</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWYF01</cics-main> <cics-spare>ZWYF02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="768" name="潮州" ename="CZ">
+		<ctg-main>tcp://10.243.208.76</ctg-main> <ctg-spare>tcp://10.243.208.74</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWCZ01</cics-main> <cics-spare>ZWCZ02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="769" name="东莞" ename="DG">
+		<ctg-main>tcp://10.243.208.74</ctg-main> <ctg-spare>tcp://10.243.208.76</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWDG01</cics-main> <cics-spare>ZWDG02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+
+	<region id="999" name="广东" ename="GD">
+		<ctg-main>tcp://10.243.208.66</ctg-main> <ctg-spare>tcp://10.243.208.68</ctg-spare>
+		<ctg-port>2006</ctg-port>
+		<cics-main>ZWGD01</cics-main> <cics-spare>ZWGD02</cics-spare>
+		<cics-user>TEST</cics-user> <cics-password>TEST</cics-password>
+	</region>
+	
+</cics-info>

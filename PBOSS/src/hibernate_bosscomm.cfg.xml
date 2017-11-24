@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!--多数据源使使用，需要在J2EE服务器上配置XA数据源--> 
+		<property name="connection.datasource">xa-common-ds</property>
+		<property name="hibernate.session_factory_name">hibernate_bosscomm</property>
+		
+		<!-- JBoss --> 
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+		<!-- WebSphere --> 
+		<!--<property name="transaction.manager_lookup_class">org.hibernate.transaction.WebSphereTransactionManagerLookup</property>--> 
+		
+		<property name="jta.UserTransaction">java:comp/UserTransaction</property>
+		
+		<!-- 解决_sql_查询中文乱码问题 -->
+		<property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="jdbc.batch_size">5</property>
+		<property name="jdbc.fetch_size">5</property>
+		<property name="max_fetch_depth">1</property>
+		<property name="show_sql">false</property>
+		
+		<!-- Channel -->
+		<mapping resource="com/gmcc/pboss/business/channel/way/Way.hbm.xml" />
+		<mapping resource="com/gmcc/pboss/business/channel/wayhierarchy/Wayhierarchy.hbm.xml" />
+		<!-- Resource -->
+		<mapping resource="com/gmcc/pboss/business/resource/resloadparam/Resloadparam.hbm.xml" />
+		<!-- Sales -->
+		<mapping resource="com/gmcc/pboss/business/sales/comsellmid/Comsellmid.hbm.xml"/>
+		
+	</session-factory>
+</hibernate-configuration>

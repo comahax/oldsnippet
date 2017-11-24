@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.chzjtylocalzdsalereward.persistent.ChZjtyLocalzdsalerewardVO" table="CH_ZJTY_LOCALZDSALEREWARD">
+<id column="RECID" name="recid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CHZJTYLOCALZDSALEREWARD_SEQ</param>
+</generator>
+</id>
+<property column="WAYNAME" length="256" name="wayname" type="java.lang.String"/>
+<property column="CITYID" length="10" name="cityid" type="java.lang.String"/>
+<property column="ZJTYNAME" length="256" name="zjtyname" type="java.lang.String"/>
+<property column="REWARDREPORTTIME" length="10" name="rewardreporttime" type="java.lang.String"/>
+<property column="DZZDXLHYJ" length="14" name="dzzdxlhyj" type="java.lang.Long"/>
+<property column="DZZDXLLHY" length="14" name="dzzdxllhy" type="java.lang.Long"/>
+<property column="DZZDXLLJ" length="14" name="dzzdxllj" type="java.lang.Long"/>
+<property column="DZZDXLHJ" length="14" name="dzzdxlhj" type="java.lang.Long"/>
+<property column="YSRGDZZDXLHYJ" length="14" name="ysrgdzzdxlhyj" type="java.lang.Long"/>
+<property column="YSRGDZZDXLLHY" length="14" name="ysrgdzzdxllhy" type="java.lang.Long"/>
+<property column="YSRGDZZDXLLJ" length="14" name="ysrgdzzdxllj" type="java.lang.Long"/>
+<property column="YSRGDZZDXLHJ" length="14" name="ysrgdzzdxlhj" type="java.lang.Long"/>
+<property column="DZZDCJHYJ" length="14" name="dzzdcjhyj" type="java.lang.Double"/>
+<property column="DZZDCJLHY" length="14" name="dzzdcjlhy" type="java.lang.Double"/>
+<property column="DZZDCJLJ" length="14" name="dzzdcjlj" type="java.lang.Double"/>
+<property column="DZZDCJHJ" length="14" name="dzzdcjhj" type="java.lang.Double"/>
+<property column="YSRGDZZDCJHYJ" length="14" name="ysrgdzzdcjhyj" type="java.lang.Double"/>
+<property column="YSRGDZZDCJLHY" length="14" name="ysrgdzzdcjlhy" type="java.lang.Double"/>
+<property column="YSRGDZZDCJLJ" length="14" name="ysrgdzzdcjlj" type="java.lang.Double"/>
+<property column="YSRGDZZDCJHJ" length="14" name="ysrgdzzdcjhj" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

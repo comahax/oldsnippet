@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.partnerres.PartnerresVO" table="FX_SW_PARTNERRES">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">FX_SW_PARTNERRES_SEQ</param>
+</generator>
+</id>
+<property column="WAYID" length="18" name="wayid" not-null="true" type="java.lang.String"/>
+<property column="RESTYPE" length="32" name="restype" not-null="true" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="COMRESID" length="32" name="comresid" type="java.lang.String"/>
+<property column="COMID" length="18" name="comid" type="java.lang.Long"/>
+<property column="BATCHNO" length="30" name="batchno" type="java.lang.String"/>
+<property column="CREATETIME" length="7" name="createtime" type="java.util.Date"/>
+<property column="BRAND" length="16" name="brand" type="java.lang.String"/>
+<property column="ISACTIVE" length="3" name="isactive" type="java.lang.Short"/>
+<property column="ACTTIME" length="7" name="acttime" type="java.util.Date"/>
+<property column="EMPTYNO" length="21" name="emptyno" type="java.lang.String"/>
+</class>
+<!-- 统计套卡已销售量 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatSMPSoldQty">
+	<return-scalar column="val" type="java.lang.Integer"/>
+	 select count(*) val from FX_SW_PARTNERRES a, CH_PW_WAY b
+	 where a.wayid = b.wayid 
+	 and b.countyid = :countyid 
+	 and a.comcategory = :comcategory
+	 and a.createtime &gt;= sysdate - :targetDay 
+	 and a.createtime &lt;= sysdate
+</sql-query>
+<!-- 统计套卡已激活量 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatSMPActiveQty">
+	<return-scalar column="val" type="java.lang.Integer"/>
+	 select count(*) val from FX_SW_PARTNERRES a, CH_PW_WAY b
+	 where a.wayid = b.wayid 
+	 and b.countyid = :countyid 
+	 and a.comcategory = :comcategory 
+	 and a.isactive = 1 
+	 and a.createtime &gt;= sysdate - :targetDay 
+	 and a.createtime &lt;= sysdate
+</sql-query>
+<!-- 分品牌统计各个渠道在指定间隔月内的套卡激活量,该品牌必须在指定间隔月份内每个月都要有激活量 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatSMPActiveQtyInMonths">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="activeQty" type="java.lang.Integer"/>
+	select p.wayid as wayid,p.brand as brand, c.starlevel as starlevel, NVL(count(1),0) as activeQty
+	from FX_SW_PARTNERRES p ,ch_pw_way c
+	where p.restype = 'COMRESSMP' and p.isactive = 1 and p.wayid=c.wayid 
+	and p.acttime &gt;= :begintime and p.acttime &lt;= :endtime   
+	group by p.wayid,p.brand,c.starlevel 
+	
+</sql-query>
+<!-- 按分公司，品牌统计某分公司的套卡资源总库存 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatCountyQty">
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="Qty" type="java.lang.Long"/>
+	select a.countyid, b.brand, count(1) as Qty 
+  	from ch_pw_way a, FX_SW_PARTNERRES b 
+ 	where a.wayid = b.wayid and b.isactive = :isactive and b.restype= :restype  
+ 	group by countyid, brand
+</sql-query>
+<!-- 按分公司，品牌统计某分公司前N天领取的套卡量  后台[资源库存预警]使用-->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatCountyReceivedQty">
+	<return-scalar column="countyid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="Qty" type="java.lang.Long"/>
+	select a.countyid, b.brand, count(1) as Qty
+ 	 from CH_PW_WAY a, FX_SW_PARTNERRES b
+ 	 where a.WAYID = b.WAYID
+  	  and b.RESTYPE = :restype
+  	  and b.CREATETIME &gt;= :begintime
+  	  and b.CREATETIME &lt;= :endtime
+ 	 group by COUNTYID, BRAND
+ 	 order by COUNTYID, BRAND
+</sql-query>
+<!-- 获取网点“库存量” -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWayStdAmount">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="Qty" type="java.lang.Long"/>
+	select wayid,brand,NVL(count(*),0) as Qty 
+	from FX_SW_PARTNERRES p 
+	where p.isactive = 0 and p.restype = 'COMRESSMP' 
+	group by wayid,brand
+</sql-query>
+<!-- 统计指定创建时间内的网点“领货量” -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWayLHAmount">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="Qty" type="java.lang.Long"/>
+	select wayid,brand,NVL(count(*),0) as Qty 
+	from FX_SW_PARTNERRES p 
+	where p.CREATETIME &gt;= :begintime and p.CREATETIME &lt;= :endtime 
+	and p.restype = 'COMRESSMP' 
+	group by wayid,brand
+</sql-query>
+
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWayActiveAmount_11">
+	<return-scalar column="wayid" type="java.lang.String"/> 
+	<return-scalar column="Qty" type="java.lang.Long"/>
+	select wayid,NVL(count(*),0) as Qty 
+	from FX_SW_PARTNERRES p 
+	where p.ACTTIME &gt;= :begintime and p.ACTTIME &lt;= :endtime 
+	and p.restype = 'COMRESSMP' and p.isactive = 1 
+	group by wayid
+</sql-query>
+
+
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWayActiveAmount">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/> 
+	<return-scalar column="Qty" type="java.lang.Long"/>
+	select wayid,brand,NVL(count(*),0) as Qty 
+	from FX_SW_PARTNERRES p 
+	where p.ACTTIME &gt;= :begintime and p.ACTTIME &lt;= :endtime 
+	and p.restype = 'COMRESSMP' and p.isactive = 1 
+	group by wayid,brand
+</sql-query>
+
+<!-- 统计创建时间和激活时间在同一个时间段内的网点“激活量”  -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWayActiveAmount_2">
+	<return-scalar column="wayid" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+	<return-scalar column="Qty" type="java.lang.Long"/>
+	select wayid,brand,NVL(count(*),0) as Qty 
+	from FX_SW_PARTNERRES p 
+	where p.ACTTIME &gt;= :begintime and p.ACTTIME &lt;= :endtime 
+	and p.CREATETIME &gt;= :begintime and p.CREATETIME &lt;= :endtime 
+	and p.restype = 'COMRESSMP' and p.isactive = 1 
+	group by wayid,brand
+</sql-query>
+<!-- 统计配送商垫资的订单以创建网点库存快照(套卡) -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWaySMPOrderForSnapShot">
+	select w.countyid,
+             w.svccode,
+             w.mareacode,
+             s1.orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.brand,
+             s1.comcategory,
+             s1.cnt1 
+        from (select t2.wayid, t2.brand, t3.orderid, t2.comcategory, count(*) as cnt1
+                from FX_SW_PARTNERRES  t2,
+                     fx_sw_order       t3,
+                     fx_sw_orderresdet t4 
+               where t2.wayid = t3.wayid
+                 and t3.orderid = t4.orderid
+                 and t2.comresid = t4.comresid
+                 and t2.restype = 'COMRESSMP'
+                 and t2.isactive = 0
+                 and t3.orderstate = 'FINISHED'
+               group by t2.wayid, t2.brand, t3.orderid, t2.comcategory) s1,
+             Ch_pw_way w
+       where s1.wayid = w.wayid
+       
+       union
+
+       select w.countyid,
+             w.svccode,
+             w.mareacode,
+             '' as orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.brand,
+             s1.comcategory,
+             s1.cnt1 
+        from (select t2.wayid, t2.brand, t2.comcategory, count(*) as cnt1
+                from FX_SW_PARTNERRES  t2
+               where t2.batchno is null
+                 and t2.restype = 'COMRESSMP'
+                 and t2.isactive = 0
+               group by t2.wayid, t2.brand, t2.comcategory) s1,
+             Ch_pw_way w
+where s1.wayid = w.wayid
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWayRecordOrderForSnapShot">
+select w.countyid,
+             w.svccode,
+             w.mareacode,
+             s1.orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.brand,
+             s1.comresid,
+             s1.comcategory,
+             '' as emptyno
+        from (select t2.wayid, t2.brand, t3.orderid, t4.comresid,t2.comcategory
+                from FX_SW_PARTNERRES  t2,
+                     fx_sw_order       t3,
+                     fx_sw_orderresdet t4
+               where t2.wayid = t3.wayid
+                 and t3.orderid = t4.orderid
+                 and t2.comresid = t4.comresid
+                 and t2.restype = 'COMRESSMP'
+                 and t2.isactive = 0
+                 and t3.orderstate = 'FINISHED') s1,
+             Ch_pw_way w
+       where s1.wayid = w.wayid
+       
+       union
+       
+       select w.countyid,
+             w.svccode,
+             w.mareacode,
+             '' as orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.brand,
+             s1.comresid,
+             s1.comcategory,
+             '' as emptyno
+        from (select t2.wayid, t2.brand, t2.comresid,t2.comcategory
+                from FX_SW_PARTNERRES  t2
+               where t2.batchno is null
+                 and t2.restype = 'COMRESSMP'
+                 and t2.isactive = 0) s1,
+             Ch_pw_way w
+       where s1.wayid = w.wayid
+</sql-query>
+
+<!-- 空白SIM卡 统计 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWaySMPOrderForSnapShot_SIM">
+	select w.countyid,
+             w.svccode,
+             w.mareacode,
+             s1.orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.comcategory,
+             s1.cnt1 
+        from (select t2.wayid, t3.orderid, t2.comcategory, count(*) as cnt1
+                from FX_SW_PARTNERRES  t2,
+                     fx_sw_order       t3,
+                     fx_sw_orderresdet t4 
+               where t2.wayid = t3.wayid
+                 and t3.orderid = t4.orderid
+                 and t2.emptyno = t4.emptyno 
+                 and t2.restype = 'EMPTYSIM'
+                 and t3.orderstate = 'FINISHED'
+　　　　　　and t2.isactive = 0
+               group by t2.wayid, t2.comcategory, t3.orderid) s1,
+
+             Ch_pw_way w
+       where s1.wayid = w.wayid
+       
+       union
+
+       select w.countyid,
+             w.svccode,
+             w.mareacode,
+             '' as orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.comcategory,
+             s1.cnt1 
+        from (select t2.wayid, t2.brand, t2.comcategory, count(*) as cnt1
+                from FX_SW_PARTNERRES  t2
+               where t2.batchno is null
+                 and t2.restype = 'EMPTYSIM'
+　　　　and t2.isactive = 0
+                 group by t2.wayid, t2.brand, t2.comcategory) s1,
+             Ch_pw_way w
+where s1.wayid = w.wayid
+</sql-query>
+<!-- 空白SIM卡  明细 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doStatWayRecordOrderForSnapShot_SIM">
+	select w.countyid,
+             w.svccode,
+             w.mareacode,
+             s1.orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.brand,
+             s1.comresid,
+             s1.comcategory,
+　　　　		 s1.emptyno
+        from (select t2.wayid, t2.brand, t3.orderid, t4.comresid,t2.comcategory,t2.emptyno
+                from FX_SW_PARTNERRES  t2,
+                     fx_sw_order       t3,
+                     fx_sw_orderresdet t4
+               where t2.wayid = t3.wayid
+                 and t3.orderid = t4.orderid
+                 and t2.comresid = t4.comresid
+                 and t2.restype = 'EMPTYSIM'
+                 and t2.isactive = 0
+                 and t3.orderstate = 'FINISHED') s1,
+             Ch_pw_way w
+       where s1.wayid = w.wayid
+       
+       union
+       
+       select w.countyid,
+             w.svccode,
+             w.mareacode,
+             '' as orderid,
+             s1.wayid,
+             w.wayname,
+             w.starlevel,
+             s1.brand,
+             s1.comresid,
+             s1.comcategory,
+　　　　		 s1.emptyno
+        from (select t2.wayid, t2.brand, t2.comresid,t2.comcategory,t2.emptyno
+                from FX_SW_PARTNERRES  t2
+               where t2.batchno is null
+                 and t2.restype = 'EMPTYSIM'
+                 and t2.isactive = 0) s1,
+             Ch_pw_way w
+       where s1.wayid = w.wayid
+</sql-query>
+
+<!-- 【销售进度提醒】后台逻辑 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doSalePlanRemind">
+<return-scalar column="wayid" type="java.lang.String"/>
+<return-scalar column="waymagcode" type="java.lang.String"/>
+<return-scalar column="mareacode" type="java.lang.String"/>
+<return-scalar column="countyid" type="java.lang.String"/>
+<return-scalar column="starlevel" type="java.lang.String"/>
+<return-scalar column="salecount" type="java.lang.Long"/>
+
+SELECT
+    chpw.wayid,
+    chpw.waymagcode,
+    chpw.mareacode,
+    chpw.countyid,
+    chpw.starlevel,
+    fxact.salecount
+FROM
+    ch_pw_way chpw
+INNER JOIN
+    FX_RU_WAYASSISTANT c
+ON
+    chpw.WAYID = c.WAYID
+LEFT JOIN
+    (
+        SELECT
+            fx.wayid,
+            COUNT(*) salecount
+        FROM
+            FX_SW_PARTNERRES fx
+        WHERE
+            fx.acttime &gt;= to_date(:beginDate, 'yyyy-mm-dd')
+        AND fx.acttime &lt; to_date(:endDate, 'yyyy-mm-dd')
+        AND RESTYPE = 'COMRESSMP'
+        AND fx.isactive = 1
+        GROUP BY
+            fx.wayid) fxact
+ON
+    chpw.wayid = fxact.wayid
+WHERE
+    chpw.cityid = :cityid 
+AND chpw.WAYSTATE = 1
+AND c.canorder=1
+</sql-query>
+<!-- 获取库存量 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doComcategoryQty">
+	<return-scalar column="count" type="java.lang.Long"/>
+	<return-scalar column="comcategory" type="java.lang.String"/>
+	 select comcategory, count(*) count
+  from FX_SW_PARTNERRES a
+ where a.wayid = :wayid 
+    and a.restype = 'EMPTYSIM'
+ group by comcategory
+</sql-query>
+
+<!-- 获取空白SIM卡已使用量 -->
+<sql-query name="com.gmcc.pboss.business.sales.partnerres.doEmptySimUseCount">
+<return-scalar column="count" type="java.lang.Long"/>
+<return-scalar column="comcategory" type="java.lang.String"/>
+select comcategory, count(*) count
+  from FX_SW_PARTNERRES
+ where isactive = 1
+   and wayid = :wayid
+   and restype = 'EMPTYSIM'
+ group by comcategory
+</sql-query>
+</hibernate-mapping>

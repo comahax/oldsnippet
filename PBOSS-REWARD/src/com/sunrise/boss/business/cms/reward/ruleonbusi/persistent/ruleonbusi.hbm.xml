@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.ruleonbusi.persistent.RuleonbusiVO" table="CH_ADT_RULEONBUSI">
+<composite-id>
+<key-property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<key-property name="ruleid" column="RULEID" type="java.lang.String" length="18"/>
+</composite-id>
+</class>
+<sql-query name="ruleonbusi.query">
+<return class="com.sunrise.boss.business.cms.reward.ruleonbusi.persistent.RuleonbusiVO" />
+     		select a.opnid, a.ruleid, c.rulename, b.name from CH_ADT_RULEONBUSI a, CH_PW_OPERATION b, ch_adt_rule c where a.opnid = b.opnid and a.ruleid = c.ruleid and c.rulename like :name
+    	</sql-query>
+</hibernate-mapping>

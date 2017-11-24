@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.comcategoryrela.ComcategoryrelaVO" table="IM_PR_COMCATEGORYRELA">
+<id column="RELAID" length="18" name="relaid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">IM_PR_COMCATEGORYRELA_SEQ</param>
+	</generator>
+</id>
+
+<property column="COMCATEGORY" length="20" name="comcategory" not-null="true" type="java.lang.String"/>
+<property column="COMID" length="18" name="comid" not-null="true" type="java.lang.Long"/>
+<property column="RESTYPE" length="32" name="restype" not-null="true" type="java.lang.String"/>
+<property column="BRAND" length="32" name="brand"  type="java.lang.String"/>
+</class>
+<sql-query name="com.gmcc.pboss.business.resource.comcategoryrela.queryComcategoryByBrand">
+	<return-scalar column="comcategory" type="java.lang.String"/>
+	select distinct(COMCATEGORY) comcategory from IM_PR_COMCATEGORYRELA
+ 	where BRAND = :BRAND and RESTYPE = 'COMRESSMP'
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.comcategoryrela.loadComCateAndResType">
+	select comcategory,restype from IM_PR_COMCATEGORYRELA 
+	group by comcategory,restype
+</sql-query>
+<sql-query name="com.gmcc.pboss.business.resource.comcategoryrela.loadComCateAndBrand">
+	<return-scalar column="comcategory" type="java.lang.String"/>
+	<return-scalar column="brand" type="java.lang.String"/>
+		select distinct (COMCATEGORY), BRAND from IM_PR_COMCATEGORYRELA a
+ 		where a.RESTYPE = 'COMRESSMP'
+   		and a.BRAND is not null
+</sql-query>
+
+<sql-query
+	name="queryRestypeToComcategory">
+	<return-scalar column="restype" type="java.lang.String"/>
+	<return-scalar column="comcategory" type="java.lang.String"/>
+	select distinct restype,comcategory from IM_PR_COMCATEGORYRELA order by restype
+</sql-query>
+</hibernate-mapping>

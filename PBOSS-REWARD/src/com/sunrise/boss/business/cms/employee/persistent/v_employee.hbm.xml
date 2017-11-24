@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.cms.employee.persistent.VEmployeeVO" table="V_CH_PW_EMPLOYEE">
+		<id column="EMPLOYEEID" name="employeeid" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<!-- to avoid conflict with employeelogvo.oprcode, change oprcode to oprcode2 -->
+		<property column="OPRCODE" length="15" name="oprcode2" type="java.lang.String" />
+		<property column="EMPLOYEENAME" length="30" name="employeename" type="java.lang.String" />
+		<property column="BIRTHDAY" length="7" name="birthday" type="java.sql.Date" />
+		<property column="SEX" length="3" name="sex" type="java.lang.Short" />
+		<property column="EDULEVEL" length="3" name="edulevel" type="java.lang.Short" />
+		<property column="NATIVEHOME" length="20" name="nativehome" type="java.lang.String" />
+		<property column="POLIVISAGE" length="3" name="polivisage" type="java.lang.Short" />
+		<property column="DEPARTMENT" length="18" name="department" type="java.lang.String" />
+		<property column="SERVOFFICE" length="18" name="servoffice" type="java.lang.String" />
+		<property column="STATION" length="14" name="station" type="java.lang.Long" />
+		<property column="JOBLEVEL" length="3" name="joblevel" type="java.lang.Short" />
+		<property column="INTIME" length="7" name="intime" type="java.sql.Date" />
+		<property column="WORKTIME" length="3" name="worktime" type="java.lang.Short" />
+		<property column="HEREWORKTIME" length="3" name="hereworktime" type="java.lang.Short" />
+		<property column="EMPLOYTYPE" length="3" name="employtype" type="java.lang.Short" />
+		<property column="COMPANY" length="50" name="company" type="java.lang.String" />
+		<property column="TELEPHONE" length="15" name="telephone" type="java.lang.String" />
+		<property column="OFFICETEL" length="12" name="officetel" type="java.lang.String" />
+		<property column="OUTTIME" length="7" name="outtime" type="java.sql.Date" />
+		<property column="OUTRESULT" length="255" name="outresult" type="java.lang.String" />
+		<property column="HOMEADDR" length="255" name="homeaddr" type="java.lang.String" />
+		<property column="CARDID" length="18" name="cardid" type="java.lang.String" />
+		<property column="WAYID" length="18" name="wayid" type="java.lang.String" />
+
+		<property column="WAYTYPE" length="4" name="waytype" type="java.lang.String" />
+		<property column="PVTEMAIL" length="128" name="pvtemail" type="java.lang.String" />
+		<property column="OFCPHONE" length="64" name="ofcphone" type="java.lang.String" />
+		<property column="OFCEMAIL" length="128" name="ofcemail" type="java.lang.String" />
+		<property column="SPECIALITY" length="16" name="speciality" type="java.lang.String" />
+		<property column="CITYID" length="14" name="cityid" type="java.lang.String" />
+		<property column="COUNTYID" length="14" name="countyid" type="java.lang.String" />
+		<property column="SVCCODE" length="14" name="svccode" type="java.lang.String" />
+		<property column="POSITTYPE" length="16" name="posittype" type="java.lang.String" />
+		<property column="CONTACTTYPE" length="2" name="contacttype" type="java.lang.Short" />
+		<property column="EMPSTATUS" length="2" name="empstatus" type="java.lang.Short" />
+		<property column="ACTBANK" length="64" name="actbank" type="java.lang.String" />
+		<property column="ACTNO" length="32" name="actno" type="java.lang.String" />
+		<property column="ACTNAME" length="32" name="actname" type="java.lang.String" />
+		<property column="ACTPID" length="20" name="actpid" type="java.lang.String" />
+
+		<property name="bail" column="BAIL" type="java.lang.Double" length="12" />
+		<property name="gradschool" column="GRADSCHOOL" type="java.lang.String" length="40" />
+		<property name="gradtime" column="GRADTIME" type="java.sql.Date" length="7" />
+		<property name="ismarried" column="ISMARRIED" type="java.lang.Short" length="2" />
+		<property name="outreason" column="OUTREASON" type="java.lang.Short" length="2" />
+		<property name="trainlevel" column="TRAINLEVEL" type="java.lang.String" length="20" />
+		<property name="hobby" column="HOBBY" type="java.lang.String" length="255" />
+		<property name="character" column="CHARACTER" type="java.lang.String" length="255" />
+		<property name="asses" column="ASSES" type="java.lang.String" length="255" />
+		<property name="workhistry" column="WORKHISTRY" type="java.lang.String" length="255" />
+		<property name="prizeorpunish" column="PRIZEORPUNISH" type="java.lang.String" length="255" />
+		<property name="empass" column="EMPASS" type="java.lang.String" length="20" />
+		<property name="right" column="RIGHT" type="java.lang.Short" length="2" />
+		<property name="isnet" column="ISNET" type="java.lang.Short" length="2"/>
+<property name="isopen" column="ISOPEN" type="java.lang.Short" length="2"/>
+<property name="netpass" column="NETPASS" type="java.lang.String" length="6"/>
+<property name="selectmobile" column="SELECTMOBILE" type="java.lang.String" length="12"/>
+<property name="subname" column="SUBNAME" type="java.lang.String" length="40"/>
+<property name="regdate" column="REGDATE" type="java.sql.Date" length="7" />
+<property name="istenseed" column="ISTENSEED" type="java.lang.Short" length="7" />
+<property name="isinternal" column="ISINTERNAL" type="java.lang.Short" length="7" />
+<property name="emplevel" column="EMPLEVEL" type="java.lang.Short" length="7" />
+<property column="STATE" length="3" name="state" type="java.lang.Short"/>
+<property column="EMPATTR" length="50" name="empattr" type="java.lang.String"/>
+<property column="EMPATTRMEMO" length="512" name="empattrmemo" type="java.lang.String"/>
+<property column="EMPATTR2" length="3" name="empattr2" type="java.lang.Short" />
+	</class>
+	<sql-query name="WayproemployeeQuery">
+	<return class="com.sunrise.boss.business.cms.employee.persistent.VEmployeeVO" />
+		select e.EMPLOYEEID , e.OPRCODE as OPRCODE2 , e.EMPLOYEENAME ,
+		e.BIRTHDAY , e.SEX , e.EDULEVEL , e.NATIVEHOME , e.POLIVISAGE ,
+		e.DEPARTMENT , e.SERVOFFICE , e.STATION , e.JOBLEVEL , e.INTIME
+		, e.WORKTIME , e.HEREWORKTIME , e.EMPLOYTYPE , e.COMPANY ,
+		e.TELEPHONE , e.OFFICETEL , e.OUTTIME , e.OUTRESULT , e.HOMEADDR
+		, e.CARDID , e.WAYID , e.WAYTYPE , e.PVTEMAIL , e.OFCPHONE ,
+		e.OFCEMAIL , e.SPECIALITY , (select dvalue from ch_Adt_dictparam where dkey = 'CITYID') as CITYID , e.COUNTYID , e.SVCCODE ,
+		e.POSITTYPE , e.CONTACTTYPE , e.EMPSTATUS , e.ACTBANK , e.ACTNO
+		, e.ACTNAME , e.ACTPID ,e.bail , e.gradschool , e.gradtime ,
+		e.ismarried , e.outreason , e.trainlevel , e.hobby , e.character
+		, e.asses , e.workhistry , e.prizeorpunish, e.right,e.empass,e.isnet,e.isopen,e.netpass,e.selectmobile,e.subname,e.regdate
+		, m.STATE , e.ISTENSEED, e.ISINTERNAL , l.emplevel,e.empattr,e.empattrmemo,e.empattr2
+		  from Ch_Pw_Employee e, ch_pw_way w , CH_PW_EMPMODEL m, CH_BBC_EMPLEVEL l
+		 where w.wayid = e.wayid
+		   and w.waytype = 'AG'
+		   and e.isnet = 2
+		   and e.EMPLOYEEID = l.EMPLOYEEID(+)
+		   and e.EMPLOYEEID = m.EMPLOYEEID(+) and (m.MODEL = 3 or m.model is null)
+	</sql-query>
+</hibernate-mapping>

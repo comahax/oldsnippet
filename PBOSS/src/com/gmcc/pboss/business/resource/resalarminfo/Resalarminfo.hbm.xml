@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.resource.resalarminfo.ResalarminfoVO" table="IM_PR_RESALARMINFO">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">IM_PR_RESALARMINFO_SEQ</param>
+</generator>
+</id>
+<property column="ALARMDATE" length="7" name="alarmdate" type="java.util.Date"/>
+<property column="COUNTYID" length="14" name="countyid" type="java.lang.String"/>
+<property column="COMCATEGORY" length="20" name="comcategory" type="java.lang.String"/>
+<property column="STOCKAMT" length="10" name="stockamt" type="java.lang.Long"/>
+<property column="SALEDAMT" length="10" name="saledamt" type="java.lang.Long"/>
+<property column="ACTEDAMT" length="10" name="actedamt" type="java.lang.Long"/>
+<property column="ACTRATE" length="16" name="actrate" type="java.lang.Double"/>
+<property column="ALARMSIGNAL" length="20" name="alarmsignal" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

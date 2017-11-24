@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="/zifee/prodpresentlog/ProdpresentlogForm" type="com.sunrise.boss.ui.zifee.prodpresentlog.ProdpresentlogForm" />
+		<form-bean name="/zifee/prodpresent/ProdpresentForm" type="com.sunrise.boss.ui.zifee.prodpresent.ProdpresentForm" />
+		<form-bean name="/zifee/pcpfprodfixfee/PcPfProdfixfeeForm"
+			type="com.sunrise.boss.ui.zifee.pcpfprodfixfee.PcPfProdfixfeeForm" />
+		<form-bean name="/zifee/fixfeedisc/FixfeediscForm"
+			type="com.sunrise.boss.ui.zifee.fixfeedisc.FixfeediscForm" />
+		<form-bean name="/zifee/yxplangroup/YxPlanGroupForm"
+			type="com.sunrise.boss.ui.zifee.yxplangroup.YxPlanGroupForm" />
+		<form-bean name="/zifee/areagroupinfo/AreaGroupInfoForm"
+			type="com.sunrise.boss.ui.zifee.areagroupinfo.AreaGroupInfoForm" />
+		<form-bean name="/zifee/areagroupscale/AreaGroupScaleForm"
+			type="com.sunrise.boss.ui.zifee.areagroupscale.AreaGroupScaleForm" />
+		<form-bean name="/zifee/areainfo/AreaInfoForm"
+			type="com.sunrise.boss.ui.zifee.areainfo.AreaInfoForm" />
+		<form-bean name="/zifee/pcppproduct/ProductForm"
+			type="com.sunrise.boss.ui.zifee.pcppproduct.ProductForm" />
+		<form-bean name="/zifee/yxplantype/YxPlanTypeForm"
+			type="com.sunrise.boss.ui.zifee.yxplantype.YxPlanTypeForm" />
+		<form-bean name="/zifee/yxplankind/YxPlanKindForm"
+			type="com.sunrise.boss.ui.zifee.yxplankind.YxPlanKindForm" />
+		<form-bean name="/zifee/yxplansplitscale/YxPlanSplitScaleForm"
+			type="com.sunrise.boss.ui.zifee.yxplansplitscale.YxPlanSplitScaleForm" />
+		<form-bean name="/zifee/yxplan/YxPlanActionForm"
+			type="com.sunrise.boss.ui.zifee.yxplan.YxPlanActionForm" />
+		<form-bean name="/zifee/disckind/DisckindForm"
+			type="com.sunrise.boss.ui.zifee.disckind.DisckindForm" />
+		<form-bean name="/zifee/disccode/DisccodeForm"
+			type="com.sunrise.boss.ui.zifee.disccode.DisccodeForm" />
+		<form-bean name="/zifee/plandisccode/PlandisccodeForm"
+			type="com.sunrise.boss.ui.zifee.plandisccode.PlandisccodeForm" />
+		<form-bean name="/zifee/feedisc/FeediscForm"
+			type="com.sunrise.boss.ui.zifee.feedisc.FeediscForm" />
+		<form-bean name="/zifee/eboxdisc/EboxdiscForm"
+			type="com.sunrise.boss.ui.zifee.eboxdisc.EboxdiscForm" />
+		<form-bean name="/zifee/yxplansplitbatch/YxPlanSplitBatchForm"
+			type="com.sunrise.boss.ui.zifee.yxplansplitbatch.YxPlanSplitBatchForm" />
+		<form-bean name="/zifee/yxplansplitvalue/YxPlanSplitValueForm"
+			type="com.sunrise.boss.ui.zifee.yxplansplitvalue.YxPlanSplitValueForm" />
+		<form-bean name="/zifee/calcrate/CalcrateForm"
+			type="com.sunrise.boss.ui.zifee.calcrate.CalcrateForm" />
+		<form-bean name="/zifee/pcpfprodfixflog/PcPfProdfixflogForm"
+			type="com.sunrise.boss.ui.zifee.pcpfprodfixflog.PcPfProdfixflogForm" />
+		<form-bean name="/zifee/fixfeedisclog/FixfeedisclogForm"
+			type="com.sunrise.boss.ui.zifee.fixfeedisclog.FixfeedisclogForm" />
+		<form-bean name="/zifee/eboxdisclog/EboxdisclogForm"
+			type="com.sunrise.boss.ui.zifee.eboxdisclog.EboxdisclogForm" />
+		<form-bean name="/zifee/disckindlog/DisckindlogForm"
+			type="com.sunrise.boss.ui.zifee.disckindlog.DisckindlogForm" />
+		<form-bean name="/zifee/disccodelog/DisccodelogForm"
+			type="com.sunrise.boss.ui.zifee.disccodelog.DisccodelogForm" />
+		<form-bean name="/zifee/plandiscodlo/PlandiscodloForm"
+			type="com.sunrise.boss.ui.zifee.plandiscodlo.PlandiscodloForm" />
+		<form-bean name="/zifee/feedisclog/FeedisclogForm"
+			type="com.sunrise.boss.ui.zifee.feedisclog.FeedisclogForm" />
+		<form-bean name="/zifee/yxplanlog/YxplanlogForm"
+			type="com.sunrise.boss.ui.zifee.yxplanlog.YxplanlogForm" />
+
+		<form-bean name="/zifee/calcratelog/CalcratelogForm"
+			type="com.sunrise.boss.ui.zifee.calcratelog.CalcratelogForm" />
+		<form-bean name="/zifee/plandisccode/BatchPlandisccodeForm"
+			type="com.sunrise.boss.ui.zifee.plandisccode.BatchPlandisccodeForm" />
+		<form-bean name="/zifee/fixfeedisc/BatchFixfeediscForm"
+			type="com.sunrise.boss.ui.zifee.fixfeedisc.BatchFixfeediscForm" />
+		<form-bean name="/zifee/yxplangpinf/YxplangpinfForm"
+			type="com.sunrise.boss.ui.zifee.yxplangpinf.YxplangpinfForm" />
+		<form-bean name="/zifee/disccodeprio/DisccodeprioForm"
+			type="com.sunrise.boss.ui.zifee.disccodeprio.DisccodeprioForm" />
+		<!-- 批量导入优惠代码的优先级 -->
+		<form-bean name="/zifee/batchdisccodeprio/BatchdisccodeprioForm"
+			type="com.sunrise.boss.ui.zifee.batchdisccodeprio.BatchdisccodeprioForm" />
+		<form-bean name="/zifee/prodplanserv/ProdplanservForm"
+			type="com.sunrise.boss.ui.zifee.prodplanserv.ProdplanservForm" />
+		<form-bean name="/zifee/batchyxplancopy/BatchYxplanCopyForm"
+			type="com.sunrise.boss.ui.zifee.batchyxplancopy.BatchYxplanCopyForm" />
+		<form-bean name="/zifee/yxplancplog/YxplancplogForm"
+			type="com.sunrise.boss.ui.zifee.yxplancplog.YxplancplogForm" />
+		<form-bean name="/zifee/yxplanpresnt/YxplanpresntForm"
+			type="com.sunrise.boss.ui.zifee.yxplanpresnt.YxplanpresntForm" />
+		<!-- 月底帐务优惠设置 -->
+		<form-bean name="/zifee/feediscmonth/FeediscmonthForm"
+			type="com.sunrise.boss.ui.zifee.feediscmonth.FeediscmonthForm" />
+		<form-bean name="/zifee/feediscmolog/FeediscmologForm"
+			type="com.sunrise.boss.ui.zifee.feediscmolog.FeediscmologForm" />
+		<!-- 自然月收费关联营销方案 -->
+		<form-bean name="/zifee/prodplanmonth/ProdplanmonthForm"
+			type="com.sunrise.boss.ui.zifee.prodplanmonth.ProdplanmonthForm" />
+		<form-bean name="/zifee/prodplanmonlog/ProdplanmonlogForm"
+			type="com.sunrise.boss.ui.zifee.prodplanmonlog.ProdplanmonlogForm" />
+		<form-bean name="/zifee/minconsume/MinconsumeForm" 
+		    type="com.sunrise.boss.ui.zifee.minconsume.MinconsumeForm" />	
+		<form-bean name="/zifee/minconsume/BatchMinconsumeForm" 
+		    type="com.sunrise.boss.ui.zifee.minconsume.BatchMinconsumeForm" />
+		<!-- 产品包优惠比例设置 -->
+		<form-bean name="/zifee/productdiscount/ProductdiscountForm"
+			type="com.sunrise.boss.ui.zifee.productdiscount.ProductdiscountForm" />
+		<form-bean name="/zifee/yxplansynlogform" type="com.sunrise.boss.ui.zifee.yxplansynlog.YxplansynlogForm" />
+		<form-bean name="/zifee/prodservsetform" type="com.sunrise.boss.ui.zifee.prodservset.ProdservsetForm" />
+	</form-beans>
+
+
+	<action-mappings>
+		<action name="/zifee/prodpresentlog/ProdpresentlogForm"
+			path="/zifee/prodpresentlog" scope="request"
+			type="com.sunrise.boss.ui.zifee.prodpresentlog.ProdpresentlogAction">
+			<forward name="list" path="/zifee/prodpresentlog/list.jsp"/>
+			<forward name="content" path="/zifee/prodpresentlog/content.jsp"/>
+		</action>
+		
+		<action name="/zifee/prodpresent/ProdpresentForm"
+			path="/zifee/prodpresent" scope="request"
+			type="com.sunrise.boss.ui.zifee.prodpresent.ProdpresentAction">
+			<forward name="list" path="/zifee/prodpresent/list.jsp"/>
+			<forward name="content" path="/zifee/prodpresent/content.jsp"/>
+		</action>
+		
+		<action name="/zifee/pcpfprodfixfee/PcPfProdfixfeeForm"
+			path="/zifee/pcpfprodfixfee" scope="request"
+			type="com.sunrise.boss.ui.zifee.pcpfprodfixfee.PcPfProdfixfeeAction">
+			<forward name="list" path="/zifee/pcpfprodfixfee/list.jsp" />
+			<forward name="content"
+				path="/zifee/pcpfprodfixfee/content.jsp" />
+		</action>
+		<action name="/zifee/fixfeedisc/FixfeediscForm"
+			path="/zifee/fixfeedisc" scope="request"
+			type="com.sunrise.boss.ui.zifee.fixfeedisc.FixfeediscAction">
+			<forward name="list" path="/zifee/fixfeedisc/list.jsp" />
+			<forward name="content"
+				path="/zifee/fixfeedisc/content.jsp" />
+		</action>
+		<action name="/zifee/yxplangroup/YxPlanGroupForm"
+			path="/zifee/yxplangroup" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplangroup.YxPlanGroupAction">
+			<forward name="list" path="/zifee/yxplangroup/list.jsp" />
+			<forward name="content"
+				path="/zifee/yxplangroup/content.jsp" />
+			<forward name="batch" path="/zifee/yxplangroup/batch.jsp" />
+		</action>
+		<action name="/zifee/areagroupinfo/AreaGroupInfoForm"
+			path="/zifee/areagroupinfo" scope="request"
+			type="com.sunrise.boss.ui.zifee.areagroupinfo.AreaGroupInfoAction">
+			<forward name="list" path="/zifee/areagroupinfo/list.jsp" />
+			<forward name="content"
+				path="/zifee/areagroupinfo/content.jsp" />
+			<forward name="select"
+				path="/zifee/areagroupinfo/select.jsp" />
+		</action>
+		<action name="/zifee/areagroupscale/AreaGroupScaleForm"
+			path="/zifee/areagroupscale" scope="request"
+			type="com.sunrise.boss.ui.zifee.areagroupscale.AreaGroupScaleAction">
+			<forward name="list" path="/zifee/areagroupscale/list.jsp" />
+			<forward name="content"
+				path="/zifee/areagroupscale/content.jsp" />
+		</action>
+		<action name="/zifee/areainfo/AreaInfoForm"
+			path="/zifee/areainfo" scope="request"
+			type="com.sunrise.boss.ui.zifee.areainfo.AreaInfoAction">
+			<forward name="list" path="/zifee/areainfo/list.jsp" />
+			<forward name="content" path="/zifee/areainfo/content.jsp" />
+			<forward name="select" path="/zifee/areainfo/select.jsp" />
+		</action>
+		<action name="/zifee/pcppproduct/ProductForm"
+			path="/zifee/product" scope="request"
+			type="com.sunrise.boss.ui.zifee.pcppproduct.ProductAction">
+			<forward name="list" path="/zifee/pcpfprodfixfee/left.jsp" />
+		</action>
+		<action name="/zifee/areagroupinfo/AreaGroupInfoForm"
+			path="/zifee/areagrouptree" scope="request"
+			type="com.sunrise.boss.ui.zifee.areagroupinfo.AreaGroupInfoAction">
+			<forward name="list" path="/zifee/areagroupscale/left.jsp" />
+		</action>
+		<action name="/zifee/yxplantype/YxPlanTypeForm"
+			path="/zifee/yxplantype" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplantype.YxPlanTypeAction">
+			<forward name="list" path="/zifee/yxplantype/list.jsp" />
+			<forward name="content"
+				path="/zifee/yxplantype/content.jsp" />
+		</action>
+		<action name="/zifee/yxplankind/YxPlanKindForm"
+			path="/zifee/yxplankind" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplankind.YxPlanKindAction">
+			<forward name="list" path="/zifee/yxplankind/list.jsp" />
+			<forward name="content"
+				path="/zifee/yxplankind/content.jsp" />
+		</action>
+		<action name="/zifee/yxplansplitscale/YxPlanSplitScaleForm"
+			path="/zifee/yxplansplitscale" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplansplitscale.YxPlanSplitScaleAction">
+			<forward name="list"
+				path="/zifee/yxplansplitscale/list.jsp" />
+			<forward name="content"
+				path="/zifee/yxplansplitscale/content.jsp" />
+		</action>
+		<action name="/zifee/yxplan/YxPlanActionForm"
+			path="/zifee/yxplan" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplan.YxPlanAction">
+			<forward name="list" path="/zifee/yxplan/list.jsp" />
+			<forward name="content" path="/zifee/yxplan/content.jsp" />
+			<forward name="select" path="/zifee/yxplan/select.jsp" />
+			<forward name="tree" path="/zifee/yxplangroup/tree.jsp" />
+			<forward name="grouplist"
+				path="/zifee/yxplangroup/grouplist.jsp" />
+			<forward name="groupcontent"
+				path="/zifee/yxplangroup/groupcontent.jsp" />
+			<forward name="batch" path="/zifee/yxplan/batch.jsp" />
+			<forward name="excelout"
+				path="/cms/audit/excelout/excelout.jsp" />
+			<forward name="single" path="/zifee/yxplan/singlecopy.jsp" />
+			<forward name="copyresult"
+				path="/zifee/yxplan/singlecopyresult.jsp" />
+			<forward name="selectyxplanid"
+				path="/zifee/yxplan/selectYxplanid.jsp" />
+		</action>
+		<action name="/zifee/disckind/DisckindForm"
+			path="/zifee/disckind" scope="request"
+			type="com.sunrise.boss.ui.zifee.disckind.DisckindAction">
+			<forward name="list" path="/zifee/disckind/list.jsp" />
+			<forward name="content" path="/zifee/disckind/content.jsp" />
+		</action>
+		<action name="/zifee/disccode/DisccodeForm"
+			path="/zifee/disccode" scope="request"
+			type="com.sunrise.boss.ui.zifee.disccode.DisccodeAction">
+			<forward name="list" path="/zifee/disccode/list.jsp" />
+			<forward name="content" path="/zifee/disccode/content.jsp" />
+			<forward name="select" path="/zifee/disccode/select.jsp" />
+		</action>
+		<action name="/zifee/plandisccode/PlandisccodeForm"
+			path="/zifee/plandisccode" scope="request"
+			type="com.sunrise.boss.ui.zifee.plandisccode.PlandisccodeAction">
+			<forward name="list" path="/zifee/plandisccode/list.jsp" />
+			<forward name="content"
+				path="/zifee/plandisccode/content.jsp" />
+		</action>
+		<action name="/zifee/feedisc/FeediscForm" path="/zifee/feedisc"
+			scope="request"
+			type="com.sunrise.boss.ui.zifee.feedisc.FeediscAction">
+			<forward name="list" path="/zifee/feedisc/list.jsp" />
+			<forward name="content" path="/zifee/feedisc/content.jsp" />
+			<forward name="batch" path="/zifee/feedisc/batch.jsp" />
+		</action>
+		<action name="/zifee/eboxdisc/EboxdiscForm"
+			path="/zifee/eboxdisc" scope="request"
+			type="com.sunrise.boss.ui.zifee.eboxdisc.EboxdiscAction">
+			<forward name="list" path="/zifee/eboxdisc/list.jsp" />
+			<forward name="content" path="/zifee/eboxdisc/content.jsp" />
+			<forward name="batch" path="/zifee/eboxdisc/batch.jsp" />
+		</action>
+		<action name="/zifee/yxplansplitbatch/YxPlanSplitBatchForm"
+			path="/zifee/yxplansplitbatch/upload" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.upload.UploadFileAction">
+			<forward name="success"
+				path="/zifee/yxplansplitimport/batch.jsp" />
+			<forward name="error"
+				path="/zifee/yxplansplitimport/batch.jsp" />
+		</action>
+
+		<action name="/zifee/yxplansplitbatch/YxPlanSplitBatchForm"
+			path="/zifee/yxplansplitbatch/batch" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success"
+				path="/zifee/yxplansplitimport/batch.jsp" />
+			<forward name="error"
+				path="/zifee/yxplansplitimport/batch.jsp" />
+		</action>
+		<action name="/zifee/yxplansplitvalue/YxPlanSplitValueForm"
+			path="/zifee/yxplansplitvalue" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplansplitvalue.YxPlanSplitValueAction">
+			<forward name="list"
+				path="/zifee/yxplansplitvalue/list.jsp" />
+		</action>
+		<action name="/zifee/calcrate/CalcrateForm"
+			path="/zifee/calcrate" scope="request"
+			type="com.sunrise.boss.ui.zifee.calcrate.CalcrateAction">
+			<forward name="list" path="/zifee/calcrate/list.jsp" />
+			<forward name="content" path="/zifee/calcrate/content.jsp" />
+		</action>
+		<action name="/zifee/pcpfprodfixflog/PcPfProdfixflogForm"
+			path="/zifee/pcpfprodfixflog" scope="request"
+			type="com.sunrise.boss.ui.zifee.pcpfprodfixflog.PcPfProdfixflogAction">
+			<forward name="list" path="/zifee/pcpfprodfixflog/list.jsp" />
+		</action>
+		<action name="/zifee/fixfeedisclog/FixfeedisclogForm"
+			path="/zifee/fixfeedisclog" scope="request"
+			type="com.sunrise.boss.ui.zifee.fixfeedisclog.FixfeedisclogAction">
+			<forward name="list" path="/zifee/fixfeedisclog/list.jsp" />
+		</action>
+		<action name="/zifee/eboxdisclog/EboxdisclogForm"
+			path="/zifee/eboxdisclog" scope="request"
+			type="com.sunrise.boss.ui.zifee.eboxdisclog.EboxdisclogAction">
+			<forward name="list" path="/zifee/eboxdisclog/list.jsp" />
+		</action>
+		<action name="/zifee/disckindlog/DisckindlogForm"
+			path="/zifee/disckindlog" scope="request"
+			type="com.sunrise.boss.ui.zifee.disckindlog.DisckindlogAction">
+			<forward name="list" path="/zifee/disckindlog/list.jsp" />
+		</action>
+		<action name="/zifee/disccodelog/DisccodelogForm"
+			path="/zifee/disccodelog" scope="request"
+			type="com.sunrise.boss.ui.zifee.disccodelog.DisccodelogAction">
+			<forward name="list" path="/zifee/disccodelog/list.jsp" />
+		</action>
+		<action name="/zifee/plandiscodlo/PlandiscodloForm"
+			path="/zifee/plandiscodlo" scope="request"
+			type="com.sunrise.boss.ui.zifee.plandiscodlo.PlandiscodloAction">
+			<forward name="list" path="/zifee/plandiscodlo/list.jsp" />
+		</action>
+		<action name="/zifee/feedisclog/FeedisclogForm"
+			path="/zifee/feedisclog" scope="request"
+			type="com.sunrise.boss.ui.zifee.feedisclog.FeedisclogAction">
+			<forward name="list" path="/zifee/feedisclog/list.jsp" />
+		</action>
+		<action name="/zifee/yxplanlog/YxplanlogForm"
+			path="/zifee/yxplanlog" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplanlog.YxplanlogAction">
+			<forward name="list" path="/zifee/yxplanlog/list.jsp" />
+		</action>
+
+		<action name="/zifee/calcratelog/CalcratelogForm"
+			path="/zifee/calcratelog" scope="request"
+			type="com.sunrise.boss.ui.zifee.calcratelog.CalcratelogAction">
+			<forward name="list" path="/zifee/calcratelog/list.jsp" />
+		</action>
+		<action name="/zifee/yxplangpinf/YxplangpinfForm"
+			path="/zifee/yxplangpinf" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplangpinf.YxplangpinfAction">
+			<forward name="list" path="/zifee/yxplangpinf/list.jsp" />
+			<forward name="content"
+				path="/zifee/yxplangpinf/content.jsp" />
+			<forward name="tree" path="/zifee/yxplangroup/tree.jsp" />
+		</action>
+
+		<action name="/zifee/fixfeedisc/BatchFixfeediscForm"
+			path="/zifee/fixfeedisc/upload" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.upload.UploadFileAction">
+			<forward name="success" path="/zifee/fixfeedisc/batch.jsp" />
+			<forward name="error" path="/zifee/fixfeedisc/batch.jsp" />
+		</action>
+		<action name="/zifee/fixfeedisc/BatchFixfeediscForm"
+			path="/zifee/fixfeedisc/process" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/zifee/fixfeedisc/batch.jsp" />
+			<forward name="error" path="/zifee/fixfeedisc/batch.jsp" />
+		</action>
+
+		<!-- PlanDiscCode batch operation start-->
+		<action name="/zifee/plandisccode/BatchPlandisccodeForm"
+			path="/zifee/plandisccode/upload" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.upload.UploadFileAction">
+			<forward name="success"
+				path="/zifee/plandisccode/batch.jsp" />
+			<forward name="error" path="/zifee/plandisccode/batch.jsp" />
+		</action>
+		<action name="/zifee/plandisccode/BatchPlandisccodeForm"
+			path="/zifee/plandisccode/process" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success"
+				path="/zifee/plandisccode/batch.jsp" />
+			<forward name="error" path="/zifee/plandisccode/batch.jsp" />
+		</action>
+		<action name="/zifee/disccodeprio/DisccodeprioForm"
+			path="/zifee/disccodeprio" scope="request"
+			type="com.sunrise.boss.ui.zifee.disccodeprio.DisccodeprioAction">
+			<forward name="list" path="/zifee/disccodeprio/list.jsp" />
+			<forward name="batch" path="/zifee/disccodeprio/batch.jsp" />
+			<forward name="content"
+				path="/zifee/disccodeprio/content.jsp" />
+		</action>
+		<!-- PlanDiscCode batch operation end-->
+
+		<!-- 批量导入优惠代码的优先级 -->
+		<action name="/zifee/batchdisccodeprio/BatchdisccodeprioForm"
+			path="/zifee/batchdisccodeprio/upload" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.upload.UploadFileAction">
+			<forward name="success"
+				path="/zifee/disccodeprio/batch.jsp" />
+			<forward name="error" path="/zifee/disccodeprio/batch.jsp" />
+		</action>
+
+		<action name="/zifee/batchdisccodeprio/BatchdisccodeprioForm"
+			path="/zifee/batchdisccodeprio/process" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success"
+				path="/zifee/disccodeprio/batch.jsp" />
+			<forward name="error" path="/zifee/disccodeprio/batch.jsp" />
+		</action>
+
+		<action name="/zifee/prodplanserv/ProdplanservForm"
+			path="/zifee/prodplanserv" scope="request"
+			type="com.sunrise.boss.ui.zifee.prodplanserv.ProdplanservAction">
+			<forward name="list" path="/zifee/prodplanserv/list.jsp" />
+			<forward name="content"
+				path="/zifee/prodplanserv/content.jsp" />
+		</action>
+		<action name="/zifee/batchyxplancopy/BatchYxplanCopyForm"
+			path="/zifee/batchyxplancopy/process" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/zifee/yxplan/batchcopy.jsp" />
+			<forward name="error" path="/zifee/yxplan/batchcopy.jsp" />
+		</action>
+		<action name="/zifee/yxplancplog/YxplancplogForm"
+			path="/zifee/yxplancplog" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplancplog.YxplancplogAction">
+			<forward name="list" path="/zifee/yxplancplog/list.jsp" />
+		</action>
+		<action name="/zifee/yxplanpresnt/YxplanpresntForm"
+			path="/zifee/yxplanpresnt" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplanpresnt.YxplanpresntAction">
+			<forward name="list" path="/zifee/yxplanpresnt/list.jsp" />
+			<forward name="content"
+				path="/zifee/yxplanpresnt/content.jsp" />
+		</action>
+		<!-- 月底帐务优惠设置 -->
+		<action name="/zifee/feediscmolog/FeediscmologForm"
+			path="/zifee/feediscmolog" scope="request"
+			type="com.sunrise.boss.ui.zifee.feediscmolog.FeediscmologAction">
+			<forward name="list" path="/zifee/feediscmolog/list.jsp" />
+		</action>
+		<action name="/zifee/feediscmonth/FeediscmonthForm"
+			path="/zifee/feediscmonth" scope="request"
+			type="com.sunrise.boss.ui.zifee.feediscmonth.FeediscmonthAction">
+			<forward name="list" path="/zifee/feediscmonth/list.jsp" />
+			<forward name="content"
+				path="/zifee/feediscmonth/content.jsp" />
+		</action>
+		<!-- 自然月收费关联营销方案 -->
+		<action name="/zifee/prodplanmonth/ProdplanmonthForm"
+			path="/zifee/prodplanmonth" scope="request"
+			type="com.sunrise.boss.ui.zifee.prodplanmonth.ProdplanmonthAction">
+			<forward name="list" path="/zifee/prodplanmonth/list.jsp" />
+			<forward name="content"
+				path="/zifee/prodplanmonth/content.jsp" />
+		</action>
+		<action name="/zifee/prodplanmonlog/ProdplanmonlogForm"
+			path="/zifee/prodplanmonlog" scope="request"
+			type="com.sunrise.boss.ui.zifee.prodplanmonlog.ProdplanmonlogAction">
+			<forward name="list" path="/zifee/prodplanmonlog/list.jsp" />
+		</action>
+		<action name="/zifee/minconsume/MinconsumeForm"
+			path="/zifee/minconsume" scope="request"
+			type="com.sunrise.boss.ui.zifee.minconsume.MinconsumeAction">
+			<forward name="list" path="/zifee/minconsume/list.jsp" />
+			<forward name="content" path="/zifee/minconsume/content.jsp" />
+		</action>
+		<action name="/zifee/minconsume/BatchMinconsumeForm"
+			path="/zifee/minconsume/upload" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.upload.UploadFileAction">
+			<forward name="success" path="/zifee/minconsume/batch.jsp" />
+			<forward name="error" path="/zifee/minconsume/batch.jsp" />
+		</action>
+		<action name="/zifee/minconsume/BatchMinconsumeForm"
+			path="/zifee/minconsume/process" scope="request"
+			type="com.sunrise.boss.ui.commons.batch.processfile.BatchTaskAction">
+			<forward name="success" path="/zifee/minconsume/batch.jsp" />
+			<forward name="error" path="/zifee/minconsume/batch.jsp" />
+		</action>
+		<action name="/zifee/yxplansynlogform"
+			path="/zifee/yxplansynlog" scope="request"
+			type="com.sunrise.boss.ui.zifee.yxplansynlog.YxplansynlogAction">
+			<forward name="success" path="/zifee/yxplansynlog/batch.jsp" />
+			<forward name="error" path="/zifee/yxplansynlog/batch.jsp" />
+		</action>
+		<!-- 产品包优惠比例设置 -->
+		<action name="/zifee/productdiscount/ProductdiscountForm"
+			path="/zifee/productdiscount" scope="request"
+			type="com.sunrise.boss.ui.zifee.productdiscount.ProductdiscountAction">
+			<forward name="content" path="/zifee/productdiscount/content.jsp" />
+			<forward name="list" path="/zifee/productdiscount/list.jsp" />
+		</action>
+		<action name="/zifee/prodservsetform"
+			path="/zifee/prodservset" scope="request"
+			type="com.sunrise.boss.ui.zifee.prodservset.ProdservsetAction">
+			<forward name="content" path="/zifee/prodservset/content.jsp" />
+			<forward name="list" path="/zifee/prodservset/list.jsp" />
+		</action>
+	</action-mappings>
+
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.PcPfProdfixfee"
+		key="pcpfprodfixfee" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Fixfeedisc"
+		key="fixfeedisc" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.YxPlanGroup"
+		key="yxplangroup" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.AreaGroupInfo"
+		key="areagroupinfo" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.AreaGroupScale"
+		key="areagroupscale" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.AreaInfo"
+		key="areainfo" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.YxPlanType"
+		key="yxplantype" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.YxPlanKind"
+		key="yxplankind" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.YxPlanSplitScale"
+		key="yxplansplitscale" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.YxPlan" key="yxplan"
+		null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.disckind"
+		key="disckind" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.disccode"
+		key="disccode" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.plandisccode"
+		key="plandisccode" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.feedisc" key="feedisc"
+		null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.eboxdisc"
+		key="eboxdisc" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.YxPlanSplitValue"
+		key="yxplansplitvalue" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Calcrate"
+		key="calcrate" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.eboxdisclog"
+		key="eboxdisclog" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.disckindlog"
+		key="disckindlog" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.plandiscodlo"
+		key="plandiscodlo" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.disccodelog"
+		key="disccodelog" null="false">
+	</message-resources>
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.feedisclog"
+		key="feedisclog" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.yxplanlog"
+		key="yxplanlog" null="false" />
+
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Calcratelog"
+		key="calcratelog" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Disccodeprio"
+		key="disccodeprio" null="false">
+	</message-resources>
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.BatchDisccodeprio"
+		key="batchdisccodeprio" null="false">
+	</message-resources>
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Prodplanserv"
+		key="prodplanserv" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Yxplancplog"
+		key="yxplancplog" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Yxplanpresnt"
+		key="yxplanpresnt" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Feediscmolog"
+		key="feediscmolog" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Feediscmonth"
+		key="feediscmonth" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Prodplanmonlog"
+		key="prodplanmonlog" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Prodplanmonth"
+		key="prodplanmonth" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Minconsume"
+		key="minconsume" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Prodservset"
+		key="prodservset" null="false" />
+	<!-- 产品包优惠比例设置 -->
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Productdiscount"
+		key="productdiscount" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Prodpresent"
+		key="prodpresent" null="false" />
+	<message-resources
+		parameter="com.sunrise.boss.resource.i18n.zifee.Prodpresentlog"
+		key="prodpresentlog" null="false" />
+</struts-config>

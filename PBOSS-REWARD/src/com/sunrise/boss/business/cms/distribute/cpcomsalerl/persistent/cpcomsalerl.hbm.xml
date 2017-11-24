@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.distribute.cpcomsalerl.persistent.CpcomsalerlVO" table="CH_DST_CPCOMSALERL">
+<id name="cpsaleid" column="CPSALEID" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_DST_CPCOMSALERL_SEQ</param>
+	</generator>
+</id>
+<property name="cooperauid" column="COOPERAUID" type="java.lang.String" length="50" not-null="true"/>
+<property name="fxtype" column="FXTYPE" type="java.lang.Short" length="3" not-null="true"/>
+<property name="comid" column="COMID" type="java.lang.Long" length="18" not-null="true"/>
+<property name="maxnum" column="MAXNUM" type="java.lang.Integer" length="6" not-null="true"/>
+<property name="minnum" column="MINNUM" type="java.lang.Integer" length="6" not-null="true"/>
+<property name="disctype" column="DISCTYPE" type="java.lang.Short" length="3" not-null="true"/>
+<property name="discount" column="DISCOUNT" type="java.lang.Double" length="16" not-null="true"/>
+<property name="ordbasenum" column="ORDBASENUM" type="java.lang.Integer" length="6"/>
+<property name="minactive" column="MINACTIVE" type="java.lang.Double" length="16" not-null="true"/>
+<property name="privid" column="PRIVID" type="java.lang.String" length="32"/>
+</class>
+</hibernate-mapping>

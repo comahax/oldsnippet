@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.gmcc.pboss.biz.info.reward.payment.model.ChCwConfig" table="CH_CW_CONF">
+    	<id name="key" type="java.lang.String">
+			<column name="KEY" length="32" />
+			<generator class="assigned" />
+		</id>
+		<property name="value" type="java.lang.String">
+			<column name="VALUE" length="32" />
+		</property>
+		<property name="explain" type="java.lang.String">
+			<column name="EXPLAIN" length="128" />
+		</property>
+    </class>
+
+</hibernate-mapping>

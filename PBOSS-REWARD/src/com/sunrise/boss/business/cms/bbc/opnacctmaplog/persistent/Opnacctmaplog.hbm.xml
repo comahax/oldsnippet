@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.bbc.opnacctmaplog.persistent.OpnacctmaplogVO" table="CH_BBC_OPNACCTLOG">
+<id name="logid" column="LOGID" type="java.lang.Long">
+	<generator class="sequence">
+	    <param name="sequence">CH_BBC_OPNACCTLOG_SEQ</param>
+	</generator>
+</id>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="OPRCODE" length="16" name="oprcode" type="java.lang.String"/>
+<property column="OPRTYPE" length="8" name="oprtype" type="java.lang.String"/>
+<property column="SUCCESS" length="8" name="success" type="java.lang.String"/>
+<property name="opnid" column="OPNID" type="java.lang.String" length="18"/>
+<property name="acctid" column="ACCTID" type="java.lang.Long" length="14"/>
+</class>
+</hibernate-mapping>

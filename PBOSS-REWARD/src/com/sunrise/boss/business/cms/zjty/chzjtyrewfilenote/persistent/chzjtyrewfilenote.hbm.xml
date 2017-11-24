@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.chzjtyrewfilenote.persistent.ChZjtyRewfilenoteVO" table="CH_ZJTY_REWFILENOTE">
+<id column="SEQID" name="seqid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">CH_ZJTY_REWFILENOTE_SEQ</param>
+	</generator>
+</id>
+<property column="FILENAME" length="128" name="filename" type="java.lang.String"/>
+<property column="FILEPATH" length="256" name="filepath" type="java.lang.String"/>
+<property column="UPLOADCODE" length="14" name="uploadcode" type="java.lang.String"/>
+<property column="UPLOADTIME" length="7" name="uploadtime" type="java.util.Date"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="MEMO" length="256" name="memo" type="java.lang.String"/>
+<property column="CITYID" length="2" name="cityid" type="java.lang.String"/>
+<property column="OLDFILENAME" length="128" name="oldfilename" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

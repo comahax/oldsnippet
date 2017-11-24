@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.cityrecord.persistent.CityrecordVO" table="CH_ADT_CITYRECORD">
+<id column="RECORDID" name="recordid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">CH_ADT_CITYRECORD_SEQ</param>
+	</generator>
+</id>
+<property column="OPNID" length="18" name="opnid" type="java.lang.String"/>
+<property column="WAYID" length="18" name="wayid" type="java.lang.String"/>
+<property column="REWARDTYPE" length="3" name="rewardtype" type="java.lang.Short"/>
+<property column="REWARDMONTH" length="6" name="rewardmonth" type="java.lang.String"/>
+<property column="MOBILE" length="32" name="mobile" type="java.lang.String"/>
+<property column="OPRTIME" length="7" name="oprtime" type="java.util.Date"/>
+<property column="BUSIVALUE" length="14" name="busivalue" type="java.lang.Double"/>
+<property column="PAYSUM" length="22" name="paysum" type="java.lang.Double"/>
+<property column="PAYMONEY" length="22" name="paymoney" type="java.lang.Double"/>
+<property column="APPROVEID" length="32" name="approveid" type="java.lang.String"/>
+<property column="ISFLAG" length="3" name="isflag" type="java.lang.Short"/>
+<property column="OPRCODE" length="15" name="oprcode" type="java.lang.String"/>
+<property column="OPTIME" length="7" name="optime" type="java.util.Date"/>
+<property column="SYSTEMFLAG" length="3" name="systemflag" type="java.lang.Short"/>
+<property column="REWARDLISTID" length="14" name="rewardlistid" type="java.lang.Long"/>
+<property column="TASKID" length="10" name="taskid" type="java.lang.Long"/>
+<property column="ACCOUNTOPRCODE" length="15" name="accountoprcode" type="java.lang.String"/>
+<property column="ACCOUNTOPTIME" length="7" name="accountoptime" type="java.util.Date"/> 
+<property column="ADJUSTOPRCODE" length="15" name="adjustoprcode" type="java.lang.String"/> 
+<property column="ADJUSTOPTIME" length="7" name="adjustoptime" type="java.util.Date"/> 
+<property column="PAYMENTOPRCODE" length="15" name="paymentoprcode" type="java.lang.String"/>
+<property column="PAYMENTOPTIME" length="7" name="paymentoptime" type="java.util.Date"/> 
+<property column="BRAND" length="3" name="brand" type="java.lang.Long"/>
+<property column="BATCHNO" length="18" name="batchno" type="java.lang.String"/> 
+<property column="PAYMONTH" length="6" name="paymonth" type="java.lang.String"/>  
+<property column="DCORDID" length="14" name="dcordid" type="java.lang.Long"/>
+</class>
+<sql-query name="com.sunrise.boss.business.cms.cityrecord.getOpnlevel2">
+	<return-scalar column="parentid" type="java.lang.String"/>
+	<return-scalar column="parentname" type="java.lang.String"/>
+	<return-scalar column="opnid" type="java.lang.String"/>
+	<return-scalar column="opnname" type="java.lang.String"/>
+select o1.parentid as parentid,o2.name as parentname,o1.opnid as opnid,o1.name as opnname
+  from ch_pw_operation o1, ch_pw_operation o2
+ where o1.opnlevel=2 and o1.parentid=o2.opnid
+ order by o1.parentid,o1.opnid
+</sql-query>
+<sql-query name="com.sunrise.boss.business.cms.cityrecord.doQuerylist">
+	<return class="com.sunrise.boss.business.cms.cityrecord.persistent.CityrecordVO"/>
+SELECT T.RECORDID,T.OPNID,T.WAYID,T.REWARDTYPE,T.REWARDMONTH,T.MOBILE,T.OPRTIME,
+T.BUSIVALUE,T.PAYSUM,T.PAYMONEY,T.APPROVEID,T.ISFLAG,T.OPRCODE,
+T.OPTIME,T.SYSTEMFLAG,T.REWARDLISTID,T.TASKID,T.ACCOUNTOPRCODE,
+T.ACCOUNTOPTIME,T.ADJUSTOPRCODE,T.ADJUSTOPTIME,T.PAYMENTOPRCODE,
+T.PAYMENTOPTIME,T.BRAND,T.BATCHNO,T.PAYMONTH,T.DCORDID
+ FROM CH_ADT_CITYRECORD T,CH_PW_WAY W
+ WHERE W.WAYID=T.WAYID AND W.WAYTYPE='AG'
+</sql-query>
+<sql-query name="com.sunrise.boss.business.cms.cityrecord.doQuerylistcounty">
+	<return class="com.sunrise.boss.business.cms.cityrecord.persistent.CityrecordVO"/>
+SELECT T.RECORDID,T.OPNID,T.WAYID,T.REWARDTYPE,T.REWARDMONTH,T.MOBILE,T.OPRTIME,
+T.BUSIVALUE,T.PAYSUM,T.PAYMONEY,T.APPROVEID,T.ISFLAG,T.OPRCODE,
+T.OPTIME,T.SYSTEMFLAG,T.REWARDLISTID,T.TASKID,T.ACCOUNTOPRCODE,
+T.ACCOUNTOPTIME,T.ADJUSTOPRCODE,T.ADJUSTOPTIME,T.PAYMENTOPRCODE,
+T.PAYMENTOPTIME,T.BRAND,T.BATCHNO,T.PAYMONTH,T.DCORDID
+ FROM CH_ADT_CITYRECORD T,CH_PW_WAY W
+ WHERE W.WAYID=T.WAYID AND W.WAYTYPE='AG' AND W.COUNTYID=:countyid
+</sql-query>
+</hibernate-mapping>

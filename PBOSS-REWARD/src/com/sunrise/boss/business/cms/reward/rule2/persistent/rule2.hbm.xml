@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" table="CH_ADT_RULE2">
+<composite-id>
+<key-property name="ruleid" column="RULEID" type="java.lang.String"/>
+<key-property name="ruleitemid" column="RULEITEMID" type="java.lang.String"/>
+<key-property name="opnid" column="OPNID" type="java.lang.String"/>
+</composite-id>
+
+<property name="rulename" column="RULENAME" type="java.lang.String" length="60"/>
+<property name="startdate" column="STARTDATE" type="java.util.Date" length="7"/>
+<property name="enddate" column="ENDDATE" type="java.util.Date" length="7"/>
+
+<property name="ruleitemname" column="RULEITEMNAME" type="java.lang.String" length="60"/>
+
+<property column="NAME" length="50" name="name" type="java.lang.String"/>
+<property column="STATE" length="2" name="state" type="java.lang.Short"/>
+</class>
+<sql-query name="queryRuleIn2Tables_999">
+		<return
+			class="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" />
+	SELECT
+  			C.RULEID AS RULEID,C.RULENAME AS RULENAME,C.STARTDATE AS STARTDATE,C.ENDDATE AS ENDDATE, NVL(B.RULEITEMID,' ') AS RULEITEMID,B.RULEITEMNAME AS RULEITEMNAME,D.OPNID AS OPNID,E.NAME AS NAME,A.STATE AS STATE,A.CITYID AS REGION
+	FROM
+		    CH_ADT_RULEREL A,CH_ADT_RULEITEM B,CH_ADT_RULE C,CH_ADT_RULEONBUSI D,CH_PW_OPERATION E,CH_ADT_RULEMODE F
+	WHERE 
+			A.RULEITEMID= B.RULEITEMID(+) AND C.RULEID = A.RULEID(+) AND D.RULEID = C.RULEID AND D.OPNID = E.OPNID AND A.RULEMODEID=F.RULEMODEID
+			AND C.RULETYPE = 'AG'
+      		AND A.CITYID='999'
+      		AND SYSDATE between F.STARTDATE and F.ENDDATE 
+    ORDER BY 
+            C.RULEID,D.OPNID,B.RULEITEMID
+</sql-query>
+<sql-query name="queryRuleIn2Tables_not999">
+	<return	class="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" />
+	SELECT
+  			C.RULEID AS RULEID,C.RULENAME AS RULENAME,C.STARTDATE AS STARTDATE,C.ENDDATE AS ENDDATE, NVL(B.RULEITEMID,' ') AS RULEITEMID,B.RULEITEMNAME AS RULEITEMNAME,D.OPNID AS OPNID,E.NAME AS NAME,A.STATE AS STATE,A.CITYID AS REGION
+	 FROM
+		    CH_ADT_RULEREL A,CH_ADT_RULEITEM B,CH_ADT_RULE C,CH_ADT_RULEONBUSI D,CH_PW_OPERATION E,CH_CB_BUSICITYLOAD F ,CH_ADT_RULEMODE G
+	WHERE 
+			A.RULEITEMID= B.RULEITEMID(+) AND C.RULEID = A.RULEID(+) AND D.RULEID = C.RULEID AND D.OPNID = E.OPNID AND A.RULEMODEID=G.RULEMODEID
+			AND C.RULETYPE = 'AG'
+      		AND F.OPNID=E.OPNID
+     		AND A.CITYID != '999'
+     		AND SYSDATE between G.STARTDATE and G.ENDDATE 
+     		AND F.CITYID LIKE :cityid
+    ORDER BY 
+            C.RULEID,D.OPNID,B.RULEITEMID    
+</sql-query>
+<sql-query name="queryRuleIn2Tables_all">
+	<return	class="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" />
+	SELECT
+  			C.RULEID AS RULEID,C.RULENAME AS RULENAME,C.STARTDATE AS STARTDATE,C.ENDDATE AS ENDDATE, NVL(B.RULEITEMID,' ') AS RULEITEMID,B.RULEITEMNAME AS RULEITEMNAME,D.OPNID AS OPNID,E.NAME AS NAME,A.STATE AS STATE,A.CITYID AS REGION
+	FROM
+		    CH_ADT_RULEREL A,CH_ADT_RULEITEM B,CH_ADT_RULE C,CH_ADT_RULEONBUSI D,CH_PW_OPERATION E,CH_ADT_RULEMODE F
+	WHERE 
+			A.RULEITEMID= B.RULEITEMID(+) AND C.RULEID = A.RULEID(+) AND D.RULEID = C.RULEID AND D.OPNID = E.OPNID AND A.RULEMODEID=F.RULEMODEID
+			AND C.RULETYPE = 'AG'
+      		AND A.CITYID='999'
+      		AND SYSDATE between F.STARTDATE and F.ENDDATE 
+    UNION
+	SELECT
+  			C.RULEID AS RULEID,C.RULENAME AS RULENAME,C.STARTDATE AS STARTDATE,C.ENDDATE AS ENDDATE, NVL(B.RULEITEMID,' ') AS RULEITEMID,B.RULEITEMNAME AS RULEITEMNAME,D.OPNID AS OPNID,E.NAME AS NAME,A.STATE AS STATE,A.CITYID AS REGION
+	FROM
+		    CH_ADT_RULEREL A,CH_ADT_RULEITEM B,CH_ADT_RULE C,CH_ADT_RULEONBUSI D,CH_PW_OPERATION E,CH_CB_BUSICITYLOAD F,CH_ADT_RULEMODE G
+	WHERE 
+			A.RULEITEMID= B.RULEITEMID(+) AND C.RULEID = A.RULEID(+) AND D.RULEID = C.RULEID AND D.OPNID = E.OPNID AND A.RULEMODEID=G.RULEMODEID
+			AND C.RULETYPE = 'AG'
+      		AND F.OPNID=E.OPNID
+     		AND A.CITYID != '999'
+     		AND SYSDATE between G.STARTDATE and G.ENDDATE 
+     		AND F.CITYID LIKE :cityid
+</sql-query>
+
+
+<sql-query name="cms.reward.rule2.queryRule_OPNID">
+		<return
+			class="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" />
+	SELECT
+  			distinct(C.RULEID) as RULEID,C.RULENAME as RULENAME, '' as STARTDATE, '' as ENDDATE, 'RULEITEMID' as RULEITEMID, '' as RULEITEMNAME, 'OPNID' as OPNID, '' as NAME,A.STATE AS STATE,A.CITYID AS REGION
+	FROM
+		    CH_ADT_RULEREL A,CH_ADT_RULEITEM B,CH_ADT_RULE C,CH_ADT_RULEONBUSI D,CH_PW_OPERATION E,CH_ADT_RULEMODE F
+	WHERE
+		A.RULEITEMID= B.RULEITEMID(+) 
+      	AND C.RULEID = A.RULEID(+) 
+      	AND D.RULEID = C.RULEID 
+      	AND D.OPNID = E.OPNID
+      	AND A.RULEMODEID=F.RULEMODEID
+      	AND D.OPNID = :opnid
+      	AND C.RULETYPE = 'AG'
+      	AND A.CITYID = '999'
+      	AND A.STATE = '1'
+      	AND SYSDATE between F.STARTDATE and F.ENDDATE 
+</sql-query>
+<sql-query name="cms.reward.rule2.queryRule_OPNID_RULEID">
+		<return
+			class="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" />
+	SELECT
+  			distinct(C.RULEID) as RULEID,C.RULENAME as RULENAME, '' as STARTDATE, '' as ENDDATE, 'RULEITEMID' as RULEITEMID, '' as RULEITEMNAME, 'OPNID' as OPNID, '' as NAME,A.STATE AS STATE,A.CITYID AS REGION
+	FROM
+		    CH_ADT_RULEREL A,CH_ADT_RULEITEM B,CH_ADT_RULE C,CH_ADT_RULEONBUSI D,CH_PW_OPERATION E,CH_ADT_RULEMODE F
+	WHERE 
+		A.RULEITEMID= B.RULEITEMID(+) 
+      	AND C.RULEID = A.RULEID(+) 
+      	AND D.RULEID = C.RULEID 
+      	AND D.OPNID = E.OPNID
+      	AND A.RULEMODEID=F.RULEMODEID
+      	AND D.OPNID = :opnid
+      	AND C.RULEID = :ruleid
+      	AND C.RULETYPE = 'AG'
+      	AND A.CITYID = '999'
+      	AND A.STATE = '1'
+      	AND SYSDATE between F.STARTDATE and F.ENDDATE 
+</sql-query>
+<sql-query name="cms.bbc.rule2.queryRule_OPNID">
+		<return
+			class="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" />
+	SELECT
+  			distinct(C.RULEID) as RULEID,C.RULENAME as RULENAME, '' as STARTDATE, '' as ENDDATE, 'RULEITEMID' as RULEITEMID, '' as RULEITEMNAME, D.OPNID as OPNID, '' as NAME, C.RULETYPE as RULETYPE,A.STATE AS STATE,A.CITYID AS REGION
+	FROM
+		    CH_ADT_RULEREL A,CH_ADT_RULEITEM B,CH_ADT_RULE C,CH_ADT_RULEONBUSI D,CH_BBC_OPERATION E
+	WHERE
+		A.RULEITEMID= B.RULEITEMID(+) 
+      	AND C.RULEID = A.RULEID(+) 
+      	AND D.RULEID = C.RULEID 
+      	AND D.OPNID = E.OPNID
+      	AND D.OPNID = :opnid
+      	AND C.RULETYPE = 'BBC'
+</sql-query>
+<sql-query name="cms.bbcRuleQuery">
+		<return
+			class="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" />
+SELECT A.RULEID AS RULEID,
+       A.RULENAME AS RULENAME,
+       '' AS STARTDATE,
+       '' AS ENDDATE,
+       'RULEITEMID' AS RULEITEMID,
+       '' AS RULEITEMNAME,
+       B.OPNID AS OPNID,
+       '' AS NAME,
+       '' AS STATE,
+       '' AS REGION
+  FROM CH_ADT_RULE A, CH_ADT_RULEONBUSI B
+ WHERE A.RULEID = B.RULEID
+   AND A.RULETYPE = 'BBC'
+ ORDER BY A.RULEID
+</sql-query>
+<sql-query name="cms.zjtyRuleQuery">
+		<return
+			class="com.sunrise.boss.business.cms.reward.rule2.persistent.Rule2VO" />
+SELECT A.RULEID AS RULEID,
+       A.RULENAME AS RULENAME,
+       '' AS STARTDATE,
+       '' AS ENDDATE,
+       'RULEITEMID' AS RULEITEMID,
+       '' AS RULEITEMNAME,
+       B.OPNID AS OPNID,
+       '' AS NAME,
+       '' AS STATE,
+       '' AS REGION
+  FROM CH_ADT_RULE A, CH_ADT_RULEONBUSI B
+ WHERE A.RULEID = B.RULEID
+   AND A.RULETYPE = 'ZJTY'
+ ORDER BY A.RULEID
+</sql-query>
+</hibernate-mapping>

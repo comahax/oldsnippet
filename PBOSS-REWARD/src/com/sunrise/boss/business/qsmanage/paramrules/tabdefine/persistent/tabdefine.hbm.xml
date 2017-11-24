@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.qsmanage.paramrules.tabdefine.persistent.TabDefineVO" table="QSCS_RU_TABDEFINE">
+<id name="tabcode" column="TABCODE" type="java.lang.String">
+	<generator class="assigned"/>
+</id>
+<property column="TABNAME" length="128" name="tabname" type="java.lang.String"/>
+<property column="FIELDNAMESTR" length="512" name="fieldnamestr" type="java.lang.String"/>
+<property column="MAINFIELDNAMESTR" length="128" name="mainfieldnamestr" type="java.lang.String"/>
+<property column="TRANSLATE" length="256" name="translate" type="java.lang.String"/>
+</class>
+</hibernate-mapping>
+

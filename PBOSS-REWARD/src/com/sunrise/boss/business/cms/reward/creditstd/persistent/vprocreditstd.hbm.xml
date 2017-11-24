@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.creditstd.persistent.VproCreditstdVO" table="CH_ADT_CREDITSTD">
+<composite-id>
+	<key-property column="SLV" length="22" name="slv" type="java.lang.Long"/>
+	<key-property column="ADTYPECODE" length="22" name="adtypecode" type="java.lang.Long" />
+</composite-id>
+<property name="rewardtype" column="REWARDTYPE" type="java.lang.Short" length="3"/>
+<property column="CREDITSTD" length="10" name="creditstd" type="java.lang.Double"/>
+<property column="CARDSTD" length="10" name="cardstd" type="java.lang.Double"/>
+<property column="REWARDSTD" length="10" name="rewardstd" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

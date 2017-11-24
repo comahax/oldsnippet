@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.reward.rewardlocalvalue.RewardlocalvalueVO" table="CH_PW_REWARDLOCALVALUE">
+<composite-id>
+<key-property column="MSTID" length="14" name="mstid" type="java.lang.Long"/>
+<key-property column="SEQ" length="8" name="seq" type="java.lang.Integer"/>
+</composite-id>
+<property column="CONTENT" length="256" name="content" type="java.lang.String"/>
+<property column="TYPE" length="100" name="type" type="java.lang.String"/>
+</class>
+
+<!-- 通过本地酬金的 结算月份 及报表类型 查询符合条件的-->
+<sql-query name="com.gmcc.pboss.business.reward.rewardlocalvalue.queryByRewardmonthAndRpttype">
+select * from CH_PW_REWARDLOCALVALUE v where v.MSTID in 
+(select REWARDID from CH_PW_REWARDLOCAL l where l.REWARDMONTH = :REWARDMONTH and l.RPTTYPE = :RPTTYPE)
+</sql-query>
+</hibernate-mapping>

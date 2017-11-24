@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.typeinfo.persistent.TypeinfoVO" table="CH_PW_TYPEINFO">
+<composite-id>
+<key-property column="CITYID" length="4" name="cityid" type="java.lang.String"/>
+<key-property column="FACETYPE" length="2" name="facetype" type="java.lang.Short"/>
+<key-property column="TYPE" length="100" name="type" type="java.lang.String"/>
+</composite-id>
+<property column="FACENAME" length="200" name="facename" type="java.lang.String"/>
+<property column="TYPENAME" length="200" name="typename" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

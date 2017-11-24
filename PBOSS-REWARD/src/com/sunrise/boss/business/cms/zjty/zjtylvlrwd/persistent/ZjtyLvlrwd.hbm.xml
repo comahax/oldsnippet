@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.zjty.zjtylvlrwd.persistent.ZjtyLvlrwdVO" table="CH_ZJTY_LVLRWD">
+<id column="CITYLEVEL" name="citylevel" type="java.lang.Integer">
+	<generator class="assigned"/>
+</id>
+<property column="CHECKCOEF" length="5" name="checkcoef" type="java.lang.Double"/>
+<property column="FIXEDRWD" length="16" name="fixedrwd" type="java.lang.Double"/>
+<property column="PRIZE" length="16" name="prize" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>

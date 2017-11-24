@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.netsyn.persistent.NetsynVO" table="CH_PW_NETSYN">
+<id column="ITEMID" name="itemid" type="java.lang.Long">
+<generator class="sequence">
+<param name="sequence">CH_PW_NETSYN_SEQ</param>
+</generator>
+</id>
+<property name="mobile" column="MOBILE" type="java.lang.String" length="12"/>
+<property name="opract" column="OPRACT" type="java.lang.Short" length="3"/>
+<property name="oprcode" column="OPRCODE" type="java.lang.String" length="16"/>
+</class>
+</hibernate-mapping>

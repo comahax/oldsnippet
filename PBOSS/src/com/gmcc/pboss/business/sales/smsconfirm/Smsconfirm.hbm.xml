@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.gmcc.pboss.business.sales.smsconfirm.SmsconfirmVO" table="FX_SW_SMSCONFIRM">
+<id column="RECID" length="14" name="recid" type="java.lang.Long">
+<generator class="sequence">
+	<param name="sequence">FX_SW_SMSCONFIRM_SEQ</param>
+</generator>
+</id>
+<property column="TYPE" length="16" name="type" type="java.lang.String"/>
+<property column="STREAM" length="18" name="stream" type="java.lang.String"/>
+<property column="MOBILENO" length="12" name="mobileno" type="java.lang.String"/>
+<property column="ORDERID" length="18" name="orderid" type="java.lang.String"/>
+<property column="STATE" length="16" name="state" type="java.lang.String"/>
+<property column="SENDTIME" length="7" name="sendtime" type="java.util.Date"/>
+<property column="REPTIME" length="7" name="reptime" type="java.util.Date"/>
+<property column="REPDESC" length="256" name="repdesc" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.fee.hangbill.persistent.MonitorUserVO"
+		table="IB_CC_MONITORLIST">
+		<id column="servnumber" name="servnumber" type="java.lang.String">
+			<generator class="assigned" />
+			
+		</id>
+		
+		<property column="subsid" length="14" name="subsid"   type="java.lang.Long" />
+		<property column="eboxid" length="14" name="eboxid"   type="java.lang.Long" />
+		<property column="syncstatus" length="3" name="syncstatus"   type="java.lang.Long" />
+		<property column="usertype" length="3" name="usertype"   type="java.lang.Long" />
+		<property column="billdate" length="8" name="billdate"   type="java.lang.Long" />
+		
+		<property column="eff_date" length="7" name="eff_date"  type="java.util.Date" />
+		<property column="exp_date" length="7" name="exp_date"   type="java.util.Date" />
+		<property column="synctime" length="7" name="synctime"   type="java.util.Date" />
+		<property column="applydate" length="7" name="applydate"   type="java.util.Date" />
+		
+		
+
+	</class>
+</hibernate-mapping>

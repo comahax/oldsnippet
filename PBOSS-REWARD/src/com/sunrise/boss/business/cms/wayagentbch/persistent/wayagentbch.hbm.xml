@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.wayagentbch.persistent.WayagentbchVO" table="CH_PW_WAYAGENTBCH">
+<id column="WAYID" name="wayid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="BCHTYPE" length="3" name="bchtype" type="java.lang.String"/>
+<property column="OWNEDBY" length="100" name="ownedby" type="java.lang.String"/>
+<property column="WAYAREA" length="100" name="wayarea"  type="java.lang.String"/>
+<property column="AREAATTR" length="100" name="areaattr" type="java.lang.String"/>
+<property column="OPENTIME" length="7" name="opentime"  type="java.sql.Date"/>
+<property column="WORKTIME" length="7" name="worktime"  type="java.sql.Date"/>
+<property column="BUSSUPPLY" length="255" name="bussupply" type="java.lang.String"/>
+<property column="BUSSTATE" length="3" name="busstate"  type="java.lang.Short"/>
+<property column="EMPLOYCNT" length="6" name="employcnt"  type="java.lang.Integer"/>
+<property column="BOSSOPRCODE" length="10" name="bossoprcode" type="java.lang.String"/>
+<property column="BUSAREA" length="8" name="busarea" type="java.lang.Integer"/>
+<property column="SEATCNT" length="6" name="seatcnt" type="java.lang.Integer"/>
+<property column="ENVMEMO" length="255" name="envmemo" type="java.lang.String"/>
+<property column="BOSSAREA" length="2" name="bossarea" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

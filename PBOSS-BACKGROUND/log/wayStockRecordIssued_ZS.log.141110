@@ -1,0 +1,64 @@
+2014-11-10 17:34:36,993 INFO  [root] - ------log file changed to log/wayStockRecordIssued_ZS.log ---------------
+2014-11-10 17:34:36,994 INFO  [root] - [ZS] [20140623] 
+2014-11-10 17:34:37,338 INFO  [ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@65b738: display name [org.springframework.context.support.ClassPathXmlApplicationContext@65b738]; startup date [Mon Nov 10 17:34:37 CST 2014]; root of context hierarchy
+2014-11-10 17:34:37,425 INFO  [XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2014-11-10 17:34:37,538 INFO  [ClassPathXmlApplicationContext] - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@65b738]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4e2f0a
+2014-11-10 17:34:37,558 INFO  [DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4e2f0a: defining beans [atomikosTransactionManager,atomikosUserTransaction,transactionManager]; root of factory hierarchy
+2014-11-10 17:34:37,680 INFO  [atomikos] - USING core version: 3.6.0
+2014-11-10 17:34:37,680 INFO  [atomikos] - USING com.atomikos.icatch.console_file_name = tm.out
+2014-11-10 17:34:37,680 INFO  [atomikos] - USING com.atomikos.icatch.console_file_count = 1
+2014-11-10 17:34:37,680 INFO  [atomikos] - USING com.atomikos.icatch.automatic_resource_registration = true
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.client_demarcation = false
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.threaded_2pc = true
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.serial_jta_transactions = true
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.log_base_dir = /projects/pboss/tm
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.console_log_level = WARN
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.max_actives = 50
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.checkpoint_interval = 500
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.enable_logging = false
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.output_dir = /projects/pboss/tm
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.log_base_name = tmlog
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.console_file_limit = -1
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.max_timeout = 300000
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.tm_unique_name = 192.168.110.205.tm
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING java.naming.factory.initial = com.sun.jndi.rmi.registry.RegistryContextFactory
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING java.naming.provider.url = rmi://localhost:1099
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.service = com.atomikos.icatch.standalone.UserTransactionServiceFactory
+2014-11-10 17:34:37,681 INFO  [atomikos] - USING com.atomikos.icatch.force_shutdown_on_vm_exit = false
+2014-11-10 17:34:37,682 INFO  [atomikos] - USING com.atomikos.icatch.default_jta_timeout = 10000
+2014-11-10 17:34:37,710 INFO  [JtaTransactionManager] - Using JTA UserTransaction: com.atomikos.icatch.jta.UserTransactionImp@e4e358
+2014-11-10 17:34:37,710 INFO  [JtaTransactionManager] - Using JTA TransactionManager: com.atomikos.icatch.jta.UserTransactionManager@109dc35
+2014-11-10 17:34:37,714 INFO  [ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1723c7f: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1723c7f]; startup date [Mon Nov 10 17:34:37 CST 2014]; parent: org.springframework.context.support.ClassPathXmlApplicationContext@65b738
+2014-11-10 17:34:37,714 INFO  [XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext2.xml]
+2014-11-10 17:34:37,781 INFO  [ClassPathXmlApplicationContext] - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1723c7f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@2a2cc
+2014-11-10 17:34:37,831 INFO  [DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2a2cc: defining beans [com.sunrise.jop.common.utils.lang.InterfaceUtils,transactionManager,BOAutoProxyCreator,transactionAdvisor,BOAutoProxyCreator_REQUIRES_NEW,transactionAdvisor_REQUIRES_NEW,businessLogAdvisor,businessLogMethodPointcutAdvisor]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@4e2f0a
+2014-11-10 17:34:40,135 INFO  [LocalSessionFactoryBean] - Building new Hibernate SessionFactory
+2014-11-10 17:34:44,340 INFO  [root] - =========套卡库存数据下发=====初始化完成，开始处理==========
+2014-11-10 17:34:44,420 ERROR [ProxyFactory] - 拦截处理器 DAOInterceptorHandler 未定义class  采用默认值com.sunrise.jop.infrastructure.dproxy.InterceptorHandler
+2014-11-10 17:34:44,421 INFO  [ProxyFactory] - 加载拦截处理器 DAOInterceptorHandler
+2014-11-10 17:34:44,422 INFO  [ProxyFactory] - 注册拦截器 com.sunrise.jop.infrastructure.dproxy.interceptor.CacheInterceptor to InterceptorHandler DAOInterceptorHandler
+2014-11-10 17:34:44,422 INFO  [ProxyFactory] - 注册拦截器 com.sunrise.jop.infrastructure.dproxy.interceptor.LogInterceptor to InterceptorHandler DAOInterceptorHandler
+2014-11-10 17:34:44,423 ERROR [ProxyFactory] - 拦截处理器 WebViewInterceptorHandler 未定义class  采用默认值com.sunrise.jop.infrastructure.dproxy.InterceptorHandler
+2014-11-10 17:34:44,423 INFO  [ProxyFactory] - 加载拦截处理器 WebViewInterceptorHandler
+2014-11-10 17:34:44,423 INFO  [ProxyFactory] - 注册拦截器 com.sunrise.jop.ui.interceptor.Code2NameCacheInterceptor to InterceptorHandler WebViewInterceptorHandler
+2014-11-10 17:34:44,574 INFO  [root] - loaded local syscode :CH_STARTSTATE
+2014-11-10 17:34:44,574 INFO  [root] - loaded local syscode :POSTINFO
+2014-11-10 17:34:44,574 INFO  [root] - loaded local syscode :OPTYPE
+2014-11-10 17:34:44,574 INFO  [root] - loaded local syscode :OPTYPE2
+2014-11-10 17:34:44,574 INFO  [root] - loaded local syscode :SUCCESS
+2014-11-10 17:34:44,574 INFO  [root] - loaded local syscode :STATE
+2014-11-10 17:34:44,575 INFO  [root] - loaded local syscode :CH_YESORNO
+2014-11-10 17:34:44,575 INFO  [root] - loaded local syscode :OPERTYPE
+2014-11-10 17:34:44,575 INFO  [root] - loaded local syscode :WEEKDAY
+2014-11-10 17:34:44,575 INFO  [root] - loaded local syscode :FILTERMODE
+2014-11-10 17:34:44,576 INFO  [root] - loaded local syscode :SMSNOTIFY
+2014-11-10 17:34:44,576 INFO  [root] - loaded local syscode :NDAPPROVAL
+2014-11-10 17:34:44,576 INFO  [root] - loaded local syscode :WAYSUBTYPE
+2014-11-10 17:34:44,576 INFO  [root] - loaded local syscode :ISACHIEVE
+2014-11-10 17:34:44,576 INFO  [root] - loaded local syscode :IM_FXCOMCATEGORY
+2014-11-10 17:34:44,576 INFO  [root] - loaded local syscode :CITYNAME
+2014-11-10 17:34:44,576 INFO  [code2name] - options filter:null
+2014-11-10 17:34:45,584 INFO  [root] - ======套卡库存数据下发========生成txt文件开始===========
+2014-11-10 17:34:45,956 INFO  [root] - ======套卡库存数据下发========生成txt文件正常，结束===========
+2014-11-10 17:34:45,987 ERROR [root] - =====套卡库存数据文件上传=========连接失败===============
+2014-11-10 17:34:45,988 INFO  [root] - ======套卡库存数据下发========处理完成，正常退出===========

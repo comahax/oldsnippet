@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.bcss.syncdata.filetask.persistent.FiletaskVO" table="DC_MM_FILETASK">
+<id column="SERIALNO" name="serialno" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">DC_MM_FILETASK_SEQ</param>
+	</generator>
+</id>
+<property column="FILECODE" length="40" name="filecode" type="java.lang.String"/>
+<property column="FILENAME" length="50" name="filename" type="java.lang.String"/>
+<property column="BEGDATE" length="20" name="begdate" type="java.lang.String"/>
+<property column="ENDDATE" length="20" name="enddate" type="java.lang.String"/>
+<property column="TOTALCOUNT" length="14" name="totalcount" type="java.lang.Long"/>
+<property column="CURRCOUNT" length="14" name="currcount" type="java.lang.Long"/>
+<property column="SUCCESS" length="1" name="success" type="java.lang.Byte"/>
+</class>
+</hibernate-mapping>

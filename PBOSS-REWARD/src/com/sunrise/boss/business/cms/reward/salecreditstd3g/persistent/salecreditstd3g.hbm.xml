@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.cms.reward.salecreditstd3g.persistent.Salecreditstd3gVO" table="CH_ADT_SALECREDITSTD3G">
+<composite-id>
+<key-property column="BUSITYPE" length="38" name="busitype" type="java.lang.Long"/>
+<key-property column="CITYID" length="3" name="cityid" type="java.lang.Short"/>
+</composite-id>
+<property column="CREDITSTD" length="10" name="creditstd" type="java.lang.Double"/>
+</class>
+</hibernate-mapping>
