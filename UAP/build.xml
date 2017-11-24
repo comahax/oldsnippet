@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="JOP2.Examples BUILD FILE" default="dist" basedir=".">
+
+    <!-- Local system paths -->
+    <property file="${basedir}/build.properties"/>
+    <property file="${basedir}/../version.properties"/>
+
+    <!-- =================================================================== -->
+    <!-- Define the class path                                               -->
+    <!-- =================================================================== -->
+    <path id="jop.class.path">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>                                               
+
+    <!-- =================================================================== -->
+    <!-- Clean                                                               -->
+    <!-- =================================================================== -->
+    <target name="clean">
+        <delete dir="${jop.dist.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Prepares the directory structure                                    -->
+    <!-- =================================================================== -->
+    <target name="prepare" depends="clean">
+        <mkdir dir="${jop.classes.dir}"/>
+        <mkdir dir="${jop.lib.dir}"/>
+        <mkdir dir="${jop.gen-src.dir}"/>
+        <mkdir dir="${jop.tmp-src.dir}"/>
+        <mkdir dir="${jop.meta-inf.dir}"/>
+        <mkdir dir="${websphere.tmp.dir}"/>
+    	<mkdir dir="${jop.dist.dir}"/>
+    	<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${jop.tmp-simple.dir}"/>
+        <available property="Junit.present" classname="junit.framework.Test"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Compiles all the classes                                            -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="prepare">
+        <echo>+---------------------------------------------------+</echo>
+        <echo>| |</echo>
+        <echo>| C O M P I L I N G S O U R C E S |</echo>
+        <echo>| |</echo>
+        <echo>+---------------------------------------------------+</echo>
+        <javac
+                destdir="${jop.classes.dir}"
+                classpathref="jop.class.path"
+                debug="on"
+                deprecation="on"
+                optimize="off"
+                target="1.6"
+	    		source="1.6"
+                encoding="UTF-8"
+                >
+
+            <src path="${jop.java.dir}"/>
+            <src path="${jop.gen-src.dir}"/>
+            <exclude name="/test/control/*.*"/>
+        </javac>
+
+        <copy todir="${jop.classes.dir}">
+            <fileset dir="${jop.java.dir}">
+                <include name="**/*.xml"/>
+                <include name="**/*.properties"/>
+				<include name="**/template/simple/*.ftl"/>
+				<include name="**/data/*.txt"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- distribute jar package                                              -->
+    <!-- =================================================================== -->
+    <target name="dist" depends="compile" >
+        <copy todir="${jop.lib.dir}" flatten="yes" includeEmptyDirs="no">
+            <fileset dir="${lib.dir}">
+				<!--
+				<include name="**/*.jar"/>
+                <exclude name="**/jboss/*"/>
+                <exclude name="**/j2ee/*"/>
+                <exclude name="**/cics/*"/>
+                <exclude name="**/jxl/*"/>
+                <exclude name="**/jstl/*"/>
+                <exclude name="**/concurrent/*"/>
+                <exclude name="**/quartz/*"/>
+                <exclude name="**/xfire/*"/>
+                <exclude name="**/jbpm/*"/>
+                <exclude name="**/jop/${web.name}"/>
+                <exclude name="**/*.zip"/>
+				-->
+            </fileset>
+        </copy>
+        <war warfile="${dist.war.name}" webxml="${jop.web.xml}">
+            <fileset dir="${jop.web.dir}">
+              <exclude name="**/classes/**"/>
+			  <exclude name="**/WEB-INF/lib/**"/>
+            </fileset>
+            <classes dir="${jop.classes.dir}"/>
+            <lib dir="${jop.lib.dir}"/>
+
+            <!-- manifest                                                       -->
+        	<manifest>
+        		<attribute name="Company" value="sunrise"/>
+        		<attribute name="Built-By" value="liaojinbo@revenco.com"/>
+        		<attribute name="JOP-Version" value="${jop-version}"/>
+        		<attribute name="JAR-Version" value="${jop.example}"/>
+        	</manifest>
+        </war>		
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Single WarModule                                                    -->
+    <!-- =================================================================== -->
+    <target name="SingleWarModule" depends="compile" >
+    <!--<target name="SingleWarModule" >-->
+        <copy todir="${jop.lib.dir}" flatten="yes" includeEmptyDirs="no">
+            <fileset dir="${lib.dir}">
+                <include name="**/*.jar"/>
+                <exclude name="**/jboss/*"/>
+                <exclude name="**/j2ee/*"/>
+                <!--<exclude name="**/test/*"/>-->
+                <exclude name="**/informix/*"/>
+                <!--<exclude name="**/websphere/*"/>-->
+                <exclude name="**/mq/*"/>
+                <!--<exclude name="**/axis/*"/>-->
+            </fileset>
+        </copy>
+        <war warfile="${war.name}" webxml="${jop.web.xml}">
+            <!--<fileset dir="${jop.classes.dir}"/>-->
+            <fileset dir="${jop.web.dir}">
+                <exclude name="**/classes/**"/>
+                <exclude name="**/lib/**"/>
+            </fileset>
+            <classes dir="${jop.classes.dir}"/>
+            <lib dir="${jop.lib.dir}"/>
+            
+            <!-- manifest                                                       -->
+        	<manifest>
+        		<attribute name="Company" value="sunrise"/>
+        		<attribute name="Built-By" value="liaojinbo@revenco.com"/>
+        		<attribute name="JOP-Version" value="${jop-version}"/>
+        		<attribute name="JAR-Version" value="${jop.example}"/>
+        	</manifest>
+        </war>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- jboss_deploy                                                        -->
+    <!-- =================================================================== -->
+    <target name="jboss_deploy" depends="compile">
+        <copy todir="${jboss.deploy.path}/${war.name}">
+            <fileset dir="${jop.web.dir}">
+                <exclude name="${jop.web.dir}/WEB-INF/classes/*"/>
+                <exclude name="${jop.web.dir}/WEB-INF/lib/*"/>
+            </fileset>
+        </copy>
+        <copy todir="${jboss.deploy.path}/${war.name}/WEB-INF/classes">
+            <fileset dir="${jop.classes.dir}"/>
+        </copy>
+        <copy todir="${jboss.deploy.path}/${war.name}/WEB-INF/lib" flatten="yes" includeEmptyDirs="no">
+            <fileset dir="${lib.dir}">
+                <include name="**/*.jar"/>
+                <exclude name="**/jboss/*"/>
+                <exclude name="**/j2ee/*"/>
+                <exclude name="**/test/*"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- jboss_undeploy                                                      -->
+    <!-- =================================================================== -->
+    <target name="jboss_undeploy" depends="compile-tests">
+        <delete file="${jboss.deploy.path}/${war.name}" includeEmptyDirs="yes"/>
+    </target>
+
+    <target name="junit-present" unless="Junit.present" depends="prepare">
+        <echo>================================= WARNING ================================</echo>
+        <echo>Junit isn't present in your ${ANT_HOME}/lib directory. Tests not executed.</echo>
+        <echo>==========================================================================</echo>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Run the test cases                                                  -->
+    <!-- =================================================================== -->
+    <target name="test" if="Junit.present" depends="junit-present, compile-tests">
+        <mkdir dir="${test.report.dir}"/>
+        <junit dir="./" failureproperty="test.failure" printSummary="yes" fork="true" haltonerror="false">
+            <sysproperty key="basedir" value="."/>
+            <formatter type="xml"/>
+            <formatter usefile="false" type="plain"/>
+            <classpath>
+                <path refid="jop.class.path"/>
+                <pathelement path="${jop.classes.dir}"/>
+            </classpath>
+            <batchtest todir="${test.report.dir}">
+                <fileset dir="test">
+                    <include name="**/*Test.java"/>
+                    <!--<exclude name="**/base/*.java"/>-->
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="report" depends="test">
+        <junitreport todir="${test.report.dir}">
+            <fileset dir="${test.report.dir}">
+                <include name="TEST-*.xml"/>
+                <include name="result.xml"/>
+            </fileset>
+            <report format="frames" todir="${test.report.dir}"/>
+        </junitreport>
+        <zip file="${test.report.zip}">
+            <fileset dir="${test.report.dir}">
+                <exclude name="TEST-*.xml"/>
+            </fileset>
+        </zip>
+    </target>
+
+    <target name="compile-tests" depends="compile">
+        <javac destdir="${jop.classes.dir}" deprecation="true" debug="true" optimize="false"
+               excludes="**/package.html">
+            <src>
+                <pathelement location="${test.dir}"/>
+            </src>
+            <classpath refid="jop.class.path"/>
+        </javac>
+        <copy todir="${jop.classes.dir}">
+            <fileset dir="${test.dir}" includes="**/*.xml"/>
+        </copy>
+    </target>
+
+	<echo message="${jop.conf.dir}"/>
+    <!-- =================================================================== -->
+    <!-- release src                                                         -->
+    <!-- =================================================================== -->
+    <target name="all" depends="dist">
+        <jar destfile="${release.jar.name}">
+            <fileset dir="." >				
+                <include name="**"/>
+				<exclude name="web/WEB-INF/classes/com/**"/>
+				<exclude name="web/WEB-INF/lib/**"/>
+                <exclude name="target/**"/>
+                <exclude name="log/**"/>
+				<exclude name="*.log"/>
+				<exclude name="*.log.**"/>
+            </fileset>
+            
+            <!-- manifest                                                       -->
+        	<manifest>
+        		<attribute name="Company" value="sunrise"/>
+        		<attribute name="Built-By" value="liaojinbo@revenco.com"/>
+        		<attribute name="JOP-Version" value="${jop-version}"/>
+        		<attribute name="JAR-Version" value="${jop.examplel}"/>
+        	</manifest>
+        </jar>
+
+		<copy file="${release.jar.name}"  todir="${dist.dir}">
+    	</copy>
+
+		<delete dir="conf"/>
+    </target>
+</project>

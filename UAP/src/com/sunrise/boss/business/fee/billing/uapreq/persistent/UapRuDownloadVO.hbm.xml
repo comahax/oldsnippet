@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.fee.billing.uapreq.persistent.UapRuDownloadVO"
+		table="UAP_RU_DOWNLOAD" dynamic-update="true">
+		<id name="ruleId" type="java.lang.String">
+			<column name="RULE_ID" length="8" />
+		</id>
+		<property name="ruleName" type="java.lang.String">
+			<column name="RULE_NAME" length="100" />
+		</property>
+		<property name="srcPath" type="java.lang.String">
+			<column name="SRC_PATH" length="1000">
+				<comment>通配符需要被替换 %y: 年, 如 2009 %m: 月, 如 06 %c: 地市简称大写，如 gz %C:
+					地市简称大写，如 GZ %r: 三位区号，如 200</comment>
+			</column>
+		</property>
+		<property name="srcFilename" type="java.lang.String">
+			<column name="SRC_FILENAME" length="100" />
+		</property>
+		<property name="dstPath" type="java.lang.String">
+			<column name="DST_PATH" length="1000" />
+		</property>
+		<property name="dstHost" type="java.lang.String">
+			<column name="DST_HOST" length="20">
+				<comment>目标机器IP地址</comment>
+			</column>
+		</property>
+		<property name="dstUsr" type="java.lang.String">
+			<column name="DST_USR" length="50" />
+		</property>
+		<property name="dstPwd" type="java.lang.String">
+			<column name="DST_PWD" length="50" />
+		</property>
+		<property name="remark" type="java.lang.String">
+			<column name="REMARK" length="1000" />
+		</property>
+		<property name="region" type="java.lang.Integer">
+			<column name="REGION" precision="5" scale="0" />
+		</property>
+	</class>
+</hibernate-mapping>

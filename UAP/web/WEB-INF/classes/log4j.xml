@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	<!-- 架构核心 -->
+	<!-- 所有输出到一个文件，开发，测试时使用。hekun -->
+	<appender name="JOP_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <!-- 生产环境应该打开日志缓存 -->
+        <!--<param name="BufferSize" value="256"/>-->
+        <!--<param name="LocationInfo" value="true"/>-->
+        <param name="File" value="/log/jop.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p(%t:%x) %m%n" />
+		</layout>
+	</appender>
+
+    <!-- other file -->
+    <appender name="OTHER_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <!-- 生产环境应该打开日志缓存 -->
+        <!--<param name="BufferedIO" value="true" />-->
+        <!--<param name="BufferSize" value="64" />-->
+        <param name="File" value="/log/other.log" />
+        <param name="Append" value="true" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p(%t:%x) %m%n" />
+        </layout>
+    </appender>
+
+    <!-- 每个业务种类一个日志 -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <param name="Threshold" value="TRACE"></param> <!-- 输出目的地的配置中配置的输出级别优先级最高 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %t [%-5p](%F,%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<category name="com.sunrise.jop" additivity="false">   <!-- 公共类或组件-->
+		<priority value="DEBUG" />
+		<appender-ref ref="JOP_LOG" />
+		<appender-ref ref="CONSOLE" /> 
+	</category>
+
+	<category name="org.ajaxanywhere" additivity="false">
+		<priority value="WARN" />
+		<appender-ref ref="OTHER_LOG" />
+	</category>
+
+	<!-- Hibernate log -->
+	<category name="org.hibernate" additivity="false">
+		<priority value="INFO" />
+		<appender-ref ref="OTHER_LOG" /> <!-- Hibernate_SQL -->
+		<appender-ref ref="CONSOLE" /> <!-- 如果想同时在终端上显示SQL，则加上这行 -->
+	</category>
+	<!-- 需要打印SQL变量时配置为TRACE -->
+    <category name="org.hibernate.type" additivity="false">
+		<priority value="TRACE" />
+		<appender-ref ref="CONSOLE" /> 
+	</category>
+	
+	<category name="net.sf.ehcache" additivity="false"> <!-- CODE2NAME 使用的缓存 -->
+		<priority value="DEBUG" />
+		<appender-ref ref="OTHER_LOG" />
+	</category>
+
+	<category name="org.apache.struts2" additivity="false">
+		<priority value="WARN" />
+		<appender-ref ref="OTHER_LOG" />
+	</category>
+
+	<category name="org.springframework" additivity="false">
+		<priority value="WARN" />
+        <appender-ref ref="OTHER_LOG" />
+	</category>
+
+    <category name="com.sunrise" additivity="false">
+        <priority value="INFO" />
+        <appender-ref ref="CONSOLE" />
+    </category>
+
+    <root>
+		<priority value="INFO" />
+        <appender-ref ref="OTHER_LOG" />
+        <appender-ref ref="CONSOLE" />
+	</root>
+
+</log4j:configuration>

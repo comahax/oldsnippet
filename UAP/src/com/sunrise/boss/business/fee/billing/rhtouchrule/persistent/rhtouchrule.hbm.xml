@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.billing.rhtouchrule.persistent.RhTouchRuleVO" table="IB_ACC_RHTOUCHRULE">
+<id column="RULEID" name="ruleid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="SETTIME" length="7" name="settime" type="java.util.Date"/>
+<property column="VALIDBILLCYC" length="8" name="validbillcyc" type="java.lang.Integer"/>
+<property column="FLSTATE" length="3" name="flstate" type="java.lang.Short"/>
+<property column="FLISCHECK" length="3" name="flischeck" type="java.lang.Short"/>
+<property column="FLSTIME" length="7" name="flstime" type="java.util.Date"/>
+<property column="FLETIME" length="7" name="fletime" type="java.util.Date"/>
+<property column="LZSTATE" length="3" name="lzstate" type="java.lang.Short"/>
+<property column="LZISCHECK" length="3" name="lzischeck" type="java.lang.Short"/>
+<property column="LZSTIME" length="7" name="lzstime" type="java.util.Date"/>
+<property column="LZETIME" length="7" name="lzetime" type="java.util.Date"/>
+<property column="LZSTATE2" length="3" name="lzstate2" type="java.lang.Short"/>
+<property column="LZISCHECK2" length="3" name="lzischeck2" type="java.lang.Short"/>
+<property column="LZSTIME2" length="7" name="lzstime2" type="java.util.Date"/>
+<property column="LZETIME2" length="7" name="lzetime2" type="java.util.Date"/>
+<property name="region" column="REGION" type="java.lang.Integer" length="5"/>
+
+</class>
+</hibernate-mapping>

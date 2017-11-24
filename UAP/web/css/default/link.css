@@ -1,0 +1,28 @@
+.menu_c:hover {
+	padding-left:0px;padding-right:0px;color:#000;border:#000 solid 0px;text-decoration:underline;height:16px;margin-right:10px;
+}
+.menu_c:link {
+	padding-left:0px;padding-right:0px;color:#000;border:#000 solid 0px;text-decoration:none;height:16px;margin-right:10px;
+}
+.menu_c:active {
+	padding-left:0px;padding-right:0px;color:#000;border:#000 solid 0px;text-decoration:none;height:16px;margin-right:10px;
+}
+.menu_c {
+	padding-left:0px;padding-right:0px;color:#000;border:#000 solid 0px;text-decoration:none;height:16px;margin-right:10px;
+}
+.u {
+	font-size:12px;width:100%;padding-left:52px;padding-top:2px;background:url(../../images/dtree/page.gif) no-repeat 38px 3px;
+}
+
+.menu_d:hover {
+	padding-left:0px;padding-right:0px;color:#000;border:#000 solid 1px;text-decoration:underline;height:16px;margin-right:10px;
+}
+.menu_d:link {
+	padding-left:0px;padding-right:0px;color:#000;border:#000 solid 1px;text-decoration:none;height:16px;margin-right:10px;
+}
+.menu_d:active {
+	padding-left:0px;padding-right:0px;color:#000;border:#000 solid 1px;text-decoration:none;height:16px;margin-right:10px;
+}
+.menu_d {
+	padding-left:0px;padding-right:0px;color:#000;border:#000 solid 1px;text-decoration:none;height:16px;margin-right:10px;
+}

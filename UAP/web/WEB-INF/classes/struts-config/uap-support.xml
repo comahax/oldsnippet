@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--本文件建议配置项目中的通用跳转-->
+<struts>
+    <package name="uap-support" namespace="/fee/billing" extends="uap-default"> 
+   		<action name="billstatus_*" class="com.sunrise.boss.web.fee.billing.billstatus.BillStatusAction" method="{1}">
+        	<result name="display">/fee/billing/billstatus/index.jsp</result>
+        	<result name="set">/fee/billing/billstatus/index.jsp</result>   
+        	<result name="show">/fee/billing/billstatus/list.jsp</result> 
+        	<result name="proc">/fee/billing/billstatus/list1.jsp</result> 
+        	<result name="log">/fee/billing/billstatus/log.jsp</result>  
+        	<result name="batchstartup">/fee/billing/billstatus/list1.jsp</result>
+        	<result name="setprepaidFee">/fee/billing/prepaidfee/index.jsp</result>
+        	<result name="showPrepaidFee">/fee/billing/prepaidfee/list.jsp</result>
+        	<result name="procFee">/fee/billing/prepaidfee/list1.jsp</result>
+        </action>
+        <action name="validbillcyc_*" class="com.sunrise.boss.web.fee.billing.validbillcyc.ValidBillCycAction" method="{1}">
+        	<result name="list">/fee/billing/validbillcyc/list.jsp</result>
+        	<result name="content">/fee/billing/validbillcyc/content.jsp</result>
+        </action>
+        								  
+        <action name="rhtouchrule_*" class="com.sunrise.boss.web.fee.billing.rhtouchrule.RhTouchRuleAction" method="{1}">				
+			<result name="set">/fee/billing/rhtouchrule/index.jsp </result>
+			<result name="show">/fee/billing/rhtouchrule/list.jsp </result>
+			<result name="city">/fee/billing/rhtouchrule/list1.jsp</result>
+			<result name="simple">/fee/billing/rhtouchrule/tab/simplelist.jsp</result>
+			<result name="simple1">/fee/billing/rhtouchrule/tab/simplelist1.jsp</result>
+			<result name="usrlist">/fee/billing/rhtouchrule/tab/usrlist.jsp</result>
+			
+			<result name="billingloglist">/fee/billing/rhtouchrule/tab/billingloglist.jsp</result>
+		</action>
+	
+		<action name="rhruledeta_*" class="com.sunrise.boss.web.fee.billing.rhruledeta.RhRuleDetaAction" method="{1}">			
+			<result name="list">/fee/accounting/rhruledeta/list.jsp</result>
+			<result name="show">/fee/accounting/rhruledeta/listout.jsp</result>
+		</action> 
+		   
+		<action name="accounting_*" class="com.sunrise.boss.web.fee.accounting.AccountingAction" method="{1}">			
+			<result name="list">/fee/accounting/list.jsp</result>
+			<result name="list1">/fee/accounting/list1.jsp</result>
+			<result name="justset">/fee/accounting/index.jsp</result>
+			<result name="billinglog">/fee/accounting/billinglog/list.jsp</result>
+				
+		</action>
+        
+         <action name="validbillcyc_*" class="com.sunrise.boss.web.fee.billing.validbillcyc.ValidBillCycAction" method="{1}">
+        	<result name="list">/fee/billing/validbillcyc/list.jsp</result>
+        	<result name="content">/fee/billing/validbillcyc/content.jsp</result>
+        </action>        
+        
+        <action name="billlogdeta_*" class="com.sunrise.boss.web.fee.billing.billlogdeta.BillLogDetaAction" method="{1}">
+        	<result name="index">/fee/billing/billlogdeta/index.jsp</result>
+        	<result name="list">/fee/billing/billlogdeta/list.jsp</result>
+        	<result name="excelout">/common/excelout/excelout.jsp</result>
+        </action>
+        
+		<action name="uapreqfile_*" class="com.sunrise.boss.web.fee.billing.uapreq.UapReqFileAction" method="{1}">
+        	<result name="list">/fee/billing/uapreqfile/list.jsp</result>
+        	<result name="content">/fee/billing/uapreqfile/content.jsp</result>
+        	<result name="list1">/fee/billing/uapreqfile/list1.jsp</result>
+        	<result name="content1">/fee/billing/uapreqfile/content1.jsp</result>
+        	<result name="listUpload">/fee/billing/uapreqfile/list_upload.jsp</result>
+        	<result name="contentUpload">/fee/billing/uapreqfile/content_upload.jsp</result>
+        </action> 
+        
+        <action name="databusiinfo_*" class="com.sunrise.boss.web.fee.monternet.ibdatabusiinfo.IbDataBusiinfoAction" method="{1}">
+        	<result name="list">/fee/monternet/ibdatabusiinfo/list.jsp</result>
+        	<result name="content">/fee/monternet/ibdatabusiinfo/content.jsp</result>
+        	<result name="excelout">/common/excelout/excelout.jsp</result>
+        </action> 
+        
+        <action name="uapstatistic_*" class="com.sunrise.boss.web.fee.billing.uapstatistic.UapStatisticAction" method="{1}">
+        	<result name="index">/fee/billing/uapstatistic/index.jsp</result>
+        	<result name="list">/fee/billing/uapstatistic/list.jsp</result>
+        	<result name="excelout">/common/excelout/excelout.jsp</result>
+        </action> 
+        <action name="uapanalyse_*" class="com.sunrise.boss.web.fee.billing.uapanalyse.UapAnalyseAction" method="{1}">
+        	<result name="list">/fee/billing/uapanalyse/list.jsp</result>
+        	<result name="excelout">/common/excelout/excelout.jsp</result>
+        </action> 
+        
+        <action name="checkprocess_*" class="com.sunrise.boss.web.fee.billing.checkprocess.CheckProcessAction" method="{1}">
+        	<result name="list">/fee/billing/checkprocess/list.jsp</result>
+        </action> 
+        
+   		<action name="uapreq_*" class="com.sunrise.boss.web.fee.billing.uapreq.UapReqAction" method="{1}">
+   			<interceptor-ref name="fileUpload">
+             	<param name="allowedTypes">
+                	text/plain
+             	</param>
+             	<param name="maximumSize">
+                	5242880
+             	</param>
+          	</interceptor-ref>
+          	<interceptor-ref name="defaultStack" />
+        	<result name="list">/fee/billing/uapreq/list.jsp</result>
+        	<result name="content">/fee/billing/uapreq/content.jsp</result>
+        	<result name="uploadNumber">/fee/billing/uapreq/uploadNumber.jsp</result>
+        	<result name="uploadProd">/fee/billing/uapreq/uploadProd.jsp</result>
+        </action> 
+        <action name="checkplanresult_*" class="com.sunrise.boss.web.fee.billing.checkplanresult.CheckPlanResultAction" method="{1}">
+        	<result name="list">/fee/billing/checkplanresult/list.jsp</result>
+        	<result name="excelout">/common/excelout/excelout.jsp</result>
+        </action> 
+        <action name="rhfixfeecresult_*" class="com.sunrise.boss.web.fee.billing.rhfixfeecresult.RhFixfeeCresultAction" method="{1}">
+        	<result name="list">/fee/billing/rhfixfeecresult/list.jsp</result>
+        	<result name="excelout">/common/excelout/excelout.jsp</result>
+        </action> 
+    </package>
+</struts>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ======================================================================= -->
+<!-- WebWork build file                                                      -->
+<!-- ======================================================================= -->
+
+<project name="StaffMgr" default="main" basedir=".">
+
+	<!-- =================================================================== -->
+	<!-- Define class path                                                   -->
+	<!-- =================================================================== -->
+	<path id="core.class.path">
+		<fileset dir="${basedir}/WebContent/WEB-INF/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<!-- append the external classpath lastly -->
+		<pathelement path="${java.class.path}" />
+	</path>
+
+	<!-- =================================================================== -->
+	<!-- Initialization                                                      -->
+	<!-- =================================================================== -->
+	<target name="init">
+		<property name="Name" value="StaffMgr" />
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Prepares the build directory                                        -->
+	<!-- =================================================================== -->
+	<target name="prepare" depends="init">
+		<delete dir="${basedir}/build" />
+		<delete dir="${basedir}/deploy" />
+		<mkdir dir="${basedir}/build/classes" />
+		<mkdir dir="${basedir}/deploy/webapp" />
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Compiles the source code                                            -->
+	<!-- =================================================================== -->
+	<target name="compile" depends="prepare">
+		<javac srcdir="${basedir}/src" destdir="${basedir}/build/classes" fork="true" memorymaximumsize="512M" debug="on" deprecation="off" optimize="off" encoding="UTF-8" includeAntRuntime="no" source="1.5" target="1.5">
+			<compilerarg line="-nowarn" />
+			<classpath refid="core.class.path" />
+		</javac>
+		<copy todir="${basedir}/build/classes">
+			<fileset dir="${basedir}/src">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Creates the webapp directory                                        -->
+	<!-- =================================================================== -->
+	<target name="webapp" depends="compile">
+		<copy todir="${basedir}/deploy/webapp/">
+			<fileset dir="${basedir}/WebContent">
+				<exclude name="**/classes/**"/>
+			</fileset>
+		</copy>
+		<copy todir="${basedir}/deploy/webapp/WEB-INF/classes">
+			<fileset dir="${basedir}/build/classes">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Creates the source distribution zip                                 -->
+	<!-- =================================================================== -->
+	<target name="distrib-source">
+		<jar jarfile="${basedir}/deploy/SKForum-source.zip" basedir="${basedir}/">
+			<exclude name="build/**" />
+			<exclude name="deploy/**" />
+			<exclude name="docs/**" />
+		</jar>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Creates the source distribution zip                                 -->
+	<!-- =================================================================== -->
+	<target name="distrib" depends="webapp">
+		<jar jarfile="${basedir}/deploy/StaffMgr.war" basedir="${basedir}/deploy/webapp" />
+	</target>
+	
+	<target name="main" depends="distrib" />
+</project>

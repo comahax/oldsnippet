@@ -1,0 +1,37 @@
+﻿@charset "utf-8";
+/* 样式复位 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0; margin:0;-webkit-text-size-adjust:none;}
+table{border-collapse:collapse; border-spacing:0;}
+fieldset,img{border:0;}
+img{font-size:0;line-height:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-weight:normal; font-style:normal;}
+ol,ul{list-style:none;}
+q:before,q:after{content:'';}
+
+a{color:#1882d0; text-decoration:none;}
+a:hover{text-decoration:none;}
+a, a:active, a:focus{outline:none;}
+
+
+body{font-family:"宋体";  font-size:12px !important;}
+
+
+/* 字体颜色属性[定义规则，小写 "c" 加 "-" 加颜色属性或名称] */
+.c-main, .c-main a, .c-main a:visited{color:#ffffff;}
+.c-sub, .c-sub a, .c-sub a:visited{color:#d3d3d3;}
+.c-secsub, .c-secsub a, .c-secsub a:visited{color:#b8c9d9;}
+.c-alarm, .c-alarm a, .c-alarm a:visited{color:#e63922;}
+.c-blue, .c-blue a, .c-blue a:visited {color:#246bb2;}
+
+
+/* 字体大小 */
+.f12px{ font-size: 12px !important;}
+.f13px{font-size: 13px !important;}
+.f14px{font-size: 14px !important;}
+/* 浮动 */
+.lf{float:left;}
+.rf{float:right;}
+
+/*清除浮动*/
+.clearfix {zoom:1;}
+.clearfix:after{content:'.'; display:block; visibility:hidden; clear:both; height:0;}

@@ -1,0 +1,9 @@
+<public:htc urn="www.microsoft.com">
+<script>
+if (PowerUrl != null || PowerUrl != "") {
+	if (PowerKey != true) {
+		element.src = PowerUrl;
+	}
+}
+</script>
+</public:htc>

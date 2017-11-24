@@ -1,0 +1,61 @@
+.db_tabs .tab_head{
+	background: #deebf7;
+	overflow: hidden;
+	height: 28px;
+	margin-bottom: 8px;
+	padding: 0 8px
+}
+
+.db_tabs .tab_head li{
+	color: #333333;
+	float: left;
+	width: auto;
+	height: 24px;
+	cursor: hand;
+	margin: 8px;
+}
+
+.db_tabs .tab_content{
+	display: none;
+}
+
+.db_tabs .tab_head li a{
+	color: #000;
+}
+
+.db_tabs .tab_head li a, .db_tabs .tab_head li a:hover{
+	text-decoration: none;
+}
+
+.db_tabs .tab_head .selected{
+	
+}
+
+.db_tabs .tab_head .selected a{
+	font-weight: bold;
+
+}
+
+
+.db_tabs .tab_contents .selected{
+	display: block !important
+}
+
+/*---- tab“∆∂Ø∞¥≈• ----*/
+.movingbar{ position: absolute; margin: 11px 0 0 6px }
+
+.movingbar a{
+	width: 4px; height: 7px; display: block;
+}
+.movingbar a.left{
+	background:url(../../../sy/images/icon-arrow-left-black.gif) no-repeat
+}
+
+.movingbar a.left:hover{ background: url(../../../sy/images/icon-arrow-left-green.gif) no-repeat }
+
+.movingbar a.right{
+	background:url(../../../sy/images/icon-arrow-right-black.gif) no-repeat
+}
+.movingbar a.right:hover{
+	background: url(../../../sy/images/icon-arrow-right-green.gif) no-repeat
+}

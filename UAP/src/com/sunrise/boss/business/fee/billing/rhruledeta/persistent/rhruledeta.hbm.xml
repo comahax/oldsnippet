@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.billing.rhruledeta.persistent.RhRuleDetaVO" table="IB_ACC_RHRULEDETA">
+<id column="RULEID" name="ruleid" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="VALIDBILLCYC" length="8" name="validbillcyc" type="java.lang.Integer"/>
+<property column="VESTIN_DAY" length="8" name="day" type="java.lang.Integer"/>
+<property column="RHPHASE" length="2" name="rhphase" type="java.lang.Short"/>
+<property column="TYPE" length="2" name="type" type="java.lang.Short"/>
+<property column="STATE" length="2" name="state" type="java.lang.Short"/>
+<property column="MEMO" length="100" name="memo" type="java.lang.String"/>
+<property name="region" column="REGION" type="java.lang.Integer" length="5"/>
+
+</class>
+</hibernate-mapping>

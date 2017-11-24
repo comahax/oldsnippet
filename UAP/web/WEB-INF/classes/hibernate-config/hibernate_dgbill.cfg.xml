@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<!-- 多数据源使使用，需要在J2EE服务器上配置XA数据源
+	<property name="connection.datasource">jdbc/boss15zw_dg</property>
+	<property name="hibernate.session_factory_name">hibernate_dgbill</property>
+	<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+	<property name="transaction.manager_lookup_class">org.hibernate.transaction.WebSphereTransactionManagerLookup</property>
+	<property name="jta.UserTransaction">java:comp/UserTransaction</property>
+	<property name="current_session_context_class">jta</property>  	
+	 -->
+	<!--以下为使用Hibernate管理连接时要提供的设置，生产上需屏蔽-->
+	<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+	<property name="connection.url">jdbc:oracle:thin:@10.200.4.134:1521:ngbccs</property>
+	<property name="connection.username">dgbill</property>
+	<property name="connection.password">dgbill</property>
+	<property name="connection.schema">ngbccs</property>
+	<property name="connection.autocommit">true</property>
+	
+	<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+	<property name="jdbc.batch_size">50</property>
+	<property name="jdbc.fetch_size">100</property>
+	<property name="max_fetch_depth">1</property>
+	<property name="show_sql">true</property>
+
+</session-factory>
+</hibernate-configuration>
+

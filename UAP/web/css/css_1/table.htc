@@ -1,0 +1,110 @@
+<public:htc urn="www.microsoft.com">
+<script language="JavaScript">
+	var tblHeader,tblBody,divCmtr,divCntr,tblS,tbtHe = 0,tbtline=0,tabloc;
+function tableScorll () {
+	tabloc = "element";
+	do{
+	tabloc = tabloc + ".firstChild";
+	}while (eval(tabloc).tagName.toUpperCase() != "TABLE") 
+	tabloc = eval(tabloc);
+	
+	
+	if (element.offsetHeight >=330) {
+		tblS = true;
+		element.style.posHeight = 500;
+	}else{
+		tblS = false;
+		element.style.posHeight = element.offsetHeight+18
+	}
+	tblHeader = tabloc.cloneNode(false);
+  	tblBody   = tabloc.cloneNode(false);
+  	divCmtr   = document.createElement("DIV");
+  	divCntr   = document.createElement("DIV");
+  	
+  	var rgWidths = new Array();
+	for (var i = 0; i < tabloc.rows[0].cells.length; i++)
+	   {
+	      rgWidths[i] = tabloc.rows[0].cells[i].offsetWidth;
+	   }
+	var longta = 0;
+	for (i=0;i<rgWidths.length;i++){
+		longta = longta + rgWidths[i];
+		}
+	   
+	var tbdyHeader = document.createElement("TBODY");
+	tblHeader.appendChild(tbdyHeader);
+	for (var i = 0; i < 1 ; i++)
+	    {
+	    if (tabloc.rows[i].className == "table_style_head" || tabloc.rows[i].className == "print_table_style_head") {
+	    	var oRow = tabloc.rows[i].cloneNode(true);
+	        tbdyHeader.appendChild(oRow);
+	        tbtHe = tbtHe + tabloc.rows[i].offsetHeight;
+	    	} 
+	    }
+	
+	var tbdyBody = document.createElement("TBODY");
+	tblBody.appendChild(tbdyBody);
+	for (var i = 1; i < tabloc.rows.length; i++)
+	    {
+	    if (tabloc.rows[i].className != "table_style_head" && tabloc.rows[i].className != "print_table_style_head") {
+	       var oRow = tabloc.rows[i].cloneNode(true);
+	       tbdyBody.appendChild(oRow);
+	       }
+	    }
+	
+	tblBody.style.posWidth = longta+2; 
+	tblBody.style.tableLayout  = "fixed"; 
+	 
+	divCntr.style.overflowX = "auto";
+	divCntr.style.overflowY = "auto";
+    divCntr.style.posHeight = element.offsetHeight-tbtHe;
+    divCntr.style.posWidth = element.offsetWidth;
+    divCntr.appendChild(tblBody);
+    
+    tblHeader.style.posWidth = longta+2; 
+    tblHeader.style.tableLayout  = "fixed";
+   	tblHeader.style.posHeight  = tbtHe;
+   	
+    divCmtr.style.overflow = "hidden";
+    divCmtr.style.posHeight = tbtHe;
+    if (tblS){
+    divCmtr.style.posWidth = element.offsetWidth - 16;
+    }else{
+    divCmtr.style.posWidth = element.offsetWidth;
+    }
+    divCmtr.appendChild(tblHeader);
+    
+    tabloc.removeNode(true);
+    element.appendChild(divCmtr);
+    element.appendChild(divCntr);
+	
+	for (var i = 0; i < rgWidths.length; i++)
+	   {
+	      tblHeader.rows[0].cells[i].width = rgWidths[i];
+	      if (tblBody.rows[0] != null) {
+	     	 tblBody.rows[0].cells[i].width = rgWidths[i];
+	      } 
+	   }
+	if (tblBody.rows[0] == null) {
+		var vtr = document.createElement("tr");
+		var vtd = document.createElement("td");
+		vtr.appendChild(vtd);
+		tbdyBody.appendChild(vtr);
+		tblBody.style.posWidth = longta +2 ;
+		element.style.posHeight = 66;
+		divCntr.style.posHeight = 44;
+	}
+	var longta = 0;   
+	for (i=0;i<rgWidths.length;i++){
+		longta = longta + rgWidths[i];
+		}
+	divCntr.attachEvent("onscroll",bego)
+	rgWidths = null;
+}		
+function bego () {
+	divCmtr.scrollLeft = divCntr.scrollLeft;
+}
+</script>
+<public:attach event="oncontentready" onevent="tableScorll()" />
+<public:method name="tableScorll" />
+</public:htc>

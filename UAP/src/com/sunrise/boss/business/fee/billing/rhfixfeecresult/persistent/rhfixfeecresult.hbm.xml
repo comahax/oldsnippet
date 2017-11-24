@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.billing.rhfixfeecresult.persistent.RhFixfeeCresultVO" table="IB_CBTM_RHFIXFEE_CRESULT">
+<composite-id>
+	<key-property column="LOGID" length="14" name="logid" type="java.lang.Long" />
+	<key-property column="BATCH" length="14" name="batch" type="java.lang.Long"/>
+	<key-property column="VALIDBILLCYC" length="8" name="validbillcyc" type="java.lang.Integer"/>
+	<key-property column="SUBSID" length="14" name="subsid" type="java.lang.Long"/>
+	<key-property column="ACCTID" length="14" name="acctid" type="java.lang.Long"/>
+</composite-id>
+<property column="SERVNUMBER" length="20" name="servnumber" type="java.lang.String"/>
+<property column="PAICLUP" length="16" name="paiclup" type="java.lang.Double"/>
+<property column="ADJUST" length="16" name="adjust" type="java.lang.Double"/>
+<property column="RECEIVABLE" length="16" name="receivable" type="java.lang.Double"/>
+<property column="ISACCOUNT" length="1" name="isaccount" type="java.lang.Byte"/>
+<property column="PLANLIST" length="512" name="planlist" type="java.lang.String"/>
+<property column="RULELIST" length="512" name="rulelist" type="java.lang.String"/>
+<property column="PAICLUPLIST" length="255" name="paicluplist" type="java.lang.String"/>
+<property column="RESULTTYPE" length="8" name="resulttype" type="java.lang.Integer"/>
+<property column="REGION" length="5" name="region" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

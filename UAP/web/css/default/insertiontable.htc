@@ -1,0 +1,3 @@
+<public:htc urn="www.microsoft.com">
+<public:attach event="onfocus" onevent="insertionPoint()" />
+</public:htc>

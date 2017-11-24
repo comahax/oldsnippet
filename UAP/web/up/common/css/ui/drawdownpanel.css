@@ -1,0 +1,42 @@
+.drawdown_button{
+
+}
+
+.drawdown_button .drawdown_anchor{
+	width: 90px;
+	height: inherit;
+	cursor: hand;
+	display: block;
+	line-height: 18px;
+	text-indent: 4px;
+	color: #535353 !important;
+	text-decoration: none !important;
+	background: url(../../../images/icon-arrow-down-black.gif) no-repeat 78px 7px;
+	border: 1px solid #ebf2f8; border-bottom: 0;
+	position: absolute; z-index: 99;
+	margin-left: -96px;
+}
+
+.drawdown_button .trigger_hover{
+	border: 1px solid #CCCCCC; border-bottom: 0;
+	background-color: #FFF;
+	height: 21px;
+}
+
+.drawdown_panel{
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	display: none;
+	position: absolute;
+	margin-top: -11px;
+	width: 624px;
+	z-index: 98;
+	padding: 8px 10px;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+	overflow: hidden
+}
+
+.panel_hover{
+	display: block
+}
+

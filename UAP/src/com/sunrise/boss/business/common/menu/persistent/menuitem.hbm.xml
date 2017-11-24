@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.common.menu.persistent.MenuitemVO" table="UAP_DB_MENUITEM">
+<id column="MENUID" length="32" name="menuid" type="java.lang.String">
+<generator class="assigned" />
+</id>
+<property column="MENUNAME" length="32" name="menuname" type="java.lang.String"/>
+<property column="MENUPID" length="32" name="menupid" type="java.lang.String"/>
+<property column="GUIOBJECT" length="256" name="guiobject" type="java.lang.String"/>
+<property column="RLTGUIOBJID" length="32" name="rltguiobjid" type="java.lang.String"/>
+<property column="ADDEDINFO" length="32" name="addedinfo" type="java.lang.String"/>
+<property column="TIPTEXT" length="32" name="tiptext" type="java.lang.String"/>
+<property column="SUBSYSTEMID" length="32" name="subsystemid" type="java.lang.String"/>
+<property column="GUITYPE" length="16" name="guitype" type="java.lang.String"/>
+<property column="RECDEFID" length="32" name="recdefid" type="java.lang.String"/>
+<property column="SORTORDER" length="4" name="sortorder" type="java.lang.Short"/>
+<property column="CREATEDATE" length="7" name="createdate" type="java.util.Date"/>
+<property column="STATUS" length="1" name="status" type="java.lang.Byte"/>
+<property column="STATUSDATE" length="7" name="statusdate" type="java.util.Date"/>
+<property column="DOMAINNAME" length="256" name="domainname" type="java.lang.String"/>
+<property column="REGION" length="5" name="region" type="java.lang.Integer"/>
+</class>
+<!-- 
+<sql-query name="common.functionitem.toMenu">
+	<return class="com.sunrise.boss.business.menu.persistent.MenuitemVO"></return>
+select *
+  from (select distinct *
+          from uap_db_menuitem
+         where STATUS = '1'
+         start with funcID in
+                    (select functionID
+                       from sa_sr_OperFunction
+                      where OperID = :operid
+                        AND STATUS = '1'
+                     union
+                     select ro.functionID
+                       from sa_sr_RoleFunction ro, sa_sr_OperRole op
+                      where ro.itemID = op.roleID
+                        and op.OperID = :operid
+                        AND op.STATUS = '1'
+                        AND ro.status = '1')
+        connect by nocycle prior parentid = funcid) t
+ where exists (
+        
+        select distinct uap_db_menuitem.Funcid
+          from uap_db_menuitem
+         where STATUS = '1'
+           and t.Funcid = Funcid
+         start with parentid = :parentid
+        connect by nocycle prior funcid = parentid)
+ order by parentID, sortOrder desc
+</sql-query>
+<sql-query name="common.functionitem.toMenu2">
+	<return class="com.sunrise.boss.business.menu.persistent.MenuitemVO"></return>
+select distinct *
+  from uap_db_menuitem
+ where STATUS = '1'
+ start with parentid = 'ESOPZW'
+connect by nocycle prior funcid = parentid
+ order by parentID, sortOrder desc
+</sql-query>
+<sql-query name="common.functionitem.toMap">
+	<return class="com.sunrise.boss.business.menu.persistent.MenuitemVO"></return>
+select *
+  from (select distinct *
+          from uap_db_menuitem
+         where STATUS = '1'
+         AND Guiobject is not null 
+         start with funcID in
+                    (select functionID
+                       from sa_sr_OperFunction
+                      where OperID = :operid
+                        AND STATUS = '1'
+                     union
+                     select ro.functionID
+                       from sa_sr_RoleFunction ro, sa_sr_OperRole op
+                      where ro.itemID = op.roleID
+                        and op.OperID = :operid
+                        AND op.STATUS = '1'
+                        AND ro.status = '1')
+        connect by nocycle prior parentid = funcid) t
+ where exists (
+        
+        select distinct uap_db_menuitem.Funcid
+          from uap_db_menuitem
+         where STATUS = '1'
+           and t.Funcid = Funcid
+         start with parentid = :parentid
+        connect by nocycle prior funcid = parentid)
+ order by parentID, sortOrder desc
+</sql-query>
+<sql-query name="common.functionitem.checkitem">
+	<return class="com.sunrise.boss.business.menu.persistent.MenuitemVO"></return>
+	select * from uap_db_menuitem t where t.subsystemid=:subsystemid   
+and t.funcid in (select r1.functionid from SA_SR_OPERFUNCTION r1 where r1.operid=:operid) 
+union   
+select * from uap_db_menuitem t where t.subsystemid=:subsystemid and t.funcid in 
+( select r3.functionid from SA_SR_OPERROLE r2,SA_SR_ROLEFUNCTION r3 where r2.operid=:operid and r2.roleid=r3.itemid )
+</sql-query>
+<sql-query name="common.functionitem.getMenuByColl">
+	<return class="com.sunrise.boss.business.menu.persistent.MenuitemVO"></return>
+select t1.* from uap_db_menuitem t1,EIB_RU_OPERFUNCTIONITEM t2 
+where t2.operid=:operid and  t1.funcid=t2.funcid 
+</sql-query>
+ -->
+</hibernate-mapping>

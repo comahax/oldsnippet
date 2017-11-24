@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.cntycompany.persistent.CntycompanyVO" table="CH_PW_CNTYCOMPANY">
+<id column="COUNTYCOMPID" name="countycompid" type="java.lang.String">
+<generator class="assigned"/>
+</id>
+<property column="CITYCOMPID" length="14" name="citycompid" type="java.lang.String"/>
+<property column="COUNTYCOMPNAME" length="64" name="countycompname" type="java.lang.String"/>
+<property column="COUNTYCOMPTYPE" length="4" name="countycomptype" type="java.lang.Short"/>
+<property column="AGENT" length="64" name="agent" type="java.lang.String"/>
+<property column="BILLINGCODE" length="5" name="billingcode" type="java.lang.String"/>
+<property column="ADACODE" length="18" name="adacode" type="java.lang.String"/>
+<property column="LONGITUDE" length="15" name="longitude" type="java.lang.String"/>
+<property column="LATITUDE" length="15" name="latitude" type="java.lang.String"/>
+</class>
+<!--查找登录渠道是否有微区域编码 -->
+<sql-query name="boss.cms.cntycompany.ifHasmacode">
+	<return-scalar type="java.lang.String" column="val"/>
+      select mareacode as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有服务销售中心编码 -->
+<sql-query name="boss.cms.cntycompany.ifHassvccode">
+	<return-scalar type="java.lang.String" column="val"/>
+      select svccode as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有分公司编码 -->
+<sql-query name="boss.cms.cntycompany.ifHascountyid">
+	<return-scalar type="java.lang.String" column="val"/>
+      select countyid as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+<!--查找登录渠道是否有市公司编码 -->
+<sql-query name="boss.cms.cntycompany.ifHascityid">
+	<return-scalar type="java.lang.String" column="val"/>
+      select cityid as val from ch_pw_way this where this.wayid = :loginwayid
+</sql-query>
+
+<!-- 当登录渠道有分公司编码时,查询 -->
+<sql-query name="boss.cms.cntycompany.queryAscnty">
+	<return class="com.sunrise.boss.business.fee.cntycompany.persistent.CntycompanyVO"/>
+      select * from ch_pw_cntycompany where countycompid = 
+      (select countyid from ch_pw_way where wayid = :loginwayid)
+</sql-query>
+<!-- 当登录渠道有市公司编码时,查询 -->
+<sql-query name="boss.cms.cntycompany.queryAscity">
+	<return class="com.sunrise.boss.business.fee.cntycompany.persistent.CntycompanyVO"/>
+      select * from ch_pw_cntycompany where citycompid = 
+      (select cityid from ch_pw_way where wayid = :loginwayid)
+</sql-query>
+<!-- 当登录渠道省公司时,查询 -->
+<sql-query name="boss.cms.cntycompany.queryAsprov">
+	<return class="com.sunrise.boss.business.fee.cntycompany.persistent.CntycompanyVO"/>
+      select * from ch_pw_cntycompany 
+</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<!-- 接口注册工具。用于注册接口的默认实现类。InterfaceUtils.createDefaultObject(接口名) 方法可以创建默认的实现类实例。以分离接口和实现。-->
+<beans>
+	<bean id="com.sunrise.jop.common.utils.lang.InterfaceUtils" class="com.sunrise.jop.common.utils.lang.InterfaceUtils">
+		<property name="interfaceClassMapping">
+			<props>
+                <prop key="com.sunrise.jop.infrastructure.component.Code2Name">com.sunrise.jop.infrastructure.component.impl.DefaultCode2Name</prop>
+                <prop key="com.sunrise.jop.ui.struts2.UserProvider">com.sunrise.jop.ui.struts2.Struts2UserProvider</prop>
+
+                <!--实际项目中应该使用自己的实现类-->
+                <prop key="com.sunrise.jop.ui.filter.PermissionChecker">com.sunrise.boss.web.common.check.WebPermissionChecker</prop>	
+
+                <!--实际项目中应该使用自己的数据字典类,参考下面的注释-->
+                <prop key="com.sunrise.jop.business.base.dictitem.IDictitemDAO">com.sunrise.jop.business.base.dictitem.DictitemDAO</prop>
+                <prop key="com.sunrise.jop.business.base.dictitem.IDictitemVO">com.sunrise.jop.business.base.dictitem.DictitemVO</prop>
+              
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="com.sunrise.jop.infrastructure.db.SessionFactoryRouter" class="com.sunrise.jop.infrastructure.db.hibernate3.Hibernate3SessionFactoryRouter">
+		<property name="sessionFactoryConfig" value="data/sessionFactory.properties" />
+		<property name="defaultDataSource" value="GDIB"/>		
+		<property name="multiDBMode" value="MULTI_CITY_MODE"/> 
+	</bean>
+<!--  
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="userTransactionName" value="java:comp/UserTransaction"/>
+	</bean>	
+-->
+	<!-- 本地多数据源使用 tomcat atomikos --> 
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">
+ 		<property name="forceShutdown"><value>true</value></property>
+	</bean>
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+    	<property name="transactionTimeout"><value>300</value></property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManager"><ref bean="atomikosTransactionManager"  /></property>
+	 	<property name="userTransaction"><ref bean="atomikosUserTransaction"  /></property>
+	 	<property name="allowCustomIsolationLevels" value="true"/>
+	</bean>
+	
+	<!-- 注册自动代理创建，为业务Bean添加拦截器 -->	
+	
+	<bean id="BOAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">	
+		<property name="proxyTargetClass" value="true"></property>
+		<property name="beanNames">
+			<list>
+				<value>*BO</value>				
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>				
+				<value>trasactionMethodPointcutAdvisor</value>	<!-- 注意： 事务拦截器必须包含在业务日志拦截器中，以免事务控制混乱；或者将业务日志的方法recordLog 设置为 PROPAGATION_REQUIRES_NEW 属性--> 
+			</list>
+		</property>
+	</bean>
+	
+
+	<bean id="transactionAdvisor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref local="transactionManager"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<!-- 注意开发规范：业务bean的业务方法必须为 do* 格式，才能被包含事务！-->
+				<prop key="do*">PROPAGATION_REQUIRED</prop>	
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>				
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="trasactionMethodPointcutAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedNames">
+			<list>
+				<value>do*</value>
+				<value>get*</value>
+			</list>
+		</property>
+		<property name="advice">
+			<ref local="transactionAdvisor" />
+		</property>
+	</bean>
+    
+</beans>

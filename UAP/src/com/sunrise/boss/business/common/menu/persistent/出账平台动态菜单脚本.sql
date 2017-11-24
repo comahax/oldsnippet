@@ -1,0 +1,45 @@
+
+
+fsbill@ngbccs >CREATE TABLE GDIB.UAP_DB_MENUITEM(
+
+MENUID               VARCHAR2(64) NOT NULL ,
+MENUNAME             VARCHAR2(64)       ,
+MENUPID              VARCHAR2(32)       ,
+GUIOBJECT            VARCHAR2(256),
+RLTGUIOBJID          VARCHAR2(32)       ,
+ADDEDINFO            VARCHAR2(32)       ,
+TIPTEXT              VARCHAR2(32)       ,
+SUBSYSTEMID          VARCHAR2(32)       ,
+GUITYPE              VARCHAR2(16)       ,
+RECDEFID             VARCHAR2(32)       ,
+SORTORDER            NUMBER(4)  ,
+CREATEDATE           DATE               ,
+STATUS               NUMBER(1)  ,
+STATUSDATE           DATE               ,
+DOMAINNAME           VARCHAR2(64)       ,
+REGION               NUMBER(5) NOT NULL ,
+CONSTRAINTS PK_MENUITEM PRIMARY KEY(MENUID,REGION)
+);
+
+create table!
+
+fsbill@ngbccs >commit;
+
+
+insert into UAP_DB_MENUITEM (MENUID, MENUNAME, MENUPID, GUIOBJECT, RLTGUIOBJID, ADDEDINFO, TIPTEXT, SUBSYSTEMID, GUITYPE, RECDEFID, SORTORDER, CREATEDATE, STATUS, STATUSDATE, DOMAINNAME,REGION)
+values( 'uap_web','���˹�̼��','0','','','���˹�̼��','���˹�̼��','uap_web','USUALLY','','5',sysdate,'1',sysdate,'',757);
+
+
+insert into UAP_DB_MENUITEM(MENUID,MENUNAME,MENUPID,GUIOBJECT,RLTGUIOBJID,ADDEDINFO,TIPTEXT,SUBSYSTEMID,GUITYPE,RECDEFID,SORTORDER,CREATEDATE,STATUS,STATUSDATE,DOMAINNAME,REGION)
+
+values('1000','���˹�̼��','100','','','���˹�̼��','���˹�̼��','uap_web','USUALLY','',10,sysdate,1,sysdate,'',757);
+
+insert into UAP_DB_MENUITEM(MENUID,MENUNAME,MENUPID,GUIOBJECT,RLTGUIOBJID,ADDEDINFO,TIPTEXT,SUBSYSTEMID,GUITYPE,RECDEFID,SORTORDER,CREATEDATE,STATUS,STATUSDATE,DOMAINNAME,REGION)
+
+values('10001','���˹�̼��','1000','','','���˹�̼��','���˹�̼��','uap_web','USUALLY','',11,sysdate,1,sysdate,'',757);
+
+insert into UAP_DB_MENUITEM(MENUID,MENUNAME,MENUPID,GUIOBJECT,RLTGUIOBJID,ADDEDINFO,TIPTEXT,SUBSYSTEMID,GUITYPE,RECDEFID,SORTORDER,CREATEDATE,STATUS,STATUSDATE,DOMAINNAME,REGION)
+
+values('1000101','������˼������','10001','/fee/billing/billstatus_set.do','','������˼������','������˼������','uap_web','USUALLY','',12,sysdate,1,sysdate,'',757);
+
+

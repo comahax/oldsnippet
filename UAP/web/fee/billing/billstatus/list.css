@@ -1,0 +1,281 @@
+
+.bga {
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	height: 520px;
+	width: 950px;
+}
+
+.weiqi1{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 0px;
+	top: 28px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+
+.weiqi2{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 0px;
+	top: 128px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi3{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 205px;
+	top: 128px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi4{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 205px;
+	top: 28px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi5{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 410px;
+	top: 28px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi6{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 410px;
+	top: 128px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi7{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 610px;
+	top: 128px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi8{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 610px;
+	top: 228px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi9{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 0px;
+	top: 228px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi10{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 205px;
+	top: 228px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi11{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 610px;
+	top: 328px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi12{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 410px;
+	top: 328px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi13{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 205px;
+	top: 328px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi14{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 0px;
+	top: 328px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.weiqi15{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 815px;
+	top: 328px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+
+.weiqi16{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 205px;
+	top: 428px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+
+.weiqi17{
+	background-image: url(../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 0px;
+	top: 428px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.mcolor0 {
+	background-image:url(../../../images/accounting/weiqi.GIF);
+}
+.mcolor1 {
+	background-image:url(../../../images/accounting/keqi.GIF);
+}
+.mcolor2 {
+	background-image:url(../../../images/accounting/qidz.GIF);
+}
+.mcolor3 {
+	background-image:url(../../../images/accounting/yiwc.GIF);
+}
+.mcolor4 {
+	background-image:url(../../../images/accounting/chucu.GIF);
+}

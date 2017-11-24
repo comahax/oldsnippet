@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<accessconfig description="权限配置">
+		<allaccept><![CDATA[./index/login.do]]></allaccept>
+		<allaccept><![CDATA[./index/logout.do]]></allaccept>
+		<role roleid="0">
+			<accept><![CDATA[./index/.*]]></accept>
+			<accept><![CDATA[./information/.*]]></accept>
+			<accept><![CDATA[./user/.*]]></accept>
+			<accept><![CDATA[./bills/.*]]></accept>
+		</role>
+		<role roleid="1">
+			<accept><![CDATA[./index/.*]]></accept>
+			<accept><![CDATA[./information/.*]]></accept>
+			<accept><![CDATA[./bills/.*]]></accept>
+		</role>
+		<role roleid="2">
+			<accept><![CDATA[./index/.*]]></accept>
+			
+		</role>
+	</accessconfig>
+	
+</root>

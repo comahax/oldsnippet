@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="PermissionService" targetNamespace="http://permission.webservice.ngcrm.sunrise.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://permission.webservice.ngcrm.sunrise.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://permission.webservice.ngcrm.sunrise.com/">
+      <xsd:element name="queryToken">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="resource" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="password" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="transid" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="oprid" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="queryTokenResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="rspcode" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="transid" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="rspinfo" type="xsd:string"/>
+          	<xsd:element maxOccurs="unbounded" minOccurs="0" name="tokenid" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkToken">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="resource" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="password" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="transid" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="oprid" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="tokenid" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkTokenResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="rspcode" type="xsd:string"/>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="transid" type="xsd:string"/>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="rspinfo" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="queryMenu">
+      	<xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="resource" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="password" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="transid" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="oprid" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="queryMenuResponse">
+      	<xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="rspcode" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="transid" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="rspinfo" type="xsd:string"/>
+          	<xsd:element maxOccurs="unbounded" minOccurs="0" name="menuid" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkMenu">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="resource" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="password" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="transid" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="oprid" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="menuid" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkMenuResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="rspcode" type="xsd:string"/>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="transid" type="xsd:string"/>
+      			<xsd:element maxOccurs="1" minOccurs="1" name="rspinfo" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="queryTokenRequest">
+    <wsdl:part name="parameters" element="tns:queryToken">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkMenuRequest">
+    <wsdl:part name="parameters" element="tns:checkMenu">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryMenuRequest">
+    <wsdl:part name="parameters" element="tns:queryMenu">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkMenuResponse">
+    <wsdl:part name="parameters" element="tns:checkMenuResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryTokenResponse">
+    <wsdl:part name="parameters" element="tns:queryTokenResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryMenuResponse">
+    <wsdl:part name="parameters" element="tns:queryMenuResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkTokenResponse">
+    <wsdl:part name="parameters" element="tns:checkTokenResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkTokenRequest">
+    <wsdl:part name="parameters" element="tns:checkToken">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PermissionService">
+    <wsdl:operation name="queryToken">
+      <wsdl:input message="tns:queryTokenRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:queryTokenResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkToken">
+      <wsdl:input message="tns:checkTokenRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:checkTokenResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryMenu">
+      <wsdl:input message="tns:queryMenuRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:queryMenuResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkMenu">
+      <wsdl:input message="tns:checkMenuRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:checkMenuResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PermissionServiceSOAP" type="tns:PermissionService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="queryToken">
+      <soap:operation soapAction="http://permission.webservice.ngcrm.sunrise.com/queryToken"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkToken">
+      <soap:operation soapAction="http://permission.webservice.ngcrm.sunrise.com/checkToken"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryMenu">
+      <soap:operation soapAction="http://permission.webservice.ngcrm.sunrise.com/queryMenu"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkMenu">
+      <soap:operation soapAction="http://permission.webservice.ngcrm.sunrise.com/checkMenu"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PermissionService">
+    <wsdl:port name="PermissionServiceSOAP" binding="tns:PermissionServiceSOAP">
+      <soap:address location="http://localhost:8080/testWS3/PermissionServiceSOAP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

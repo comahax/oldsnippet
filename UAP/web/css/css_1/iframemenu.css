@@ -1,0 +1,217 @@
+.menu_base {
+	background:#e3e3e3;
+	height:30px;
+	margin-top:50px;
+	margin-left:50px;
+}
+.iframemenu_off {
+	width:100px;
+	height:25px;
+	border:#000 solid 0px;
+	background:url(../../images/images_1/menu_topst_off.gif) no-repeat;
+	font-size:12px;
+	text-align:left;
+	float:right;
+	position:relative;
+	color:#000;
+	padding-top:6px;
+	padding-left:28px;
+	cursor:hand;
+}
+.iframemenu_on {
+	width:100px;
+	height:25px;
+	border:#000 solid 0px;
+	background:url(../../images/images_1/menu_topst_on.gif) no-repeat;
+	font-size:12px;
+	text-align:left;
+	float:right;
+	position:relative;
+	color:#000;
+	padding-top:6px;
+	padding-left:28px;
+	cursor:hand;
+}
+/*-------------------UEÏÂ---------------------*/
+.iframemenu_UE_off {
+	width:100px;
+	height:25px;
+	border:#000 solid 0px;
+	background:url(../../images/images_1/menu_topst_off.gif) no-repeat;
+	font-size:12px;
+	text-align:left;
+	float:right;
+	position:relative;
+	margin-left:0px;
+	color:#000;
+	padding-top:6px;
+	padding-left:28px;
+	cursor:hand;
+}
+.iframemenu_UE_on {
+	width:108px;
+	height:28px;
+	border:#000 solid 0px;
+	background:url(../../images/images_1/menu_topst_on.gif) no-repeat;
+	font-size:12px;
+	text-align:left;
+	float:right;
+	position:relative;
+	margin-left:-4px;
+	color:#000;
+	padding-top:6px;
+	padding-left:28px;
+	cursor:hand;
+}
+/*--------------------------------*/
+.iframemenu {
+	height:24px;
+	width:100%;
+	border-bottom:#000 solid 1px;
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:4px;
+	over-flow:hidden;
+}
+.left_iframemenu {
+	width:92%;
+	height:24px;
+	overflow:hidden;
+	float:left;
+}
+.left_iframemenu_auto {
+	width:5000px;
+	height:24px;
+}
+.right_iframemenu {
+	width:8%;
+	float:left;
+	height:24px;
+	background:#FFFFFF;
+}
+.button_if_left {
+	float:left;
+	cursor:hand;
+	padding-top:6px;
+	padding-left:2px;
+}
+.button_if_right {
+	float:left;
+	cursor:hand;
+	padding-top:6px;
+	padding-right:2px;
+}
+.iframetop {
+	width:100%;
+	font-size:12px;
+	color:#000;
+	border-bottom:#000000 solid 1px;
+	margin-bottom:2px;
+	padding-top:6px;
+	padding-bottom:0px;
+	height:24px;
+	padding-left:30px;
+	background:#EAF9FE url(../../images/Ico_CircleBlue2.gif) no-repeat 0px 0px;
+	font-weight:900;
+	color:#0065CC;
+	text-align:left;
+}
+.iframewindow {
+	width:100%;
+	height:500px;
+}
+.IFRM_MAIN_on {
+	width:100%; height:100%; 
+	border:#ffffff solid 0px;
+	overflow:hidden;
+	display:on;
+	behavior:expression('url(../../css/css_1/iframemenu.htc)');
+}
+.IFRM_MAIN_off {
+	width:100%; height:100%; 
+	border:#ffffff solid 0px;
+	overflow:hidden;
+	display:none;
+}
+.menu_on {
+	height:24px;
+	padding-top:6px;
+	border:#049ED0 solid 1px;
+	border-bottom:#049ED0 solid 0px;
+	padding-left:15px;
+	padding-right:15px;
+	background:#049ED0;
+	font-size:12px;
+	font-weight:100;
+	color:#FFF;
+	float:left;
+	word-break:break-all;
+	white-space:nowrap;
+	cursor:hand;
+	text-align:center;
+	margin-right:1px;
+}
+.menu_off {
+	height:22px;
+	padding-top:5px;
+	margin-top:2px;
+	border:#999B9B solid 1px;
+	border-bottom:#ffffff outset 0px;
+	padding-left:15px;
+	padding-right:15px;
+	background:#E5F5FA;
+	font-size:12px;
+	font-weight:100;
+	color:#999B9B;
+	float:left;
+	word-break:break-all;
+	white-space:nowrap;
+	cursor:hand;
+	text-align:center;
+	margin-right:1px;
+}
+.menumotherc {
+	width:180px;
+	height:200px;
+	background:#FFFFFF;
+	border-top:#049ED0 solid 1px;
+	position:absolute;
+	z-index:100;
+	left:0px;
+	top:0px;
+	display:block;
+}
+.Menumotherscroll {
+	scrollbar-3dlight-color:#FFFFFF;
+	scrollbar-highlight-color:#BAE2EE;
+	scrollbar-face-color:#BAE2EE;
+	scrollbar-arrow-color:#000000;
+	scrollbar-shadow-color:#BAE2EE;
+	scrollbar-darkshadow-color:#049ED0;
+	scrollbar-base-color:#EAF9FE;
+	scrollbar-track-color:#E4F1F5;
+}
+.childstyle {
+	font-size:12px;
+	color:#000;
+	height:20px;
+	border-bottom:#049ED0 solid 1px;
+	border-left:#049ED0 solid 1px;
+	border-right:#049ED0 solid 1px;
+	padding-left:10px;
+	padding-top:4px;
+	cursor:hand;
+}
+.childstyleclose {
+	font-size:12px;
+	color:#000;
+	height:20px;
+	border-bottom:#049ED0 solid 1px;
+	border-left:#049ED0 solid 1px;
+	border-right:#049ED0 solid 1px;
+	padding-right:10px;
+	padding-top:4px;
+	cursor:hand;
+	text-align:right;
+	background:#BAE2EE;
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.billing.checkserv.persistent.CheckServVO" table="IB_CBTM_CHECKSERV">
+<composite-id>
+	<key-property column="LOGID" length="14" name="logid" type="java.lang.Long" />
+	<key-property column="SERVNUMBER" length="20" name="servnumber" type="java.lang.String"/>
+</composite-id>
+<property column="REGION" length="5" name="region" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

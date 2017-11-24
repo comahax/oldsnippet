@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<mapping resource="com/sunrise/jop/business/base/dictitem/dictitem.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/common/menu/persistent/menuitem.hbm.xml" />  
+    <mapping resource="com/sunrise/boss/business/common/loginlog/persistent/loginlog.hbm.xml" /> 
+    <mapping resource="com/sunrise/boss/business/common/sysparam/persistent/sysparam.hbm.xml" /> 
+	
+	<mapping resource="com/sunrise/boss/business/fee/cntycompany/persistent/cntycompany.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/citycompany/persistent/citycompany.hbm.xml" />
+	
+	<mapping resource="com/sunrise/boss/business/fee/billing/validbillcyc/persistent/validbillcyc.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/billstatus/persistent/billstatus.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/bltouchrule/persistent/bltouchrule.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/billinglog/persistent/billinglog.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/billparam/persistent/billparam.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/billresult/persistent/billresult.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/billstartlog/persistent/billstartlog.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/billstepstatus/persistent/billstepstatus.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/feenotifystate/persistent/feenotifystate.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/yhfeelstate/persistent/yhfeelstate.hbm.xml" />
+	<mapping resource="com/sunrise/boss/business/fee/billing/rhruledeta/persistent/rhruledeta.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/billing/rhtouchrule/persistent/rhtouchrule.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/billing/billlogdeta/persistent/billlogdeta.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/billing/uapstatistic/persistent/uapstatistic.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/billing/uapanalyse/persistent/uapanalyse.hbm.xml"/>
+	<mapping resource="com/sunrise/boss/business/fee/acct/persistent/acct.hbm.xml"/>
+    <mapping resource="com/sunrise/boss/business/fee/billing/uapreq/persistent/uapreq.hbm.xml"/>
+    <mapping resource="com/sunrise/boss/business/fee/billing/checkserv/persistent/checkserv.hbm.xml"/>
+    <mapping resource="com/sunrise/boss/business/fee/billing/checkplan/persistent/checkplan.hbm.xml"/>
+    <mapping resource="com/sunrise/boss/business/fee/billing/checkplanresult/persistent/checkplanresult.hbm.xml"/>
+    <mapping resource="com/sunrise/boss/business/fee/billing/rhfixfeecresult/persistent/rhfixfeecresult.hbm.xml"/>
+    <mapping resource="com/sunrise/boss/business/fee/billing/billlogdeta/persistent/vbilllogdeta.hbm.xml"/>
+    <mapping resource="com/sunrise/boss/business/fee/billing/uapreq/persistent/UapRuDownloadVO.hbm.xml"/>
+    <mapping resource="com/sunrise/boss/business/fee/monternet/ibdatabusiinfo/persistent/IbDataBusiinfo.hbm.xml"/>
+</session-factory>
+</hibernate-configuration>

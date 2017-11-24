@@ -1,0 +1,435 @@
+a:hover {
+	color: red;
+	text-decoration: none;
+}
+
+Input {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; 
+	BORDER-BOTTOM: #999999 1px solid; COLOR: #333333; HEIGHT: 15px;
+	BACKGROUND-COLOR:#f8f8f8;FONT-SIZE: 12px;FONT-FAMILY: 宋体;
+	padding-top:1px;
+}
+
+.AreaName{
+	font-weight: bold; 
+	color: #0065CC;
+	text-align:left;
+	font-size:12px;
+
+}
+
+a:link {
+	color:#004BB0;
+	text-decoration: none;
+}
+a:visited {
+	color: #FF7200;
+	text-decoration: none;
+}
+
+
+/*=====================================================*/
+/*                          记录表格                   */
+/*=====================================================*/
+.table_LongTable {
+	overflow-x:hidden;
+	overflow-y:hidden;
+	width:100%;
+	behavior:expression('table.htc)');
+	text-align:left;
+	background:#FFFFFF url(../../images/index_main_topleftbj.GIF) repeat-x;
+}
+.table_LongTable_old {
+	overflow-x:auto;
+	overflow-y:auto;
+	width:100%;
+	text-align:left;
+	background:#FFFFFF url(../../images/index_main_topleftbj.GIF) repeat-x;
+	behavior:expression('table_old.htc)');
+	padding-bottom:18px;
+}
+.table_LongTable_more {
+	overflow-x:hidden;
+	overflow-y:hidden;
+	width:100%;
+	text-align:left;
+	background:#FFFFFF url(../../images/index_main_topleftbj.GIF) repeat-x;
+	behavior:expression('table_more.htc)');
+	padding-bottom:18px;
+}
+.table_container{
+	background:#FFFFFF;
+}
+.table_iframe {
+	width:96%;
+	BORDER-RIGHT: #000000 1px solid;
+	BORDER-top: #000000 1px solid;
+	BORDER-left: #000000 1px solid;
+	BORDER-bottom: #000000 1px solid;
+	margin-top:10px;
+	padding-bottom:15px;
+	background:#FFFFFF;
+	filter:progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, color=A1A1A1);
+}
+.table_div{
+	width:100%;
+	text-align:center;
+	border:#000000 dashed 0px;
+}	
+
+.table_buttom_tr {
+	background:url(../../images/bum_bg.gif);
+}
+.item_checkbox {
+	width:96px;
+	height:18px;
+	padding-top:4px;
+	float:left;
+}
+
+.table_style {
+	width:100%;
+	border:#000 solid 0px;
+	border-collapse:collapse;
+}
+
+.table_style tr{
+	height:22px;
+}
+.table_style_head {
+	background:url(../../images/index_main_anniubj.GIF);
+	color: #000000;
+	font-family: Geneva, Arial, Helvetica, sans-serif;	
+}
+.table_style_head td {
+	border-right:#D7D7D7 solid 1px;
+	border-bottom:#CCCCCC solid 1px;
+	border-top:#D7D7D7 solid 1px;
+	padding-left:8px;
+	padding-right:8px;
+	text-align:center;
+	FONT-SIZE: 12px;
+	word-break:break-all;
+	white-space:nowrap;padding-top:3px;
+}
+.table_style_content {
+	background:expression(this.rowIndex%2==0 ? '#E2F1DF' : '#F7FCFD');
+}
+.table_style_content td{
+	border-left:#D7D7D7 solid 0px;border-bottom:#D7D7D7 solid 1px;
+	FONT-SIZE: 12px;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:2px;
+	word-break:break-all;
+	white-space:nowrap;
+	color:#5D5D5D;
+	text-align:left;
+	
+}
+
+.table_style_error{
+	width:95%;
+	border-collapse:collapse;
+}
+
+.table_style_content_error {
+	background:#ffffff;
+}
+.table_style_content_error_td{
+	border-left:#ffffff solid 0px;
+	border-right:#ffffff solid 0px;
+	FONT-SIZE: 12px;
+	padding-left:5px;
+	word-break:break-all;
+}
+
+.table_error_title{
+	padding-left:20px;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.table_error_content {
+	background:#ffffff;
+}
+.table_error_content_td{
+	border-left:#8D98B4 solid 1px;
+	border-right:#8D98B4 solid 1px;
+	FONT-SIZE: 12px;
+	padding-left:5px;
+	word-break:break-all;
+}
+
+
+.string_tolong {
+	border-left:#B3E1F0 solid 1px;border-bottom:#B3E1F0 solid 1px;
+	FONT-SIZE: 12px;
+	padding-left:8px;
+	padding-right:8px;
+	overflow:hidden;
+    	text-overflow:ellipsis; 
+    	white-space:nowrap;
+    	width:200px;
+}
+.table_style_content2 {
+	background:#C7ECFF;
+}
+.table_style_content2 td {
+	border-right:#fff solid 1px;
+	border-bottom:#fff solid 1px;
+}
+/*表格被选定的颜色*/
+.table_tr_pitch {
+	background-color: #47A5E0;
+	color: #ffffff;
+	height:23px;
+}
+.table_tr_pitch td{
+	border-right:#fff solid 1px;
+	border-bottom:#fff solid 1px;
+}
+.table_title_string{
+	width:100%;
+	border-collapse:collapse;
+}
+.table_title_string td{
+	text-align:right;
+	height:24px;
+	padding-right:30px;
+}
+
+.table_checkbox {
+	border:#9EAAB4 solid 0px;
+	background:;
+	
+}
+/*=====================================================*/
+/*                          按钮表格                   */
+/*=====================================================*/
+.table_button_list {
+	width:98%;
+	font-size:12px;
+	color:#000;
+	border:#72FF00 solid 0px;
+	margin-bottom:3px;
+}
+.table_button_list tr {
+	height:20px;
+}
+.table_button_list td {
+	height:20px;
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-right:0px;
+	text-align:right;
+}
+
+/*=====================================================*/
+/*                    空间间隔用表格                   */
+/*=====================================================*/
+.table_partition {
+	width:100%;
+}
+.table_partition tr {
+	height:10px;
+}
+
+/*=====================================================*/
+/*                      内容资料显示表格                   */
+/*=====================================================*/
+.table_view {
+	width:100%;
+	font-size:12px;
+	color:#000;
+	background:#F8F8F7;
+	border-bottom:#CECECE solid 1px;
+	border-collapse:collapse;
+}
+.table_view tr {
+	height:20px;
+}
+.table_view td {
+	padding-top:0px;
+	padding-bottom:0px;
+}
+.table_view_left {
+	padding-left:5px;
+	padding-right:5px;
+	border-bottom:#ffffff solid 2px;
+	border-right:#ffffff solid 2px;
+}
+.table_view_right {
+	text-align:right;
+	padding-left:5px;
+	padding-right:5px;
+	border-bottom:#ffffff solid 2px;
+}
+.table_view_right_bold {
+	text-align:right;
+	font-weight:bold;
+	padding-left:5px;
+	padding-right:5px;
+	border-bottom:#ffffff solid 2px;
+}
+
+/*=====================================================*/
+/*                      服务标题表格                   */
+/*=====================================================*/
+.table_service_title {
+	border-collapse:collapse;
+	width:100%;
+	height:25px;
+}
+.table_service_title_td {
+	width:165px;
+	padding-left:20px;
+	text-align:left;
+	background:url(../../images/images_1/index_menu_r2_c2.jpg);
+	font-size:2;
+	font-weight:bold;
+	color:#666666;
+}
+.table_service_title_td_right {
+	background:url(../../images/images_1/index_menu_r2_c4.jpg);
+	text-align:right;
+	padding-right:30px;
+}
+.table_seice_title_caption{
+	text-align:right;
+	padding-right:30px;
+	font-size:2;
+	color:Red;
+}
+/*=====================================================*/
+/*                      span字体                       */
+/*=====================================================*/
+.table_content_view{
+	line-height:200%;
+}
+.table_font_bold {
+	font-weight:bold;
+}
+.table_font_red {
+	color:Red;
+}
+.table_font_blue {
+	color:#013AC5;
+}
+.table_font_blue_bold {
+	color:#013AC5;
+	font-weight:bold;
+}
+/*=====================================================*/
+/*                      上传中所需要                   */
+/*=====================================================*/
+.div_file {
+	margin-bottom:10px;
+	display:none;
+}
+.div_file2 {
+	margin-bottom:10px;
+	display:block;
+}
+.error_text {
+	width:98%;
+	font-size:12px;
+	color:#000;
+	margin-top:6px;
+	behavior:expression('errorposition.htc)');
+}
+.error_text tr {
+
+}
+.error_text td {
+	padding-left:4px;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+.errorkey {
+	background:#E5F5FA;
+	margin-right:20px;
+	padding:4px;
+}
+.morecheckbox {
+	width:100%;
+	height:100px;
+	overflow-x:visible;
+	overflow-y:auto;
+}
+
+/*====================================================*/
+/*		       翻页表格类型                   */
+/*====================================================*/
+.top_table {
+	width:100%;
+	font-size:12px;
+	color:#000;
+	border-bottom:#BAD4BC solid 1px;
+	background:url(../../images/index_main_middowbj.GIF) repeat-x;
+	margin-bottom:2px;height:31px;border-collapse:collapse;
+}
+.top_table tr {
+}
+.top_table td {
+	padding-top:3px;
+	padding-bottom:0px;
+	height:30px;
+	padding-left:40px;
+	background:url(../../images/index_main_middow.GIF) no-repeat 0px 0px;
+	font-weight:900;
+	color:#000000;
+}
+/*====================================================*/
+/*		       树类型表格类型                   */
+/*====================================================*/
+.tree_style {
+	width:100%;
+	height:330px;
+	font-size:12px;
+	color:#000;
+	border-bottom:#000000 solid 1px;
+	background:#ffffff;
+	margin-bottom:2px;
+	text-align:left;
+	padding-top:10px;
+	padding-left:10px;
+	overflow:auto;
+}
+/*====================================================*/
+/*		           打印类型表格类型                   */
+/*====================================================*/
+.print_table_style {
+	width:100%;
+	border:#049ED0 solid 1px;
+	border-collapse:collapse;
+}
+.print_table_style tr {
+	height:22px;
+}
+.print_table_style_head {
+	background:#E9F8FD;
+	color: #000000;
+	font-family: Geneva, Arial, Helvetica, sans-serif;	
+}
+.print_table_style_head td {
+	border-right:#B3E1F0 solid 1px;
+	border-bottom:#8E8E8E solid 1px;
+	padding-left:8px;
+	padding-right:8px;
+	text-align:center;
+	FONT-SIZE: 12px;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.print_table_style_content {
+	background:expression(this.rowIndex%2==0 ? '#E5F5FA' : '#F7FCFD');
+}
+.print_table_style_content td{
+	border-left:#B3E1F0 solid 1px;border-bottom:#B3E1F0 solid 1px;
+	FONT-SIZE: 12px;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:2px;
+}

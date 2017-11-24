@@ -1,0 +1,7 @@
+/*登录*/
+.login_body{ background:url(../images/login_bg.jpg) no-repeat;}
+.login_logo{ background:url(../images/login_logo.png) 0 bottom no-repeat; width:274px; height:86px;*height:186px;  margin:0 auto; margin-top:100px;*font-size: 0;*line-height: 0;}
+.login{ background:url(../images/login_form.png) no-repeat; width:472px; height:246px; margin:20px auto; padding-top:93px;}
+.login div.login_input{ margin-left:130px; width:220px; height:37px; zoom: 1; *display: inline;}
+.login div.login_input input{ height:20px; border:0; line-height:20px; width:210px;}
+.login div.login_btn button{ margin:5px 0 0 270px; width:80px; height:26px; border:none; background:url(../images/login_btn.png) no-repeat; cursor: pointer;}

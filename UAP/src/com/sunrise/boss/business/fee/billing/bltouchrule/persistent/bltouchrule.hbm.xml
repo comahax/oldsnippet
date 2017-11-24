@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class
+		name="com.sunrise.boss.business.fee.billing.bltouchrule.persistent.BlTouchRuleVO"
+		table="IB_RU_RHBLTOUCHRULE" >
+		<id name="ruleid" type="java.lang.Long">
+			<column name="RULEID" precision="14" scale="0" />
+			<generator class="sequence">
+            	<param name="sequence">IB_RU_RHBLTOUCHRULE_SEQ</param>
+            </generator>
+		</id>
+		<property name="settime" type="java.sql.Timestamp">
+			<column name="SETTIME" length="7" not-null="true" />
+		</property>
+		<property name="rulepri" type="java.lang.Long">
+			<column name="RULEPRI" precision="3" scale="0" />
+		</property>
+		<property name="rulestate" type="java.lang.Long">
+			<column name="RULESTATE" precision="3" scale="0" />
+		</property>
+		<property name="validbillcyc" type="java.lang.Long">
+			<column name="VALIDBILLCYC" length="7" not-null="true" />
+		</property>
+		<property name="fixstate" type="java.lang.Long">
+			<column name="FIXSTATE" precision="3" scale="0" />
+		</property>
+		<property name="fixstime" type="java.sql.Timestamp">
+			<column name="FIXSTIME" length="7" />
+		</property>
+		<property name="fixetime" type="java.sql.Timestamp">
+			<column name="FIXETIME" length="7" />
+		</property>
+		<property name="usrbillstate" type="java.lang.Long">
+			<column name="USRBILLSTATE" precision="3" scale="0" />
+		</property>
+		<property name="usrbillstime" type="java.sql.Timestamp">
+			<column name="USRBILLSTIME" length="7" />
+		</property>
+		<property name="usrbilletime" type="java.sql.Timestamp">
+			<column name="USRBILLETIME" length="7" />
+		</property>
+		<property name="accbillstate" type="java.lang.Long">
+			<column name="ACCBILLSTATE" precision="3" scale="0" />
+		</property>
+		<property name="accbillstime" type="java.sql.Timestamp">
+			<column name="ACCBILLSTIME" length="7" />
+		</property>
+		<property name="accbilletime" type="java.sql.Timestamp">
+			<column name="ACCBILLETIME" length="7" />
+		</property>
+		<property name="cfmbillstate" type="java.lang.Long">
+			<column name="CFMBILLSTATE" precision="3" scale="0" />
+		</property>
+		<property name="cfmbillstime" type="java.sql.Timestamp">
+			<column name="CFMBILLSTIME" length="7" />
+		</property>
+		<property name="cfmbilletime" type="java.sql.Timestamp">
+			<column name="CFMBILLETIME" length="7" />
+		</property>
+		<property name="isincrdecr" type="java.lang.Long">
+			<column name="ISINCRDECR" precision="3" scale="0" />
+		</property>
+		<property name="confirmway" type="java.lang.Long">
+			<column name="CONFIRMWAY" precision="3" scale="0" />
+		</property>
+		 
+		<property name="batchnum" type="java.lang.String">
+			<column name="BATCHNUM" length="3" />
+		</property>
+		<property name="rulesource" type="java.lang.String">
+			<column name="RULESOURCE" length="256" />
+		</property>
+		<property name="rulecontent" type="java.lang.String">
+			<column name="RULECONTENT" length="256" />
+		</property>
+		<property name="woffstate" type="java.lang.Long">
+            <column name="WOFFSTATE" precision="3" scale="0" />
+        </property>
+        <property name="wofftime" type="java.util.Date">
+            <column name="WOFFTIME" length="7" />
+        </property>
+        <property name="woffetime" type="java.util.Date">
+            <column name="WOFFETIME" length="7" />
+        </property>
+        <property name="prmcfmstate" type="java.lang.Long">
+            <column name="PRMCFMSTATE" precision="3" scale="0" />
+        </property>
+        <property name="prmcfmtime" type="java.util.Date">
+            <column name="PRMCFMTIME" length="7" />
+        </property>
+        <property name="fixcfmstate" type="java.lang.Long">
+            <column name="FIXCFMSTATE" precision="3" scale="0" />
+        </property>
+        <property name="fixcfmtime" type="java.util.Date">
+            <column name="FIXCFMTIME" length="7" />
+        </property>
+        <property name="reducestate" type="java.lang.Long">
+            <column name="REDUCESTATE" precision="3" scale="0" />
+        </property>
+        <property name="reducestime" type="java.util.Date">
+            <column name="REDUCESTIME" length="7" />
+        </property>
+        <property name="reduceetime" type="java.util.Date">
+            <column name="REDUCEETIME" length="7" />
+        </property>
+        
+        <property name="nullrecstate" type="java.lang.Long">
+            <column name="NULLRECSTATE" precision="3" scale="0" />
+        </property>
+        <property name="nullrecstime" type="java.util.Date">
+            <column name="NULLRECSTIME" length="7" />
+        </property>
+        <property name="nullrecetime" type="java.util.Date">
+            <column name="NULLRECETIME" length="7" />
+        </property>
+        <property name="dgfixfeestate" type="java.lang.Long">
+            <column name="dgfixfeestate" precision="3" scale="0" />
+        </property>
+        <property name="dgfixfeestime" type="java.util.Date">
+            <column name="dgfixfeestime" length="7" />
+        </property>
+        <property name="dgfixfeeetime" type="java.util.Date">
+            <column name="dgfixfeeetime" length="7" />
+        </property>
+        
+		<property name="region" column="REGION" type="java.lang.Integer" length="5"/>
+		
+		<property name="precfmstate" type="java.lang.Long">
+            <column name="PRECFMSTATE" precision="3" scale="0" />
+        </property>
+        <property name="precfmtime" type="java.util.Date">
+            <column name="PRECFMTIME" length="7" />
+        </property>
+        
+        <property name="grpwoffstate" type="java.lang.Long">
+            <column name="GRPWOFFSTATE" precision="3" scale="0" />
+        </property>
+        <property name="grpwoffstime" type="java.util.Date">
+            <column name="GRPWOFFSTIME" length="7" />
+        </property>
+        <property name="grpwoffetime" type="java.util.Date">
+            <column name="GRPWOFFETIME" length="7" />
+        </property>
+        
+        <property name="grpfixcfmstate" type="java.lang.Long">
+            <column name="GRPFIXCFMSTATE" precision="3" scale="0" />
+        </property>
+        <property name="grpfixcfmtime" type="java.util.Date">
+            <column name="GRPFIXCFMTIME" length="7" />
+        </property>
+ 
+
+	</class>
+</hibernate-mapping>

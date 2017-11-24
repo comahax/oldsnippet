@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+
+  <display-name>StaffMgr</display-name>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+			classpath:applicationContext*.xml
+		</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.asisinfo.common.container.DefaultApplicationSetupListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>encoding</filter-name>
+    <filter-class>com.asisinfo.common.web.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>defaultEncoding</param-name>
+      <param-value>GBK</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encoding</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>encoding</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+    
+    <filter>
+     <filter-name>IntegrationSessionFilter</filter-name>
+     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+     <init-param>
+         <param-name>targetFilterLifecycle</param-name>
+         <param-value>true</param-value>
+     </init-param>
+	</filter>
+    
+	<filter-mapping>
+		<filter-name>IntegrationSessionFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>IntegrationSessionFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>RequestHolderFilter</filter-name>
+		<filter-class>com.asisinfo.staff.utils.RequestHolderFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RequestHolderFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping> 
+	<filter-mapping>
+		<filter-name>RequestHolderFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping> 
+	
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:applicationContext-ctr.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>120</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>/index.html</welcome-file>
+    <welcome-file>/index.htm</welcome-file>
+    <welcome-file>/index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

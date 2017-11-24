@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.common.loginlog.persistent.LoginLogVO" table="IB_WL_LOGINLOG">
+<id column="LOGID" name="logid" type="java.lang.Long">
+	<generator class="sequence">
+		<param name="sequence">IB_WL_LOGINLOG_SEQ</param>
+	</generator>
+</id>
+<property column="STAFFID" length="32" name="staffid" type="java.lang.String"/>
+<property column="SYSTEMID" length="32" name="systemid" type="java.lang.String"/>
+<property column="OPERTIME" length="256" name="opertime" type="java.util.Date"/>
+<property column="RESULT" length="32" name="result" type="java.lang.Byte"/>
+<property column="ERRORMSG" length="32" name="errormsg" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

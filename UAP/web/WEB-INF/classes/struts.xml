@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!--本文件建议只用于配置子struts的配置文件-->
+<struts>
+
+    <constant name="struts.action.extension" value="do" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	
+	<include file="struts-config/common-support.xml"/>	
+    <include file="struts-config/uap-default.xml"/>
+    <include file="struts-config/uap-support.xml"/>
+</struts>

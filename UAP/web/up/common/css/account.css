@@ -1,0 +1,59 @@
+/*******************************/
+/*   账单:
+/*
+/*******************************/
+html, body{ padding: 0; margin: 0; background-color: #ebf2f8; font-size: 12px }
+
+.left{ float: left !important }
+.right{ float: right !important }
+.fontRed{ color: #FF0000 }
+.wrap{ border: 1px solid #606060 }
+.tal{ text-align: left !important; } .tar{ text-align: right !important;} .bgw{ background-color: #FFF }
+.b0{ border: 0 !important;}
+.br1{ border-right: 1px solid #929395 }
+.bl1{ border-left: 1px solid #929395 }
+.bt1{ border-top: 1px solid #929395 !important; }
+.bb1{ border-bottom: 1px solid #929395 !important; }
+.bb0{ border-bottom: 0 !important; }
+.bt0{ border-top: 0  }
+p{ margin: 8px 0; font-weight: normal; line-height: 22px }
+.txt{ padding: 8px !important; }
+.total{ font-weight: bold }
+.bgLB{ background-color: #ddeef8 !important; }
+
+
+.areaL, .areaR, .areaM{}
+.areaL, .areaR{ width: 49.5%; float: left;}
+.areaM{margin-top: 8px; overflow: hidden; zoom:1 }
+.header, .footer{ height: 66px; padding: 4px 12px; }
+.footer .contact span{ line-height: 34px; height: 34px; width: 238px; display: block; color: #606060 }
+
+.topMsg, .topMsg_w292{ height: 80px; width: 292px; background: url(../../images/account/bgTM.gif) no-repeat 0px 0px; padding: 10px 14px }
+.topMsg p{ width: 292px }
+
+.topMsg_w292{
+	width: 292px; background: url(../../images/account/bgTM_w292.gif) no-repeat 0px 0px;
+}
+.topMsg_w292 p{ width: 292px }
+
+.mainTitle h1{ font-size: 18px; text-align: center }
+.totalBar{ border: 1px solid black; border-left: 0; border-right: 0;  border-bottom-style: dashed }
+
+.tableInfo th{ height: 24px; font-weight: normal }
+.tableInfo td{ }
+
+.tableDetail{ border: 1px solid #606060 /* _*/ }
+.tableDetail th, .tableDetail td, .tableDetail .mainTh{ padding: 0 8px } 
+.tableDetail .mainTh, .tableDetail th{ font-weight: bold; }
+
+.tableDetail .mainTh{ background-color: #bbdbe8; border-bottom: 1px solid #606060; padding: 4px; line-height: 16px }
+.tableDetail th{ background-color: #ddeef8; height: 24px; border-bottom: 1px solid #929395 }
+.tableDetail td{ background-color: #FFF; text-align: center; height: 22px; border-bottom: 1px solid #eeeeee; } 
+.tableDetail .dType{ text-align: left; font-weight: bold; }
+
+.tableBorder th, .tableBorder td{ border-right: 1px solid #929395 }
+.tableBorder th.last, .tableBorder td.last{ border-right: 0 }
+
+.subtotal{ font-weight: bold; text-align: left !important; height: 28px}
+
+

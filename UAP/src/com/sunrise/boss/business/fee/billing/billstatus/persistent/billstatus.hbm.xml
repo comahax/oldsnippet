@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.billing.billstatus.persistent.BillStatusVO" table="IB_CBB_RHBILLSTATUS" >
+        <composite-id>
+        	<key-property name="phase" type="java.lang.String">
+        		<column name="PHASE" length="16"></column>
+        	</key-property>
+        	<key-property name="subphase" type="java.lang.Short">
+        		<column name="SUBPHASE" precision="3" scale="0"></column>
+        	</key-property>
+        	<key-property name="validbillcyc" type="java.lang.Long">
+        		<column name="VALIDBILLCYC" precision="8" scale="0"></column>
+        	</key-property>
+        	<key-property name="region" type="java.lang.Integer">
+        		<column name="REGION" precision="5" scale="0"></column>
+        	</key-property>
+        </composite-id>
+        <property name="phasename" type="java.lang.String">
+            <column name="PHASENAME"  length="32"/>
+        </property>
+        <property name="state" type="java.lang.Short">
+            <column name="STATE" precision="3" scale="0" />
+        </property>
+        <property name="starttime" type="java.util.Date">
+            <column name="STARTTIME" length="7" />
+        </property>
+        <property name="endtime" type="java.util.Date">
+            <column name="ENDTIME" length="7" />
+        </property>
+        
+       
+        
+    </class>
+</hibernate-mapping>
+
+
+

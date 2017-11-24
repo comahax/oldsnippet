@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="UAP"
+  id="myeclipse.1187074119500"
+  context-root="/uap"
+  j2ee-spec="1.4"
+  archive="UAP.war">
+  <attributes>
+    <attribute name="webrootdir" value="/web" />
+  </attributes>
+</project-module>
+

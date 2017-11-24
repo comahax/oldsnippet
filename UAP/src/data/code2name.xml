@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syscode-config>
+	<!-- 注意：definition的值要唯一，推荐统一用大写字母 -->
+	<!-- 这里的VO实际上要对应数据库里的一张表 -->
+	
+	<!-- 注意："$" 是固定参数必须的一个定义，不能删除 -->
+
+	<syscode-dynamic>
+		<definition>$</definition>
+		<value-object>com.sunrise.jop.business.base.dictitem.DictitemVO</value-object>
+		<code>dictid</code>
+		<name>dictname</name>
+	</syscode-dynamic>
+	<!-- 注意：如果需要使用该code2Name 项， CompanyVO 需要提供一个带 id,name 的构造函数-->
+	<syscode-dynamic>
+		<definition>COMPANY</definition>
+		<value-object>com.sunrise.exam.business.example.company.persistent.CompanyVO</value-object>
+		<code>id</code>
+		<name>companyname</name>
+	</syscode-dynamic>
+	
+	<syscode-dynamic>
+		<definition>EMPLOYEE</definition>
+		<value-object>com.sunrise.jop.business.example.employee.persistent.EmployeeVO</value-object>
+		<code>id</code>
+		<name>empname</name>
+	</syscode-dynamic>
+	
+	<!-- 这种方式用于指定任意表为代码表,支持两种方式。注意：底层不进行类型校检，请不定指定错误的sql-->
+	<!-- sql = * 以BaseDAO内部方法进行查询，查询为code等于代码编号 -->
+	<!-- 注意：如果需要这样使用该code2Name 项， CompanyVO 需要提供一个带 shortname,companyname 的构造函数-->
+	<syscode-dynamic>
+		<definition>COMPANY_FIELD</definition>
+		<value-object>com.sunrise.jop.business.example.company.persistent.CompanyVO</value-object>
+		<code>shortname</code>
+		<name>companyname</name>
+		<sql>*</sql>
+	</syscode-dynamic>
+	
+	<!-- sql = select * from table,完整的查询SQL，则以SQL进行查询，并在最后增加"and code='value'"条件，注意:提供的SQL不能与增加的条件冲突 -->
+	<syscode-dynamic>
+		<definition>COMPANY_SQL</definition>
+		<value-object>com.sunrise.jop.business.example.company.persistent.CompanyVO</value-object>
+		<code>shortname</code>
+		<name>companyname</name>
+		<sql>SELECT * FROM EXAM_COMPANY WHERE companyname='999公司'</sql>
+	</syscode-dynamic>
+	
+	<syscode-dynamic>
+		<definition>ORG</definition>
+		<value-object>com.sunrise.jop.business.system.org.org.persistent.OrgVO</value-object>
+		<code>orgCode</code>
+		<name>orgName</name>
+	</syscode-dynamic>
+	
+	<syscode-dynamic>
+		<definition>MODULE</definition>
+		<value-object>com.sunrise.jop.business.system.module.persistent.ModuleVO</value-object>
+		<code>moduleCode</code>
+		<name>moduleName</name>
+	</syscode-dynamic>
+	
+	<syscode-local>
+		<definition>YES_NO</definition>
+		<items>
+			<itemvalue code="0">否</itemvalue>
+			<itemvalue code="1">是</itemvalue>		
+		</items>
+	</syscode-local>
+	
+	<!-- JOP SOA 相关配置 -->
+	
+	<syscode-dynamic>
+		<definition>INTERFACEDEF</definition>
+		<value-object>com.sunrise.jop.business.system.soa.adapter.interfacedef.persistent.InterfacedefVO</value-object>
+		<code>interfaceid</code>
+		<name>interfacename</name>
+	</syscode-dynamic>
+	
+	<syscode-local>
+		<definition>INVOKE_MODE</definition>
+		<items>
+			<itemvalue code="0">同步</itemvalue>
+			<itemvalue code="1">异步</itemvalue>		
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>INVOKE_PROTOCOL</definition>
+		<items>
+			<itemvalue code="RMI">远程EJB协议(RMI)</itemvalue>
+			<itemvalue code="RMI_LOCAL">远程LOCAL EJB协议(RMI_LOCAL)</itemvalue>		
+			<itemvalue code="CTG">CICS协议</itemvalue>		
+			<itemvalue code="SOAP">SOAP协议</itemvalue>	
+		</items>
+	</syscode-local>
+	
+	<!-- TARGET_SYSTEM 定义，
+		要依据 applicationContext.xml 中 id为com.sunrise.jop.adapter.InvokeController的bean 的adapterMap属性中定义的保持一致.
+		systemName 的中文名参考对应目标系统bean，即class为com.sunrise.jop.adapter.TargetSystem 的bean中的 systemName属性的值。
+	 -->
+	<syscode-local>
+		<definition>TARGET_SYSTEM</definition> 
+		<items>
+			<itemvalue code="OUT">对外接口系统</itemvalue>
+			<itemvalue code="EJB_DEMO_SYS">EJB演示系统</itemvalue>
+			<itemvalue code="CICS_DEMO_SYS">CICS演示系统</itemvalue>		
+			<itemvalue code="BOSS_ACCOUNT_EJB">BOSS EJB账务系统</itemvalue>		
+			<itemvalue code="BOSS_ACCOUNT_CICS">BOSS CICS账务系统</itemvalue>	
+			<itemvalue code="BOSS_BUSINESS_WS">BOSS营业 Web Service 系统</itemvalue>	
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>COMPANY_STATE</definition>
+		<items>
+			<itemvalue code="0">禁用</itemvalue>
+			<itemvalue code="1">有效</itemvalue>
+			<itemvalue code="-1">已删除</itemvalue>			
+		</items>
+	</syscode-local>
+	
+	<syscode-dynamic>
+		<definition>CNTYCOMPANY</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.cntycompany.persistent.CntycompanyVO
+		</value-object>
+		<code>countycompid</code>
+		<name>countycompname</name>
+	</syscode-dynamic>
+	<syscode-dynamic>
+		<definition>CITYCOMPANY</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.citycompany.persistent.CitycompanyVO
+		</value-object>
+		<code>citycompid</code>
+		<name>citycompname</name>
+	</syscode-dynamic>
+	 <syscode-local>
+       <definition>SUBPHASENAME</definition> 
+	   <items>
+		  <itemvalue code="A1010">月初预出固定费</itemvalue> 
+		  <itemvalue code="A1011">用户镜像</itemvalue> 
+		  <itemvalue code="A1012">用户增量捕捉</itemvalue> 
+		  <itemvalue code="A1013">天数计算</itemvalue>
+		  <itemvalue code="A1014">费用计算</itemvalue>
+		  <itemvalue code="A1015">结果入库</itemvalue>
+
+		  <itemvalue code="A1020">月中预出固定费</itemvalue> 
+		  <itemvalue code="A1021">用户镜像</itemvalue> 
+		  <itemvalue code="A1022">用户增量捕捉</itemvalue> 
+		  <itemvalue code="A1023">天数计算</itemvalue>
+		  <itemvalue code="A1024">费用计算</itemvalue>
+		  <itemvalue code="A1025">结果入库</itemvalue>
+
+		  <itemvalue code="A1030">预跑固定费</itemvalue> 
+		  <itemvalue code="A1031">用户镜像</itemvalue> 
+		  <itemvalue code="A1032">用户增量捕捉</itemvalue> 
+		  <itemvalue code="A1033">天数计算</itemvalue>
+		  <itemvalue code="A1034">费用计算</itemvalue>
+		  <itemvalue code="A1035">结果入库</itemvalue>
+
+		  <itemvalue code="A1040">全量固定费</itemvalue> 
+		  <itemvalue code="A1041">用户镜像</itemvalue> 
+		  <itemvalue code="A1042">用户增量捕捉</itemvalue> 
+		  <itemvalue code="A1043">天数计算</itemvalue>
+		  <itemvalue code="A1044">费用计算</itemvalue>
+		  <itemvalue code="A1045">结果入库</itemvalue>
+
+		  <itemvalue code="A1050">增量固定费计算</itemvalue> 
+		  <itemvalue code="A1051">用户镜像</itemvalue> 
+		  <itemvalue code="A1052">用户增量捕捉</itemvalue> 
+		  <itemvalue code="A1053">天数计算</itemvalue>
+		  <itemvalue code="A1054">费用计算</itemvalue>
+		  <itemvalue code="A1055">结果入库</itemvalue>
+
+		  <itemvalue code="B1010">累账</itemvalue> 
+		  <itemvalue code="B1011">包级对账</itemvalue> 
+		  <itemvalue code="B1012">32号数据对账</itemvalue> 
+
+		  <itemvalue code="B1030">增量无主回捞 </itemvalue>		  
+		  <itemvalue code="B1031">无主处理</itemvalue> 
+		  <itemvalue code="B1032">生成无主文件</itemvalue> <!-- 由下发无主文件改 为 生成无主文件 -->
+		  				  
+		  <itemvalue code="C1010">账单优惠</itemvalue> 
+		  <itemvalue code="C1011">资料文件处理</itemvalue> 
+		  <itemvalue code="C1012">优惠减免</itemvalue> 
+		  <itemvalue code="C1013">下发账单</itemvalue>
+
+		  <itemvalue code="C1020">月报表对账</itemvalue> 
+		  <itemvalue code="C1021">预处理文件平衡性检查</itemvalue> 		 		 
+
+		  <itemvalue code="E1010">合账数据准备</itemvalue> 
+		  <itemvalue code="E1011">集团固定费</itemvalue> 
+		  <itemvalue code="E1012">个人固定费</itemvalue> 
+		  <itemvalue code="E1013">monfee</itemvalue> 
+		  <itemvalue code="E1014">present文件</itemvalue> 
+		  <itemvalue code="E1015">qqjy文件</itemvalue> 
+		  <itemvalue code="E1016">GroupFixPaied文件</itemvalue> 
+		  <itemvalue code="E1017">GroupPaied文件</itemvalue> 
+		  <itemvalue code="E1018">集团补收冲减</itemvalue> 
+		  <itemvalue code="E1019">个人补收冲减</itemvalue> 
+		  <itemvalue code="E10110">零点余额</itemvalue> 
+		  <itemvalue code="E10111">零点欠费</itemvalue> 
+		  <itemvalue code="E10112">固定费入库</itemvalue> 	
+		  <itemvalue code="E10113">金卡消费文件</itemvalue>
+		  <itemvalue code="E10114">固定费代付文件</itemvalue>
+		  
+		  <itemvalue code="E1000">出账前导数</itemvalue> 
+		  <itemvalue code="E1001">个人最低消费导出</itemvalue> 
+		  <itemvalue code="E1002">集团最低消费导出</itemvalue> 
+		  <itemvalue code="E1003">账目组导出</itemvalue> 
+		  <itemvalue code="E1004">非代付账户导出</itemvalue>  
+		  <itemvalue code="E1005">公务机导出</itemvalue> 
+		  <itemvalue code="E1006">产品包优惠导出</itemvalue> 
+
+		  <itemvalue code="B100">月切</itemvalue> <!-- 12月25问题 反馈 由于月切和出账导数登记的阶段冲突了 都是F101，月切改用B100 -->
+		  <!-- add by 2013-11-06 测试 -->
+		  <itemvalue code="B1000">月切</itemvalue> 
+		  
+		  <itemvalue code="101">全球通固定费</itemvalue> 
+
+		  <itemvalue code="102">用户出账</itemvalue> 
+		  <itemvalue code="1020">账单合并</itemvalue> 
+		  <itemvalue code="1021">金卡减免</itemvalue> 
+		  <itemvalue code="1022">最低消费处理</itemvalue> 
+		  <itemvalue code="1023">指定费项或费项组最低消费</itemvalue>
+
+		  <itemvalue code="103">账户出账</itemvalue> 
+		  <itemvalue code="1030">账户分账</itemvalue> 
+		  <itemvalue code="1031">集团优惠处理</itemvalue> 
+		  <itemvalue code="1033">账单取整</itemvalue> 
+
+		  <itemvalue code="104">出账核查确认</itemvalue> 
+		  <itemvalue code="1040">集团赠送入库</itemvalue> 
+		  <itemvalue code="1041">个人赠送入库</itemvalue> 
+		  <itemvalue code="1042">集团欠费入库</itemvalue> 
+		  <itemvalue code="1043">个人欠费入库</itemvalue>
+		  <itemvalue code="1044">集团已销入库</itemvalue> 
+		  <itemvalue code="1045">个人已销入库</itemvalue> 
+		  <itemvalue code="1046">集团特殊用机</itemvalue> 
+		  <itemvalue code="1047">个人特殊用机</itemvalue> 		 
+
+		  <itemvalue code="105">销账信控</itemvalue> 
+		  <itemvalue code="1050">个人销账信控</itemvalue> 
+		  <itemvalue code="1051">集团销账信控</itemvalue> 	
+		  
+		  <itemvalue code="106">通信费核查确认</itemvalue>
+		  <itemvalue code="1060">月报表对账文件</itemvalue>
+		  <itemvalue code="1061">AGIO优惠文件</itemvalue>
+		  <itemvalue code="1062">应收话费账单文件</itemvalue>
+		  <itemvalue code="1063">亲亲家园账单文件</itemvalue>
+		  <itemvalue code="1064">ICP赠送、退费文件</itemvalue>
+		  <itemvalue code="1065">无主账单文件</itemvalue>	  
+
+		  <itemvalue code="80">账单优惠</itemvalue> 
+
+		  <itemvalue code="75">无主回捞</itemvalue> 
+
+		  <itemvalue code="1010">预付费固定费</itemvalue> 
+		  <itemvalue code="10100">全球通计算</itemvalue>
+		  <itemvalue code="10101">预付费计算</itemvalue>
+
+		  <itemvalue code="50">固定费核查确认</itemvalue>
+		  <itemvalue code="500">个人固定费</itemvalue>
+		  <itemvalue code="501">集团固定费</itemvalue> 
+
+		  <itemvalue code="51">预处理确认</itemvalue>
+		  
+		  <!-- 预付费出账过程监控 -->
+		  <itemvalue code="C1000">账单优惠</itemvalue>
+		  <itemvalue code="E1020">合账数据</itemvalue>
+		  <itemvalue code="E1021">固定费文件</itemvalue>
+		  <itemvalue code="E1022">通信费文件</itemvalue>
+		  <itemvalue code="E1023">低消额度文件</itemvalue>
+		  <itemvalue code="A1000">固定费生成</itemvalue>
+		  <itemvalue code="G1000">低消计算</itemvalue>
+		  <itemvalue code="H1000">低消确认</itemvalue>
+		  <itemvalue code="I1000">低消入ABM库</itemvalue>
+		  <!-- 统一出帐平台_出账后管理需求添加 -->
+		  <itemvalue code="Q1010">积分计算</itemvalue>
+		  <itemvalue code="R1010">积分入库</itemvalue>
+	  </items>
+  </syscode-local>
+  <syscode-local>
+		<definition>BILLSTEP</definition>
+		<items>
+			<itemvalue code="80">账单优惠</itemvalue>
+			<itemvalue code="100">预处理确认</itemvalue>
+			<itemvalue code="101">全球通固定费</itemvalue>			
+			<itemvalue code="102">用户出账</itemvalue>
+			<itemvalue code="103">账户出账</itemvalue>
+			<itemvalue code="104">出账核查确认</itemvalue>
+			<itemvalue code="105">销账信控</itemvalue>
+			<itemvalue code="75">无主回捞</itemvalue>
+			<itemvalue code="1010">预付费固定费</itemvalue>
+			<itemvalue code="50">固定费核查确认</itemvalue>
+			<itemvalue code="51">预处理确认</itemvalue>
+			<itemvalue code="106">通信费核查确认</itemvalue>
+		</items>
+	</syscode-local>
+	
+  <syscode-local>
+
+		<definition>CITYIDCODE</definition>
+		<items>
+			<itemvalue code="999">全省</itemvalue>
+			<itemvalue code="200">广州</itemvalue>
+			<itemvalue code="755">深圳</itemvalue>
+			<itemvalue code="769">东莞</itemvalue>
+			<itemvalue code="757">佛山</itemvalue>
+			<itemvalue code="754">汕头</itemvalue>
+			<itemvalue code="756">珠海</itemvalue>
+			<itemvalue code="752">惠州</itemvalue>
+			<itemvalue code="760">中山</itemvalue>
+			<itemvalue code="750">江门</itemvalue>
+			<itemvalue code="751">韶关</itemvalue>
+			<itemvalue code="762">河源</itemvalue>
+			<itemvalue code="753">梅州</itemvalue>
+			<itemvalue code="660">汕尾</itemvalue>
+			<itemvalue code="668">茂名</itemvalue>
+			<itemvalue code="662">阳江</itemvalue>
+			<itemvalue code="759">湛江</itemvalue>
+			<itemvalue code="763">清远</itemvalue>
+			<itemvalue code="768">潮州</itemvalue>
+			<itemvalue code="663">揭阳</itemvalue>
+			<itemvalue code="766">云浮</itemvalue>
+			<itemvalue code="758">肇庆</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>USRSUBPHASE</definition>
+		<items>
+			<itemvalue code="0">账单合并</itemvalue>
+			<itemvalue code="1">金卡减免</itemvalue>
+			<itemvalue code="2">最低消费处理</itemvalue>
+			<itemvalue code="3">指定费项或费项组最低消费</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>BACKACCTSTATE</definition>
+		<items>
+			<itemvalue code="0">未启动</itemvalue>
+			<itemvalue code="1">可启动</itemvalue>
+			<itemvalue code="2">启动中</itemvalue>
+			<itemvalue code="3">已完成</itemvalue>
+			<itemvalue code="4">错误</itemvalue>
+		</items>
+	</syscode-local>
+	
+	
+	<syscode-local>
+		<definition>ACCSUBPHASE</definition>
+		<items>
+			<itemvalue code="0">账户分账</itemvalue>
+			<itemvalue code="1">集团优惠处理</itemvalue>
+			<itemvalue code="2">账单取整</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>CFMSUBPHASE</definition>
+		<items>
+			<itemvalue code="0">欠费入库</itemvalue>
+			<itemvalue code="1">赠送处理</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>FIXSUBPHASE</definition>
+		<items>
+			<itemvalue code="0">全球通计算</itemvalue>
+			<itemvalue code="1">预付费计算</itemvalue>
+			<itemvalue code="5">预付费计算</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>CZCFM</definition>
+		<items>
+			<itemvalue code="0">集团赠送入库</itemvalue>
+			<itemvalue code="1">个人赠送入库</itemvalue>
+			<itemvalue code="2">集团欠费入库</itemvalue>
+			<itemvalue code="3">个人欠费入库</itemvalue>
+			<itemvalue code="4">集团已销入库</itemvalue>
+			<itemvalue code="5">个人已销入库</itemvalue>
+			<itemvalue code="6">集团特殊用机</itemvalue>
+			<itemvalue code="7">个人特殊用机</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>TXFCFM</definition>
+		<items>
+			<itemvalue code="0">月报表对账文件</itemvalue>
+			<itemvalue code="1">AGIO优惠文件</itemvalue>
+			<itemvalue code="2">应收话费账单文件</itemvalue>
+			<itemvalue code="3">亲亲家园账单文件</itemvalue>
+			<itemvalue code="4">ICP赠送、退费文件</itemvalue>
+			<itemvalue code="5">无主账单文件</itemvalue>
+			
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>CONFIRM</definition>
+		<items>
+			<itemvalue code="0">未确认</itemvalue>
+			<itemvalue code="3">已确认</itemvalue>
+		</items>
+	</syscode-local>
+	
+	
+	<syscode-local>
+		<definition>FIXFEECFM</definition>
+		<items>
+			<itemvalue code="0">个人固定费</itemvalue>
+			<itemvalue code="1">集团固定费</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>WOFFCFM</definition>
+		<items>
+			<itemvalue code="0">个人销账信控</itemvalue>
+			<itemvalue code="1">集团销账信控</itemvalue>
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>FILEDOWNLOAD</definition>
+		<items>
+			<itemvalue code="1">文件上传</itemvalue>
+			<itemvalue code="2">文件下载</itemvalue>
+			<itemvalue code="3">低消确认</itemvalue>
+		</items>
+	</syscode-local>
+	
+	
+	<syscode-local>
+		<definition>REQ_STATE</definition>
+		<items>
+			<itemvalue code="-1">作废</itemvalue>
+			<itemvalue code="0">待处理</itemvalue>
+			<itemvalue code="2">处理中</itemvalue>	
+			<itemvalue code="3">已处理</itemvalue>	
+			<itemvalue code="4">处理出错</itemvalue>			
+		</items>
+	</syscode-local>
+	
+	<syscode-local>
+		<definition>CHECKPLAN_RESULTTYPE</definition>
+		<items>
+			<itemvalue code="0">正常</itemvalue>
+			<itemvalue code="1">异常</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-local>
+		<definition>UAP_REQ_STATE</definition>
+		<items>
+			<itemvalue code="-1">作废</itemvalue>
+			<itemvalue code="0">待处理</itemvalue>
+			<itemvalue code="1">统计中</itemvalue>
+			<itemvalue code="2">分析中</itemvalue>
+			<itemvalue code="3">已处理</itemvalue>
+			<itemvalue code="4">处理出错</itemvalue>
+		</items>
+	</syscode-local>
+	<syscode-dynamic>
+		<definition>WOFF-ACCT</definition>
+		<value-object>
+			com.sunrise.boss.business.fee.acct.persistent.AcctVO
+		</value-object>
+		<code>acctid</code>
+		<name>acctname</name>
+	</syscode-dynamic>
+	
+	<syscode-local>
+		<definition>UAP_CHARGING_TYPE</definition>
+		<items>
+			<itemvalue code="0">包月</itemvalue>
+			<itemvalue code="1">点播</itemvalue>
+		</items>
+	</syscode-local>
+</syscode-config>

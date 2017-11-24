@@ -1,0 +1,42 @@
+.bj {
+	background-attachment: fixed;
+	background-image: url(../../images/image-top/bj.GIF);
+	background-repeat: repeat-x;
+	height: 66px;
+	width: 100%;
+}
+.top_right {
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: right;
+	float: right;
+	height: 66px;
+	width: 238px;
+}
+
+.top_left {
+	background-attachment: fixed;
+	background-image: url(../../images/image-top/logo.GIF);
+	background-repeat: no-repeat;
+	background-position: left;
+	float: left;
+	height: 66px;
+	width: 500px;
+}
+.top_guanli {
+	font-family: "ËÎÌו";
+	font-size: 12px;
+	font-weight: bold;
+	color: #001F60;
+	float: left;
+	margin-top: 38px;
+	margin-left: 80px;
+}
+.top_yonghu {
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	float: right;
+	margin-top: 38px;
+	margin-left: 10px;
+}

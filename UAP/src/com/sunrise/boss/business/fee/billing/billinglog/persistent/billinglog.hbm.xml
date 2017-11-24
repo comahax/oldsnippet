@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.billing.billinglog.persistent.BillingLogVO" table="IB_WL_RHBILLINGLOG" >
+        <id name="logid" type="java.lang.Long">
+            <column name="LOGID" precision="14" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="validbillcyc" type="java.lang.Long">
+            <column name="VALIDBILLCYC" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="billingcon" type="java.lang.String">
+            <column name="BILLINGCON" length="64" not-null="true" />
+        </property>
+        <property name="starttime" type="java.util.Date">
+            <column name="STARTTIME" length="7" />
+        </property>
+        <property name="endtime" type="java.util.Date">
+            <column name="ENDTIME" length="7" />
+        </property>
+        <property name="billingphase" type="java.lang.String">
+            <column name="BILLINGPHASE" length="20" not-null="true" />
+        </property>
+        <property name="subphase" type="java.lang.String">
+            <column name="SUBPHASE" length="20" />
+        </property>
+        <property name="processcnt" type="java.lang.Long">
+            <column name="PROCESSCNT" precision="14" scale="0" />
+        </property>
+        <property name="processamt" type="java.lang.Double">
+            <column name="PROCESSAMT" precision="16" />
+        </property>
+        <property name="opercode" type="java.lang.String">
+            <column name="OPERCODE" length="16" />
+        </property>
+        <property name="failreason" type="java.lang.String">
+            <column name="FAILREASON" length="64" />
+        </property>
+        <property name="status" type="java.lang.Long">
+            <column name="STATUS" precision="3" scale="0" />
+        </property>
+        <property name="batchnum" type="java.lang.String">
+            <column name="BATCHNUM" length="8" />
+        </property>
+        <property name="region" column="REGION" type="java.lang.Integer" length="5"/>
+
+    </class>
+</hibernate-mapping>

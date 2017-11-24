@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!--本文件建议配置项目中的默认跳转项,配置根级别的内容-->
+<struts>
+    <package name="uap-default" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="exceptionLog" class="com.sunrise.jop.ui.struts2.interceptor.ExceptionLogInterceptor" />
+			
+			<interceptor-stack name="exampleStack">		
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="params"/>
+				<interceptor-ref name="exceptionLog" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="exampleStack" />
+		
+        <global-results>
+            <result name="error">/errorpage/errorpage.jsp</result>
+            <result name="invalid.token">/errorpage/errorpage.jsp</result>
+            <!--<result name="login" type="redirect-action">Login_input</result>-->
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping result="error" exception="java.lang.Throwable"/>
+        </global-exception-mappings>
+        
+        <action name="login" class="com.sunrise.boss.web.common.login.LoginAction" method="doLogin">
+        	<result name="success">index.jsp</result>
+        	<result name="error">/login.jsp</result>
+        </action>
+
+        <action name="logout" class="com.sunrise.boss.web.common.login.LoginAction" method="doLogout">
+        	<result name="logout">/login.jsp</result>
+        </action>
+        
+        <action name="workbench" class="com.sunrise.boss.web.common.login.LoginAction" method="doWorkbench">
+        	<result name="success">/workbench.jsp</result>
+        </action>
+    </package>
+</struts>

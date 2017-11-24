@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.billing.billstepstatus.persistent.BillStepStatusVO" table="IB_ACCT_BILLSTEPSTATUS">
+<composite-id>
+<key-property column="STEPNO" length="6" name="stepno" type="java.lang.Long"/>
+<key-property column="VALIDBILLCYC" length="8" name="validbillcyc" type="java.lang.Long"/>
+</composite-id>
+<property column="TASKSTATUS" length="1" name="taskstatus" type="java.lang.Short"/>
+<property column="STARTDATE" length="7" name="startdate" type="java.util.Date"/>
+<property column="ENDDATE" length="7" name="enddate" type="java.util.Date"/>
+<property column="ERRORREASON" length="100" name="errorreason" type="java.lang.String"/>
+<property column="UPTTIME" length="7" name="upttime" type="java.util.Date"/>
+<property name="region" column="REGION" type="java.lang.Integer" length="5"/>
+
+</class>
+    <sql-query name="boss.fee.billstepstatus.querydatas">
+         select MAX(a.ENDDATE) as val from IB_ACCT_BILLSTEPSTATUS a where a.STEPNO in (select b.STARTSTEPNO from IB_ACCT_NODERELATION b where b.ENDSTEPNO=:endstepno ) and a.TASKSTATUS = 3
+	</sql-query>
+</hibernate-mapping>

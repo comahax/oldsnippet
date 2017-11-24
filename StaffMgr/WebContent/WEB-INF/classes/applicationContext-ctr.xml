@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<!-- ========================= VIEW DEFINITIONS ========================= -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<bean id="InternalPathMethodNameResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.InternalPathMethodNameResolver" />
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				/index/*=indexCtr
+				/information/*=employeesCtr
+				/bills/*=billCtr
+			</value>
+		</property>
+	</bean>
+
+
+	<bean id="indexCtr" class="com.asisinfo.staff.web.IndexCtr"
+		autowire="byName" />
+	<bean id="employeesCtr" class="com.asisinfo.staff.web.EmployeesCtr"
+		autowire="byName" />
+	<bean id="billCtr"  class="com.asisinfo.staff.web.BillCtr"
+		autowire="byName" />
+	<bean id="positionQueryTimer" class="com.asisinfo.staff.timer.PositionQueryTimer"
+	    autowire="byName" />
+	
+
+
+</beans>

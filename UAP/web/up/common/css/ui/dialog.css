@@ -1,0 +1,53 @@
+.dialog{
+	width: 600px; padding:1px; border:1px solid #DDD;
+	background: #FFF
+}
+.fixlayer{
+	filter: Alpha(opacity=0);
+	height: 100%;
+	width: 100%;
+}
+.conlayer{
+	position: absolute;
+	z-index: 1;
+	margin-top: -350px;
+	* margin: 0 -600px;
+}
+
+.dialog .top_bar{
+	font-weight: bold;
+	background: url(../../../images/dialog/title_bar_bg.gif) repeat-x;
+	width: 600px
+}
+.dialog .title{
+	font-weight:bold;
+	color: #153D77;
+	line-height: 32px;
+	text-indent: 5px
+}
+.dialog .btn_close{
+	display: block;
+	width: 18px;
+	height: 18px;
+	background: url(../../../images/dialog/close.gif) no-repeat;
+	position: absolute;
+	margin: -23px 0 0 -24px
+}
+
+.dialog .btn_close2{
+	display: block;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	margin: -23px 0 0 -24px
+}
+
+.bline{
+	clear:both; padding:1px 0px; border-bottom: 1px solid #ddd;
+}
+.dialog .content{
+	background: #edeff0;
+	overflow: hidden;
+	padding: 8px;
+	width: 584px
+}

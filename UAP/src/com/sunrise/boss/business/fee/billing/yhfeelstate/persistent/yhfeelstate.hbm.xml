@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.billing.yhfeelstate.persistent.YhfeelstateVO" table="IB_CC_YHFEELSTATE">
+<id column="VALIDBILLCYC" name="validbillcyc" type="java.lang.Long">
+<generator class="assigned"/>
+</id>
+<property column="SMSFILESTATE" length="3" name="smsfilestate" type="java.lang.Short"/>
+<property column="FILESTARTTIME" length="7" name="filestarttime" type="java.util.Date"/>
+<property column="FILEENDTIME" length="7" name="fileendtime" type="java.util.Date"/>
+<property column="SMSSENDSTATE" length="3" name="smssendstate" type="java.lang.Short"/>
+<property column="SMSSTARTTIME" length="7" name="smsstarttime" type="java.util.Date"/>
+<property column="SMSENDTIME" length="7" name="smsendtime" type="java.util.Date"/>
+<property column="OPRCODE" length="32" name="oprcode" type="java.lang.String"/>
+</class>
+</hibernate-mapping>

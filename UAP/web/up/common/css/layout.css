@@ -1,0 +1,231 @@
+@import url("public.css");
+/* 2011-05-30 sophia */
+
+
+body,ul,li,h1,h2,h3,h4{ margin:0; padding:0; }
+body{
+	font-family:"宋体";
+	font-size:12px;
+	color:#000;
+	background:#a1c6de url(../../images/bodyBg.gif) repeat-x top left;
+}
+a,a:link{ color:#000; text-decoration:none;}
+img{ border: 0 }
+
+/*+++++++++++++++++++++布局---头部++++++++++++++++++++++++++++++*/
+.box{ width:926px; margin:0 auto;}
+.box .top{ width:950px; height:156px;}
+.box .top .logo{ width:125px; height:68px; padding:11px 0 0 28px; float:left;}
+.box .top .sysName{ width:427px; height:80px; font-family:"微软雅黑"; float:left; padding:11px 0 0 9px; font-size:20px; font-weight:bold; text-align:center; line-height:81px; vertical-align:middle;}
+.box .top .function{ width:361px; float:right; padding-top:7px;}
+.box .top .function img{ position:relative; top:3px; margin-right:2px;}
+.copyright{ text-align:center;height:30px; clear:both; }
+.copyright img{position:relative; top:3px; margin-right:3px;}
+.function_bt{ width:120px; height:14px;position:absolute; z-index:6; right:5px; top:8px; text-align:right;}
+.function_bt .close_1{ width:14px; height:14px; background:url(../../images/close_1.gif); display:block; float:right;}
+.function_bt .close_2{ width:14px; height:14px; background:url(../../images/close_2.gif);display:block; float:right;}
+.function_bt .minimize_1{ width:14px; height:14px; background:url(../../images/minimize_1.gif); display:block; float:right;}
+.function_bt .minimize_2{ width:14px; height:14px; background:url(../../images/minimize_2.gif);display:block; float:right;}
+.function_bt .setup_1{ width:14px; height:14px; background:url(../../images/setup_1.gif); display:block; float:right;}
+.function_bt .setup_2{ width:14px; height:14px; background:url(../../images/setup_2.gif);display:block; float:right;}
+
+/*+++++++++++++++++++++布局---菜单++++++++++++++++++++++++++++++*/
+.MenuBar{ height:35px; width:950px; clear:both;}
+.MenuBar .MenuBarL,.MenuBar .MenuBarR{ height:35px; width:6px; float:left;}
+.MenuBar .MenuBarL{ background:url(../../images/image.png) -110px -11px;}
+.MenuBar .MenuBarR{ background:url(../../images/image.png) -117px -11px;}
+#MenuBarC{ width:938px; height:35px; background:url(../../images/navC.gif) repeat-x; float:left;}
+#MenuBarC li{ float:left; padding:10px 10px 0 10px; list-style-type:none;}
+#MenuBarC li a{ display: block}
+#MenuBarC li a:link,#MenuBarC li a:visited{ color:#000; text-decoration:none; }
+#MenuBarC li a:hover{ text-decoration:underline;}
+#MenuBarC li ul { display: none; width:160px; background:#b7d2e5;filter:alpha(opacity=85); /*IE*/  -moz-opacity:0.85; /*MOZ , FF*/ opacity:0.85;/*CSS3, FF1.5*/ list-style-type: none;text-align:center; position: absolute; z-index:3080; padding:0; border:solid #44769e; border-width:1px 1px 0 1px;}
+#MenuBarC li ul li{border-bottom:1px solid #44769e;width: 160px; line-height:27px; padding:0;}
+#MenuBarC li ul a{display: block; width: 160px; text-align:center;}
+#MenuBarC li ul a:hover  { color:#F3F3F3;text-decoration:none;font-weight:normal;background:url("../../images/MenuBar.gif") left bottom repeat-x;}
+/*#MenuBarC li:hover ul { display: block }
+#MenuBarC li.sfhover ul {left: auto;}*/
+
+/*+++++++++++++++++++++布局---滚动新闻++++++++++++++++++++++++++++++*/
+.news{ width:950px; height:30px; clear:both; line-height:30px;}
+.news .date{ float:left; width:150px;}
+.news img{  position:relative; top:3px; margin-right:5px;}
+
+/*+++++++++++++++++++++布局---中部++++++++++++++++++++++++++++++*/
+.mainTab{}
+.mainTab .tab .close_1{ width:14px; height:14px; background:url(../../images/close_1.gif); display:block; float:right;position:absolute; z-index:3; right:3px; top:3px; text-align:right;}
+.mainTab .tab .close_2{ width:14px; height:14px; background:url(../../images/close_2.gif);display:block; float:right;position:absolute; z-index:3; right:3px; top:3px; text-align:right;}
+.mainTab .tab{ width:950px; height:29px;position:relative; left:-3px!important;left:-6px; z-index:1;}
+.mainTab .tab .tab_active{ position:relative; margin-left:3px; float:left; color:#fff; line-height:26px; padding:0 0 0 10px; text-align:center; background:url(../../images/maintab1.gif) no-repeat  left;}
+.mainTab .tab .tab_active span{ float:none; padding:3px 22px 2px 3px;display: block; text-align:center; background:url(../../images/maintab2.gif) no-repeat  right;}
+.mainTab .tab .tab_nomal{ position:relative; margin-left:3px;float:left; color:#115179; line-height:26px; padding:0 0 0 10px; text-align:center; background:url(../../images/maintab3.gif) no-repeat  left;}
+.mainTab .tab .tab_nomal span{ float:none; padding:3px 22px 2px 3px;display: block; text-align:center; background:url(../../images/maintab4.gif) no-repeat  right;}
+.mainTab .main{ clear:both; padding-top:12px; background:url(../../images/main.gif) repeat-x; padding-left:12px; width:938px; min-height:600px;}
+.mainTab .main .left{ width:250px; float:left;}
+.mainTab .main .right{ width:666px; float:left; padding-left:10px;  top:0; overflow:hidden;}
+.mainTab .main .mainR{ width:12px; height:600px; margin-top:-12px; float:right;}
+
+
+
+.mainTab2{position:relative; z-index:3;width:926px;}
+.mainTab2 .tab .close_1{ width:14px; height:14px; background:url(../../images/close_1.gif); display:block; float:right;position:absolute; z-index:3; right:3px; top:3px; text-align:right;}
+.mainTab2 .tab .close_2{ width:14px; height:14px; background:url(../../images/close_2.gif);display:block; float:right;position:absolute; z-index:3; right:3px; top:3px; text-align:right;}
+.mainTab2 .tab{ width:926px; height:29px;position:relative; left:-3px!important;left:-6px; z-index:1;}
+.mainTab2 .tab .tab_active{ position:relative; margin-left:3px; float:left; color:#fff; line-height:26px; padding:0 0 0 10px; text-align:center; background:url(../../images/maintab1.gif) no-repeat  left;}
+.mainTab2 .tab .tab_active span{ float:none; padding:3px 22px 2px 3px;display: block; text-align:center; background:url(../../images/maintab2.gif) no-repeat  right;}
+.mainTab2 .tab .tab_nomal{ position:relative; margin-left:3px;float:left; color:#115179; line-height:26px; padding:0 0 0 10px; text-align:center; background:url(../../images/maintab3.gif) no-repeat  left;}
+.mainTab2 .tab .tab_nomal span{ float:none; padding:3px 22px 2px 3px;display: block; text-align:center; background:url(../../images/maintab4.gif) no-repeat  right;}
+.mainTab2 .main2{ position:relative; z-index:1; top:-1px; clear:both; padding-top:0px; background:url(../../images/main.gif) repeat-x; padding-left:0px; width:926px; min-height:600px;}
+.mainTab2 .main2 .left{ width:250px; float:left;}
+.mainTab2 .main2 .right{ width:676px; float:left; padding-left:10px;  top:0; overflow:hidden;}
+.mainTab2 .main2 .mainR{ width:12px; height:600px; margin-top:-12px; float:right;} 
+
+/*+++++++++++++++++++++布局---模块（小）++++++++++++++++++++++++++++++*/
+.widgetS{ width:250px; margin-bottom:10px; position:relative;}
+.widgetS .wTop{ width:250px; height:15px; /*background:url(../../images/image.png) -10px -180px;*/}
+.widgetS .wCenter{ width:250px; padding:0 10px; float:left; background:#ebf2f8; border:solid #aac1d1; border-width:0 1px;}
+.widgetS .wFoot{ clear:both; width:250px; height:15px; /*background:url(../../images/image.png) -10px -195px;*/}
+.widgetS .wCenter .userHead{ width:85px; height:85px; float:left; margin-right:4px;}
+.widgetS .wCenter .userInfo{ width:119px; height:90px; padding:3px 10px 0 10px; float:left; background:url(../../images/image.png) -10px -223px;}
+.widgetS .wCenter .userInfo p{ line-height:20px; padding:0; margin:0;}
+
+
+.blueBlock{ width:221px; margin:0 auto;}
+.blueBlock .BlockT,.blueBlock .BlockB{ width:221px; height:10px;}
+.blueBlock .BlockC{ width:221px; background:#badbe7; padding:0 10px 5px 10px; }
+.blueBlock .BlockC ul li{ width:90%; list-style-type:none; padding:8px 0 8px 15px; clear:both; background:url(../../images/line1.gif) bottom repeat-x;}
+.blueBlock .BlockC ul li img{position:relative; top:4px; left:-5px; }
+
+.widgetS .titBar{
+	font: 14px/28px "微软雅黑";
+	font-weight: bold;
+	margin-bottom: 8px;
+	height: 28px
+}
+.widgetS .titBar img{ float:left;}
+.titBar1{ padding:9px 10px 0 0;}
+.widgetS .titBar h1{ font-size:15px; width:160px; float:left; font-family:"微软雅黑"; width: auto }
+.widgetS .content{ width:220px;}
+.widgetS .content textarea{ width:222px; height:131px;}
+.widgetS .conFrm{ width: 250px; } /*---Created by ZHI(UI GROUP) 2011-12-19 ---*/
+
+.fbtn{ display: block; width: 60px; text-indent: 20px; color: #1d49ce !important; font-weight: normal }
+.setting{ background: url(../../images/icon/setting.gif) no-repeat 0px 7px }
+	
+.logTab{  border:solid #b5c5da; border-width:1px 1px 0 1px; clear:both; float:left;}
+.logTab .logTabTit{width:224px;}
+.logTab .logTabTit .logTitActive{ float:left; height:23px; padding:5px 8px 0 8px; background:#FFF;}
+.logTab .logTabTit .logTitNomal{ float:left; height:23px;  padding:5px 8px 0 8px;  background:#bcdee8; }
+.logTabCon{ width:224px; border:solid #b5c5da; border-width:0 1px 1px 1px; height:120px; clear:both; background:#fff; text-align:center;}
+
+.list{ width:100%; }
+.list ul li{ width:90%; list-style-type:none; padding:8px 0 8px 20px; clear:both; background:url(../../images/line2.gif) bottom repeat-x;}
+.list li img{ position:relative; top:2px;}
+.search { width:100%;}
+.search table{ padding:0; line-height:25px;}
+.search table th{  text-align:right; font-weight:lighter; width:30%; padding-right:5px;}
+.search table td{ width:60%;}
+.search .input{ width:120px; border:1px solid #ccc; }
+.list p{ padding:5px; margin:0; line-height:20px;}
+.roll{ width:17px; position:absolute; top:-15px; right:-10px;}
+.roll .up{ top:0;}
+html>body .roll .down{ position:relative; top:145px;}
+* html .roll .down{ position:relative; top:163px;}
+
+
+/*+++++++++++++++++++++布局---模块（大）++++++++++++++++++++++++++++++*/
+.widgetL{ width:100%; margin-bottom:10px; overflow: hidden;}
+.widgetL .wTop{ width:100%; height:10px; /*background:url(../../images/image.png) -10px -180px;*/}
+
+.widgetL .wTop2{ width:100%; height:10px; background:#78A7C5;/*background:url(../../images/image.png) -10px -180px;*/}
+.widgetL .wCenter{ width:96% !important;width:100%; padding:10px 25px; float:left; background:#ebf2f8; }
+.widgetL .wFoot{ clear:both; width:100%; height:10px; margin-top:-5px /*background:url(../../images/image.png) -10px -195px;*/}
+.widgetL .titBar{
+	font: 14px/18px "微软雅黑";
+	font-weight:bold;
+	width:100%;
+	background: url(../../images/icon/title1.gif) no-repeat 0px 0px;
+	padding-left: 20px;
+	margin-bottom: 12px
+}
+.widgetL .titBar img{ float:left;}
+.widgetL .titBar h1{ font-size:14px; width:400px; float:left; font-family:"微软雅黑"; }
+.widgetL .content{ width:100%;padding:0px;margin:0px;background:#ebf2f8;}
+.widgetL .content table{font-size:12px;}
+.widgetL .container{ width:100%; padding:0; background:#ebf2f8;font-size:14px;}
+.widgetL .container table{font-size:12px;}
+.widgetL .title h1{ font-size:14px; width:400px; float:left; font-family:"微软雅黑"; background:url(../../images/image.png)}
+.widgetL .container .input{border:1px solid #ccc; width:120px;}
+.widgetL .container .input2{border:1px solid #ccc; width:90px;padding-top:3px; height:22px;}
+.widgetL .container .input3{border:1px solid #ccc; width:90px;padding-top:3px; height:18px;}
+.widgetL .innerFrame{ width: 100%; height: 360px }
+
+/****************报表页面风格 start *************************/
+.widgetRpt{width:100%;}
+.widgetRpt .content{ width:644px; padding:0 10px; background:#ebf2f8; border:solid #aac1d1; border-width:0 1px;}
+.widgetRpt .footer{width:100%; padding:-1px;}
+.widgetRpt .title{background:url(../../images/icon/title1.gif) no-repeat 6px;padding-left:24px;}
+.widgetRpt .title h1{font-size:15px; font-family:"微软雅黑";font-weight: bold;}
+/****************报表页面风格 end *************************/
+
+
+.layer_level{ width:100%; height:28px; padding:0 10px; line-height:28px; background:#bbdbe8; color:#87898a;}
+.widget_tab{ position:relative; z-index:5px;}
+.widget_tab .tab{ width:634px; height:29px;position:relative;  left:-3px!important; left:-3px; z-index:1;}
+.widget_tab .tab .tab_active{  float:left; color:#2b799d; line-height:26px; padding:0 0 0 10px; text-align:center; background:url(../../images/tab_a1.gif) no-repeat  left;}
+.widget_tab .tab .tab_active span{ float:none; padding:3px 10px 2px 2px;display: block; text-align:center; background:url(../../images/tab_a2.gif) no-repeat  right;}
+.widget_tab .tab .tab_nomal{ float:left; color:#a2c5d8; line-height:26px; padding:0 0 0 10px; text-align:center; background:url(../../images/tab_b1.gif) no-repeat  left;}
+.widget_tab .tab .tab_nomal span{ float:none; padding:3px 10px 2px 2px;display: block; text-align:center; background:url(../../images/tab_b2.gif) no-repeat  right;}
+.widget_tab .tabCon{ clear:both; width:644px;  padding:10px 0; border-top:1px solid #2b7b9e; position:relative; top:-3px;top:-4px\9;*top:-1px;_top:-3px;}/*FF*/
+.widget_tab .tabCon .sum-up{background:#ddeaf4; width:290px; float:right; padding:10px 0; border:1px solid #c7e2eb;}
+
+/*+++++++++++++++++++++布局--列表组件++++++++++++++++++++++++++++++ */
+/*  move to /sy/common/css/ui/list_table.css */
+.list_table{ clear:both; border:1px solid #929292; border-collapse:collapse; margin-top:5px;background:#fff;}
+.list_table table td,.list_table table th{ font-size:12px; border-collapse:collapse; border:1px solid #fff; line-height:22px;}
+.list_table table thead td{ line-height:22px; background:url(../../images/table_head.gif) repeat-x; text-align:center;}
+.list_table table tbody td{ padding-left:5px; }
+.list_table table tbody .number{ text-align:right; padding-right:5px;}
+.list_table table tbody div{  height:138px; }
+.list_table table .trbg_1{ background:#e2edff;}
+.list_table table .trbg_2{ background:#f0f7ff;}
+.list_table table thead .h44{ background:url(../../images/table_head_h44.gif) repeat-x !important;  }
+	
+.list_table_new{ clear:both; border-collapse:collapse; margin:0px auto;}
+.list_table_new table{border:1px solid #929292; background:#fff;}
+.list_table_new table td,.list_table table th{ font-size:12px; border-collapse:collapse; border:1px solid #fff; line-height:22px;}
+.list_table_new table thead{ line-height:22px; background:url(../../images/table_head.gif) repeat-x; text-align:center;}
+.list_table_new table tbody td{ padding-left:5px; }
+.list_table_new table tbody .number{ text-align:right; padding-right:5px;}
+.list_table_new table tbody div{  height:138px; }
+.list_table_new table .trbg_1{ background:#e2edff;}
+.list_table_new table .trbg_2{ background:#f0f7ff;}
+
+.list_table_new2{ clear:both; border-collapse:collapse; margin:0px auto;}
+.list_table_new2 table{border:1px solid #929292; background:#fff;}
+.list_table_new2 table td,.list_table table th{ font-size:12px; border-collapse:collapse; border:1px solid #fff; line-height:22px;}
+.list_table_new2 table thead{ line-height:22px; background:#DEEDF6; text-align:center;}
+.list_table_new2 table tbody td{ padding-left:5px; color:#444;}
+.list_table_new2 table tbody .number{ text-align:right; padding-right:5px;}
+.list_table_new2 table tbody div{  height:138px; }
+.list_table_new2 table .trbg_1{ background:#e2edff;}
+.list_table_new2 table .trbg_2{ background:#f0f7ff;}
+
+/************** *CSS meneame style pagination ***************/
+.page{ clear:both; padding:2px 4px; font-size:12px; margin:3; color:#000; line-height:22px; height: 22px;
+	background:url(../../sy/images/table_head.gif) repeat-x 0px 0px
+}
+.page a{ border:1px solid #C6C6C6; padding:2px 4px; margin-right:3px; text-decoration:none; background:#fff; font-size: 12px}
+.page a:hover{border:1px solid #036ce1; background:#a9c9fc; text-decoration: none}
+.page a.disabled, .page a.disabled:hover{ border-color: #D2D2D2; color: #CDCDCD; background-color:#F2F2F2; cursor: default}
+
+.page span.current{ padding:2px 4px;border:1px solid #036ce1; font-weight:bold; color:#646464; background:#a9c9fc; margin-right:3px;}
+.page span.disabled{border:1px solid #e8e8e8; padding:2px 4px; color:#c4c4c6; margin-right:3px; background:#fff;}
+.page input{ width:20px; height: 15px; border:1px solid #C6C6C6; margin:0 3px; padding:0; font-size: 12px}
+
+
+.loadframe {
+	width:100%;
+	height:100%;
+	filter:chroma(color=#ffffff);
+}

@@ -1,0 +1,298 @@
+.accbllbg {
+	text-align:left;
+	filter:progid:DXImageTransform.Microsoft.Shadow(Strength=0, Direction=135, color=ffffff);
+}
+
+.bg_1 {
+	background-attachment: fixed;
+	background-image: url(../../../../images/accounting/bg1.GIF);
+	background-repeat: no-repeat;
+	height: 430px;
+	width: 750px;
+
+	
+}
+
+
+.k1 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 17px;
+	top: 117px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+ }
+.k2 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 177px;
+	top: 119px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+	 }
+.k3 { left: 93px;  top: 390px; }
+.k4 { left: 258px; top: 390px; }
+.k5 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 329px;
+	top: 119px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+}
+.k6 { left: 93px;  top: 585px; }
+.k7 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 474px;
+	top: 120px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+ }
+
+.L1 { font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-image: url(../../../../images/accounting/chucu.GIF);
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	text-align: center;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 241px;
+	left: 17px;
+	 }
+.L2 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/qidz.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 474px;
+	top: 288px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+ }
+.L3 {font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-image: url(../../../../images/accounting/keqi.GIF);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	position: absolute;
+	left: 177px;
+	top: 185px;
+	}
+.L4 { font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-image: url(../../../../images/accounting/keqi.GIF);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	position: absolute;
+	left: 177px;
+	top: 314px;
+ }
+
+.L5 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/qidz.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 622px;
+	top: 354px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px; }
+.L6 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/keqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 622px;
+	top: 288px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px; }
+.L7 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/qidz.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 474px;
+	top: 354px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+	 }
+.L8 { font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-image: url(../../../../images/accounting/keqi.GIF);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 65px;
+	width: 113px;
+	padding-top: 20px;
+	position: absolute;
+	left: 177px;
+	top: 249px;
+	 }
+
+.L9 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/weiqi.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 622px;
+	top: 120px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+	}
+
+.L10 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/qidz.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 329px;
+	top: 288px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+	 } 
+.L11 { background-attachment: fixed;
+	background-image: url(../../../../images/accounting/yiwc.GIF);
+	background-repeat: no-repeat;
+	height: 65px;
+	width: 113px;
+	position: absolute;
+	left: 474px;
+	top: 186px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 23px;
+	 }
+
+
+.mcolor0 {
+	background:url(../../../../images/accounting/weiqi.GIF);
+}
+.mcolor1 {
+	background:url(../../../../images/accounting/keqi.GIF);
+}
+.mcolor2 {
+	background:url(../../../../images/accounting/qidz.GIF);
+}
+.mcolor3 {
+	background:url(../../../../images/accounting/yiwc.GIF);
+}
+.mcolor4 {
+	background:url(../../../../images/accounting/chucu.GIF);
+}
+
+.kcolor0 {
+	background:url(../../../../images/accounting/weiqi.GIF);
+}
+.kcolor1 {
+	background:url(../../../../images/accounting/qidz.GIF);
+}
+.kcolor2 {
+	background:url(../../../../images/accounting/yiwc.GIF);
+}
+.kcolor3 {
+	background:url(../../../../images/accounting/chucu.GIF);
+}
+.point {
+	
+}	
+
+
+.s1 { left: 363px; top: 250px; }
+.s2 { left: 363px; top: 317px; }
+.s3 { left: 524px; top: 319px; }
+.s4 { left: 524px; top: 392px; }
+
+.s5 { left: 524px; top: 458px; }
+.s6 { left: 524px; top: 526px; }
+.s7 { left: 524px; top: 607px; }
+.s8 { left: 718px; top: 319px; }
+
+
+.s1,.s2,.s3,.s4,.s5,.s6,.s7,.s8,.s9{
+	background-repeat: no-repeat;
+	position: absolute;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 2px;
+	font-size: 12px;
+	color: #000000;
+	cursor:hand;
+}

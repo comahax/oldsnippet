@@ -1,0 +1,25 @@
+/*=====================================================*/
+/*                 line µ÷Õû  (ĞŞÊÎ)                   */
+/*=====================================================*/
+#left_line {
+	background:#000000 url("../../images/images_1/line_s_background.gif");
+}
+#lineSbutton {
+	cursor:hand;
+	margin-top:280px;
+}
+#left_content_line {
+	background:#000 url("../../images/images_1/line_h_background.gif");
+	text-align:center;
+}
+#leftlinebutton {
+	cursor:hand;
+	float:left;
+}
+#right_line {
+	background:#000 url("../../images/images_1/line_h_background.gif");
+	text-align:center;
+}
+#rightlinebutton {
+	cursor:hand;
+}

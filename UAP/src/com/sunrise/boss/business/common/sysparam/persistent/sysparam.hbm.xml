@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.common.sysparam.persistent.SysparamVO" table="IB_GL_SYSPARAM">
+<composite-id>
+	<key-property name="systemid" type="java.lang.Long">
+    	<column name="SYSTEMID" precision="14" scale="0" />
+    </key-property>
+    <key-property name="paramtype" type="java.lang.String">
+    	<column name="PARAMTYPE" precision="16" scale="0" />
+    </key-property>
+    
+    <key-property name="region" type="java.lang.Integer">
+    	<column name="REGION" precision="5"  />
+    </key-property>
+</composite-id>
+<property name="begintime" column="BEGINTIME" type="java.util.Date" length="7"/>
+<property name="endtime" column="ENDTIME" type="java.util.Date" length="7"/>
+<property name="paramname" column="PARAMNAME" type="java.lang.String" length="32"/>
+<property name="paramvalue" column="PARAMVALUE" type="java.lang.String" length="256"/>
+<property name="memo" column="MEMO" type="java.lang.String" length="256"/>
+
+</class>
+</hibernate-mapping>

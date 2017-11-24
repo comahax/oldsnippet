@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- the proxool configuration can be embedded within your own application's.
+Anything outside the "proxool" tag is ignored. -->
+<something-else-entirely>
+ <proxool>
+    <alias>testdb</alias>
+    <driver-url>jdbc:oracle:thin:@10.200.27.127:1521:ngcrm</driver-url>
+    <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+    <driver-properties>
+      <property name="user" value="jop2"/>
+      <property name="password" value="jop2"/>
+      <property name="schema" value="JOP2"/>
+    </driver-properties>    
+    <maximum-connection-count>10</maximum-connection-count>
+    <house-keeping-test-sql>select 1 from dual</house-keeping-test-sql>
+  </proxool>
+</something-else-entirely>

@@ -1,0 +1,7 @@
+.bottom_bj {
+	background-image: url(../../images/image_bottom/image_bottombj.GIF);
+	background-repeat: repeat-x;
+	height: 5px;
+	width: 100%;
+	background-position: top;
+}

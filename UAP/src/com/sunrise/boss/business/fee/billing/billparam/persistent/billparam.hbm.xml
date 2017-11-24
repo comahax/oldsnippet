@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sunrise.boss.business.fee.billing.billparam.persistent.BillParamVO" table="IB_GL_BILLPARAM" >
+        
+        <id name="dataid" type="java.lang.Long">
+			<column name="DATAID" precision="14" scale="0" />
+			<generator class="assigned"/>
+		</id>
+        <property name="pvalue" type="java.lang.String">
+            <column name="PVALUE" length="256" />
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO"  length="256"/>
+        </property>
+    </class>
+</hibernate-mapping>
+
+

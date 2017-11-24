@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.sunrise.boss.business.fee.billing.checkplan.persistent.CheckPlanVO" table="IB_CBTM_CHECKPLAN">
+<composite-id>
+	<key-property column="LOGID" length="14" name="logid" type="java.lang.Long" />
+	<key-property column="BATCH" length="14" name="batch" type="java.lang.Long"/>
+	<key-property column="PRODID" length="32" name="prodid" type="java.lang.String"/>
+	<key-property column="SUBSID" length="14" name="subsid" type="java.lang.Long"/>
+	<key-property column="TARIFFITEMID" length="32" name="tariffitemid" type="java.lang.String"/>
+</composite-id>
+<property column="PRODNAME" length="150" name="prodname" type="java.lang.String"/>
+<property column="SERVNUMBER" length="20" name="servnumber" type="java.lang.String"/>
+<property column="REGION" length="5" name="region" type="java.lang.Integer"/>
+</class>
+</hibernate-mapping>

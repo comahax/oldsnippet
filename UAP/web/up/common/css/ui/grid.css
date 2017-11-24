@@ -1,0 +1,24 @@
+.grid{
+	border: 1px solid #666666;
+	overflow: hidden
+}
+.grid .head{ overflow-x: hidden }
+.grid .data{  }
+
+.grid, .grid .head, .grid .data{ width: 100% }
+.grid .head{ height: 22px; }
+.grid .data{}
+
+.grid .head table{ 
+	/*position: absolute; z-index: -99*/
+}
+.grid .head table td{ line-height:18px; background:url(../../../images/table_head.gif) repeat-x 0px 0px; text-align:center;}
+.grid .head table, .grid .data table{ background-color: #FFF }
+
+
+.grid .head td, .grid .data td{ font-size: 12px; background-color: #FFF; text-align: center; height: 22px }
+
+.scroll{ overflow: auto }
+.ver_scroll{ overflow-y: auto }
+.hor_scroll{ overflow-x: auto }
+

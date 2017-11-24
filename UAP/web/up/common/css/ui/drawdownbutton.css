@@ -1,0 +1,59 @@
+@charset "utf-8";
+.drawdown_button{
+	width: auto;
+	margin: 0 2px
+}
+.drawdown_button .default, .drawdown_button .drawdown_anchor{
+	margin: 0;
+	padding: 0;
+	display: block;
+	float: left
+}
+.drawdown_button .default{
+	text-align: center;
+}
+.drawdown_button .drawdown_anchor{
+	width: 19px;
+	height: 22px;
+	background: url(../../../images/dd_trg.gif) no-repeat;
+	border: 0;
+}
+
+.drawdown_button .trigger_hover{
+	background-position: 0px -22px
+}
+.drawdown_button .drawdown_anchor{
+	position: relative;
+	margin-left: -5px
+}
+
+.drawdown_panel{
+	border: 1px solid #aaaaaa;
+	width: 80px;
+	display: none;
+	position: absolute;
+	z-index: 3;
+	margin: 21px 0 0 -62px
+}
+.drawdown_panel .button{
+	list-style: none;
+	background: #ededef;
+	text-align: left;
+	text-indent: 9px;
+	cursor: pointer
+}
+
+.drawdown_panel .button a{
+	display: block;
+	width: 100%;
+	line-height: 24px;
+	font-size: 12px
+}
+.drawdown_panel .button a:hover{
+	background: #F7E8E1
+}
+
+.panel_hover{
+	display: block
+}
+

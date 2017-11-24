@@ -1,0 +1,144 @@
+@charset "utf-8";
+/*--------------------------
+/* 标签组件结构定义
+/* Create By ZHI(UI Group)
+/*------------------------*/
+.tab_head_bar li{
+	float: left;
+}
+.tab_cont{
+	display: none;
+	overflow: hidden
+}
+.tab_cont_wrap .selected{
+	display: block
+}
+
+.tab_head_bar{
+	overflow: hidden;
+	position: relative;
+	height: 28px;
+	top: 1px
+}
+.tab_head_bar li{
+	/*margin: 0 0 0 2px;*/
+	cursor: pointer;
+	line-height: 24px;
+	margin: 4px 2px 0 0;
+}
+
+/*--------------------------
+/* 标签组件默认外观
+/*------------------------*/
+.tab_ol_l, .tab_ol_r, .tab_ol_c{
+	background: url(img/bg_tab.gif);
+	height: 23px;
+}
+
+.tab_ol_l, .tab_ol_r{
+	background-repeat: no-repeat;
+	background-position: 0px -56px;
+}
+.tab_ol_r{
+	background-position: -4px -56px;
+	width: 4px;
+	float: left;
+	margin-left: 0px
+}
+.tab_ol_c{
+	background-position: 0px -80px;
+	background-repeat: repeat-x;
+	display: block;
+	float: left;
+	text-align: center;
+	color: #487493;
+	padding: 0 8px;
+	margin-left:4px; _margin-left:2px;
+}
+
+/*----- tab outline selected-----*/
+.tab_head_bar .selected{
+	margin-top: 0px;
+	position: relative;
+	top: 1px;
+}
+.tab_head_bar .selected, .tab_head_bar .selected .tab_ol_r, .tab_head_bar .selected .tab_ol_c{
+	background: url(img/bg_tab.gif);
+	height: 28px;
+}
+.tab_head_bar .selected, .tab_head_bar .selected .tab_ol_r{
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.tab_head_bar .selected .tab_ol_r{
+	background-position: -4px 0px;
+	width: 4px;
+	float: left;
+	margin-left: 0px;
+}
+.tab_head_bar .selected .tab_ol_c{
+	background-position: 0px -28px;
+	background-repeat: repeat-x;
+	
+	float: left;
+	color: #000;
+	line-height: 27px;
+}
+
+/*----- tab content outline -----*/
+.tabs .tab_cont{
+	border: 1px solid #78a1cd;
+	background: #f4fbff
+}
+
+.tab_head_bar .tab_ol_c .btn_close{
+	width: 9px;
+	height: 8px;
+	background: url(img/delete.gif) no-repeat;
+	display: inline-block;
+	font-size: 1px;
+	position: relative;
+	left: 5px; top:-3px
+}
+.tab_head_bar .tab_ol_c .btn_close:hover{
+	background-position: 0px -8px
+}
+
+.tab_head_bar .selected .btn_close{
+	left: 4px;
+	top: 0px
+}
+
+/*---IE6---*/
+.tab_head_bar .tab_ol_c span{
+	_position: relative;
+	_top: 7px
+}
+.tab_head_bar .tab_ol_c .btn_close{
+	_top: 7px
+}
+
+/*--------------------------
+/* 标签移动按钮样式
+/*------------------------*/
+.tab_move_bar{
+	position: absolute;
+	right: 18px
+}
+
+.tab_move_bar .move_left, .tab_move_bar .move_right{
+	margin-top: 5px;
+}
+
+.move_left, .move_right{
+	display: block;
+	width: 17px;
+	height: 17px;
+	background: url(img/main/tab_move.gif) no-repeat;
+	float: left;
+	margin: 0 4px
+}
+.move_left{ background-position: 0px 0px }
+.move_left:hover{ background-position: 0px -17px }
+.move_right{ background-position: -17px 0px }
+.move_right:hover{ background-position: -17px -17px }

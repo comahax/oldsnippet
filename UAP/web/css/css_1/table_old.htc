@@ -1,0 +1,13 @@
+ <public:htc urn="www.microsoft.com">
+<script language="JavaScript">
+function tableScorll_old () {
+	if (element.offsetHeight >=330) {
+		element.style.posHeight = 350;
+	}else{
+		element.style.posHeight = element.offsetHeight+18;
+	}
+}
+</script>
+<public:attach event="oncontentready" onevent="tableScorll_old()" />
+<public:method name="tableScorll" />
+</public:htc>

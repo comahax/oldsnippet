@@ -1,0 +1,16 @@
+/*+++++++++++++++++++++布局---内页中部++++++++++++++++++++++++++++++*/
+.innerL{ width:227px; float:left;}
+.innerR{ width:746px; float:left; margin-left:10px;}
+.innerL .innerNav{ border:1px solid #e1e1e1; background:#f5fafd; min-height:500px; height:500px;}
+.innerL .innerNav dt{ width:225px; line-height:30px; height:30px; padding-left:10px; font-weight:bold; background:url(../../sy/images/innerNav_one.gif) repeat-x; cursor:pointer; margin:0}
+.innerL .innerNav dd{ width:200px; line-height:30px; height:30px; padding-left:10px; cursor:pointer; margin-left:10px}
+.innerR .innerBlock{width:746px;}
+.innerR .innerBlock .titBar{width:736px; padding-left:10px; line-height:30px; height:30px;background:url(../../sy/images/innerNav_one.gif) repeat-x;}
+.innerR .innerBlock .titBar img{ float:left; margin-right:5px; position:relative; top:3px;}
+.innerR .innerBlock .titBar h1{font-size:12px; width:210px; float:left; font-family:"宋体";}
+.innerR .innerBlock .content{ width:726px; padding:10px; background:#ebf3f8; float:left;}
+
+.movedd{background:url(../../sy/images/left_2.gif) 190px 10px no-repeat; color:#0000FF;}
+.moutdd{background:url(../../sy/images/left_1.gif) 190px 10px no-repeat; color:#000;}
+.myimg2{ float:right; margin-right:10px; margin-top:10px;}
+.innerL .innerNav dl { margin:0; padding:0;}

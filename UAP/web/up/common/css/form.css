@@ -1,0 +1,121 @@
+/********************************/
+/* 通用表单
+/* Created By ZHI(UI GROUP)
+/* 2011-12-12
+/********************************/
+.textbox, .drawdownlist{
+	border:1px solid #ccc;
+	height:16px;
+	line-height: 16px;
+	background: #fff;
+	width: 166px
+}
+.textbox{
+	width: 163px;
+	_height:18px;
+	_line-height: 18px;
+}
+.drawdownlist{
+	height: 20px;
+}
+
+.form_item{
+	border:1px solid #ccc;
+	width:152px;
+	float:left;
+	height:20px;
+	padding: 0px;
+	padding-left:3px;
+	margin-right:5px;
+	background-color: #f5f5f5;
+}
+.input_field{
+	border:0px;
+	float:right;
+	width:110px;
+	background-color:#FFF;
+	position: relative;
+	* left: 4px;
+	height: 18px;
+	_height: 20px;
+	line-height: 20px
+}
+.select_field{
+	border:0;
+	float:right;
+	width:110px;
+	background-color:#FFF;
+	height:20px;
+	position: relative;
+	left: 1px
+}
+.title{
+	margin-top: 1px;
+	_margin-top: 2px;
+	float:left;
+	line-height:20px;
+	font-size: 12px
+}
+
+.form_outline{
+	border: 1px solid white;
+	width: auto; height: auto;
+	float:right;
+	overflow: hidden;
+	height: 18px;
+	_height: 20px;
+}
+
+.form_outline select{
+	background-color: #fff;
+	border: 0;
+	* margin-top: -2px;
+	* margin-left: -2px;
+	* margin-right: -2px;
+	* margin-bottom: 4px;
+	_margin-top: -1px
+}
+/*--- button ---*/
+.bt48_10, .bt48_gray_10, .bl_bt48_10, .bl_bt48_gray_10{
+	border:0px;
+	width:48px;
+	line-height:22px;
+	height:22px;
+	font-size:12px;
+	background:url(../../images/image.png) -10px -11px;
+	margin-right:10px;
+}
+.bt48_gray_10{
+	background-position: -10px -141px;
+}
+.bl_bt48_gray_10{
+	width:82px;
+	background-position: -110px -107px;
+}
+.bl_bt48_10{
+	width:82px; background-positon: -10px -75px;
+}
+
+/*--- form layout ---*/
+.form,.search2 {
+	width:100%;
+}
+.form table,.search2 table{
+	padding:5px 0;
+	line-height:25px;
+	font-size:12px;
+}
+.form table th,.search2 table th{
+	text-align:right;
+	font-weight:lighter;
+    /*--- width:17%;---*/
+	padding-right:5px;
+}
+/*-
+.form table td,.search2 table td{
+	width:33%;
+}
+---*/
+.search2 .input{ width:166px; border:1px solid #ccc ;}
+.form .input{border:1px solid #ccc; width:148px;height:18px;}
+

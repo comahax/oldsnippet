@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="Esop2CRM" targetNamespace="http://www.gmcc.net/Esop2CRM/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.gmcc.net/Esop2CRM/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:types><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.gmcc.net/Esop2CRM/">
+
+            <xsd:element name="validateToken">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="region" type="xsd:string"></xsd:element>
+            			<xsd:element name="token" type="xsd:string"></xsd:element>
+            			<xsd:element name="system" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+
+            
+            
+           <xsd:element name="validateTokenResponse">
+		      <xsd:complexType>
+		         <xsd:sequence>
+		            <xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:AuthResult"/>
+		         </xsd:sequence>
+		      </xsd:complexType>
+		   </xsd:element>
+		   
+		   <xsd:element name="checkMenu">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            		    <xsd:element name="region" type="xsd:string"></xsd:element>
+            			<xsd:element name="resource" type="xsd:string"></xsd:element>
+            			<xsd:element name="transid" type="xsd:string"></xsd:element>
+            			<xsd:element name="password" type="xsd:string"></xsd:element>
+            			<xsd:element name="oprid"  type="xsd:string"></xsd:element>
+            			<xsd:element name="menuid" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            
+             <xsd:element name="checkMenuResponse">
+		      <xsd:complexType>
+		         <xsd:sequence>
+		            <xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:CheckMenuAuthResult"/>
+		         </xsd:sequence>
+		      </xsd:complexType>
+		   </xsd:element>
+
+             <xsd:element name="tokenValidate">
+             	<xsd:complexType>
+             		<xsd:sequence>
+
+             			<xsd:element name="region" type="xsd:string"
+             				maxOccurs="1" minOccurs="1">
+             			</xsd:element>
+             			<xsd:element name="token" type="xsd:string"
+             				maxOccurs="1" minOccurs="1">
+             			</xsd:element>
+             			<xsd:element name="system"
+             				type="xsd:string" maxOccurs="1" minOccurs="1">
+             			</xsd:element>
+             		</xsd:sequence>
+             	</xsd:complexType>
+             </xsd:element>
+             <xsd:element name="tokenValidateResponse">
+             	<xsd:complexType>
+             		<xsd:sequence>
+
+             			<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:AuthResultToken"></xsd:element>
+             		</xsd:sequence>
+             	</xsd:complexType>
+             </xsd:element>
+</xsd:schema>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.gmcc.net/Esop2CRM/">
+   <xsd:complexType name="AuthResult">
+      <xsd:sequence>
+         <xsd:element minOccurs="0" name="account" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="authMsg" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="authResult" type="xsd:boolean"/>
+         <xsd:element minOccurs="0" name="idsTokenName" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="idsTokenValue" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema> 
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.gmcc.net/Esop2CRM/">
+   <xsd:complexType name="AuthResultToken">
+      <xsd:sequence>
+         <xsd:element minOccurs="0" name="account" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="authmsg" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="authresult" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="idstokenname" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="idstokenvalue" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema> 
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.gmcc.net/Esop2CRM/">
+   <xsd:complexType name="CheckMenuAuthResult">
+      <xsd:sequence>
+         <xsd:element minOccurs="0" name="rspcode" nillable="true" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="rspinfo" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema> 
+
+</wsdl:types>
+
+
+    <wsdl:message name="validateTokenRequest">
+    	<wsdl:part name="parameters" element="tns:validateToken"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="validateTokenResponse">
+    	<wsdl:part name="parameters" element="tns:validateTokenResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="checkMenuRequest">
+    	<wsdl:part name="parameters" element="tns:checkMenu"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="checkMenuResponse">
+    	<wsdl:part name="parameters" element="tns:checkMenuResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="tokenValidateRequest">
+    	<wsdl:part name="parameters" element="tns:tokenValidate"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="tokenValidateResponse">
+    	<wsdl:part name="parameters" element="tns:tokenValidateResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="Esop2CRM">
+
+        <wsdl:operation name="validateToken">
+        	<wsdl:input message="tns:validateTokenRequest"></wsdl:input>
+        	<wsdl:output message="tns:validateTokenResponse"></wsdl:output>
+        </wsdl:operation>
+         <wsdl:operation name="checkMenu">
+        	<wsdl:input message="tns:checkMenuRequest"></wsdl:input>
+        	<wsdl:output message="tns:checkMenuResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="tokenValidate">
+        	<wsdl:input message="tns:tokenValidateRequest"></wsdl:input>
+        	<wsdl:output message="tns:tokenValidateResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="Esop2CRMSOAP" type="tns:Esop2CRM">
+
+    	<soap:binding style="document"
+    		transport="http://schemas.xmlsoap.org/soap/http" />
+
+    	<wsdl:operation name="validateToken">
+    		<soap:operation
+    			soapAction="http://www.gmcc.net/Esop2CRM/validateToken" />
+    		<wsdl:input>
+    			<soap:body use="literal" />
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+    	
+    	<wsdl:operation name="checkMenu">
+    		<soap:operation
+    			soapAction="http://www.gmcc.net/Esop2CRM/checkMenu" />
+    		<wsdl:input>
+    			<soap:body use="literal" />
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+    	<wsdl:operation name="tokenValidate">
+    		<soap:operation
+    			soapAction="http://www.gmcc.net/Esop2CRM/tokenValidate" />
+    		<wsdl:input>
+    			<soap:body use="literal" />
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Esop2CRM">
+		<wsdl:port name="Esop2CRMSOAP" binding="tns:Esop2CRMSOAP">
+			<soap:address location="http://www.gmcc.net/Esop2CRM" />
+		</wsdl:port>
+    </wsdl:service></wsdl:definitions>

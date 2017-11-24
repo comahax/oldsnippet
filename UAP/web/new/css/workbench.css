@@ -1,0 +1,33 @@
+@charset "utf-8";
+body{background:url(../images/bg.jpg) no-repeat 0px 0px;}
+
+.top_content{ margin:90px 20px 50px 20px}
+.top_content > ul{ overflow:hidden; margin:0 auto; text-align:center}
+.top_content > ul li{display:inline-block; *float:left; width:228px; margin:0 8px; vertical-align:middle;}
+/*.top_content li a{ display:block;width:199px; height:80px; line-height:24px;padding:210px 15px 0;  }*/
+.top_content li ul{width:226px; height:164px; margin-top:170px; text-align:left;}
+.top_content li ul h3{font-size:18px; text-indent:16px; margin-bottom:15px}
+.top_content li ul li{float:none; display:block; background:url(../images/icon_li_point.png) no-repeat 5px 11px; padding-left:3px; padding-top:0; height:26px; text-align:left; text-indent:16px; margin-left:18px}
+.top_content li ul li a{display:inline; line-height:26px; color:#333; text-decoration:none; outline:none}
+.top_content li ul li a:hover{color:#900}
+
+.bg_top_content{ background:url(../images/bg_top_content_first.png) no-repeat; width:230px; height:326px;}
+.bg_top_content_first{ background-position:0 0px; margin-right:5%; margin-left:5%;}
+.bg_top_content_second{background-position:0 -333px;margin-right:5%;}
+.bg_top_content_third{background-position:0 -667px;margin-right:5%;}
+.bg_top_content_fouth{background-position:0 -1000px;}
+
+
+.bottom_content{width:100%; }
+.box_top_right{ float:left; height:27px; width:100%;  background:url(../images/right_box_right.png) right no-repeat;}
+.box_top_left{ padding-left:20px; color:#fff; font-size:13px !important; height:27px;line-height:27px;width:95%; background:url(../images/right_box_left.png) repeat-x;}
+.box_center{ float:left;  background:#fff; width:100%; color:#000000;}
+.progress_Bar{ padding-top:15px; padding-bottom:10px;}
+.text_title{ height:27px; line-height:27px;width:110px;float:left;}
+.text_title span{ display:inline-block; vertical-align:5px; zoom:1;*display:inline;}
+.progress_Bar_c{ margin-left:110px; height:30px;}
+.box_top_right2{ float:left; height:11px; width:100%;background:url(../images/right_box_right2.png) right no-repeat;}
+.box_top_left2{ height:11px; width:95%; background:url(../images/right_box_left2.png) repeat-x;}
+
+.box_top_left_white{ padding-left:20px; height:11px;width:95%; background:url(../images/box_left2.png) repeat-x;}
+.box_top_right_white{ float:left; height:11px; width:100%;background:url(../images/box_right2.png) right no-repeat;}

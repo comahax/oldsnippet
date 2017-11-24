@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--本文件建议配置项目中的通用跳转-->
+<struts>
+    <package name="common-support" namespace="/common" extends="struts-default">        
+        <action name="picker_*" class="com.sunrise.boss.web.common.picker.PickerAction" method="{1}">
+        	<result name="picker">/common/picker.jsp</result>    
+        </action>    
+        <action name="morecheck_*" class="com.sunrise.boss.web.common.picker.MoreCheckAction" method="{1}">
+        	<result name="morecheck">/common/morecheck.jsp</result>    
+        </action> 
+        
+         <action name="menuitem_*" class="com.sunrise.boss.web.common.menu.MenuitemAction" method="{1}">
+         	<result name="loadtree">/iframe/left_main_a.jsp</result>
+         </action>
+   </package>
+   
+</struts>

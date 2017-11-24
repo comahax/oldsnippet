@@ -1,0 +1,50 @@
+/*=====================================================*/
+/*                   ¹«ÓÃ £¨ÐÞÊÎ£©                     */
+/*=====================================================*/
+* {
+	padding:0; margin:0;
+	}
+body {
+	font-size:12px;
+	font-family:'ËÎÌå',Microsoft Sans Serif;
+	font-weight:100;
+	color:#000;
+	text-align:left;
+	background:#FFFFFF;
+	margin:0px;
+	text-align:center;
+}
+.title {
+	width:100%; height:30px;
+	background:url(../../images/images_1/title.gif);
+	text-align:left;
+}
+.content {
+	padding:0px 0px 0px 0px;
+}
+.title_content {
+	width:180px; height:22px;
+	background:url(../../images/images_1/title_back.gif) no-repeat;
+	text-align:left;
+	padding-left:30px;
+	padding-top:8px;
+	font-size:14px;
+	margin-left:0px;
+	color:#fff;
+	font-weight:900;
+}
+.maininfo {
+	width:100%;
+	height:521px;
+	overflow:auto;
+}
+.complete_loading {
+	width:400px;
+	height:16px;
+	font-size:12px;
+	border:#9EAAB4 solid 1px;
+	background:#FFF url(../../images/images_1/loading.gif) no-repeat -1000px 0px;
+	text-align:center;
+	font-family:Arial;
+	color:;
+}
